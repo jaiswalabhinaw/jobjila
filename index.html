@@ -57,37 +57,35 @@
         width: 100% !important;
         margin-top: 8px;
       }
-      nav {
-        display: block;
-        text-align: center;
-      }
-      nav a {
-        display: block;
-        margin: 10px 0;
-      }
     }
     nav {
       transition: all 0.2s;
     }
-    nav.mobile-menu {
-      display: block !important;
-      background: #fff;
-      position: absolute;
-      top: 60px;
-      left: 0;
-      width: 100vw;
-      z-index: 50;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      padding: 1rem 0;
-    }
-    nav.mobile-menu a {
-      display: block;
-      margin: 12px 0;
-      font-size: 1.1rem;
+    /* Mobile menu styles */
+    #mainNav {
+      position: static;
     }
     @media (max-width: 768px) {
       nav.md\:flex {
         display: none !important;
+      }
+      #mainNav.mobile-menu {
+        display: block !important;
+        background: #fff;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100vw;
+        z-index: 50;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        padding: 1rem 0;
+        text-align: left;
+      }
+      #mainNav.mobile-menu a {
+        display: block;
+        margin: 12px 0;
+        font-size: 1.1rem;
+        padding-left: 1.5rem;
       }
       .grid.md\:grid-cols-2, .grid.md\:grid-cols-3 {
         grid-template-columns: 1fr !important;
@@ -105,6 +103,9 @@
           <div class="text-xs text-gray-500 -mt-1">Hire • Train • Grow</div>
         </div>
       </div>
+      <button id="menuBtn" class="md:hidden p-2" aria-label="Open menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
       <nav id="mainNav" class="hidden md:flex gap-6 items-center text-sm">
         <a href="#jobs" class="hover:text-blue-600">Careers</a>
         <a href="#services" class="hover:text-blue-600">Services</a>
@@ -112,9 +113,6 @@
         <a href="#contact" class="hover:text-blue-600">Contact</a>
         <a href="https://www.linkedin.com/in/abhi-094726383" target="_blank" rel="noopener" class="ml-2 inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded">LinkedIn</a>
       </nav>
-      <button id="menuBtn" class="md:hidden p-2" aria-label="Open menu">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-      </button>
     </div>
   </header>
   <main class="max-w-6xl mx-auto px-6 py-12">
@@ -279,11 +277,6 @@
             <li>Phone: <span class="text-gray-800">+91 8756680477</span></li>
             <li>LinkedIn: <a class="text-blue-600" href="https://www.linkedin.com/in/abhi-094726383" target="_blank">JobJila on LinkedIn</a></li>
           </ul>
-          <div class="mt-6">
-            <h4 class="font-semibold">Copy for LinkedIn</h4>
-            <p class="text-sm text-gray-500 mt-2">Use this snippet to share on LinkedIn:</p>
-            <pre class="mt-2 p-3 bg-gray-100 rounded text-xs overflow-x-auto">We're hiring! JobJila is looking for Corporate Trainers and Freelancers. Apply at support@jobjila.com</pre>
-          </div>
         </div>
       </div>
     </section>
