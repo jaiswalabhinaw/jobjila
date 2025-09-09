@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,98 +7,49 @@
   <title>JobJila — Careers & Hiring</title>
   <meta name="description" content="JobJila - Careers. We are hiring Corporate Trainers, Freelancers, Cloud & IT professionals. Apply now." />
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    html, body {
-      max-width: 100vw;
-      overflow-x: hidden;
-    }
-    .btn-primary {
-      background: #000 !important;
-      color: #fff !important;
-      border: 1px solid #000 !important;
-      padding: 10px 20px !important;
-      border-radius: 6px !important;
-      display: inline-block !important;
-      font-weight: 600 !important;
-      text-align: center !important;
-    }
-    .btn-primary:hover {
-      background: #333 !important;
-      color: #fff !important;
-    }
-    .btn-secondary {
-      background: #fff !important;
-      color: #000 !important;
-      border: 1px solid #000 !important;
-      padding: 10px 20px !important;
-      border-radius: 6px !important;
-      display: inline-block !important;
-      font-weight: 600 !important;
-      text-align: center !important;
-    }
-    .btn-secondary:hover {
-      background: #f5f5f5 !important;
-      color: #000 !important;
-    }
-    @media (max-width: 600px) {
-      .btn-primary, .btn-secondary {
-        width: 100% !important;
-        margin-top: 8px !important;
-      }
-    }
-    button, a[role="button"], .btn-primary, .btn-secondary {
-      display: inline-block;
-      padding: 12px 20px;
-      font-size: 16px;
-      text-align: center;
-      border-radius: 4px;
-    }
-    @media (max-width: 600px) {
-      button, a[role="button"], .btn-primary, .btn-secondary {
-        width: 100% !important;
-        margin-top: 8px;
-      }
-      nav {
-        display: block;
-        text-align: center;
-      }
-      nav a {
-        display: block;
-        margin: 10px 0;
-      }
-    }
-    nav {
-      transition: all 0.2s;
-    }
-    nav.mobile-menu {
-      display: block !important;
-      background: #fff;
-      position: absolute;
-      top: 60px;
-      left: 0;
-      width: 100vw;
-      z-index: 50;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      padding: 1rem 0;
-    }
-    nav.mobile-menu a {
-      display: block;
-      margin: 12px 0;
-      font-size: 1.1rem;
-    }
-    @media (max-width: 768px) {
-      nav.md\:flex {
-        display: none !important;
-      }
-      .grid.md\:grid-cols-2, .grid.md\:grid-cols-3 {
-        grid-template-columns: 1fr !important;
-      }
-    }
-  </style>
+  
+
+
+
+
+<style>
+  /* Primary button - solid black background */
+  .btn-primary, .px-6.py-3.bg-blue-600, .px-3.py-2.bg-blue-600 {
+    background: #000 !important;
+    color: #fff !important;
+    border: 1px solid #000 !important;
+  }
+  .btn-primary:hover, .px-6.py-3.bg-blue-600:hover, .px-3.py-2.bg-blue-600:hover {
+    background: #333 !important;
+    color: #fff !important;
+  }
+
+  /* Secondary button - white with black border */
+  .btn-secondary, .px-3.py-2.border, .px-6.py-3.border {
+    background: #fff !important;
+    color: #000 !important;
+    border: 1px solid #000 !important;
+  }
+  .btn-secondary:hover, .px-3.py-2.border:hover, .px-6.py-3.border:hover {
+    background: #f5f5f5 !important;
+    color: #000 !important;
+  }
+
+  /* Links */
+  a {
+    color: #000 !important;
+  }
+  a:hover {
+    text-decoration: underline;
+    color: #333 !important;
+  }
+</style>
+
 </head>
-<body class="antialiased overflow-x-hidden">
+<body class="antialiased">
+  
   <header class="bg-white shadow sticky top-0 z-20">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between relative">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
       <div class="flex items-center gap-4">
         <div class="w-10 h-10 bg-blue-600 text-white rounded flex items-center justify-center font-bold">JJ</div>
         <div>
@@ -112,31 +64,36 @@
         <a href="#contact" class="hover:text-blue-600">Contact</a>
         <a href="https://www.linkedin.com/in/abhi-094726383" target="_blank" rel="noopener" class="ml-2 inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded">LinkedIn</a>
       </nav>
-      <button id="menuBtn" class="md:hidden p-2" aria-label="Open menu">
+      <button id="menuBtn" class="md:hidden p-2">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
     </div>
   </header>
+
   <main class="max-w-6xl mx-auto px-6 py-12">
     <!-- Hero -->
     <section class="grid md:grid-cols-2 gap-8 items-center">
       <div>
         <h1 class="text-4xl md:text-5xl font-extrabold text-blue-700 leading-tight"><span style="color:#000;">We are hiring — Join JobJila</span></h1>
         <p class="mt-4 text-gray-600 max-w-xl">We're building a community for talented professionals. Looking for Corporate Trainers, Freelancers, and Azure/Cloud experts to join our mission to connect right talent with the right opportunity.</p>
+
         <div class="mt-6 flex flex-col sm:flex-row gap-3">
-          <a href="#jobs" class="btn-primary">Explore Open Roles</a>
-          <a href="#contact" class="btn-secondary">Contact Us</a>
+          <a href="#jobs" class="inline-flex items-center gap-3 px-6 py-3 bg-blue-600 text-white rounded shadow hover:bg-blue-700 transition">Explore Open Roles</a>
+          <a href="#contact" class="inline-flex items-center gap-3 px-6 py-3 border border-gray-300 rounded hover:bg-gray-100 transition">Contact Us</a>
         </div>
+
         <div class="mt-8 text-sm text-gray-500">
           <strong>Pro tip:</strong> Share this page on LinkedIn and tag people who should see this.
         </div>
       </div>
+
       <div class="bg-white rounded-xl p-6 shadow glass">
         <div class="text-center">
           <div class="mx-auto w-32 h-32 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 text-3xl font-bold">JJ</div>
           <h3 class="mt-4 font-semibold text-lg">Apply Now: Corporate Trainer & Freelancers</h3>
           <p class="mt-2 text-gray-600">Flexible roles — remote & on-site opportunities. Competitive pay.</p>
         </div>
+
         <div class="mt-6 grid gap-4">
           <div class="p-4 border rounded">
             <div class="flex items-start justify-between">
@@ -147,10 +104,11 @@
               <div class="text-sm text-gray-600">Full-time</div>
             </div>
             <div class="mt-3 flex gap-3">
-              <a href="#contact" class="btn-secondary text-sm">Apply</a>
-              <a href="#" class="btn-secondary text-sm">Details</a>
+              <a href="#contact" class="text-sm px-3 py-2 border rounded">Apply</a>
+              <a href="#" class="text-sm px-3 py-2 border rounded">Details</a>
             </div>
           </div>
+
           <div class="p-4 border rounded">
             <div class="flex items-start justify-between">
               <div>
@@ -160,47 +118,56 @@
               <div class="text-sm text-gray-600">Contract</div>
             </div>
             <div class="mt-3 flex gap-3">
-              <a href="#contact" class="btn-secondary text-sm">Apply</a>
-              <a href="#" class="btn-secondary text-sm">Details</a>
+              <a href="#contact" class="text-sm px-3 py-2 border rounded">Apply</a>
+              <a href="#" class="text-sm px-3 py-2 border rounded">Details</a>
             </div>
           </div>
         </div>
+
         <div class="mt-6 text-xs text-gray-500">
           Or email your resume to <a href="mailto:support@jobjila.com" class="text-blue-600">support@jobjila.com</a>
         </div>
       </div>
     </section>
+
     <!-- Open Roles / Careers -->
     <section id="jobs" class="mt-14">
       <h2 class="text-2xl font-bold text-gray-800">Open Roles</h2>
       <p class="text-gray-600 mt-2">We hire for multiple roles. Below are immediate openings — more will be added.</p>
+
       <div class="mt-6 grid md:grid-cols-3 gap-6">
+        <!-- Card 1 -->
         <div class="p-6 bg-white rounded-xl shadow hover:shadow-md transition">
           <h3 class="font-semibold text-lg">Azure Cloud Engineer</h3>
           <p class="text-sm text-gray-500 mt-2">Manage Azure infrastructure, IaC, monitoring, and cost optimization.</p>
           <div class="mt-4 flex items-center justify-between">
             <div class="text-xs text-gray-600">Experience: 3+ yrs</div>
-            <a href="#contact" class="btn-primary text-sm">Apply</a>
+            <a href="#contact" class="text-sm px-3 py-2 bg-blue-600 text-white rounded">Apply</a>
           </div>
         </div>
+
+        <!-- Card 2 -->
         <div class="p-6 bg-white rounded-xl shadow hover:shadow-md transition">
           <h3 class="font-semibold text-lg">DevOps / Automation</h3>
           <p class="text-sm text-gray-500 mt-2">CI/CD pipelines, scripting, Terraform/ARM templates.</p>
           <div class="mt-4 flex items-center justify-between">
             <div class="text-xs text-gray-600">Experience: 2+ yrs</div>
-            <a href="#contact" class="btn-primary text-sm">Apply</a>
+            <a href="#contact" class="text-sm px-3 py-2 bg-blue-600 text-white rounded">Apply</a>
           </div>
         </div>
+
+        <!-- Card 3 -->
         <div class="p-6 bg-white rounded-xl shadow hover:shadow-md transition">
           <h3 class="font-semibold text-lg">Corporate Trainer</h3>
           <p class="text-sm text-gray-500 mt-2">Design and deliver training for technology and soft-skills programs.</p>
           <div class="mt-4 flex items-center justify-between">
             <div class="text-xs text-gray-600">Experience: 4+ yrs</div>
-            <a href="#contact" class="btn-primary text-sm">Apply</a>
+            <a href="#contact" class="text-sm px-3 py-2 bg-blue-600 text-white rounded">Apply</a>
           </div>
         </div>
       </div>
     </section>
+
     <!-- Services -->
     <section id="services" class="mt-14">
       <h2 class="text-2xl font-bold">Services</h2>
@@ -219,6 +186,7 @@
         </div>
       </div>
     </section>
+
     <!-- About -->
     <section id="about" class="mt-14 bg-gradient-to-r from-white to-blue-50 p-6 rounded-xl">
       <h2 class="text-2xl font-bold">About JobJila</h2>
@@ -229,25 +197,34 @@
         <li>Remote-friendly, project-based gigs</li>
       </ul>
     </section>
+
     <!-- Contact -->
     <section id="contact" class="mt-14">
       <h2 class="text-2xl font-bold">Contact & Apply</h2>
       <p class="text-gray-600 mt-2">Ready to apply? Use the form or email us directly.</p>
+
       <div class="mt-6 grid md:grid-cols-2 gap-6">
+        <!-- Detailed Web3Forms Form (updated) -->
         <form action="https://api.web3forms.com/submit" method="POST" class="bg-white p-6 rounded-xl shadow">
           <input type="hidden" name="access_key" value="4dcbce4b-7818-4d98-8d0f-e1f8a03dae71">
           <input type="hidden" name="from_name" value="JobJila Website">
           <input type="hidden" name="subject" value="New Enquiry from JobJila Website">
+
           <label class="block text-sm font-medium">Full name *</label>
           <input name="name" required class="mt-1 w-full p-2 border rounded" />
+
           <label class="block text-sm font-medium mt-3">Email *</label>
           <input name="email" type="email" required class="mt-1 w-full p-2 border rounded" />
+
           <label class="block text-sm font-medium mt-3">Phone *</label>
           <input name="phone" class="mt-1 w-full p-2 border rounded" placeholder="+91 8756680477" />
+
           <label class="block text-sm font-medium mt-3">Current Location (City, Country)</label>
           <input name="location" class="mt-1 w-full p-2 border rounded" placeholder="City, Country" />
+
           <label class="block text-sm font-medium mt-3">Key Skills *</label>
           <textarea name="skills" rows="3" required class="mt-1 w-full p-2 border rounded" placeholder="e.g. Azure, DevOps, Networking"></textarea>
+
           <label class="block text-sm font-medium mt-3">Years of Experience *</label>
           <select name="experience" required class="mt-1 w-full p-2 border rounded">
             <option value="">-- Select --</option>
@@ -257,21 +234,28 @@
             <option>5-10</option>
             <option>10+</option>
           </select>
+
           <label class="block text-sm font-medium mt-3">Interested Role *</label>
           <input name="role" class="mt-1 w-full p-2 border rounded" placeholder="e.g. Corporate Trainer, Azure Engineer" />
+
           <label class="block text-sm font-medium mt-3">Current Employer / Open to work</label>
           <input name="employer" class="mt-1 w-full p-2 border rounded" placeholder="Current company or 'Open to work'" />
+
           <label class="block text-sm font-medium mt-3">LinkedIn Profile</label>
-          <input name="linkedin" type="url" class="mt-1 w-full p-2 border rounded" placeholder="Paste your LinkedIn profile link (optional)" />
+<input name="linkedin" type="url" class="mt-1 w-full p-2 border rounded" placeholder="Paste your LinkedIn profile link (optional)" />
+
           <label class="block text-sm font-medium mt-3">Resume / Portfolio Link</label>
           <input name="resume" type="url" class="mt-1 w-full p-2 border rounded" placeholder="Google Drive / LinkedIn / Portfolio link" />
+
           <label class="block text-sm font-medium mt-3">Additional Notes</label>
           <textarea name="message" rows="4" class="mt-1 w-full p-2 border rounded" placeholder="Anything else we should know"></textarea>
+
           <div class="mt-4 flex items-center gap-3">
-            <button type="submit" class="btn-primary">Send Application</button>
-            <a href="mailto:support@jobjila.com" class="btn-secondary">Email Resume</a>
+            <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded">Send Application</button>
+            <a href="mailto:support@jobjila.com" class="px-4 py-2 border rounded">Email Resume</a>
           </div>
         </form>
+
         <div class="bg-white p-6 rounded-xl shadow">
           <h3 class="font-semibold">Other ways to connect</h3>
           <ul class="mt-3 text-gray-600 list-disc list-inside">
@@ -279,6 +263,7 @@
             <li>Phone: <span class="text-gray-800">+91 8756680477</span></li>
             <li>LinkedIn: <a class="text-blue-600" href="https://www.linkedin.com/in/abhi-094726383" target="_blank">JobJila on LinkedIn</a></li>
           </ul>
+
           <div class="mt-6">
             <h4 class="font-semibold">Copy for LinkedIn</h4>
             <p class="text-sm text-gray-500 mt-2">Use this snippet to share on LinkedIn:</p>
@@ -287,53 +272,18 @@
         </div>
       </div>
     </section>
+
     <footer class="mt-14 text-center text-sm text-gray-500">
       © JobJila — Built with focus on hiring & training. <br/>Made for LinkedIn sharing and fast candidate outreach.
     </footer>
   </main>
+
   <script>
     // Mobile menu toggle
-    const menuBtn = document.getElementById('menuBtn');
-    const nav = document.querySelector('nav');
-    function showMobileMenu() {
-      nav.classList.add('mobile-menu');
-      nav.classList.remove('hidden');
-    }
-    function hideMobileMenu() {
-      nav.classList.remove('mobile-menu');
-      nav.classList.add('hidden');
-    }
-    menuBtn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      if (nav.classList.contains('mobile-menu')) {
-        hideMobileMenu();
-      } else {
-        showMobileMenu();
-      }
-    });
-    document.addEventListener('click', function(e) {
-      if (
-        window.innerWidth <= 768 &&
-        nav.classList.contains('mobile-menu') &&
-        !nav.contains(e.target) &&
-        e.target !== menuBtn
-      ) {
-        hideMobileMenu();
-      }
-    });
-    window.addEventListener('resize', function() {
-      if (window.innerWidth > 768) {
-        nav.classList.remove('mobile-menu', 'hidden');
-      } else {
-        hideMobileMenu();
-      }
-    });
-    window.addEventListener('DOMContentLoaded', function() {
-      if (window.innerWidth <= 768) {
-        hideMobileMenu();
-      } else {
-        nav.classList.remove('mobile-menu', 'hidden');
-      }
+    const btn = document.getElementById('menuBtn');
+    btn.addEventListener('click', () => {
+      const nav = document.querySelector('nav');
+      nav.classList.toggle('hidden');
     });
   </script>
 </body>
