@@ -74,12 +74,14 @@
         background: #fff;
         position: absolute;
         top: 60px;
-        left: 0;
-        width: 100vw;
+        right: 0;
+        left: auto;
+        width: 220px;
         z-index: 50;
         box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         padding: 1rem 0;
         text-align: left;
+        border-radius: 0 0 0 12px;
       }
       #mainNav.mobile-menu a {
         display: block;
@@ -103,16 +105,22 @@
           <div class="text-xs text-gray-500 -mt-1">Hire • Train • Grow</div>
         </div>
       </div>
-      <button id="menuBtn" class="md:hidden p-2" aria-label="Open menu">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-      </button>
-      <nav id="mainNav" class="hidden md:flex gap-6 items-center text-sm">
-        <a href="#jobs" class="hover:text-blue-600">Careers</a>
-        <a href="#services" class="hover:text-blue-600">Services</a>
-        <a href="#about" class="hover:text-blue-600">About</a>
-        <a href="#contact" class="hover:text-blue-600">Contact</a>
-        <a href="https://www.linkedin.com/in/abhi-094726383" target="_blank" rel="noopener" class="ml-2 inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded">LinkedIn</a>
-      </nav>
+      <div class="flex items-center gap-2">
+        <nav id="mainNav" class="hidden md:flex gap-6 items-center text-sm">
+          <a href="#jobs" class="hover:text-blue-600">Careers</a>
+          <a href="#services" class="hover:text-blue-600">Services</a>
+          <a href="#about" class="hover:text-blue-600">About</a>
+          <a href="#contact" class="hover:text-blue-600">Contact</a>
+          <a href="https://www.linkedin.com/in/abhi-094726383" target="_blank" rel="noopener" class="ml-2 inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded">LinkedIn</a>
+        </nav>
+        <button id="menuBtn" class="md:hidden p-2 ml-2" aria-label="Open menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <circle cx="5" cy="12" r="2" fill="currentColor"/>
+            <circle cx="12" cy="12" r="2" fill="currentColor"/>
+            <circle cx="19" cy="12" r="2" fill="currentColor"/>
+          </svg>
+        </button>
+      </div>
     </div>
   </header>
   <main class="max-w-6xl mx-auto px-6 py-12">
@@ -269,6 +277,15 @@
             <button type="submit" class="btn-primary">Send Application</button>
             <a href="mailto:support@jobjila.com" class="btn-secondary">Email Resume</a>
           </div>
+          <div style="margin-top:10px;">
+            <a href="https://wa.me/918756680477?text=Hello%20Jobjila%2C%20I%20want%20to%20apply%20for%20a%20role."
+               target="_blank"
+               role="button"
+               class="btn-primary"
+               style="background:#000;color:#fff;text-decoration:none;border:1px solid #000;display:inline-block;padding:12px 20px;">
+               Apply via WhatsApp
+            </a>
+          </div>
         </form>
         <div class="bg-white p-6 rounded-xl shadow">
           <h3 class="font-semibold">Other ways to connect</h3>
@@ -277,6 +294,10 @@
             <li>Phone: <span class="text-gray-800">+91 8756680477</span></li>
             <li>LinkedIn: <a class="text-blue-600" href="https://www.linkedin.com/in/abhi-094726383" target="_blank">JobJila on LinkedIn</a></li>
           </ul>
+          <div class="mt-6">
+            <h4 class="font-semibold">Copy for LinkedIn</h4>
+            <p class="text-sm text-gray-500 mt-2">We're hiring! JobJila is looking for Corporate Trainers and Freelancers. Apply at support@jobjila.com</p>
+          </div>
         </div>
       </div>
     </section>
