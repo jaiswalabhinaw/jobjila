@@ -27,6 +27,14 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    /* Progress Bar */
+    .progress-bar {
+      height: 4px;
+      background: #facc15; /* yellow-400 */
+      width: 0%;
+      transition: width linear;
+    }
   </style>
 </head>
 <body class="bg-gray-900 text-white">
@@ -74,7 +82,8 @@
   <section class="max-w-6xl mx-auto px-6 py-16 text-center rotate-section">
     <!-- Why Join -->
     <div class="active">
-      <h2 class="text-3xl font-bold mb-8 text-yellow-400">Why Join JobJila?</h2>
+      <h2 class="text-3xl font-bold mb-4 text-yellow-400">Why Join JobJila?</h2>
+      <div class="progress-bar mx-auto mb-8"></div>
       <div class="grid md:grid-cols-4 gap-6">
         <div class="bg-gray-800 p-6 rounded-lg shadow fade-slide">Flexible Roles – Onsite, Remote, Hybrid</div>
         <div class="bg-gray-800 p-6 rounded-lg shadow fade-slide">Skill Development – Training & Certifications</div>
@@ -85,7 +94,8 @@
 
     <!-- Core Services -->
     <div>
-      <h2 class="text-3xl font-bold mb-8 text-yellow-400">Our Core Services</h2>
+      <h2 class="text-3xl font-bold mb-4 text-yellow-400">Our Core Services</h2>
+      <div class="progress-bar mx-auto mb-8"></div>
       <div class="grid md:grid-cols-4 gap-6">
         <div class="bg-gray-800 p-6 rounded-lg shadow fade-slide">Corporate Training</div>
         <div class="bg-gray-800 p-6 rounded-lg shadow fade-slide">Hiring Solutions</div>
@@ -96,7 +106,8 @@
 
     <!-- Testimonials -->
     <div>
-      <h2 class="text-3xl font-bold mb-8 text-yellow-400">Success Stories</h2>
+      <h2 class="text-3xl font-bold mb-4 text-yellow-400">Success Stories</h2>
+      <div class="progress-bar mx-auto mb-8"></div>
       <div class="grid md:grid-cols-3 gap-6">
         <blockquote class="bg-gray-800 p-6 rounded-lg shadow fade-slide">
           “JobJila’s training helped me secure my dream job in DevOps!” – Aakash, Bengaluru
@@ -195,27 +206,46 @@
       mobileMenu.classList.toggle('hidden');
     });
 
-    // Rotating sections with fade animation
+    // Rotating sections with fade + card animation + progress bar
     const sections = document.querySelectorAll('.rotate-section > div');
     let index = 0;
-    setInterval(() => {
-      sections[index].classList.remove('active');
-      index = (index + 1) % sections.length;
-      sections[index].classList.add('active');
+    const duration = 6000; // 6s
 
-      // Animate cards inside active section
-      const cards = sections[index].querySelectorAll('.fade-slide');
-      cards.forEach((card, i) => {
-        setTimeout(() => card.classList.add('show'), i * 200);
+    function showSection(i) {
+      sections.forEach((sec, idx) => {
+        sec.classList.remove('active');
+        if (idx === i) {
+          sec.classList.add('active');
+
+          // Animate cards
+          const cards = sec.querySelectorAll('.fade-slide');
+          cards.forEach((card, j) => {
+            card.classList.remove('show');
+            setTimeout(() => card.classList.add('show'), j * 200);
+          });
+
+          // Reset and animate progress bar
+          const progress = sec.querySelector('.progress-bar');
+          if (progress) {
+            progress.style.transition = 'none';
+            progress.style.width = '0%';
+            setTimeout(() => {
+              progress.style.transition = `width ${duration}ms linear`;
+              progress.style.width = '100%';
+            }, 50);
+          }
+        }
       });
-    }, 6000);
+    }
+
+    setInterval(() => {
+      index = (index + 1) % sections.length;
+      showSection(index);
+    }, duration);
 
     // Trigger first animation
     window.addEventListener('load', () => {
-      const firstCards = sections[0].querySelectorAll('.fade-slide');
-      firstCards.forEach((card, i) => {
-        setTimeout(() => card.classList.add('show'), i * 200);
-      });
+      showSection(0);
     });
   </script>
 </body>
