@@ -5,6 +5,35 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>JOBJILA — Careers & Hiring</title>
   <meta name="description" content="JobJila - Careers. We are hiring Corporate Trainers, Freelancers, Cloud & IT professionals. Apply now." />
+  <meta name="keywords" content="JobJila, careers, hiring, corporate trainer, freelancer, cloud jobs, Azure, DevOps, IT jobs, India, remote jobs, training, talent, apply, resume">
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="JOBJILA — Careers & Hiring">
+  <meta property="og:description" content="We are hiring Corporate Trainers, Freelancers, Cloud & IT professionals. Apply now.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jobjila.com/">
+  <meta property="og:image" content="https://jobjila.com/og-image.jpg">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="JOBJILA — Careers & Hiring">
+  <meta name="twitter:description" content="We are hiring Corporate Trainers, Freelancers, Cloud & IT professionals. Apply now.">
+  <meta name="twitter:image" content="https://jobjila.com/og-image.jpg">
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "JobJila",
+    "url": "https://jobjila.com/",
+    "logo": "https://jobjila.com/logo.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "support@jobjila.com",
+      "contactType": "customer support"
+    }
+  }
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html, body {
@@ -99,7 +128,7 @@
   <header class="bg-white shadow sticky top-0 z-20">
     <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between relative">
       <div class="flex items-center gap-4">
-        <div class="w-10 h-10 bg-blue-600 text-white rounded flex items-center justify-center font-bold">JJ</div>
+        <div class="w-10 h-10 bg-blue-600 text-white rounded flex items-center justify-center font-bold" alt="JobJila Logo">JJ</div>
         <div>
           <a href="#" class="text-xl font-bold">JOBJILA.COM</a>
           <div class="text-xs font-bold text-gray-500 -mt-1">HIRE • TRAIN • GROW</div>
@@ -129,7 +158,7 @@
       <div>
         <h1 class="text-4xl md:text-5xl font-extrabold text-blue-700 leading-tight"><span style="color:#000;">We are hiring - Join us</span></h1>
         <p class="mt-4 text-gray-600 max-w-xl">At JobJila, we’re building a community of freelance trainers and professionals in technology, leadership, communication, AI, data science, sales, and business.
-We also partner with employers and job providers, creating one platform where skills, training, and opportunities come together..</p>
+We also partner with employers and job providers, creating one platform where skills, training, and opportunities come together.</p>
         <div class="mt-6 flex flex-col sm:flex-row gap-3">
           <a href="#jobs" class="btn-primary">Explore Open Roles</a>
           <a href="#contact" class="btn-secondary">Contact Us</a>
@@ -140,7 +169,7 @@ We also partner with employers and job providers, creating one platform where sk
       </div>
       <div class="bg-white rounded-xl p-6 shadow glass">
         <div class="text-center">
-          <div class="mx-auto w-32 h-32 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 text-3xl font-bold">JJ</div>
+          <div class="mx-auto w-32 h-32 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 text-3xl font-bold" alt="JobJila Logo">JJ</div>
           <h3 class="mt-4 font-semibold text-lg">Apply Now: Corporate Trainer & Freelancers</h3>
           <p class="mt-2 text-gray-600">Flexible roles — remote & on-site opportunities. Competitive pay.</p>
         </div>
