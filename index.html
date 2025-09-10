@@ -9,372 +9,96 @@
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://jobjila.com/" />
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:title" content="JOBJILA — Careers & Hiring">
-  <meta property="og:description" content="We are hiring Corporate Trainers, Freelancers, Cloud & IT professionals. Apply now.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://jobjila.com/">
-  <meta property="og:image" content="https://jobjila.com/og-image.jpg">
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="JOBJILA — Careers & Hiring">
-  <meta name="twitter:description" content="We are hiring Corporate Trainers, Freelancers, Cloud & IT professionals. Apply now.">
-  <meta name="twitter:image" content="https://jobjila.com/og-image.jpg">
-
-  <!-- Favicon -->
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-
-  <!-- Organization structured data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "JobJila",
-    "url": "https://jobjila.com/",
-    "logo": "https://jobjila.com/logo.png",
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "email": "support@jobjila.com",
-      "contactType": "customer support"
-    }
-  }
-  </script>
-
-  <!-- JobPosting structured data (3 jobs) -->
-  <script type="application/ld+json">
-  [
-    {
-      "@context": "https://schema.org/",
-      "@type": "JobPosting",
-      "title": "Azure Cloud Engineer",
-      "description": "Manage Azure infrastructure, implement IaC, monitoring and cost optimization.",
-      "datePosted": "2025-09-10",
-      "employmentType": "FULL_TIME",
-      "hiringOrganization": {
-        "@type": "Organization",
-        "name": "JobJila",
-        "sameAs": "https://jobjila.com",
-        "logo": "https://jobjila.com/logo.png"
-      },
-      "jobLocationType": "TELECOMMUTE",
-      "applicantLocationRequirements": {
-        "@type": "Country",
-        "name": "India"
-      }
-    },
-    {
-      "@context": "https://schema.org/",
-      "@type": "JobPosting",
-      "title": "DevOps / Automation",
-      "description": "CI/CD pipelines, scripting, Terraform/ARM templates.",
-      "datePosted": "2025-09-10",
-      "employmentType": "FULL_TIME",
-      "hiringOrganization": {
-        "@type": "Organization",
-        "name": "JobJila",
-        "sameAs": "https://jobjila.com",
-        "logo": "https://jobjila.com/logo.png"
-      },
-      "jobLocationType": "TELECOMMUTE",
-      "applicantLocationRequirements": {
-        "@type": "Country",
-        "name": "India"
-      }
-    },
-    {
-      "@context": "https://schema.org/",
-      "@type": "JobPosting",
-      "title": "Corporate Trainer",
-      "description": "Design and deliver training for technology and soft-skills programs.",
-      "datePosted": "2025-09-10",
-      "employmentType": "CONTRACTOR",
-      "hiringOrganization": {
-        "@type": "Organization",
-        "name": "JobJila",
-        "sameAs": "https://jobjila.com",
-        "logo": "https://jobjila.com/logo.png"
-      },
-      "jobLocationType": "TELECOMMUTE",
-      "applicantLocationRequirements": {
-        "@type": "Country",
-        "name": "India"
-      }
-    }
-  ]
-  </script>
-
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    html, body { max-width: 100vw; overflow-x: hidden; }
-    .btn-primary { background: #000 !important; color: #fff !important; border: 1px solid #000 !important; padding: 10px 20px !important; border-radius: 6px !important; display: inline-block !important; font-weight: 600 !important; text-align: center !important; }
-    .btn-primary:hover { background: #333 !important; color: #fff !important; }
-    .btn-secondary { background: #fff !important; color: #000 !important; border: 1px solid #000 !important; padding: 10px 20px !important; border-radius: 6px !important; display: inline-block !important; font-weight: 600 !important; text-align: center !important; }
-    .btn-secondary:hover { background: #f5f5f5 !important; color: #000 !important; }
-    @media (max-width: 600px) { .btn-primary, .btn-secondary { width: 100% !important; margin-top: 8px !important; } }
-    button, a[role="button"], .btn-primary, .btn-secondary { display: inline-block; padding: 12px 20px; font-size: 16px; text-align: center; border-radius: 4px; }
-    @media (max-width: 600px) { button, a[role="button"], .btn-primary, .btn-secondary { width: 100% !important; margin-top: 8px; } }
-    nav { transition: all 0.2s; }
-    /* Mobile menu styles */
-    #mainNav { position: static; }
-    @media (max-width: 768px) {
-      nav.md\:flex { display: none !important; }
-      #mainNav.mobile-menu { display: block !important; background: #fff; position: absolute; top: 60px; right: 0; left: auto; width: 220px; z-index: 50; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 1rem 0; text-align: left; border-radius: 0 0 0 12px; }
-      #mainNav.mobile-menu a { display: block; margin: 12px 0; font-size: 1.1rem; padding-left: 1.5rem; }
-      .grid.md\:grid-cols-2, .grid.md\:grid-cols-3 { grid-template-columns: 1fr !important; }
-    }
-  </style>
 </head>
 <body class="antialiased overflow-x-hidden">
-  <header class="bg-white shadow sticky top-0 z-20">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between relative">
-      <div class="flex items-center gap-4">
-        <div class="w-10 h-10 bg-blue-600 text-white rounded flex items-center justify-center font-bold" alt="JobJila Logo">JJ</div>
-        <div>
-          <a href="#" class="text-xl font-bold">JOBJILA.COM</a>
-          <div class="text-xs font-bold text-gray-500 -mt-1">HIRE • TRAIN • GROW</div>
-        </div>
-      </div>
-      <div class="flex items-center gap-2">
-        <nav id="mainNav" class="hidden md:flex gap-6 items-center text-sm">
-          <a href="#jobs" class="hover:text-blue-600">Careers</a>
-          <a href="#services" class="hover:text-blue-600">Services</a>
-          <a href="#about" class="hover:text-blue-600">About</a>
-          <a href="#contact" class="hover:text-blue-600">Contact</a>
-          <a href="https://www.linkedin.com/in/abhi-094726383" target="_blank" rel="noopener" class="ml-2 inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded">LinkedIn</a>
-        </nav>
-        <button id="menuBtn" class="md:hidden p-2 ml-2" aria-label="Open menu">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <circle cx="5" cy="12" r="2" fill="currentColor"/>
-            <circle cx="12" cy="12" r="2" fill="currentColor"/>
-            <circle cx="19" cy="12" r="2" fill="currentColor"/>
-          </svg>
-        </button>
-      </div>
+  <!-- Navigation -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#" class="text-2xl font-bold text-black">JobJila</a>
+      <nav class="hidden md:flex space-x-6">
+        <a href="#jobs" class="hover:text-blue-600">Jobs</a>
+        <a href="#about" class="hover:text-blue-600">About</a>
+        <a href="#contact" class="hover:text-blue-600">Contact</a>
+      </nav>
     </div>
   </header>
 
-  <main class="max-w-6xl mx-auto px-6 py-12">
-    <!-- Hero -->
-    <section class="grid md:grid-cols-2 gap-8 items-center">
-      <div>
-        <h1 class="text-4xl md:text-5xl font-extrabold text-blue-700 leading-tight"><span style="color:#000;">We are hiring - Join us</span></h1>
-        <p class="mt-4 text-gray-600 max-w-xl">At JobJila, we’re building a community of freelance trainers and professionals in technology, leadership, communication, AI, data science, sales, and business.
-We also partner with employers and job providers, creating one platform where skills, training, and opportunities come together.</p>
-        <div class="mt-6 flex flex-col sm:flex-row gap-3">
-          <a href="#jobs" class="btn-primary">Explore Open Roles</a>
-          <a href="#contact" class="btn-secondary">Contact Us</a>
-        </div>
-        <div class="mt-8 text-sm text-gray-500">
-          <strong>Pro tip:</strong> Share this page on LinkedIn and tag people who should see this.
-        </div>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-20 text-center">
+    <h1 class="text-4xl md:text-5xl font-bold">We are hiring - Join us</h1>
+    <p class="mt-4 text-lg md:text-xl max-w-3xl mx-auto">
+      At JobJila, we’re building a community of freelance trainers and professionals in technology, leadership, communication, AI, data science, sales, and business. We also partner with employers and job providers, creating one platform where skills, training, and opportunities come together.
+    </p>
+    <a href="#jobs" class="mt-6 inline-block bg-white text-blue-600 font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-100">Explore Careers</a>
+  </section>
+
+  <!-- Jobs Section -->
+  <section id="jobs" class="max-w-6xl mx-auto px-6 py-16">
+    <h2 class="text-3xl font-bold text-center mb-8">Open Positions</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="p-6 border rounded-lg shadow hover:shadow-lg">
+        <h3 class="text-xl font-semibold mb-2">Azure Cloud Engineer</h3>
+        <p class="text-gray-600 mb-4">Manage Azure infrastructure, implement IaC, monitoring, and cost optimization.</p>
+        <a href="#contact" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Apply Now</a>
       </div>
-      <div class="bg-white rounded-xl p-6 shadow glass">
-        <div class="text-center">
-          <div class="mx-auto w-32 h-32 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 text-3xl font-bold" alt="JobJila Logo">JJ</div>
-          <h3 class="mt-4 font-semibold text-lg">Apply Now: Corporate Trainer & Freelancers</h3>
-          <p class="mt-2 text-gray-600">Flexible roles — remote & on-site opportunities. Competitive pay.</p>
-        </div>
-        <div class="mt-6 grid gap-4">
-          <div class="p-4 border rounded">
-            <div class="flex items-start justify-between">
-              <div>
-                <h4 class="font-semibold">Corporate Trainer</h4>
-                <p class="text-sm text-gray-500">Deliver training programs, design curriculum and upskill corporate teams.</p>
-              </div>
-              <div class="text-sm text-gray-600">Full-time</div>
-            </div>
-            <div class="mt-3 flex gap-3">
-              <a href="#contact" class="btn-secondary text-sm">Apply</a>
-              <a href="#" class="btn-secondary text-sm">Details</a>
-            </div>
-          </div>
-          <div class="p-4 border rounded">
-            <div class="flex items-start justify-between">
-              <div>
-                <h4 class="font-semibold">Freelancer</h4>
-                <p class="text-sm text-gray-500">Short-term projects, training delivery, content creation.</p>
-              </div>
-              <div class="text-sm text-gray-600">Contract</div>
-            </div>
-            <div class="mt-3 flex gap-3">
-              <a href="#contact" class="btn-secondary text-sm">Apply</a>
-              <a href="#" class="btn-secondary text-sm">Details</a>
-            </div>
-          </div>
-        </div>
-        <div class="mt-6 text-xs text-gray-500">
-          Or email your resume to <a href="mailto:support@jobjila.com" class="text-blue-600">support@jobjila.com</a>
-        </div>
+      <div class="p-6 border rounded-lg shadow hover:shadow-lg">
+        <h3 class="text-xl font-semibold mb-2">DevOps / Automation</h3>
+        <p class="text-gray-600 mb-4">CI/CD pipelines, scripting, Terraform/ARM templates.</p>
+        <a href="#contact" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Apply Now</a>
       </div>
-    </section>
-
-    <!-- Open Roles / Careers -->
-    <section id="jobs" class="mt-14">
-      <h2 class="text-2xl font-bold text-gray-800">Open Roles</h2>
-      <p class="text-gray-600 mt-2">We hire for multiple roles. Below are immediate openings — more will be added.</p>
-      <div class="mt-6 grid md:grid-cols-3 gap-6">
-        <div class="p-6 bg-white rounded-xl shadow hover:shadow-md transition">
-          <h3 class="font-semibold text-lg">Azure Cloud Engineer</h3>
-          <p class="text-sm text-gray-500 mt-2">Manage Azure infrastructure, IaC, monitoring, and cost optimization.</p>
-          <div class="mt-4 flex items-center justify-between">
-            <div class="text-xs text-gray-600">Experience: 3+ yrs</div>
-            <a href="#contact" class="btn-primary text-sm">Apply</a>
-          </div>
-        </div>
-        <div class="p-6 bg-white rounded-xl shadow hover:shadow-md transition">
-          <h3 class="font-semibold text-lg">DevOps / Automation</h3>
-          <p class="text-sm text-gray-500 mt-2">CI/CD pipelines, scripting, Terraform/ARM templates.</p>
-          <div class="mt-4 flex items-center justify-between">
-            <div class="text-xs text-gray-600">Experience: 2+ yrs</div>
-            <a href="#contact" class="btn-primary text-sm">Apply</a>
-          </div>
-        </div>
-        <div class="p-6 bg-white rounded-xl shadow hover:shadow-md transition">
-          <h3 class="font-semibold text-lg">Corporate Trainer</h3>
-          <p class="text-sm text-gray-500 mt-2">Design and deliver training for technology and soft-skills programs.</p>
-          <div class="mt-4 flex items-center justify-between">
-            <div class="text-xs text-gray-600">Experience: 4+ yrs</div>
-            <a href="#contact" class="btn-primary text-sm">Apply</a>
-          </div>
-        </div>
+      <div class="p-6 border rounded-lg shadow hover:shadow-lg">
+        <h3 class="text-xl font-semibold mb-2">Corporate Trainer</h3>
+        <p class="text-gray-600 mb-4">Design and deliver training for technology and soft-skills programs.</p>
+        <a href="#contact" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Apply Now</a>
       </div>
-    </section>
-
-    <!-- Services -->
-    <section id="services" class="mt-14">
-      <h2 class="text-2xl font-bold">Services</h2>
-      <div class="mt-4 grid md:grid-cols-3 gap-6">
-        <div class="bg-white p-5 rounded-xl shadow">
-          <h4 class="font-semibold">Corporate Training</h4>
-          <p class="text-sm text-gray-500 mt-2">Customized programs for teams — cloud, security, and soft skills.</p>
-        </div>
-        <div class="bg-white p-5 rounded-xl shadow">
-          <h4 class="font-semibold">Freelance Projects</h4>
-          <p class="text-sm text-gray-500 mt-2">Short-term engagements for hiring managers and startups.</p>
-        </div>
-        <div class="bg-white p-5 rounded-xl shadow">
-          <h4 class="font-semibold">Talent Assessment</h4>
-          <p class="text-sm text-gray-500 mt-2">Evaluate candidate readiness with practical assessments.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="mt-14 bg-gradient-to-r from-white to-blue-50 p-6 rounded-xl">
-      <h2 class="text-2xl font-bold">About JobJila</h2>
-      <p class="mt-3 text-gray-600">JobJila connects skilled professionals with companies that need them. We focus on pragmatic hiring — skills, experience and culture fit matter most. Our mission is to make hiring fair, fast and focused.</p>
-      <ul class="mt-4 text-gray-600 list-disc list-inside">
-        <li>Focus on cloud & infra roles</li>
-        <li>Training-led hiring approach</li>
-        <li>Remote-friendly, project-based gigs</li>
-      </ul>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="mt-14">
-      <h2 class="text-2xl font-bold">Contact & Apply</h2>
-      <p class="text-gray-600 mt-2">Ready to apply? Use the form or email us directly.</p>
-      <div class="mt-6 grid md:grid-cols-2 gap-6">
-        <form action="https://api.web3forms.com/submit" method="POST" class="bg-white p-6 rounded-xl shadow">
-          <input type="hidden" name="access_key" value="4dcbce4b-7818-4d98-8d0f-e1f8a03dae71">
-          <input type="hidden" name="from_name" value="JobJila Website">
-          <input type="hidden" name="subject" value="New Enquiry from JobJila Website">
-          <label class="block text-sm font-medium">Full name *</label>
-          <input name="name" required class="mt-1 w-full p-2 border rounded" />
-          <label class="block text-sm font-medium mt-3">Email *</label>
-          <input name="email" type="email" required class="mt-1 w-full p-2 border rounded" />
-          <label class="block text-sm font-medium mt-3">Phone *</label>
-          <input name="phone" class="mt-1 w-full p-2 border rounded" placeholder="+91 8756680477" />
-          <label class="block text-sm font-medium mt-3">Current Location (City, Country)</label>
-          <input name="location" class="mt-1 w-full p-2 border rounded" placeholder="City, Country" />
-          <label class="block text-sm font-medium mt-3">Key Skills *</label>
-          <textarea name="skills" rows="3" required class="mt-1 w-full p-2 border rounded" placeholder="e.g. Azure, DevOps, Networking"></textarea>
-          <label class="block text-sm font-medium mt-3">Years of Experience *</label>
-          <select name="experience" required class="mt-1 w-full p-2 border rounded">
-            <option value="">-- Select --</option>
-            <option>0-1</option>
-            <option>1-3</option>
-            <option>3-5</option>
-            <option>5-10</option>
-            <option>10+</option>
-          </select>
-          <label class="block text-sm font-medium mt-3">Interested Role *</label>
-          <input name="role" class="mt-1 w-full p-2 border rounded" placeholder="e.g. Corporate Trainer, Azure Engineer" />
-          <label class="block text-sm font-medium mt-3">Current Employer / Open to work</label>
-          <input name="employer" class="mt-1 w-full p-2 border rounded" placeholder="Current company or 'Open to work'" />
-          <label class="block text-sm font-medium mt-3">LinkedIn Profile</label>
-          <input name="linkedin" type="url" class="mt-1 w-full p-2 border rounded" placeholder="Paste your LinkedIn profile link (optional)" />
-          <label class="block text-sm font-medium mt-3">Resume / Portfolio Link</label>
-          <input name="resume" type="url" class="mt-1 w-full p-2 border rounded" placeholder="Google Drive / LinkedIn / Portfolio link" />
-          <label class="block text-sm font-medium mt-3">Additional Notes</label>
-          <textarea name="message" rows="4" class="mt-1 w-full p-2 border rounded" placeholder="Anything else we should know"></textarea>
-          <div class="mt-4 flex items-center gap-3">
-            <button type="submit" class="btn-primary">Send Application</button>
-            <a href="mailto:support@jobjila.com" class="btn-secondary">Email Resume</a>
-          </div>
-          <div style="margin-top:10px;">
-            <a href="https://wa.me/918756680477?text=Hello%20Jobjila%2C%20I%20want%20to%20apply%20for%20a%20role." target="_blank" role="button" class="btn-primary" style="background:#000;color:#fff;text-decoration:none;border:1px solid #000;display:inline-block;padding:12px 20px;">share instant resume via WhatsApp</a>
-          </div>
-        </form>
-        <div class="bg-white p-6 rounded-xl shadow">
-          <h3 class="font-semibold">Other ways to connect</h3>
-          <ul class="mt-3 text-gray-600 list-disc list-inside">
-            <li>Email: <a class="text-blue-600" href="mailto:support@jobjila.com">support@jobjila.com</a></li>
-            <li>Phone: <span class="text-gray-800">+91 8756680477</span></li>
-            <li>LinkedIn: <a class="text-blue-600" href="https://www.linkedin.com/in/abhi-094726383" target="_blank">JobJila on LinkedIn</a></li>
-          </ul>
-          <div class="mt-6">
-            <h4 class="font-semibold">Copy for LinkedIn</h4>
-            <p class="text-sm text-gray-500 mt-2">We're hiring! JobJila is looking for Corporate Trainers and Freelancers. Apply at support@jobjila.com</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer class="mt-14 text-center text-sm text-gray-500">
-      © JobJila — Built with focus on hiring & training. <br/>Made for LinkedIn sharing and fast candidate outreach.<br/>
-      <a href="/sitemap.xml">Sitemap</a> | <a href="/robots.txt">robots.txt</a>
-    </footer>
-  </main>
-
-  <noscript>
-    <div style="background:#fff3cd;border:1px solid #ffeeba;padding:16px;margin:10px;border-radius:6px;max-width:1000px;margin-left:auto;margin-right:auto;">
-      JavaScript is disabled in your browser — page layout may look different. Enable JavaScript for full functionality.
     </div>
-  </noscript>
+  </section>
 
-  <script>
-  (function(){
-    // Defensive: check elements exist before attaching listeners
-    try{
-      const menuBtn = document.getElementById('menuBtn');
-      const nav = document.getElementById('mainNav');
-      if(!menuBtn || !nav) return;
+  <!-- About Section -->
+  <section id="about" class="bg-gray-50 py-16 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-4">About JobJila</h2>
+      <p class="text-gray-700">JobJila is a platform connecting professionals with career opportunities across technology and business. We specialize in cloud, DevOps, and corporate training roles, enabling growth for both talent and organizations.</p>
+    </div>
+  </section>
 
-      function showMobileMenu(){ nav.classList.add('mobile-menu'); nav.classList.remove('hidden'); }
-      function hideMobileMenu(){ nav.classList.remove('mobile-menu'); nav.classList.add('hidden'); }
+  <!-- Contact Section -->
+  <section id="contact" class="max-w-6xl mx-auto px-6 py-16">
+    <h2 class="text-3xl font-bold text-center mb-8">Get in Touch</h2>
+    <form class="max-w-2xl mx-auto grid gap-4">
+      <input type="text" placeholder="Your Name" class="border p-3 rounded w-full" required>
+      <input type="email" placeholder="Your Email" class="border p-3 rounded w-full" required>
+      <textarea placeholder="Your Message" class="border p-3 rounded w-full" rows="4" required></textarea>
+      <button type="submit" class="bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700">Send Message</button>
+    </form>
+  </section>
 
-      menuBtn.addEventListener('click', function(e){ e.stopPropagation(); if(nav.classList.contains('mobile-menu')) hideMobileMenu(); else showMobileMenu(); });
-
-      document.addEventListener('click', function(e){
-        try{
-          if(window.innerWidth <= 768 && nav.classList.contains('mobile-menu') && !nav.contains(e.target) && e.target !== menuBtn) {
-            hideMobileMenu();
-          }
-        }catch(err){ console.warn(err); }
-      });
-
-      // Hide menu when a nav link is clicked (for better UX)
-      const links = nav.querySelectorAll('a');
-      if(links && links.length){ links.forEach(link => { link.addEventListener('click', function(){ if(window.innerWidth <= 768) hideMobileMenu(); }); }); }
-
-      window.addEventListener('resize', function(){ try{ if(window.innerWidth > 768) { nav.classList.remove('mobile-menu','hidden'); } else { hideMobileMenu(); } }catch(e){}
-      });
-
-      // Set initial state after DOMContentLoaded
-      window.addEventListener('DOMContentLoaded', function(){ try{ if(window.innerWidth <= 768) hideMobileMenu(); else nav.classList.remove('mobile-menu','hidden'); }catch(e){} });
-    }catch(e){ console.error('Menu script error', e); }
-  })();
-  </script>
+  <!-- Footer -->
+  <footer class="bg-black text-white py-8">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="font-bold text-lg mb-3">JobJila</h3>
+        <p class="text-gray-400">Connecting talent with opportunity.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Quick Links</h4>
+        <ul class="space-y-2 text-gray-400">
+          <li><a href="#jobs" class="hover:text-white">Jobs</a></li>
+          <li><a href="#about" class="hover:text-white">About</a></li>
+          <li><a href="#contact" class="hover:text-white">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Follow Us</h4>
+        <div class="flex space-x-4">
+          <a href="#" class="hover:text-blue-400">LinkedIn</a>
+          <a href="#" class="hover:text-blue-400">Twitter</a>
+          <a href="#" class="hover:text-blue-400">Facebook</a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center text-gray-500 mt-6">© 2025 JobJila. All rights reserved.</div>
+  </footer>
 </body>
 </html>
