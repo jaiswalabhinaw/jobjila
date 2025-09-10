@@ -17,14 +17,32 @@
   <header class="bg-gray-800 shadow">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
       <h1 class="text-2xl font-bold text-blue-400">JobJila</h1>
-      <nav class="space-x-6">
+
+      <!-- Desktop Menu -->
+      <nav class="hidden md:flex space-x-6">
         <a href="#about" class="hover:text-blue-400">About</a>
         <a href="jobs.html" class="hover:text-blue-400">Jobs</a>
         <a href="training.html" class="hover:text-blue-400">Training</a>
         <a href="schedule.html" class="hover:text-blue-400">Schedule</a>
         <a href="#contact" class="hover:text-blue-400">Contact</a>
       </nav>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="menuBtn" class="md:hidden text-blue-400 focus:outline-none">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
     </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <nav id="mobileMenu" class="hidden md:hidden bg-gray-700">
+      <a href="#about" class="block px-6 py-3 border-b border-gray-600 hover:bg-gray-600">About</a>
+      <a href="jobs.html" class="block px-6 py-3 border-b border-gray-600 hover:bg-gray-600">Jobs</a>
+      <a href="training.html" class="block px-6 py-3 border-b border-gray-600 hover:bg-gray-600">Training</a>
+      <a href="schedule.html" class="block px-6 py-3 border-b border-gray-600 hover:bg-gray-600">Schedule</a>
+      <a href="#contact" class="block px-6 py-3 hover:bg-gray-600">Contact</a>
+    </nav>
   </header>
 
   <!-- Hero -->
@@ -156,14 +174,21 @@
   </footer>
 
   <script>
-    // Simple rotating logic for sections
+    // Rotating logic
     const sections = document.querySelectorAll('.rotate-section > div');
     let index = 0;
     setInterval(() => {
       sections[index].classList.remove('active');
       index = (index + 1) % sections.length;
       sections[index].classList.add('active');
-    }, 6000); // rotates every 6s
+    }, 6000);
+
+    // Mobile Menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
   </script>
 </body>
 </html>
