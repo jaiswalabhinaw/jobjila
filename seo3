@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>JOBJILA — Careers & Hiring</title>
+  <meta name="description" content="JobJila - Careers. We are hiring Corporate Trainers, Freelancers, Cloud & IT professionals. Apply now." />
+  <meta name="keywords" content="JobJila, careers, hiring, corporate trainer, freelancer, cloud jobs, Azure, DevOps, IT jobs, India, remote jobs, training, talent, apply, resume">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://jobjila.com/" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="antialiased overflow-x-hidden">
+  <!-- Navigation -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#" class="text-2xl font-bold text-black">JobJila</a>
+      <nav class="hidden md:flex space-x-6">
+        <a href="#jobs" class="hover:text-blue-600">Jobs</a>
+        <a href="#about" class="hover:text-blue-600">About</a>
+        <a href="#contact" class="hover:text-blue-600">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-20 text-center">
+    <h1 class="text-4xl md:text-5xl font-bold">We are hiring - Join us</h1>
+    <p class="mt-4 text-lg md:text-xl max-w-3xl mx-auto">
+      At JobJila, we’re building a community of freelance trainers and professionals in technology, leadership, communication, AI, data science, sales, and business. We also partner with employers and job providers, creating one platform where skills, training, and opportunities come together.
+    </p>
+    <a href="#jobs" class="mt-6 inline-block bg-white text-blue-600 font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-100">Explore Careers</a>
+  </section>
+
+  <!-- Special Call-to-Action Section -->
+  <section class="bg-black text-white py-12 text-center">
+    <h2 class="text-2xl md:text-3xl font-bold">Apply Now: Corporate Trainer & Freelancers</h2>
+    <p class="mt-3 text-lg">Flexible roles — remote & on-site opportunities. Competitive pay.</p>
+    <a href="#contact" class="mt-6 inline-block bg-white text-black font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-200">Apply Today</a>
+  </section>
+
+  <!-- Jobs Section -->
+  <section id="jobs" class="max-w-6xl mx-auto px-6 py-16">
+    <h2 class="text-3xl font-bold text-center mb-8">Open Positions</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="p-6 border rounded-lg shadow hover:shadow-lg">
+        <h3 class="text-xl font-semibold mb-2">Azure Cloud Engineer</h3>
+        <p class="text-gray-600 mb-4">Manage Azure infrastructure, implement IaC, monitoring, and cost optimization.</p>
+        <a href="#contact" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Apply Now</a>
+      </div>
+      <div class="p-6 border rounded-lg shadow hover:shadow-lg">
+        <h3 class="text-xl font-semibold mb-2">DevOps / Automation</h3>
+        <p class="text-gray-600 mb-4">CI/CD pipelines, scripting, Terraform/ARM templates.</p>
+        <a href="#contact" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Apply Now</a>
+      </div>
+      <div class="p-6 border rounded-lg shadow hover:shadow-lg">
+        <h3 class="text-xl font-semibold mb-2">Corporate Trainer</h3>
+        <p class="text-gray-600 mb-4">Design and deliver training for technology and soft-skills programs.</p>
+        <a href="#contact" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Apply Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="bg-gray-50 py-16 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-4">About JobJila</h2>
+      <p class="text-gray-700">JobJila is a platform connecting professionals with career opportunities across technology and business. We specialize in cloud, DevOps, and corporate training roles, enabling growth for both talent and organizations.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="max-w-6xl mx-auto px-6 py-16">
+    <h2 class="text-3xl font-bold text-center mb-8">Get in Touch</h2>
+    <form class="max-w-2xl mx-auto grid gap-4">
+      <input type="text" placeholder="Your Name" class="border p-3 rounded w-full" required>
+      <input type="email" placeholder="Your Email" class="border p-3 rounded w-full" required>
+      <textarea placeholder="Your Message" class="border p-3 rounded w-full" rows="4" required></textarea>
+      <button type="submit" class="bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black text-white py-8">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="font-bold text-lg mb-3">JobJila</h3>
+        <p class="text-gray-400">Connecting talent with opportunity.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Quick Links</h4>
+        <ul class="space-y-2 text-gray-400">
+          <li><a href="#jobs" class="hover:text-white">Jobs</a></li>
+          <li><a href="#about" class="hover:text-white">About</a></li>
+          <li><a href="#contact" class="hover:text-white">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Follow Us</h4>
+        <div class="flex space-x-4">
+          <a href="#" class="hover:text-blue-400">LinkedIn</a>
+          <a href="#" class="hover:text-blue-400">Twitter</a>
+          <a href="#" class="hover:text-blue-400">Facebook</a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center text-gray-500 mt-6">© 2025 JobJila. All rights reserved.</div>
+  </footer>
+</body>
+</html>
