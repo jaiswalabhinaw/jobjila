@@ -16,6 +16,17 @@
       display: block;
       opacity: 1;
     }
+
+    /* Slide-up card animation */
+    .fade-slide {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-in-out;
+    }
+    .fade-slide.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body class="bg-gray-900 text-white">
@@ -65,10 +76,10 @@
     <div class="active">
       <h2 class="text-3xl font-bold mb-8 text-yellow-400">Why Join JobJila?</h2>
       <div class="grid md:grid-cols-4 gap-6">
-        <div class="bg-gray-800 p-6 rounded-lg shadow">Flexible Roles – Onsite, Remote, Hybrid</div>
-        <div class="bg-gray-800 p-6 rounded-lg shadow">Skill Development – Training & Certifications</div>
-        <div class="bg-gray-800 p-6 rounded-lg shadow">Career Growth – Mentorship & Coaching</div>
-        <div class="bg-gray-800 p-6 rounded-lg shadow">Global Network – Work with Top Companies</div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow fade-slide">Flexible Roles – Onsite, Remote, Hybrid</div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow fade-slide">Skill Development – Training & Certifications</div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow fade-slide">Career Growth – Mentorship & Coaching</div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow fade-slide">Global Network – Work with Top Companies</div>
       </div>
     </div>
 
@@ -76,10 +87,10 @@
     <div>
       <h2 class="text-3xl font-bold mb-8 text-yellow-400">Our Core Services</h2>
       <div class="grid md:grid-cols-4 gap-6">
-        <div class="bg-gray-800 p-6 rounded-lg shadow">Corporate Training</div>
-        <div class="bg-gray-800 p-6 rounded-lg shadow">Hiring Solutions</div>
-        <div class="bg-gray-800 p-6 rounded-lg shadow">Freelancer Development</div>
-        <div class="bg-gray-800 p-6 rounded-lg shadow">Leadership Coaching</div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow fade-slide">Corporate Training</div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow fade-slide">Hiring Solutions</div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow fade-slide">Freelancer Development</div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow fade-slide">Leadership Coaching</div>
       </div>
     </div>
 
@@ -87,13 +98,13 @@
     <div>
       <h2 class="text-3xl font-bold mb-8 text-yellow-400">Success Stories</h2>
       <div class="grid md:grid-cols-3 gap-6">
-        <blockquote class="bg-gray-800 p-6 rounded-lg shadow">
+        <blockquote class="bg-gray-800 p-6 rounded-lg shadow fade-slide">
           “JobJila’s training helped me secure my dream job in DevOps!” – Aakash, Bengaluru
         </blockquote>
-        <blockquote class="bg-gray-800 p-6 rounded-lg shadow">
+        <blockquote class="bg-gray-800 p-6 rounded-lg shadow fade-slide">
           “Our company scaled faster with JobJila’s corporate hiring solutions.” – Priya, HR Manager
         </blockquote>
-        <blockquote class="bg-gray-800 p-6 rounded-lg shadow">
+        <blockquote class="bg-gray-800 p-6 rounded-lg shadow fade-slide">
           “The leadership coaching transformed my career path.” – Ramesh, Pune
         </blockquote>
       </div>
@@ -191,7 +202,21 @@
       sections[index].classList.remove('active');
       index = (index + 1) % sections.length;
       sections[index].classList.add('active');
+
+      // Animate cards inside active section
+      const cards = sections[index].querySelectorAll('.fade-slide');
+      cards.forEach((card, i) => {
+        setTimeout(() => card.classList.add('show'), i * 200);
+      });
     }, 6000);
+
+    // Trigger first animation
+    window.addEventListener('load', () => {
+      const firstCards = sections[0].querySelectorAll('.fade-slide');
+      firstCards.forEach((card, i) => {
+        setTimeout(() => card.classList.add('show'), i * 200);
+      });
+    });
   </script>
 </body>
 </html>
