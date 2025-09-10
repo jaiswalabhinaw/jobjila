@@ -1,185 +1,135 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>JOBJILA — Careers & Hiring</title>
-  <meta name="description" content="JobJila - Careers. We are hiring Corporate Trainers, Freelancers, Cloud & IT professionals. Apply now." />
-  <meta name="keywords" content="JobJila, careers, hiring, corporate trainer, freelancer, cloud jobs, Azure, DevOps, IT jobs, India, remote jobs, training, talent, apply, resume, sales training, marketing training, leadership coaching, communication skills, schedule, upcoming training">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://jobjila.com/" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JobJila - Career, Training & Growth</title>
   <script src="https://cdn.tailwindcss.com"></script>
-
   <style>
-    :root {
-      --primary-purple: #400090;
-      --secondary-yellow: #ffcc00;
-      --dark-black: #111111;
-    }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+    /* Rotating section animation */
+    .rotate-section > div { display: none; }
+    .rotate-section > div.active { display: block; }
   </style>
 </head>
-<body class="antialiased overflow-x-hidden bg-white text-gray-900">
-  <!-- Navigation -->
-  <header class="bg-[var(--dark-black)] text-white sticky top-0 z-50 shadow-lg">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="index.html" class="text-2xl font-bold text-[var(--secondary-yellow)]">JobJila</a>
+<body class="bg-gray-900 text-white">
 
-      <!-- Desktop Menu -->
-      <nav id="mainNav" class="hidden md:flex space-x-6 items-center">
-        <a href="#jobs" class="hover:text-[var(--secondary-yellow)]">Jobs</a>
-        <a href="#about" class="hover:text-[var(--secondary-yellow)]">About</a>
-        <a href="#contact" class="hover:text-[var(--secondary-yellow)]">Contact</a>
-        <a href="blog.html" class="hover:text-[var(--secondary-yellow)]">Blog</a>
-        <a href="training.html" class="hover:text-[var(--secondary-yellow)]">Training</a>
-        <a href="schedule.html" class="hover:text-[var(--secondary-yellow)]">Training Schedule</a>
-        <span>📞 <a href="tel:+918756680477" class="hover:text-[var(--secondary-yellow)]">+91 87566 80477</a></span>
-        <span>✉️ <a href="mailto:support@jobjila.com" class="hover:text-[var(--secondary-yellow)]">support@jobjila.com</a></span>
+  <!-- Navbar -->
+  <header class="bg-gray-800 shadow">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-blue-400">JobJila</h1>
+      <nav class="space-x-6">
+        <a href="#about" class="hover:text-blue-400">About</a>
+        <a href="jobs.html" class="hover:text-blue-400">Jobs</a>
+        <a href="training.html" class="hover:text-blue-400">Training</a>
+        <a href="schedule.html" class="hover:text-blue-400">Schedule</a>
+        <a href="#contact" class="hover:text-blue-400">Contact</a>
       </nav>
-
-      <!-- Mobile Menu Button -->
-      <button id="menuBtn" class="md:hidden p-2 text-[var(--secondary-yellow)]" aria-label="Toggle menu">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
     </div>
-
-    <!-- Mobile Menu -->
-    <nav id="mobileNav" class="hidden bg-[var(--dark-black)] md:hidden">
-      <a href="#jobs" class="block px-6 py-3 border-b border-gray-700 hover:bg-[var(--primary-purple)]">Jobs</a>
-      <a href="#about" class="block px-6 py-3 border-b border-gray-700 hover:bg-[var(--primary-purple)]">About</a>
-      <a href="#contact" class="block px-6 py-3 border-b border-gray-700 hover:bg-[var(--primary-purple)]">Contact</a>
-      <a href="blog.html" class="block px-6 py-3 border-b border-gray-700 hover:bg-[var(--primary-purple)]">Blog</a>
-      <a href="training.html" class="block px-6 py-3 border-b border-gray-700 hover:bg-[var(--primary-purple)]">Training</a>
-      <a href="schedule.html" class="block px-6 py-3 border-b border-gray-700 hover:bg-[var(--primary-purple)]">Training Schedule</a>
-      <a href="tel:+918756680477" class="block px-6 py-3 border-t border-gray-700 hover:bg-[var(--primary-purple)]">📞 +91 87566 80477</a>
-      <a href="mailto:support@jobjila.com" class="block px-6 py-3 hover:bg-[var(--primary-purple)]">✉️ support@jobjila.com</a>
-    </nav>
   </header>
 
-  <!-- Hero Section -->
-  <section class="bg-gradient-to-r from-[var(--primary-purple)] to-[var(--dark-black)] text-white py-20 text-center">
-    <h1 class="text-4xl md:text-5xl font-bold">We are hiring - Join us</h1>
-    <p class="mt-4 text-lg md:text-xl max-w-3xl mx-auto">
-      At JobJila, we’re building a community of freelance trainers and professionals in technology, leadership, communication, AI, data science, sales, and business. 
+  <!-- Hero -->
+  <section class="bg-gradient-to-r from-blue-700 to-purple-700 text-center py-20">
+    <h2 class="text-4xl font-bold mb-4">Empowering Careers, Skills & Growth</h2>
+    <p class="text-lg mb-6">Corporate Training • Hiring • Freelancers • Leadership Development</p>
+    <a href="jobs.html" class="bg-white text-blue-700 font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-100">
+      Explore Jobs
+    </a>
+  </section>
+
+  <!-- Rotating Section (instead of Open Positions) -->
+  <section class="max-w-6xl mx-auto px-6 py-16 text-center rotate-section">
+    <!-- Why Join JobJila -->
+    <div class="active">
+      <h2 class="text-3xl font-bold mb-8">Why Join JobJila?</h2>
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="bg-gray-800 p-6 rounded-lg shadow">Flexible Roles – Onsite, Remote, Hybrid</div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow">Skill Development – Training & Certifications</div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow">Career Growth – Mentorship & Coaching</div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow">Global Network – Work with Top Companies</div>
+      </div>
+    </div>
+
+    <!-- Core Services -->
+    <div>
+      <h2 class="text-3xl font-bold mb-8">Our Core Services</h2>
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="bg-gray-800 p-6 rounded-lg shadow">Corporate Training</div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow">Hiring Solutions</div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow">Freelancer Development</div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow">Leadership Coaching</div>
+      </div>
+    </div>
+
+    <!-- Testimonials -->
+    <div>
+      <h2 class="text-3xl font-bold mb-8">Success Stories</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <blockquote class="bg-gray-800 p-6 rounded-lg shadow">
+          “JobJila’s training helped me secure my dream job in DevOps!” – Aakash, Bengaluru
+        </blockquote>
+        <blockquote class="bg-gray-800 p-6 rounded-lg shadow">
+          “Our company scaled faster with JobJila’s corporate hiring solutions.” – Priya, HR Manager
+        </blockquote>
+        <blockquote class="bg-gray-800 p-6 rounded-lg shadow">
+          “The leadership coaching transformed my career path.” – Ramesh, Pune
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="max-w-6xl mx-auto px-6 py-16 text-center">
+    <h2 class="text-3xl font-bold mb-6">About JobJila</h2>
+    <p class="text-lg text-gray-300">
+      JobJila is your partner for professional growth — offering career opportunities, corporate training,
+      freelancer development, and leadership coaching. We bridge the gap between skills and opportunities.
     </p>
-    <a href="#jobs" class="mt-6 inline-block bg-[var(--secondary-yellow)] text-black font-semibold px-6 py-3 rounded-lg shadow hover:bg-yellow-400">Explore Careers</a>
   </section>
 
-  <!-- Call-to-Action Section -->
-  <section class="bg-[var(--dark-black)] text-white py-12 text-center">
-    <h2 class="text-2xl md:text-3xl font-bold">Apply Now: Corporate Trainer & Freelancers</h2>
-    <p class="mt-3 text-lg">Flexible roles — remote & on-site opportunities. Competitive pay.</p>
-    <a href="#contact" class="mt-6 inline-block bg-[var(--secondary-yellow)] text-black font-semibold px-6 py-3 rounded-lg shadow hover:bg-yellow-400">Apply Today</a>
-  </section>
-
-  <!-- Jobs Section -->
-  <section id="jobs" class="max-w-6xl mx-auto px-6 py-16">
-    <h2 class="text-3xl font-bold text-center mb-8 text-[var(--primary-purple)]">Open Positions</h2>
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="p-6 border border-gray-200 rounded-lg shadow hover:shadow-lg">
-        <h3 class="text-xl font-semibold mb-2">Azure Cloud Engineer</h3>
-        <p class="text-gray-600 mb-4">Manage Azure infrastructure, implement IaC, monitoring, and cost optimization.</p>
-        <a href="#contact" class="bg-[var(--primary-purple)] text-white px-4 py-2 rounded hover:bg-[var(--dark-black)]">Apply Now</a>
-      </div>
-      <div class="p-6 border border-gray-200 rounded-lg shadow hover:shadow-lg">
-        <h3 class="text-xl font-semibold mb-2">DevOps / Automation</h3>
-        <p class="text-gray-600 mb-4">CI/CD pipelines, scripting, Terraform/ARM templates.</p>
-        <a href="#contact" class="bg-[var(--primary-purple)] text-white px-4 py-2 rounded hover:bg-[var(--dark-black)]">Apply Now</a>
-      </div>
-      <div class="p-6 border border-gray-200 rounded-lg shadow hover:shadow-lg">
-        <h3 class="text-xl font-semibold mb-2">Corporate Trainer</h3>
-        <p class="text-gray-600 mb-4">Deliver training for tech & soft skills including sales, marketing, leadership, communication.</p>
-        <a href="#contact" class="bg-[var(--primary-purple)] text-white px-4 py-2 rounded hover:bg-[var(--dark-black)]">Apply Now</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="bg-gray-50 py-16 px-6">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-4 text-[var(--primary-purple)]">About JobJila</h2>
-      <p class="text-gray-700">JobJila is a platform connecting professionals with career opportunities across technology and business. We specialize in cloud, DevOps, sales, marketing, communication, and corporate training roles, enabling growth for both talent and organizations.</p>
-    </div>
-  </section>
-
-  <!-- Contact Section with CEO & MD -->
-  <section id="contact" class="max-w-6xl mx-auto px-6 py-16">
-    <h2 class="text-3xl font-bold text-center mb-8 text-[var(--primary-purple)]">Get in Touch</h2>
-    
-    <div class="grid md:grid-cols-3 gap-8 items-center">
+  <!-- Contact & CEO/MD Section -->
+  <section id="contact" class="bg-gray-800 py-16">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8 items-center">
       <!-- CEO -->
-      <div class="text-center md:text-left">
-        <img src="https://via.placeholder.com/150" alt="CEO" class="w-40 h-40 mx-auto md:mx-0 rounded-full shadow-lg mb-4">
-        <h3 class="text-xl font-semibold">CEO Name</h3>
-        <p class="text-gray-600">Visionary leader with expertise in business strategy and growth.</p>
+      <div class="text-center">
+        <img src="https://via.placeholder.com/150" alt="CEO" class="mx-auto rounded-full mb-4">
+        <h3 class="text-xl font-bold">John Doe</h3>
+        <p class="text-gray-400 text-sm">CEO – 15+ years in Cloud & Training</p>
       </div>
 
       <!-- Contact Form -->
-      <form action="https://formsubmit.co/support@jobjila.com" method="POST" class="max-w-md mx-auto grid gap-4">
-        <input type="text" name="name" placeholder="Your Name" class="border p-3 rounded w-full" required>
-        <input type="email" name="email" placeholder="Your Email" class="border p-3 rounded w-full" required>
-        <textarea name="message" placeholder="Your Message" class="border p-3 rounded w-full" rows="4" required></textarea>
-
-        <!-- Hidden fields -->
-        <input type="hidden" name="_next" value="https://jobjila.com/thank-you.html">
-        <input type="hidden" name="_captcha" value="false">
-
-        <button type="submit" class="bg-[var(--secondary-yellow)] text-black font-semibold py-3 rounded-lg hover:bg-yellow-400">
-          Send Message
-        </button>
-      </form>
+      <div>
+        <h2 class="text-2xl font-bold mb-6 text-center">Get in Touch</h2>
+        <form action="https://formsubmit.co/support@jobjila.com" method="POST" class="grid gap-4">
+          <input type="text" name="name" placeholder="Your Name" class="border p-3 rounded w-full text-black" required>
+          <input type="email" name="email" placeholder="Your Email" class="border p-3 rounded w-full text-black" required>
+          <textarea name="message" placeholder="Your Message" class="border p-3 rounded w-full text-black" rows="4" required></textarea>
+          <button type="submit" class="bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700">Send Message</button>
+        </form>
+      </div>
 
       <!-- MD -->
-      <div class="text-center md:text-right">
-        <img src="https://via.placeholder.com/150" alt="MD" class="w-40 h-40 mx-auto md:mx-0 rounded-full shadow-lg mb-4">
-        <h3 class="text-xl font-semibold">MD Name</h3>
-        <p class="text-gray-600">Driving operations and innovation to empower careers globally.</p>
+      <div class="text-center">
+        <img src="https://via.placeholder.com/150" alt="MD" class="mx-auto rounded-full mb-4">
+        <h3 class="text-xl font-bold">Jane Smith</h3>
+        <p class="text-gray-400 text-sm">MD – Expert in Leadership & Corporate Strategy</p>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-[var(--dark-black)] text-white py-8">
-    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8">
-      <div>
-        <h3 class="font-bold text-lg mb-3 text-[var(--secondary-yellow)]">JobJila</h3>
-        <p class="text-gray-400">Connecting talent with opportunity.</p>
-        <p class="mt-2 text-gray-400">📞 <a href="tel:+918756680477" class="hover:text-[var(--secondary-yellow)]">+91 87566 80477</a></p>
-        <p class="text-gray-400">✉️ <a href="mailto:support@jobjila.com" class="hover:text-[var(--secondary-yellow)]">support@jobjila.com</a></p>
-      </div>
-      <div>
-        <h4 class="font-semibold mb-3">Quick Links</h4>
-        <ul class="space-y-2 text-gray-400">
-          <li><a href="#jobs" class="hover:text-[var(--secondary-yellow)]">Jobs</a></li>
-          <li><a href="#about" class="hover:text-[var(--secondary-yellow)]">About</a></li>
-          <li><a href="#contact" class="hover:text-[var(--secondary-yellow)]">Contact</a></li>
-          <li><a href="blog.html" class="hover:text-[var(--secondary-yellow)]">Blog</a></li>
-          <li><a href="training.html" class="hover:text-[var(--secondary-yellow)]">Training</a></li>
-          <li><a href="schedule.html" class="hover:text-[var(--secondary-yellow)]">Training Schedule</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="font-semibold mb-3">Follow Us</h4>
-        <div class="flex space-x-4">
-          <a href="#" class="hover:text-[var(--secondary-yellow)]">LinkedIn</a>
-          <a href="#" class="hover:text-[var(--secondary-yellow)]">Twitter</a>
-          <a href="#" class="hover:text-[var(--secondary-yellow)]">Facebook</a>
-        </div>
-      </div>
-    </div>
-    <div class="text-center text-gray-500 mt-6">© 2025 JobJila. All rights reserved.</div>
+  <footer class="bg-gray-900 text-center py-6 text-gray-400">
+    © 2025 JobJila. All rights reserved.
   </footer>
 
   <script>
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileNav = document.getElementById('mobileNav');
-    menuBtn.addEventListener('click', () => {
-      mobileNav.classList.toggle('hidden');
-    });
+    // Simple rotating logic for sections
+    const sections = document.querySelectorAll('.rotate-section > div');
+    let index = 0;
+    setInterval(() => {
+      sections[index].classList.remove('active');
+      index = (index + 1) % sections.length;
+      sections[index].classList.add('active');
+    }, 6000); // rotates every 6s
   </script>
 </body>
 </html>
