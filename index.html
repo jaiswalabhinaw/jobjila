@@ -82,16 +82,24 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="max-w-6xl mx-auto px-6 py-16">
-    <h2 class="text-3xl font-bold text-center mb-8">Get in Touch</h2>
-    <form class="max-w-2xl mx-auto grid gap-4">
-      <input type="text" placeholder="Your Name" class="border p-3 rounded w-full" required>
-      <input type="email" placeholder="Your Email" class="border p-3 rounded w-full" required>
-      <textarea placeholder="Your Message" class="border p-3 rounded w-full" rows="4" required></textarea>
-      <button type="submit" class="bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700">Send Message</button>
-    </form>
-  </section>
+ <!-- Contact Section -->
+<section id="contact" class="max-w-6xl mx-auto px-6 py-16">
+  <h2 class="text-3xl font-bold text-center mb-8">Get in Touch</h2>
+  
+  <form action="https://formsubmit.co/support@jobjila.com" method="POST" class="max-w-2xl mx-auto grid gap-4">
+    <input type="text" name="name" placeholder="Your Name" class="border p-3 rounded w-full" required>
+    <input type="email" name="email" placeholder="Your Email" class="border p-3 rounded w-full" required>
+    <textarea name="message" placeholder="Your Message" class="border p-3 rounded w-full" rows="4" required></textarea>
+
+    <!-- Hidden fields -->
+    <input type="hidden" name="_next" value="https://jobjila.com/thank-you.html">
+    <input type="hidden" name="_captcha" value="false">
+
+    <button type="submit" class="bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700">
+      Send Message
+    </button>
+  </form>
+</section>
 
   <!-- Footer -->
   <footer class="bg-black text-white py-8">
