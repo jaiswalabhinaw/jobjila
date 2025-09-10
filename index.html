@@ -7,8 +7,15 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     /* Rotating section animation */
-    .rotate-section > div { display: none; }
-    .rotate-section > div.active { display: block; }
+    .rotate-section > div {
+      display: none;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .rotate-section > div.active {
+      display: block;
+      opacity: 1;
+    }
   </style>
 </head>
 <body class="bg-gray-900 text-white">
@@ -177,7 +184,7 @@
       mobileMenu.classList.toggle('hidden');
     });
 
-    // Rotating sections
+    // Rotating sections with fade animation
     const sections = document.querySelectorAll('.rotate-section > div');
     let index = 0;
     setInterval(() => {
