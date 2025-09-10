@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>JobJila Blog — Insights & Learning</title>
-  <meta name="description" content="Read the latest career, training, cloud, DevOps, sales, and leadership insights on the JobJila blog." />
+  <title>Blog - JobJila</title>
+  <meta name="description" content="JobJila Blog — Insights on careers, freelancing, corporate training, cloud, DevOps, leadership, sales, and communication skills." />
+  <meta name="keywords" content="JobJila blog, corporate training, freelancing, cloud jobs, DevOps, leadership, communication skills, sales, marketing, career insights">
   <link rel="canonical" href="https://jobjila.com/blog.html" />
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -13,53 +14,56 @@
   <header class="bg-white shadow sticky top-0 z-50">
     <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
       <a href="index.html" class="text-2xl font-bold text-black">JobJila</a>
-      <nav class="hidden md:flex space-x-6 items-center">
+      <nav id="mainNav" class="hidden md:flex space-x-6">
         <a href="index.html#jobs" class="hover:text-blue-600">Jobs</a>
         <a href="index.html#about" class="hover:text-blue-600">About</a>
         <a href="index.html#contact" class="hover:text-blue-600">Contact</a>
         <a href="blog.html" class="text-blue-600 font-semibold">Blog</a>
       </nav>
+      <button id="menuBtn" class="md:hidden p-2" aria-label="Toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
     </div>
+    <nav id="mobileNav" class="hidden bg-white shadow-md md:hidden">
+      <a href="index.html#jobs" class="block px-6 py-3 border-b hover:bg-gray-100">Jobs</a>
+      <a href="index.html#about" class="block px-6 py-3 border-b hover:bg-gray-100">About</a>
+      <a href="index.html#contact" class="block px-6 py-3 border-b hover:bg-gray-100">Contact</a>
+      <a href="blog.html" class="block px-6 py-3 hover:bg-gray-100">Blog</a>
+    </nav>
   </header>
 
   <!-- Blog Hero -->
-  <section class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-16 text-center">
-    <h1 class="text-4xl font-bold">JobJila Blog</h1>
-    <p class="mt-4 text-lg">Insights on careers, training, leadership, technology & freelancing.</p>
+  <section class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-16 text-center">
+    <h1 class="text-4xl md:text-5xl font-bold">JobJila Blog</h1>
+    <p class="mt-4 text-lg md:text-xl max-w-3xl mx-auto">
+      Insights on careers, freelancing, cloud, DevOps, leadership, sales, and personal growth.
+    </p>
   </section>
 
   <!-- Blog Posts -->
-  <main class="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-3 gap-8">
-    <!-- Post Card 1 -->
-    <article class="border rounded-lg shadow hover:shadow-lg overflow-hidden">
-      <img src="https://source.unsplash.com/600x400/?career,job" alt="Career" class="w-full h-48 object-cover">
-      <div class="p-6">
-        <h2 class="text-xl font-semibold mb-2">Top 5 Skills for 2025</h2>
-        <p class="text-gray-600 mb-4">Learn the most in-demand skills across cloud, DevOps, leadership, and sales to stay ahead in your career.</p>
-        <a href="#" class="text-blue-600 font-semibold hover:underline">Read More →</a>
-      </div>
+  <section class="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-8">
+    <!-- Blog Post 1 -->
+    <article class="border rounded-lg shadow hover:shadow-lg p-6 bg-white">
+      <h2 class="text-2xl font-bold mb-3 text-gray-900">Why Corporate Training is the Future of Work</h2>
+      <p class="text-gray-600 mb-4">
+        With rapid advancements in cloud, DevOps, and AI, companies need continuous skill development. 
+        Discover why corporate training is essential for both employers and freelancers.
+      </p>
+      <a href="#" class="text-blue-600 font-semibold hover:underline">Read More →</a>
     </article>
 
-    <!-- Post Card 2 -->
-    <article class="border rounded-lg shadow hover:shadow-lg overflow-hidden">
-      <img src="https://source.unsplash.com/600x400/?leadership,training" alt="Leadership Training" class="w-full h-48 object-cover">
-      <div class="p-6">
-        <h2 class="text-xl font-semibold mb-2">Leadership Training for Freelancers</h2>
-        <p class="text-gray-600 mb-4">How independent trainers can build leadership & communication skills to deliver powerful sessions.</p>
-        <a href="#" class="text-blue-600 font-semibold hover:underline">Read More →</a>
-      </div>
+    <!-- Blog Post 2 -->
+    <article class="border rounded-lg shadow hover:shadow-lg p-6 bg-white">
+      <h2 class="text-2xl font-bold mb-3 text-gray-900">Top Skills in 2025: Cloud, Leadership & Sales</h2>
+      <p class="text-gray-600 mb-4">
+        From Azure and DevOps to leadership and sales training — learn what skills are most in demand 
+        and how freelancers can position themselves for success.
+      </p>
+      <a href="#" class="text-blue-600 font-semibold hover:underline">Read More →</a>
     </article>
-
-    <!-- Post Card 3 -->
-    <article class="border rounded-lg shadow hover:shadow-lg overflow-hidden">
-      <img src="https://source.unsplash.com/600x400/?cloud,technology" alt="Cloud Jobs" class="w-full h-48 object-cover">
-      <div class="p-6">
-        <h2 class="text-xl font-semibold mb-2">Future of Cloud Careers</h2>
-        <p class="text-gray-600 mb-4">Azure, DevOps & security skills are shaping the IT job market. Here’s what professionals must know.</p>
-        <a href="#" class="text-blue-600 font-semibold hover:underline">Read More →</a>
-      </div>
-    </article>
-  </main>
+  </section>
 
   <!-- Footer -->
   <footer class="bg-black text-white py-8">
@@ -67,8 +71,6 @@
       <div>
         <h3 class="font-bold text-lg mb-3">JobJila</h3>
         <p class="text-gray-400">Connecting talent with opportunity.</p>
-        <p class="mt-2 text-gray-400">📞 <a href="tel:+918756680477" class="hover:text-white">+91 87566 80477</a></p>
-        <p class="text-gray-400">✉️ <a href="mailto:support@jobjila.com" class="hover:text-white">support@jobjila.com</a></p>
       </div>
       <div>
         <h4 class="font-semibold mb-3">Quick Links</h4>
@@ -90,5 +92,14 @@
     </div>
     <div class="text-center text-gray-500 mt-6">© 2025 JobJila. All rights reserved.</div>
   </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+
+    menuBtn.addEventListener('click', () => {
+      mobileNav.classList.toggle('hidden');
+    });
+  </script>
 </body>
 </html>
