@@ -3,8 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Training Schedule - JobJila</title>
-  <meta name="description" content="JobJila upcoming training schedule for Azure, DevOps, Leadership, Sales & Marketing programs." />
+  <title>JobJila — Training Schedule</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root {
@@ -12,78 +11,82 @@
       --secondary-yellow: #ffcc00;
       --dark-black: #111111;
     }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
   </style>
 </head>
-<body class="antialiased bg-gray-50 text-gray-900">
+<body class="antialiased overflow-x-hidden bg-white text-gray-900">
+
   <!-- Header -->
   <header class="bg-[var(--dark-black)] text-white sticky top-0 z-50 shadow-lg">
     <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
       <a href="index.html" class="text-2xl font-bold text-[var(--secondary-yellow)]">JobJila</a>
-      <nav class="hidden md:flex space-x-6">
+      <nav class="hidden md:flex space-x-6 items-center">
         <a href="index.html#jobs" class="hover:text-[var(--secondary-yellow)]">Jobs</a>
         <a href="index.html#about" class="hover:text-[var(--secondary-yellow)]">About</a>
         <a href="index.html#contact" class="hover:text-[var(--secondary-yellow)]">Contact</a>
         <a href="blog.html" class="hover:text-[var(--secondary-yellow)]">Blog</a>
         <a href="training.html" class="hover:text-[var(--secondary-yellow)]">Training</a>
-        <a href="schedule.html" class="hover:text-[var(--secondary-yellow)] font-semibold">Training Schedule</a>
+        <a href="schedule.html" class="hover:text-[var(--secondary-yellow)]">Schedule</a>
       </nav>
     </div>
   </header>
 
-  <!-- Hero -->
+  <!-- Hero Section -->
   <section class="bg-gradient-to-r from-[var(--primary-purple)] to-[var(--dark-black)] text-white py-16 text-center">
-    <h1 class="text-4xl font-bold">Upcoming Training Programs</h1>
+    <h1 class="text-4xl md:text-5xl font-bold">Upcoming Training Programs</h1>
     <p class="mt-4 text-lg">Plan your growth with our upcoming workshops and courses</p>
   </section>
 
   <!-- Schedule Table -->
-  <section class="max-w-5xl mx-auto px-6 py-16">
-    <div class="overflow-x-auto bg-white rounded-lg shadow">
-      <table class="w-full border-collapse">
+  <section class="max-w-6xl mx-auto px-6 py-12">
+    <div class="overflow-x-auto">
+      <table class="w-full border-collapse border border-gray-200 shadow-lg">
         <thead class="bg-[var(--primary-purple)] text-white">
           <tr>
-            <th class="p-3 text-left">#</th>
-            <th class="p-3 text-left">Training</th>
-            <th class="p-3 text-left">Date</th>
-            <th class="p-3 text-left">Mode</th>
-            <th class="p-3 text-left">Register</th>
+            <th class="p-3 border">#</th>
+            <th class="p-3 border">Training</th>
+            <th class="p-3 border">Date</th>
+            <th class="p-3 border">Mode</th>
+            <th class="p-3 border">Register</th>
           </tr>
         </thead>
         <tbody>
-          <tr class="border-b hover:bg-gray-50">
-            <td class="p-3">1</td>
-            <td class="p-3">Azure Cloud Fundamentals</td>
-            <td class="p-3">20 Sep 2025</td>
-            <td class="p-3">Online</td>
-            <td class="p-3">
-              <a href="index.html#contact" class="text-[var(--primary-purple)] font-semibold hover:underline">Register</a>
+          <tr class="text-center hover:bg-gray-50">
+            <td class="p-3 border">1</td>
+            <td class="p-3 border">Azure Cloud Fundamentals</td>
+            <td class="p-3 border">20 Sep 2025</td>
+            <td class="p-3 border">Online</td>
+            <td class="p-3 border">
+              <button onclick="openForm('Azure Cloud Fundamentals')" class="bg-[var(--secondary-yellow)] text-black px-4 py-2 rounded hover:bg-yellow-400">Register</button>
             </td>
           </tr>
-          <tr class="border-b hover:bg-gray-50">
-            <td class="p-3">2</td>
-            <td class="p-3">DevOps Bootcamp</td>
-            <td class="p-3">5 Oct 2025</td>
-            <td class="p-3">Onsite - Bengaluru</td>
-            <td class="p-3">
-              <a href="index.html#contact" class="text-[var(--primary-purple)] font-semibold hover:underline">Register</a>
+          <tr class="text-center hover:bg-gray-50">
+            <td class="p-3 border">2</td>
+            <td class="p-3 border">DevOps Bootcamp</td>
+            <td class="p-3 border">5 Oct 2025</td>
+            <td class="p-3 border">Onsite - Bengaluru</td>
+            <td class="p-3 border">
+              <button onclick="openForm('DevOps Bootcamp')" class="bg-[var(--secondary-yellow)] text-black px-4 py-2 rounded hover:bg-yellow-400">Register</button>
             </td>
           </tr>
-          <tr class="border-b hover:bg-gray-50">
-            <td class="p-3">3</td>
-            <td class="p-3">Leadership & Communication Skills</td>
-            <td class="p-3">15 Oct 2025</td>
-            <td class="p-3">Online</td>
-            <td class="p-3">
-              <a href="index.html#contact" class="text-[var(--primary-purple)] font-semibold hover:underline">Register</a>
+          <tr class="text-center hover:bg-gray-50">
+            <td class="p-3 border">3</td>
+            <td class="p-3 border">Leadership & Communication Skills</td>
+            <td class="p-3 border">15 Oct 2025</td>
+            <td class="p-3 border">Online</td>
+            <td class="p-3 border">
+              <button onclick="openForm('Leadership & Communication Skills')" class="bg-[var(--secondary-yellow)] text-black px-4 py-2 rounded hover:bg-yellow-400">Register</button>
             </td>
           </tr>
-          <tr class="hover:bg-gray-50">
-            <td class="p-3">4</td>
-            <td class="p-3">Sales & Marketing Mastery</td>
-            <td class="p-3">30 Oct 2025</td>
-            <td class="p-3">Onsite - Mumbai</td>
-            <td class="p-3">
-              <a href="index.html#contact" class="text-[var(--primary-purple)] font-semibold hover:underline">Register</a>
+          <tr class="text-center hover:bg-gray-50">
+            <td class="p-3 border">4</td>
+            <td class="p-3 border">Sales & Marketing Mastery</td>
+            <td class="p-3 border">30 Oct 2025</td>
+            <td class="p-3 border">Onsite - Mumbai</td>
+            <td class="p-3 border">
+              <button onclick="openForm('Sales & Marketing Mastery')" class="bg-[var(--secondary-yellow)] text-black px-4 py-2 rounded hover:bg-yellow-400">Register</button>
             </td>
           </tr>
         </tbody>
@@ -91,11 +94,35 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-[var(--dark-black)] text-white py-8">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <p>© 2025 JobJila. All rights reserved.</p>
+  <!-- Modal (Popup Form) -->
+  <div id="formModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md relative">
+      <button onclick="closeForm()" class="absolute top-2 right-2 text-gray-500 hover:text-black">✖</button>
+      <h2 class="text-2xl font-bold mb-4 text-[var(--primary-purple)]">Register for Training</h2>
+      <form action="https://formsubmit.co/support@jobjila.com" method="POST" class="grid gap-4">
+        <input type="text" id="trainingName" name="training" readonly class="border p-3 rounded w-full bg-gray-100 font-semibold">
+        <input type="text" name="name" placeholder="Your Name" class="border p-3 rounded w-full" required>
+        <input type="email" name="email" placeholder="Your Email" class="border p-3 rounded w-full" required>
+        <input type="text" name="phone" placeholder="Your Phone" class="border p-3 rounded w-full" required>
+        <textarea name="message" placeholder="Additional Notes (optional)" class="border p-3 rounded w-full" rows="3"></textarea>
+
+        <!-- Hidden fields -->
+        <input type="hidden" name="_next" value="https://jobjila.com/thank-you.html">
+        <input type="hidden" name="_captcha" value="false">
+
+        <button type="submit" class="bg-[var(--secondary-yellow)] text-black font-semibold py-3 rounded-lg hover:bg-yellow-400">Submit</button>
+      </form>
     </div>
-  </footer>
+  </div>
+
+  <script>
+    function openForm(training) {
+      document.getElementById('formModal').classList.remove('hidden');
+      document.getElementById('trainingName').value = training;
+    }
+    function closeForm() {
+      document.getElementById('formModal').classList.add('hidden');
+    }
+  </script>
 </body>
 </html>
