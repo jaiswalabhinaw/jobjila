@@ -16,12 +16,24 @@
   <header class="bg-white shadow sticky top-0 z-50">
     <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
       <a href="#" class="text-2xl font-bold text-black">JobJila</a>
-      <nav class="hidden md:flex space-x-6">
+      <nav id="mainNav" class="hidden md:flex space-x-6">
         <a href="#jobs" class="hover:text-blue-600">Jobs</a>
         <a href="#about" class="hover:text-blue-600">About</a>
         <a href="#contact" class="hover:text-blue-600">Contact</a>
       </nav>
+      <!-- Mobile Menu Button -->
+      <button id="menuBtn" class="md:hidden p-2" aria-label="Toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
     </div>
+    <!-- Mobile Menu -->
+    <nav id="mobileNav" class="hidden bg-white shadow-md md:hidden">
+      <a href="#jobs" class="block px-6 py-3 border-b hover:bg-gray-100">Jobs</a>
+      <a href="#about" class="block px-6 py-3 border-b hover:bg-gray-100">About</a>
+      <a href="#contact" class="block px-6 py-3 hover:bg-gray-100">Contact</a>
+    </nav>
   </header>
 
   <!-- Hero Section -->
@@ -107,5 +119,14 @@
     </div>
     <div class="text-center text-gray-500 mt-6">© 2025 JobJila. All rights reserved.</div>
   </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+
+    menuBtn.addEventListener('click', () => {
+      mobileNav.classList.toggle('hidden');
+    });
+  </script>
 </body>
 </html>
