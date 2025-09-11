@@ -164,18 +164,47 @@
     </div>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" class="py-16">
-    <div class="max-w-3xl mx-auto px-6">
-      <h2 class="text-2xl font-bold mb-6 text-center text-yellow-400">Get in Touch</h2>
-      <form action="https://formsubmit.co/support@jobjila.com" method="POST" class="grid gap-4">
-        <input type="text" name="name" placeholder="Your Name" class="border p-3 rounded w-full text-black" required>
-        <input type="email" name="email" placeholder="Your Email" class="border p-3 rounded w-full text-black" required>
-        <textarea name="message" placeholder="Your Message" class="border p-3 rounded w-full text-black" rows="4" required></textarea>
-        <button type="submit" class="bg-yellow-400 text-black py-3 rounded-lg hover:bg-yellow-300">Send Message</button>
-      </form>
-    </div>
-  </section>
+<!-- Contact Form -->
+<div class="flex justify-center">
+  <div class="bg-gray-900 p-8 rounded-lg shadow-lg w-full max-w-md">
+    <h2 class="text-2xl font-bold mb-6 text-center text-yellow-400">Get in Touch</h2>
+    <form action="https://formsubmit.co/support@jobjila.com" method="POST" class="grid gap-4">
+      <!-- Hidden settings for FormSubmit -->
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://yourusername.github.io/reponame/thankyou.html">
+
+      <!-- Inputs -->
+      <input 
+        type="text" 
+        name="name" 
+        placeholder="Your Name" 
+        class="border p-3 rounded w-full text-black focus:ring-2 focus:ring-yellow-400" 
+        required>
+
+      <input 
+        type="email" 
+        name="email" 
+        placeholder="Your Email" 
+        class="border p-3 rounded w-full text-black focus:ring-2 focus:ring-yellow-400" 
+        required>
+
+      <textarea 
+        name="message" 
+        placeholder="Your Message" 
+        class="border p-3 rounded w-full text-black focus:ring-2 focus:ring-yellow-400" 
+        rows="4" 
+        required></textarea>
+
+      <!-- Button -->
+      <button 
+        type="submit" 
+        class="bg-yellow-500 text-black font-semibold py-3 rounded-lg hover:bg-yellow-400 transition">
+        Send Message
+      </button>
+    </form>
+  </div>
+</div>
+
 
   <!-- Footer -->
   <footer class="bg-black text-gray-400 py-10">
