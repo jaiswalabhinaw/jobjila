@@ -21,9 +21,9 @@
     .floating { animation: float 4s ease-in-out infinite; }
     @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
-    .hero-title { margin-bottom: 1.2rem; font-family: 'Segoe UI', sans-serif; font-size: 1.3rem; line-height: 1.8rem; max-width: 700px; margin-left: auto; margin-right: auto; }
-    .hero-subtitle { margin-bottom: 0.9rem; color: rgba(243,244,246,0.85); font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; line-height: 1.4rem; max-width: 600px; margin-left: auto; margin-right: auto; text-align: center; }
-    .hero-subtitle.secondary { font-size: 0.8rem; color: rgba(243,244,246,0.7); max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.3rem; font-family: 'Segoe UI', sans-serif; text-align: center; }
+    .hero-title { margin-bottom: 1.5rem; font-family: 'Segoe UI', sans-serif; font-size: 1.6rem; line-height: 2.2rem; max-width: 700px; margin-left: auto; margin-right: auto; text-align: center; }
+    .hero-subtitle { margin-bottom: 1.2rem; color: rgba(243,244,246,0.9); font-family: 'Segoe UI', sans-serif; font-size: 1rem; line-height: 1.6rem; max-width: 600px; margin-left: auto; margin-right: auto; text-align: center; }
+    .hero-subtitle.secondary { font-size: 0.95rem; color: rgba(243,244,246,0.75); max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.5rem; font-family: 'Segoe UI', sans-serif; text-align: center; }
 
     /* soft shine */
     .hero-shine { position: absolute; top: -20%; left: -10%; width: 140%; height: 180%; background: radial-gradient(ellipse at 20% 20%, rgba(255,255,255,0.05), transparent 15%), linear-gradient(90deg, rgba(255,255,255,0.02), transparent); pointer-events: none; mix-blend-mode: screen; }
@@ -35,8 +35,8 @@
     .scrolling-services { 
       overflow-x: auto; 
       display: flex; 
-      gap: 1.2rem; 
-      padding: 1rem 0; 
+      gap: 1.5rem; 
+      padding: 1.2rem 0; 
       scrollbar-width: thin; 
       scrollbar-color: #facc15 transparent; 
       scroll-behavior: smooth;
@@ -46,15 +46,15 @@
 
     .service-card {
       flex: 0 0 auto;
-      min-width: 140px;
+      min-width: 150px;
       background: linear-gradient(160deg, #facc15, #f59e0b);
-      padding: 0.9rem;
-      border-radius: 0.7rem;
+      padding: 1rem;
+      border-radius: 0.9rem;
       box-shadow: 0 6px 16px rgba(0,0,0,0.45);
       text-align: center;
       color: #111;
       font-weight: 700;
-      font-size: 0.85rem;
+      font-size: 0.95rem;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
       white-space: nowrap;
     }
@@ -70,7 +70,7 @@
     .auto-scroll {
       display: flex;
       animation: autoScroll 25s linear infinite;
-      gap: 1.2rem;
+      gap: 1.5rem;
       will-change: transform;
     }
 
@@ -79,12 +79,13 @@
 
     /* Small responsive tweaks */
     @media (max-width: 768px) {
-      .hero-section { padding-top: 4.5rem; padding-bottom: 8.5rem; }
-      .hero-title { font-size: 1.1rem; line-height: 1.6rem; padding: 0 1rem; }
-      .hero-subtitle { font-size: 0.75rem; line-height: 1.3rem; padding: 0 1.25rem; }
-      .hero-subtitle.secondary { font-size: 0.7rem; line-height: 1.2rem; }
-      .service-card { min-width: 120px; font-size: 0.75rem; padding: 0.7rem; }
-      .scrolling-services::-webkit-scrollbar { height: 3px; }
+      .hero-section { padding-top: 5rem; padding-bottom: 9rem; }
+      .hero-title { font-size: 1.3rem; line-height: 1.9rem; padding: 0 1rem; }
+      .hero-subtitle { font-size: 0.9rem; line-height: 1.5rem; padding: 0 1.25rem; }
+      .hero-subtitle.secondary { font-size: 0.85rem; line-height: 1.4rem; }
+      .service-card { min-width: 130px; font-size: 0.85rem; padding: 0.85rem; }
+      .scrolling-services { gap: 1rem; }
+      section { padding-left: 1rem; padding-right: 1rem; }
     }
 
     section { scroll-margin-top: 80px; }
@@ -139,7 +140,7 @@
 
   <!-- Core Services -->
   <section id="services" class="max-w-6xl mx-auto px-6 py-16 text-center">
-    <h2 class="text-lg font-bold mb-6 text-yellow-400" style="font-family:'Segoe UI', sans-serif;">Our Core Services</h2>
+    <h2 class="text-xl font-bold mb-6 text-yellow-400" style="font-family:'Segoe UI', sans-serif;">Our Core Services</h2>
     <div class="scrolling-services">
       <div class="auto-scroll">
         <div class="service-card">Corporate Training</div>
