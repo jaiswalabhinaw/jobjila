@@ -65,7 +65,7 @@
     .scrolling-services { 
       overflow-x: auto; 
       display: flex; 
-      gap: 1rem; 
+      gap: 1.5rem; 
       padding: 1rem 0; 
       scrollbar-width: thin; 
       scrollbar-color: #facc15 transparent; 
@@ -73,8 +73,24 @@
     }
     .scrolling-services::-webkit-scrollbar { height: 8px; }
     .scrolling-services::-webkit-scrollbar-thumb { background: #facc15; border-radius: 9999px; }
-    .service-card { flex: 0 0 auto; min-width: 220px; background: linear-gradient(145deg, #facc15, #f59e0b); padding: 1.25rem; border-radius: .75rem; box-shadow: 0 6px 18px rgba(2,6,23,0.6); text-align: center; color: #111; font-weight: 600; transition: transform 0.2s ease, box-shadow 0.2s ease; white-space: nowrap; }
-    .service-card:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 12px 25px rgba(0,0,0,0.5); }
+
+    .service-card {
+      flex: 0 0 auto;
+      min-width: 240px;
+      background: linear-gradient(160deg, #facc15, #f59e0b);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.55);
+      text-align: center;
+      color: #111;
+      font-weight: 700;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      white-space: nowrap;
+    }
+    .service-card:hover {
+      transform: translateY(-6px) scale(1.06);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.65);
+    }
 
     @keyframes autoScroll {
       0% { transform: translateX(0); }
@@ -83,6 +99,7 @@
     .auto-scroll {
       display: flex;
       animation: autoScroll 25s linear infinite;
+      gap: 1.5rem;
     }
 
     /* Small responsive tweaks */
@@ -92,7 +109,7 @@
       .hero-subtitle { font-size: 0.98rem; padding: 0 1.25rem; }
       .hero-buttons { bottom: .8rem; gap: .5rem; }
       .hero-buttons span { font-size: 0.8rem; padding: 0.7rem 1.4rem; }
-      .service-card { min-width: 160px; }
+      .service-card { min-width: 180px; }
     }
 
     section { scroll-margin-top: 80px; }
