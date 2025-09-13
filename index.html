@@ -21,9 +21,9 @@
     .floating { animation: float 4s ease-in-out infinite; }
     @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
-    .hero-title { margin-bottom: 1.2rem; font-family: 'Segoe UI', sans-serif; font-size: 1.5rem; line-height: 2rem; max-width: 700px; margin-left: auto; margin-right: auto; }
-    .hero-subtitle { margin-bottom: 0.9rem; color: rgba(243,244,246,0.85); font-family: 'Segoe UI', sans-serif; font-size: 0.95rem; line-height: 1.5rem; max-width: 600px; margin-left: auto; margin-right: auto; text-align: center; }
-    .hero-subtitle.secondary { font-size: 0.9rem; color: rgba(243,244,246,0.7); max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.4rem; font-family: 'Segoe UI', sans-serif; text-align: center; }
+    .hero-title { margin-bottom: 1.2rem; font-family: 'Segoe UI', sans-serif; font-size: 1.3rem; line-height: 1.8rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+    .hero-subtitle { margin-bottom: 0.9rem; color: rgba(243,244,246,0.85); font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; line-height: 1.4rem; max-width: 600px; margin-left: auto; margin-right: auto; text-align: center; }
+    .hero-subtitle.secondary { font-size: 0.8rem; color: rgba(243,244,246,0.7); max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.3rem; font-family: 'Segoe UI', sans-serif; text-align: center; }
 
     /* soft shine */
     .hero-shine { position: absolute; top: -20%; left: -10%; width: 140%; height: 180%; background: radial-gradient(ellipse at 20% 20%, rgba(255,255,255,0.05), transparent 15%), linear-gradient(90deg, rgba(255,255,255,0.02), transparent); pointer-events: none; mix-blend-mode: screen; }
@@ -41,20 +41,20 @@
       scrollbar-color: #facc15 transparent; 
       scroll-behavior: smooth;
     }
-    .scrolling-services::-webkit-scrollbar { height: 6px; }
+    .scrolling-services::-webkit-scrollbar { height: 4px; }
     .scrolling-services::-webkit-scrollbar-thumb { background: #facc15; border-radius: 9999px; }
 
     .service-card {
       flex: 0 0 auto;
-      min-width: 160px;
+      min-width: 140px;
       background: linear-gradient(160deg, #facc15, #f59e0b);
-      padding: 1rem;
-      border-radius: 0.8rem;
+      padding: 0.9rem;
+      border-radius: 0.7rem;
       box-shadow: 0 6px 16px rgba(0,0,0,0.45);
       text-align: center;
       color: #111;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
       white-space: nowrap;
     }
@@ -80,10 +80,11 @@
     /* Small responsive tweaks */
     @media (max-width: 768px) {
       .hero-section { padding-top: 4.5rem; padding-bottom: 8.5rem; }
-      .hero-title { font-size: 1.3rem; line-height: 1.8rem; padding: 0 1rem; }
-      .hero-subtitle { font-size: 0.85rem; line-height: 1.4rem; padding: 0 1.25rem; }
-      .hero-subtitle.secondary { font-size: 0.8rem; line-height: 1.3rem; }
-      .service-card { min-width: 140px; font-size: 0.85rem; padding: 0.8rem; }
+      .hero-title { font-size: 1.1rem; line-height: 1.6rem; padding: 0 1rem; }
+      .hero-subtitle { font-size: 0.75rem; line-height: 1.3rem; padding: 0 1.25rem; }
+      .hero-subtitle.secondary { font-size: 0.7rem; line-height: 1.2rem; }
+      .service-card { min-width: 120px; font-size: 0.75rem; padding: 0.7rem; }
+      .scrolling-services::-webkit-scrollbar { height: 3px; }
     }
 
     section { scroll-margin-top: 80px; }
@@ -138,7 +139,7 @@
 
   <!-- Core Services -->
   <section id="services" class="max-w-6xl mx-auto px-6 py-16 text-center">
-    <h2 class="text-xl font-bold mb-6 text-yellow-400" style="font-family:'Segoe UI', sans-serif;">Our Core Services</h2>
+    <h2 class="text-lg font-bold mb-6 text-yellow-400" style="font-family:'Segoe UI', sans-serif;">Our Core Services</h2>
     <div class="scrolling-services">
       <div class="auto-scroll">
         <div class="service-card">Corporate Training</div>
@@ -154,7 +155,7 @@
   <!-- Success Stories -->
   <section id="success" class="bg-gray-900 py-16">
     <div class="max-w-6xl mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold mb-6 text-yellow-400">Success Stories</h2>
+      <h2 class="text-2xl font-bold mb-6 text-yellow-400">Success Stories</h2>
       <div class="grid md:grid-cols-3 gap-6">
         <div class="bg-gray-800 p-6 rounded-lg shadow">Placed 500+ Candidates in Top IT Companies</div>
         <div class="bg-gray-800 p-6 rounded-lg shadow">Delivered 100+ Corporate Training Programs</div>
@@ -165,8 +166,8 @@
 
   <!-- Why Choose JobJila -->
   <section id="why" class="max-w-6xl mx-auto px-6 py-16 text-center">
-    <h2 class="text-3xl font-bold mb-6 text-yellow-400">Why Choose JobJila?</h2>
-    <p class="text-lg text-gray-300 mb-6">We are more than just a career training company. With expertise in web development, technology solutions, and a strong network of hiring partners, JobJila provides end-to-end support for individuals and organizations.</p>
+    <h2 class="text-2xl font-bold mb-6 text-yellow-400">Why Choose JobJila?</h2>
+    <p class="text-base text-gray-300 mb-6">We are more than just a career training company. With expertise in web development, technology solutions, and a strong network of hiring partners, JobJila provides end-to-end support for individuals and organizations.</p>
     <div class="grid md:grid-cols-3 gap-6">
       <div class="bg-gray-800 p-6 rounded-lg shadow">✔ Industry Experienced Trainers</div>
       <div class="bg-gray-800 p-6 rounded-lg shadow">✔ Proven Track Record in Placements</div>
@@ -177,7 +178,7 @@
   <!-- Portfolio -->
   <section id="portfolio" class="bg-gray-900 py-16">
     <div class="max-w-6xl mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold mb-6 text-yellow-400">Recent Projects</h2>
+      <h2 class="text-2xl font-bold mb-6 text-yellow-400">Recent Projects</h2>
       <div class="grid md:grid-cols-3 gap-6">
         <div class="bg-gray-800 p-6 rounded-lg shadow">NGO Website – Empowering Non-Profits</div>
         <div class="bg-gray-800 p-6 rounded-lg shadow">Corporate Hiring Platform</div>
@@ -189,8 +190,8 @@
   <!-- Contact -->
   <section id="contact" class="py-16 bg-gray-900">
     <div class="max-w-2xl mx-auto text-center px-6">
-      <h2 class="text-3xl font-bold mb-4 text-yellow-400">Get in Touch</h2>
-      <p class="text-gray-300 mb-6">Questions or project requests? Drop us a message.</p>
+      <h2 class="text-2xl font-bold mb-4 text-yellow-400">Get in Touch</h2>
+      <p class="text-base text-gray-300 mb-6">Questions or project requests? Drop us a message.</p>
 
       <form action="https://formsubmit.co/support@jobjila.com" method="POST" class="space-y-4 bg-gray-800 p-8 rounded-2xl shadow-lg">
         <input type="hidden" name="_captcha" value="false">
@@ -209,7 +210,7 @@
   <footer class="bg-black text-gray-400 py-10">
     <div class="max-w-6xl mx-auto px-6 footer-grid">
       <div>
-        <h3 class="text-xl font-bold text-yellow-400 mb-2">JobJila</h3>
+        <h3 class="text-lg font-bold text-yellow-400 mb-2">JobJila</h3>
         <p>Connecting talent with opportunity.</p>
       </div>
       <div>
