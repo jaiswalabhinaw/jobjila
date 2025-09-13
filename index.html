@@ -100,7 +100,11 @@
       display: flex;
       animation: autoScroll 25s linear infinite;
       gap: 1.5rem;
+      will-change: transform;
     }
+
+    /* Fix blank space on mobile */
+    .scrolling-services, .auto-scroll { min-height: 1px; }
 
     /* Small responsive tweaks */
     @media (max-width: 768px) {
