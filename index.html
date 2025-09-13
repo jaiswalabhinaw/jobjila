@@ -35,31 +35,32 @@
     .scrolling-services { 
       overflow-x: auto; 
       display: flex; 
-      gap: 1.5rem; 
+      gap: 1.2rem; 
       padding: 1rem 0; 
       scrollbar-width: thin; 
       scrollbar-color: #facc15 transparent; 
       scroll-behavior: smooth;
     }
-    .scrolling-services::-webkit-scrollbar { height: 8px; }
+    .scrolling-services::-webkit-scrollbar { height: 6px; }
     .scrolling-services::-webkit-scrollbar-thumb { background: #facc15; border-radius: 9999px; }
 
     .service-card {
       flex: 0 0 auto;
-      min-width: 240px;
+      min-width: 160px;
       background: linear-gradient(160deg, #facc15, #f59e0b);
-      padding: 1.5rem;
-      border-radius: 1rem;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.55);
+      padding: 1rem;
+      border-radius: 0.8rem;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.45);
       text-align: center;
       color: #111;
       font-weight: 700;
+      font-size: 0.9rem;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
       white-space: nowrap;
     }
     .service-card:hover {
-      transform: translateY(-6px) scale(1.06);
-      box-shadow: 0 14px 28px rgba(0,0,0,0.65);
+      transform: translateY(-5px) scale(1.04);
+      box-shadow: 0 12px 22px rgba(0,0,0,0.55);
     }
 
     @keyframes autoScroll {
@@ -69,7 +70,7 @@
     .auto-scroll {
       display: flex;
       animation: autoScroll 25s linear infinite;
-      gap: 1.5rem;
+      gap: 1.2rem;
       will-change: transform;
     }
 
@@ -81,7 +82,7 @@
       .hero-section { padding-top: 4.5rem; padding-bottom: 8.5rem; }
       .hero-title { font-size: 1.7rem; line-height: 2.2rem; padding: 0 1rem; }
       .hero-subtitle { font-size: 0.98rem; padding: 0 1.25rem; }
-      .service-card { min-width: 180px; }
+      .service-card { min-width: 140px; font-size: 0.85rem; padding: 0.8rem; }
     }
 
     section { scroll-margin-top: 80px; }
@@ -128,9 +129,9 @@
   <!-- Hero -->
   <section class="hero-section text-center py-20 relative">
     <div class="hero-shine"></div>
-    <h2 class="hero-title text-4xl font-bold text-yellow-400 floating">Shaping Careers & Building Digital Identity</h2>
-    <p class="hero-subtitle text-gray-300 floating">We empower talent with world-class training, freelancer opportunities, and powerful web solutions for businesses.</p>
-    <p class="hero-subtitle secondary floating">No matter your sector—IT, schools, pharma, healthcare, retail, training, home businesses, sales, and more—we guide you in building a digital presence that drives lasting success.</p>
+    <h2 class="hero-title text-4xl font-bold text-yellow-400 floating fade-in">Shaping Careers & Building Digital Identity</h2>
+    <p class="hero-subtitle text-gray-300 floating fade-in" style="animation-delay:0.4s">We empower talent with world-class training, freelancer opportunities, and powerful web solutions for businesses.</p>
+    <p class="hero-subtitle secondary floating fade-in" style="animation-delay:0.8s">No matter your sector—IT, schools, pharma, healthcare, retail, training, home businesses, sales, and more—we guide you in building a digital presence that drives lasting success.</p>
     <div class="hero-fade"></div>
   </section>
 
