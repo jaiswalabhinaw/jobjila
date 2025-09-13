@@ -20,11 +20,37 @@
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-    .rotate-section > div { display: none; opacity: 0; transition: opacity 1s ease-in-out; }
-    .rotate-section > div.active { display: block; opacity: 1; }
-    .fade-slide { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-in-out; }
-    .fade-slide.show { opacity: 1; transform: translateY(0); }
-    .progress-bar { height: 4px; background: #facc15; width: 0%; transition: width linear; }
+
+    /* Hero background animation */
+    .hero-section {
+      background: linear-gradient(-45deg, #1f2937, #111827, #0f172a, #000000);
+      background-size: 400% 400%;
+      animation: gradientShift 12s ease infinite;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .hero-title { margin-bottom: 1rem; }
+    .hero-subtitle { margin-bottom: 2rem; }
+
+    /* Hero buttons */
+    .hero-buttons span {
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      border-radius: 9999px; /* pill shape */
+      background: linear-gradient(135deg, #facc15, #f59e0b);
+      color: #111;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3), 0 2px 4px rgba(0,0,0,0.2);
+      transition: transform 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
+    }
+    .hero-buttons span:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 6px 10px rgba(0,0,0,0.35);
+    }
 
     /* Horizontal scroll for core services */
     .scrolling-services { display: flex; overflow-x: auto; gap: 1rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding-bottom: 1rem; }
@@ -34,26 +60,6 @@
     @keyframes scrollX { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
     .auto-scroll { display: flex; animation: scrollX 20s linear infinite; }
     .auto-scroll:hover { animation-play-state: paused; }
-
-    @media (max-width: 640px) {
-      .hero-title { font-size: 1.8rem; line-height: 2.4rem; margin-bottom: 1rem; }
-      .hero-subtitle { margin-bottom: 2rem; line-height: 1.6rem; }
-      .hero-buttons span {
-        padding: 0.4rem 0.9rem;
-        font-size: 0.85rem;
-        border-radius: 9999px; /* pill shape */
-        background: linear-gradient(135deg, #facc15, #f59e0b);
-        color: #111;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.3), 0 2px 4px rgba(0,0,0,0.2);
-        transition: transform 0.2s, box-shadow 0.2s;
-        white-space: nowrap;
-      }
-      .hero-buttons span:hover {
-        transform: translateY(-2px) scale(1.05);
-        box-shadow: 0 6px 10px rgba(0,0,0,0.35);
-      }
-      .hero-buttons { flex-direction: row; overflow-x: auto; gap: 0.8rem; padding: 0 1rem; justify-content: flex-start; }
-    }
   </style>
 </head>
 <body class="bg-gray-900 text-white">
@@ -87,9 +93,9 @@
   </header>
 
   <!-- Hero -->
-  <section class="bg-gradient-to-r from-gray-800 to-black text-center py-20">
-    <h2 class="hero-title text-4xl font-bold text-yellow-400">Your Growth, Our Mission</h2>
-    <p class="hero-subtitle text-gray-300 mb-8">Transform careers and businesses with world-class training, freelance opportunities, and modern digital solutions.</p>
+  <section class="hero-section text-center py-20">
+    <h2 class="hero-title text-4xl font-bold text-yellow-400">Shaping Careers & Building Digital Futures</h2>
+    <p class="hero-subtitle text-gray-300 mb-8">We empower talent with world-class training, freelancer opportunities, and powerful web solutions for businesses.</p>
     <div class="hero-buttons flex flex-wrap justify-center gap-4 mb-8">
       <span class="font-semibold">Corporate Training</span>
       <span class="font-semibold">Freelancer Solutions</span>
