@@ -77,15 +77,16 @@
         margin-bottom: 2rem;
       }
       .hero-buttons span {
-        width: 100%;
-        padding: 1.2rem;
-        font-size: 1.2rem;
-        border-radius: 0.75rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.95rem;
+        border-radius: 9999px; /* pill shape */
       }
       .hero-buttons {
-        flex-direction: column;
-        gap: 1.2rem;
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 0.8rem;
         padding: 0 1rem;
+        justify-content: flex-start;
       }
     }
   </style>
@@ -123,10 +124,10 @@
   <!-- Hero -->
   <section class="bg-gradient-to-r from-gray-800 to-black text-center py-20">
     <h2 class="hero-title text-4xl font-bold mb-6 text-yellow-400">Empowering Careers, Skills & Growth</h2>
-    <div class="hero-buttons flex flex-col sm:flex-row justify-center gap-4 mb-8">
-      <span class="bg-yellow-400 text-black font-semibold px-4 py-2 rounded-lg shadow">Corporate Training</span>
-      <span class="bg-yellow-400 text-black font-semibold px-4 py-2 rounded-lg shadow">Freelancer Solutions</span>
-      <span class="bg-yellow-400 text-black font-semibold px-4 py-2 rounded-lg shadow">Web Development</span>
+    <div class="hero-buttons flex flex-wrap justify-center gap-4 mb-8">
+      <span class="bg-yellow-400 text-black font-semibold px-4 py-2 rounded-full shadow whitespace-nowrap">Corporate Training</span>
+      <span class="bg-yellow-400 text-black font-semibold px-4 py-2 rounded-full shadow whitespace-nowrap">Freelancer Solutions</span>
+      <span class="bg-yellow-400 text-black font-semibold px-4 py-2 rounded-full shadow whitespace-nowrap">Web Development</span>
     </div>
   </section>
 
