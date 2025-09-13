@@ -24,37 +24,6 @@
     .hero-title { margin-bottom: 2rem; }
     .hero-subtitle { margin-bottom: 2.5rem; color: rgba(243,244,246,0.9); }
 
-    /* Hero buttons */
-    .hero-buttons {
-      margin-top: 2rem;
-      display: flex;
-      justify-content: center;
-      gap: 0.75rem;
-      position: absolute;
-      bottom: 1.2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 2;
-      backdrop-filter: blur(6px);
-      overflow-x: auto;
-      padding: 0 0.5rem;
-      max-width: 100%;
-    }
-    .hero-buttons span {
-      padding: 0.9rem 1.6rem;
-      font-size: 0.9rem;
-      border-radius: 9999px;
-      background: linear-gradient(135deg, #facc15, #f59e0b);
-      color: #111;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.35);
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
-      white-space: nowrap;
-      display: inline-flex;
-      align-items: center;
-      flex-shrink: 0;
-    }
-    .hero-buttons span:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 10px 20px rgba(0,0,0,0.45); }
-
     /* soft shine */
     .hero-shine { position: absolute; top: -20%; left: -10%; width: 140%; height: 180%; background: radial-gradient(ellipse at 20% 20%, rgba(255,255,255,0.05), transparent 15%), linear-gradient(90deg, rgba(255,255,255,0.02), transparent); pointer-events: none; mix-blend-mode: screen; }
 
@@ -111,8 +80,6 @@
       .hero-section { padding-top: 4.5rem; padding-bottom: 8.5rem; }
       .hero-title { font-size: 1.7rem; line-height: 2.2rem; padding: 0 1rem; }
       .hero-subtitle { font-size: 0.98rem; padding: 0 1.25rem; }
-      .hero-buttons { bottom: .8rem; gap: .5rem; }
-      .hero-buttons span { font-size: 0.8rem; padding: 0.7rem 1.4rem; }
       .service-card { min-width: 180px; }
     }
 
@@ -155,7 +122,6 @@
     <div class="hero-shine"></div>
     <h2 class="hero-title text-4xl font-bold text-yellow-400 floating">Shaping Careers & Building Digital Identity</h2>
     <p class="hero-subtitle text-gray-300 mb-8 floating">We empower talent with world-class training, freelancer opportunities, and powerful web solutions for businesses.</p>
-
     <div class="hero-fade"></div>
   </section>
 
@@ -170,7 +136,6 @@
         <div class="service-card">Leadership Development</div>
         <div class="service-card">Website Development</div>
         <div class="service-card">Tech Solution Consulting</div>
-        <div class="service-card">Consulting</div>
       </div>
     </div>
   </section>
@@ -256,13 +221,12 @@
     const mobileMenu = document.getElementById('mobile-menu');
     menuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
 
-    // Pause auto scroll on hover/touch
+    // Stop auto scroll on hover/touch and do not resume
     const autoScroll = document.querySelector('.auto-scroll');
     const scrollingServices = document.querySelector('.scrolling-services');
-    scrollingServices.addEventListener('mouseenter', () => autoScroll.style.animationPlayState = 'paused');
-    scrollingServices.addEventListener('mouseleave', () => autoScroll.style.animationPlayState = 'running');
-    scrollingServices.addEventListener('touchstart', () => autoScroll.style.animationPlayState = 'paused');
-    scrollingServices.addEventListener('touchend', () => autoScroll.style.animationPlayState = 'running');
+    function stopScroll(){ autoScroll.style.animationPlayState = 'paused'; }
+    scrollingServices.addEventListener('mouseenter', stopScroll);
+    scrollingServices.addEventListener('touchstart', stopScroll);
   </script>
 </body>
 </html>
