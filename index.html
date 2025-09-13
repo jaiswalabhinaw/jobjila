@@ -35,12 +35,21 @@
       100% { background-position: 0% 50%; }
     }
 
+    /* Floating effect for hero */
+    .floating {
+      animation: float 4s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
     .hero-title { margin-bottom: 1rem; }
     .hero-subtitle { margin-bottom: 2.5rem; }
 
     /* Hero buttons */
     .hero-buttons {
-      margin-top: 3rem;
+      margin-top: 6rem; /* moved lower */
       position: relative;
       z-index: 2;
     }
@@ -112,8 +121,8 @@
 
   <!-- Hero -->
   <section class="hero-section text-center py-20 relative">
-    <h2 class="hero-title text-4xl font-bold text-yellow-400">Shaping Careers & Building Digital Identity</h2>
-    <p class="hero-subtitle text-gray-300 mb-8">We empower talent with world-class training, freelancer opportunities, and powerful web solutions for businesses.</p>
+    <h2 class="hero-title text-4xl font-bold text-yellow-400 floating">Shaping Careers & Building Digital Identity</h2>
+    <p class="hero-subtitle text-gray-300 mb-8 floating">We empower talent with world-class training, freelancer opportunities, and powerful web solutions for businesses.</p>
     <div class="hero-buttons flex flex-wrap justify-center gap-4 mb-8">
       <span class="font-semibold">Corporate Training</span>
       <span class="font-semibold">Freelancer Solutions</span>
