@@ -26,6 +26,8 @@
       background: linear-gradient(-45deg, #1f2937, #111827, #0f172a, #000000);
       background-size: 400% 400%;
       animation: gradientShift 12s ease infinite;
+      position: relative;
+      overflow: hidden;
     }
     @keyframes gradientShift {
       0% { background-position: 0% 50%; }
@@ -34,9 +36,14 @@
     }
 
     .hero-title { margin-bottom: 1rem; }
-    .hero-subtitle { margin-bottom: 2rem; }
+    .hero-subtitle { margin-bottom: 2.5rem; }
 
     /* Hero buttons */
+    .hero-buttons {
+      margin-top: 3rem;
+      position: relative;
+      z-index: 2;
+    }
     .hero-buttons span {
       padding: 0.5rem 1rem;
       font-size: 0.9rem;
@@ -49,12 +56,18 @@
     }
     .hero-buttons span:hover {
       transform: translateY(-2px) scale(1.05);
-      box-shadow: 0 6px 10px rgba(0,0,0,0.35);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.4), 0 4px 6px rgba(0,0,0,0.25);
     }
 
-    /* Position hero buttons lower */
-    .hero-buttons {
-      margin-top: 2rem;
+    /* Fade effect at bottom of hero */
+    .hero-fade {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      z-index: 1;
     }
 
     /* Horizontal scroll for core services */
@@ -98,7 +111,7 @@
   </header>
 
   <!-- Hero -->
-  <section class="hero-section text-center py-20">
+  <section class="hero-section text-center py-20 relative">
     <h2 class="hero-title text-4xl font-bold text-yellow-400">Shaping Careers & Building Digital Identity</h2>
     <p class="hero-subtitle text-gray-300 mb-8">We empower talent with world-class training, freelancer opportunities, and powerful web solutions for businesses.</p>
     <div class="hero-buttons flex flex-wrap justify-center gap-4 mb-8">
@@ -106,6 +119,7 @@
       <span class="font-semibold">Freelancer Solutions</span>
       <span class="font-semibold">Web Development</span>
     </div>
+    <div class="hero-fade"></div>
   </section>
 
   <!-- Core Services -->
