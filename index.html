@@ -41,7 +41,7 @@
       max-width: 100%;
     }
     .hero-buttons span {
-      padding: 0.7rem 1.4rem;
+      padding: 0.9rem 1.6rem;
       font-size: 0.9rem;
       border-radius: 9999px;
       background: linear-gradient(135deg, #facc15, #f59e0b);
@@ -62,11 +62,28 @@
     .hero-fade { position: absolute; bottom: 0; left: 0; width: 100%; height: 6rem; background: linear-gradient(to top, rgba(0,0,0,0.75), transparent); z-index: 1; }
 
     /* Core services scroll */
-    .scrolling-services { overflow-x: auto; display: flex; gap: 1rem; padding: 1rem 0; scrollbar-width: thin; scrollbar-color: #facc15 transparent; }
+    .scrolling-services { 
+      overflow-x: auto; 
+      display: flex; 
+      gap: 1rem; 
+      padding: 1rem 0; 
+      scrollbar-width: thin; 
+      scrollbar-color: #facc15 transparent; 
+      scroll-behavior: smooth;
+    }
     .scrolling-services::-webkit-scrollbar { height: 8px; }
     .scrolling-services::-webkit-scrollbar-thumb { background: #facc15; border-radius: 9999px; }
     .service-card { flex: 0 0 auto; min-width: 220px; background: linear-gradient(145deg, #facc15, #f59e0b); padding: 1.25rem; border-radius: .75rem; box-shadow: 0 6px 18px rgba(2,6,23,0.6); text-align: center; color: #111; font-weight: 600; transition: transform 0.2s ease, box-shadow 0.2s ease; white-space: nowrap; }
     .service-card:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 12px 25px rgba(0,0,0,0.5); }
+
+    @keyframes autoScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .auto-scroll {
+      display: flex;
+      animation: autoScroll 25s linear infinite;
+    }
 
     /* Small responsive tweaks */
     @media (max-width: 768px) {
@@ -74,14 +91,12 @@
       .hero-title { font-size: 1.7rem; line-height: 2.2rem; padding: 0 1rem; }
       .hero-subtitle { font-size: 0.98rem; padding: 0 1.25rem; }
       .hero-buttons { bottom: .8rem; gap: .5rem; }
-      .hero-buttons span { font-size: 0.8rem; padding: 0.6rem 1.2rem; }
+      .hero-buttons span { font-size: 0.8rem; padding: 0.7rem 1.4rem; }
       .service-card { min-width: 160px; }
     }
 
-    /* Section spacing */
     section { scroll-margin-top: 80px; }
 
-    /* Footer */
     .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; }
     @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; text-align: center; } }
   </style>
@@ -106,7 +121,6 @@
       <button id="menu-btn" class="md:hidden text-yellow-400 focus:outline-none">☰</button>
     </div>
 
-    <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden bg-gray-700 px-6 py-4 space-y-2">
       <a href="#about" class="block hover:text-yellow-400">About</a>
       <a href="#services" class="block hover:text-yellow-400">Services</a>
@@ -121,7 +135,6 @@
     <h2 class="hero-title text-4xl font-bold text-yellow-400 floating">Shaping Careers & Building Digital Identity</h2>
     <p class="hero-subtitle text-gray-300 mb-8 floating">We empower talent with world-class training, freelancer opportunities, and powerful web solutions for businesses.</p>
 
-    <!-- Hero badges (app-like) -->
     <div class="hero-buttons">
       <span class="font-semibold">Corporate Training</span>
       <span class="font-semibold">Freelancer Solutions</span>
@@ -131,17 +144,27 @@
     <div class="hero-fade"></div>
   </section>
 
-  <!-- Core Services (placed just after hero) -->
+  <!-- Core Services -->
   <section id="services" class="max-w-6xl mx-auto px-6 py-16 text-center">
     <h2 class="text-3xl font-bold mb-6 text-yellow-400">Our Core Services</h2>
     <div class="scrolling-services">
-      <div class="service-card">Corporate Training</div>
-      <div class="service-card">Hiring</div>
-      <div class="service-card">Freelancers</div>
-      <div class="service-card">Leadership Development</div>
-      <div class="service-card">Website Development</div>
-      <div class="service-card">Tech Solution Consulting</div>
-      <div class="service-card">Consulting</div>
+      <div class="auto-scroll">
+        <div class="service-card">Corporate Training</div>
+        <div class="service-card">Hiring</div>
+        <div class="service-card">Freelancers</div>
+        <div class="service-card">Leadership Development</div>
+        <div class="service-card">Website Development</div>
+        <div class="service-card">Tech Solution Consulting</div>
+        <div class="service-card">Consulting</div>
+        <!-- duplicate set for smooth infinite loop -->
+        <div class="service-card">Corporate Training</div>
+        <div class="service-card">Hiring</div>
+        <div class="service-card">Freelancers</div>
+        <div class="service-card">Leadership Development</div>
+        <div class="service-card">Website Development</div>
+        <div class="service-card">Tech Solution Consulting</div>
+        <div class="service-card">Consulting</div>
+      </div>
     </div>
   </section>
 
@@ -225,6 +248,14 @@
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     menuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+
+    // Pause auto scroll on hover/touch
+    const autoScroll = document.querySelector('.auto-scroll');
+    const scrollingServices = document.querySelector('.scrolling-services');
+    scrollingServices.addEventListener('mouseenter', () => autoScroll.style.animationPlayState = 'paused');
+    scrollingServices.addEventListener('mouseleave', () => autoScroll.style.animationPlayState = 'running');
+    scrollingServices.addEventListener('touchstart', () => autoScroll.style.animationPlayState = 'paused');
+    scrollingServices.addEventListener('touchend', () => autoScroll.style.animationPlayState = 'running');
   </script>
 </body>
 </html>
