@@ -36,6 +36,9 @@
       transform: translateX(-50%);
       z-index: 2;
       backdrop-filter: blur(6px);
+      overflow-x: auto;
+      padding: 0 0.5rem;
+      max-width: 100%;
     }
     .hero-buttons span {
       padding: 0.7rem 1.4rem;
@@ -48,6 +51,7 @@
       white-space: nowrap;
       display: inline-flex;
       align-items: center;
+      flex-shrink: 0;
     }
     .hero-buttons span:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 10px 20px rgba(0,0,0,0.45); }
 
@@ -61,7 +65,7 @@
     .scrolling-services { overflow-x: auto; display: flex; gap: 1rem; padding: 1rem 0; scrollbar-width: thin; scrollbar-color: #facc15 transparent; }
     .scrolling-services::-webkit-scrollbar { height: 8px; }
     .scrolling-services::-webkit-scrollbar-thumb { background: #facc15; border-radius: 9999px; }
-    .service-card { flex: 0 0 auto; min-width: 220px; background: linear-gradient(145deg, #facc15, #f59e0b); padding: 1.25rem; border-radius: .75rem; box-shadow: 0 6px 18px rgba(2,6,23,0.6); text-align: center; color: #111; font-weight: 600; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .service-card { flex: 0 0 auto; min-width: 220px; background: linear-gradient(145deg, #facc15, #f59e0b); padding: 1.25rem; border-radius: .75rem; box-shadow: 0 6px 18px rgba(2,6,23,0.6); text-align: center; color: #111; font-weight: 600; transition: transform 0.2s ease, box-shadow 0.2s ease; white-space: nowrap; }
     .service-card:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 12px 25px rgba(0,0,0,0.5); }
 
     /* Small responsive tweaks */
@@ -70,8 +74,8 @@
       .hero-title { font-size: 1.7rem; line-height: 2.2rem; padding: 0 1rem; }
       .hero-subtitle { font-size: 0.98rem; padding: 0 1.25rem; }
       .hero-buttons { bottom: .8rem; gap: .5rem; }
-      .hero-buttons span { font-size: 0.8rem; padding: 0.5rem 1rem; }
-      .service-card { min-width: 180px; }
+      .hero-buttons span { font-size: 0.8rem; padding: 0.6rem 1.2rem; }
+      .service-card { min-width: 160px; }
     }
 
     /* Section spacing */
