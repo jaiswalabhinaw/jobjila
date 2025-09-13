@@ -21,7 +21,7 @@
     .floating { animation: float 4s ease-in-out infinite; }
     @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
-    .hero-title { margin-bottom: 1rem; }
+    .hero-title { margin-bottom: 2rem; }
     .hero-subtitle { margin-bottom: 2.5rem; color: rgba(243,244,246,0.9); }
 
     /* Hero buttons */
@@ -38,8 +38,8 @@
       backdrop-filter: blur(6px);
     }
     .hero-buttons span {
-      padding: 0.45rem 1rem;
-      font-size: 0.88rem;
+      padding: 0.7rem 1.4rem; /* Increased height */
+      font-size: 0.9rem;
       border-radius: 9999px;
       background: linear-gradient(135deg, #facc15, #f59e0b);
       color: #111;
@@ -48,7 +48,6 @@
       white-space: nowrap;
       display: inline-flex;
       align-items: center;
-      gap: .5rem;
     }
     .hero-buttons span:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 10px 20px rgba(0,0,0,0.45); }
 
@@ -59,13 +58,12 @@
     .hero-fade { position: absolute; bottom: 0; left: 0; width: 100%; height: 6rem; background: linear-gradient(to top, rgba(0,0,0,0.75), transparent); z-index: 1; }
 
     /* Core services scroll */
-    .scrolling-services { display: flex; overflow-x: auto; gap: 1rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding-bottom: 1rem; }
-    .service-card { flex: 0 0 auto; min-width: 220px; scroll-snap-align: start; background: #1f2937; padding: 1.25rem; border-radius: .75rem; box-shadow: 0 6px 18px rgba(2,6,23,0.6); }
+    .scrolling-services { overflow: hidden; position: relative; }
+    .scrolling-wrapper { display: flex; width: max-content; animation: scrollX 35s linear infinite; }
+    .scrolling-wrapper:hover { animation-play-state: paused; }
+    .service-card { flex: 0 0 auto; min-width: 220px; margin-right: 1rem; background: #1f2937; padding: 1.25rem; border-radius: .75rem; box-shadow: 0 6px 18px rgba(2,6,23,0.6); text-align: center; }
 
-    /* Auto-scroll animation (desktop) */
     @keyframes scrollX { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    .auto-scroll { display: flex; animation: scrollX 28s linear infinite; }
-    .auto-scroll:hover { animation-play-state: paused; }
 
     /* Small responsive tweaks */
     @media (max-width: 768px) {
@@ -73,7 +71,7 @@
       .hero-title { font-size: 1.7rem; line-height: 2.2rem; padding: 0 1rem; }
       .hero-subtitle { font-size: 0.98rem; padding: 0 1.25rem; }
       .hero-buttons { bottom: .8rem; gap: .5rem; }
-      .hero-buttons span { font-size: 0.72rem; padding: 0.28rem .8rem; }
+      .hero-buttons span { font-size: 0.8rem; padding: 0.5rem 1rem; }
       .service-card { min-width: 180px; }
     }
 
@@ -134,7 +132,7 @@
   <section id="services" class="max-w-6xl mx-auto px-6 py-16 text-center">
     <h2 class="text-3xl font-bold mb-6 text-yellow-400">Our Core Services</h2>
     <div class="scrolling-services">
-      <div class="auto-scroll">
+      <div class="scrolling-wrapper">
         <div class="service-card">Corporate Training</div>
         <div class="service-card">Hiring</div>
         <div class="service-card">Freelancers</div>
