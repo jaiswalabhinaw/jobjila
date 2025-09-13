@@ -20,7 +20,6 @@
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-    /* Rotating section animation */
     .rotate-section > div {
       display: none;
       opacity: 0;
@@ -30,7 +29,6 @@
       display: block;
       opacity: 1;
     }
-    /* Slide-up card animation */
     .fade-slide {
       opacity: 0;
       transform: translateY(30px);
@@ -40,7 +38,6 @@
       opacity: 1;
       transform: translateY(0);
     }
-    /* Progress Bar */
     .progress-bar {
       height: 4px;
       background: #facc15;
@@ -84,12 +81,7 @@
     <h2 class="text-4xl font-bold mb-6 text-yellow-400">Empowering Careers, Skills & Growth</h2>
     <div class="flex flex-wrap justify-center gap-4 mb-8">
       <span class="bg-yellow-400 text-black font-semibold px-4 py-2 rounded-lg shadow">Corporate Training</span>
-      <span class="bg-yellow-400 text-black font-semibold px-4 py-2 rounded-lg shadow">Hiring</span>
-      <span class="bg-yellow-400 text-black font-semibold px-4 py-2 rounded-lg shadow">Freelancers</span>
-      <span class="bg-yellow-400 text-black font-semibold px-4 py-2 rounded-lg shadow">Leadership Development</span>
-      <span class="bg-yellow-400 text-black font-semibold px-4 py-2 rounded-lg shadow">Website Development</span>
-      <span class="bg-yellow-400 text-black font-semibold px-4 py-2 rounded-lg shadow">Tech Solution Consulting</span>
-      <span class="bg-yellow-400 text-black font-semibold px-4 py-2 rounded-lg shadow">Consulting</span>
+      <span class="bg-yellow-400 text-black font-semibold px-4 py-2 rounded-lg shadow">Freelancer Solutions</span>
       <span class="bg-yellow-400 text-black font-semibold px-4 py-2 rounded-lg shadow">Web Development</span>
     </div>
   </section>
@@ -97,7 +89,7 @@
   <!-- Core Services -->
   <section id="services" class="max-w-6xl mx-auto px-6 py-16 text-center">
     <h2 class="text-3xl font-bold mb-6 text-yellow-400">Our Core Services</h2>
-    <div class="grid md:grid-cols-4 gap-6">
+    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6">
       <div class="bg-gray-800 p-6 rounded-lg shadow">Corporate Training</div>
       <div class="bg-gray-800 p-6 rounded-lg shadow">Hiring</div>
       <div class="bg-gray-800 p-6 rounded-lg shadow">Freelancers</div>
@@ -174,7 +166,6 @@
 
   <!-- Inline JS -->
   <script>
-    // Mobile menu toggle
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     menuBtn.addEventListener('click', () => {
