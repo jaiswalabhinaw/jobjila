@@ -21,9 +21,9 @@
     .floating { animation: float 4s ease-in-out infinite; }
     @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
-    .hero-title { margin-bottom: 1.2rem; font-family: 'Segoe UI', sans-serif; font-size: 1.7rem; line-height: 2.2rem; }
-    .hero-subtitle { margin-bottom: 0.9rem; color: rgba(243,244,246,0.85); font-family: 'Segoe UI', sans-serif; font-size: 1rem; line-height: 1.5rem; max-width: 700px; margin-left: auto; margin-right: auto; }
-    .hero-subtitle.secondary { font-size: 0.95rem; color: rgba(243,244,246,0.7); max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.5rem; font-family: 'Segoe UI', sans-serif; }
+    .hero-title { margin-bottom: 1.2rem; font-family: 'Segoe UI', sans-serif; font-size: 1.5rem; line-height: 2rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+    .hero-subtitle { margin-bottom: 0.9rem; color: rgba(243,244,246,0.85); font-family: 'Segoe UI', sans-serif; font-size: 0.95rem; line-height: 1.5rem; max-width: 600px; margin-left: auto; margin-right: auto; text-align: center; }
+    .hero-subtitle.secondary { font-size: 0.9rem; color: rgba(243,244,246,0.7); max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.4rem; font-family: 'Segoe UI', sans-serif; text-align: center; }
 
     /* soft shine */
     .hero-shine { position: absolute; top: -20%; left: -10%; width: 140%; height: 180%; background: radial-gradient(ellipse at 20% 20%, rgba(255,255,255,0.05), transparent 15%), linear-gradient(90deg, rgba(255,255,255,0.02), transparent); pointer-events: none; mix-blend-mode: screen; }
@@ -80,8 +80,9 @@
     /* Small responsive tweaks */
     @media (max-width: 768px) {
       .hero-section { padding-top: 4.5rem; padding-bottom: 8.5rem; }
-      .hero-title { font-size: 1.4rem; line-height: 1.9rem; padding: 0 1rem; }
-      .hero-subtitle { font-size: 0.9rem; line-height: 1.4rem; padding: 0 1.25rem; }
+      .hero-title { font-size: 1.3rem; line-height: 1.8rem; padding: 0 1rem; }
+      .hero-subtitle { font-size: 0.85rem; line-height: 1.4rem; padding: 0 1.25rem; }
+      .hero-subtitle.secondary { font-size: 0.8rem; line-height: 1.3rem; }
       .service-card { min-width: 140px; font-size: 0.85rem; padding: 0.8rem; }
     }
 
