@@ -44,6 +44,20 @@
       width: 0%;
       transition: width linear;
     }
+    /* Horizontal scroll for core services */
+    .scrolling-services {
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 1rem;
+    }
+    .scrolling-services > div {
+      flex: 0 0 auto;
+      min-width: 200px;
+      scroll-snap-align: start;
+    }
   </style>
 </head>
 <body class="bg-gray-900 text-white">
@@ -79,7 +93,7 @@
   <!-- Hero -->
   <section class="bg-gradient-to-r from-gray-800 to-black text-center py-20">
     <h2 class="text-4xl font-bold mb-6 text-yellow-400">Empowering Careers, Skills & Growth</h2>
-    <div class="flex flex-wrap justify-center gap-4 mb-8">
+    <div class="flex flex-col sm:flex-row justify-center gap-4 mb-8">
       <span class="bg-yellow-400 text-black font-semibold px-4 py-2 rounded-lg shadow">Corporate Training</span>
       <span class="bg-yellow-400 text-black font-semibold px-4 py-2 rounded-lg shadow">Freelancer Solutions</span>
       <span class="bg-yellow-400 text-black font-semibold px-4 py-2 rounded-lg shadow">Web Development</span>
@@ -89,7 +103,7 @@
   <!-- Core Services -->
   <section id="services" class="max-w-6xl mx-auto px-6 py-16 text-center">
     <h2 class="text-3xl font-bold mb-6 text-yellow-400">Our Core Services</h2>
-    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6">
+    <div class="scrolling-services">
       <div class="bg-gray-800 p-6 rounded-lg shadow">Corporate Training</div>
       <div class="bg-gray-800 p-6 rounded-lg shadow">Hiring</div>
       <div class="bg-gray-800 p-6 rounded-lg shadow">Freelancers</div>
