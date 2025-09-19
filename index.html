@@ -1,0 +1,641 @@
+﻿<!-- filepath: c:\Users\Abhinaw Jaiswal\Desktop\multireal\single-file-web-app\index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VR Verified Realty</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    @media (max-width:600px){
+      body{padding-bottom:84px}
+      .mobile-cta-bar{position:fixed;left:0;right:0;bottom:0;z-index:50;background:#fff;border-top:1px solid #e6eaf0;box-shadow:0 -2px 12px rgba(17,24,39,0.08);padding:10px 12px;padding-bottom:calc(10px + env(safe-area-inset-bottom));display:flex;gap:10px;justify-content:space-between;align-items:center}
+      .mobile-cta-bar .btn{flex:1}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">VR</div>
+        <div class="brand-text">
+          <div class="brand-name">VR Verified Realty</div>
+          <div class="brand-sub">Hyperlocal brokers  Trusted deals</div>
+        </div>
+      </div>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="#" class="nav-link">Buy</a></li>
+          <li><a href="#" class="nav-link">Rent</a></li>
+          <li><a href="#" class="nav-link">Brokers</a></li>
+          <li><a href="#" class="nav-link">Sectors</a></li>
+          <li><a href="#" class="nav-link">Post Free</a></li>
+          <li><a href="#" class="nav-link">Login</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button id="brokerLogin" class="btn btn-outline">Broker Login</button>
+        <button id="buyerLogin" class="btn btn-outline">Buyer Login</button>
+        <button id="createProfile" class="btn btn-primary">Create Profile</button>
+        <button id="menuToggle" class="btn menu-toggle" aria-expanded="false" aria-controls="mobileMenu">☰</button>
+      </div>
+    </div>
+
+    <div id="mobileMenu" class="mobile-menu" hidden>
+      <ul>
+        <li><a href="#">Buy</a></li>
+        <li><a href="#">Rent</a></li>
+        <li><a href="#">Sell</a></li>
+        <li><a href="#">Top Broker</a></li>
+        <li><button id="brokerLoginMobile" class="mobile-action">Broker Login</button></li>
+        <li><button id="buyerLoginMobile" class="mobile-action">Buyer Login</button></li>
+        <li><button id="createProfileMobile" class="mobile-action">Create Profile</button></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <section class="hero">
+      <div class="hero-inner">
+        <!-- removed heading + subtitle as requested -->
+
+        <div class="search-card" role="region" aria-labelledby="searchTitle">
+          <h2 id="searchTitle" class="visually-hidden">Search</h2>
+
+          <div class="search-tabs" role="tablist" aria-label="Search tabs">
+            <button class="tab-button active" data-tab="broker" role="tab" aria-selected="true" aria-controls="tab-broker">Search Broker</button>
+            <button class="tab-button" data-tab="property" role="tab" aria-selected="false" aria-controls="tab-property">Search Property</button>
+            <button class="tab-button" data-tab="post" role="tab" aria-selected="false" aria-controls="tab-post">Post Property (Free)</button>
+          </div>
+
+          <form id="unifiedSearchForm" class="unified-search-form" aria-label="Unified search form">
+            <div id="tab-broker" class="tab-panel" role="tabpanel" aria-hidden="false">
+              <div class="panel-row">
+                <label>Location<input name="broker_location" type="search" placeholder="City or ZIP"></label>
+                <label>Specialty<select name="broker_specialty"><option value="">Any</option><option>Residential</option><option>Commercial</option><option>Luxury</option><option>Land</option></select></label>
+                <label>Min rating<select name="broker_minRating"><option value="">Any</option><option value="5">5</option><option value="4">4</option><option value="3">3</option></select></label>
+              </div>
+            </div>
+
+            <div id="tab-property" class="tab-panel hidden" role="tabpanel" aria-hidden="true">
+              <div class="panel-row">
+                <label>Location<input name="prop_location" type="search" placeholder="City or ZIP"></label>
+                <label>Beds<select name="prop_beds"><option value="">Any</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option></select></label>
+                <label>Max price (USD)<input name="prop_maxPrice" type="number" min="0" placeholder="e.g. 1500"></label>
+                <label>Property type<select name="prop_type"><option value="">Any</option><option>Apartment</option><option>House</option><option>Townhouse</option></select></label>
+              </div>
+            </div>
+
+            <div id="tab-post" class="tab-panel hidden" role="tabpanel" aria-hidden="true">
+              <div class="panel-row">
+                <label>Title<input name="post_title" type="text" placeholder="e.g. 2BHK Apartment"></label>
+                <label>Location<input name="post_location" type="search" placeholder="City or Sector"></label>
+                <label>Price (₹)<input name="post_price" type="number" min="0" placeholder="e.g. 22000"></label>
+                <label>Type<select name="post_type"><option value="Rent">Rent</option><option value="Sale">Sale</option></select></label>
+              </div>
+              <p style="margin:8px 0 0;color:#6b7280">Free listing for owners • Appears in matching alerts</p>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Search</button>
+              <button type="reset" class="btn btn-outline">Reset</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- hero shows premium card list on the right/below (depending on screen) -->
+        <div class="hero-premium-wrap">
+          <div id="premiumList" class="premium-list-hero" aria-label="Premium brokers"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="preferredBrokers" class="content">
+      <h2>VR Preferred Brokers</h2>
+      <div id="pbScroll" class="pb-scroll" aria-label="Preferred broker list" role="list" style="display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px"></div>
+    </section>
+
+    <section id="liveMarketplace" class="content">
+      <h2>Live Properties</h2>
+      <div class="lm-controls" role="tablist" aria-label="Property source toggle" style="display:flex;gap:8px;margin-bottom:10px">
+        <button class="btn btn-primary lm-toggle" data-lane="owners" aria-selected="true" style="flex:1">From Owners</button>
+        <button class="btn btn-outline lm-toggle" data-lane="brokers" aria-selected="false" style="flex:1">From Brokers</button>
+      </div>
+      <div id="ownersRail" class="lm-rail" role="list" style="display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none"></div>
+      <div id="brokersRail" class="lm-rail hidden" role="list" style="display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none"></div>
+    </section>
+
+    <section id="trustBar" class="content">
+      <h2 class="visually-hidden">Trust Bar</h2>
+      <p style="margin:0;display:flex;gap:10px;flex-wrap:wrap;color:#6b7280">
+        <span>✅ Verified Brokers</span>
+        <span>📊 Real Rent Trends</span>
+        <span>⭐ Reviews</span>
+        <span>🏘 Sector Insights</span>
+      </p>
+    </section>
+
+    <section id="buyerBenefits" class="content">
+      <h2>For Buyers</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px">
+        <div class="tab-panel">
+          <h3 style="margin:0 0 8px">Verified Brokers Only</h3>
+          <p style="margin:0;color:#6b7280">Deal with trusted, rated brokers and owners. No spam or fake listings.</p>
+        </div>
+        <div class="tab-panel">
+          <h3 style="margin:0 0 8px">Real Rent/Price Trends</h3>
+          <p style="margin:0;color:#6b7280">Understand true market ranges and closed-deal insights before you call.</p>
+        </div>
+        <div class="tab-panel">
+          <h3 style="margin:0 0 8px">Save & Get Alerts</h3>
+          <p style="margin:0;color:#6b7280">Save searches and receive instant alerts for matching properties.</p>
+        </div>
+        <div class="tab-panel">
+          <h3 style="margin:0 0 8px">Safe Chat & Calls</h3>
+          <p style="margin:0;color:#6b7280">Connect via verified profiles with privacy-first chat/call options.</p>
+        </div>
+      </div>
+      <p><button class="btn btn-primary">Sign Up Free</button></p>
+    </section>
+
+    <section id="liveDemand" class="content">
+      <h2>Live Demand</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px">
+        <div class="tab-panel">
+          <h3 style="margin:0 0 8px">Happening Right Now</h3>
+          <p id="ldStat1" class="stats">42 buyers searched 2BHK in Sector 62 today</p>
+          <p id="ldStat2" class="stats">18 new flats listed in the last 24 hours</p>
+          <p style="margin:0"><button class="btn btn-outline">Don’t Miss Out — Register Free</button></p>
+        </div>
+        <div class="tab-panel">
+          <h3 style="margin:0 0 8px">Popular Sectors</h3>
+          <ul style="margin:0 0 10px 18px">
+            <li>Sector 137 — High rental activity</li>
+            <li>Sector 62 — Strong demand for 2BHK</li>
+            <li>Sector 150 — Premium inventory trending</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="brokerBenefits" class="content">
+      <h2>For Brokers</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px">
+        <div class="tab-panel">
+          <h3 style="margin:0 0 8px">Verified Digital Identity</h3>
+          <ul style="margin:0 0 10px 18px">
+            <li>Profile with photo, firm, sectors served, and deals</li>
+            <li>KYC/RERA badges and Trust Score</li>
+            <li>Shareable mini-website link</li>
+          </ul>
+        </div>
+        <div class="tab-panel">
+          <h3 style="margin:0 0 8px">Leads on WhatsApp</h3>
+          <ul style="margin:0 0 10px 18px">
+            <li>Instant verified leads with simple built-in CRM</li>
+            <li>Response rate badge and reminders</li>
+            <li>Analytics: views, enquiries, conversions</li>
+          </ul>
+        </div>
+        <div class="tab-panel">
+          <h3 style="margin:0 0 8px">Grow & Rank Higher</h3>
+          <ul style="margin:0 0 10px 18px">
+            <li>Reviews, Trust Score, and Top Broker awards</li>
+            <li>Premium: sector exclusivity and top placement</li>
+            <li>Feature listings and campaigns</li>
+          </ul>
+        </div>
+      </div>
+      <p><button class="btn btn-primary">Create My Broker Profile</button></p>
+    </section>
+
+    <section id="conversionHighlights" class="content" style="background:var(--sec-buyer);border-radius:12px;padding:16px">
+      <h2>Highlights</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px">
+        <div class="tab-panel">
+          <h3 style="margin:0 0 8px">Why Register?</h3>
+          <ul style="margin:0 0 10px 18px">
+            <li>Unlock verified broker details and contact</li>
+            <li>See true rent/price trends and closed-deal insights</li>
+            <li>Get instant WhatsApp/email alerts for matches</li>
+            <li>Save searches and compare sectors, brokers, properties</li>
+            <li>Download the free Rent/Price Guide after signup</li>
+            <li>Safe chat/call via verified profiles</li>
+          </ul>
+          <button class="btn btn-primary">Sign Up to Unlock</button>
+        </div>
+        <div class="tab-panel">
+          <h3 style="margin:0 0 8px">Happening Now</h3>
+          <p id="fomo1" class="stats"></p>
+          <p id="fomo2" class="stats"></p>
+          <button class="btn btn-outline">Don’t Miss Out — Register Free</button>
+        </div>
+        <div class="tab-panel">
+          <h3 style="margin:0 0 8px">Grow Your Brand, Not Just Leads</h3>
+          <ul style="margin:0 0 10px 18px">
+            <li>Create a verified profile (photo, bio, sectors, deals)</li>
+            <li>Get verified leads on WhatsApp + built-in CRM</li>
+            <li>Earn reviews, Trust Score, and "Top Broker" awards</li>
+            <li>Analytics: views, enquiries, conversions</li>
+            <li>Premium: sector exclusivity and top placement</li>
+          </ul>
+          <button class="btn btn-primary">Create My Broker Profile</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="ownerBenefits" class="content">
+      <h2>For Owners</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px">
+        <div class="tab-panel">
+          <h3 style="margin:0 0 6px">🆓 Post Free. No Hidden Fees.</h3>
+          <p style="margin:0;color:#6b7280">Go live in minutes with a clean, simple form.</p>
+        </div>
+        <div class="tab-panel">
+          <h3 style="margin:0 0 6px">💬 Verified Leads on WhatsApp</h3>
+          <p style="margin:0;color:#6b7280">Serious buyers/tenants delivered instantly.</p>
+        </div>
+        <div class="tab-panel">
+          <h3 style="margin:0 0 6px">📣 Boosted Sector Alerts</h3>
+          <p style="margin:0;color:#6b7280">Your property appears in matching alerts.</p>
+        </div>
+        <div class="tab-panel">
+          <h3 style="margin:0 0 6px">✅ Verified Owner Badge</h3>
+          <p style="margin:0;color:#6b7280">Stand out and build instant trust.</p>
+        </div>
+        <div class="tab-panel">
+          <h3 style="margin:0 0 6px">📈 Performance Dashboard</h3>
+          <p style="margin:0;color:#6b7280">Track views and enquiries in one place.</p>
+        </div>
+      </div>
+      <p style="margin-top:12px"><button class="btn btn-primary">Post My Property Free</button></p>
+    </section>
+
+    <section id="brokerPitch" class="content">
+      <h2>For Brokers: Build Your Digital Identity</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px">
+        <div class="tab-panel">
+          <h3 style="margin:0 0 8px">Create Your Digital Profile</h3>
+          <ul style="margin:0 0 10px 18px">
+            <li>Show photo, firm, years, sectors served, closed deals</li>
+            <li>Collect ratings and reviews to build a Trust Score</li>
+            <li>Share a mini-website link (your profile URL)</li>
+          </ul>
+        </div>
+        <div class="tab-panel">
+          <h3 style="margin:0 0 8px">Post Projects & Listings</h3>
+          <ul style="margin:0 0 10px 18px">
+            <li>Add properties with verified photos and video walkthroughs</li>
+            <li>Auto-generate WhatsApp brochures and catalogues</li>
+            <li>Pin featured projects and campaigns</li>
+          </ul>
+        </div>
+        <div class="tab-panel">
+          <h3 style="margin:0 0 8px">Reach Buyers Directly</h3>
+          <ul style="margin:0 0 10px 18px">
+            <li>Leads delivered on WhatsApp for instant response</li>
+            <li>Simple CRM to track new, in‑progress, and closed leads</li>
+            <li>Response rate badge and auto‑reminders to boost follow‑ups</li>
+          </ul>
+        </div>
+        <div class="tab-panel">
+          <h3 style="margin:0 0 8px">Win Trust & Rank Higher</h3>
+          <ul style="margin:0 0 10px 18px">
+            <li>RERA/KYC badge and verified deal closure stats</li>
+            <li>Top Broker awards and monthly highlights</li>
+            <li>Sector exclusivity with premium placement</li>
+          </ul>
+        </div>
+      </div>
+      <p><button class="btn btn-primary">Create My Broker Profile</button></p>
+    </section>
+
+    <section id="innovationSpotlight" class="content">
+      <h2>Innovation Spotlight</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px">
+        <div class="tab-panel">
+          <h3 style="margin:0 0 8px">Sector Exclusivity Countdown</h3>
+          <p style="margin:0 0 8px;color:#92400e">Only 1 Premium Spot Left in Sector 137</p>
+          <p style="margin:0 0 10px;color:#6b7280">Reserve your area to appear first across searches and alerts.</p>
+          <button class="btn btn-outline">Claim My Sector</button>
+        </div>
+        <div class="tab-panel">
+          <h3 style="margin:0 0 8px">Live Buyer Demand</h3>
+          <p style="margin:0 0 8px" id="brokerDemand1">42 buyers searched 2BHK in Sector 62 today</p>
+          <p style="margin:0 0 10px" id="brokerDemand2">18 new leads generated in the last 24 hours</p>
+          <button class="btn btn-outline">Start with Free Leads</button>
+        </div>
+        <div class="tab-panel">
+          <h3 style="margin:0 0 8px">Mini-Website Preview</h3>
+          <p style="margin:0;color:#6b7280">Your profile doubles as a shareable page with deals, reviews, and WhatsApp contact. Look professional in every conversation.</p>
+          <div style="height:8px"></div>
+          <button class="btn btn-outline">Preview My Profile</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="trendingSectors" class="content">
+      <h2>Trending Sectors</h2>
+      <div>
+        <div class="tab-panel">
+          <strong>Sector 137</strong> — Avg Rent ₹19.8K — 25 Brokers Verified
+          <div style="color:#92400e">⚠ Only 1 Premium Spot Left</div>
+        </div>
+        <div class="tab-panel">
+          <strong>Sector 62</strong> — Avg Rent ₹23.5K — 18 Brokers Verified
+        </div>
+        <div class="tab-panel">
+          <strong>Sector 150</strong> — Avg Rent ₹31K — 12 Brokers Verified
+        </div>
+      </div>
+      <p><button class="btn btn-outline">Explore All Sectors</button></p>
+    </section>
+
+    <section id="trendingBrokers" class="content">
+      <h2>Top Verified Brokers of the Month</h2>
+      <div class="broker-card-hero" style="margin-bottom:12px">
+        <div class="broker-photo-hero">RS</div>
+        <div class="broker-main">
+          <div class="broker-row">
+            <h3 class="broker-name-hero">Ravi Sharma</h3>
+            <span class="broker-badge">Broker</span>
+          </div>
+          <div class="broker-rating">4.7</div>
+          <div class="broker-meta-hero">12 Deals Closed</div>
+        </div>
+      </div>
+      <div class="broker-card-hero" style="margin-bottom:12px">
+        <div class="broker-photo-hero">AV</div>
+        <div class="broker-main">
+          <div class="broker-row">
+            <h3 class="broker-name-hero">Anita Verma</h3>
+            <span class="broker-badge">Broker</span>
+          </div>
+          <div class="broker-rating">4.5</div>
+          <div class="broker-meta-hero">8 Deals Closed</div>
+        </div>
+      </div>
+      <p>Your competitors are already here!</p>
+      <p><button class="btn btn-outline">Create My Broker Profile</button></p>
+    </section>
+
+    <section id="howItWorks" class="content">
+      <h2>How It Works</h2>
+      <div class="tab-panel">
+        <strong>Buyer:</strong> 1) Register → 2) Explore → 3) Chat
+      </div>
+      <div class="tab-panel" style="margin-top:10px">
+        <strong>Owner:</strong> 1) Post → 2) Get Leads → 3) Close
+      </div>
+      <div class="tab-panel" style="margin-top:10px">
+        <strong>Broker:</strong> 1) Create Profile → 2) Get Leads → 3) Close
+      </div>
+    </section>
+
+    <section id="socialProof" class="content">
+      <h2>What People Say</h2>
+      <div class="tab-panel">“I found a flat in 2 days with a verified broker” — Buyer</div>
+      <div class="tab-panel" style="margin-top:10px">“This platform gives me real verified leads” — Broker</div>
+      <div class="tab-panel" style="margin-top:10px">“Posted my flat and got tenant in 3 days!” — Owner</div>
+      <p style="color:#6b7280;margin-top:10px"><strong>Stats:</strong> 2,500+ Buyers | 150+ Brokers | 500+ Owners</p>
+    </section>
+
+    <section id="finalCTA" class="content">
+      <h2>Stop wasting time on fake listings.</h2>
+      <p>
+        <button class="btn btn-primary">Sign Up Free as Buyer</button>
+        <button class="btn btn-outline">Post Property Free</button>
+        <button class="btn btn-outline">Join as Broker</button>
+      </p>
+    </section>
+  </main>
+
+  <!-- Broker modal -->
+  <div id="brokerModal" class="modal" hidden aria-hidden="true" role="dialog">
+    <div class="dialog">
+      <button id="closeBrokerModal" class="modal-close" aria-label="Close">×</button>
+      <div id="brokerModalContent"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>&copy; <span id="year"></span> VR Verified Realty</p>
+    </div>
+  </footer>
+
+  <!-- mobile sticky CTA bar -->
+  <div class="mobile-cta-bar" aria-label="Quick actions" role="region">
+    <button class="btn btn-primary">Sign Up Free</button>
+    <button class="btn btn-outline">Post Free</button>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    (function(){
+      const f1 = document.getElementById('fomo1');
+      const f2 = document.getElementById('fomo2');
+      function update(){
+        if(f1) f1.textContent = Math.floor(Math.random()*40+15) + " buyers enquired today";
+        if(f2) f2.textContent = Math.floor(Math.random()*20+5) + " new flats listed this week";
+      }
+      update();
+      setInterval(update, 3000);
+    })();
+  </script>
+  <script>
+    (function(){
+      const s1 = document.getElementById('ldStat1');
+      const s2 = document.getElementById('ldStat2');
+      function tick(){
+        if(s1) s1.textContent = Math.floor(Math.random()*50+20) + " buyers searched 2BHK in Sector 62 today";
+        if(s2) s2.textContent = Math.floor(Math.random()*25+10) + " new flats listed in the last 24 hours";
+      }
+      tick();
+      setInterval(tick, 4000);
+    })();
+  </script>
+  <script>
+    (function(){
+      const wrap = document.getElementById('pbScroll');
+      if(!wrap) return;
+      const esc = (s='') => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]));
+      const initials = (n='') => esc(n.split(' ').map(x=>x[0]||'').slice(0,2).join(''));
+      const data = [
+        {id:'ravi-1', name:'Ravi Verma', company:'CityNest Realty', since:'2012', buyersServed:3200, saleCount:58, rentCount:140},
+        {id:'sudha-2', name:'Sudha Sharma', company:'BluePeak Estates', since:'2015', buyersServed:4100, saleCount:72, rentCount:180},
+        {id:'arun-3', name:'Arun Gupta', company:'PrimeSquare Homes', since:'2010', buyersServed:5200, saleCount:95, rentCount:220}
+      ];
+      data.forEach(b => {
+        const card = `
+          <article class="pb-card" role="listitem" style="min-width:300px;background:#fff;border-radius:12px;box-shadow:0 6px 18px rgba(20,30,50,0.06);padding:16px;scroll-snap-align:start;display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div style="display:flex;gap:10px;align-items:center">
+                <div style="width:44px;height:44px;border-radius:10px;background:#e8f1ff;color:#0b4aa2;display:flex;align-items:center;justify-content:center;font-weight:800">${initials(b.name)}</div>
+                <div>
+                  <div style="font-size:12px;color:#2b6cb0">VR Preferred</div>
+                  <div style="font-weight:800">${esc(b.name)}</div>
+                </div>
+              </div>
+              <div style="font-size:12px;color:#065f46;background:#dcfce7;padding:4px 8px;border-radius:10px">Preferred</div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:center;border:1px solid #e6edf5;border-radius:10px;padding:10px;background:#f8fafc">
+              <div style="flex:0 0 36px;height:36px;border-radius:8px;background:#e5e7eb;display:flex;align-items:center;justify-content:center;font-weight:700;color:#111827">${initials(b.company)}</div>
+              <div style="display:flex;justify-content:space-between;gap:14px;flex:1;color:#6b7280">
+                <div>Operating Since<br><strong style="color:#111827">${esc(b.since)}</strong></div>
+                <div>Buyers Served<br><strong style="color:#111827">${esc(b.buyersServed)}+</strong></div>
+              </div>
+            </div>
+            <div style="display:flex;gap:18px">
+              <div><div style="font-weight:800;font-size:18px">${esc(b.saleCount)}</div><div style="color:#6b7280;font-size:12px">For Sale</div></div>
+              <div><div style="font-weight:800;font-size:18px">${esc(b.rentCount)}</div><div style="color:#6b7280;font-size:12px">For Rent</div></div>
+            </div>
+            <div style="display:flex;gap:8px;margin-top:4px">
+              <button class="btn btn-primary" data-action="projects" data-id="${esc(b.id)}">See Projects</button>
+              <button class="btn btn-outline" data-action="profile" data-id="${esc(b.id)}">View Profile</button>
+            </div>
+          </article>`;
+        wrap.insertAdjacentHTML('beforeend', card);
+      });
+
+      wrap.addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-action]');
+        if(!btn) return;
+        const id = btn.dataset.id;
+        const action = btn.dataset.action;
+        const b = data.find(x => String(x.id) === String(id));
+        if(!b) return;
+        const modal = document.getElementById('brokerModal');
+        const content = document.getElementById('brokerModalContent');
+        if(action === 'projects'){
+          content.innerHTML = `
+            <h3 style="margin:0 0 8px">Projects by ${esc(b.name)}</h3>
+            <ul style="margin:8px 0 0 18px">
+              <li>${esc(b.company)} — ${esc(b.saleCount)} active sale listings</li>
+              <li>Rental portfolio — ${esc(b.rentCount)} active rentals</li>
+            </ul>
+            <p style="margin-top:10px;color:#6b7280">More project details will appear on the broker profile page.</p>
+          `;
+        } else {
+          content.innerHTML = `
+            <div style="display:flex;gap:14px;align-items:flex-start">
+              <div style="flex:0 0 64px;border-radius:10px;background:#eef9f1;display:flex;align-items:center;justify-content:center;font-weight:800;padding:12px">${initials(b.name)}</div>
+              <div style="flex:1">
+                <h3 style="margin:0 0 6px">${esc(b.name)}</h3>
+                <div style="color:#6b7280">${esc(b.company)} · Since ${esc(b.since)} · Buyers served ${esc(b.buyersServed)}+</div>
+                <p style="margin-top:10px">Profile preview. Full public profile will show deals, reviews, and listings.</p>
+              </div>
+            </div>
+          `;
+        }
+        modal.hidden = false;
+        modal.setAttribute('aria-hidden','false');
+      });
+    })();
+  </script>
+  <script>
+    (function(){
+      var ownersRail = document.getElementById('ownersRail');
+      var brokersRail = document.getElementById('brokersRail');
+      if(!ownersRail || !brokersRail) return;
+      function esc(s){ return String(s||'').replace(/[&<>"']/g,function(c){return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c])}); }
+      function cardHTML(p){
+        var title = esc((p.bhk||'') + ' · ' + (p.sector||''));
+        var price = esc('₹'+(p.price||''));
+        var badge = p.owner ? 'Owner Direct' : 'Verified Broker';
+        var deal = p.dealNote ? ('<span style="background:#ecfeff;color:#075985;border:1px solid #bae6fd;padding:2px 6px;border-radius:10px;font-size:12px">'+esc(p.dealNote)+'</span>') : '';
+        return '\
+          <article class="property-card tab-panel" role="listitem" style="min-width:260px;scroll-snap-align:start">\
+            <div style="height:140px;border-radius:10px;background:#e5e7eb;display:flex;align-items:center;justify-content:center;color:#111827;font-weight:800">Photo</div>\
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px">\
+              <div style="font-weight:800">'+price+'</div>\
+              <span style="background:#fef3c7;color:#92400e;border:1px solid #fde68a;padding:2px 6px;border-radius:10px;font-size:12px">'+badge+'</span>\
+            </div>\
+            <div style="margin-top:6px">'+title+'</div>\
+            <div style="margin-top:6px;color:#6b7280;font-size:13px">'+esc(p.area||'')+' • '+esc(p.furnishing||'')+'</div>\
+            <div style="margin-top:6px">'+deal+'</div>\
+            <div style="display:flex;gap:8px;margin-top:10px">\
+              <button class="btn btn-primary" data-action="wa" data-id="'+esc(p.id)+'" data-owner="'+(p.owner?'1':'0')+'">WhatsApp</button>\
+              <button class="btn btn-outline" data-action="share" data-id="'+esc(p.id)+'">Share</button>\
+              <button class="btn btn-outline" data-action="view" data-id="'+esc(p.id)+'">View</button>\
+            </div>\
+          </article>';
+      }
+      var ownersData = [
+        {id:'o-101', owner:true, price:22000, bhk:'2BHK', sector:'Sector 62', area:'950 sqft', furnishing:'Semi-Furnished', dealNote:'−₹2.3k vs avg (Good Deal)'}
+      , {id:'o-102', owner:true, price:18500, bhk:'1BHK', sector:'Sector 137', area:'620 sqft', furnishing:'Furnished', dealNote:'Just posted'}
+      ];
+      var brokersData = [
+        {id:'b-201', owner:false, price:32000, bhk:'3BHK', sector:'Sector 150', area:'1280 sqft', furnishing:'Semi-Furnished', dealNote:'Verified Photos'}
+      , {id:'b-202', owner:false, price:26000, bhk:'2BHK', sector:'Sector 61', area:'980 sqft', furnishing:'Unfurnished', dealNote:'Video Tour'}
+      ];
+      function populate(){
+        ownersRail.innerHTML = ownersData.map(cardHTML).join('');
+        brokersRail.innerHTML = brokersData.map(cardHTML).join('');
+      }
+      populate();
+
+      function activeLane(){
+        var btn = document.querySelector('.lm-toggle.btn-primary');
+        return (btn && btn.getAttribute('data-lane')) || 'owners';
+      }
+      function setLane(l){
+        var toggles = document.querySelectorAll('.lm-toggle');
+        for(var i=0;i<toggles.length;i++){
+          var isActive = toggles[i].getAttribute('data-lane') === l;
+          toggles[i].classList.toggle('btn-primary', isActive);
+          toggles[i].classList.toggle('btn-outline', !isActive);
+          toggles[i].setAttribute('aria-selected', isActive? 'true':'false');
+        }
+        ownersRail.classList.toggle('hidden', l!=='owners');
+        brokersRail.classList.toggle('hidden', l!=='brokers');
+      }
+      var laneButtons = document.querySelectorAll('.lm-toggle');
+      for(var i=0;i<laneButtons.length;i++) laneButtons[i].addEventListener('click', function(){ setLane(this.getAttribute('data-lane')); });
+
+      function waLink(p){
+        var summary = p.bhk+' • '+p.sector+' • ₹'+p.price+' — '+(p.owner? 'Owner Direct' : 'Verified Broker');
+        return 'https://wa.me/?text='+encodeURIComponent('Interested in: '+summary+' '+location.href);
+      }
+      function handleAction(e){
+        var btn = e.target.closest('button[data-action]');
+        if(!btn) return;
+        var id = btn.getAttribute('data-id');
+        var action = btn.getAttribute('data-action');
+        var lane = activeLane();
+        var list = lane==='owners' ? ownersData : brokersData;
+        var p = null; for(var i=0;i<list.length;i++){ if(String(list[i].id)===String(id)){ p=list[i]; break; } }
+        if(!p) return;
+        if(action==='wa'){
+          window.open(waLink(p),'_blank');
+        } else if(action==='share'){
+          var shareText = p.bhk+' • '+p.sector+' • ₹'+p.price;
+          if(navigator.share){
+            navigator.share({title:'Property', text:shareText, url:location.href}).catch(function(){});
+          }else{
+            window.open('https://wa.me/?text='+encodeURIComponent(shareText+' '+location.href),'_blank');
+          }
+        } else if(action==='view'){
+          var modal = document.getElementById('brokerModal');
+          var content = document.getElementById('brokerModalContent');
+          content.innerHTML = '<h3 style="margin:0 0 8px">'+esc(p.bhk)+' · '+esc(p.sector)+'</h3>'+
+            '<div style="color:#6b7280">'+(p.owner? 'Owner Direct' : 'Verified Broker')+'</div>'+
+            '<div style="margin-top:8px">Price: ₹'+esc(p.price)+'</div>'+
+            '<div style="margin-top:4px">'+esc(p.area)+' • '+esc(p.furnishing)+'</div>'+
+            '<div style="margin-top:10px;display:flex;gap:8px">'+
+              '<button class="btn btn-primary" onclick="window.open(\''+waLink(p)+'\', \'_blank\')">WhatsApp</button>'+
+            '</div>';
+          modal.hidden = false; modal.setAttribute('aria-hidden','false');
+        }
+      }
+      ownersRail.addEventListener('click', handleAction);
+      brokersRail.addEventListener('click', handleAction);
+    })();
+  </script>
+</body>
+</html>
+
+

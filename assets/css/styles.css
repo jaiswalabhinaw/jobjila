@@ -1,0 +1,204 @@
+﻿/* filepath: c:\Users\Abhinaw Jaiswal\Desktop\multireal\single-file-web-app\assets\css\styles.css */
+:root{--accent:#2b6cb0;--muted:#6b7280;--bg:#f4f6f8;--text:#111827;--radius:12px;--sec-hero:#eef6ff;--sec-trust:#f5f7ff;--sec-buyer:#fdf2f8;--sec-live:#fff7ed;--sec-owner:#ecfeff;--sec-broker:#f0fdf4;--sec-sectors:#faf5ff;--sec-brokers:#eff6ff;--sec-how:#fefce8;--sec-social:#f5f5f4;--sec-final:#fee2e2}
+*{box-sizing:border-box}html,body{height:100%}body{margin:0;font-family:Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:var(--bg)}
+
+.site-header{background:#fff;border-bottom:1px solid #e6e9ee}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:14px;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px}.logo{width:48px;height:48px;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px}
+.brand-text{line-height:1}.brand-name{font-weight:700}.brand-sub{font-size:12px;color:var(--muted)}
+.main-nav{flex:1;margin-left:24px}.nav-list{list-style:none;margin:0;padding:0;display:flex;gap:12px;align-items:center}.nav-list .nav-link{color:var(--text);text-decoration:none;padding:8px 10px;border-radius:6px}.nav-list .nav-link:hover{background:#f1f5f9}
+.header-actions{display:flex;align-items:center;gap:8px}.btn{border:1px solid transparent;padding:8px 10px;border-radius:8px;cursor:pointer;background:transparent}.btn-primary{background:var(--accent);color:#fff;border-color:var(--accent)}.btn-outline{background:#fff;color:var(--accent);border:1px solid #cfe0f6}
+.menu-toggle{display:none;background:transparent;border:none;font-size:20px;padding:6px}
+
+/* visually hidden helper */
+.visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap;border:0;padding:0;margin:-1px}
+
+/* hero */
+.hero{max-width:1100px;margin:20px auto;padding:0 16px}
+.hero-inner{display:grid;grid-template-columns:1fr 420px;gap:18px;align-items:start}
+.search-card{background:transparent}
+.search-tabs{display:flex;gap:8px;margin:12px 0}
+.tab-button{padding:8px 12px;border-radius:6px;border:1px solid transparent;background:#fff;cursor:pointer}
+.tab-button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.tab-panel{background:#fff;padding:14px;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,0.04);margin-bottom:12px}
+.tab-panel.hidden{display:none}
+.unified-search-form .panel-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+.unified-search-form label{display:block;font-size:13px;color:var(--muted)}
+.unified-search-form input[type="search"],.unified-search-form input[type="number"],.unified-search-form select{width:100%;padding:8px;border:1px solid #e6eaf0;border-radius:6px;background:#fff}
+.form-actions{display:flex;gap:8px;justify-content:flex-start;margin-top:8px}
+
+/* premium hero list (card style similar to your sample) */
+.hero-premium-wrap{padding-top:6px}
+.premium-list-hero{display:flex;flex-direction:column;gap:14px}
+.broker-card-hero{background:#fff;border-radius:12px;padding:18px;display:flex;gap:18px;align-items:flex-start;box-shadow:0 6px 18px rgba(20,30,50,0.06)}
+.broker-photo-hero{width:72px;height:72px;border-radius:10px;background:linear-gradient(180deg,#eafaf0,#dff5ea);display:flex;align-items:center;justify-content:center;font-weight:700;color:#0b6a3a;flex:0 0 72px}
+.broker-main{flex:1}
+.broker-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.broker-name-hero{font-size:20px;font-weight:800;margin:0}
+.broker-badge{background:#fef3c7;color:#92400e;padding:6px 10px;border-radius:12px;font-weight:700;font-size:13px}
+.broker-rating{color:#d97706;font-weight:700;margin-top:6px}
+.phone-pill{display:inline-block;background:#e6fff1;color:#065f46;padding:8px 12px;border-radius:20px;font-weight:700;margin:10px 0}
+.broker-meta-hero{color:var(--muted);margin:6px 0}
+.featured-title{font-weight:700;margin-top:8px}
+.broker-actions-hero{display:flex;gap:10px;margin-top:12px}
+.btn-ghost{background:#fff;border:1px solid #e6edf5;padding:8px 12px;border-radius:10px}
+
+/* modal tweaks + hidden handling */
+.modal[hidden]{display:none!important}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,0.45);display:flex;align-items:center;justify-content:center}
+.dialog{background:#fff;padding:18px;border-radius:12px;max-width:560px;width:100%;position:relative}
+.modal-close{position:absolute;right:12px;top:10px;border:none;background:transparent;font-size:20px}
+
+/* responsive */
+@media (max-width:880px){.hero-inner{grid-template-columns:1fr;gap:12px}.premium-list-hero{order:2}}
+
+/* layout & typography */
+.page-main{padding-bottom:40px}
+.content{max-width:1100px;margin:32px auto;padding:0 16px}
+.content h2{margin:0 0 12px;font-size:22px;letter-spacing:0.2px}
+.content p,.content ul{color:var(--text);line-height:1.6}
+.content ul{margin:0 0 10px 18px;padding:0}
+.stats{font-weight:700;color:var(--accent);margin:6px 0}
+
+/* section pastel backgrounds */
+.hero{background:var(--sec-hero);border-radius:12px;padding:16px}
+#trustBar{background:var(--sec-trust);border-radius:12px;padding:16px}
+#buyerBenefits{background:var(--sec-buyer);border-radius:12px;padding:16px}
+#liveDemand{background:var(--sec-live);border-radius:12px;padding:16px}
+#ownerBenefits{background:var(--sec-owner);border-radius:12px;padding:16px}
+#brokerBenefits{background:var(--sec-broker);border-radius:12px;padding:16px}
+#trendingSectors{background:var(--sec-sectors);border-radius:12px;padding:16px}
+#trendingBrokers{background:var(--sec-brokers);border-radius:12px;padding:16px}
+#howItWorks{background:var(--sec-how);border-radius:12px;padding:16px}
+#socialProof{background:var(--sec-social);border-radius:12px;padding:16px}
+#finalCTA{background:var(--sec-final);border-radius:12px;padding:16px}
+
+/* containerized footer */
+.site-footer .footer-inner{max-width:1100px;margin:0 auto;padding:14px 16px;color:var(--muted)}
+
+/* nav & buttons polish */
+.nav-list .nav-link{color:#334155}
+.nav-list .nav-link:hover{background:#eef2f7;color:#0f172a}
+.btn{padding:10px 14px;border-radius:8px;font-weight:600}
+.btn:hover{filter:brightness(0.97)}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* mobile menu styling */
+.mobile-menu{background:#fff;border-top:1px solid #e6e9ee;padding:10px 14px}
+.mobile-menu ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.mobile-menu a{color:#0f172a;text-decoration:none;padding:8px 6px;border-radius:6px}
+.mobile-menu a:hover{background:#f1f5f9}
+.mobile-action{width:100%;padding:10px 12px;border:1px solid #e6eaf0;background:#fff;border-radius:8px}
+
+/* hero & form refinements */
+.hero{margin-top:24px}
+.search-tabs{margin-top:6px}
+.unified-search-form .panel-row label{font-weight:600;color:#374151}
+.unified-search-form input,.unified-search-form select{font-size:14px}
+
+/* premium card tweaks */
+.broker-card-hero{align-items:center}
+.broker-photo-hero{font-size:20px}
+
+/* responsiveness */
+@media (max-width:880px){
+  .header-inner{padding:12px}
+  .main-nav{display:none}
+  .menu-toggle{display:inline-block}
+  .content{margin:22px auto}
+  .btn{width:100%}
+}
+
+/* hero tabs & inputs: mobile-friendly */
+.search-tabs{flex-wrap:wrap}
+.tab-button{min-width:160px;flex:1}
+.unified-search-form .panel-row{grid-template-columns:1fr 1fr}
+@media (max-width:600px){
+  .unified-search-form .panel-row{grid-template-columns:1fr}
+  .tab-button{min-width:0}
+}
+.unified-search-form input,.unified-search-form select{min-height:40px}
+
+/* preferred brokers horizontal scroller */
+#preferredBrokers h2{margin-bottom:10px}
+#pbScroll{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none}
+#pbScroll::-webkit-scrollbar{display:none}
+.pb-card{min-width:280px;background:#fff;border-radius:12px;box-shadow:0 6px 18px rgba(20,30,50,0.06);padding:16px;scroll-snap-align:start}
+
+/* ensure tab-panels look like cards on mobile too */
+@media (max-width:600px){
+  .tab-panel{padding:12px}
+}
+
+/* headings & spacing tweaks */
+.content h2{margin-bottom:14px}
+
+/* general polish */
+html,body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+.tab-panel{border:1px solid #e6eaf0}
+#trustBar span{background:#fff;border:1px solid #e6eaf0;border-radius:9999px;padding:6px 10px}
+.tab-panel h3{font-size:16px;margin:0 0 8px;color:#111827}
+.tab-panel ul{list-style:none;padding:0;margin:0}
+.tab-panel ul li{position:relative;padding-left:16px;margin:6px 0;color:#374151}
+.tab-panel ul li:before{content:"";width:6px;height:6px;border-radius:50%;background:#94a3b8;position:absolute;left:0;top:10px}
+
+/* hero tab polish */
+.search-tabs{gap:10px}
+.tab-button{border:1px solid #e6eaf0;background:#fff}
+.tab-button.active{box-shadow:0 2px 6px rgba(0,0,0,0.08)}
+@media (max-width:600px){
+  .tab-button{padding:10px 12px;font-weight:600}
+}
+
+/* input focus clarity */
+.unified-search-form input:focus,.unified-search-form select:focus{outline:2px solid #bfdbfe;outline-offset:1px}
+
+/* preferred brokers: make buttons inline on mobile */
+@media (max-width:880px){
+  .pb-card .btn{width:auto}
+  .broker-card-hero .btn{width:auto}
+}
+
+/* tighter mobile typography */
+@media (max-width:600px){
+  .content h2{font-size:20px}
+  .broker-name-hero{font-size:18px}
+}
+
+/* mobile section card elevation */
+@media (max-width:600px){
+  #trustBar,#conversionHighlights,#ownerBenefits,#brokerPitch,#innovationSpotlight,#trendingSectors,#trendingBrokers,#howItWorks,#socialProof,#finalCTA{
+    border:1px solid #e6eaf0;box-shadow:0 2px 10px rgba(17,24,39,0.05)
+  }
+}
+
+/* preferred brokers: better scroll and sizing */
+#pbScroll{scroll-padding:16px}
+.pb-card{scroll-snap-stop:always}
+@media (max-width:600px){
+  .pb-card{min-width:260px;padding:14px}
+  .pb-card h3{font-size:16px}
+}
+
+/* broker hero cards sizing on mobile */
+@media (max-width:600px){
+  .broker-card-hero{padding:14px;gap:14px}
+  .broker-photo-hero{width:64px;height:64px}
+  .phone-pill{font-size:14px}
+}
+
+/* hero container padding on small screens */
+@media (max-width:600px){
+  .hero{padding:12px}
+}
+
+/* mobile: simplify backgrounds to clean white cards */
+@media (max-width:600px){
+  #trustBar,#conversionHighlights,#ownerBenefits,#brokerPitch,#innovationSpotlight,#trendingSectors,#trendingBrokers,#howItWorks,#socialProof,#finalCTA{
+    background:#fff!important
+  }
+  /* section title accent */
+  #trustBar h2,#conversionHighlights h2,#ownerBenefits h2,#brokerPitch h2,#innovationSpotlight h2,#trendingSectors h2,#trendingBrokers h2,#howItWorks h2,#socialProof h2,#finalCTA h2{
+    border-left:3px solid var(--accent);padding-left:10px
+  }
+}
