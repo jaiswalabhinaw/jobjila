@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Your Digital Book</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/blasten/turn.js/turn.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+<<<<<<< HEAD
+
+=======
+    
+>>>>>>> 71f67df (d)
+    :root {
+      --bg-color: #e0e5ec;
+      --book-bg-light: #f8f8f8;
+      --book-bg-dark: #fdfdfd;
+      --page-text-color: #333;
+      --page-heading-color: #222;
+      --shadow-color: rgba(0, 0, 0, 0.3);
+      --cover-bg-start: #4a69bd;
+      --cover-bg-end: #2d4681;
+      --nav-btn-bg: rgba(255, 255, 255, 0.2);
+      --nav-btn-hover: rgba(255, 255, 255, 0.3);
+      --page-border: #dcdcdc;
+    }
+    [data-theme="dark"] {
+      --bg-color: #1e1e1e;
+      --book-bg-light: #2c2c2c;
+      --book-bg-dark: #3a3a3a;
+      --page-text-color: #dcdcdc;
+      --page-heading-color: #f0f0f0;
+      --shadow-color: rgba(0, 0, 0, 0.5);
+      --cover-bg-start: #2c3e50;
+      --cover-bg-end: #1e2a36;
+      --nav-btn-bg: rgba(0, 0, 0, 0.2);
+      --nav-btn-hover: rgba(0, 0, 0, 0.3);
+      --page-border: #444;
+    }
+<<<<<<< HEAD
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: var(--bg-color);
+      font-family: 'Merriweather', serif;
+      font-size: 18px;
+      color: var(--page-text-color);
+      transition: background 0.5s ease;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .book-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        perspective: 1500px;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+    #book {
+      width: 922px;
+      height: 600px;
+      display: none;
+      cursor: pointer;
+      box-shadow: 0 20px 60px var(--shadow-color);
+    }
+    .page {
+      padding: 30px;
+      line-height: 1.6;
+      position: relative;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      border: 1px solid var(--page-border);
+      border-radius: 5px;
+=======
+    body, html {
+      margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden;
+      background: var(--bg-color); font-family: 'Merriweather', serif;
+      font-size: 18px; color: var(--page-text-color); transition: background 0.5s ease;
+      display: flex; justify-content: center; align-items: center;
+    }
+
+    /* Book Viewer Styles */
+    .book-wrapper {
+      position: relative; width: 100%; height: 100%; display: flex;
+      justify-content: center; align-items: center; perspective: 1500px;
+      padding: 10px; box-sizing: border-box;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    #book { width: 922px; height: 600px; cursor: pointer; box-shadow: 0 20px 60px var(--shadow-color); }
+    .page {
+      padding: 30px; line-height: 1.6; position: relative;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      border: 1px solid var(--page-border); border-radius: 5px;
+>>>>>>> 71f67df (d)
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+      background: linear-gradient(to right, var(--book-bg-light), var(--book-bg-dark));
+    }
+    .page::after {
+<<<<<<< HEAD
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 3px;
+        background: var(--page-border);
+        box-shadow: inset 1px 0 3px rgba(0,0,0,0.2);
+    }
+    .page:hover:not(.page-cover) {
+        transform: scale(1.02);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+    .page-content {
+      max-width: 400px;
+      margin: 0 auto;
+      text-align: left;
+      transition: opacity 0.4s ease-in, transform 0.4s ease-in;
+      transform: translateY(10px);
+      height: 100%;
+      overflow-y: auto;
+    }
+    .page:not(.turned) .page-content {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .page.turned .page-content {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .page h2 {
+      margin-top: 0;
+      color: var(--page-heading-color);
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 32px;
+    }
+    .page p {
+      font-size: 20px;
+      color: var(--page-text-color);
+    }
+    .page-content p, .page-content h2 {
+        text-shadow: 0 1px 1px rgba(255,255,255,0.8);
+    }
+=======
+      content: ''; position: absolute; top: 0; bottom: 0; right: 0;
+      width: 3px; background: var(--page-border); box-shadow: inset 1px 0 3px rgba(0,0,0,0.2);
+    }
+    .page:hover:not(.page-cover) { transform: scale(1.02); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); }
+    .page-content {
+      max-width: 400px; margin: 0 auto; text-align: left;
+      transition: opacity 0.4s ease-in, transform 0.4s ease-in;
+      transform: translateY(10px); height: 100%; overflow-y: auto;
+    }
+    .page:not(.turned) .page-content { opacity: 0; pointer-events: none; }
+    .page.turned .page-content { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .page h2 {
+      margin-top: 0; color: var(--page-heading-color);
+      font-family: 'Playfair Display', serif; font-weight: 700; font-size: 32px;
+    }
+    .page p { font-size: 20px; color: var(--page-text-color); }
+    .page-content p, .page-content h2 { text-shadow: 0 1px 1px rgba(255,255,255,0.8); }
+>>>>>>> 71f67df (d)
+    .page-content::-webkit-scrollbar { width: 8px; }
+    .page-content::-webkit-scrollbar-track { background: #ccc; }
+    .page-content::-webkit-scrollbar-thumb { background: #888; border-radius: 4px; }
+    .page-content::-webkit-scrollbar-thumb:hover { background: #555; }
+    .page-cover {
+      background: linear-gradient(135deg, var(--cover-bg-start), var(--cover-bg-end));
+<<<<<<< HEAD
+      color: white;
+      text-align: center;
+      padding: 100px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid var(--page-border);
+      box-shadow: 0 15px 45px var(--shadow-color), inset 0 0 40px rgba(255,255,255,0.1);
+=======
+      color: white; text-align: center; padding: 100px 30px; display: flex;
+      flex-direction: column; justify-content: center; align-items: center;
+      border: 1px solid var(--page-border); box-shadow: 0 15px 45px var(--shadow-color), inset 0 0 40px rgba(255,255,255,0.1);
+>>>>>>> 71f67df (d)
+    }
+    .page-cover h1, .page-cover p { text-shadow: 1px 1px 5px rgba(0,0,0,0.3); }
+    .page-cover h1 { font-family: 'Playfair Display', serif; font-size: 36px; margin: 0 0 10px; }
+    .page-cover p { font-size: 18px; max-width: 600px; }
+<<<<<<< HEAD
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+    .cta-btn {
+      background: linear-gradient(135deg, #1e90ff, #0056b3);
+      color: white;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 20px;
+      margin-top: 20px;
+      transition: all 0.2s ease-in-out;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      display: inline-block;
+      animation: pulse 2s infinite;
+    }
+    .cta-btn:hover {
+      background: linear-gradient(135deg, #0056b3, #1e90ff);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+    .cta-btn:active {
+        transform: translateY(1px);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    .name-input-container { margin-top: 20px; }
+    .name-input-container input {
+      padding: 12px;
+      font-size: 18px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background: #eee;
+      color: #222;
+    }
+=======
+    .name-input-container { margin-top: 20px; }
+    .name-input-container input { padding: 12px; font-size: 18px; border-radius: 5px; border: 1px solid #ccc; background: #eee; color: #222; }
+>>>>>>> 71f67df (d)
+    .page-index { background: #fff8dc; }
+    .page-index h2 { margin-bottom: 20px; }
+    .page-index ol { list-style-type: decimal; padding-left: 20px; }
+    .page-index li { margin-bottom: 10px; font-size: 20px; }
+    .page-index a { color: #555; text-decoration: none; cursor: pointer; }
+<<<<<<< HEAD
+    .feature-visuals { text-align: center; margin-top: 20px; }
+    .feature-visuals img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .turn-page-btn {
+      position: absolute;
+      background: var(--nav-btn-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: all 0.2s ease;
+      z-index: 100;
+      opacity: 0.9;
+    }
+    .turn-page-btn:hover {
+        background: var(--nav-btn-hover);
+        opacity: 1;
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+    }
+=======
+    .turn-page-btn {
+      position: absolute; background: var(--nav-btn-bg); backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px); color: white; border: none; border-radius: 50%;
+      display: flex; justify-content: center; align-items: center; font-size: 24px;
+      cursor: pointer; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); transition: all 0.2s ease;
+      z-index: 100; opacity: 0.9;
+    }
+    .turn-page-btn:hover { background: var(--nav-btn-hover); opacity: 1; transform: translateY(-2px) scale(1.05); box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); }
+>>>>>>> 71f67df (d)
+    .next-page-btn { right: 20px; }
+    .prev-page-btn { left: 20px; }
+    .turn-page-btn:active { transform: translateY(1px); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); }
+    .progress-bar {
+<<<<<<< HEAD
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 5px;
+        background: linear-gradient(90deg, #ff7e5f, #feb47b);
+        transition: width 0.5s ease-out;
+        z-index: 101;
+    }
+    .page-number-display {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 14px;
+        color: #555;
+        z-index: 102;
+        opacity: 0.9;
+        padding: 4px 10px;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        background: rgba(255,255,255,0.5);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+    }
+    .book-binding {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 20px;
+      height: 100%;
+      background-color: #555;
+      transform: translateX(-50%);
+      z-index: -1;
+      border-radius: 0 10px 10px 0;
+      box-shadow: inset 5px 0 10px rgba(0,0,0,0.3);
+      display: none;
+    }
+    .turn-page { transform-style: preserve-3d; z-index: 10 !important; }
+    .turn-page::before, .turn-page::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        transition: opacity 0.3s ease-in-out;
+        opacity: 0;
+=======
+      position: absolute; bottom: 0; left: 0; width: 0; height: 5px;
+      background: linear-gradient(90deg, #ff7e5f, #feb47b); transition: width 0.5s ease-out; z-index: 101;
+    }
+    .page-number-display {
+      position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
+      font-size: 14px; color: #555; z-index: 102; opacity: 0.9; padding: 4px 10px;
+      border: 1px solid #ccc; border-radius: 20px; background: rgba(255,255,255,0.5);
+      backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
+    }
+    .book-binding {
+      position: absolute; left: 50%; top: 0; width: 20px; height: 100%;
+      background-color: #555; transform: translateX(-50%); z-index: -1;
+      border-radius: 0 10px 10px 0; box-shadow: inset 5px 0 10px rgba(0,0,0,0.3); display: none;
+    }
+    .turn-page { transform-style: preserve-3d; z-index: 10 !important; }
+    .turn-page::before, .turn-page::after {
+      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; transition: opacity 0.3s ease-in-out; opacity: 0;
+>>>>>>> 71f67df (d)
+    }
+    .turn-page::before { background: linear-gradient(to right, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 100%); }
+    .turn-page.hard::before { opacity: 1; background: linear-gradient(to right, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 100%); }
+    .turn-page.shadow::after { opacity: 1; background: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.1) 50%, rgba(0,0,0,0) 100%); }
+    .turn-page.shadow.page-side-left::after { background: linear-gradient(to left, rgba(0,0,0,0.5), rgba(0,0,0,0.1) 50%, rgba(0,0,0,0) 100%); }
+<<<<<<< HEAD
+
+    #theme-toggle-btn, #go-to-page-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 200;
+        background: var(--nav-btn-bg);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.2s ease;
+    }
+    #theme-toggle-btn:hover, #go-to-page-btn:hover {
+        background: var(--nav-btn-hover);
+        transform: scale(1.05);
+    }
+    #go-to-page-btn { right: 80px; }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 300;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.4);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background-color: var(--book-bg-light);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+    .modal-content input {
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-right: 10px;
+    }
+    .modal-content button {
+      padding: 8px 16px;
+      border: none;
+      background: #007bff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .modal-close {
+        float: right;
+        font-size: 24px;
+        line-height: 24px;
+        font-weight: bold;
+        cursor: pointer;
+        color: #aaa;
+    }
+    .modal-close:hover { color: #555; }
+    
+    @media (max-width: 768px) {
+      .book-wrapper {
+        padding: 0 10px;
+      }
+      #book { 
+        width: 95vw; 
+        height: 90vh; 
+        box-sizing: border-box; 
+      }
+      .page { 
+        padding: 20px; 
+      }
+      .page-content { 
+        max-width: none; 
+        width: 100%; 
+        padding: 0;
+        box-sizing: border-box; 
+      }
+=======
+    #theme-toggle-btn, #go-to-page-btn, #back-to-home-btn {
+      position: absolute; top: 20px; right: 20px; z-index: 200;
+      background: var(--nav-btn-bg); backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px); color: white; border: none;
+      border-radius: 50%; width: 45px; height: 45px; display: flex;
+      justify-content: center; align-items: center; font-size: 20px;
+      cursor: pointer; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); transition: all 0.2s ease;
+    }
+    #theme-toggle-btn:hover, #go-to-page-btn:hover, #back-to-home-btn:hover { background: var(--nav-btn-hover); transform: scale(1.05); }
+    #go-to-page-btn { right: 80px; }
+    #back-to-home-btn { left: 20px; }
+    .modal {
+      display: none; position: fixed; z-index: 300; left: 0; top: 0;
+      width: 100%; height: 100%; background-color: rgba(0,0,0,0.4);
+      justify-content: center; align-items: center;
+    }
+    .modal-content {
+      background-color: var(--book-bg-light); padding: 20px;
+      border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); text-align: center;
+    }
+    .modal-content input {
+      padding: 8px; font-size: 16px; border-radius: 5px;
+      border: 1px solid #ccc; margin-right: 10px;
+    }
+    .modal-content button {
+      padding: 8px 16px; border: none; background: #007bff;
+      color: white; border-radius: 5px; cursor: pointer;
+    }
+    .modal-close {
+      float: right; font-size: 24px; line-height: 24px; font-weight: bold;
+      cursor: pointer; color: #aaa;
+    }
+    .modal-close:hover { color: #555; }
+    @media (max-width: 768px) {
+      .book-wrapper { padding: 0 10px; }
+      #book { width: 95vw; height: 90vh; box-sizing: border-box; }
+      .page { padding: 20px; }
+      .page-content { max-width: none; width: 100%; padding: 0; box-sizing: border-box; }
+>>>>>>> 71f67df (d)
+      .page h2 { font-size: 28px; }
+      .page p { font-size: 18px; }
+      .page-index li { font-size: 18px; }
+      .page-cover h1 { font-size: 50px; }
+      .page-cover p { font-size: 22px; }
+<<<<<<< HEAD
+      .cta-btn { font-size: 24px; padding: 14px 28px; }
+      .name-input-container input { padding: 14px; font-size: 20px; }
+=======
+>>>>>>> 71f67df (d)
+      .turn-page-btn { width: 50px; height: 50px; bottom: 10px; font-size: 28px; }
+      .next-page-btn { right: 10px; }
+      .prev-page-btn { left: 10px; }
+      .page-number-display { font-size: 12px; bottom: 5px; }
+<<<<<<< HEAD
+      #theme-toggle-btn, #go-to-page-btn {
+        top: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+      }
+      #theme-toggle-btn { right: 10px; }
+      #go-to-page-btn { right: 60px; }
+    }
+    @media (min-width: 769px) {
+        .page p { font-size: 18px; }
+        .page-index li { font-size: 18px; }
+        .book-binding { display: block; }
+        .turn-page-btn {
+            width: 60px;
+            height: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 32px;
+        }
+        .next-page-btn { right: 20px; }
+        .prev-page-btn { left: 20px; }
+=======
+      #theme-toggle-btn, #go-to-page-btn, #back-to-home-btn { top: 10px; width: 40px; height: 40px; font-size: 18px; }
+      #theme-toggle-btn { right: 10px; }
+      #go-to-page-btn { right: 60px; }
+      #back-to-home-btn { left: 10px; }
+    }
+    @media (min-width: 769px) {
+      .page p { font-size: 18px; }
+      .page-index li { font-size: 18px; }
+      .book-binding { display: block; }
+      .turn-page-btn { width: 60px; height: 60px; top: 50%; transform: translateY(-50%); font-size: 32px; }
+      .next-page-btn { right: 20px; }
+      .prev-page-btn { left: 20px; }
+    }
+    
+    /* New Styles for Book Creator View */
+    #bookCreatorContainer {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        max-width: 800px;
+        margin: auto;
+        height: 100vh;
+        box-sizing: border-box;
+    }
+    .form-group {
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--page-text-color);
+        font-weight: bold;
+    }
+    .form-group input, .form-group textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border-radius: 0.5rem;
+        border: 1px solid var(--page-border);
+        background: var(--book-bg-light);
+        color: var(--page-text-color);
+    }
+    .form-group textarea {
+        height: 200px;
+    }
+    .creation-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .page-input-group {
+        border: 1px solid var(--page-border);
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 0.5rem;
+        background: var(--book-bg-dark);
+        position: relative;
+    }
+    .page-input-group h3 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        color: var(--page-heading-color);
+    }
+    .remove-page-btn {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        background-color: #ef4444;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 2rem;
+        height: 2rem;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+    .remove-page-btn:hover {
+        background-color: #dc2626;
+    }
+    .error-message {
+      color: #ef4444;
+      font-weight: bold;
+      margin-top: 1rem;
+      text-align: center;
+>>>>>>> 71f67df (d)
+    }
+  </style>
+</head>
+<body>
+<<<<<<< HEAD
+  <div class="book-wrapper">
+    <div id="book"></div>
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="page-number-display" id="pageNumber"></div>
+    <button class="turn-page-btn prev-page-btn" id="globalPrevBtn" aria-label="Previous page">&#x2190;</button>
+    <button class="turn-page-btn next-page-btn" id="globalNextBtn" aria-label="Next page">&#x2192;</button>
+    <button id="theme-toggle-btn" aria-label="Toggle theme">&#x263D;</button>
+    <button id="go-to-page-btn" aria-label="Go to a specific page">&#x2195;</button>
+
+    <div id="goToPageModal" class="modal">
+      <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <h2>Go to Page</h2>
+        <input type="number" id="pageInput" min="1" value="1">
+        <button id="goBtn">Go</button>
+      </div>
+=======
+  
+  <div class="flex justify-center items-center w-full h-full p-4 box-border">
+    <!-- Book Viewer Section -->
+    <div class="book-wrapper" id="bookViewerContainer">
+      <div id="book"></div>
+      <div class="progress-bar" id="progressBar"></div>
+      <div class="page-number-display" id="pageNumber"></div>
+      <button class="turn-page-btn prev-page-btn" id="globalPrevBtn" aria-label="Previous page">&#x2190;</button>
+      <button class="turn-page-btn next-page-btn" id="globalNextBtn" aria-label="Next page">&#x2192;</button>
+      <button id="theme-toggle-btn" aria-label="Toggle theme">&#x263D;</button>
+      <button id="go-to-page-btn" aria-label="Go to a specific page">&#x2195;</button>
+
+      <div id="goToPageModal" class="modal">
+        <div class="modal-content">
+          <span class="modal-close">&times;</span>
+          <h2>Go to Page</h2>
+          <input type="number" id="pageInput" min="1" value="1">
+          <button id="goBtn">Go</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Book Creator Section -->
+    <div id="bookCreatorContainer" class="p-8 w-full max-w-4xl bg-white dark:bg-gray-800 rounded-lg shadow-2xl space-y-6">
+      <h1 class="text-4xl font-extrabold text-gray-900 dark:text-white mb-6 text-center font-playfair-display">Create Your Book</h1>
+      <form id="bookForm" class="space-y-4">
+        <div class="form-group">
+          <label for="bookTitle" class="text-gray-700 dark:text-gray-300">Book Title</label>
+          <input type="text" id="bookTitle" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+        </div>
+        <div class="form-group">
+          <label for="bookAuthor" class="text-gray-700 dark:text-gray-300">Book Author</label>
+          <input type="text" id="bookAuthor" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+        </div>
+
+        <div id="pagesContainer" class="space-y-4">
+          <!-- Page input groups will be added here dynamically -->
+        </div>
+
+        <button type="button" id="addPageBtn" class="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-6 rounded-full transition-transform transform hover:scale-105">
+          Add Page
+        </button>
+        <div id="formError" class="error-message hidden"></div>
+
+        <div class="flex justify-center creation-buttons">
+          <button type="button" id="backToHomeBtn" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-full transition-transform transform hover:scale-105">
+            Back to Book Viewer
+          </button>
+          <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-full transition-transform transform hover:scale-105">
+            Create Book
+          </button>
+        </div>
+      </form>
+>>>>>>> 71f67df (d)
+    </div>
+  </div>
+
+  <script>
+<<<<<<< HEAD
+    const originalPage2Content = `इस डिजिटल युग में, जहाँ सामग्री तेज़ी से आती और जाती है, कुछ ऐसा बनाना महत्वपूर्ण है जो यादगार हो। यह कोई साधारण वेबसाइट नहीं है; यह एक अनुभव है। यह आपकी कहानी को एक सम्मानजनक और आकर्षक रूप देने का एक प्रयास है, ताकि आपके पाठक हर शब्द को महसूस कर सकें और हर पन्ने पर ठहर सकें। यह सिर्फ जानकारी साझा करने का एक तरीका नहीं, बल्कि एक कला है।`;
+
+    const bookContent = {
+        "1": {
+            type: "cover",
+            title: "Digital Book Innovation",
+            content: `A small digital book innovation for your creative content.`,
+            cta: `पन्ना पलटने के लिए क्लिक करें`,
+            inputPlaceholder: `अपना नाम दर्ज करें...`,
+        },
+        "2": {
+            type: "content",
+            title: "प्रस्तावना",
+            content: originalPage2Content,
+        },
+        "3": {
+            type: "content",
+            title: "अपनी कहानी, एक नई पहचान",
+            content: `जहां आपकी कहानी सिर्फ पढ़ी नहीं जाती, बल्कि महसूस की जाती है। जहां आपके शब्द एक साधारण ब्लॉग पोस्ट नहीं, बल्कि एक सुंदर, इंटरैक्टिव किताब बन जाते हैं। क्या आप इस अनुभव को खोने के लिए तैयार हैं?`
+        },
+        "4": {
+            type: "toc",
+            title: "विषय-सूची",
+            content: [
+                { page: 2, title: "प्रस्तावना" },
+                { page: 3, title: "आपकी कहानी, एक नई पहचान" },
+                { page: 5, title: "सहज पढ़ना: बिना किसी रुकावट के" },
+                { page: 6, title: "मीडिया एकीकरण: वीडियो और तस्वीरों के साथ" },
+                { page: 7, title: "मोबाइल पर शानदार: हर डिवाइस के लिए" },
+                { page: 8, title: "अपनी छाप छोड़ें: भीड़ से अलग दिखें" },
+                { page: 9, title: "आसान संपादन: अपनी किताब खुद बनाएं" },
+                { page: 10, title: "संपर्क करें" }
+            ]
+        },
+        "5": {
+            type: "content",
+            title: "सहज पढ़ना: बिना किसी रुकावट के",
+            content: `<p>कल्पना कीजिए: आपके पाठक आराम से बैठ कर, आपकी किताब के पन्ने पलट रहे हैं, बिना किसी विज्ञापन या भटकाव के। यह एक ऐसा अनुभव है जो उन्हें बार-बार वापस आने पर मजबूर करेगा। इसे हासिल करने के लिए, आपको एक बुक-स्टाइल वेबसाइट चाहिए।</p><div class="feature-visuals"><img src="https://via.placeholder.com/300x180.png?text=Fluid+Reading" alt="Fluid Reading Experience"></div>`
+        },
+        "6": {
+            type: "content",
+            title: "मीडिया एकीकरण: वीडियो और तस्वीरों के साथ",
+            content: `<p>क्या आपकी कहानी में ग्राफिक्स, वीडियो, या एनिमेशन हैं? पारंपरिक ब्लॉग उन्हें अलग-थलग रखते हैं। हमारी बुक-स्टाइल वेबसाइट पर, मीडिया आपके शब्दों में seamlessly घुल-मिल जाती है, एक यादगार दृश्य कहानी बनाती है। क्या आप इसे खोना चाहेंगे?</p><div class="feature-visuals"><img src="https://via.placeholder.com/300x180.png?text=Rich+Media+in+Books" alt="Rich Media in Books"></div>`
+        },
+        "7": {
+            type: "content",
+            title: "मोबाइल पर शानदार: हर डिवाइस के लिए",
+            content: `<p>आपके 70% से ज्यादा पाठक मोबाइल पर हैं। क्या आपकी वेबसाइट उन्हें एक ख़राब अनुभव दे रही है? हमारी बुक-स्टाइल वेबसाइटें हर स्क्रीन पर शानदार दिखती हैं, जिससे आप कोई भी पाठक नहीं खोते। आपके मोबाइल पाठक भी पन्ने पलटने का मज़ा ले सकते हैं।</p><div class="feature-visuals"><img src="https://via.placeholder.com/300x180.png?text=Mobile+Friendliness" alt="Mobile Friendliness"></div>`
+        },
+        "8": {
+            type: "content",
+            title: "अपनी छाप छोड़ें: भीड़ से अलग दिखें",
+            content: `इस डिजिटल दुनिया में, अलग दिखना सबसे बड़ी चुनौती है। लाखों ब्लॉग्स में से, आपका क्यों चुना जाए? एक बुक-स्टाइल वेबसाइट के साथ, आप तुरंत एक लेखक या कलाकार के रूप में अपनी प्रतिष्ठा स्थापित करते हैं, जो विस्तार और गुणवत्ता को महत्व देता है।`
+        },
+        "9": {
+            type: "content",
+            title: "आसान संपादन: अपनी किताब खुद बनाएं",
+            content: `सोचिए, सिर्फ कुछ क्लिक में, आपकी कहानी एक खूबसूरत डिजिटल किताब बन जाती है। कोई कोडिंग नहीं, कोई तकनीकी ज्ञान नहीं। हमारी प्रणाली आपके लिए सब कुछ करती है, जिससे आपका सारा ध्यान सिर्फ लिखने पर रहता है। क्या आप अभी भी घंटों तक अपनी वेबसाइट के लेआउट से लड़ना चाहेंगे?`
+        },
+        "10": {
+            type: "content",
+            title: "संपर्क करें",
+            content: `<p>अगर आप अपनी खुद की ऐसी वेबसाइट बनवाना चाहते हैं, तो मुझसे संपर्क करें।</p><p>मेरा मोबाइल नंबर है: <a href="https://wa.me/918756680477"><strong>8756680477</strong></a></p><p>आपकी कहानी दुनिया को सुनाने में मैं आपकी मदद कर सकता हूं।</p>`
+        }
+    };
+
+    $(function(){
+      const audioData = "data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAAAAAAAVHJ5b24gMjAxMy4wNFdJTiAAAAAfAAAAPAAAAABDb252ZXJ0ZWQgYnkgSmF2YUF1ZGlvAAAAAClAAAA3AAAAAEhhdmUgYSBnb29kIGRheQAAAAApAAAAEAAAAGh0dHA6Ly93d3cudHJ5b24ub3JnAAAAACIAAAAgAAAAQ29udmVydGVkIGJ5IEphdmFBdWRpbyBvbiAyOC4wOS4yMDExAAAAAAA=";
+      const pageTurnSound = new Audio(audioData);
+
+      function isDesktop() {
+        return $(window).width() > 768;
+      }
+
+      function computeDims() {
+        return {
+          width: isDesktop() ? 922 : Math.round($(window).width() * 0.95),
+          height: isDesktop() ? 600 : Math.round($(window).height() * 0.9),
+          display: isDesktop() ? 'double' : 'single'
+        };
+      }
+
+      function renderPages() {
+        const $book = $("#book");
+        $book.empty();
+        Object.keys(bookContent).forEach(pageNumber => {
+          const pageData = bookContent[pageNumber];
+          let pageHtml = "";
+
+          if (pageData.type === "cover") {
+            pageHtml = `
+              <div class="page page-cover" data-page="${pageNumber}">
+                <div class="page-content">
+                  <h1>${pageData.title}</h1>
+                  <p>${pageData.content}</p>
+                  <div class="name-input-container">
+                    <input type="text" id="userNameInput" placeholder="${pageData.inputPlaceholder}">
+                  </div>
+                  <a href="#" class="cta-btn" id="startReadingBtn">${pageData.cta}</a>
+                </div>
+              </div>`;
+          } else if (pageData.type === "toc") {
+            const tocList = pageData.content.map(item => `
+              <li>
+                <a class="toc-link" data-page="${item.page}">${item.title}</a>
+              </li>`).join('');
+            pageHtml = `
+              <div class="page page-index" data-page="${pageNumber}">
+                <div class="page-content">
+                  <h2>${pageData.title}</h2>
+                  <ol>${tocList}</ol>
+                </div>
+              </div>`;
+          } else {
+            pageHtml = `
+              <div class="page" data-page="${pageNumber}">
+                <div class="page-content">
+                  <h2>${pageData.title}</h2>
+                  <p>${pageData.content}</p>
+                </div>
+              </div>`;
+          }
+          $book.append(pageHtml);
+        });
+        $book.append('<div class="book-binding"></div>');
+      }
+
+      function initBook(preservePage) {
+        renderPages();
+        const dims = computeDims();
+        const $book = $("#book");
+        let current = 1;
+        if (preservePage && $book.data('turn')) {
+          try { current = $book.turn("page"); } catch(e){ }
+        }
+        try {
+          if ($book.data('turn')) { $book.turn("destroy"); }
+        } catch(e){}
+
+        $book.css({width: dims.width + "px", height: dims.height + "px"});
+        $book.turn({
+          width: dims.width,
+          height: dims.height,
+          autoCenter: true,
+          display: dims.display,
+          gradients: true,
+          elevation: 75,
+          duration: 1500,
+          inclination: 75
+        });
+
+        $book.fadeIn(200);
+
+        setTimeout(function(){
+          try {
+            const view = $book.turn("view");
+            updateTurnedClasses(view);
+            updateProgress($book.turn("page"));
+            updateButtons($("#book").turn("page"));
+            updatePageNumber($("#book").turn("page"), Object.keys(bookContent).length);
+            bindEventListeners();
+          } catch(e){
+            updateTurnedClasses($book.turn("view"));
+          }
+        }, 60);
+      }
+
+      function bindEventListeners() {
+        $('#startReadingBtn').off('click touchstart').on('click touchstart', function(e){
+          e.preventDefault();
+          const userName = $("#userNameInput").val() || "मेरे दोस्त";
+          
+          bookContent["2"].title = `स्वागत है, ${userName}!`;
+          bookContent["2"].content = `<p>आपका स्वागत है। ${originalPage2Content}</p>`;
+          
+          initBook(false);
+
+          try {
+            pageTurnSound.play?.().catch?.(() => {});
+            $("#book").turn("page", 2);
+          } catch (err) {
+            try { $("#book").turn("next"); } catch(e){}
+          }
+        });
+        
+        $('.toc-link').off('click touchstart').on('click touchstart', function(e) {
+            e.preventDefault();
+            const pageNum = parseInt($(this).data('page'));
+            try {
+                pageTurnSound.play?.().catch?.(() => {});
+                $("#book").turn("page", pageNum);
+            } catch(e){}
+        });
+      }
+
+      function updateTurnedClasses(view) {
+        const visible = Array.isArray(view) ? view : [view];
+        $(".page").removeClass("turned");
+        visible.forEach(function(p){
+          const $page = $(".page[data-page='" + p + "']");
+          setTimeout(() => {
+              $page.addClass("turned");
+          }, 100);
+        });
+      }
+
+      function updateProgress(page) {
+        const $book = $("#book");
+        const totalPages = Object.keys(bookContent).length;
+        const progress = Math.max(0, Math.min(100, (page / totalPages) * 100));
+        $("#progressBar").css("width", progress + "%");
+      }
+
+      function updateButtons(page) {
+        const $book = $("#book");
+        const totalPages = Object.keys(bookContent).length;
+        if (page >= totalPages) {
+          $("#globalNextBtn").hide();
+        } else {
+          $("#globalNextBtn").show();
+        }
+        if (page <= 1) {
+          $("#globalPrevBtn").hide();
+        } else {
+          $("#globalPrevBtn").show();
+        }
+      }
+      
+      function updatePageNumber(currentPage, totalPages) {
+          $("#pageNumber").text(`Page ${currentPage} of ${totalPages}`);
+      }
+      
+      initBook(false);
+
+      $('#globalNextBtn').on('click touchstart', function(e){
+        e.preventDefault();
+        try { $("#book").turn("next"); } catch(e){}
+      });
+
+      $('#globalPrevBtn').on('click touchstart', function(e){
+        e.preventDefault();
+        try { $("#book").turn("previous"); } catch(e){}
+      });
+      
+      $('#theme-toggle-btn').on('click', function() {
+        const currentTheme = document.body.getAttribute('data-theme');
+        if (currentTheme === 'dark') {
+          document.body.removeAttribute('data-theme');
+          $(this).html('&#x263D;');
+        } else {
+          document.body.setAttribute('data-theme', 'dark');
+          $(this).html('&#x263C;');
+        }
+      });
+      
+      $('#go-to-page-btn').on('click', function() {
+          $('#goToPageModal').css('display', 'flex');
+          $('#pageInput').val('');
+          $('#pageInput').focus();
+      });
+
+      $('.modal-close').on('click', function() {
+          $('#goToPageModal').hide();
+      });
+
+      $('#goBtn').on('click', function() {
+          const pageNum = parseInt($('#pageInput').val(), 10);
+          const totalPages = Object.keys(bookContent).length;
+          if (pageNum > 0 && pageNum <= totalPages) {
+              try { $("#book").turn("page", pageNum); } catch(e){}
+          }
+          $('#goToPageModal').hide();
+      });
+
+      $("#book").on("turned", function(event, page, view) {
+        pageTurnSound.play?.().catch?.(()=>{});
+        updateProgress(page);
+        updateTurnedClasses(view);
+        updateButtons(page);
+        updatePageNumber(page, Object.keys(bookContent).length);
+      });
+      
+      $("#book").on("turning", function(event, page, view) {
+        const $book = $(this);
+        const $turningPage = $book.find(".turn-page");
+        const $nextPage = $book.find(".p" + (page + 1));
+        const $prevPage = $book.find(".p" + (page - 1));
+
+        $turningPage.addClass("shadow");
+        if ($nextPage.length) { $nextPage.addClass("shadow"); }
+        if ($prevPage.length) { $prevPage.addClass("shadow"); }
+      });
+
+      $("#book").on("start", function(event, pageObject, page) {
+        const $turningPage = $(pageObject.fromElement);
+        $turningPage.removeClass("shadow");
+      });
+
+      (function(){
+        let timer = null;
+        $(window).on('resize', function(){
+          clearTimeout(timer);
+          timer = setTimeout(function(){
+            const $book = $("#book");
+            const current = $book.data('turn') ? $book.turn("page") : 1;
+            initBook(true);
+            setTimeout(function(){
+              try { $("#book").turn("page", current); } catch(e){}
+            }, 120);
+          }, 220);
+        });
+      })();
+
+      $(document).on('keydown', function(e){
+        if (e.key === "ArrowRight") {
+          try { $("#book").turn("next"); } catch(e){}
+        } else if (e.key === "ArrowLeft") {
+          try { $("#book").turn("previous"); } catch(e){}
+        }
+      });
+
+      setTimeout(function(){
+        try { 
+            const currentPage = $("#book").turn("page");
+            const totalPages = Object.keys(bookContent).length;
+            updateProgress(currentPage); 
+            updatePageNumber(currentPage, totalPages);
+        } catch(e){}
+      }, 160);
+
+=======
+    let currentBookContent;
+
+    const staticBookContent = {
+      "1": {
+        type: "cover",
+        title: "Digital Book Innovation",
+        author: "Gemini",
+        content: `A small digital book innovation for your creative content.`,
+        cta: `पन्ना पलटने के लिए क्लिक करें`,
+        inputPlaceholder: `अपना नाम दर्ज करें...`,
+      },
+      "2": {
+        type: "content",
+        title: "प्रस्तावना",
+        content: `इस डिजिटल युग में, जहाँ सामग्री तेज़ी से आती और जाती है, कुछ ऐसा बनाना महत्वपूर्ण है जो यादगार हो। यह कोई साधारण वेबसाइट नहीं है; यह एक अनुभव है। यह आपकी कहानी को एक सम्मानजनक और आकर्षक रूप देने का एक प्रयास है, ताकि आपके पाठक हर शब्द को महसूस कर सकें और हर पन्ने पर ठहर सकें। यह सिर्फ जानकारी साझा करने का एक तरीका नहीं, बल्कि एक कला है।`,
+      },
+      "3": {
+        type: "content",
+        title: "अपनी कहानी, एक नई पहचान",
+        content: `जहां आपकी कहानी सिर्फ पढ़ी नहीं जाती, बल्कि महसूस की जाती है। जहां आपके शब्द एक साधारण ब्लॉग पोस्ट नहीं, बल्कि एक सुंदर, इंटरैक्टिव किताब बन जाते हैं। क्या आप इस अनुभव को खोने के लिए तैयार हैं?`
+      },
+      "4": {
+        type: "toc",
+        title: "विषय-सूची",
+        content: [
+          { page: 2, title: "प्रस्तावना" },
+          { page: 3, title: "आपकी कहानी, एक नई पहचान" },
+          { page: 5, title: "सहज पढ़ना: बिना किसी रुकावट के" },
+          { page: 6, title: "मीडिया एकीकरण: वीडियो और तस्वीरों के साथ" },
+          { page: 7, title: "मोबाइल पर शानदार: हर डिवाइस के लिए" },
+          { page: 8, title: "अपनी छाप छोड़ें: भीड़ से अलग दिखें" },
+          { page: 9, title: "आसान संपादन: अपनी किताब खुद बनाएं" },
+        ]
+      },
+      "5": {
+        type: "content",
+        title: "सहज पढ़ना: बिना किसी रुकावट के",
+        content: `<p>कल्पना कीजिए: आपके पाठक आराम से बैठ कर, आपकी किताब के पन्ने पलट रहे हैं, बिना किसी विज्ञापन या भटकाव के। यह एक ऐसा अनुभव है जो उन्हें बार-बार वापस आने पर मजबूर करेगा। इसे हासिल करने के लिए, आपको एक बुक-स्टाइल वेबसाइट चाहिए।</p>`
+      },
+      "6": {
+        type: "content",
+        title: "मीडिया एकीकरण: वीडियो और तस्वीरों के साथ",
+        content: `<p>क्या आपकी कहानी में ग्राफिक्स, वीडियो, या एनिमेशन हैं? पारंपरिक ब्लॉग उन्हें अलग-थलग रखते हैं। हमारी बुक-स्टाइल वेबसाइट पर, मीडिया आपके शब्दों में seamlessly घुल-मिल जाती है, एक यादगार दृश्य कहानी बनाती है। क्या आप इसे खोना चाहेंगे?</p>`
+      },
+      "7": {
+        type: "content",
+        title: "मोबाइल पर शानदार: हर डिवाइस के लिए",
+        content: `<p>आपके 70% से ज्यादा पाठक मोबाइल पर हैं। क्या आपकी वेबसाइट उन्हें एक ख़राब अनुभव दे रही है? हमारी बुक-स्टाइल वेबसाइटें हर स्क्रीन पर शानदार दिखती हैं, जिससे आप कोई भी पाठक नहीं खोते। आपके मोबाइल पाठक भी पन्ने पलटने का मज़ा ले सकते हैं।</p>`
+      },
+      "8": {
+        type: "content",
+        title: "अपनी छाप छोड़ें: भीड़ से अलग दिखें",
+        content: `इस डिजिटल दुनिया में, अलग दिखना सबसे बड़ी चुनौती है। लाखों ब्लॉग्स में से, आपका क्यों चुना जाए? एक बुक-स्टाइल वेबसाइट के साथ, आप तुरंत एक लेखक या कलाकार के रूप में अपनी प्रतिष्ठा स्थापित करते हैं, जो विस्तार और गुणवत्ता को महत्व देता है।`
+      },
+      "9": {
+        type: "content",
+        title: "आसान संपादन: अपनी किताब खुद बनाएं",
+        content: `सोचिए, सिर्फ कुछ क्लिक में, आपकी कहानी एक खूबसूरत डिजिटल किताब बन जाती है। कोई कोडिंग नहीं, कोई तकनीकी ज्ञान नहीं। हमारी प्रणाली आपके लिए सब कुछ करती है, जिससे आपका सारा ध्यान सिर्फ लिखने पर रहता है। क्या आप अभी भी घंटों तक अपनी वेबसाइट के लेआउट से लड़ना चाहेंगे?`
+      },
+      "10": {
+        type: "content",
+        title: "Your Story Awaits!",
+        content: `<p>You have reached the end of this digital book. We hope you enjoyed the experience. Now, it's your turn to create. Click the button below to start writing your own digital book!</p><div style="text-align:center; margin-top:30px;"><button id="createBookFinalBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full transition-transform transform hover:scale-105">Create Another Book</button></div>`
+      }
+    };
+    
+    // Store original content of page 2
+    const originalPage2Content = staticBookContent["2"].content;
+    const originalPage10Content = staticBookContent["10"].content;
+
+    const pageTurnSound = new Audio("data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAAAAAAAVHJ5b24gMjAxMy4wNFdJTiAAAAAfAAAAPAAAAABDb252ZXJ0ZWQgYnkgSmF2YUF1ZGlvAAAAAClAAAA3AAAAAEhhdmUgYSBnb29kIGRheWwAAAAApAAAAEAAAAGh0dHA6Ly93d3cudHJ5b24ub3JnAAAAACIAAAAgAAAAQ29udmVydGVkIGJ5IEphdmFBdWRpbyBvbiAyOC4wOS4yMDExAAAAAAA=");
+
+    function isDesktop() { return $(window).width() > 768; }
+
+    function computeDims() {
+      return {
+        width: isDesktop() ? 922 : Math.round($(window).width() * 0.95),
+        height: isDesktop() ? 600 : Math.round($(window).height() * 0.9),
+        display: isDesktop() ? 'double' : 'single'
+      };
+    }
+
+    function renderPages(contentData) {
+      const $book = $("#book");
+      $book.empty();
+      Object.keys(contentData).forEach(pageNumber => {
+        const pageData = contentData[pageNumber];
+        let pageHtml = "";
+
+        if (pageData.type === "cover") {
+          pageHtml = `<div class="page page-cover" data-page="${pageNumber}"><div class="page-content"><h1 class="text-4xl font-extrabold">${pageData.title}</h1><p class="text-xl mt-2 font-bold">${pageData.author}</p><p class="mt-8">${pageData.content}</p></div></div>`;
+        } else if (pageData.type === "toc") {
+          const tocList = pageData.content.map(item => `<li><a class="toc-link" data-page="${item.page}">${item.title}</a></li>`).join('');
+          pageHtml = `<div class="page page-index" data-page="${pageNumber}"><div class="page-content"><h2>${pageData.title}</h2><ol>${tocList}</ol></div></div>`;
+        } else {
+          pageHtml = `<div class="page" data-page="${pageNumber}"><div class="page-content"><h2>${pageData.title}</h2>${pageData.content}</div></div>`;
+        }
+        $book.append(pageHtml);
+      });
+      $book.append('<div class="book-binding"></div>');
+    }
+
+    function initBook() {
+        renderPages(currentBookContent);
+        const dims = computeDims();
+        const $book = $("#book");
+        try { if ($book.data('turn')) { $book.turn("destroy"); } } catch(e){}
+
+        $book.css({width: dims.width + "px", height: dims.height + "px"});
+        $book.turn({
+            width: dims.width,
+            height: dims.height,
+            autoCenter: true,
+            display: dims.display,
+            gradients: true,
+            elevation: 75,
+            duration: 1500,
+            inclination: 75
+        });
+
+        $book.fadeIn(200);
+        updateState();
+
+        setTimeout(function(){
+            try {
+                const view = $book.turn("view");
+                updateTurnedClasses(view);
+                updateProgress($book.turn("page"));
+                updateButtons($("#book").turn("page"));
+                updatePageNumber($("#book").turn("page"), Object.keys(currentBookContent).length);
+            } catch(e){
+                updateTurnedClasses($book.turn("view"));
+            }
+        }, 60);
+    }
+
+    function updateTurnedClasses(view) {
+        const visible = Array.isArray(view) ? view : [view];
+        $(".page").removeClass("turned");
+        visible.forEach(function(p){
+            const $page = $(".page[data-page='" + p + "']");
+            setTimeout(() => { $page.addClass("turned"); }, 100);
+        });
+    }
+
+    function updateProgress(page) {
+        const totalPages = Object.keys(currentBookContent).length;
+        const progress = Math.max(0, Math.min(100, (page / totalPages) * 100));
+        $("#progressBar").css("width", progress + "%");
+    }
+
+    function updateButtons(page) {
+        const totalPages = Object.keys(currentBookContent).length;
+        if (page >= totalPages) { $("#globalNextBtn").hide(); } else { $("#globalNextBtn").show(); }
+        if (page <= 1) { $("#globalPrevBtn").hide(); } else { $("#globalPrevBtn").show(); }
+    }
+    
+    function updatePageNumber(currentPage, totalPages) {
+        $("#pageNumber").text(`Page ${currentPage} of ${totalPages}`);
+    }
+
+    function updateState() {
+        $("#go-to-page-btn").show();
+        $("#theme-toggle-btn").show();
+    }
+
+    function showBookViewer() {
+          $('#bookCreatorContainer').fadeOut(500, function() {
+            $('#bookViewerContainer').fadeIn(500);
+          });
+    }
+
+    function showBookCreator() {
+          $('#bookViewerContainer').fadeOut(500, function() {
+            $('#bookCreatorContainer').fadeIn(500);
+            renderPageInputs();
+          });
+    }
+
+    function renderPageInputs() {
+      const $pagesContainer = $('#pagesContainer');
+      $pagesContainer.empty();
+      addPageInput(); // Start with at least one page
+    }
+
+    function addPageInput() {
+      const $pagesContainer = $('#pagesContainer');
+      const pageIndex = $pagesContainer.children('.page-input-group').length + 1;
+      const pageInputHtml = `
+        <div class="page-input-group" data-page-index="${pageIndex}">
+          <h3>Page ${pageIndex}</h3>
+          <button type="button" class="remove-page-btn">X</button>
+          <div class="form-group">
+            <label for="pageTitle${pageIndex}" class="text-gray-700 dark:text-gray-300">Page Title</label>
+            <input type="text" id="pageTitle${pageIndex}" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+          </div>
+          <div class="form-group">
+            <label for="pageContent${pageIndex}" class="text-gray-700 dark:text-gray-300">Page Content</label>
+            <textarea id="pageContent${pageIndex}" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" required></textarea>
+          </div>
+        </div>
+      `;
+      $pagesContainer.append(pageInputHtml);
+      
+      // Re-bind remove button handlers
+      $('.remove-page-btn').off('click').on('click', function() {
+        if ($('.page-input-group').length > 1) {
+          $(this).closest('.page-input-group').remove();
+          updatePageInputIndices();
+        }
+      });
+    }
+
+    function updatePageInputIndices() {
+      $('.page-input-group').each(function(index) {
+        const newIndex = index + 1;
+        $(this).attr('data-page-index', newIndex);
+        $(this).find('h3').text(`Page ${newIndex}`);
+        $(this).find('label[for^="pageTitle"]').attr('for', `pageTitle${newIndex}`);
+        $(this).find('input[id^="pageTitle"]').attr('id', `pageTitle${newIndex}`);
+        $(this).find('label[for^="pageContent"]').attr('for', `pageContent${newIndex}`);
+        $(this).find('textarea[id^="pageContent"]').attr('id', `pageContent${newIndex}`);
+      });
+    }
+
+    $(function() {
+        currentBookContent = staticBookContent;
+        initBook();
+        
+        $('#backToHomeBtn').on('click', showBookViewer);
+        $('#addPageBtn').on('click', addPageInput);
+
+        $('#bookForm').on('submit', function(e) {
+          e.preventDefault();
+          const bookTitle = $('#bookTitle').val();
+          const bookAuthor = $('#bookAuthor').val();
+          const $errorMessage = $('#formError');
+          $errorMessage.text('').addClass('hidden');
+          
+          if (!bookTitle || !bookAuthor) {
+            $errorMessage.text('Please enter a book title and author.').removeClass('hidden');
+            return;
+          }
+
+          const pages = [];
+          let allPagesValid = true;
+          $('.page-input-group').each(function() {
+            const pageTitle = $(this).find('input').val();
+            const pageContent = $(this).find('textarea').val();
+            if (pageTitle && pageContent) {
+              pages.push({ title: pageTitle, content: pageContent });
+            } else {
+              allPagesValid = false;
+            }
+          });
+
+          if (pages.length === 0 || !allPagesValid) {
+            $errorMessage.text('Please ensure all pages have both a title and content.').removeClass('hidden');
+            return;
+          }
+
+          const newBook = {};
+          let pageCounter = 1;
+
+          // Cover Page
+          newBook[pageCounter] = { 
+            type: "cover", 
+            title: bookTitle,
+            author: bookAuthor,
+            content: `A wonderful story by ${bookAuthor}.`,
+          };
+          pageCounter++;
+
+          // Table of Contents Page
+          const tocContent = pages.map((page, index) => ({
+            page: pageCounter + 2 + index, // Correct page number
+            title: page.title
+          }));
+          newBook[pageCounter] = {
+            type: "toc",
+            title: "Table of Contents",
+            content: tocContent
+          };
+          pageCounter++;
+
+          // Dynamic Content Pages
+          pages.forEach(page => {
+            newBook[pageCounter] = {
+              type: "content",
+              title: page.title,
+              content: page.content
+            };
+            pageCounter++;
+          });
+
+          // Final Page with CTA
+          newBook[pageCounter] = {
+            type: "content",
+            title: "The End",
+            content: `<p>You have reached the end of this digital book. Thank you for creating it!</p><div style="text-align:center; margin-top:30px;"><button id="createBookFinalBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full transition-transform transform hover:scale-105">Create Another Book</button></div>`
+          };
+          
+          currentBookContent = newBook;
+          initBook();
+          showBookViewer();
+        });
+
+        // Use event delegation for all dynamic buttons
+        $('#book').on('click', '#startReadingBtn', function(e){
+            e.preventDefault();
+            const userName = $("#userNameInput").val() || "मेरे दोस्त";
+            currentBookContent["2"].title = `स्वागत है, ${userName}!`;
+            currentBookContent["2"].content = `<p>आपका स्वागत है। ${originalPage2Content}</p>`;
+            initBook(currentBookContent);
+            try {
+                pageTurnSound.play?.().catch?.(() => {});
+                $("#book").turn("page", 2);
+            } catch (err) {
+                try { $("#book").turn("next"); } catch(e){}
+            }
+        });
+
+        $('#book').on('click', '.toc-link', function(e) {
+            e.preventDefault();
+            const pageNum = parseInt($(this).data('page'));
+            try {
+                pageTurnSound.play?.().catch?.(() => {});
+                $("#book").turn("page", pageNum);
+            } catch(e){}
+        });
+
+        $('#book').on('click', '#createBookFinalBtn', showBookCreator);
+
+        // Event listeners for Book Viewer
+        $('#globalNextBtn').on('click touchstart', function(e){ e.preventDefault(); try { $("#book").turn("next"); } catch(e){} });
+        $('#globalPrevBtn').on('click touchstart', function(e){ e.preventDefault(); try { $("#book").turn("previous"); } catch(e){} });
+        $('#theme-toggle-btn').on('click', function() {
+            const currentTheme = document.body.getAttribute('data-theme');
+            if (currentTheme === 'dark') { document.body.removeAttribute('data-theme'); $(this).html('&#x263D;'); } else { document.body.setAttribute('data-theme', 'dark'); $(this).html('&#x263C;'); }
+        });
+        $('#go-to-page-btn').on('click', function() { $('#goToPageModal').css('display', 'flex'); $('#pageInput').val(''); $('#pageInput').focus(); });
+        $('.modal-close').on('click', function() { $('#goToPageModal').hide(); });
+        $('#goBtn').on('click', function() {
+            const pageNum = parseInt($('#pageInput').val(), 10);
+            const totalPages = Object.keys(currentBookContent).length;
+            if (pageNum > 0 && pageNum <= totalPages) { try { $("#book").turn("page", pageNum); } catch(e){} }
+            $('#goToPageModal').hide();
+        });
+        
+        $("#book").on("turned", function(event, page, view) {
+            pageTurnSound.play?.().catch?.(()=>{});
+            updateProgress(page);
+            updateTurnedClasses(view);
+            updateButtons(page);
+            updatePageNumber(page, Object.keys(currentBookContent).length);
+        });
+        $("#book").on("turning", function(event, page, view) {
+            const $book = $(this);
+            const $turningPage = $book.find(".turn-page");
+            const $nextPage = $book.find(".p" + (page + 1));
+            const $prevPage = $book.find(".p" + (page - 1));
+            $turningPage.addClass("shadow");
+            if ($nextPage.length) { $nextPage.addClass("shadow"); }
+            if ($prevPage.length) { $prevPage.addClass("shadow"); }
+        });
+        $("#book").on("start", function(event, pageObject, page) {
+            const $turningPage = $(pageObject.fromElement);
+            $turningPage.removeClass("shadow");
+        });
+        (function(){
+            let timer = null;
+            $(window).on('resize', function(){
+                clearTimeout(timer);
+                timer = setTimeout(function(){
+                    const $book = $("#book");
+                    const current = $book.data('turn') ? $book.turn("page") : 1;
+                    initBook();
+                    setTimeout(function(){ try { $("#book").turn("page", current); } catch(e){} }, 120);
+                }, 220);
+            });
+        })();
+        $(document).on('keydown', function(e){
+            if (e.key === "ArrowRight") { try { $("#book").turn("next"); } catch(e){} } 
+            else if (e.key === "ArrowLeft") { try { $("#book").turn("previous"); } catch(e){} }
+        });
+>>>>>>> 71f67df (d)
+    });
+  </script>
+</body>
+</html>

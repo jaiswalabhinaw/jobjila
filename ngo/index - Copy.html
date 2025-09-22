@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shatakshi Seva Sansthan</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* Base Reset */
+* {margin:0; padding:0; box-sizing:border-box; font-family:'Roboto',sans-serif;}
+body {background:#f5f5f5; color:#333; line-height:1.6; scroll-behavior:smooth;}
+a {text-decoration:none; color:inherit;}
+h1,h2,h3 {margin-bottom:15px;}
+section {padding:60px 20px;}
+.container {max-width:1200px; margin:auto;}
+
+/* Buttons */
+.btn-primary {background:#E53935; color:#fff; padding:12px 25px; border-radius:6px; font-weight:700; transition:0.3s;}
+.btn-primary:hover {transform:scale(1.05); box-shadow:0 4px 15px rgba(0,0,0,0.2);}
+.btn-secondary {background:#0056b3; color:#fff; padding:12px 25px; border-radius:6px; font-weight:700; transition:0.3s;}
+.btn-secondary:hover {transform:scale(1.05); box-shadow:0 4px 15px rgba(0,0,0,0.2);}
+
+/* Header */
+header {background:#fff; color:#333; padding:15px 0; position:sticky; top:0; z-index:1000; box-shadow:0 2px 5px rgba(0,0,0,0.05);}
+header .container {display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;}
+header h1 {font-size:28px; color:#0056b3;}
+nav ul {list-style:none; display:flex; gap:20px;}
+nav ul li a {font-weight:500; color:#333; transition:0.3s;}
+nav ul li a:hover, nav ul li a.active {color:#0056b3;}
+
+/* Hero */
+.hero {background:url('hero.jpg') no-repeat center center/cover; height:70vh; display:flex; justify-content:center; align-items:center; text-align:center; position:relative; color:#fff;}
+.hero::after {content:''; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.4);}
+.hero-content {position:relative; z-index:1;}
+.hero h2 {font-size:48px; margin-bottom:20px;}
+.hero p {font-size:20px; margin-bottom:25px;}
+.hero .cta {display:flex; justify-content:center; gap:15px; flex-wrap:wrap;}
+
+/* Sections */
+h2.section-title {color:#0056b3; text-align:center; margin-bottom:40px; font-size:36px;}
+.grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px;}
+.card {background:#fff; padding:20px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.1); transition:0.3s;}
+.card:hover {transform:translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.15);}
+.card h3 {color:#0056b3; margin-bottom:10px;}
+.card p {font-size:16px;}
+
+/* Section backgrounds */
+.section-white {background:#ffffff;}
+.section-light-blue {background:#e3f2fd;}
+.section-light-gray {background:#f5f5f5;}
+.section-soft-yellow {background:#fff3cd;}
+.section-dark-blue {background:#002E5D; color:#fff;}
+.about p, .founder p {margin-bottom:15px;}
+
+/* Stats */
+.stats {display:flex; justify-content:space-around; flex-wrap:wrap; gap:30px; text-align:center;}
+.stats .stat {font-size:36px; color:#0056b3; font-weight:700;}
+.stats .label {color:#333; font-size:16px;}
+
+/* Images */
+img {width:100%; border-radius:10px; transition:0.3s;}
+img:hover {transform:scale(1.02);}
+
+/* FAQ */
+.faq-item {margin-bottom:15px; border-bottom:1px solid #ccc; padding-bottom:10px;}
+.faq-item button {width:100%; background:none; border:none; text-align:left; padding:10px; font-size:18px; color:#0056b3; cursor:pointer; font-weight:700; transition:0.3s;}
+.faq-item button:hover {color:#E53935;}
+.faq-item p {padding:10px 0 0 0; display:none;}
+
+/* Footer */
+footer {background:#002E5D; color:#fff; text-align:center; padding:40px 20px;}
+footer a {color:#66B2FF; font-weight:500; transition:0.3s;}
+footer a:hover {text-decoration:underline;}
+
+/* Responsive */
+@media(max-width:768px){
+header .container {flex-direction:column; text-align:center;}
+nav ul {flex-direction:column; gap:10px; margin-top:10px;}
+.hero h2 {font-size:36px;}
+.hero p {font-size:18px;}
+.stats {flex-direction:column;}
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+<div class="container">
+<h1>Shatakshi Seva Sansthan</h1>
+<nav>
+<ul>
+<li><a href="#about" class="active">About</a></li>
+<li><a href="#founder">Founder</a></li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#work">Our Work</a></li>
+<li><a href="#impact">Impact</a></li>
+<li><a href="#getinvolved">Get Involved</a></li>
+<li><a href="#donate" class="btn-primary">Donate 🔴</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+<div class="hero-content">
+<h2>Transforming Society, One Step at a Time</h2>
+<p>Join us in creating positive change across education, health, and community development.</p>
+<div class="cta">
+<a href="#donate" class="btn-primary">Donate Now</a>
+<a href="#getinvolved" class="btn-secondary">Volunteer</a>
+</div>
+</div>
+</section>
+
+<!-- Quick Stats / Highlights -->
+<section class="section-light-blue" id="highlights">
+<div class="container">
+<h2 class="section-title">Our Impact in Numbers</h2>
+<div class="stats">
+<div>
+<div class="stat">900+</div>
+<div class="label">Dignified Funerals</div>
+</div>
+<div>
+<div class="stat">42</div>
+<div class="label">Daily Meals Served</div>
+</div>
+<div>
+<div class="stat">800+</div>
+<div class="label">Children Educated</div>
+</div>
+<div>
+<div class="stat">1000+</div>
+<div class="label">Families Helped</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="section-white about">
+<div class="container">
+<h2 class="section-title">About Shatakshi Seva Sansthan</h2>
+<p>"Our journey is incomplete until the last person in society smiles."</p>
+<p>The inception of Shatakshi Seva Sansthan was not just about establishing an organization; it was a resolve born out of pain. A young man, who lost his younger brother and witnessed the sorrow of abandoned bodies lying on the streets, decided that the sole purpose of his life would now be the service of humanity. This young man is today our founder, Mr. Naveen Ranjan Srivastava.</p>
+<p>🌱 <strong>The Ground of Beginnings:</strong> Vision born in Manikpur village, Gopalganj, Bihar. In 2011, the Shatakshi Educational and Welfare Trust was established.</p>
+<p>🎓 <strong>Revolution in Education:</strong> From Weapons to Pens mission empowered hundreds of children.</p>
+<p>👧 <strong>Daughters’ Voices:</strong> “Voice of Silence” initiative gave girls education and nutrition.</p>
+<p>🚑 <strong>Race for Life:</strong> 24×7 free ambulance service saving lives.</p>
+<p>🦠 <strong>During COVID:</strong> Relief services, meal distribution, migrant worker support.</p>
+<p>🍲 <strong>Annapurna Kitchen:</strong> Daily hot meals to elders in 15 villages.</p>
+<p>🌸 <strong>Final Farewell:</strong> Over 900 dignified funerals.</p>
+</div>
+</section>
+
+<!-- Founder Section -->
+<section id="founder" class="section-light-gray founder">
+<div class="container">
+<h2 class="section-title">About the Founder</h2>
+<p>"Service is the greatest religion."</p>
+<p>Mr. Naveen Ranjan Srivastava was born in Manikpur village, Gopalganj, Bihar. Witnessing tragedy during his studies in Prayagraj changed his life direction towards social service.</p>
+<p>Founded Shatakshi Educational and Welfare Trust in 2011, registered under the Indian Trusts Act, 1882, and recognized under Sections 12-A and 80-G.</p>
+<p>Key milestones: Antim Vidai, Education Campaign, Women Empowerment, COVID Relief, Annapurna Rasoi.</p>
+</div>
+</section>
+
+<!-- Objectives Section -->
+<section id="objectives" class="section-light-blue">
+<div class="container">
+<h2 class="section-title">Our Objectives & Causes</h2>
+<div class="grid">
+<div class="card">🎓 <h3>Education for All</h3><p>Provide quality education to every child.</p></div>
+<div class="card">👩‍⚕️ <h3>Rural Health</h3><p>Regular health check-ups and medicine distribution in villages.</p></div>
+<div class="card">👵 <h3>Senior Citizen Services</h3><p>Care and support for helpless elderly people.</p></div>
+<div class="card">💧 <h3>Water Conservation</h3><p>Securing the future through water-saving campaigns.</p></div>
+<div class="card">🌱 <h3>Tree Plantation</h3><p>Massive tree-planting drives for ecological balance.</p></div>
+<!-- Additional objectives placeholders -->
+</div>
+</div>
+</section>
+
+<!-- Featured Projects Section -->
+<section id="work" class="section-white">
+<div class="container">
+<h2 class="section-title">Our Work</h2>
+<div class="grid">
+<div class="card"><img src="project-ongoing-01.jpg" alt="Project Ongoing"><h3>Flood Relief Project</h3></div>
+<div class="card"><img src="project-completed-01.jpg" alt="Project Completed"><h3>Education Drive</h3></div>
+<div class="card"><img src="project-ongoing-02.jpg" alt="Project Ongoing"><h3>Women Empowerment</h3></div>
+</div>
+</div>
+</section>
+
+<!-- Partner Logos Section -->
+<section class="section-light-gray">
+<div class="container">
+<h2 class="section-title">Our Partners</h2>
+<div class="grid">
+<img src="partner1.jpg" alt="Partner 1">
+<img src="partner2.jpg" alt="Partner 2">
+<img src="partner3.jpg" alt="Partner 3">
+<img src="partner4.jpg" alt="Partner 4">
+</div>
+</div>
+</section>
+
+<!-- Team Section -->
+<section id="team" class="section-light-gray">
+<div class="container">
+<h2 class="section-title">Our Team</h2>
+<div class="grid">
+<div class="card"><img src="leadership-01.jpg" alt="Team Member"><h3>Mr. Naveen Ranjan</h3><p>Founder</p></div>
+<div class="card"><img src="leadership-02.jpg" alt="Team Member"><h3>Mrs. Shipli Saxena</h3><p>Co-Founder</p></div>
+<!-- More team members -->
+</div>
+</div>
+</section>
+
+<!-- Impact Section -->
+<section id="impact" class="section-light-blue">
+<div class="container">
+<h2 class="section-title">Impact</h2>
+<div class="grid">
+<div class="card"><img src="success-story-01.jpg" alt="Success Story"><h3>Sonu's Education</h3></div>
+<div class="card"><img src="photo-gallery-01.jpg" alt="Photo Gallery"><h3>Community Support</h3></div>
+<div class="card"><img src="video-gallery-thumb.jpg" alt="Video"><h3>Ambulance Services</h3></div>
+</div>
+</div>
+</section>
+
+<!-- Get Involved Section -->
+<section id="getinvolved" class="section-white">
+<div class="container" style="text-align:center;">
+<h2 class="section-title">Get Involved</h2>
+<p>Volunteer, donate, or support our initiatives to transform lives.</p>
+<a href="#donate" class="btn-primary">Donate Now</a>
+<a href="#contact" class="btn-secondary">Join Volunteer</a>
+</div>
+</section>
+
+<!-- Donate Section -->
+<section id="donate" class="section-soft-yellow">
+<div class="container" style="text-align:center;">
+<h2 class="section-title">Support Our Mission</h2>
+<p>Your donation helps us transform lives. Every contribution counts.</p>
+<a href="#" class="btn-primary">Donate Now</a>
+</div>
+</section>
+
+<!-- FAQ Section -->
+<section id="faq" class="section-light-gray">
+<div class="container">
+<h2 class="section-title">Frequently Asked Questions</h2>
+<div class="faq-item">
+<button>How can I volunteer?</button>
+<p>Fill out our volunteer form on the website, and we will contact you with opportunities.</p>
+</div>
+<div class="faq-item">
+<button>How are donations utilized?</button>
+<p>Donations directly support education, health, and relief initiatives for the underprivileged.</p>
+</div>
+<div class="faq-item">
+<button>Can I sponsor a child?</button>
+<p>Yes, you can sponsor children through our Education & Welfare programs.</p>
+</div>
+</div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="section-white">
+<div class="container" style="text-align:center;">
+<h2 class="section-title">Contact Us</h2>
+<p>Email: <a href="mailto:info@shatakshi.org">info@shatakshi.org</a> | Phone: +91-XXXXXXXXXX</p>
+</div>
+</section>
+
+<!-- Footer -->
+<footer>
+<div class="container">
+<p>© 2025 Shatakshi NGO. All rights reserved.</p>
+</div>
+</footer>
+
+<script>
+// FAQ Accordion
+const faqButtons = document.querySelectorAll('.faq-item button');
+faqButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const p = btn.nextElementSibling;
+    p.style.display = p.style.display === 'block' ? 'none' : 'block';
+  });
+});
+
+// Simple Count-Up Animation
+const stats = document.querySelectorAll('.stat');
+stats.forEach(stat => {
+  let count = 0;
+  const target = +stat.innerText.replace('+','');
+  const increment = Math.ceil(target/100);
+  const interval = setInterval(() => {
+    count += increment;
+    if(count >= target) count = target;
+    stat.innerText = count + (stat.innerText.includes('+') ? '+' : '');
+    if(count >= target) clearInterval(interval);
+  }, 20);
+});
+</script>
+
+</body>
+</html>

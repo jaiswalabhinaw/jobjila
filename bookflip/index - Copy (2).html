@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Book-Style Website Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/blasten/turn.js/turn.min.js"></script>
+  <style>
+    body, html { margin: 0; padding: 0; width: 100%; height: 100%; font-family: 'Arial', sans-serif; }
+    body { display: flex; justify-content: center; align-items: center; background: #f0f0f0; }
+
+    /* New container to fix mobile scrolling issues */
+    .book-container {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #book { width: 922px; height: 600px; display: none; }
+    .page { background: #faf9f6; padding: 30px; line-height: 1.6; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); position: relative; }
+    .page-content { max-width: 400px; margin: 0 auto; text-align: left; }
+    .page h2 { margin-top: 0; color: #333; font-size: 24px; }
+    .page p { font-size: 16px; color: #555; }
+    
+    /* Cover Page */
+    .page-cover { background: #f5f5dc; color: #333; text-align: center; padding: 100px 30px; display: flex; flex-direction: column; justify-content: center; align-items: center; border: 1px solid #ccc; }
+    .page-cover h1 { font-size: 52px; margin: 0 0 10px; }
+    .page-cover p { font-size: 18px; max-width: 600px; }
+    .cta-btn { background-color: #007bff; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; font-size: 18px; margin-top: 20px; transition: background-color 0.3s; }
+    .cta-btn:hover { background-color: #0056b3; }
+
+    /* Index Page */
+    .page-index { background: #f8f8f8; }
+    .page-index h2 { margin-bottom: 20px; }
+    .page-index ul { list-style: none; padding: 0; }
+    .page-index li { margin-bottom: 10px; font-size: 18px; }
+
+    /* Feature Page Visuals */
+    .feature-visuals { text-align: center; margin-top: 20px; }
+    .feature-visuals img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+
+    /* Mobile turn-page button */
+    .next-page-btn {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: none; /* Hidden on desktop by default */
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease;
+      z-index: 100;
+    }
+
+    .next-page-btn:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+    
+    /* Mobile Styles */
+    @media (max-width: 768px) {
+      #book { width: 95vw; height: 90vh; }
+      .page { padding: 20px; font-size: 14px; }
+      .page-content { max-width: none; width: 100%; padding: 0 10px; box-sizing: border-box; }
+      .page h2 { font-size: 20px; }
+      .page p { font-size: 14px; }
+      .page-cover h1 { font-size: 32px; }
+      .page-cover p { font-size: 14px; }
+      .cta-btn { font-size: 16px; padding: 10px 20px; }
+      .next-page-btn {
+          display: flex; /* Show button on mobile */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="book-container">
+    <div id="book">
+      <!-- Page 1: Cover Page with Direct Instruction -->
+      <div class="page page-cover">
+        <div class="page-content">
+          <h1>आपकी कहानी, एक नई पहचान</h1>
+          <p>लेखकों, कवियों, और कलाकारों के लिए एक अद्भुत डिजिटल मंच। अपनी रचनात्मकता को किताब की तरह पेश करें।</p>
+          <a href="#" class="cta-btn">पन्ना पलटने के लिए क्लिक करें</a>
+        </div>
+      </div>
+
+      <!-- Page 2: Preface and FOMO Introduction -->
+      <div class="page">
+        <div class="page-content">
+          <h2>एक ऐसी दुनिया में आपका स्वागत है...</h2>
+          <p>जहां आपकी कहानी सिर्फ पढ़ी नहीं जाती, बल्कि महसूस की जाती है। जहां आपके शब्द एक साधारण ब्लॉग पोस्ट नहीं, बल्कि एक सुंदर, इंटरैक्टिव किताब बन जाते हैं। क्या आप इस अनुभव को खोने के लिए तैयार हैं?</p>
+        </div>
+        <button class="next-page-btn">&#x2192;</button>
+      </div>
+
+      <!-- Page 3: The Problem Statement (FOMO) -->
+      <div class="page">
+        <div class="page-content">
+          <h2>क्या आपका ब्लॉग पुराना लग रहा है?</h2>
+          <p>एक साधारण वेबसाइट पर पाठक आते हैं और चले जाते हैं। कोई जुड़ाव नहीं, कोई यादगार अनुभव नहीं। आपकी मेहनत, आपका जुनून, क्या वो सिर्फ एक स्क्रोल में खो जाना चाहिए? आपका काम एक सादे, उबाऊ फॉर्मेट तक क्यों सीमित रहे?</p>
+        </div>
+        <button class="next-page-btn">&#x2192;</button>
+      </div>
+
+      <!-- Page 4: Index of Benefits -->
+      <div class="page page-index">
+        <div class="page-content">
+          <h2>देखें कि आप क्या खो रहे हैं:</h2>
+          <ul>
+            <li>1. सहज पढ़ना: बिना किसी रुकावट के</li>
+            <li>2. मीडिया एकीकरण: वीडियो और तस्वीरों के साथ</li>
+            <li>3. मोबाइल पर शानदार: हर डिवाइस के लिए</li>
+            <li>4. अपनी छाप छोड़ें: भीड़ से अलग दिखें</li>
+            <li>5. आसान संपादन: अपनी किताब खुद बनाएं</li>
+          </ul>
+        </div>
+        <button class="next-page-btn">&#x2192;</button>
+      </div>
+
+      <!-- Page 5: Feature 1: Fluid Reading (The Solution) -->
+      <div class="page">
+        <div class="page-content">
+          <h2>1. सहज पढ़ना: बिना किसी रुकावट के</h2>
+          <p>कल्पना कीजिए: आपके पाठक आराम से बैठ कर, आपकी किताब के पन्ने पलट रहे हैं, बिना किसी विज्ञापन या भटकाव के। यह एक ऐसा अनुभव है जो उन्हें बार-बार वापस आने पर मजबूर करेगा। इसे हासिल करने के लिए, आपको एक बुक-स्टाइल वेबसाइट चाहिए।</p>
+          <div class="feature-visuals">
+            <img src="https://via.placeholder.com/300x180.png?text=Fluid+Reading" alt="Fluid Reading Experience">
+          </div>
+        </div>
+        <button class="next-page-btn">&#x2192;</button>
+      </div>
+
+      <!-- Page 6: Feature 2: Media Integration (The Solution) -->
+      <div class="page">
+        <div class="page-content">
+          <h2>2. मीडिया एकीकरण: वीडियो और तस्वीरों के साथ</h2>
+          <p>क्या आपकी कहानी में ग्राफिक्स, वीडियो, या एनिमेशन हैं? पारंपरिक ब्लॉग उन्हें अलग-थलग रखते हैं। हमारी बुक-स्टाइल वेबसाइट पर, मीडिया आपके शब्दों में seamlessly घुल-मिल जाती है, एक यादगार दृश्य कहानी बनाती है। क्या आप इसे खोना चाहेंगे?</p>
+          <div class="feature-visuals">
+            <img src="https://via.placeholder.com/300x180.png?text=Rich+Media+in+Books" alt="Rich Media in Books">
+          </div>
+        </div>
+        <button class="next-page-btn">&#x2192;</button>
+      </div>
+
+      <!-- Page 7: Feature 3: Mobile Responsiveness (The Solution) -->
+      <div class="page">
+        <div class="page-content">
+          <h2>3. मोबाइल पर शानदार: हर डिवाइस के लिए</h2>
+          <p>आपके 70% से ज्यादा पाठक मोबाइल पर हैं। क्या आपकी वेबसाइट उन्हें एक ख़राब अनुभव दे रही है? हमारी बुक-स्टाइल वेबसाइटें हर स्क्रीन पर शानदार दिखती हैं, जिससे आप कोई भी पाठक नहीं खोते। आपके मोबाइल पाठक भी पन्ने पलटने का मज़ा ले सकते हैं।</p>
+          <div class="feature-visuals">
+            <img src="https://via.placeholder.com/300x180.png?text=Mobile+Friendliness" alt="Mobile Friendliness">
+          </div>
+        </div>
+        <button class="next-page-btn">&#x2192;</button>
+      </div>
+
+      <!-- Page 8: Feature 4: Creating a Brand Identity (The Solution) -->
+      <div class="page">
+        <div class="page-content">
+          <h2>4. अपनी छाप छोड़ें: भीड़ से अलग दिखें</h2>
+          <p>इस डिजिटल दुनिया में, अलग दिखना सबसे बड़ी चुनौती है। लाखों ब्लॉग्स में से, आपका क्यों चुना जाए? एक बुक-स्टाइल वेबसाइट के साथ, आप तुरंत एक लेखक या कलाकार के रूप में अपनी प्रतिष्ठा स्थापित करते हैं, जो विस्तार और गुणवत्ता को महत्व देता है।</p>
+        </div>
+        <button class="next-page-btn">&#x2192;</button>
+      </div>
+
+      <!-- Page 9: Feature 5: Easy Editing (The Solution) -->
+      <div class="page">
+        <div class="page-content">
+          <h2>5. आसान संपादन: अपनी किताब खुद बनाएं</h2>
+          <p>सोचिए, सिर्फ कुछ क्लिक में, आपकी कहानी एक खूबसूरत डिजिटल किताब बन जाती है। कोई कोडिंग नहीं, कोई तकनीकी ज्ञान नहीं। हमारी प्रणाली आपके लिए सब कुछ करती है, जिससे आपका सारा ध्यान सिर्फ लिखने पर रहता है। क्या आप अभी भी घंटों तक अपनी वेबसाइट के लेआउट से लड़ना चाहेंगे?</p>
+        </div>
+        <button class="next-page-btn">&#x2192;</button>
+      </div>
+
+      <!-- Page 10: Call to Action Page -->
+      <div class="page page-cover">
+        <div class="page-content">
+          <h1>अभी भी सोच रहे हैं?</h1>
+          <p>आपकी कहानी के लिए इससे बेहतर जगह कोई नहीं। अपनी रचनात्मकता को वह सम्मान दें जिसकी वह हकदार है। </p>
+          <a href="#" class="cta-btn">आज ही शुरू करें!</a>
+        </div>
+        <button class="next-page-btn">&#x2192;</button>
+      </div>
+      
+      <!-- Page 11: Contact Page -->
+      <div class="page">
+          <div class="page-content">
+              <h2>संपर्क करें</h2>
+              <p>अगर आप अपनी खुद की ऐसी वेबसाइट बनवाना चाहते हैं, तो मुझसे संपर्क करें।</p>
+              <p>मेरा मोबाइल नंबर है: <strong>8756680477</strong></p>
+              <p>आपकी कहानी दुनिया को सुनाने में मैं आपकी मदद कर सकता हूं।</p>
+          </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    $(function(){
+      // Set book dimensions based on screen size
+      var bookWidth = $(window).width() > 768 ? 922 : $(window).width() * 0.95;
+      var bookHeight = $(window).width() > 768 ? 600 : $(window).height() * 0.9;
+      var displayMode = $(window).width() > 768 ? 'double' : 'single';
+      
+      $("#book").turn({
+        width: bookWidth,
+        height: bookHeight,
+        autoCenter: true,
+        display: displayMode,
+        gradients: true,
+        elevation: 50
+      });
+      
+      // Animate the book to fade in after it's initialized
+      $("#book").fadeIn(1000);
+
+      // Handle the "Start Reading" button to flip to the first inner page
+      $('.page-cover .cta-btn').click(function(e) {
+        e.preventDefault();
+        $("#book").turn("next");
+      });
+
+      // Handle the next page button on mobile
+      $('.next-page-btn').click(function() {
+          $("#book").turn("next");
+      });
+    });
+  </script>
+</body>
+</html>

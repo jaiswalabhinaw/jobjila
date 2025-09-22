@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Karshni Eye Care - Modern Proposal</title>
+  <style>
+    body { margin: 0; font-family: 'Segoe UI', Tahoma, sans-serif; background: #f9f9f9; color: #333; }
+    header { background: #0a5fa3; color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 2000; }
+    header h1 { margin: 0; font-size: 1.5rem; display: flex; align-items: center; }
+    header h1 a.admin-btn { font-size: 0.8rem; margin-left: 1rem; background: #ffcc00; color: #000; padding: 4px 8px; border-radius: 4px; text-decoration: none; }
+    nav { display: flex; }
+    nav a { color: white; margin-left: 1.5rem; text-decoration: none; font-weight: 500; }
+    nav a:hover { text-decoration: underline; }
+    .menu-toggle { display: none; flex-direction: column; cursor: pointer; background: transparent; border: none; z-index: 2100; }
+    .menu-toggle span { background: white; height: 3px; width: 25px; margin: 4px 0; display: block; }
+    @media (max-width: 768px) { nav { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; background: #0a5fa3; width: 100%; z-index: 3000; padding-bottom: 1rem; } nav a { margin: 1rem; } .menu-toggle { display: flex; } nav.active { display: flex; animation: slideDown 0.28s ease; } }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+    .hero { background: url('images/hero.jpg') center/cover no-repeat; height: 60vh; display: flex; align-items: center; justify-content: center; color: white; text-align: center; position: relative; }
+    .hero::after { content: ""; position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.5); }
+    .hero-content { position: relative; z-index: 1; text-align:center; }
+    .hero-content h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+    .hero-content a { background: #ffcc00; padding: 0.75rem 1.5rem; color: #000; text-decoration: none; border-radius: 5px; font-weight: bold; position: relative; z-index: 1; }
+    .section { padding: 3rem 2rem; max-width: 1200px; margin: auto; }
+    .section h2 { text-align: center; margin-bottom: 2rem; }
+    .services, .why-choose, .pricing, .testimonials, .doctors, .innovations, .symptom-checker, .vision-tips, .ai-diagnostics, .faq, .contact-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+    .card { background: white; padding: 1.25rem; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center; }
+    .card h3 { margin-top: 0; color: #0a5fa3; font-size: 1.1rem; }
+    .why-choose .card { border-left: 4px solid #0a5fa3; text-align: left; }
+    .pricing .card { border-top: 4px solid #0a5fa3; }
+    .pricing .price { font-size: 1.4rem; color: #0a5fa3; margin: 1rem 0; }
+    .testimonials .card { font-style: italic; }
+    footer { background: #0a5fa3; color: white; text-align: center; padding: 1rem; margin-top: 2rem; }
+    form label, form input, form button, form select, form textarea { display: block; margin-bottom: 0.5rem; }
+    form input, form button, form select, form textarea { padding: 0.5rem; width: 100%; max-width: 500px; }
+    .contact-container { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; align-items: flex-start; }
+    .contact-info { background: linear-gradient(180deg, #ffffff 0%, #f6fbff 100%); padding: 1.5rem; border-radius: 10px; box-shadow: 0 6px 18px rgba(10,95,163,0.08); }
+    .contact-info h3 { color:#0a5fa3; margin-top:0; text-align:center; }
+    .contact-form { background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
+    .contact-row { display:flex; gap:1rem; }
+    @media (max-width:600px){ .contact-row{ flex-direction:column } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Karshni Eye Care <a href="patient.html" class="admin-btn">Admin</a></h1>
+    <button class="menu-toggle" aria-label="Toggle Menu" onclick="document.querySelector('nav').classList.toggle('active')">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#why">Why Choose Us</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#doctors">Doctors</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#appointment">Appointment</a>
+      <a href="#innovations">Innovations</a>
+      <a href="#ai-diagnostics">AI Diagnostics</a>
+      <a href="#vision-tips">Vision Tips</a>
+      <a href="#symptom">Symptom Checker</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h2>Clear Vision, Better Life</h2>
+      <a href="#appointment">Book Appointment</a>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <h2>About Us</h2>
+    <p>Karshni Eye Care is dedicated to providing world-class eye care services with modern facilities and expert doctors.</p>
+  </section>
+
+  <section id="services" class="section">
+    <h2>Our Services</h2>
+    <div class="services">
+      <div class="card"><h3>Comprehensive Eye Exams</h3><p>Detailed vision and eye health checkups.</p></div>
+      <div class="card"><h3>Cataract Surgery</h3><p>Advanced surgical solutions for cataracts.</p></div>
+      <div class="card"><h3>Laser Vision Correction</h3><p>Latest technology for clear, spectacle-free vision.</p></div>
+    </div>
+  </section>
+
+  <section id="why" class="section">
+    <h2>Why Choose Us</h2>
+    <div class="why-choose">
+      <div class="card"><h3>Experienced Doctors</h3><p>Over 20 years of experience in ophthalmology.</p></div>
+      <div class="card"><h3>Modern Equipment</h3><p>State-of-the-art diagnostic and treatment tools.</p></div>
+      <div class="card"><h3>Patient-Centered Care</h3><p>We prioritize comfort, safety, and trust.</p></div>
+    </div>
+  </section>
+
+  <section id="pricing" class="section">
+    <h2>Pricing</h2>
+    <div class="pricing">
+      <div class="card"><h3>Basic Consultation</h3><p class="price">₹500</p><p>Includes eye check-up and consultation.</p></div>
+      <div class="card"><h3>Advanced Testing</h3><p class="price">₹1500</p><p>Includes diagnostic tests and report.</p></div>
+      <div class="card"><h3>Surgical Package</h3><p class="price">₹20,000+</p><p>Includes surgery and post-care.</p></div>
+    </div>
+  </section>
+
+  <section id="doctors" class="section">
+    <h2>Our Doctors</h2>
+    <div class="doctors">
+      <div class="card"><h3>Dr. A Sharma</h3><p>Senior Ophthalmologist with 25 years experience.</p></div>
+      <div class="card"><h3>Dr. P Verma</h3><p>Expert in laser and cataract surgery.</p></div>
+    </div>
+  </section>
+
+  <section id="testimonials" class="section">
+    <h2>Testimonials</h2>
+    <div class="testimonials">
+      <div class="card">“The doctors were very professional and kind. Highly recommend Karshni Eye Care!”</div>
+      <div class="card">“Best place for laser surgery. My vision has never been clearer.”</div>
+    </div>
+  </section>
+
+  <section id="appointment" class="section">
+    <h2>Book Appointment</h2>
+    <form id="appointment-form">
+      <label for="name">Name</label>
+      <input type="text" id="name" required>
+      <label for="email">Email</label>
+      <input type="email" id="email" required>
+      <label for="date">Preferred Date</label>
+      <input type="date" id="date" required>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <section id="innovations" class="section">
+    <h2>Our Innovations</h2>
+    <div class="innovations">
+      <div class="card"><h3>AI Diagnostics</h3><p>Leveraging AI for faster, more accurate eye disease detection.</p></div>
+      <div class="card"><h3>Tele-Ophthalmology</h3><p>Virtual consultations to reach patients anywhere.</p></div>
+      <div class="card"><h3>Smart Vision Care</h3><p>Wearable devices and digital tools for eye health monitoring.</p></div>
+    </div>
+  </section>
+
+  <section id="ai-diagnostics" class="section">
+    <h2>AI Diagnostics Demo</h2>
+    <form id="ai-form">
+      <label for="symptom-select">Select a symptom:</label>
+      <select id="symptom-select" required>
+        <option value="">--Choose--</option>
+        <option value="blurry">Blurry Vision</option>
+        <option value="pain">Eye Pain</option>
+        <option value="headache">Headache</option>
+        <option value="dry">Dry Eyes</option>
+      </select>
+      <button type="submit">Analyze</button>
+    </form>
+    <div id="ai-result" style="margin-top:1rem; font-weight:bold;"></div>
+  </section>
+
+  <section id="vision-tips" class="section">
+    <h2>Vision Tips</h2>
+    <div class="card" id="tip-box">Loading daily eye-care tip...</div>
+  </section>
+
+  <section id="symptom" class="section">
+    <h2>Symptom Checker</h2>
+    <form id="symptom-form">
+      <label><input type="checkbox" value="Blurry Vision"> Blurry Vision</label>
+      <label><input type="checkbox" value="Eye Pain"> Eye Pain</label>
+      <label><input type="checkbox" value="Headache"> Headache</label>
+      <label><input type="checkbox" value="Dry Eyes"> Dry Eyes</label>
+      <button type="submit">Check Symptoms</button>
+    </form>
+    <div id="symptom-result" style="margin-top:1rem; font-weight:bold;"></div>
+  </section>
+
+  <section id="faq" class="section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq">
+      <div class="card">
+        <h3>What are your operating hours?</h3>
+        <p>We are open Monday to Saturday from 9:00 AM to 6:00 PM. Sunday is closed.</p>
+      </div>
+      <div class="card">
+        <h3>Do you accept insurance?</h3>
+        <p>Yes, we accept most major insurance plans. Please contact us for details.</p>
+      </div>
+      <div class="card">
+        <h3>How can I book an appointment?</h3>
+        <p>You can book online or call us at the provided contact number.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <h2>Contact Us</h2>
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>Karshni Eye Care</h3>
+        <p>123 Vision Road, City, State, 123456</p>
+        <p>Phone: +91-9876543210</p>
+        <p>Email: info@karshnieyecare.com</p>
+      </div>
+      <form class="contact-form">
+        <div class="contact-row">
+          <div style="flex:1">
+            <label for="contact-name">Name</label>
+            <input type="text" id="contact-name" required>
+          </div>
+          <div style="flex:1">
+            <label for="contact-email">Email</label>
+            <input type="email" id="contact-email" required>
+          </div>
+        </div>
+        <label for="contact-message">Message</label>
+        <textarea id="contact-message" rows="4" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Karshni Eye Care. All rights reserved.
+  </footer>
+</body>
+</html>

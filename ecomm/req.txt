@@ -1,0 +1,325 @@
+Business Requirements  0 just need to sell glases and frame
+
+Product range: sunglasses, , lens ,frame, .
+
+Inventory size (how many SKUs initially). 100 need flexible
+
+Target audience (luxury, budget, fashion-focused). all
+
+Shipping regions (local vs international). india
+
+Payment gateways (Stripe, PayPal, Razorpay, etc.). upi initially
+
+Returns & warranty policies.   no returt policy , warrenty yes 
+
+2. Website Essentials
+
+Domain + Hosting (or cloud solution like Shopify, WooCommerce, Wix, etc.).  html css jss domain own 
+
+SSL certificate (for secure checkout).  yes
+
+CMS / Platform:no
+
+Shopify (quick launch, less dev-heavy).  no
+
+WooCommerce (flexible, runs on WordPress). no
+
+Custom (if they want unique flow).
+
+Design: clean, modern, focus on visuals (since sunglasses are fashion products).  yes
+
+3. Core Features
+
+Homepage: hero banners, trending products, seasonal sales.  yes
+
+Category pages: Sunglasses, Frames, lenses.
+
+Product detail page (PDP):  yes
+
+Multiple angles images no
+
+Zoom option yes
+
+Try-on (optional AR integration later) no
+
+Price + add to cart  yes
+
+
+Reviews  yes
+
+Shopping Cart & Checkout: guest + registered checkout, coupon support.  yes
+
+Search & Filters: by shape, material, brand, price, gender. yes
+
+User Accounts: orders, wishlist, tracking.   yes
+
+Admin Dashboard:   yes
+
+Product management   yes
+
+Order management  yes
+
+Customer data  yes
+
+Discounts & promotions  yes
+
+4. Marketing & Growth
+
+SEO (category + product pages optimized). yes
+
+Google & Facebook Pixel for ads.  yes
+
+Email/SMS integration for offers & order updates.  yes
+
+Blog/Style guide for fashion advice.   yes
+
+Loyalty program or referral discounts.  yes
+
+📌 Flow of the Website (Customer Journey)
+
+Landing (Homepage) yes all
+
+User sees promotions, collections, and best sellers.
+
+Product Discovery
+
+Browse categories (Sunglasses / Frames).
+
+Use filters (shape, color, price).
+
+Use search bar (e.g., “round sunglasses”).
+
+Product Detail Page
+
+Check product images, details, sizes, price.
+
+See lens/frame customization (if applicable).
+
+Add to cart.
+
+Cart Page
+
+Review items.
+
+Apply coupon code (if available).
+
+Estimate shipping.
+
+Checkout Page
+
+Guest or login.
+
+Enter shipping details.
+
+Select shipping method.
+
+Select payment method (credit/debit card, UPI, PayPal).
+
+Confirm order.
+
+Order Confirmation
+
+Order number, receipt.
+
+Email/SMS confirmation.
+
+Post-Purchase
+
+Customer can track order from account or tracking page.
+
+Option to review product.
+
+Upsell emails (“pair it with these frames”).
+
+
+
+
+
+                           ┌───────────────────┐
+                           │   Customer Side   │
+                           │ (Website/Frontend)│
+                           └─────────┬─────────┘
+                                     │
+                                     v
+                           ┌───────────────────┐
+                           │  Checkout + Order │
+                           │   Placement Flow  │
+                           └─────────┬─────────┘
+                                     │
+                  =========================================
+                  │                                              │
+                  v                                              v
+
+        ┌───────────────────┐                         ┌───────────────────┐
+        │ Product Management│                         │ Order Management  │
+        │ - Add/Edit/Delete │                         │ - Track Orders    │
+        │ - Categories      │                         │ - Status Updates  │
+        │ - Inventory       │                         │ - Invoices        │
+        │ - Pricing/Offers  │                         │ - Shipping        │
+        └─────────┬─────────┘                         └─────────┬─────────┘
+                  │                                              │
+                  v                                              v
+
+        ┌───────────────────┐                         ┌───────────────────┐
+        │ Customer Mgmt     │                         │ Payment Mgmt      │
+        │ - Accounts        │                         │ - UPI Integration │
+        │ - Wishlists       │                         │ - Transaction Log │
+        │ - Addresses       │                         │ - Reports         │
+        │ - Loyalty/Referrals│                        │ - Secure Gateway  │
+        └─────────┬─────────┘                         └─────────┬─────────┘
+                  │                                              │
+                  v                                              v
+
+        ┌───────────────────┐                         ┌───────────────────┐
+        │ Shipping Mgmt     │                         │ Content Mgmt      │
+        │ - Delivery Zones  │                         │ - Home Banners    │
+        │ - Courier Details │                         │ - Blog/Style Guide│
+        │ - Tracking ID     │                         │ - Static Pages    │
+        └─────────┬─────────┘                         └─────────┬─────────┘
+                  │                                              │
+                  v                                              v
+
+        ┌───────────────────┐                         ┌───────────────────┐
+        │ Marketing &       │                         │ Admin Dashboard   │
+        │ Analytics         │                         │ (Central Control) │
+        │ - SEO             │ <---------------------> │ - Manage All      │
+        │ - Google/Fb Pixel │                         │ - Reports & Sales │
+        │ - Email/SMS       │                         │ - Settings        │
+        │ - Campaigns       │                         └───────────────────┘
+
+
+
+        └───────────────────┘
+
+
+
+
+
+                          ┌────────────────────────┐
+                          │        USER            │
+                          │(Customer/Admin)        │
+                          │ - Mobile/Desktop       │
+                          │ - Login via OTP/Gmail  │
+                          └─────────┬─────────────┘
+                                    │
+                                    ▼
+                          ┌────────────────────────┐
+                          │      FRONTEND          │
+                          │  HTML / CSS / JS       │
+                          │ - Product pages        │
+                          │ - Cart & Checkout      │
+                          │ - Filters & Search     │
+                          │ - Admin Dashboard UI   │
+                          └─────────┬─────────────┘
+                                    │
+                                    ▼
+                          ┌────────────────────────┐
+                          │    AUTHENTICATION      │
+                          │   Firebase Auth        │
+                          │ - Mobile OTP           │
+                          │ - Google Sign-In       │
+                          └─────────┬─────────────┘
+                                    │
+             ┌──────────────────────┼───────────────────────┐
+             ▼                      ▼                       ▼
+   ┌────────────────┐      ┌────────────────┐      ┌────────────────┐
+   │   DATABASE     │      │   STORAGE      │      │ CLOUD FUNCTIONS│
+   │ Firebase       │      │ Firebase       │      │  (Node.js)     │
+   │ Firestore      │      │ Storage        │      │ - Payment      │
+   │ - Products     │      │ - Images       │      │   Verification │
+   │ - Orders       │      │ - Banners      │      │ - SMS/Email    │
+   │ - Customers    │      │ - Blog assets  │      │ - Admin tasks  │
+   └────────────────┘      └────────────────┘      └────────────────┘
+             │                      │                       │
+             └──────────────┬───────┘                       │
+                            ▼                               ▼
+                   ┌─────────────────┐           ┌───────────────────┐
+                   │  PAYMENT GATEWAY │           │  NOTIFICATIONS    │
+                   │    Razorpay /    │           │ - Email (SendGrid)│
+                   │   Cashfree UPI   │           │ - SMS (MSG91)     │
+                   └─────────────────┘           └───────────────────┘
+                            │
+                            ▼
+                  ┌─────────────────────┐
+                  │  ANALYTICS & MARKETING │
+                  │ - Google Analytics     │
+                  │ - Facebook Pixel       │
+                  └─────────────────────┘
+
+
+
+                     ┌─────────────────────────┐
+                     │        CUSTOMER         │
+                     │ - Browse Products       │
+                     │ - Search & Filter       │
+                     │ - Add to Cart           │
+                     │ - Checkout (UPI / OTP) │
+                     │ - Track Orders          │
+                     │ - Reviews               │
+                     └─────────────┬───────────┘
+                                   │
+                                   ▼
+                         ┌───────────────────┐
+                         │   FRONTEND UI     │
+                         │ HTML / CSS / JS   │
+                         └─────────┬─────────┘
+                                   │
+       ┌───────────────────────────┴────────────────────────────┐
+       ▼                                                          ▼
+┌───────────────┐                                       ┌────────────────┐
+│  FIREBASE DB  │                                       │ CLOUD FUNCTIONS│
+│ - Products    │                                       │ - Payment      │
+│ - Orders      │                                       │   Verification │
+│ - Customers   │                                       │ - Notifications│
+└───────────────┘                                       │ - Admin Tasks  │
+       │                                               └───────────────┘
+       ▼
+┌───────────────┐
+│  STORAGE      │
+│ - Product Img │
+│ - Banners     │
+│ - Blog assets │
+└───────────────┘
+       ▲
+       │
+┌───────────────┐
+│ PAYMENT GATEWAY│
+│ Razorpay / UPI │
+└───────────────┘
+       │
+       ▼
+┌───────────────┐
+│  NOTIFICATIONS│
+│ - Email       │
+│ - SMS         │
+└───────────────┘
+
+
+=================== ADMIN VIEW ===================
+
+                     ┌─────────────────────────┐
+                     │        ADMIN            │
+                     │ - Product Management    │
+                     │ - Order Management      │
+                     │ - Customer Management   │
+                     │ - Discounts & Promotions│
+                     │ - Reports & Analytics   │
+                     └─────────────┬───────────┘
+                                   │
+                                   ▼
+                         ┌───────────────────┐
+                         │   ADMIN DASHBOARD │
+                         │ HTML / CSS / JS   │
+                         │ (with Role Checks)│
+                         └─────────┬─────────┘
+                                   │
+                                   ▼
+                     ┌─────────────────────────┐
+                     │   FIREBASE & FUNCTIONS  │
+                     │ - DB CRUD               │
+                     │ - Secure Admin Actions  │
+                     │ - Notifications         │
+                     └─────────────────────────┘
+
+
+

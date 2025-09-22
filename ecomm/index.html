@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KARSHNI - KS_GLASSES</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+  body{background:#f7f9fc;color:#333;line-height:1.5;}
+  a{text-decoration:none;color:inherit;}
+  button{cursor:pointer;border:none;outline:none;}
+  nav{background:white;display:flex;justify-content:space-between;align-items:center;padding:15px 30px;box-shadow:0 2px 5px rgba(0,0,0,0.1);position:relative;z-index:1000;}
+  nav .logo{font-weight:600;color:#2a9df4;font-size:24px;}
+  nav ul{display:flex;gap:20px;}
+  nav ul li{list-style:none;}
+  nav ul li a{color:#333;transition:0.3s;}
+  nav ul li a:hover{color:#2a9df4;}
+  #home{display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 20px;background:#e1f0ff;}
+  #home h1{font-size:36px;color:#2a9df4;margin-bottom:10px;}
+  #home p{font-size:18px;color:#555;}
+  #products{padding:60px 20px;}
+  #products h2{text-align:center;margin-bottom:30px;color:#2a9df4;}
+  .product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;}
+  .product-card{background:white;border-radius:10px;padding:15px;text-align:center;box-shadow:0 2px 5px rgba(0,0,0,0.1);}
+  .product-card img{width:100%;border-radius:10px;margin-bottom:10px;}
+  .product-card button{background:#2a9df4;color:white;padding:8px 12px;border-radius:5px;box-shadow:0 2px 4px rgba(0,0,0,0.1);margin-top:5px;transition:0.3s;}
+  .product-card button:hover{background:#1c7ac9;}
+  #cart-panel{position:fixed;top:0;right:-400px;width:350px;height:100%;background:white;box-shadow:-2px 0 10px rgba(0,0,0,0.2);padding:20px;transition:0.3s;z-index:1001;overflow-y:auto;}
+  #cart-panel.active{right:0;}
+  #cart-panel h3{margin-bottom:15px;color:#2a9df4;}
+  #cart-items div{margin-bottom:10px;}
+  #cart-panel button{width:100%;background:#2a9df4;color:white;padding:10px;border-radius:5px;margin-top:10px;}
+  #checkout{padding:60px 20px;background:#e1f0ff;}
+  #checkout h2{text-align:center;margin-bottom:30px;color:#2a9df4;}
+  #checkout form{max-width:400px;margin:0 auto;display:flex;flex-direction:column;gap:15px;}
+  #checkout input,#checkout select{padding:10px;border-radius:5px;border:1px solid #ccc;}
+  #checkout button{background:#2a9df4;color:white;padding:10px;border-radius:5px;}
+  #orders{padding:60px 20px;}
+  #orders h2{text-align:center;margin-bottom:30px;color:#2a9df4;}
+  #orders-list div{background:white;padding:10px;margin-bottom:10px;border-radius:5px;box-shadow:0 2px 5px rgba(0,0,0,0.1);}
+  #admin{padding:60px 20px;background:#f0f7ff;}
+  #admin h2{text-align:center;margin-bottom:30px;color:#2a9df4;}
+  .tabs{display:flex;justify-content:center;gap:15px;margin-bottom:30px;flex-wrap:wrap;}
+  .tab{padding:10px 15px;background:white;border-radius:5px;box-shadow:0 2px 5px rgba(0,0,0,0.1);cursor:pointer;transition:0.3s;}
+  .tab.active{background:#2a9df4;color:white;}
+  .tab-content{display:none;max-width:900px;margin:0 auto;}
+  .tab-content.active{display:block;}
+  table{width:100%;border-collapse:collapse;margin-bottom:20px;}
+  table th,table td{border:1px solid #ccc;padding:8px;text-align:center;}
+  table th{background:#e1f0ff;color:#2a9df4;}
+  footer{background:#2a9df4;color:white;padding:30px 20px;text-align:center;}
+  footer a{color:white;margin:0 10px;}
+  @media(max-width:768px){.product-grid{grid-template-columns:1fr;}nav ul{flex-direction:column;gap:10px;}}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+  <div class="logo">KS_GLASSES</div>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#cart-panel">Cart</a></li>
+    <li><a href="#checkout">Checkout</a></li>
+    <li><a href="#orders">Orders</a></li>
+    <li><a href="#admin">Admin</a></li>
+    <li><a href="#footer">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section id="home">
+  <div>
+    <h1>KARSHNI - KS_GLASSES</h1>
+    <p>Stylish Sunglasses for Every Occasion</p>
+    <button id="google-login-btn">Login with Google</button>
+    <button id="logout-btn" style="display:none;">Logout</button>
+  </div>
+</section>
+
+<!-- Products -->
+<section id="products">
+  <h2>Our Products</h2>
+  <div class="product-grid" id="product-grid"></div>
+</section>
+
+<!-- Cart Panel -->
+<div id="cart-panel">
+  <h3>Shopping Cart</h3>
+  <div id="cart-items"></div>
+  <div>Total: ₹<span id="cart-total">0</span></div>
+  <button onclick="checkoutCart()">Go to Checkout</button>
+  <button onclick="closeCart()">Close</button>
+</div>
+
+<!-- Checkout -->
+<section id="checkout">
+  <h2>Checkout</h2>
+  <form id="checkout-form">
+    <input type="text" id="customer-name" placeholder="Full Name" required>
+    <input type="email" id="customer-email" placeholder="Email" required>
+    <input type="text" id="customer-address" placeholder="Address" required>
+    <select id="payment-method" required>
+      <option value="">Select Payment Method</option>
+      <option value="UPI">UPI</option>
+      <option value="Card">Card</option>
+      <option value="NetBanking">Net Banking</option>
+    </select>
+    <button type="submit">Place Order</button>
+  </form>
+</section>
+
+<!-- Orders -->
+<section id="orders">
+  <h2>Your Orders</h2>
+  <div id="orders-list"></div>
+</section>
+
+<!-- Admin Panel -->
+<section id="admin">
+  <h2>Admin Panel</h2>
+  <div class="tabs">
+    <div class="tab active" data-tab="products-tab">Products</div>
+    <div class="tab" data-tab="orders-tab">Orders</div>
+    <div class="tab" data-tab="customers-tab">Customers</div>
+    <div class="tab" data-tab="update-tab">Update Status</div>
+  </div>
+  <div id="products-tab" class="tab-content active">
+    <h3>Add Product</h3>
+    <input type="text" id="admin-product-name" placeholder="Product Name">
+    <input type="number" id="admin-product-price" placeholder="Price">
+    <input type="file" id="admin-product-image">
+    <button onclick="addProduct()">Add Product</button>
+    <h3>Products List</h3>
+    <table>
+      <thead><tr><th>Name</th><th>Price</th><th>Actions</th></tr></thead>
+      <tbody id="admin-products"></tbody>
+    </table>
+  </div>
+  <div id="orders-tab" class="tab-content">
+    <table>
+      <thead><tr><th>Order ID</th><th>Customer</th><th>Total</th><th>Status</th></tr></thead>
+      <tbody id="admin-orders"></tbody>
+    </table>
+  </div>
+  <div id="customers-tab" class="tab-content">
+    <table>
+      <thead><tr><th>Name</th><th>Email</th><th>Orders</th></tr></thead>
+      <tbody id="admin-customers"></tbody>
+    </table>
+  </div>
+  <div id="update-tab" class="tab-content">
+    <p>Select an order in Orders tab to update status (mock demo).</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer">
+  <p>&copy; 2025 KARSHNI - KS_GLASSES</p>
+  <p>Contact: info@karshni.com | +91 1234567890</p>
+  <p>
+    <a href="#">Facebook</a> | 
+    <a href="#">Instagram</a> | 
+    <a href="#">Twitter</a> | 
+    <a href="#">LinkedIn</a>
+  </p>
+</footer>
+
+<!-- Firebase -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-app.js";
+import { getFirestore, collection, getDocs, addDoc, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-firestore.js";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-storage.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-auth.js";
+
+// Firebase config
+const firebaseConfig = {
+  apiKey: "AIzaSyDhbo3a5nwOaGoRvNLFN3VjmkGLsvJCQss",
+  authDomain: "sunglassesshop-b8cd4.firebaseapp.com",
+  projectId: "sunglassesshop-b8cd4",
+  storageBucket: "sunglassesshop-b8cd4.appspot.com",
+  messagingSenderId: "1056287685575",
+  appId: "1:1056287685575:web:5881c0318511f73d82b7e2"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const storage = getStorage(app);
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+
+let cart = [];
+let currentUser = null;
+const adminEmail = "jaiswal.abhinaw@gmail.com";
+
+// Login
+document.getElementById('google-login-btn').addEventListener('click', async ()=>{
+  const result = await signInWithPopup(auth, provider);
+  currentUser = result.user;
+  checkAdmin();
+});
+
+document.getElementById('logout-btn').addEventListener('click', ()=>{
+  signOut(auth);
+});
+
+// Auth state
+onAuthStateChanged(auth, user=>{
+  currentUser = user;
+  if(user) checkAdmin();
+  else{
+    document.getElementById('google-login-btn').style.display='inline-block';
+    document.getElementById('logout-btn').style.display='none';
+    document.getElementById('admin').style.display='none';
+  }
+});
+
+function checkAdmin(){
+  if(currentUser.email === adminEmail){
+    document.getElementById('admin').style.display='block';
+  }else{
+    document.getElementById('admin').style.display='none';
+  }
+  document.getElementById('google-login-btn').style.display='none';
+  document.getElementById('logout-btn').style.display='inline-block';
+}
+
+// Products
+async function renderProducts(){
+  const grid = document.getElementById('product-grid');
+  grid.innerHTML='';
+  const snapshot = await getDocs(collection(db,'products'));
+  snapshot.forEach(docSnap=>{
+    const p = docSnap.data();
+    grid.innerHTML += `
+      <div class="product-card">
+        <img src="${p.imageURL}" alt="${p.name}">
+        <h3>${p.name}</h3>
+        <p>₹${p.price}</p>
+        <button onclick="addToCart('${docSnap.id}','${p.name}',${p.price})">Add to Cart</button>
+      </div>`;
+  });
+  renderAdminProducts();
+}
+
+// Cart
+function addToCart(id,name,price){
+  cart.push({id,name,price});
+  updateCart();
+  openCart();
+}
+
+function updateCart(){
+  const items = document.getElementById('cart-items');
+  items.innerHTML='';
+  let total=0;
+  cart.forEach((c,i)=>{
+    items.innerHTML += `<div>${c.name} - ₹${c.price} <button onclick="removeFromCart(${i})">X</button></div>`;
+    total += c.price;
+  });
+  document.getElementById('cart-total').innerText = total;
+}
+
+function removeFromCart(i){cart.splice(i,1);updateCart();}
+function openCart(){document.getElementById('cart-panel').classList.add('active');}
+function closeCart(){document.getElementById('cart-panel').classList.remove('active');}
+function checkoutCart(){document.getElementById('checkout').scrollIntoView({behavior:'smooth'}); closeCart();}
+
+// Admin Add Product
+async function addProduct(){
+  const name = document.getElementById('admin-product-name').value;
+  const price = document.getElementById('admin-product-price').value;
+  const file = document.getElementById('admin-product-image').files[0];
+  if(!name || !price || !file){alert('Fill all fields'); return;}
+  const storageRef = ref(storage,'products/'+file.name);
+  await uploadBytes(storageRef,file);
+  const url = await getDownloadURL(storageRef);
+  await addDoc(collection(db,'products'),{name,price:Number(price),imageURL:url});
+  document.getElementById('admin-product-name').value='';
+  document.getElementById('admin-product-price').value='';
+  document.getElementById('admin-product-image').value='';
+  renderProducts();
+}
+
+// Admin Products Table
+async function renderAdminProducts(){
+  const tbody = document.getElementById('admin-products');
+  tbody.innerHTML='';
+  const snapshot = await getDocs(collection(db,'products'));
+  snapshot.forEach(docSnap=>{
+    const p = docSnap.data();
+    tbody.innerHTML += `<tr><td>${p.name}</td><td>₹${p.price}</td><td>Delete</td></tr>`;
+  });
+}
+
+// Tabs
+const tabs = document.querySelectorAll('.tab');
+const tabContents = document.querySelectorAll('.tab-content');
+tabs.forEach(t=>{
+  t.addEventListener('click', ()=>{
+    tabs.forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    tabContents.forEach(c=>c.classList.remove('active'));
+    document.getElementById(t.getAttribute('data-tab')).classList.add('active');
+  });
+});
+
+// Navbar smooth scroll
+document.querySelectorAll('nav ul li a').forEach(link=>{
+  link.addEventListener('click', e=>{
+    e.preventDefault();
+    document.querySelector(link.getAttribute('href')).scrollIntoView({behavior:'smooth'});
+  });
+});
+
+// Checkout
+document.getElementById('checkout-form').addEventListener('submit', e=>{
+  e.preventDefault();
+  alert('Order Placed!\nName: '+document.getElementById('customer-name').value+'\nTotal: ₹'+cart.reduce((a,b)=>a+b.price,0));
+  cart=[]; updateCart(); document.getElementById('checkout-form').reset();
+});
+
+renderProducts();
+</script>
+</body>
+</html>

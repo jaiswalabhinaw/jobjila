@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Book-Style Website Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/blasten/turn.js/turn.min.js"></script>
+  <style>
+    body, html { 
+      margin: 0; 
+      padding: 0; 
+      width: 100%; 
+      height: 100%; 
+      overflow: hidden; 
+      background: #f0f0f0; 
+      background: radial-gradient(circle, #f0f0f0 0%, #dcdcdc 100%);
+      font-family: 'Arial', sans-serif; 
+    }
+    body { 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+    }
+
+    /* Container to prevent body from shaking on page flip */
+    .book-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #book { 
+      width: 922px; 
+      height: 600px; 
+      display: none; 
+    }
+    .page { 
+      background: #faf9f6; 
+      background: linear-gradient(135deg, #fefefe 0%, #faf9f6 100%);
+      padding: 30px; 
+      line-height: 1.6; 
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); 
+      position: relative; 
+      transition: all 0.5s ease-in-out;
+    }
+    .page-content { 
+      max-width: 400px; 
+      margin: 0 auto; 
+      text-align: left; 
+      transition: opacity 0.3s ease-in;
+      /* default visible so content always renders (fix for blank pages) */
+      opacity: 1;
+    }
+
+    .page.turned .page-content {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .page h2 { 
+      margin-top: 0; 
+      color: #333; 
+      font-size: 28px; /* Larger font size */
+    }
+    .page p { 
+      font-size: 18px; /* Larger font size */
+      color: #555; 
+    }
+    
+    /* Cover Page */
+    .page-cover { 
+      background: #f5f5dc; 
+      color: #333; 
+      text-align: center; 
+      padding: 100px 30px; 
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center; 
+      align-items: center; 
+      border: 1px solid #ccc; 
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    }
+    .page-cover h1 { 
+      font-size: 52px; 
+      margin: 0 0 10px; 
+    }
+    .page-cover p { 
+      font-size: 18px; 
+      max-width: 600px; 
+    }
+    .cta-btn { 
+      background-color: #007bff; 
+      color: white; 
+      padding: 12px 24px; 
+      text-decoration: none; 
+      border-radius: 5px; 
+      font-size: 18px; 
+      margin-top: 20px; 
+      transition: background-color 0.3s; 
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      display: inline-block;
+    }
+    .cta-btn:hover { 
+      background-color: #0056b3; 
+    }
+    .name-input-container {
+      margin-top: 20px;
+    }
+    .name-input-container input {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    /* Index Page */
+    .page-index { 
+      background: #f8f8f8; 
+    }
+    .page-index h2 { 
+      margin-bottom: 20px; 
+    }
+    .page-index ul { 
+      list-style: none; 
+      padding: 0; 
+    }
+    .page-index li { 
+      margin-bottom: 10px; 
+      font-size: 18px; 
+    }
+
+    /* Feature Page Visuals */
+    .feature-visuals { 
+      text-align: center; 
+      margin-top: 20px; 
+    }
+    .feature-visuals img { 
+      max-width: 100%; 
+      height: auto; 
+      border-radius: 8px; 
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+    }
+
+    /* Mobile turn-page button (single global instance) */
+    .next-page-btn {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(145deg, #007bff, #0056b3);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: none; 
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: all 0.2s ease;
+      z-index: 100;
+      opacity: 0.9;
+    }
+
+    .next-page-btn:hover {
+        opacity: 1;
+    }
+    
+    .next-page-btn:active {
+        transform: translateY(2px);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Reading Progress Bar */
+    .progress-bar {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 5px;
+        background: linear-gradient(90deg, #ff7e5f, #feb47b);
+        transition: width 0.5s ease-out;
+        z-index: 101;
+    }
+
+    /* Desktop Binding */
+    .book-binding {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 20px;
+      height: 100%;
+      background-color: #555;
+      transform: translateX(-50%);
+      z-index: -1;
+      border-radius: 0 10px 10px 0;
+      box-shadow: inset 5px 0 10px rgba(0,0,0,0.3);
+      display: none;
+    }
+
+    /* Mobile Styles */
+    @media (max-width: 768px) {
+      #book { 
+        width: 95vw; 
+        height: 90vh; 
+      }
+      .page { 
+        padding: 20px; 
+        font-size: 14px; 
+      }
+      .page-content { 
+        max-width: none; 
+        width: 100%; 
+        padding: 0 10px; 
+        box-sizing: border-box; 
+      }
+      .page h2 { 
+        font-size: 20px; 
+      }
+      .page p { 
+        font-size: 14px; 
+      }
+      .page-cover h1 { 
+        font-size: 32px; 
+      }
+      .page-cover p { 
+        font-size: 14px; 
+      }
+      .cta-btn { 
+        font-size: 16px; 
+        padding: 10px 20px; 
+      }
+      .next-page-btn {
+        display: flex; 
+      }
+    }
+    
+    @media (min-width: 769px) {
+        .book-binding {
+            display: block;
+        }
+    }
+  </style>
+</head>
+<body>
+  <div class="book-wrapper">
+    <div id="book">
+      <!-- Assign explicit data-page attributes so JS/CSS can target pages reliably -->
+      <div class="page page-cover" data-page="1">
+        <div class="page-content">
+          <h1>आपकी कहानी, एक नई पहचान</h1>
+          <p>लेखकों, कवियों, और कलाकारों के लिए एक अद्भुत डिजिटल मंच। अपनी रचनात्मकता को किताब की तरह पेश करें।</p>
+          <div class="name-input-container">
+            <input type="text" id="userNameInput" placeholder="अपना नाम लिखें...">
+          </div>
+          <a href="#" class="cta-btn" id="startReadingBtn">पन्ना पलटने के लिए क्लिक करें</a>
+        </div>
+      </div>
+
+      <div class="page" data-page="2">
+        <div class="page-content">
+          <h2 id="personalizedWelcome"></h2>
+          <p>जहां आपकी कहानी सिर्फ पढ़ी नहीं जाती, बल्कि महसूस की जाती है। जहां आपके शब्द एक साधारण ब्लॉग पोस्ट नहीं, बल्कि एक सुंदर, इंटरैक्टिव किताब बन जाते हैं। क्या आप इस अनुभव को खोने के लिए तैयार हैं?</p>
+        </div>
+      </div>
+
+      <div class="page" data-page="3">
+        <div class="page-content">
+          <h2>क्या आपका ब्लॉग पुराना लग रहा है?</h2>
+          <p>एक साधारण वेबसाइट पर पाठक आते हैं और चले जाते हैं। कोई जुड़ाव नहीं, कोई यादगार अनुभव नहीं। आपकी मेहनत, आपका जुनून, क्या वो सिर्फ एक स्क्रोल में खो जाना चाहिए? आपका काम एक सादे, उबाऊ फॉर्मेट तक क्यों सीमित रहे?</p>
+        </div>
+      </div>
+
+      <div class="page page-index" data-page="4">
+        <div class="page-content">
+          <h2>देखें कि आप क्या खो रहे हैं:</h2>
+          <ul>
+            <li>1. सहज पढ़ना: बिना किसी रुकावट के</li>
+            <li>2. मीडिया एकीकरण: वीडियो और तस्वीरों के साथ</li>
+            <li>3. मोबाइल पर शानदार: हर डिवाइस के लिए</li>
+            <li>4. अपनी छाप छोड़ें: भीड़ से अलग दिखें</li>
+            <li>5. आसान संपादन: अपनी किताब खुद बनाएं</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="page" data-page="5">
+        <div class="page-content">
+          <h2>1. सहज पढ़ना: बिना किसी रुकावट के</h2>
+          <p>कल्पना कीजिए: आपके पाठक आराम से बैठ कर, आपकी किताब के पन्ने पलट रहे हैं, बिना किसी विज्ञापन या भटकाव के। यह एक ऐसा अनुभव है जो उन्हें बार-बार वापस आने पर मजबूर करेगा। इसे हासिल करने के लिए, आपको एक बुक-स्टाइल वेबसाइट चाहिए।</p>
+          <div class="feature-visuals">
+            <img src="https://via.placeholder.com/300x180.png?text=Fluid+Reading" alt="Fluid Reading Experience">
+          </div>
+        </div>
+      </div>
+
+      <div class="page" data-page="6">
+        <div class="page-content">
+          <h2>2. मीडिया एकीकरण: वीडियो और तस्वीरों के साथ</h2>
+          <p>क्या आपकी कहानी में ग्राफिक्स, वीडियो, या एनिमेशन हैं? पारंपरिक ब्लॉग उन्हें अलग-थलग रखते हैं। हमारी बुक-स्टाइल वेबसाइट पर, मीडिया आपके शब्दों में seamlessly घुल-मिल जाती है, एक यादगार दृश्य कहानी बनाती है। क्या आप इसे खोना चाहेंगे?</p>
+          <div class="feature-visuals">
+            <img src="https://via.placeholder.com/300x180.png?text=Rich+Media+in+Books" alt="Rich Media in Books">
+          </div>
+        </div>
+      </div>
+
+      <div class="page" data-page="7">
+        <div class="page-content">
+          <h2>3. मोबाइल पर शानदार: हर डिवाइस के लिए</h2>
+          <p>आपके 70% से ज्यादा पाठक मोबाइल पर हैं। क्या आपकी वेबसाइट उन्हें एक ख़राब अनुभव दे रही है? हमारी बुक-स्टाइल वेबसाइटें हर स्क्रीन पर शानदार दिखती हैं, जिससे आप कोई भी पाठक नहीं खोते। आपके मोबाइल पाठक भी पन्ने पलटने का मज़ा ले सकते हैं।</p>
+          <div class="feature-visuals">
+            <img src="https://via.placeholder.com/300x180.png?text=Mobile+Friendliness" alt="Mobile Friendliness">
+          </div>
+        </div>
+      </div>
+
+      <div class="page" data-page="8">
+        <div class="page-content">
+          <h2>4. अपनी छाप छोड़ें: भीड़ से अलग दिखें</h2>
+          <p>इस डिजिटल दुनिया में, अलग दिखना सबसे बड़ी चुनौती है। लाखों ब्लॉग्स में से, आपका क्यों चुना जाए? एक बुक-स्टाइल वेबसाइट के साथ, आप तुरंत एक लेखक या कलाकार के रूप में अपनी प्रतिष्ठा स्थापित करते हैं, जो विस्तार और गुणवत्ता को महत्व देता है।</p>
+        </div>
+      </div>
+
+      <div class="page" data-page="9">
+        <div class="page-content">
+          <h2>5. आसान संपादन: अपनी किताब खुद बनाएं</h2>
+          <p>सोचिए, सिर्फ कुछ क्लिक में, आपकी कहानी एक खूबसूरत डिजिटल किताब बन जाती है। कोई कोडिंग नहीं, कोई तकनीकी ज्ञान नहीं। हमारी प्रणाली आपके लिए सब कुछ करती है, जिससे आपका सारा ध्यान सिर्फ लिखने पर रहता है। क्या आप अभी भी घंटों तक अपनी वेबसाइट के लेआउट से लड़ना चाहेंगे?</p>
+        </div>
+      </div>
+
+      <div class="page page-cover" data-page="10">
+        <div class="page-content">
+          <h1>अभी भी सोच रहे हैं?</h1>
+          <p>आपकी कहानी के लिए इससे बेहतर जगह कोई नहीं। अपनी रचनात्मकता को वह सम्मान दें जिसकी वह हकदार है। </p>
+          <a href="#" class="cta-btn">आज ही शुरू करें!</a>
+        </div>
+      </div>
+      
+      <div class="page" data-page="11">
+          <div class="page-content">
+              <h2>संपर्क करें</h2>
+              <p>अगर आप अपनी खुद की ऐसी वेबसाइट बनवाना चाहते हैं, तो मुझसे संपर्क करें।</p>
+              <p>मेरा मोबाइल नंबर है: <a href="tel:8756680477"><strong>8756680477</strong></a></p>
+              <p>आपकी कहानी दुनिया को सुनाने में मैं आपकी मदद कर सकता हूं।</p>
+          </div>
+      </div>
+      
+      <div class="book-binding"></div>
+    </div>
+    
+    <div class="progress-bar" id="progressBar"></div>
+    <button class="next-page-btn" id="globalNextBtn" aria-label="Next page">&#x2192;</button>
+  </div>
+
+  <script>
+    $(function(){
+      // Audio for page turn effect (base64 encoded)
+      const audioData = "data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAAAAAAAVHJ5b24gMjAxMy4wNFdJTiAAAAAfAAAAPAAAAABDb252ZXJ0ZWQgYnkgSmF2YUF1ZGlvAAAAAClAAAA3AAAAAEhhdmUgYSBnb29kIGRheQAAAAApAAAAEAAAAGh0dHA6Ly93d3cudHJ5b24ub3JnAAAAACIAAAAgAAAAQ29udmVydGVkIGJ5IEphdmFBdWRpbyBvbiAyOC4wOS4yMDExAAAAAAA=";
+      const pageTurnSound = new Audio(audioData);
+
+      const pageColors = ["#f8f8f8", "#f0e4d6", "#e8e8d8", "#e4f0d6", "#d6e4f0"];
+
+      function isDesktop() {
+        return $(window).width() > 768;
+      }
+
+      function computeDims() {
+        return {
+          width: isDesktop() ? 922 : Math.round($(window).width() * 0.95),
+          height: isDesktop() ? 600 : Math.round($(window).height() * 0.9),
+          display: isDesktop() ? 'double' : 'single'
+        };
+      }
+
+      // Initialize or re-initialize the book preserving current page
+      function initBook(preservePage) {
+        const dims = computeDims();
+        const $book = $("#book");
+        let current = 1;
+        if (preservePage) {
+          try { current = $book.turn("page"); } catch(e){ current = 1; }
+        }
+
+        // destroy previous instance if exists
+        try {
+          if ($book.data('turn')) { $book.turn("destroy"); }
+        } catch(e){}
+
+        $book.css({width: dims.width + "px", height: dims.height + "px"});
+        $book.turn({
+          width: dims.width,
+          height: dims.height,
+          autoCenter: true,
+          display: dims.display,
+          gradients: true,
+          elevation: 50
+        });
+
+        // Ensure the book is visible after init
+        $book.fadeIn(200);
+
+        // After initialization, set 'turned' class on current view pages
+        setTimeout(function(){
+          try {
+            const view = $book.turn("view");
+            updateTurnedClasses(view);
+            updateProgress($book.turn("page"));
+          } catch(e){}
+        }, 60);
+      }
+
+      function updateTurnedClasses(view) {
+        // Normalize view to an array
+        const visible = Array.isArray(view) ? view : [view];
+        $(".page").removeClass("turned");
+        visible.forEach(function(p){
+          // target element with data-page attribute (explicit in markup)
+          $(".page[data-page='" + p + "']").addClass("turned");
+        });
+      }
+
+      function updateProgress(page) {
+        const $book = $("#book");
+        let totalPages = 0;
+        try { totalPages = $book.turn("pages"); } catch(e){ totalPages = $(".page").length; }
+        const progress = Math.max(0, Math.min(100, (page / totalPages) * 100));
+        $("#progressBar").css("width", progress + "%");
+      }
+
+      // Set up initial book
+      initBook(false);
+
+      // Start reading button
+      $('#startReadingBtn').on('click touchstart', function(e){
+        e.preventDefault();
+        const userName = $("#userNameInput").val() || "मेरे दोस्त";
+        $("#personalizedWelcome").text("स्वागत है, " + userName + "!");
+        // Try to play sound on user interaction (safe)
+        pageTurnSound.play?.().catch?.(() => {});
+        // Open to the first inner page (page 2)
+        try {
+          $("#book").turn("page", 2);
+        } catch (err) {
+          // fallback to next
+          try { $("#book").turn("next"); } catch(e){}
+        }
+      });
+
+      // Global next-button for mobile (also works on desktop if visible)
+      $('#globalNextBtn').on('click touchstart', function(e){
+        e.preventDefault();
+        try {
+          $("#book").turn("next");
+        } catch(e){}
+      });
+
+      // Update on turned event
+      $("#book").on("turned", function(event, page, view) {
+        // Play sound (ignore promise rejection)
+        pageTurnSound.play?.().catch?.(()=>{});
+
+        // update progress
+        updateProgress(page);
+
+        // update turned classes for visible pages
+        updateTurnedClasses(view);
+
+        // Change background color for inner pages (skip cover pages)
+        const $book = $(this);
+        const visible = Array.isArray(view) ? view : [view];
+        visible.forEach(function(p){
+          const colorIndex = (p - 2) % pageColors.length;
+          if (colorIndex >= 0) {
+            $book.find(".page[data-page='" + p + "']").css("background", pageColors[(colorIndex + pageColors.length) % pageColors.length]);
+          }
+        });
+      });
+
+      // Make sure pages that are not in view revert to default background
+      $("#book").on("turning", function(event, page, view) {
+        $(".page").each(function(){
+          if (!$(this).hasClass('page-cover')) {
+            $(this).css("background", "linear-gradient(135deg, #fefefe 0%, #faf9f6 100%)");
+          }
+        });
+      });
+
+      // Debounced resize handler to re-init book
+      (function(){
+        let timer = null;
+        $(window).on('resize', function(){
+          clearTimeout(timer);
+          timer = setTimeout(function(){
+            const $book = $("#book");
+            const current = $book.data('turn') ? $book.turn("page") : 1;
+            initBook(true);
+            // restore page after small delay to ensure turn is ready
+            setTimeout(function(){
+              try { $("#book").turn("page", current); } catch(e){}
+            }, 120);
+          }, 220);
+        });
+      })();
+
+      // Keyboard navigation (left/right)
+      $(document).on('keydown', function(e){
+        if (e.key === "ArrowRight") {
+          try { $("#book").turn("next"); } catch(e){}
+        } else if (e.key === "ArrowLeft") {
+          try { $("#book").turn("previous"); } catch(e){}
+        }
+      });
+
+      // Ensure progress bar initial state matches
+      setTimeout(function(){
+        try { updateProgress($("#book").turn("page")); } catch(e){}
+      }, 160);
+
+    });
+  </script>
+</body>
+</html>

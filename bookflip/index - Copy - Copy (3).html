@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Your Digital Book</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/blasten/turn.js/turn.min.js"></script>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #f0f0f0;
+      background: radial-gradient(circle, #f0f0f0 0%, #dcdcdc 100%);
+      font-family: 'Arial', sans-serif;
+      font-size: 18px; /* Base font size increased for better readability */
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Container to prevent body from shaking on page flip */
+    .book-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #book {
+      width: 922px;
+      height: 600px;
+      display: none;
+      cursor: pointer;
+    }
+    .page {
+      background: #faf9f6;
+      background: linear-gradient(135deg, #fefefe 0%, #faf9f6 100%);
+      padding: 30px;
+      line-height: 1.6;
+      box-shadow: none; /* Removed the box-shadow for a completely flat look */
+      position: relative;
+      transition: all 0.5s ease-in-out;
+    }
+    .page-content {
+      max-width: 400px;
+      margin: 0 auto;
+      text-align: left;
+      /* Reduced the transition time for a faster appearance */
+      transition: opacity 0.4s ease-in;
+    }
+
+    /* Hide content for pages that haven't been turned yet */
+    .page:not(.turned) .page-content {
+      opacity: 0;
+      pointer-events: none; /* Prevent clicks on hidden content */
+    }
+
+    .page.turned .page-content {
+      opacity: 1;
+      pointer-events: auto; /* Re-enable clicks on visible content */
+    }
+    .page h2 {
+      margin-top: 0;
+      color: #333;
+      font-size: 32px; /* Larger font size for headings */
+    }
+    .page p {
+      font-size: 20px; /* Larger font size for paragraphs */
+      color: #555;
+    }
+
+    /* Cover Page */
+    .page-cover {
+      background: #f5f5dc;
+      color: #333;
+      text-align: center;
+      padding: 100px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #ccc;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    }
+    .page-cover h1 {
+      font-size: 36px; /* Adjusted for smaller font */
+      margin: 0 0 10px;
+    }
+    .page-cover p {
+      font-size: 18px; /* Adjusted for smaller font */
+      max-width: 600px;
+    }
+    .cta-btn {
+      background-color: #007bff;
+      color: white;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 20px;
+      margin-top: 20px;
+      transition: background-color 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      display: inline-block;
+    }
+    .cta-btn:hover {
+      background-color: #0056b3;
+    }
+    .name-input-container {
+      margin-top: 20px;
+    }
+    .name-input-container input {
+      padding: 12px;
+      font-size: 18px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    /* Index Page */
+    .page-index {
+      background: #f8f8f8;
+    }
+    .page-index h2 {
+      margin-bottom: 20px;
+    }
+    .page-index ul {
+      list-style: none;
+      padding: 0;
+    }
+    .page-index li {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    /* Feature Page Visuals */
+    .feature-visuals {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .feature-visuals img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    /* Global turn-page button styles */
+    .turn-page-btn {
+      position: absolute;
+      background: linear-gradient(145deg, #007bff, #0056b3);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      display: flex; /* Always display the buttons */
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: all 0.2s ease;
+      z-index: 100;
+      opacity: 0.9;
+    }
+
+    .next-page-btn {
+      right: 20px;
+    }
+
+    .prev-page-btn {
+      left: 20px;
+    }
+
+    .turn-page-btn:hover {
+        opacity: 1;
+    }
+
+    .turn-page-btn:active {
+        transform: translateY(2px);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Reading Progress Bar */
+    .progress-bar {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 5px;
+        background: linear-gradient(90deg, #ff7e5f, #feb47b);
+        transition: width 0.5s ease-out;
+        z-index: 101;
+    }
+
+    /* Desktop Binding */
+    .book-binding {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 20px;
+      height: 100%;
+      background-color: #555;
+      transform: translateX(-50%);
+      z-index: -1;
+      border-radius: 0 10px 10px 0;
+      box-shadow: inset 5px 0 10px rgba(0,0,0,0.3);
+      display: none;
+    }
+
+    /* Mobile Styles (smaller buttons at the bottom) */
+    @media (max-width: 768px) {
+      #book {
+        width: 95vw;
+        height: 90vh;
+      }
+      .page {
+        padding: 20px;
+      }
+      .page-content {
+        max-width: none;
+        width: 100%;
+        padding: 0 10px;
+        box-sizing: border-box;
+      }
+      .page h2 {
+        font-size: 40px; /* Reduced for better fit */
+      }
+      .page p {
+        font-size: 24px; /* Reduced for better fit */
+      }
+      .page-cover h1 {
+        font-size: 64px; /* Reduced for better fit */
+      }
+      .page-cover p {
+        font-size: 28px; /* Reduced for better fit */
+      }
+      .cta-btn {
+        font-size: 28px; /* Reduced for better fit */
+        padding: 16px 32px;
+      }
+      .name-input-container input {
+        padding: 16px;
+        font-size: 24px; /* Reduced for better fit */
+      }
+      .turn-page-btn {
+        width: 50px; /* Decreased size for mobile */
+        height: 50px;
+        bottom: 10px;
+        font-size: 28px;
+      }
+      .next-page-btn {
+          right: 10px;
+      }
+      .prev-page-btn {
+          left: 10px;
+      }
+    }
+
+    /* Desktop Styles (larger buttons on the side) */
+    @media (min-width: 769px) {
+        .book-binding {
+            display: block;
+        }
+        .turn-page-btn {
+            width: 60px; /* Decreased size for desktop */
+            height: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 32px;
+        }
+        .next-page-btn {
+            right: 20px;
+        }
+        .prev-page-btn {
+            left: 20px;
+        }
+    }
+  </style>
+</head>
+<body>
+  <div class="book-wrapper">
+    <div id="book">
+      <!-- Assign explicit data-page attributes so JS/CSS can target pages reliably -->
+      <div class="page page-cover" data-page="1">
+        <div class="page-content">
+          <h1>Digital Book Innovation</h1>
+          <p>A small digital book innovation for your creative content.</p>
+          <div class="name-input-container">
+            <input type="text" id="userNameInput" placeholder="अपना नाम दर्ज करें...">
+          </div>
+          <a href="#" class="cta-btn" id="startReadingBtn">पन्ना पलटने के लिए क्लिक करें</a>
+        </div>
+      </div>
+
+      <!-- New: Preface Page -->
+      <div class="page" data-page="2">
+        <div class="page-content">
+            <h2>प्रस्तावना</h2>
+            <p>इस डिजिटल युग में, जहाँ सामग्री तेज़ी से आती और जाती है, कुछ ऐसा बनाना महत्वपूर्ण है जो यादगार हो। यह कोई साधारण वेबसाइट नहीं है; यह एक अनुभव है। यह आपकी कहानी को एक सम्मानजनक और आकर्षक रूप देने का एक प्रयास है, ताकि आपके पाठक हर शब्द को महसूस कर सकें और हर पन्ने पर ठहर सकें। यह सिर्फ जानकारी साझा करने का एक तरीका नहीं, बल्कि एक कला है।</p>
+        </div>
+      </div>
+
+      <div class="page" data-page="3">
+        <div class="page-content">
+          <h2 id="personalizedWelcome"></h2>
+          <p>जहां आपकी कहानी सिर्फ पढ़ी नहीं जाती, बल्कि महसूस की जाती है। जहां आपके शब्द एक साधारण ब्लॉग पोस्ट नहीं, बल्कि एक सुंदर, इंटरैक्टिव किताब बन जाते हैं। क्या आप इस अनुभव को खोने के लिए तैयार हैं?</p>
+        </div>
+      </div>
+
+      <!-- New: Index Page -->
+      <div class="page page-index" data-page="4">
+        <div class="page-content">
+          <h2>विषय-सूची</h2>
+          <ul>
+            <li>प्रस्तावना</li>
+            <li>आपकी कहानी, एक नई पहचान</li>
+            <li>क्या आपका ब्लॉग पुराना लग रहा है?</li>
+            <li>देखें कि आप क्या खो रहे हैं</li>
+            <li>सहज पढ़ना</li>
+            <li>मीडिया एकीकरण</li>
+            <li>मोबाइल पर शानदार</li>
+            <li>अपनी छाप छोड़ें</li>
+            <li>आसान संपादन</li>
+            <li>आपकी कहानी को वह सम्मान दें</li>
+            <li>संपर्क करें</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="page" data-page="5">
+        <div class="page-content">
+          <h2>1. सहज पढ़ना: बिना किसी रुकावट के</h2>
+          <p>कल्पना कीजिए: आपके पाठक आराम से बैठ कर, आपकी किताब के पन्ने पलट रहे हैं, बिना किसी विज्ञापन या भटकाव के। यह एक ऐसा अनुभव है जो उन्हें बार-बार वापस आने पर मजबूर करेगा। इसे हासिल करने के लिए, आपको एक बुक-स्टाइल वेबसाइट चाहिए।</p>
+          <div class="feature-visuals">
+            <img src="https://via.placeholder.com/300x180.png?text=Fluid+Reading" alt="Fluid Reading Experience">
+          </div>
+        </div>
+      </div>
+
+      <div class="page" data-page="6">
+        <div class="page-content">
+          <h2>2. मीडिया एकीकरण: वीडियो और तस्वीरों के साथ</h2>
+          <p>क्या आपकी कहानी में ग्राफिक्स, वीडियो, या एनिमेशन हैं? पारंपरिक ब्लॉग उन्हें अलग-थलग रखते हैं। हमारी बुक-स्टाइल वेबसाइट पर, मीडिया आपके शब्दों में seamlessly घुल-मिल जाती है, एक यादगार दृश्य कहानी बनाती है। क्या आप इसे खोना चाहेंगे?</p>
+        <div class="feature-visuals">
+            <img src="https://via.placeholder.com/300x180.png?text=Rich+Media+in+Books" alt="Rich Media in Books">
+          </div>
+        </div>
+      </div>
+
+      <div class="page" data-page="7">
+        <div class="page-content">
+          <h2>3. मोबाइल पर शानदार: हर डिवाइस के लिए</h2>
+          <p>आपके 70% से ज्यादा पाठक मोबाइल पर हैं। क्या आपकी वेबसाइट उन्हें एक ख़राब अनुभव दे रही है? हमारी बुक-स्टाइल वेबसाइटें हर स्क्रीन पर शानदार दिखती हैं, जिससे आप कोई भी पाठक नहीं खोते। आपके मोबाइल पाठक भी पन्ने पलटने का मज़ा ले सकते हैं।</p>
+          <div class="feature-visuals">
+            <img src="https://via.placeholder.com/300x180.png?text=Mobile+Friendliness" alt="Mobile Friendliness">
+          </div>
+        </div>
+      </div>
+
+      <div class="page" data-page="8">
+        <div class="page-content">
+          <h2>4. अपनी छाप छोड़ें: भीड़ से अलग दिखें</h2>
+          <p>इस डिजिटल दुनिया में, अलग दिखना सबसे बड़ी चुनौती है। लाखों ब्लॉग्स में से, आपका क्यों चुना जाए? एक बुक-स्टाइल वेबसाइट के साथ, आप तुरंत एक लेखक या कलाकार के रूप में अपनी प्रतिष्ठा स्थापित करते हैं, जो विस्तार और गुणवत्ता को महत्व देता है।</p>
+        </div>
+      </div>
+
+      <div class="page" data-page="9">
+        <div class="page-content">
+          <h2>5. आसान संपादन: अपनी किताब खुद बनाएं</h2>
+          <p>सोचिए, सिर्फ कुछ क्लिक में, आपकी कहानी एक खूबसूरत डिजिटल किताब बन जाती है। कोई कोडिंग नहीं, कोई तकनीकी ज्ञान नहीं। हमारी प्रणाली आपके लिए सब कुछ करती है, जिससे आपका सारा ध्यान सिर्फ लिखने पर रहता है। क्या आप अभी भी घंटों तक अपनी वेबसाइट के लेआउट से लड़ना चाहेंगे?</p>
+        </div>
+      </div>
+
+      <div class="page" data-page="10">
+          <div class="page-content">
+              <h2>संपर्क करें</h2>
+              <p>अगर आप अपनी खुद की ऐसी वेबसाइट बनवाना चाहते हैं, तो मुझसे संपर्क करें।</p>
+              <p>मेरा मोबाइल नंबर है: <a href="tel:8756680477"><strong>8756680477</strong></a></p>
+              <p>आपकी कहानी दुनिया को सुनाने में मैं आपकी मदद कर सकता हूं।</p>
+          </div>
+      </div>
+
+      <div class="book-binding"></div>
+    </div>
+
+    <div class="progress-bar" id="progressBar"></div>
+    <button class="turn-page-btn prev-page-btn" id="globalPrevBtn" aria-label="Previous page">&#x2190;</button>
+    <button class="turn-page-btn next-page-btn" id="globalNextBtn" aria-label="Next page">&#x2192;</button>
+  </div>
+
+  <script>
+    $(function(){
+      // Audio for page turn effect (base64 encoded)
+      const audioData = "data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAAAAAAAVHJ5b24gMjAxMy4wNFdJTiAAAAAfAAAAPAAAAABDb252ZXJ0ZWQgYnkgSmF2YUF1ZGlvAAAAAClAAAA3AAAAAEhhdmUgYSBnb29kIGRheQAAAAApAAAAEAAAAGh0dHA6Ly93d3cudHJ5b24ub3JnAAAAACIAAAAgAAAAQ29udmVydGVkIGJ5IEphdmFBdWRpbyBvbiAyOC4wOS4yMDExAAAAAAA=";
+      const pageTurnSound = new Audio(audioData);
+
+      const pageColors = ["#f8f8f8", "#f0e4d6", "#e8e8d8", "#e4f0d6", "#d6e4f0"];
+
+      function isDesktop() {
+        return $(window).width() > 768;
+      }
+
+      function computeDims() {
+        return {
+          width: isDesktop() ? 922 : Math.round($(window).width() * 0.95),
+          height: isDesktop() ? 600 : Math.round($(window).height() * 0.9),
+          display: isDesktop() ? 'double' : 'single'
+        };
+      }
+
+      // Initialize or re-initialize the book preserving current page
+      function initBook(preservePage) {
+        const dims = computeDims();
+        const $book = $("#book");
+        let current = 1;
+        if (preservePage && $book.data('turn')) {
+          try { current = $book.turn("page"); } catch(e){ }
+        }
+
+        // destroy previous instance if exists
+        try {
+          if ($book.data('turn')) { $book.turn("destroy"); }
+        } catch(e){}
+
+        $book.css({width: dims.width + "px", height: dims.height + "px"});
+        $book.turn({
+          width: dims.width,
+          height: dims.height,
+          autoCenter: true,
+          display: dims.display,
+          // Removed all 3D effects for a flat, simple turn
+          gradients: false,
+          elevation: 0,
+          duration: 700 // Slower page turn for a more deliberate feel
+        });
+
+        // Ensure the book is visible after init
+        $book.fadeIn(200);
+
+        // After initialization, set 'turned' class on current view pages
+        setTimeout(function(){
+          try {
+            const view = $book.turn("view");
+            updateTurnedClasses(view);
+            updateProgress($book.turn("page"));
+            // Set initial button states
+            updateButtons($("#book").turn("page"));
+          } catch(e){
+            // Fallback for initial load
+            updateTurnedClasses($book.turn("view"));
+          }
+        }, 60);
+      }
+
+      function updateTurnedClasses(view) {
+        // Normalize view to an array
+        const visible = Array.isArray(view) ? view : [view];
+        $(".page").removeClass("turned");
+        visible.forEach(function(p){
+          // target element with data-page attribute (explicit in markup)
+          $(".page[data-page='" + p + "']").addClass("turned");
+        });
+      }
+
+      function updateProgress(page) {
+        const $book = $("#book");
+        let totalPages = 0;
+        try { totalPages = $book.turn("pages"); } catch(e){ totalPages = $(".page").length; }
+        const progress = Math.max(0, Math.min(100, (page / totalPages) * 100));
+        $("#progressBar").css("width", progress + "%");
+      }
+
+      // Function to show/hide navigation buttons
+      function updateButtons(page) {
+        const $book = $("#book");
+        const totalPages = $book.turn("pages");
+        if (page === totalPages) {
+          $("#globalNextBtn").hide();
+        } else {
+          $("#globalNextBtn").show();
+        }
+        if (page === 1) {
+          $("#globalPrevBtn").hide();
+        } else {
+          $("#globalPrevBtn").show();
+        }
+      }
+
+      // Set up initial book
+      initBook(false);
+
+      // Start reading button
+      $('#startReadingBtn').on('click touchstart', function(e){
+        e.preventDefault();
+        const userName = $("#userNameInput").val() || "मेरे दोस्त";
+        $("#personalizedWelcome").text("स्वागत है, " + userName + "!");
+        // Play sound on user interaction (safe)
+        pageTurnSound.play?.().catch?.(() => {});
+        // Open to the first inner page (page 3)
+        try {
+          // Trigger the page turn event to ensure the effect is the same
+          $("#book").turn("page", 2);
+        } catch (err) {
+          // fallback to next
+          try { $("#book").turn("next"); } catch(e){}
+        }
+      });
+
+      // Global next-button for mobile (also works on desktop if visible)
+      $('#globalNextBtn').on('click touchstart', function(e){
+        e.preventDefault();
+        try {
+          $("#book").turn("next");
+        } catch(e){}
+      });
+
+      // Global previous-button for mobile
+      $('#globalPrevBtn').on('click touchstart', function(e){
+        e.preventDefault();
+        try {
+          $("#book").turn("previous");
+        } catch(e){}
+      });
+
+      // Update on turned event
+      $("#book").on("turned", function(event, page, view) {
+        // Play sound (ignore promise rejection)
+        pageTurnSound.play?.().catch?.(()=>{});
+
+        // update progress
+        updateProgress(page);
+
+        // update turned classes for visible pages
+        updateTurnedClasses(view);
+
+        // Update button visibility
+        updateButtons(page);
+
+        // Change background color for inner pages (skip cover pages)
+        const $book = $(this);
+        const visible = Array.isArray(view) ? view : [view];
+        visible.forEach(function(p){
+          const colorIndex = (p - 2) % pageColors.length;
+          if (colorIndex >= 0) {
+            $book.find(".page[data-page='" + p + "']").css("background", pageColors[(colorIndex + pageColors.length) % pageColors.length]);
+          }
+        });
+      });
+
+      // Removed the turning event handler which was causing the flicker
+      // Make sure pages that are not in view revert to default background
+      $("#book").on("turning", function(event, page, view) {
+        $(".page").each(function(){
+          if (!$(this).hasClass('page-cover')) {
+            $(this).css("background", "linear-gradient(135deg, #fefefe 0%, #faf9f6 100%)");
+          }
+        });
+      });
+
+      // Debounced resize handler to re-init book
+      (function(){
+        let timer = null;
+        $(window).on('resize', function(){
+          clearTimeout(timer);
+          timer = setTimeout(function(){
+            const $book = $("#book");
+            const current = $book.data('turn') ? $book.turn("page") : 1;
+            initBook(true);
+            // restore page after small delay to ensure turn is ready
+            setTimeout(function(){
+              try { $("#book").turn("page", current); } catch(e){}
+            }, 120);
+          }, 220);
+        });
+      })();
+
+      // Keyboard navigation (left/right)
+      $(document).on('keydown', function(e){
+        if (e.key === "ArrowRight") {
+          try { $("#book").turn("next"); } catch(e){}
+        } else if (e.key === "ArrowLeft") {
+          try { $("#book").turn("previous"); } catch(e){}
+        }
+      });
+
+      // Ensure progress bar initial state matches
+      setTimeout(function(){
+        try { updateProgress($("#book").turn("page")); } catch(e){}
+      }, 160);
+
+    });
+  </script>
+</body>
+</html>

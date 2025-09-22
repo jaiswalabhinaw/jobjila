@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Karshni Eye Care - Advanced Demo</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background: #0a5fa3;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+    nav a {
+      color: white;
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .section {
+      padding: 3rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .card {
+      background: white;
+      padding: 1.25rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 1.5rem;
+    }
+    .card h3 {
+      margin-top: 0;
+      color: #0a5fa3;
+    }
+    footer {
+      background: #0a5fa3;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+    #vision-test {
+      margin-top: 1rem;
+    }
+    #vision-result {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    #daily-tip {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      background: #e6f4ff;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Karshni Eye Care - Advanced Demo</h1>
+    <nav>
+      <a href="#innovations">Innovations</a>
+      <a href="#ai">AI Diagnostics</a>
+      <a href="#engagement">Patient Engagement</a>
+      <a href="#remote">Remote Care</a>
+    </nav>
+  </header>
+
+  <section id="innovations" class="section">
+    <h2>Smart Innovations</h2>
+    <div class="card"><h3>AI Diagnostics</h3><p>Our AI system analyzes early symptoms like blurry vision, pain, or dryness to suggest possible causes and next steps.</p></div>
+    <div class="card"><h3>Tele-Ophthalmology</h3><p>Virtual consultations that allow patients to connect with doctors from anywhere.</p></div>
+    <div class="card"><h3>Wearable Vision Care</h3><p>Smart glasses and devices to monitor vision and eye health continuously.</p></div>
+  </section>
+
+  <section id="ai" class="section">
+    <h2>AI Symptom Analysis Demo</h2>
+    <form id="ai-form">
+      <label for="symptom">Select a Symptom</label>
+      <select id="symptom">
+        <option value="">--Choose--</option>
+        <option value="blurry">Blurry Vision</option>
+        <option value="pain">Eye Pain</option>
+        <option value="headache">Headache</option>
+        <option value="dry">Dry Eyes</option>
+      </select>
+      <button type="submit">Analyze</button>
+    </form>
+    <div id="ai-result"></div>
+
+    <div id="vision-test">
+      <h3>Quick Vision Test</h3>
+      <p>Can you read this text clearly?</p>
+      <button onclick="checkVision(true)">Yes</button>
+      <button onclick="checkVision(false)">No</button>
+      <div id="vision-result"></div>
+    </div>
+  </section>
+
+  <section id="engagement" class="section">
+    <h2>Patient Engagement</h2>
+    <div class="card"><h3>Symptom Checker</h3><p>Patients can log daily symptoms and get personalized suggestions instantly.</p></div>
+    <div class="card"><h3>Vision Tips</h3><p>Daily AI-powered eye care reminders to build healthy habits.</p>
+      <div id="daily-tip">Loading today's tip...</div>
+    </div>
+  </section>
+
+  <section id="remote" class="section">
+    <h2>Remote Monitoring</h2>
+    <div class="card"><h3>Smart Reports</h3><p>Doctors receive instant AI-generated reports to track patient progress remotely.</p></div>
+    <div class="card"><h3>Mobile Alerts</h3><p>Automatic alerts sent to patients when urgent consultation is recommended.</p></div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Karshni Eye Care. Advanced Demo Page</p>
+  </footer>
+
+  <script>
+    const aiForm = document.getElementById('ai-form');
+    const aiResult = document.getElementById('ai-result');
+
+    aiForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const val = document.getElementById('symptom').value;
+      let message = "";
+      switch(val) {
+        case "blurry":
+          message = "Possible refractive error or cataract. Immediate eye exam advised.";
+          break;
+        case "pain":
+          message = "May indicate infection or strain. Book an appointment soon.";
+          break;
+        case "headache":
+          message = "Often linked to eye strain. Consider reducing screen time.";
+          break;
+        case "dry":
+          message = "Likely dry eye syndrome. Use lubricating drops and consult if persistent.";
+          break;
+        default:
+          message = "Please select a symptom.";
+      }
+      aiResult.textContent = message;
+    });
+
+    function checkVision(clear) {
+      const visionResult = document.getElementById('vision-result');
+      if (clear) {
+        visionResult.textContent = "Great! Your near vision seems fine, but regular check-ups are important.";
+      } else {
+        visionResult.textContent = "It seems you had difficulty. Please book an appointment for a detailed check.";
+      }
+    }
+
+    const tips = [
+      "Follow the 20-20-20 rule: Every 20 minutes, look 20 feet away for 20 seconds.",
+      "Keep your device screen at least 16 inches away from your eyes.",
+      "Blink often to keep your eyes moist.",
+      "Eat foods rich in Vitamin A for healthy eyes.",
+      "Get your eyes checked every year to catch issues early."
+    ];
+    document.getElementById('daily-tip').textContent = tips[Math.floor(Math.random() * tips.length)];
+  </script>
+</body>
+</html>

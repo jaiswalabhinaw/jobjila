@@ -1,0 +1,422 @@
+// ...existing code...
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Karshni Eye Care</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --primary:#0a5fa3;
+      --accent:#ffcc00;
+      --muted:#6b7280;
+      --card-bg: #ffffff;
+      --radius:12px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, 'Segoe UI', Tahoma, sans-serif;
+      color:#222;
+      background:#f7fafc;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+
+    /* Header */
+    header{
+      position:sticky;
+      top:0;
+      z-index:999;
+      background:linear-gradient(180deg,var(--primary),#084a7a);
+      color:#fff;
+      padding:14px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      box-shadow:0 6px 18px rgba(10,95,163,0.12);
+    }
+    header .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .logo{
+      width:44px;height:44px;border-radius:10px;
+      background:rgba(255,255,255,0.12);
+      display:grid;place-items:center;font-weight:700;color:#fff;
+      font-size:18px;
+    }
+    header h1{margin:0;font-size:1.05rem;font-weight:600}
+    header h1 a.admin-btn{
+      font-size:0.78rem;margin-left:10px;background:var(--accent);color:#000;
+      padding:6px 8px;border-radius:6px;text-decoration:none;font-weight:600;
+    }
+
+    /* Nav: two rows on desktop, responsive on mobile */
+    nav{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:10px 18px;
+      max-width:920px;
+      margin:0 12px;
+      align-items:center;
+    }
+    nav a{
+      color:#fff;text-decoration:none;padding:6px 8px;border-radius:6px;
+      font-weight:600;font-size:0.95rem;
+      transition:background .15s, transform .12s;
+    }
+    nav a:hover{background:rgba(255,255,255,0.06);transform:translateY(-2px)}
+
+    /* Mobile toggle */
+    .menu-toggle{
+      display:none;
+      background:transparent;border:0;padding:6px;cursor:pointer;color:#fff;
+    }
+    .menu-toggle .bar{display:block;width:20px;height:2px;background:#fff;margin:4px 0;border-radius:2px}
+
+    /* Hero */
+    .hero{
+      min-height:56vh;
+      display:flex;align-items:center;justify-content:center;text-align:center;
+      padding:48px 20px;position:relative;
+      background:linear-gradient(180deg, rgba(10,95,163,0.12), rgba(255,204,0,0.02));
+    }
+    .hero .inner{max-width:980px}
+    .hero h2{font-size:2.1rem;margin:0 0 12px;color:var(--primary);font-weight:700}
+    .hero p{margin:0 0 18px;color:var(--muted);font-size:1rem}
+    .btn{
+      display:inline-block;background:var(--accent);color:#000;padding:10px 16px;border-radius:10px;font-weight:700;text-decoration:none;
+      box-shadow:0 6px 18px rgba(0,0,0,0.08);
+    }
+    .btn.secondary{background:transparent;color:var(--primary);border:2px solid rgba(10,95,163,0.08)}
+
+    /* Sections and pastel backgrounds */
+    .section{padding:48px 20px}
+    .container{max-width:1200px;margin:0 auto}
+
+    .section h2{text-align:center;margin:0 0 20px;font-size:1.5rem;color:var(--primary)}
+    .section p.lead{text-align:center;color:var(--muted);margin:0 auto 26px;max-width:860px}
+
+    /* Pastel backgrounds assigned by order for pleasant contrast */
+    .section:nth-of-type(1){ /* hero container row placeholder - will be hero */ }
+    .section:nth-of-type(2){ background:#f8f6ff } /* About */
+    .section:nth-of-type(3){ background:#f6fff8 } /* Services */
+    .section:nth-of-type(4){ background:#fffaf6 } /* Why */
+    .section:nth-of-type(5){ background:#f6faff } /* Pricing */
+    .section:nth-of-type(6){ background:#fff6fa } /* Doctors */
+    .section:nth-of-type(7){ background:#f6fff6 } /* Testimonials */
+    .section:nth-of-type(8){ background:#f6f6ff } /* Appointment */
+    .section:nth-of-type(9){ background:#fafff6 } /* Innovations */
+    .section:nth-of-type(10){ background:#f6faff } /* AI Diagnostics */
+    .section:nth-of-type(11){ background:#fffaf6 } /* Vision tips */
+    .section:nth-of-type(12){ background:#f8f6ff } /* Symptom */
+    .section:nth-of-type(13){ background:#f6fff8 } /* FAQ */
+    .section:nth-of-type(14){ background:#fff6fa } /* Contact */
+
+    /* Cards/grid */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+    .card{background:var(--card-bg);padding:18px;border-radius:var(--radius);box-shadow:0 6px 18px rgba(15,23,42,0.06)}
+    .card h3{margin:0 0 8px;color:var(--primary)}
+    .muted{color:var(--muted);font-size:0.95rem}
+
+    /* Forms */
+    label{display:block;font-weight:600;margin-bottom:6px;font-size:0.92rem}
+    input[type="text"], input[type="email"], input[type="date"], textarea, select{
+      width:100%;padding:10px;border-radius:8px;border:1px solid #e6eef8;background:#fff;font-size:0.95rem;
+    }
+    button[type="submit"]{cursor:pointer;background:var(--primary);color:#fff;border:0;padding:10px 14px;border-radius:8px;font-weight:700}
+
+    /* Footer */
+    footer{padding:24px 20px;text-align:center;background:linear-gradient(180deg,var(--primary),#084a7a);color:#fff;margin-top:28px;border-top-left-radius:6px;border-top-right-radius:6px}
+
+    /* Responsive adjustments */
+    @media (max-width:920px){
+      nav{max-width:100%}
+    }
+    @media (max-width:768px){
+      header{padding:12px}
+      .menu-toggle{display:block}
+      nav{display:none;flex-direction:column;gap:8px;padding:12px;background:linear-gradient(180deg,var(--primary),#0a4f7a);position:absolute;left:0;right:0;top:100%;z-index:998}
+      nav.active{display:flex}
+      nav a{padding:10px 12px;margin:0}
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <div class="logo">KE</div>
+      <h1>Karshni Eye Care <a class="admin-btn" href="patient.html">Admin</a></h1>
+    </div>
+
+    <button class="menu-toggle" aria-label="Toggle menu" id="menuToggle">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+
+    <nav id="mainNav" aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#why">Why Choose Us</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#doctors">Doctors</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#appointment">Appointment</a>
+      <a href="advance.html">Innovations</a>
+      <a href="#ai-diagnostics">AI Diagnostics</a>
+      <a href="#vision-tips">Vision Tips</a>
+      <a href="#symptom">Symptom Checker</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+      <a href="blog.html">Blog</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="container inner">
+      <h2>Clear vision, better life</h2>
+      <p class="lead">Karshni Eye Care — modern eye treatments, experienced doctors and compassionate care.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:18px">
+        <a class="btn" href="#appointment">Book Appointment</a>
+        <a class="btn secondary" href="advance.html">Learn about Innovations</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="container">
+      <h2>About Us</h2>
+      <p class="lead">We provide world-class eye care with the latest diagnostics and patient-first care.</p>
+      <div class="grid" style="margin-top:20px">
+        <div class="card">
+          <h3>Our Mission</h3>
+          <p class="muted">Deliver safe, effective eye treatments and improve quality of life for every patient.</p>
+        </div>
+        <div class="card">
+          <h3>Our Vision</h3>
+          <p class="muted">To be a trusted eye care center recognized for outcomes and compassion.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="section">
+    <div class="container">
+      <h2>Our Services</h2>
+      <p class="lead">Comprehensive services from routine exams to advanced surgeries.</p>
+      <div class="grid" style="margin-top:18px">
+        <div class="card"><h3>Eye Exams</h3><p class="muted">Full vision and health evaluations.</p></div>
+        <div class="card"><h3>Cataract Surgery</h3><p class="muted">State-of-the-art cataract care.</p></div>
+        <div class="card"><h3>Laser Vision</h3><p class="muted">LASIK and refractive solutions.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why" class="section">
+    <div class="container">
+      <h2>Why Choose Us</h2>
+      <p class="lead">Experienced surgeons, modern equipment and patient-centered care.</p>
+      <div class="grid" style="margin-top:18px">
+        <div class="card"><h3>Experienced Team</h3><p class="muted">Senior ophthalmologists with decades of experience.</p></div>
+        <div class="card"><h3>Modern Facilities</h3><p class="muted">Advanced diagnostics and sterile surgical suites.</p></div>
+        <div class="card"><h3>Care & Support</h3><p class="muted">Follow-up and recovery support for every patient.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="section">
+    <div class="container">
+      <h2>Pricing</h2>
+      <p class="lead">Transparent packages and clear guidance — no surprises.</p>
+      <div class="grid" style="margin-top:18px">
+        <div class="card"><h3>Consultation</h3><p class="muted">₹500 — includes full eye evaluation.</p></div>
+        <div class="card"><h3>Advanced Testing</h3><p class="muted">₹1500 — imaging and diagnostic reports.</p></div>
+        <div class="card"><h3>Surgery Packages</h3><p class="muted">From ₹20,000 — varies by treatment.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="doctors" class="section">
+    <div class="container">
+      <h2>Our Doctors</h2>
+      <div class="grid" style="margin-top:18px">
+        <div class="card"><h3>Dr. A Sharma</h3><p class="muted">Senior Ophthalmologist — cataract & retina specialist.</p></div>
+        <div class="card"><h3>Dr. P Verma</h3><p class="muted">Laser and refractive surgery expert.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials" class="section">
+    <div class="container">
+      <h2>Testimonials</h2>
+      <div class="grid" style="margin-top:18px">
+        <div class="card">“Very professional team — my vision improved remarkably.”</div>
+        <div class="card">“Excellent care and follow-up. Highly recommend.”</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="appointment" class="section">
+    <div class="container">
+      <h2>Book Appointment</h2>
+      <form id="appointmentForm" class="card" style="max-width:760px;margin:auto">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+          <div><label for="name">Name</label><input id="name" type="text" required></div>
+          <div><label for="email">Email</label><input id="email" type="email" required></div>
+          <div><label for="date">Preferred Date</label><input id="date" type="date" required></div>
+        </div>
+        <div style="margin-top:12px;display:flex;gap:10px;justify-content:flex-end">
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section id="innovations" class="section">
+    <div class="container">
+      <h2>Our Innovations</h2>
+      <p class="lead">AI diagnostics, tele-ophthalmology and smart monitoring solutions.</p>
+      <div class="grid" style="margin-top:18px">
+        <div class="card"><h3>AI Diagnostics</h3><p class="muted">Faster detection support for common eye conditions.</p></div>
+        <div class="card"><h3>Telecare</h3><p class="muted">Remote consultations for convenience and reach.</p></div>
+        <div class="card"><h3>Wearables</h3><p class="muted">Smart monitoring for chronic eye health.</p></div>
+      </div>
+      <p style="text-align:center;margin-top:18px"><a class="btn" href="advanc.html">Read more on Innovations</a></p>
+    </div>
+  </section>
+
+  <section id="ai-diagnostics" class="section">
+    <div class="container">
+      <h2>AI Diagnostics Demo</h2>
+      <form id="aiForm" class="card" style="max-width:720px;margin:auto">
+        <label for="symptom-select">Select a symptom</label>
+        <select id="symptom-select" required>
+          <option value="">--Choose--</option>
+          <option value="blurry">Blurry Vision</option>
+          <option value="pain">Eye Pain</option>
+          <option value="dry">Dry Eyes</option>
+          <option value="floaters">Floaters</option>
+        </select>
+        <div style="margin-top:12px"><button type="submit">Analyze</button></div>
+        <div id="ai-result" style="margin-top:12px;font-weight:700"></div>
+      </form>
+    </div>
+  </section>
+
+  <section id="vision-tips" class="section">
+    <div class="container">
+      <h2>Vision Tips</h2>
+      <div class="card" id="tip-box">Follow the 20-20-20 rule: every 20 minutes look at something 20 feet away for 20 seconds.</div>
+    </div>
+  </section>
+
+  <section id="symptom" class="section">
+    <div class="container">
+      <h2>Symptom Checker</h2>
+      <form id="symptomForm" class="card" style="max-width:720px;margin:auto">
+        <label><input type="checkbox" name="symptom" value="Blurry"> Blurry Vision</label>
+        <label><input type="checkbox" name="symptom" value="Pain"> Eye Pain</label>
+        <label><input type="checkbox" name="symptom" value="Dry"> Dry Eyes</label>
+        <div style="margin-top:12px;display:flex;justify-content:flex-end">
+          <button type="submit">Check</button>
+        </div>
+        <div id="symptom-result" style="margin-top:12px;font-weight:700"></div>
+      </form>
+    </div>
+  </section>
+
+  <section id="faq" class="section">
+    <div class="container">
+      <h2>FAQ</h2>
+      <div class="grid" style="margin-top:18px">
+        <div class="card"><h3>Operating Hours</h3><p class="muted">Mon–Sat 9:00 AM – 6:00 PM</p></div>
+        <div class="card"><h3>Insurance</h3><p class="muted">We accept most major plans — contact reception for details.</p></div>
+        <div class="card"><h3>Book Appointment</h3><p class="muted">Book online or call the clinic.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="container">
+      <h2>Contact</h2>
+      <div class="grid" style="margin-top:18px">
+        <div class="card">
+          <h3>Karshni Eye Care</h3>
+          <p class="muted">123 Vision Road, City</p>
+          <p class="muted">Phone: +91-9876543210</p>
+          <p class="muted">Email: info@karshnieyecare.com</p>
+        </div>
+        <form class="card" style="max-width:720px;margin:0" id="contactForm">
+          <label for="contact-name">Name</label><input id="contact-name" type="text" required>
+          <label for="contact-email">Email</label><input id="contact-email" type="email" required>
+          <label for="contact-message">Message</label><textarea id="contact-message" rows="4" required></textarea>
+          <div style="display:flex;justify-content:flex-end"><button type="submit">Send Message</button></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Karshni Eye Care — All rights reserved.
+  </footer>
+
+  <script>
+    // Menu toggle + close on link click
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('mainNav');
+    menuToggle.addEventListener('click', ()=> mainNav.classList.toggle('active'));
+    mainNav.querySelectorAll('a').forEach(a=>{
+      a.addEventListener('click', ()=> { if(window.innerWidth <= 768) mainNav.classList.remove('active') });
+    });
+
+    // Basic form handlers (non-server demo)
+    document.getElementById('appointmentForm').addEventListener('submit', e=>{
+      e.preventDefault();
+      alert('Appointment request received. We will contact you soon.');
+      e.target.reset();
+    });
+
+    document.getElementById('aiForm').addEventListener('submit', e=>{
+      e.preventDefault();
+      const val = document.getElementById('symptom-select').value;
+      const out = document.getElementById('ai-result');
+      if(!val){ out.textContent = 'Please select a symptom.'; return; }
+      // demo mapping
+      const map = {
+        blurry:'Blurry vision may indicate refractive error or cataract — consult an eye doctor.',
+        pain:'Eye pain can be serious. Seek medical attention if severe.',
+        dry:'Dry eyes are common; try artificial tears and reduce screen time.',
+        floaters:'Floaters sometimes are normal but sudden increase needs urgent check.'
+      };
+      out.textContent = map[val] || 'Please consult an eye care specialist for accurate diagnosis.';
+    });
+
+    document.getElementById('symptomForm').addEventListener('submit', e=>{
+      e.preventDefault();
+      const checked = Array.from(e.target.querySelectorAll('input[name="symptom"]:checked')).map(i=>i.value);
+      const res = document.getElementById('symptom-result');
+      if(!checked.length) res.textContent = 'No symptoms selected.';
+      else res.textContent = 'Selected: ' + checked.join(', ') + '. Please consult a specialist for guidance.';
+    });
+
+    document.getElementById('contactForm').addEventListener('submit', e=>{
+      e.preventDefault();
+      alert('Message sent. We will respond to your email soon.');
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
+// ...existing code...

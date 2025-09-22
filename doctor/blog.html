@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Karshni Eye Care - Blog</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: #fdfdfd;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: #0a5fa3;
+      color: white;
+      padding: 1.5rem 2rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    .section {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    .card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+    }
+    .card h2 {
+      margin-top: 0;
+      color: #0a5fa3;
+    }
+    ul li {
+      margin-bottom: 0.75rem;
+    }
+    footer {
+      background: #0a5fa3;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+    .quiz-question {
+      margin-bottom: 1rem;
+    }
+    .quiz-result {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 8px;
+      font-weight: bold;
+      display: none;
+    }
+    .quiz-result.good {
+      background: #e6ffe6;
+      border-left: 5px solid #28a745;
+      color: #155724;
+    }
+    .quiz-result.warning {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      color: #856404;
+    }
+    .quiz-result.danger {
+      background: #f8d7da;
+      border-left: 5px solid #dc3545;
+      color: #721c24;
+    }
+    button {
+      background: #0a5fa3;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #084a80;
+    }
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .download-guide {
+      text-align: center;
+      margin-top: 1rem;
+    }
+    .download-guide a {
+      background: #28a745;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+    .download-guide a:hover {
+      background: #218838;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Doctor's Eye Care Blog</h1>
+    <p>Tips, Exercises & Guidance for Healthy Eyes</p>
+  </header>
+
+  <section class="section">
+    <div class="card">
+      <h2>10 Tips for Daily Eye Hygiene</h2>
+      <ul>
+        <li>Wash your hands before touching your eyes or lenses.</li>
+        <li>Never rub your eyes aggressively; it can damage the cornea.</li>
+        <li>Clean your glasses or lenses regularly with proper solution.</li>
+        <li>Avoid sharing eye makeup or lenses with others.</li>
+        <li>Use protective glasses when outdoors or in dusty environments.</li>
+        <li>Keep digital screens clean to reduce glare and strain.</li>
+        <li>Remove makeup completely before sleeping.</li>
+        <li>Stay hydrated to keep your eyes moist and healthy.</li>
+        <li>Use lubricating drops if you often feel dryness.</li>
+        <li>Visit an eye doctor once a year for preventive check-ups.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Eye Exercise Tips (Video Demo)</h2>
+      <p>Follow along with this short video to keep your eyes relaxed and reduce strain:</p>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/3Q3yC9nq0Vo" title="Eye Exercise Video" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Special Disease Care Tips</h2>
+      <ul>
+        <li><strong>For Glaucoma:</strong> Take prescribed drops regularly and avoid skipping doses.</li>
+        <li><strong>For Diabetic Retinopathy:</strong> Maintain blood sugar levels and attend routine eye exams.</li>
+        <li><strong>For Dry Eye Syndrome:</strong> Use artificial tears, avoid prolonged screen use, and stay hydrated.</li>
+        <li><strong>For Cataract Patients:</strong> Protect eyes from UV rays and follow post-surgery care strictly.</li>
+        <li><strong>For Macular Degeneration:</strong> Eat leafy greens, avoid smoking, and use low-vision aids if prescribed.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Self-Assessment Quiz</h2>
+      <form id="quizForm">
+        <div class="quiz-question">
+          <label>Do you often feel eye strain after screen use? </label><br>
+          <input type="radio" name="strain" value="yes"> Yes
+          <input type="radio" name="strain" value="no"> No
+        </div>
+        <div class="quiz-question">
+          <label>Do you experience frequent dryness or irritation? </label><br>
+          <input type="radio" name="dryness" value="yes"> Yes
+          <input type="radio" name="dryness" value="no"> No
+        </div>
+        <div class="quiz-question">
+          <label>Do you struggle with blurry vision when reading? </label><br>
+          <input type="radio" name="blurry" value="yes"> Yes
+          <input type="radio" name="blurry" value="no"> No
+        </div>
+        <button type="button" onclick="checkQuiz()">Submit</button>
+      </form>
+      <div id="quizResult" class="quiz-result"></div>
+    </div>
+
+    <div class="card">
+      <h2>Downloadable Eye Care Guide</h2>
+      <p>This free guide includes lifestyle tips, exercises, and disease management advice to help you maintain healthy vision.</p>
+      <div class="download-guide">
+        <a href="#" download="EyeCareGuide.pdf">📥 Download Guide</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Karshni Eye Care. Doctor's Blog</p>
+  </footer>
+
+  <script>
+    function checkQuiz() {
+      const strain = document.querySelector('input[name="strain"]:checked');
+      const dryness = document.querySelector('input[name="dryness"]:checked');
+      const blurry = document.querySelector('input[name="blurry"]:checked');
+      let result = "";
+      let severity = "good";
+
+      if (strain && strain.value === "yes") {
+        result += "You may have digital eye strain. Try the 20-20-20 rule.\n";
+        severity = "warning";
+      }
+      if (dryness && dryness.value === "yes") {
+        result += "Dryness may indicate dry eye syndrome. Use artificial tears and reduce screen time.\n";
+        severity = severity === "danger" ? "danger" : "warning";
+      }
+      if (blurry && blurry.value === "yes") {
+        result += "Blurry vision may suggest a need for corrective glasses or further examination.\n";
+        severity = "danger";
+      }
+
+      if (result === "") {
+        result = "✅ Your eyes seem fine, but regular check-ups are always recommended.";
+        severity = "good";
+      } else {
+        result += "📅 We recommend booking an appointment with our doctor for further evaluation.";
+      }
+
+      const resultBox = document.getElementById('quizResult');
+      resultBox.style.display = 'block';
+      resultBox.className = 'quiz-result ' + severity;
+      resultBox.innerText = result;
+    }
+  </script>
+</body>
+</html>
