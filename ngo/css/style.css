@@ -1,0 +1,207 @@
+/* ---------- Variables & Reset ---------- */
+:root{
+  --primary-blue:#003366;     /* Main blue for trust */
+  --accent-blue:#4DA6FF;      /* Accent sky blue */
+  --accent-green:#2E7D32;     /* Optional success highlights */
+  --accent-orange:#FF9800;    /* Optional alert/highlight */
+  --dark-gray:#333333;
+  --medium-gray:#666666;
+  --light-gray:#F5F7FA;       /* Light gray background */
+  --lighter-gray:#F9FAFB;     /* Almost white */
+  --white:#ffffff;
+  --dark-blue-footer:#001F33; /* Footer */
+  --link-light:#66B2FF;
+  --overlay-dark: rgba(0,0,0,0.35);
+
+  /* Section background mapping */
+  --bg-hero:#EAF2FB;          /* very light blue */
+  --bg-about:#FFFFFF;         /* white */
+  --bg-founder:#F5F7FA;       /* light gray */
+  --bg-work:#FFFFFF;          /* white */
+  --bg-causes:#F5F7FA;        /* light gray */
+  --bg-impact:#EAF2FB;        /* very light blue */
+  --bg-gallery:#FFFFFF;       /* white */
+  --bg-involved:#F5F7FA;      /* light gray */
+  --bg-donate:#EAF2FB;        /* very light blue */
+  --bg-events:#FFFFFF;        /* white */
+  --bg-resources:#F5F7FA;     /* light gray */
+  --bg-media:#EAF2FB;         /* very light blue */
+  --bg-shop:#FFFFFF;          /* white */
+  --bg-volunteer:#F5F7FA;     /* light gray */
+  --bg-faq:#EAF2FB;           /* very light blue */
+  --bg-contact:#FFFFFF;       /* white */
+  --bg-team:#F5F7FA;          /* light gray */
+  --bg-trust:#FFFFFF;         /* white */
+}
+
+/* Reset */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color:var(--dark-gray);
+  background:var(--white);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* ---------- Header ---------- */
+header.header{
+  position:sticky;
+  top:0;
+  z-index:1200;
+  background:var(--white);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 28px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.06);
+}
+.logo{font-weight:700;color:var(--primary-blue);font-size:1.2rem}
+nav.nav{display:flex;gap:16px;align-items:center}
+nav.nav a{
+  color:var(--dark-gray);
+  padding:6px 8px;
+  border-radius:6px;
+  font-weight:500;
+  font-size:0.95rem;
+}
+nav.nav a:hover{color:var(--primary-blue)}
+
+.btn-primary{
+  background:var(--primary-blue);
+  color:var(--white);
+  padding:8px 14px;
+  border-radius:8px;
+  font-weight:700;
+  transition:all .2s ease;
+}
+.btn-primary:hover{
+  transform:scale(1.04);
+  box-shadow:0 6px 18px rgba(0,0,0,0.12)
+}
+.btn-secondary{
+  background:transparent;
+  color:var(--primary-blue);
+  padding:8px 14px;
+  border-radius:8px;
+  border:2px solid var(--primary-blue);
+  font-weight:700;
+  transition:all .2s ease;
+}
+.btn-secondary:hover{
+  background:var(--primary-blue);
+  color:var(--white);
+  transform:scale(1.04)
+}
+
+/* ---------- Mobile Menu ---------- */
+.hamburger{
+  display:none;
+  font-size:1.7rem;
+  cursor:pointer;
+  color:var(--dark-gray);
+  background:transparent;
+  border:none;
+}
+
+.mobile-menu{
+  position:fixed;
+  top:60px;                 /* appear just below header */
+  right:-260px;             /* hidden off-screen */
+  width:260px;              /* compact sidebar */
+  height:calc(100vh - 60px);
+  background:var(--white);
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;   /* align text left */
+  justify-content:flex-start;
+  padding:20px;
+  gap:10px;
+  transition:right .36s ease;
+  box-shadow:-2px 0 8px rgba(0,0,0,0.1);
+  z-index:2000;
+  overflow-y:auto;          /* scrollable if many links */
+}
+.mobile-menu.active{ right:0; }
+
+.mobile-menu a{
+  font-size:0.95rem;        /* smaller font */
+  font-weight:500;
+  color:var(--dark-gray);
+  padding:8px 0;
+  width:100%;
+  border-bottom:1px solid #eee; /* subtle divider */
+  text-align:left;
+}
+.mobile-menu a:hover{
+  color:var(--primary-blue);
+}
+/* ---------- Section Backgrounds ---------- */
+#home{background:var(--bg-hero);}
+#about{background:var(--bg-about);}
+#founder{background:var(--bg-founder);}
+#work{background:var(--bg-work);}
+#causes{background:var(--bg-causes);}
+#impact{background:var(--bg-impact);}
+#gallery{background:var(--bg-gallery);}
+#get-involved{background:var(--bg-involved);}
+#donate{background:var(--bg-donate);}
+#events{background:var(--bg-events);}
+#resources{background:var(--bg-resources);}
+#media{background:var(--bg-media);}
+#shop{background:var(--bg-shop);}
+#volunteer-stories{background:var(--bg-volunteer);}
+#faq{background:var(--bg-faq);}
+#contact{background:var(--bg-contact);}
+#team{background:var(--bg-team);}
+#trust{background:var(--bg-trust);}
+
+/* ---------- Footer ---------- */
+footer.footer{
+  background:var(--dark-blue-footer);
+  color:var(--white);
+  padding:28px 20px;
+  margin-top:20px
+}
+footer .foot-inner{
+  max-width:1100px;
+  margin:0 auto;
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between
+}
+footer a{color:var(--link-light)}
+
+/* ---------- Generic Section Styles ---------- */
+section{padding:44px 20px}
+.section-title{max-width:1100px;margin:0 auto 18px}
+.section-title h2{color:var(--primary-blue);font-size:1.4rem;margin-bottom:8px}
+.container{max-width:1100px;margin:0 auto;padding:0 18px}
+.muted{color:var(--medium-gray)}
+.lead-para{font-size:1rem;margin-bottom:12px}
+
+/* ---------- Animations ---------- */
+.fade-in{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.visible{opacity:1;transform:none}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1280px){   /* hamburger earlier */
+  .logo{font-size:1.1rem}
+  nav.nav{display:none}
+  .hamburger{display:inline-block}
+}
+@media (max-width:800px){
+  .hero h1{font-size:1.6rem}
+}
+@media (max-width:600px){
+  .hero{min-height:56vh;padding:28px 12px}
+  .two-col{flex-direction:column}
+  .founder-photo{width:100%;height:260px}
+  .mobile-menu{padding:28px}
+  .mobile-menu a{font-size:1.1rem}
+}

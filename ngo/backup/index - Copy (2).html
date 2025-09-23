@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shatakshi Seva Sansthan</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* General Reset */
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Roboto', sans-serif;}
+body {background-color:#f5f5f5; color:#333; line-height:1.6;}
+a {text-decoration:none; color:inherit;}
+header {background-color:#fff; color:#333; padding:20px 0; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
+header .container {max-width:1200px; margin:auto; padding:0 20px; display:flex; justify-content:space-between; align-items:center;}
+header h1 {font-size:28px;}
+nav ul {list-style:none; display:flex; gap:20px;}
+nav ul li a {color:#333; font-weight:500; transition:color 0.3s;}
+nav ul li a:hover, nav ul li a.active {color:#0056b3;}
+.btn-primary {background-color:#E53935; color:#fff; padding:10px 20px; border:none; border-radius:5px; cursor:pointer; transition: transform 0.3s, box-shadow 0.3s;}
+.btn-primary:hover {transform:scale(1.05); box-shadow:0 5px 15px rgba(0,0,0,0.3);}
+section {padding:60px 20px;}
+.container {max-width:1200px; margin:auto;}
+
+/* Hero Section */
+.hero {background:url('https://images.unsplash.com/photo-1581090700227-3c12f9972b7b?auto=format&fit=crop&w=1400&q=80') no-repeat center center/cover; height:70vh; display:flex; justify-content:center; align-items:center; color:white; text-align:center; position:relative;}
+.hero::after {content:''; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.4);}
+.hero-content {position:relative; z-index:1;}
+.hero h2 {font-size:48px; margin-bottom:20px;}
+.hero p {font-size:20px;}
+
+/* Section Headings */
+h2.section-title {text-align:center; margin-bottom:40px; font-size:36px; color:#0056b3;}
+
+/* Grid Cards */
+.grid {display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:30px;}
+.card {background:white; padding:20px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s;}
+.card:hover {transform:translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.15);}
+.card h3 {margin-bottom:10px; color:#0056b3;}
+.card p {font-size:16px;}
+
+/* Team Section */
+.team-member {text-align:center;}
+.team-member img {width:150px; border-radius:50%; transition:transform 0.3s, box-shadow 0.3s;}
+.team-member img:hover {transform:scale(1.05); box-shadow:0 5px 15px rgba(0,0,0,0.3);}
+.team-member h4 {margin-top:15px; color:#0056b3;}
+.team-member p {color:#666;}
+
+/* FAQ Accordion */
+.accordion-item {margin-bottom:15px; border-radius:5px; overflow:hidden; background:white; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
+.accordion-title {padding:15px; cursor:pointer; font-weight:700; color:#0056b3;}
+.accordion-content {display:none; padding:15px; border-top:1px solid #ddd; color:#333;}
+
+/* Footer */
+footer {background-color:#002E5D; color:white; padding:40px 20px;}
+footer a {color:#66B2FF;}
+footer a:hover {text-decoration:underline;}
+.footer-grid {display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:20px;}
+
+/* Responsive */
+@media(max-width:768px){header .container{flex-direction:column;text-align:center;} nav ul{flex-direction:column; gap:10px; margin-top:10px;}}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="container">
+    <h1>Shatakshi Seva Sansthan</h1>
+    <nav>
+      <ul>
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#work">Our Work</a></li>
+        <li><a href="#impact">Impact</a></li>
+        <li><a href="#get-involved">Get Involved</a></li>
+        <li><a href="#donate" class="btn-primary">Donate ❤️</a></li>
+        <li><a href="#events">Events & Campaigns</a></li>
+        <li><a href="#resources">Resources</a></li>
+        <li><a href="#media">Media & Recognition</a></li>
+        <li><a href="#shop">Shop</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <h2>Transforming Society, One Step at a Time</h2>
+    <p>Join us in creating positive change across education, health, and community development.</p>
+    <button class="btn-primary">Join Us</button>
+  </div>
+</section>
+
+<!-- About Us -->
+<section id="about" class="section-white">
+  <div class="container">
+    <h2 class="section-title">About Us</h2>
+    <p>"Our journey is incomplete until the last person in society smiles."</p>
+    <p>The inception of Shatakshi Seva Sansthan was not just about establishing an organization; it was a resolve born out of pain. Our founder, Mr. Naveen Ranjan Srivastava, dedicated his life to service.</p>
+    <div class="grid">
+      <div class="card">
+        <h3>Mission & Vision</h3>
+        <p>Empower every individual through education, health, and social service.</p>
+      </div>
+      <div class="card">
+        <h3>Our Story</h3>
+        <p>From humble beginnings in Bihar to a nationwide NGO impacting thousands.</p>
+      </div>
+      <div class="card">
+        <h3>Partners & Supporters</h3>
+        <p>Collaborating with communities, corporates, and government bodies.</p>
+      </div>
+      <div class="card">
+        <h3>Advisory Board / Trustees</h3>
+        <p>Guiding the organization with wisdom and experience.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Team -->
+<section id="team" class="section-light-gray">
+  <div class="container">
+    <h2 class="section-title">Our Team</h2>
+    <div class="grid">
+      <div class="team-member card">
+        <img src="https://via.placeholder.com/150" alt="Founder">
+        <h4>Mr. Naveen Ranjan Srivastava</h4>
+        <p>Founder</p>
+      </div>
+      <div class="team-member card">
+        <img src="https://via.placeholder.com/150" alt="Leadership">
+        <h4>Leadership</h4>
+        <p>Guiding the mission</p>
+      </div>
+      <div class="team-member card">
+        <img src="https://via.placeholder.com/150" alt="Volunteers">
+        <h4>Volunteers</h4>
+        <p>Driving change on the ground</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Our Work -->
+<section id="work" class="section-white">
+  <div class="container">
+    <h2 class="section-title">Our Work</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Focus Areas</h3>
+        <p>Education, Health, Women Empowerment, Environment.</p>
+      </div>
+      <div class="card">
+        <h3>Ongoing Projects</h3>
+        <p>Current initiatives making an immediate impact.</p>
+      </div>
+      <div class="card">
+        <h3>Completed Projects</h3>
+        <p>Projects that have successfully achieved their goals.</p>
+      </div>
+      <div class="card">
+        <h3>Future Initiatives</h3>
+        <p>Upcoming programs to expand our reach and impact.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Impact -->
+<section id="impact" class="section-light-blue">
+  <div class="container">
+    <h2 class="section-title">Impact</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Live Dashboard</h3>
+        <p>Track our ongoing work in real-time.</p>
+      </div>
+      <div class="card">
+        <h3>Success Stories</h3>
+        <p>Real stories of lives changed by our initiatives.</p>
+      </div>
+      <div class="card">
+        <h3>Photo Gallery</h3>
+        <p>Visual documentation of our impact.</p>
+      </div>
+      <div class="card">
+        <h3>Video Gallery</h3>
+        <p>Watch our projects and events in action.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Get Involved -->
+<section id="get-involved" class="section-white">
+  <div class="container">
+    <h2 class="section-title">Get Involved</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Volunteer With Us</h3>
+        <p>Join hands with us to make a difference.</p>
+      </div>
+      <div class="card">
+        <h3>Careers & Internships</h3>
+        <p>Work with us to grow your skills and impact.</p>
+      </div>
+      <div class="card">
+        <h3>Become a Member</h3>
+        <p>Support the organization as a member.</p>
+      </div>
+      <div class="card">
+        <h3>Start a Fundraiser</h3>
+        <p>Help raise funds for our causes.</p>
+      </div>
+      <div class="card">
+        <h3>Newsletter Signup</h3>
+        <p>Stay updated on our work and events.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Donate Section -->
+<section id="donate" class="section-soft-yellow">
+  <div class="container">
+    <h2 class="section-title">Donate</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>One-Time / Monthly Giving</h3>
+        <p>Support us financially in a way that works for you.</p>
+      </div>
+      <div class="card">
+        <h3>Gift a Cause</h3>
+        <p>Dedicate your donation to a special cause.</p>
+      </div>
+      <div class="card">
+        <h3>Corporate & CSR Support</h3>
+        <p>Partner with us for corporate social responsibility.</p>
+      </div>
+      <div class="card">
+        <h3>Donor Dashboard</h3>
+        <p>Track your contributions and impact.</p>
+      </div>
+      <div class="card">
+        <h3>Tax Benefits (80G/12A/FCRA)</h3>
+        <p>Enjoy applicable tax exemptions for donations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Events & Campaigns -->
+<section id="events" class="section-light-gray">
+  <div class="container">
+    <h2 class="section-title">Events & Campaigns</h2>
+    <div class="grid">
+      <div class="card"><h3>Upcoming Events</h3></div>
+      <div class="card"><h3>Past Events</h3></div>
+      <div class="card"><h3>Global Campaigns</h3></div>
+      <div class="card"><h3>Advocacy & Petitions</h3></div>
+    </div>
+  </div>
+</section>
+
+<!-- Resources -->
+<section id="resources" class="section-white">
+  <div class="container">
+    <h2 class="section-title">Resources</h2>
+    <div class="grid">
+      <div class="card"><h3>Research & Publications</h3></div>
+      <div class="card"><h3>Toolkits / eBooks</h3></div>
+      <div class="card"><h3>Blog & Articles</h3></div>
+      <div class="card"><h3>Podcasts & Webinars</h3></div>
+    </div>
+  </div>
+</section>
+
+<!-- Media & Recognition -->
+<section id="media" class="section-light-blue">
+  <div class="container">
+    <h2 class="section-title">Media & Recognition</h2>
+    <div class="grid">
+      <div class="card"><h3>Press Releases</h3></div>
+      <div class="card"><h3>Media Coverage</h3></div>
+      <div class="card"><h3>Awards & Achievements</h3></div>
+      <div class="card"><h3>Global Collaborations</h3></div>
+    </div>
+  </div>
+</section>
+
+<!-- Shop -->
+<section id="shop" class="section-white">
+  <div class="container">
+    <h2 class="section-title">Shop</h2>
+    <div class="grid">
+      <div class="card"><h3>Merchandise Store</h3></div>
+      <div class="card"><h3>Proceeds Info</h3></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section-light-gray">
+  <div class="container">
+    <h2 class="section-title">FAQ</h2>
+    <div class="accordion-item">
+      <div class="accordion-title">General Questions</div>
+      <div class="accordion-content">Answer to general questions.</div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-title">Donation Queries</div>
+      <div class="accordion-content">Answer to donation queries.</div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-title">Volunteering / Membership</div>
+      <div class="accordion-content">Answer to volunteering questions.</div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-title">Legal & Tax</div>
+      <div class="accordion-content">Answer to legal & tax questions.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="section-white">
+  <div class="container">
+    <h2 class="section-title">Contact Us</h2>
+    <p>Email: <a href="mailto:info@shatakshi.org">info@shatakshi.org</a> | Phone: +91-XXXXXXXXXX</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#work">Our Work</a></li>
+        <li><a href="#impact">Impact</a></li>
+        <li><a href="#get-involved">Get Involved</a></li>
+        <li><a href="#donate">Donate</a></li>
+        <li><a href="#events">Events & Campaigns</a></li>
+        <li><a href="#resources">Resources</a></li>
+        <li><a href="#media">Media & Recognition</a></li>
+        <li><a href="#shop">Shop</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Trust & Legal</h4>
+      <ul>
+        <li><a href="#">Annual Reports</a></li>
+        <li><a href="#">Financial Statements</a></li>
+        <li><a href="#">Certificates (80G/12A/FCRA)</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+        <li><a href="#">Accessibility Options</a></li>
+        <li><a href="#">🌐 Language Toggle</a></li>
+      </ul>
+    </div>
+  </div>
+  <p style="text-align:center; margin-top:20px;">© 2025 Shatakshi NGO. All rights reserved.</p>
+</footer>
+
+<script>
+// Simple FAQ Accordion
+const items = document.querySelectorAll(".accordion-title");
+items.forEach(item=>{
+  item.addEventListener("click",()=>{
+    const content=item.nextElementSibling;
+    content.style.display = content.style.display === "block" ? "none" : "block";
+  });
+});
+</script>
+
+</body>
+</html>

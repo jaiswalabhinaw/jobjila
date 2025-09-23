@@ -1,0 +1,898 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Shatakshi Seva Sansthan — Full Site</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<!-- Lottie -->
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+<style>
+  :root{
+    --primary:#0056b3;
+    --accent:#E53935;
+    --accent-dark:#b71c1c;
+    --dark:#212529;
+    --muted:#666;
+    --card-bg: rgba(255,255,255,0.75);
+    --card-border: rgba(255,255,255,0.25);
+    --glass-radius:14px;
+    --maxw:1200px;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;font-family:"Open Sans",sans-serif;color:var(--dark);background:#f6f8fb;scroll-behavior:smooth}
+  h1,h2,h3,h4{font-family:"Montserrat",sans-serif;color:var(--primary);margin:0 0 .6rem}
+  p{margin:.4rem 0 1rem;color:var(--dark)}
+  a{color:inherit}
+
+  /* Header */
+  .site-header{position:sticky;top:0;z-index:1200;background:#fff;border-bottom:1px solid rgba(0,0,0,0.04)}
+  .container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+  .nav-row{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand img{height:48px;width:48px;border-radius:8px;object-fit:cover}
+  .brand h1{font-size:18px;color:var(--primary)}
+  nav.main{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  nav.main a{padding:8px 10px;border-radius:8px;font-weight:600;color:var(--dark);text-decoration:none}
+  nav.main a.active{color:var(--primary)}
+  .btn-donate{background:var(--accent);color:#fff;padding:9px 14px;border-radius:10px;font-weight:700;box-shadow:0 8px 22px rgba(229,57,53,0.12)}
+  .nav-toggle{display:none;font-size:22px;background:none;border:0;cursor:pointer}
+
+  /* Mobile menu */
+  .mobile-menu{position:fixed;inset:0;background:linear-gradient(180deg,#eaf4ff,#fff);transform:translateX(100%);transition:transform .28s ease;z-index:1300;padding-top:80px}
+  .mobile-menu.open{transform:none}
+  .mobile-menu a{display:block;padding:12px 20px;border-bottom:1px solid rgba(0,0,0,0.03);font-size:18px}
+
+  /* Hero */
+  .hero{min-height:72vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 20px;background:linear-gradient(135deg, rgba(0,86,179,0.75), rgba(0,86,179,0.35)), url('images/hero.jpg') center/cover no-repeat;color:#fff;position:relative}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.1))}
+  .hero .inner{position:relative;z-index:2;max-width:980px}
+  .hero h2{font-size:36px;margin-bottom:14px}
+  .hero p{color:rgba(255,255,255,0.92);margin-bottom:20px}
+  .hero .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+  /* sections & glass cards */
+  section{padding:64px 20px}
+  .section-head{max-width:980px;margin:0 auto 22px;text-align:center}
+  .grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+  .card{background:var(--card-bg);backdrop-filter:blur(8px);border:1px solid var(--card-border);border-radius:var(--glass-radius);padding:18px;box-shadow:0 8px 22px rgba(2,6,23,0.06);transition:transform .28s,box-shadow .28s}
+  .card:hover{transform:translateY(-6px);box-shadow:0 18px 38px rgba(2,6,23,0.08)}
+  .muted{color:var(--muted);font-size:14px}
+
+  /* Quick stats */
+  .stats-row{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+  .stat{min-width:140px;text-align:center;padding:18px;border-radius:12px}
+  .stat .num{font-weight:800;color:var(--primary);font-size:1.6rem;margin-top:6px}
+
+  /* Featured project + partners */
+  .featured{display:flex;gap:18px;align-items:center;flex-wrap:wrap;justify-content:center}
+  .featured img{max-width:420px;width:100%;border-radius:12px;object-fit:cover;box-shadow:0 8px 24px rgba(0,0,0,0.08)}
+  .partners{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+  .partner img{height:56px;filter:grayscale(100%);transition:filter .28s,transform .28s}
+  .partner img:hover{filter:none;transform:scale(1.04)}
+
+  /* About content long text */
+  .founder-grid{display:grid;gap:18px;grid-template-columns:260px 1fr;align-items:start}
+  .founder-photo{width:260px;border-radius:12px;overflow:hidden}
+  .founder-photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .founder-bio p{margin-bottom:12px;text-align:left}
+
+  /* Projects */
+  .project-card{position:relative;overflow:hidden;border-radius:12px}
+  .project-card img{width:100%;height:180px;object-fit:cover;display:block;transition:transform .35s}
+  .project-card .overlay{position:absolute;inset:0;display:flex;align-items:flex-end;padding:12px;background:linear-gradient(180deg,transparent,rgba(0,0,0,0.56));color:#fff}
+  .project-card:hover img{transform:scale(1.06)}
+
+  /* Team */
+  .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px}
+  .team-card img{width:100%;height:140px;object-fit:cover;border-radius:10px}
+
+  /* Impact gallery */
+  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+  .gallery img{width:100%;height:100px;object-fit:cover;border-radius:8px;cursor:pointer}
+
+  /* Video thumb */
+  .video-thumb{position:relative;cursor:pointer;border-radius:8px;overflow:hidden}
+  .video-thumb::after{content:'▶';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:26px;color:#fff;opacity:0.95}
+
+  /* Forms & lists */
+  form .input, .form-row input, .form-row textarea, .form-row select{width:100%;padding:10px;border-radius:8px;border:1px solid #e6e6e6}
+  .form-row{display:grid;gap:10px}
+
+  /* Events carousel */
+  .carousel{overflow:hidden}
+  .carousel-track{display:flex;gap:12px;transition:transform .45s}
+  .event-card{min-width:280px}
+
+  /* Resources */
+  .resource{display:flex;gap:12px;align-items:center}
+
+  /* Shop */
+  .product{display:flex;flex-direction:column;align-items:center;gap:8px}
+  .product img{width:100%;height:150px;object-fit:cover;border-radius:8px}
+
+  /* FAQ */
+  .faq-item{background:var(--card-bg);border:1px solid var(--card-border);padding:12px;border-radius:10px;cursor:pointer;margin-bottom:10px}
+
+  /* Trust */
+  .trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+  .trust-card{text-align:center}
+  .trust-card h4{margin:8px 0 6px}
+
+  /* Sticky donate & back to top */
+  .sticky-donate{position:fixed;right:18px;bottom:22px;background:var(--accent);color:#fff;padding:12px 16px;border-radius:28px;box-shadow:0 12px 36px rgba(229,57,53,0.18);z-index:1600}
+  .backtop{position:fixed;right:18px;bottom:88px;background:#111;color:#fff;padding:10px;border-radius:8px;display:none;z-index:1600}
+
+  /* Footer */
+  footer{background:#002E5D;color:#fff;padding:28px 12px;text-align:center}
+
+  /* small screens */
+  @media(max-width:900px){
+    .founder-grid{grid-template-columns:1fr}
+    .brand h1{font-size:16px}
+  }
+  @media(max-width:760px){
+    nav.main{display:none}
+    .nav-toggle{display:block}
+    .nav-toggle{display:inline-block}
+    .mobile-menu{display:block}
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header" role="banner">
+  <div class="container nav-row">
+    <div class="brand">
+      <img src="https://via.placeholder.com/84x84.png?text=SS" alt="Shatakshi logo">
+      <h1>Shatakshi Seva Sansthan</h1>
+    </div>
+
+    <nav class="main" role="navigation" aria-label="Main navigation">
+      <a href="#home" class="active">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#team">Team</a>
+      <a href="#work">Our Work</a>
+      <a href="#impact">Impact</a>
+      <a href="#get-involved">Get Involved</a>
+      <a href="#events">Events</a>
+      <a href="#resources">Resources</a>
+      <a href="#media">Media</a>
+      <a href="#shop">Shop</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+      <a class="btn-donate" href="#donate" aria-label="Donate now">Donate ❤️</a>
+    </nav>
+
+    <button class="nav-toggle" aria-label="Open menu" onclick="toggleMobile()">☰</button>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<nav id="mobileMenu" class="mobile-menu" aria-hidden="true">
+  <a href="#home" onclick="toggleMobile()">Home</a>
+  <a href="#about" onclick="toggleMobile()">About Us</a>
+  <a href="#team" onclick="toggleMobile()">Team</a>
+  <a href="#work" onclick="toggleMobile()">Our Work</a>
+  <a href="#impact" onclick="toggleMobile()">Impact</a>
+  <a href="#get-involved" onclick="toggleMobile()">Get Involved</a>
+  <a href="#events" onclick="toggleMobile()">Events</a>
+  <a href="#resources" onclick="toggleMobile()">Resources</a>
+  <a href="#media" onclick="toggleMobile()">Media</a>
+  <a href="#shop" onclick="toggleMobile()">Shop</a>
+  <a href="#faq" onclick="toggleMobile()">FAQ</a>
+  <a href="#contact" onclick="toggleMobile()">Contact</a>
+  <a class="btn-donate" href="#donate" onclick="toggleMobile()">Donate ❤️</a>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero" role="region" aria-label="Hero">
+  <div class="inner container">
+    <h2>Transforming society — one smile at a time</h2>
+    <p>“Our journey is incomplete until the last person in society smiles.” — Join us in education, health, dignity.</p>
+    <div class="ctas">
+      <a class="btn-donate" href="#donate">Donate Now</a>
+      <a class="card" href="#get-involved" style="align-self:center;padding:10px 14px;background:#fff;color:var(--primary);border-radius:10px">Get Involved</a>
+    </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHTS / QUICK STATS & FEATURED -->
+<section id="highlights" class="section" aria-labelledby="highlightsHeading">
+  <div class="container">
+    <div class="section-head"><h2 id="highlightsHeading">Highlights</h2><p class="muted">Short snapshot of our impact and featured initiatives</p></div>
+
+    <div class="stats-row" role="list" aria-label="Impact numbers">
+      <div class="card stat" role="listitem">
+        <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_q5pk6p1k.json" background="transparent" speed="1" loop autoplay></lottie-player>
+        <div class="num" data-target="900">0</div>
+        <div class="muted">Dignified Farewells</div>
+      </div>
+
+      <div class="card stat">
+        <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_q7uarxsb.json" background="transparent" speed="1" loop autoplay></lottie-player>
+        <div class="num" data-target="800">0</div>
+        <div class="muted">Children Educated</div>
+      </div>
+
+      <div class="card stat">
+        <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_yej7uvgj.json" background="transparent" speed="1" loop autoplay></lottie-player>
+        <div class="num" data-target="42">0</div>
+        <div class="muted">Daily Meals Served</div>
+      </div>
+
+      <div class="card stat">
+        <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_u4yrau.json" background="transparent" speed="1" loop autoplay></lottie-player>
+        <div class="num" data-target="1000">0</div>
+        <div class="muted">Families Helped</div>
+      </div>
+    </div>
+
+    <div style="margin-top:28px" class="featured">
+      <div class="card" style="max-width:640px;text-align:left">
+        <h3>Featured Project — From Weapons to Pens</h3>
+        <p>When floods wash away books and hope, our program returns the pen to the child's hand. Over 800 children connected to education through this campaign.</p>
+        <div style="display:flex;gap:12px;margin-top:12px">
+          <a class="card" style="padding:10px 12px;background:var(--primary);color:#fff;border-radius:8px" href="#work">Learn More</a>
+          <a class="card" style="padding:10px 12px;background:#fff;color:var(--primary);border-radius:8px" href="#donate">Support</a>
+        </div>
+      </div>
+
+      <img src="images/featured-project.jpg" alt="Featured project photo" loading="lazy">
+    </div>
+
+    <div style="margin-top:18px" class="partners" aria-label="Partners">
+      <div class="partner"><img src="https://via.placeholder.com/140x60?text=Partner1" alt="Partner 1"></div>
+      <div class="partner"><img src="https://via.placeholder.com/140x60?text=Partner2" alt="Partner 2"></div>
+      <div class="partner"><img src="https://via.placeholder.com/140x60?text=Partner3" alt="Partner 3"></div>
+      <div class="partner"><img src="https://via.placeholder.com/140x60?text=Partner4" alt="Partner 4"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT US -->
+<section id="about" class="section" aria-labelledby="aboutHeading">
+  <div class="container">
+    <div class="section-head"><h2 id="aboutHeading">About Us</h2><p class="muted">“Our journey is incomplete until the last person in society smiles.”</p></div>
+
+    <div class="card grid">
+      <!-- Mission -->
+      <div class="card">
+        <h3>Mission & Vision</h3>
+        <p>Empower individuals through access to education, health services, and dignified support at life's end.</p>
+      </div>
+
+      <!-- Our Story -->
+      <div class="card">
+        <h3>Our Story</h3>
+        <p>The inception of Shatakshi Seva Sansthan was not just about establishing an organization; it was a resolve born out of pain. Our founder, Mr. Naveen Ranjan Srivastava, turned personal tragedy into a lifetime of service — beginning work in Manikpur village and formalizing the Trust in 2011.</p>
+      </div>
+
+      <!-- Partners & Supporters -->
+      <div class="card">
+        <h3>Partners & Supporters</h3>
+        <p>We partner with local communities, CSR partners, educational institutions and volunteers to deliver services at scale.</p>
+      </div>
+
+      <!-- Advisory Board -->
+      <div class="card">
+        <h3>Advisory Board / Trustees</h3>
+        <p>Skilled trustees and subject-matter advisors provide governance and strategic guidance for our programs.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:22px" class="founder-grid card">
+      <div class="founder-photo">
+        <img src="images/founder.jpg" alt="Founder Naveen Ranjan Srivastava" loading="lazy">
+      </div>
+      <div class="founder-bio">
+        <h3>About the Founder — Mr. Naveen Ranjan Srivastava</h3>
+        <p><strong>"Service is the greatest religion."</strong></p>
+        <p>Mr. Naveen Ranjan Srivastava was born in Manikpur village, Gopalganj, Bihar. From childhood he witnessed rural hardships. After personal tragedy while studying in Prayagraj — the loss of his younger brother — and seeing abandoned bodies, he dedicated his life to social service and founded the Shatakshi Educational & Welfare Trust in 2011 (registered under Indian Trusts Act, 1882; recognized under 12A & 80G).</p>
+        <p><strong>Milestones:</strong></p>
+        <ul class="muted">
+          <li>2012 — Antim Vidai (Final Farewell) started; 900+ dignified funerals rendered</li>
+          <li>2019 — Education campaign 'From Weapons to Pens' (800+ children)</li>
+          <li>2020 — 'Voice of Silence' and Shatakshi Helpline</li>
+          <li>2021 — COVID relief: ambulances, rations, services</li>
+          <li>2024 — Annapurna Rasoi (daily meals to elders)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" class="section" aria-labelledby="teamHeading">
+  <div class="container">
+    <div class="section-head"><h2 id="teamHeading">Team & Leadership</h2><p class="muted">Leadership, staff, volunteers and advisors</p></div>
+
+    <div class="team-grid">
+      <div class="card team-card">
+        <img src="images/naveen.jpg" alt="Naveen" style="width:100%;height:180px;object-fit:cover;border-radius:10px">
+        <h4 style="margin-top:10px">Mr. Naveen Ranjan Srivastava</h4>
+        <div class="muted">Founder & Director</div>
+      </div>
+
+      <div class="card team-card">
+        <img src="images/shipli.jpg" alt="Shipli" style="width:100%;height:180px;object-fit:cover;border-radius:10px">
+        <h4 style="margin-top:10px">Mrs. Shipli Saxena</h4>
+        <div class="muted">Co-founder</div>
+      </div>
+
+      <div class="card team-card">
+        <img src="images/program-lead.jpg" alt="Program Lead" style="width:100%;height:180px;object-fit:cover;border-radius:10px">
+        <h4 style="margin-top:10px">Program Lead</h4>
+        <div class="muted">Head — Field Operations</div>
+      </div>
+
+      <div class="card team-card">
+        <img src="images/volunteers.jpg" alt="Volunteers" style="width:100%;height:180px;object-fit:cover;border-radius:10px">
+        <h4 style="margin-top:10px">Community Volunteers</h4>
+        <div class="muted">On-ground support</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR WORK -->
+<section id="work" class="section" aria-labelledby="workHeading">
+  <div class="container">
+    <div class="section-head"><h2 id="workHeading">Our Work</h2><p class="muted">Focus areas, projects and future plans</p></div>
+
+    <div class="grid">
+      <div class="card"><h3>Focus Areas</h3><p class="muted">Education • Rural Health • Women & Child • Senior Care • Water & Environment</p></div>
+      <div class="card"><h3>Ongoing Projects</h3><p class="muted">Annapurna Rasoi • Free Ambulance • Education Centers • Voice of Silence</p></div>
+      <div class="card"><h3>Completed Projects</h3><p class="muted">Community education drives, disaster relief, awareness campaigns</p></div>
+      <div class="card"><h3>Future Initiatives</h3><p class="muted">Donor dashboard, digital literacy centers, livelihood programs</p></div>
+    </div>
+
+    <h3 style="text-align:left;margin-top:18px;color:var(--primary)">Projects Gallery</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:10px">
+      <div class="project-card card"><img src="images/project-ongoing-01.jpg" alt="ongoing" loading="lazy"><div class="overlay"><div><strong>Flood Relief</strong><div class="muted" style="margin-top:6px">Ongoing</div></div></div></div>
+      <div class="project-card card"><img src="images/project-completed-01.jpg" alt="completed" loading="lazy"><div class="overlay"><div><strong>Education Drive</strong><div class="muted" style="margin-top:6px">Completed</div></div></div></div>
+      <div class="project-card card"><img src="images/voice-of-silence.jpg" alt="voice" loading="lazy"><div class="overlay"><div><strong>Voice of Silence</strong><div class="muted" style="margin-top:6px">Ongoing</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section id="impact" class="section" aria-labelledby="impactHeading">
+  <div class="container">
+    <div class="section-head"><h2 id="impactHeading">Impact</h2><p class="muted">Live numbers, stories, photos & videos</p></div>
+
+    <!-- Live dashboard placeholder -->
+    <div class="card" style="margin-bottom:16px">
+      <h3 style="text-align:left">Live Dashboard (placeholder)</h3>
+      <p class="muted" style="text-align:left">Integrate with analytics/DB for real-time KPIs. Below are sample counters and story highlights.</p>
+    </div>
+
+    <!-- success stories -->
+    <div class="grid" style="align-items:start">
+      <div class="card">
+        <h3>Success Stories</h3>
+        <blockquote style="background:#fff;padding:12px;border-radius:8px;box-shadow:0 6px 16px rgba(0,0,0,0.06)"><strong>Sonu:</strong> "If Shatakshi didn’t exist, I would be doing labor work. Today, I dream of becoming a doctor."</blockquote>
+        <blockquote style="background:#fff;padding:12px;border-radius:8px;box-shadow:0 6px 16px rgba(0,0,0,0.06);margin-top:10px"><strong>Pinky:</strong> "Now I will complete my studies, not get married."</blockquote>
+      </div>
+
+      <div class="card">
+        <h3>Photo Gallery</h3>
+        <div class="gallery" id="gallery">
+          <img src="images/photo-gallery-01.jpg" alt="gallery 1">
+          <img src="images/photo-gallery-02.jpg" alt="gallery 2">
+          <img src="images/photo-gallery-03.jpg" alt="gallery 3">
+          <img src="images/photo-gallery-04.jpg" alt="gallery 4">
+        </div>
+        <h3 style="margin-top:12px">Video Gallery</h3>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <div class="card video-thumb" onclick="openVideo('https://www.youtube.com/embed/dQw4w9WgXcQ')"><img src="images/video-thumb.jpg" alt="video1" style="width:100%;height:120px;object-fit:cover;border-radius:8px"></div>
+          <div class="card video-thumb" onclick="openVideo('https://www.youtube.com/embed/dQw4w9WgXcQ')"><img src="images/video-thumb.jpg" alt="video2" style="width:100%;height:120px;object-fit:cover;border-radius:8px"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GET INVOLVED -->
+<section id="get-involved" class="section" aria-labelledby="getInvolvedHeading">
+  <div class="container">
+    <div class="section-head"><h2 id="getInvolvedHeading">Get Involved</h2><p class="muted">Volunteer, careers, membership, start a fundraiser or subscribe</p></div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Volunteer With Us</h3>
+        <p class="muted">Field volunteers and program support — teach, distribute, assist.</p>
+        <button class="card" onclick="openModal('volunteerModal')">Apply to Volunteer</button>
+      </div>
+
+      <div class="card">
+        <h3>Careers & Internships</h3>
+        <p class="muted">Opportunities in program delivery, coordination, admin & communications.</p>
+        <button class="card" onclick="openModal('careersModal')">See Openings</button>
+      </div>
+
+      <div class="card">
+        <h3>Become a Member</h3>
+        <p class="muted">Support the organization and join decision-making forums.</p>
+        <button class="card" onclick="openModal('memberModal')">Become a Member</button>
+      </div>
+
+      <div class="card">
+        <h3>Start a Fundraiser</h3>
+        <p class="muted">Create a personal fundraiser page and amplify impact.</p>
+        <button class="card" onclick="openModal('fundraiserModal')">Create Fundraiser</button>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:18px">
+      <strong>Newsletter</strong>
+      <div style="display:flex;gap:8px;justify-content:center;margin-top:8px">
+        <input id="newsletterEmail" placeholder="Your email" aria-label="Newsletter email" style="padding:10px;border-radius:8px;border:1px solid #ddd">
+        <button class="card" style="background:var(--primary);color:#fff" onclick="subscribeNewsletter()">Subscribe</button>
+      </div>
+      <div id="newsletterMsg" class="muted" style="margin-top:8px"></div>
+    </div>
+  </div>
+</section>
+
+<!-- DONATE -->
+<section id="donate" class="section" aria-labelledby="donateHeading">
+  <div class="container">
+    <div class="section-head"><h2 id="donateHeading">Donate</h2><p class="muted">Support our causes — one-time or monthly. Tax benefits available (80G / 12A / FCRA).</p></div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>One-Time / Monthly Giving</h3>
+        <p class="muted">Select recurring or one-time options in the payment flow.</p>
+      </div>
+      <div class="card">
+        <h3>Gift a Cause</h3>
+        <p class="muted">Choose a cause: Education, Meals, Ambulance, Women Empowerment.</p>
+      </div>
+      <div class="card">
+        <h3>Corporate & CSR Support</h3>
+        <p class="muted">Partner with us for employee volunteering, matched giving, reporting.</p>
+      </div>
+      <div class="card">
+        <h3>Donor Dashboard & Receipts</h3>
+        <p class="muted">Donor dashboard (coming soon) — receipts & impact reporting will be available.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:18px;text-align:center">
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:12px">
+        <div class="card amount" onclick="selectAmount(500)">₹500</div>
+        <div class="card amount" onclick="selectAmount(1000)">₹1,000</div>
+        <div class="card amount" onclick="selectAmount(2500)">₹2,500</div>
+        <div class="card amount" onclick="selectAmount(5000)">₹5,000</div>
+        <div class="card amount" onclick="selectAmount(10000)">₹10,000</div>
+      </div>
+
+      <div style="max-width:680px;margin:0 auto;text-align:left">
+        <label class="muted">Donation progress</label>
+        <div class="card" style="padding:12px">
+          <div style="display:flex;justify-content:space-between"><div class="muted">Raised: ₹1,20,000</div><div class="muted">Goal: ₹3,00,000</div></div>
+          <div style="height:14px;background:#eee;border-radius:99px;margin-top:8px;overflow:hidden">
+            <div class="progress-inner" style="width:40%;height:100%;background:linear-gradient(90deg,var(--accent),#ff8a8a)"></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:12px">
+        <button class="btn-donate" onclick="openModal('donateModal')">Proceed to Donate</button>
+      </div>
+
+      <div style="margin-top:12px" class="muted">Tax Benefits: 80G / 12A registered. Corporate donors — contact for CSR partnerships.</div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS & CAMPAIGNS -->
+<section id="events" class="section" aria-labelledby="eventsHeading">
+  <div class="container">
+    <div class="section-head"><h2 id="eventsHeading">Events & Campaigns</h2><p class="muted">Upcoming, past & global campaigns</p></div>
+
+    <div class="carousel card" style="padding:12px">
+      <div class="carousel-track" id="carouselTrack">
+        <div class="card event-card"><h4>Community Health Camp</h4><p class="muted">Date: Oct 12, 2025 — Register</p><button class="card" onclick="alert('Register flow placeholder')">Register</button></div>
+        <div class="card event-card"><h4>World Environment Week</h4><p class="muted">Date: Nov 5, 2025 — Tree plantation drive</p></div>
+        <div class="card event-card"><h4>Education Drive</h4><p class="muted">Date: Dec 1, 2025 — Donate books & kits</p></div>
+        <div class="card event-card"><h4>Blood Donation Camp</h4><p class="muted">Date: Jan 10, 2026 — Volunteer</p></div>
+      </div>
+    </div>
+
+    <div style="margin-top:14px" class="grid">
+      <div class="card"><h3>Upcoming Events</h3><p class="muted">Register to participate</p></div>
+      <div class="card"><h3>Past Events</h3><p class="muted">Reports & photo recaps</p></div>
+      <div class="card"><h3>Global Campaigns</h3><p class="muted">Join global awareness drives</p></div>
+      <div class="card"><h3>Advocacy & Petitions</h3><p class="muted">Sign & support our policy asks</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section id="resources" class="section" aria-labelledby="resourcesHeading">
+  <div class="container">
+    <div class="section-head"><h2 id="resourcesHeading">Resources</h2><p class="muted">Research, toolkits, blog, podcasts & webinars</p></div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Research & Publications</h3>
+        <p class="muted">Download impact studies</p>
+        <a href="#" onclick="alert('Download report placeholder')">Download report</a>
+      </div>
+
+      <div class="card">
+        <h3>Toolkits / eBooks</h3>
+        <p class="muted">Training guides for volunteers</p>
+        <a href="#" onclick="alert('Download toolkit placeholder')">Download toolkit</a>
+      </div>
+
+      <div class="card">
+        <h3>Blog & Articles</h3>
+        <p class="muted">Stories from the field</p>
+        <a href="#" onclick="alert('Open blog placeholder')">Read blog</a>
+      </div>
+
+      <div class="card">
+        <h3>Podcasts & Webinars</h3>
+        <p class="muted">Conversations with experts</p>
+        <a href="#" onclick="alert('Play webinar placeholder')">Watch / Listen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEDIA & RECOGNITION -->
+<section id="media" class="section" aria-labelledby="mediaHeading">
+  <div class="container">
+    <div class="section-head"><h2 id="mediaHeading">Media & Recognition</h2><p class="muted">Press, awards & collaborations</p></div>
+
+    <div class="grid">
+      <div class="card"><h3>Press Releases</h3><p class="muted">Official statements</p></div>
+      <div class="card"><h3>Media Coverage</h3><p class="muted">Articles and interviews</p></div>
+      <div class="card"><h3>Awards & Achievements</h3><p class="muted">Recognition for impact</p></div>
+      <div class="card"><h3>Global Collaborations</h3><p class="muted">International partners</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOP -->
+<section id="shop" class="section" aria-labelledby="shopHeading">
+  <div class="container">
+    <div class="section-head"><h2 id="shopHeading">Shop</h2><p class="muted">Merchandise — proceeds support programs</p></div>
+
+    <div class="grid">
+      <div class="card product"><img src="images/product-tee.jpg" alt="T-shirt"><h3>T-shirt</h3><div class="muted">₹499</div><button class="card" onclick="addToCart('T-shirt',499)">Add to cart</button></div>
+      <div class="card product"><img src="images/product-bag.jpg" alt="Eco Bag"><h3>Eco Bag</h3><div class="muted">₹199</div><button class="card" onclick="addToCart('Eco Bag',199)">Add to cart</button></div>
+    </div>
+
+    <div style="margin-top:12px;text-align:center"><a href="#" onclick="viewCart()">View cart & proceeds info</a></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section" aria-labelledby="faqHeading">
+  <div class="container">
+    <div class="section-head"><h2 id="faqHeading">FAQ</h2><p class="muted">Common questions about volunteering, donations and legal documents</p></div>
+
+    <div>
+      <div class="faq-item card" onclick="toggleFaq(this)"><strong>How can I volunteer?</strong><div class="muted faq-answer" style="max-height:0;overflow:hidden">Complete the volunteer form, we'll contact you for orientation and role matching.</div></div>
+      <div class="faq-item card" onclick="toggleFaq(this)"><strong>Are donations tax exempt?</strong><div class="muted faq-answer" style="max-height:0;overflow:hidden">Yes — we hold 12A and 80G certificates (see Trust & Legal).</div></div>
+      <div class="faq-item card" onclick="toggleFaq(this)"><strong>How do I start a fundraiser?</strong><div class="muted faq-answer" style="max-height:0;overflow:hidden">Use our Start a Fundraiser tool (Get Involved → Start a Fundraiser) and we'll help you set up.</div></div>
+      <div class="faq-item card" onclick="toggleFaq(this)"><strong>What documents are available?</strong><div class="muted faq-answer" style="max-height:0;overflow:hidden">Annual reports, audited statements and certificates available in Trust & Legal section.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section" aria-labelledby="contactHeading">
+  <div class="container">
+    <div class="section-head"><h2 id="contactHeading">Contact Us</h2><p class="muted">Office, map and contact form</p></div>
+
+    <div style="display:grid;grid-template-columns:1fr 360px;gap:18px">
+      <div class="card">
+        <form id="contactForm" onsubmit="submitContact(event)">
+          <div class="form-row"><input class="input" name="name" placeholder="Your name" required></div>
+          <div class="form-row"><input type="email" class="input" name="email" placeholder="Email" required></div>
+          <div class="form-row"><input class="input" name="phone" placeholder="Phone"></div>
+          <div class="form-row"><textarea class="input" name="message" rows="6" placeholder="Message" required></textarea></div>
+          <div style="text-align:right"><button class="card" type="submit" style="background:var(--primary);color:#fff">Send Message</button></div>
+        </form>
+      </div>
+
+      <div>
+        <div class="card" style="margin-bottom:12px">
+          <h4>Our Office</h4>
+          <p class="muted">C4 / 904 Eco Village One, Greater Noida West, Sector 1, Noida Town, Uttar Pradesh - 201318</p>
+          <p class="muted">Email: <a href="mailto:info@shatakshi.org">info@shatakshi.org</a> • Phone: +91-9911172230</p>
+          <p class="muted">Social: <a href="#" onclick="alert('Open social')">Facebook</a> • <a href="#" onclick="alert('Open X')">X/Twitter</a> • <a href="#" onclick="alert('Open Instagram')">Instagram</a></p>
+        </div>
+
+        <div class="card">
+          <h4>Map</h4>
+          <img src="images/map.jpg" alt="map" style="width:100%;border-radius:8px">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST & LEGAL (glassmorphism) -->
+<section id="trusted" class="section" aria-labelledby="trustedHeading">
+  <div class="container">
+    <div class="section-head"><h2 id="trustedHeading">Trust & Legal</h2><p class="muted">Annual reports, financial statements and certificates (80G / 12A / FCRA)</p></div>
+
+    <div class="trust-grid">
+      <div class="trust-card card">
+        <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_jtbfg2nb.json" background="transparent" speed="1" loop autoplay></lottie-player>
+        <h4>Annual Reports</h4>
+        <a href="#" onclick="alert('Download Annual Report placeholder')">Download</a>
+      </div>
+
+      <div class="trust-card card">
+        <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_t8gupxhz.json" background="transparent" speed="1" loop autoplay></lottie-player>
+        <h4>Financial Statements</h4>
+        <a href="#" onclick="alert('Download Financials placeholder')">View</a>
+      </div>
+
+      <div class="trust-card card">
+        <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_zrqthn6o.json" background="transparent" speed="1" loop autoplay></lottie-player>
+        <h4>Certificates (80G / 12A / FCRA)</h4>
+        <a href="#" onclick="alert('Certificates download placeholder')">View / Download</a>
+      </div>
+
+      <div class="trust-card card">
+        <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_8wrekj3k.json" background="transparent" speed="1" loop autoplay></lottie-player>
+        <h4>Privacy & Policies</h4>
+        <a href="#" onclick="alert('Privacy Policy placeholder')">View</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;align-items:start">
+    <div>
+      <h3 style="color:#fff">Quick Links</h3>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <a href="#home" style="color:#cde6ff">Home</a>
+        <a href="#about" style="color:#cde6ff">About</a>
+        <a href="#team" style="color:#cde6ff">Team</a>
+        <a href="#work" style="color:#cde6ff">Our Work</a>
+        <a href="#impact" style="color:#cde6ff">Impact</a>
+        <a href="#donate" style="color:#cde6ff">Donate</a>
+      </div>
+    </div>
+
+    <div>
+      <h3 style="color:#fff">Trust & Legal</h3>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <a href="#" style="color:#cde6ff">Annual Reports</a>
+        <a href="#" style="color:#cde6ff">Financial Statements</a>
+        <a href="#" style="color:#cde6ff">Certificates</a>
+        <a href="#" style="color:#cde6ff">Privacy Policy</a>
+      </div>
+    </div>
+
+    <div>
+      <h3 style="color:#fff">Contact</h3>
+      <p style="color:#cde6ff">C4 / 904 Eco Village One, Greater Noida West<br>Email: info@shatakshi.org | Phone: +91-9911172230</p>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:18px;color:#fff">© 2025 Shatakshi Seva Sansthan. All rights reserved.</div>
+</footer>
+
+<!-- Sticky donate & back to top -->
+<button class="sticky-donate" aria-label="Donate" onclick="document.getElementById('donate').scrollIntoView({behavior:'smooth'})">❤️ Donate</button>
+<button id="backTop" class="backtop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- Lightbox image modal -->
+<div id="lightbox" class="lightbox" role="dialog" aria-hidden="true" onclick="closeLightbox(event)">
+  <span class="close" aria-hidden="true" onclick="closeLightbox(event)">✕</span>
+  <img id="lightboxImg" alt="Expanded photo" />
+</div>
+
+<!-- Video modal -->
+<div id="videoModal" class="lightbox" role="dialog" aria-hidden="true" onclick="closeVideo(event)" style="display:none">
+  <span class="close" onclick="closeVideo(event)">✕</span>
+  <div style="width:90%;max-width:980px;height:60vh;background:#000;border-radius:10px;overflow:hidden">
+    <iframe id="videoFrame" width="100%" height="100%" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</div>
+
+<!-- Generic modals (donate / volunteer / careers / member / fundraiser) -->
+<div id="genericModal" class="lightbox" role="dialog" aria-hidden="true" style="display:none" onclick="closeGenericModal(event)">
+  <span class="close" onclick="closeGenericModal(event)">✕</span>
+  <div id="genericModalInner" style="width:95%;max-width:720px;background:#fff;border-radius:12px;padding:18px;max-height:80vh;overflow:auto"></div>
+</div>
+
+<script>
+/* ---------- Utilities ---------- */
+function toggleMobile(){
+  const el = document.getElementById('mobileMenu');
+  el.classList.toggle('open');
+  el.setAttribute('aria-hidden', !el.classList.contains('open'));
+}
+function scrollSpyActivate(){ // highlight nav on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('nav.main a');
+  const offset = 120;
+  window.addEventListener('scroll', ()=> {
+    const pos = window.scrollY + offset;
+    sections.forEach(sec => {
+      if(pos >= sec.offsetTop && pos < sec.offsetTop + sec.offsetHeight){
+        links.forEach(a=>a.classList.toggle('active', a.getAttribute('href') === '#'+sec.id));
+      }
+    });
+  });
+}
+scrollSpyActivate();
+
+/* ---------- Typewriter (simple) ---------- */
+(function typewriter(){
+  const el = document.querySelector('.typewriter');
+  if(!el) return;
+  const words = ['Education','Health','Empowerment','Dignity'];
+  let i=0, j=0, del=false;
+  function tick(){
+    const w = words[i];
+    el.textContent = w.slice(0, j);
+    if(!del){ j++; if(j> w.length){ del=true; setTimeout(tick,900); return } }
+    else { j--; if(j<0){ del=false; i=(i+1)%words.length; j=0; setTimeout(tick,400); return } }
+    setTimeout(tick, del?80:120);
+  }
+  tick();
+})();
+
+/* ---------- Counters (intersection) ---------- */
+(function counters(){
+  const cnts = document.querySelectorAll('.num[data-target], .num[data-target]');
+  if(!cnts.length) return;
+  const obs = new IntersectionObserver((entries, obs2) => {
+    entries.forEach(en=>{
+      if(en.isIntersecting){
+        const el = en.target;
+        const target = +el.getAttribute('data-target') || +el.textContent || 0;
+        let cur = 0;
+        const step = Math.max(1, Math.floor(target / 120));
+        const run = ()=>{ cur += step; if(cur >= target){ el.textContent = target; } else { el.textContent = cur; setTimeout(run, 16); } };
+        run();
+        obs2.unobserve(el);
+      }
+    });
+  }, {threshold:0.4});
+  document.querySelectorAll('.num[data-target]').forEach(n=>obs.observe(n));
+})();
+
+/* ---------- Gallery lightbox ---------- */
+(function gallery(){
+  const imgs = document.querySelectorAll('#gallery img, .gallery img');
+  const lightbox = document.getElementById('lightbox');
+  const imgEl = document.getElementById('lightboxImg');
+  imgs.forEach(img => {
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', ()=> {
+      imgEl.src = img.src;
+      lightbox.style.display = 'flex';
+      lightbox.setAttribute('aria-hidden','false');
+    });
+  });
+})();
+function closeLightbox(e){
+  const lb = document.getElementById('lightbox');
+  if(e.target === lb || e.target.classList.contains('close')){ lb.style.display='none'; lb.setAttribute('aria-hidden','true'); }
+}
+
+/* ---------- Video modal ---------- */
+function openVideo(url){
+  document.getElementById('videoFrame').src = url + '?autoplay=1';
+  const vm = document.getElementById('videoModal');
+  vm.style.display = 'flex'; vm.setAttribute('aria-hidden','false');
+}
+function closeVideo(e){
+  const vm = document.getElementById('videoModal');
+  if(e.target === vm || e.target.classList.contains('close')){ document.getElementById('videoFrame').src=''; vm.style.display='none'; vm.setAttribute('aria-hidden','true'); }
+}
+
+/* ---------- Carousel (events) ---------- */
+(function carousel(){
+  const track = document.getElementById('carouselTrack');
+  if(!track) return;
+  let idx = 0;
+  const len = track.children.length;
+  function next(){ idx = (idx + 1) % len; const w = track.children[0].offsetWidth + 12; track.style.transform = `translateX(${-idx * w}px)`; }
+  let t = setInterval(next, 4000);
+  track.addEventListener('mouseenter', ()=> clearInterval(t));
+  track.addEventListener('mouseleave', ()=> t = setInterval(next, 4000));
+  window.addEventListener('resize', ()=>{ track.style.transform = 'translateX(0)'; idx = 0; });
+})();
+
+/* ---------- FAQ toggle ---------- */
+function toggleFaq(el){
+  const ans = el.querySelector('.faq-answer');
+  if(!ans) return;
+  if(ans.style.maxHeight){ ans.style.maxHeight = null; el.classList.remove('open'); }
+  else { document.querySelectorAll('.faq-answer').forEach(a=>a.style.maxHeight=null); ans.style.maxHeight = ans.scrollHeight + 'px'; el.classList.add('open'); }
+}
+
+/* ---------- Donate selection & modal (simple demo) ---------- */
+let selectedAmount = 0;
+function selectAmount(v){
+  if(typeof v !== 'number') return;
+  selectedAmount = v;
+  document.querySelectorAll('.amount').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.amount').forEach(el=>{ if(el.textContent.replace(/[^0-9]/g,'')==String(v)) el.classList.add('active'); });
+}
+function openModal(id){
+  const gm = document.getElementById('genericModal');
+  const inner = document.getElementById('genericModalInner');
+  gm.style.display = 'flex'; gm.setAttribute('aria-hidden','false');
+  inner.innerHTML = ''; // fill based on id
+  if(id==='volunteerModal'){
+    inner.innerHTML = `<h3>Volunteer Application</h3>
+      <form onsubmit="submitVolunteer(event)" style="display:grid;gap:8px">
+        <input name="name" placeholder="Name" required>
+        <input name="email" type="email" placeholder="Email" required>
+        <input name="phone" placeholder="Phone">
+        <select name="role"><option>Teaching</option><option>Food Delivery</option><option>Medical Support</option><option>Others</option></select>
+        <button type="submit" style="background:var(--primary);color:#fff;padding:10px;border-radius:8px">Apply</button>
+      </form>`;
+  } else if(id==='careersModal'){
+    inner.innerHTML = `<h3>Careers & Internships</h3><p class="muted">Open roles — Program Coordinator, Field Officer, Accountant (demo).</p>
+      <button onclick="openModal('applyJob')">Apply to a role</button>`;
+  } else if(id==='memberModal'){
+    inner.innerHTML = `<h3>Become a Member</h3><form onsubmit="submitMember(event)" style="display:grid;gap:8px"><input name="name" placeholder="Name" required><input name="email" placeholder="Email" required><button type="submit" style="background:var(--primary);color:#fff;padding:10px;border-radius:8px">Join</button></form>`;
+  } else if(id==='fundraiserModal'){
+    inner.innerHTML = `<h3>Start a Fundraiser</h3><form onsubmit="submitFundraiser(event)" style="display:grid;gap:8px"><input name="title" placeholder="Fundraiser title" required><textarea name="desc" placeholder="Short description"></textarea><button type="submit" style="background:var(--primary);color:#fff;padding:10px;border-radius:8px">Create (demo)</button></form>`;
+  } else if(id==='donateModal'){
+    const amount = selectedAmount || 1000;
+    inner.innerHTML = `<h3>Donate — ₹${amount}</h3><p class="muted">This is a demo flow. Integrate payment gateway to process payments.</p>
+      <form onsubmit="submitDonate(event)" style="display:grid;gap:8px">
+        <input name="name" placeholder="Full name" required>
+        <input name="email" placeholder="Email" required>
+        <select name="frequency"><option>One-Time</option><option>Monthly</option></select>
+        <input type="number" name="amount" value="${amount}" required>
+        <button type="submit" style="background:var(--accent);color:#fff;padding:10px;border-radius:8px">Pay (demo)</button>
+      </form>`;
+  } else if(id==='applyJob'){
+    inner.innerHTML = `<h3>Job Application (demo)</h3><form onsubmit="submitJob(event)" style="display:grid;gap:8px"><input name="name" placeholder="Name" required><input name="email" placeholder="Email" required><input name="role" placeholder="Role applied for" required><button type="submit" style="background:var(--primary);color:#fff;padding:10px;border-radius:8px">Send Application</button></form>`;
+  } else {
+    inner.innerHTML = '<div><p>Content placeholder</p></div>';
+  }
+}
+function closeGenericModal(e){ const gm = document.getElementById('genericModal'); if(e.target === gm || e.target.classList.contains('close')){ gm.style.display='none'; gm.setAttribute('aria-hidden','true'); } }
+function submitVolunteer(e){ e.preventDefault(); alert('Volunteer application received (demo)'); closeGenericModal({target:document.getElementById('genericModal')}); }
+function submitMember(e){ e.preventDefault(); alert('Membership request received (demo)'); closeGenericModal({target:document.getElementById('genericModal')}); }
+function submitFundraiser(e){ e.preventDefault(); alert('Fundraiser created (demo)'); closeGenericModal({target:document.getElementById('genericModal')}); }
+function submitDonate(e){ e.preventDefault(); alert('Donation processed (demo). Replace with payment integration.'); closeGenericModal({target:document.getElementById('genericModal')}); }
+function submitJob(e){ e.preventDefault(); alert('Job application sent (demo)'); closeGenericModal({target:document.getElementById('genericModal')}); }
+
+/* ---------- Contact & newsletter ---------- */
+function submitContact(ev){ ev.preventDefault(); alert('Thanks — we received your message (demo).'); ev.target.reset(); }
+function subscribeNewsletter(){ const em = document.getElementById('newsletterEmail').value; if(!em || !em.includes('@')){ document.getElementById('newsletterMsg').textContent = 'Enter a valid email'; return; } document.getElementById('newsletterMsg').textContent = 'Thanks for subscribing!'; document.getElementById('newsletterEmail').value = ''; }
+
+/* ---------- Shop cart (simple) ---------- */
+let cart = [];
+function addToCart(name,price){ cart.push({name,price}); alert(name+' added to cart (demo)'); }
+function viewCart(){ if(cart.length===0) return alert('Cart is empty'); let s = 'Cart items:\\n'; cart.forEach((c,i)=> s += `${i+1}. ${c.name} - ₹${c.price}\\n`); alert(s+'\\nProceed to checkout - integrate a payment gateway for real flow'); }
+
+/* ---------- Back to top visibility ---------- */
+window.addEventListener('scroll', ()=>{ const bt = document.getElementById('backTop'); if(window.scrollY>600) bt.style.display='block'; else bt.style.display='none'; });
+
+/* ---------- Accessibility: close modals on Esc ---------- */
+document.addEventListener('keydown', e => {
+  if(e.key==='Escape'){
+    document.querySelectorAll('.lightbox').forEach(lb => { lb.style.display='none'; lb.setAttribute('aria-hidden','true'); });
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Shatakshi NGO — Empowering Lives</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<!-- Lottie -->
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+<style>
+  :root{
+    --primary-blue:#0056b3;
+    --accent-red:#E53935;
+    --dark:#333;
+    --muted:#666;
+    --white:#fff;
+    --light-blue:#E3F2FD;
+    --light-gray:#F5F5F5;
+    --soft-yellow:#FFF8E1;
+    --overlay: rgba(0,0,0,0.38);
+    --card-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    --radius:12px;
+    --max-width:1100px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Open Sans",sans-serif;color:var(--dark);background:#fff;line-height:1.6;scroll-behavior:smooth}
+  h1,h2,h3{font-family:"Montserrat",sans-serif;color:var(--primary-blue);margin-bottom:.6rem;text-align:center}
+  p{color:var(--dark);max-width:900px;margin:0.25rem auto 1rem;text-align:center}
+
+  /* Header */
+  .header{position:sticky;top:0;z-index:1200;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:space-between;padding:14px 22px}
+  .logo{font-weight:700;color:var(--primary-blue);font-size:1.2rem}
+  .nav{display:flex;gap:14px;align-items:center}
+  .nav a{color:var(--dark);text-decoration:none;font-weight:600;padding:8px 10px;border-radius:8px}
+  .nav a:hover{color:var(--primary-blue);background:rgba(0,86,179,0.04)}
+  .btn-donate{background:var(--accent-red);color:#fff;padding:8px 14px;border-radius:8px;text-decoration:none;font-weight:700}
+  .hamburger{display:none;font-size:1.8rem;cursor:pointer}
+
+  /* Mobile Menu */
+  .mobile-menu{position:fixed;right:-100%;top:0;width:100%;height:100%;background:linear-gradient(180deg,var(--light-blue),#fff);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:right .35s ease;z-index:1400}
+  .mobile-menu.active{right:0}
+  .mobile-menu a{font-size:1.2rem;color:var(--dark);text-decoration:none}
+
+  /* Hero */
+  .hero{position:relative;height:80vh;display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(180deg, rgba(0,86,179,0.18), rgba(0,86,179,0.05)), url('images/hero.jpg') center/cover no-repeat;color:#fff;padding:40px 20px}
+  .hero::after{content:"";position:absolute;inset:0;background:var(--overlay)}
+  .hero-inner{position:relative;z-index:2;max-width:900px}
+  .hero h1{color:#fff;font-size:2.1rem;margin-bottom:12px}
+  .hero .typewriter{color:#fff;font-weight:600;display:block;margin-bottom:18px}
+  .btn-secondary{background:#fff;color:var(--accent-red);padding:8px 14px;border-radius:8px;font-weight:700;text-decoration:none}
+
+  /* Section + cards */
+  .section{padding:48px 18px}
+  .container{max-width:var(--max-width);margin:0 auto;padding:0 18px}
+  .card{background:rgba(255,255,255,0.7);backdrop-filter:blur(12px);border-radius:var(--radius);padding:18px;box-shadow:var(--card-shadow);text-align:center;transition:transform .3s,box-shadow .3s}
+  .card:hover{transform:translateY(-6px);box-shadow:0 10px 24px rgba(0,0,0,0.15)}
+
+  /* Grids */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+  .team-grid,.work-grid,.resource-grid,.media-grid,.shop-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
+
+  /* Highlights */
+  .highlights{background:var(--light-blue);border-radius:14px;padding:24px}
+  .stats{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+  .stat{background:rgba(255,255,255,0.6);backdrop-filter:blur(10px);padding:18px;border-radius:12px;min-width:180px;box-shadow:var(--card-shadow);text-align:center;transition:transform .3s}
+  .stat:hover{transform:scale(1.05)}
+  .stat lottie-player{width:60px;height:60px;margin:0 auto 6px}
+  .stat .num{font-size:1.6rem;color:var(--primary-blue);font-weight:700}
+  .stat small{display:block;color:var(--muted);margin-top:6px}
+
+  /* Causes */
+  .causes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-top:16px}
+  .cause{background:rgba(255,255,255,0.6);backdrop-filter:blur(10px);padding:14px;border-radius:12px;box-shadow:var(--card-shadow);transition:transform .3s;text-align:center}
+  .cause:hover{transform:translateY(-6px) scale(1.05)}
+  .cause lottie-player{width:50px;height:50px;margin:0 auto 8px}
+
+  /* Gallery */
+  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:18px}
+  .gallery img{width:100%;border-radius:8px;cursor:pointer;object-fit:cover;height:120px}
+
+  /* FAQ */
+  .faq-list{max-width:900px;margin:0 auto}
+  .faq-item{background:#fff;border-radius:8px;padding:12px;margin:10px 0;box-shadow:var(--card-shadow);cursor:pointer}
+  .faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+
+  /* Trust & Legal */
+  .trusted{background:linear-gradient(135deg,#e3f2fd,#fff);padding:40px 20px;text-align:center}
+  .trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-top:20px}
+  .trust-card{background:rgba(255,255,255,0.25);backdrop-filter:blur(14px);border-radius:16px;padding:18px;box-shadow:0 8px 24px rgba(0,0,0,0.1);transition:transform .35s,box-shadow .35s}
+  .trust-card:hover{transform:translateY(-6px) scale(1.03);box-shadow:0 12px 32px rgba(0,0,0,0.15)}
+  .trust-card h4{margin:10px 0;color:var(--primary-blue)}
+  .trust-card a{color:var(--accent-red);font-weight:600;text-decoration:none}
+  .trust-card lottie-player{width:60px;height:60px;margin:0 auto}
+
+  /* Footer */
+  .footer{background:#002E5D;color:#fff;padding:18px 14px;text-align:center;font-size:.95rem}
+  .sticky{position:fixed;right:18px;bottom:22px;background:var(--accent-red);color:#fff;padding:12px 16px;border-radius:28px;box-shadow:0 8px 24px rgba(0,0,0,0.18);z-index:1900}
+  @media (max-width:800px){.nav{display:none}.hamburger{display:block}}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo">Shatakshi NGO</div>
+  <nav class="nav">
+    <a href="#home">Home</a><a href="#about">About</a><a href="#team">Team</a>
+    <a href="#work">Work</a><a href="#impact">Impact</a><a href="#get-involved">Get Involved</a>
+    <a href="#donate" class="btn-donate">Donate ❤️</a>
+    <a href="#events">Events</a><a href="#resources">Resources</a><a href="#media">Media</a>
+    <a href="#shop">Shop</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+  </nav>
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+</header>
+
+<!-- MOBILE MENU -->
+<nav id="mobileMenu" class="mobile-menu">
+  <a href="#home" onclick="toggleMenu()">Home</a>
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#team" onclick="toggleMenu()">Team</a>
+  <a href="#work" onclick="toggleMenu()">Work</a>
+  <a href="#impact" onclick="toggleMenu()">Impact</a>
+  <a href="#get-involved" onclick="toggleMenu()">Get Involved</a>
+  <a href="#donate" onclick="toggleMenu()">Donate</a>
+  <a href="#events" onclick="toggleMenu()">Events</a>
+  <a href="#resources" onclick="toggleMenu()">Resources</a>
+  <a href="#media" onclick="toggleMenu()">Media</a>
+  <a href="#shop" onclick="toggleMenu()">Shop</a>
+  <a href="#faq" onclick="toggleMenu()">FAQ</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-inner">
+    <h1>Empowering Lives Through <span class="typewriter"></span></h1>
+    <div style="margin-top:20px">
+      <a class="btn-donate" href="#donate">Donate Now</a>
+      <a class="btn-secondary" href="#get-involved">Get Involved</a>
+    </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHTS -->
+<section class="section">
+  <div class="container">
+    <div class="highlights">
+      <h2>Highlights</h2>
+      <div class="stats">
+        <div class="stat"><lottie-player src="https://assets2.lottiefiles.com/packages/lf20_JJ0t43.json" loop autoplay></lottie-player><div class="num counter" data-target="800">0</div><small>Children Educated</small></div>
+        <div class="stat"><lottie-player src="https://assets9.lottiefiles.com/private_files/lf30_tqomd4eb.json" loop autoplay></lottie-player><div class="num counter" data-target="500">0</div><small>Health Camps</small></div>
+        <div class="stat"><lottie-player src="https://assets1.lottiefiles.com/packages/lf20_tutvdkg0.json" loop autoplay></lottie-player><div class="num counter" data-target="42">0</div><small>Daily Meals Served</small></div>
+        <div class="stat"><lottie-player src="https://assets10.lottiefiles.com/packages/lf20_rp2dm5v3.json" loop autoplay></lottie-player><div class="num counter" data-target="900">0</div><small>Dignified Farewells</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="container">
+    <h2>About Us</h2>
+    <div class="grid">
+      <div class="card"><h3>Mission & Vision</h3><p>To ensure dignity and opportunity for every person — through education, health, and social support.</p></div>
+      <div class="card"><h3>Our Story</h3><p>Born from personal loss, transformed into service — our founder’s resolve became a movement.</p></div>
+      <div class="card"><h3>Partners</h3><p>Local donors, volunteers, schools, and institutions collaborate to scale impact.</p></div>
+      <div class="card"><h3>Advisory Board</h3><p>Experienced trustees and mentors provide governance and guidance.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" class="section light-gray">
+  <div class="container">
+    <h2>Our Team</h2>
+    <div class="team-grid">
+      <div class="card"><h3>Leadership</h3><p>Founder & Directors guiding the vision.</p></div>
+      <div class="card"><h3>Staff</h3><p>Dedicated program managers and field staff.</p></div>
+      <div class="card"><h3>Volunteers</h3><p>Community volunteers driving local change.</p></div>
+      <div class="card"><h3>Advisors</h3><p>Mentors & Trustees ensuring sustainability.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work" class="section">
+  <div class="container">
+    <h2>Our Work</h2>
+    <div class="work-grid">
+      <div class="card"><h3>Focus Areas</h3><p>Education, Women Empowerment, Health, Environment.</p></div>
+      <div class="card"><h3>Ongoing</h3><p>From Weapons to Pens, Shatakshi Helpline, Annapurna Kitchen.</p></div>
+      <div class="card"><h3>Completed</h3><p>Antim Vidai, relief operations, 900+ dignified farewells.</p></div>
+      <div class="card"><h3>Future</h3><p>Digital literacy centers; expanded ambulance network.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CAUSES -->
+<section id="causes" class="section light-blue">
+  <div class="container">
+    <h2>Objectives & Causes</h2>
+    <div class="causes-grid">
+      <div class="cause"><lottie-player src="https://assets2.lottiefiles.com/packages/lf20_q5pk6p1k.json" loop autoplay></lottie-player><p>Education for All</p></div>
+      <div class="cause"><lottie-player src="https://assets1.lottiefiles.com/packages/lf20_zrqthn6o.json" loop autoplay></lottie-player><p>Rural Health</p></div>
+      <div class="cause"><lottie-player src="https://assets2.lottiefiles.com/packages/lf20_8wrekj3k.json" loop autoplay></lottie-player><p>Senior Citizen Care</p></div>
+      <div class="cause"><lottie-player src="https://assets7.lottiefiles.com/packages/lf20_wbvrvj4k.json" loop autoplay></lottie-player><p>Water Conservation</p></div>
+      <div class="cause"><lottie-player src="https://assets4.lottiefiles.com/packages/lf20_xlkxtmul.json" loop autoplay></lottie-player><p>Tree Plantation</p></div>
+      <div class="cause"><lottie-player src="https://assets9.lottiefiles.com/packages/lf20_g7c0yusw.json" loop autoplay></lottie-player><p>Women Empowerment</p></div>
+      <div class="cause"><lottie-player src="https://assets1.lottiefiles.com/packages/lf20_jtbfg2nb.json" loop autoplay></lottie-player><p>Disaster Relief</p></div>
+      <div class="cause"><lottie-player src="https://assets1.lottiefiles.com/packages/lf20_rp2dm5v3.json" loop autoplay></lottie-player><p>Final Farewell</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section id="impact" class="section">
+  <div class="container">
+    <h2>Impact</h2>
+    <p>Real stories, real numbers — lives transformed.</p>
+    <div class="gallery">
+      <img src="images/photo-gallery-01.jpg" alt="">
+      <img src="images/photo-gallery-01.jpg" alt="">
+      <img src="images/photo-gallery-01.jpg" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- GET INVOLVED -->
+<section id="get-involved" class="section light-gray">
+  <div class="container">
+    <h2>Get Involved</h2>
+    <div class="grid">
+      <div class="card"><h3>Volunteer</h3><p>Join our grassroots work.</p></div>
+      <div class="card"><h3>Careers</h3><p>Explore internships & roles.</p></div>
+      <div class="card"><h3>Membership</h3><p>Be part of decision-making.</p></div>
+      <div class="card"><h3>Fundraiser</h3><p>Start your community drive.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DONATE -->
+<section id="donate" class="section">
+  <div class="container">
+    <h2>Donate</h2>
+    <p>Every rupee creates impact.</p>
+    <div class="grid">
+      <div class="card"><h3>One-Time / Monthly</h3><p>Choose recurring or one-time options.</p></div>
+      <div class="card"><h3>Gift a Cause</h3><p>Support meals, education, ambulance, women empowerment.</p></div>
+      <div class="card"><h3>CSR</h3><p>Corporate giving & employee volunteering.</p></div>
+      <div class="card"><h3>Dashboard</h3><p>Secure donor portal (coming soon).</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section id="events" class="section light-blue">
+  <div class="container">
+    <h2>Events & Campaigns</h2>
+    <div class="grid">
+      <div class="card"><h3>Flood Relief Camp</h3><p>Oct 2025</p></div>
+      <div class="card"><h3>Environment Week</h3><p>Nov 2025</p></div>
+      <div class="card"><h3>Education Drive</h3><p>Dec 2025</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section id="resources" class="section">
+  <div class="container">
+    <h2>Resources</h2>
+    <div class="resource-grid">
+      <div class="card"><h3>Research</h3><p>Impact studies & reports.</p></div>
+      <div class="card"><h3>Toolkits</h3><p>Guides for volunteers.</p></div>
+      <div class="card"><h3>Blog</h3><p>Articles & updates.</p></div>
+      <div class="card"><h3>Podcasts</h3><p>Conversations on change.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MEDIA -->
+<section id="media" class="section light-gray">
+  <div class="container">
+    <h2>Media & Recognition</h2>
+    <div class="media-grid">
+      <div class="card"><h3>Press</h3><p>Official releases.</p></div>
+      <div class="card"><h3>Coverage</h3><p>News features.</p></div>
+      <div class="card"><h3>Awards</h3><p>Recognitions received.</p></div>
+      <div class="card"><h3>Collaborations</h3><p>International projects.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOP -->
+<section id="shop" class="section">
+  <div class="container">
+    <h2>Shop</h2>
+    <div class="shop-grid">
+      <div class="card"><h3>T-Shirts</h3><p>Proceeds support programs.</p></div>
+      <div class="card"><h3>Eco Bags</h3><p>Support sustainability.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section light-blue">
+  <div class="container">
+    <h2>FAQ</h2>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-question">How can I volunteer?</div><div class="faq-answer">Apply via contact form.</div></div>
+      <div class="faq-item"><div class="faq-question">Are donations tax exempt?</div><div class="faq-answer">Yes — 12A & 80G certified.</div></div>
+      <div class="faq-item"><div class="faq-question">How do I fundraise?</div><div class="faq-answer">Contact our team for support.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="container">
+    <h2>Contact Us</h2>
+    <p>Email: info@shatakshi.org | Phone: +91 9911172230</p>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="trusted" id="trusted">
+  <div class="container">
+    <h2>Trust & Legal</h2>
+    <div class="trust-grid">
+      <div class="trust-card"><lottie-player src="https://assets1.lottiefiles.com/packages/lf20_jtbfg2nb.json" autoplay loop></lottie-player><h4>Annual Reports</h4><a href="#">View</a></div>
+      <div class="trust-card"><lottie-player src="https://assets2.lottiefiles.com/packages/lf20_t8gupxhz.json" autoplay loop></lottie-player><h4>Financials</h4><a href="#">View</a></div>
+      <div class="trust-card"><lottie-player src="https://assets1.lottiefiles.com/packages/lf20_zrqthn6o.json" autoplay loop></lottie-player><h4>Certificates</h4><a href="#">View</a></div>
+      <div class="trust-card"><lottie-player src="https://assets8.lottiefiles.com/packages/lf20_8wrekj3k.json" autoplay loop></lottie-player><h4>Privacy</h4><a href="#">View</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">© 2025 Shatakshi NGO. All rights reserved.</footer>
+
+<!-- Sticky donate -->
+<a href="#donate" class="sticky">❤️ Donate</a>
+
+<script>
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('active');}
+/* Typewriter */
+const words=['Education','Health','Empowerment','Dignity'];let i=0,j=0,del=false;const typeEl=document.querySelector('.typewriter');
+function loop(){let w=words[i];typeEl.textContent=w.slice(0,j);if(!del){j++;if(j>w.length){del=true;setTimeout(loop,800);return}}else{j--;if(j<0){del=false;i=(i+1)%words.length;j=0}}setTimeout(loop,del?80:120);}loop();
+/* Counters */
+document.querySelectorAll('.counter').forEach(c=>{let t=+c.dataset.target,cur=0;let step=Math.max(1,Math.floor(t/100));function up(){cur+=step;c.textContent=cur;if(cur<t)setTimeout(up,20);else c.textContent=t}up();});
+/* FAQ */
+document.querySelectorAll('.faq-item').forEach(item=>{item.addEventListener('click',()=>{const ans=item.querySelector('.faq-answer');if(item.classList.contains('open')){ans.style.maxHeight=null;item.classList.remove('open');}else{document.querySelectorAll('.faq-item.open').forEach(o=>{o.querySelector('.faq-answer').style.maxHeight=null;o.classList.remove('open');});ans.style.maxHeight=ans.scrollHeight+"px";item.classList.add('open');}})});
+</script>
+</body>
+</html>

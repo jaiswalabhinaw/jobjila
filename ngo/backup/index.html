@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shatakshi Educational & Welfare Trust</title>
+  <meta name="description" content="Shatakshi Seva Sansthan — serving dignity, education & health in Gopalganj, Bihar." />
+  <style>
+    /* ---------- Variables & Reset ---------- */
+    :root{
+      --primary-blue:#0056b3;
+      --accent-red:#E53935;
+      --dark-gray:#333333;
+      --medium-gray:#666666;
+      --white:#ffffff;
+      --dark-blue-footer:#002E5D;
+      --link-light:#66B2FF;
+      --overlay-dark: rgba(0,0,0,0.35);
+
+      /* pastel backgrounds (warm/pink-peach family) */
+      --peach-hero:#FFEDE9;
+      --peach-about:#FFF6F5;
+      --peach-team:#FFF1F0;
+      --peach-work:#FFF6F3;
+      --peach-causes:#FFF5F7;
+      --peach-impact:#FFF7F6;
+      --peach-involved:#FFF6F2;
+      --peach-donate:#FFF9EA;
+      --peach-events:#FFF4F6;
+      --peach-resources:#FFFBF9;
+      --peach-media:#FFF7F5;
+      --peach-shop:#FFF8F8;
+      --peach-faq:#FFF6F6;
+      --peach-contact:#FFF9F7;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:var(--dark-gray);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased;}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* ---------- Header / Nav ---------- */
+    header.header{
+      position:sticky;top:0;z-index:1200;
+      background:var(--white);display:flex;align-items:center;justify-content:space-between;
+      padding:14px 28px;box-shadow:0 2px 8px rgba(0,0,0,0.06);
+    }
+    .logo{font-weight:700;color:var(--primary-blue);font-size:1.2rem}
+    nav.nav{display:flex;gap:16px;align-items:center}
+    nav.nav a{color:var(--dark-gray);padding:6px 8px;border-radius:6px;font-weight:500}
+    nav.nav a:hover{color:var(--primary-blue)}
+    .btn-primary{background:var(--accent-red);color:var(--white);padding:8px 14px;border-radius:8px;font-weight:700}
+    .btn-primary:hover{transform:scale(1.04);box-shadow:0 6px 18px rgba(0,0,0,0.12)}
+    .btn-secondary{background:transparent;color:var(--accent-red);padding:8px 14px;border-radius:8px;border:2px solid var(--accent-red);font-weight:700}
+    .btn-secondary:hover{background:var(--accent-red);color:var(--white);transform:scale(1.04)}
+
+    /* hamburger */
+    .hamburger{display:none;font-size:1.7rem;cursor:pointer;color:var(--dark-gray);background:transparent;border:none}
+
+    /* mobile menu sliding from right */
+    .mobile-menu{
+      position:fixed;top:0;right:-100%;width:100%;height:100vh;
+      background:var(--peach-about);display:flex;flex-direction:column;align-items:center;justify-content:center;
+      gap:20px;transition:right .36s ease;z-index:2000;padding:40px;
+    }
+    .mobile-menu.active{right:0}
+    .mobile-menu a{font-size:1.4rem;color:var(--dark-gray);font-weight:700}
+
+    /* ---------- Hero ---------- */
+    .hero{
+      background:var(--peach-hero);
+      min-height:68vh;display:flex;align-items:center;justify-content:center;text-align:center;
+      position:relative;padding:48px 20px;
+    }
+    .hero .bg-image{
+      position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.85);
+    }
+    .hero .overlay{position:absolute;inset:0;background:var(--overlay-dark)}
+    .hero .hero-inner{position:relative;z-index:2;max-width:990px;padding:24px}
+    .hero h1{color:var(--white);font-size:2rem;line-height:1.12;margin-bottom:18px;text-shadow:0 4px 18px rgba(0,0,0,0.25)}
+    .hero p.lead{color:rgba(255,255,255,0.95);margin-bottom:22px}
+    .hero .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+
+    /* ---------- Sections ---------- */
+    section{padding:44px 20px}
+    .section-title{max-width:1100px;margin:0 auto 18px}
+    .section-title h2{color:var(--primary-blue);font-size:1.4rem;margin-bottom:8px}
+    .container{max-width:1100px;margin:0 auto;padding:0 18px}
+
+    /* pastel backgrounds per section */
+    #about{background:var(--peach-about)}
+    #founder{background:var(--peach-team)}
+    #work{background:var(--peach-work)}
+    #causes{background:var(--peach-causes)}
+    #impact{background:var(--peach-impact)}
+    #get-involved{background:var(--peach-involved)}
+    #donate{background:var(--peach-donate)}
+    #events{background:var(--peach-events)}
+    #resources{background:var(--peach-resources)}
+    #media{background:var(--peach-media)}
+    #shop{background:var(--peach-shop)}
+    #faq{background:var(--peach-faq)}
+    #contact{background:var(--peach-contact)}
+
+    /* text blocks */
+    .muted{color:var(--medium-gray)}
+    .lead-para{font-size:1rem;margin-bottom:12px}
+
+    /* Quick stats */
+    .stats{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+    .stat{background:var(--white);padding:18px;border-radius:10px;min-width:160px;text-align:center;box-shadow:0 6px 20px rgba(0,0,0,0.04)}
+    .stat .num{font-size:1.6rem;color:var(--primary-blue);font-weight:800}
+    .stat p{margin-top:8px;color:var(--dark-gray);font-weight:600}
+
+    /* founder / two-column */
+    .two-col{display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap}
+    .col{flex:1;min-width:260px}
+    .founder-photo{width:260px;height:260px;border-radius:8px;background:#fff;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,0.06)}
+    .founder-photo img{width:100%;height:100%;object-fit:cover}
+
+    /* work list */
+    .work-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+    .work-card{background:var(--white);padding:14px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.04)}
+
+    /* Causes grid */
+    .causes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+    .cause{background:var(--white);padding:14px;border-radius:10px;text-align:left;font-weight:600;display:flex;gap:10px;align-items:center}
+    .cause .emoji{font-size:1.2rem}
+
+    /* Impact counters & stories */
+    .stats-grid{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+    .story{background:var(--white);padding:14px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.04);margin-top:12px}
+
+    /* Get involved actions */
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+
+    /* Donate cards */
+    .donate-options{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+    .don-card{background:var(--white);padding:18px;border-radius:10px;min-width:180px;text-align:center;box-shadow:0 6px 20px rgba(0,0,0,0.04)}
+
+    /* Events grid */
+    .events-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+
+    /* Resources / media */
+    .thumb{background:var(--white);padding:10px;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.04)}
+
+    /* Shop sample */
+    .product{background:var(--white);padding:12px;border-radius:10px;text-align:center}
+
+    /* FAQ */
+    .faq-item{background:var(--white);padding:12px;border-radius:8px;margin-bottom:8px;cursor:pointer;overflow:hidden}
+    .faq-question{font-weight:700;color:var(--primary-blue)}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height .28s ease;padding-top:0;color:var(--dark-gray)}
+    .faq-item.active .faq-answer{max-height:400px;padding-top:10px}
+
+    /* Contact form */
+    form.contact-form{display:flex;flex-direction:column;gap:10px;max-width:560px}
+    input[type="text"],input[type="email"],textarea{padding:10px;border-radius:8px;border:1px solid #ddd;font-size:0.95rem}
+    input:focus,textarea:focus{outline:none;border-color:var(--primary-blue);box-shadow:0 6px 18px rgba(0,86,179,0.06)}
+
+    /* Footer */
+    footer.footer{background:var(--dark-blue-footer);color:var(--white);padding:28px 20px;margin-top:20px}
+    footer .foot-inner{max-width:1100px;margin:0 auto;display:flex;gap:20px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+    footer a{color:var(--link-light)}
+
+    /* ---------- Animations (fade-in) ---------- */
+    .fade-in{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+    .visible{opacity:1;transform:none}
+
+    /* ---------- Responsive ---------- */
+    @media (max-width:1024px){
+      .logo{font-size:1.1rem}
+      nav.nav{display:none}
+      .hamburger{display:inline-block}
+    }
+    @media (max-width:800px){
+      .hero h1{font-size:1.6rem}
+    }
+    @media (max-width:600px){
+      .hero{min-height:56vh;padding:28px 12px}
+      .two-col{flex-direction:column}
+      .founder-photo{width:100%;height:260px}
+      .mobile-menu{padding:28px}
+      .mobile-menu a{font-size:1.3rem}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">Shatakshi Seva Sansthan</div>
+
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#founder">Founder</a>
+      <a href="#work">Our Work</a>
+      <a href="#causes">Objectives</a>
+      <a href="#impact">Impact</a>
+      <a href="#get-involved">Get Involved</a>
+      <a href="#donate" class="btn-primary">Donate</a>
+      <a href="#events">Events</a>
+      <a href="#resources">Resources</a>
+      <a href="#media">Media</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+      <a href="#team">Team</a>
+      <a href="#trust">Legal & Trust</a>
+    </nav>
+
+    <button class="hamburger" aria-label="Open menu" id="hamburger">☰</button>
+  </header>
+
+  <!-- Mobile Menu (slides from right) -->
+  <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
+    <a href="#home" onclick="toggleMenu()">Home</a>
+    <a href="#about" onclick="toggleMenu()">About</a>
+    <a href="#founder" onclick="toggleMenu()">Founder</a>
+    <a href="#work" onclick="toggleMenu()">Our Work</a>
+    <a href="#causes" onclick="toggleMenu()">Objectives</a>
+    <a href="#impact" onclick="toggleMenu()">Impact</a>
+    <a href="#get-involved" onclick="toggleMenu()">Get Involved</a>
+    <a href="#donate" class="btn-primary" onclick="toggleMenu()">Donate</a>
+    <a href="#events" onclick="toggleMenu()">Events</a>
+    <a href="#resources" onclick="toggleMenu()">Resources</a>
+    <a href="#media" onclick="toggleMenu()">Media</a>
+    <a href="#faq" onclick="toggleMenu()">FAQ</a>
+    <a href="#contact" onclick="toggleMenu()">Contact</a>
+    <a href="#team" onclick="toggleMenu()">Team</a>
+    <a href="#trust" onclick="toggleMenu()">Legal & Trust</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <!-- If you have a hero image, set its URL below (assets/images/hero.jpg) -->
+    <div class="bg-image" style="background-image:url('assets/images/hero.jpg');"></div>
+    <div class="overlay"></div>
+
+    <div class="hero-inner container">
+      <h1 class="fade-in">Our journey is incomplete until the last person in society smiles.</h1>
+      <p class="lead-para fade-in">Shatakshi Seva Sansthan was born from pain and turned into a purpose — to serve the forgotten, feed the hungry, teach the children, and give dignity in life and death.</p>
+      <div class="hero-ctas fade-in">
+        <a class="btn-primary" href="#donate">Donate Now</a>
+        <a class="btn-secondary" href="#get-involved">Join Us</a>
+      </div>
+      <div class="stats fade-in" style="margin-top:20px;">
+        <div class="stat">
+          <div class="num">900+</div>
+          <p>Freed dignified funerals (Antim Vidai)</p>
+        </div>
+        <div class="stat">
+          <div class="num">800+</div>
+          <p>Children reached through education drives</p>
+        </div>
+        <div class="stat">
+          <div class="num">42</div>
+          <p>Daily meals delivered (Annapurna Rasoi)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="fade-in">
+    <div class="section-title container">
+      <h2>About Us</h2>
+      <p class="muted">Shatakshi Educational and Welfare Trust — registered under the Trusts Act — serving dignity and sustainable development across Gopalganj, Bihar and nearby regions for over a decade.</p>
+    </div>
+
+    <div class="container">
+      <div class="two-col">
+        <div class="col">
+          <p class="lead-para">The inception of Shatakshi Seva Sansthan was not just about establishing an organization; it was a resolve born out of pain. A young man, who lost his younger brother and witnessed abandoned bodies lying on the streets, chose the service of humanity as his life's purpose. This young man is today our founder, <strong>Mr. Naveen Ranjan Srivastava</strong>.</p>
+
+          <h3>🌱 The Ground of Beginnings</h3>
+          <p class="muted">This vision, born in Manikpur village, Gopalganj, Bihar, grew into a movement. In 2011 the Shatakshi Educational and Welfare Trust was established — built with compassion and the heartbeat of empathy.</p>
+
+          <blockquote style="margin-top:10px;padding:10px;background:#fff;border-left:4px solid var(--primary-blue);border-radius:6px">
+            “Shatakshi is like a family to me, giving me support during tough times.” — A beneficiary
+          </blockquote>
+        </div>
+
+        <div class="col" style="display:flex;flex-direction:column;gap:12px;align-items:center">
+          <div class="founder-photo">
+            <img src="assets/images/leadership-01.jpg" alt="Founder - Naveen Ranjan Srivastava" onerror="this.style.display='none'">
+          </div>
+          <div style="text-align:center">
+            <strong>Shatakshi Educational & Welfare Trust</strong><br>
+            Gopalganj, Bihar — Registered under Trusts Act
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDER -->
+  <section id="founder" class="fade-in">
+    <div class="section-title container">
+      <h2>About the Founder</h2>
+      <p class="muted"><em>"Service is the greatest religion."</em></p>
+    </div>
+    <div class="container">
+      <div class="two-col">
+        <div class="col">
+          <h4>Early life & Turning point</h4>
+          <p>Mr. Naveen Ranjan Srivastava was born in Manikpur, Gopalganj. His early dreams were academic (IAS), but the tragic loss of his younger brother and the pain he witnessed redirected his path to social service. In 2011 he founded Shatakshi Seva Sansthan to serve humanity.</p>
+
+          <h4>Key Milestones</h4>
+          <ul style="margin-top:8px">
+            <li><strong>2011</strong> — Foundation of Shatakshi.</li>
+            <li><strong>2012</strong> — Antim Vidai: dignified funerals for abandoned bodies (900+ so far).</li>
+            <li><strong>2019</strong> — From Weapons to Pens: education for flood-affected children (800+).</li>
+            <li><strong>2020</strong> — Voice of Silence & Jal Pathshala: women & environment programs.</li>
+            <li><strong>2020</strong> — Shatakshi Helpline: 24×7 assistance to access government schemes.</li>
+            <li><strong>2021</strong> — COVID relief: ambulance services, rations, medicines.</li>
+            <li><strong>2024</strong> — Annapurna Rasoi: daily meals for elders across 15 villages.</li>
+          </ul>
+        </div>
+
+        <div class="col">
+          <h4>Personality & Support</h4>
+          <p class="muted">Naveenji is a symbol of compassion and sacrifice; supported by his wife Mrs. Shipli Saxena and the trust of the community, he continues serving tirelessly.</p>
+
+          <h4 style="margin-top:12px">Major Initiatives</h4>
+          <div class="work-list" style="margin-top:8px">
+            <div class="work-card">Antim Vidai — Dignified funerals</div>
+            <div class="work-card">From Weapons to Pens — Education program</div>
+            <div class="work-card">Voice of Silence — Women empowerment</div>
+            <div class="work-card">Shatakshi Helpline — 24×7 assistance</div>
+            <div class="work-card">Annapurna Rasoi — Daily meals</div>
+            <div class="work-card">Free Ambulance — 24×7 emergency transport</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR WORK -->
+  <section id="work" class="fade-in">
+    <div class="section-title container"><h2>Our Work</h2><p class="muted">We operate across health, education, dignity services, emergency response, and women & child welfare.</p></div>
+    <div class="container">
+      <div class="work-list">
+        <div class="work-card">
+          <h4>From Weapons to Pens</h4>
+          <p class="muted">Education for children from flood-affected homes — restoring hope and learning.</p>
+        </div>
+        <div class="work-card">
+          <h4>Voice of Silence</h4>
+          <p class="muted">Programs for girls & women to escape child marriage and access education.</p>
+        </div>
+        <div class="work-card">
+          <h4>Shatakshi Free Ambulance</h4>
+          <p class="muted">24×7 emergency transport; saved many on critical nights.</p>
+        </div>
+        <div class="work-card">
+          <h4>Annapurna Rasoi</h4>
+          <p class="muted">Daily hot meals delivered to 42 elderly people across 15 villages since Aug 14, 2024.</p>
+        </div>
+        <div class="work-card">
+          <h4>Antim Vidai</h4>
+          <p class="muted">Dignified funerals for the abandoned — over 900 respected ceremonies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OBJECTIVES & CAUSES (50 items) -->
+  <section id="causes" class="fade-in">
+    <div class="section-title container"><h2>Our Objectives & Causes</h2><p class="muted">Shatakshi works across multiple dimensions to bring change to every corner of society. Below are our key initiatives.</p></div>
+    <div class="container">
+      <div class="causes-grid">
+        <div class="cause"><span class="emoji">🎓</span> Education for All — quality education for every child.</div>
+        <div class="cause"><span class="emoji">👩‍⚕️</span> Rural Health — check-ups & medicine distribution.</div>
+        <div class="cause"><span class="emoji">👵</span> Senior Citizen Services — care for helpless elders.</div>
+        <div class="cause"><span class="emoji">💧</span> Water Conservation — campaigns to save water.</div>
+        <div class="cause"><span class="emoji">🌱</span> Tree Plantation — mass planting drives.</div>
+        <div class="cause"><span class="emoji">🍲</span> Annapurna Rasoi — free meals for vulnerable people.</div>
+   
+    </div>
+  </section>
+
+  <!-- IMPACT -->
+  <section id="impact" class="fade-in">
+    <div class="section-title container"><h2>Impact & Stories</h2><p class="muted">Real stories of transformation — children, families, and elders whose lives changed.</p></div>
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="num counter" data-target="900">0</div>
+          <p>Bodies given dignified funeral</p>
+        </div>
+        <div class="stat">
+          <div class="num counter" data-target="800">0</div>
+          <p>Children connected to education</p>
+        </div>
+        <div class="stat">
+          <div class="num counter" data-target="42">0</div>
+          <p>Daily meals served</p>
+        </div>
+      </div>
+
+      <div style="margin-top:18px" class="story">
+        <h4>Stories of change</h4>
+        <p><strong>Sonu:</strong> "If Shatakshi didn’t exist, I would be doing labour work. Today, I dream of becoming a doctor."</p>
+        <p><strong>Pinky:</strong> "Now I will complete my studies, not get married."</p>
+        <p><strong>Migrant Worker:</strong> "When everyone shut their doors, Shatakshi embraced us."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GET INVOLVED -->
+  <section id="get-involved" class="fade-in">
+    <div class="section-title container"><h2>Get Involved</h2><p class="muted">If you can give time, effort, or financial support — you can transform someone’s world.</p></div>
+    <div class="container">
+      <div class="actions">
+        <a class="btn-primary" href="#volunteer">Volunteer</a>
+        <a class="btn-primary" href="#careers">Careers & Internships</a>
+        <a class="btn-primary" href="#member">Become a Member</a>
+        <a class="btn-secondary" href="#fundraise">Start a Fundraiser</a>
+      </div>
+      <div style="margin-top:14px" class="muted">We welcome volunteers, corporate CSR partners, and monthly donors — every contribution matters.</div>
+    </div>
+  </section>
+
+  <!-- DONATE -->
+  <section id="donate" class="fade-in">
+    <div class="section-title container"><h2>Donate</h2><p class="muted">Your contribution fuels education, healthcare, meals and dignity.</p></div>
+    <div class="container">
+      <div class="donate-options">
+        <div class="don-card">
+          <h4>Support Education</h4>
+          <p class="muted">School supplies, tuition & centers for flood-affected children.</p>
+          <div style="margin-top:10px"><a class="btn-primary" href="#donate">Donate</a></div>
+        </div>
+        <div class="don-card">
+          <h4>Provide Meals</h4>
+          <p class="muted">Help us continue the Annapurna Rasoi daily meal program.</p>
+          <div style="margin-top:10px"><a class="btn-primary" href="#donate">Donate</a></div>
+        </div>
+        <div class="don-card">
+          <h4>Fund Ambulance Services</h4>
+          <p class="muted">Support emergency response & free ambulance operations.</p>
+          <div style="margin-top:10px"><a class="btn-primary" href="#donate">Donate</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <section id="events" class="fade-in">
+    <div class="section-title container"><h2>Events & Campaigns</h2><p class="muted">Upcoming awareness drives, fundraisers, and community campaigns.</p></div>
+    <div class="container">
+      <div class="events-grid">
+        <div class="thumb"><h4>Flood Relief Camp</h4><p class="muted">Rapid response and aid distribution.</p></div>
+        <div class="thumb"><h4>Women's Empowerment Workshop</h4><p class="muted">Skill training sessions and assistance.</p></div>
+        <div class="thumb"><h4>Tree Plantation Drive</h4><p class="muted">Join our ecological action days.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESOURCES -->
+  <section id="resources" class="fade-in">
+    <div class="section-title container"><h2>Resources</h2><p class="muted">Guides, toolkits, blogs and educational material for communities and partners.</p></div>
+    <div class="container" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+      <div class="thumb"><strong>eBook: Disaster Preparedness</strong><p class="muted">Free toolkit for villages.</p></div>
+      <div class="thumb"><strong>Blog: Education in Flood Areas</strong><p class="muted">Stories & methods.</p></div>
+      <div class="thumb"><strong>Webinar Recordings</strong><p class="muted">Past sessions & training.</p></div>
+    </div>
+  </section>
+
+  <!-- MEDIA & RECOGNITION -->
+  <section id="media" class="fade-in">
+    <div class="section-title container"><h2>Media & Recognition</h2><p class="muted">Press coverage, awards & collaborations.</p></div>
+    <div class="container" style="display:flex;gap:12px;flex-wrap:wrap">
+      <div class="thumb"><strong>Press Feature</strong><p class="muted">Local media coverage.</p></div>
+      <div class="thumb"><strong>Awards</strong><p class="muted">Recognition for social service.</p></div>
+    </div>
+  </section>
+
+  <!-- SHOP (optional) -->
+  <section id="shop" class="fade-in">
+    <div class="section-title container"><h2>Shop (Optional)</h2><p class="muted">Fundraising merchandise — proceeds support our programs.</p></div>
+    <div class="container" style="display:flex;gap:12px;flex-wrap:wrap">
+      <div class="product"><img src="assets/images/product-01.jpg" alt="" onerror="this.style.display='none'"><h4>Shatakshi T-shirt</h4><p class="muted">Support education</p></div>
+      <div class="product"><img src="assets/images/product-02.jpg" alt="" onerror="this.style.display='none'"><h4>Eco-bag</h4><p class="muted">Support livelihoods</p></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="fade-in">
+    <div class="section-title container"><h2>FAQ</h2><p class="muted">Common questions on volunteering, donations and partnerships.</p></div>
+    <div class="container">
+      <div class="faq-item">
+        <div class="faq-question">How can I volunteer?</div>
+        <div class="faq-answer">Sign up via the Volunteer link or contact us directly — we will guide you through training and schedules.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Are donations tax-exempt?</div>
+        <div class="faq-answer">Yes — donations are covered under 80G/12A where applicable. We provide receipts for donors.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Can corporates partner via CSR?</div>
+        <div class="faq-answer">Yes. We welcome CSR partnerships — please contact our partnerships team for proposals and impact reporting.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="fade-in">
+    <div class="section-title container"><h2>Contact Us</h2><p class="muted">Reach out for partnerships, volunteering, donations, or help.</p></div>
+    <div class="container two-col" style="align-items:flex-start">
+      <div class="col">
+        <p><strong>Shatakshi Educational & Welfare Trust</strong><br>Gopalganj, Bihar — 841428<br>📞 9911172230<br>✉️ info@shatakshi.org</p>
+
+        <div style="margin-top:12px" class="muted">Office & field partners across local villages. We coordinate services including ambulance, helpline, meals and education programs.</div>
+      </div>
+
+      <div class="col">
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you — message received (demo).');">
+          <input type="text" name="name" placeholder="Your name" required>
+          <input type="email" name="email" placeholder="Your email" required>
+          <textarea name="message" rows="5" placeholder="Message" required></textarea>
+          <button class="btn-primary" type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM MEMBERS (added) -->
+  <section id="team" class="fade-in" style="background:#FFF5F6">
+    <div class="section-title container">
+      <h2>Our Team</h2>
+      <p class="muted">The dedicated people behind Shatakshi Seva Sansthan.</p>
+    </div>
+    <div class="container" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px">
+      <div class="team-card" style="background:#fff;padding:16px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.05);text-align:center">
+        <img src="assets/images/team1.jpg" alt="Team Member" style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:10px">
+        <h4 style="margin-bottom:6px;color:var(--primary-blue)">Naveen Ranjan Srivastava</h4>
+        <p class="muted">Founder & Director</p>
+      </div>
+      <div class="team-card" style="background:#fff;padding:16px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.05);text-align:center">
+        <img src="assets/images/team2.jpg" alt="Team Member" style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:10px">
+        <h4 style="margin-bottom:6px;color:var(--primary-blue)">Shipli Saxena</h4>
+        <p class="muted">Co-Founder & Trustee</p>
+      </div>
+      <div class="team-card" style="background:#fff;padding:16px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.05);text-align:center">
+        <img src="assets/images/team3.jpg" alt="Team Member" style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:10px">
+        <h4 style="margin-bottom:6px;color:var(--primary-blue)">Advisory Board</h4>
+        <p class="muted">Guidance & Governance</p>
+      </div>
+      <div class="team-card" style="background:#fff;padding:16px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.05);text-align:center">
+        <img src="assets/images/team4.jpg" alt="Team Member" style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:10px">
+        <h4 style="margin-bottom:6px;color:var(--primary-blue)">Volunteers</h4>
+        <p class="muted">Community Changemakers</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEGAL & TRUST (added) -->
+  <section id="trust" class="fade-in" style="background:#FFF9F7">
+    <div class="section-title container">
+      <h2>Legal & Trust</h2>
+      <p class="muted">Transparency and accountability — view our official documents.</p>
+    </div>
+    <div class="container" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px">
+      <div class="trust-card" style="background:#fff;padding:16px;border-radius:10px;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,0.05)">
+        <h4 style="margin-bottom:6px;color:var(--primary-blue)">Annual Reports</h4>
+        <a href="#">View</a>
+      </div>
+      <div class="trust-card" style="background:#fff;padding:16px;border-radius:10px;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,0.05)">
+        <h4 style="margin-bottom:6px;color:var(--primary-blue)">Financials</h4>
+        <a href="#">View</a>
+      </div>
+      <div class="trust-card" style="background:#fff;padding:16px;border-radius:10px;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,0.05)">
+        <h4 style="margin-bottom:6px;color:var(--primary-blue)">Certificates</h4>
+        <a href="#">View</a>
+      </div>
+      <div class="trust-card" style="background:#fff;padding:16px;border-radius:10px;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,0.05)">
+        <h4 style="margin-bottom:6px;color:var(--primary-blue)">Privacy Policy</h4>
+        <a href="#">View</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="foot-inner">
+      <div>© 2025 Shatakshi NGO. All rights reserved.</div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="#about">About</a>
+        <a href="#donate">Donate</a>
+        <a href="#contact">Contact</a>
+        <a href="#faq">FAQ</a>
+        <a href="#team">Team</a>
+        <a href="#trust">Legal & Trust</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ---------- Scripts: menu, fade-in, counters, faq ---------- -->
+  <script>
+    // Mobile menu toggle
+    const hamburger = document.getElementById('hamburger')
+    const mobileMenu = document.getElementById('mobileMenu')
+    function toggleMenu(){
+      const active = mobileMenu.classList.toggle('active')
+      mobileMenu.setAttribute('aria-hidden', !active)
+    }
+    hamburger && hamburger.addEventListener('click', toggleMenu)
+
+    // Fade-in on scroll
+    const faders = document.querySelectorAll('.fade-in')
+    const appearOptions = {threshold:0.15, rootMargin: '0px 0px -30px 0px'}
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if(!entry.isIntersecting) return
+        entry.target.classList.add('visible')
+        observer.unobserve(entry.target)
+      })
+    }, appearOptions)
+    faders.forEach(f => appearOnScroll.observe(f))
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(item=>{
+      item.addEventListener('click', ()=> {
+        const active = item.classList.toggle('active')
+        // close other items
+        document.querySelectorAll('.faq-item').forEach(el=>{
+          if(el!==item) el.classList.remove('active')
+        })
+      })
+    })
+
+    // Counter animation (runs when counter visible)
+    const counters = document.querySelectorAll('.counter')
+    const counterObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          const el = entry.target
+          const target = parseInt(el.getAttribute('data-target')||0,10)
+          const duration = 1200
+          let start = null
+          const step = (timestamp) => {
+            if(!start) start = timestamp
+            const progress = Math.min((timestamp - start)/duration, 1)
+            el.innerText = Math.floor(progress * target)
+            if(progress < 1) requestAnimationFrame(step)
+            else el.innerText = target
+          }
+          requestAnimationFrame(step)
+          obs.unobserve(el)
+        }
+      })
+    }, {threshold:0.6})
+    counters.forEach(c=>counterObserver.observe(c))
+
+    // smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const target = document.querySelector(a.getAttribute('href'))
+        if(target){
+          e.preventDefault()
+          target.scrollIntoView({behavior:'smooth', block:'start'})
+          if(mobileMenu.classList.contains('active')) toggleMenu()
+        }
+      })
+    })
+  </script>
+</body>
+</html>

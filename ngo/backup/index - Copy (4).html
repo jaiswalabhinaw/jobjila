@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shatakshi NGO</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-blue: #0056b3;
+      --accent-red: #E53935;
+      --dark-gray: #333;
+      --medium-gray: #666;
+      --white: #fff;
+
+      --light-blue: #E3F2FD;
+      --light-gray: #F5F5F5;
+      --soft-yellow: #FFF8E1;
+      --dark-blue-footer: #002E5D;
+      --light-blue-link: #66B2FF;
+      --overlay-dark: rgba(0,0,0,0.4);
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body {
+      font-family:"Open Sans",sans-serif;
+      color:var(--dark-gray);
+      line-height:1.6;
+      background:#fff;
+      scroll-behavior:smooth;
+    }
+    h1,h2,h3,h4 {
+      font-family:"Montserrat",sans-serif;
+      font-weight:700;
+      color:var(--primary-blue);
+      margin-bottom:1rem;
+      text-align:center;
+    }
+    p {text-align:center;max-width:800px;margin:0 auto 1rem;}
+
+    /* HEADER */
+    .header{position:sticky;top:0;background:#fff;display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;box-shadow:0 2px 6px rgba(0,0,0,0.1);z-index:1000;}
+    .logo{font-size:1.5rem;font-weight:700;color:var(--primary-blue);}
+    .nav-links{display:flex;gap:1rem;}
+    .nav-links a{text-decoration:none;color:var(--dark-gray);font-weight:500;}
+    .nav-links a:hover{color:var(--primary-blue);}
+    .btn-primary{background:var(--accent-red);color:#fff;padding:0.6rem 1.2rem;border-radius:6px;text-decoration:none;transition:all .3s;}
+    .btn-primary:hover{transform:scale(1.05);box-shadow:0 4px 12px rgba(0,0,0,0.2);}
+    .btn-secondary{background:#fff;color:var(--accent-red);border:2px solid var(--accent-red);padding:0.6rem 1.2rem;border-radius:6px;text-decoration:none;transition:all .3s;}
+    .btn-secondary:hover{background:var(--accent-red);color:#fff;}
+    .hamburger{display:none;font-size:2rem;cursor:pointer;}
+    .mobile-menu{position:fixed;top:0;right:-100%;width:100%;height:100%;background:var(--light-blue);display:flex;flex-direction:column;justify-content:center;align-items:center;transition:right 0.4s ease;z-index:2000;}
+    .mobile-menu.active{right:0;}
+    .mobile-menu a{margin:1rem 0;font-size:1.4rem;text-decoration:none;color:var(--dark-gray);}
+
+    /* HERO */
+    .hero{position:relative;background:url('images/hero.jpg') center/cover;height:85vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;}
+    .hero::after{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:var(--overlay-dark);}
+    .hero-content{position:relative;z-index:1;max-width:800px;padding:2rem;animation:fadeIn 1.5s ease;}
+    .hero h1{font-size:2.2rem;margin-bottom:1.5rem;}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+    /* SECTIONS */
+    .section{padding:4rem 2rem;position:relative;}
+    .light-blue{background:linear-gradient(135deg,#E3F2FD,#FFFFFF);}
+    .light-gray{background:var(--light-gray);}
+    .white{background:#fff;}
+    .soft-yellow{background:linear-gradient(135deg,#FFFDE7,#FFF8E1);}
+
+    /* GRID & CARDS */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;max-width:1000px;margin:auto;}
+    .card{background:#fff;padding:1rem;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.05);transition:0.3s;text-align:center;}
+    .card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 8px 20px rgba(0,0,0,0.15);}
+
+    /* STATS */
+    .stats{display:flex;gap:2rem;flex-wrap:wrap;justify-content:center;margin-top:2rem;}
+    .counter{font-size:2rem;color:var(--primary-blue);font-weight:700;}
+    .stat-icon{font-size:2rem;margin-bottom:.5rem;}
+
+    /* FAQ */
+    .faq-item{background:#fff;margin:0.5rem auto;padding:1rem;border-radius:6px;cursor:pointer;max-width:800px;transition:all .3s;}
+    .faq-question{font-weight:600;color:var(--primary-blue);}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height 0.4s ease;}
+    .faq-item.active .faq-answer{max-height:200px;margin-top:0.5rem;}
+
+    /* CONTACT */
+    form{display:flex;flex-direction:column;gap:1rem;max-width:400px;margin:auto;}
+    input,textarea{padding:0.7rem;border:1px solid #ccc;border-radius:6px;}
+    input:focus,textarea:focus{border-color:var(--primary-blue);outline:none;}
+
+    /* FOOTER */
+    .footer{background:var(--dark-blue-footer);color:#fff;padding:1.5rem 2rem;}
+    .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;max-width:900px;margin:auto;text-align:left;}
+    .footer h4{color:#fff;margin-bottom:0.8rem;font-size:1rem;}
+    .footer a{color:var(--light-blue-link);text-decoration:none;display:block;margin:0.3rem 0;font-size:0.9rem;}
+    .footer a:hover{color:#fff;text-decoration:underline;}
+    .footer p{font-size:0.9rem;line-height:1.5;}
+    .social-icons a{margin-right:0.6rem;font-size:1.2rem;display:inline-block;color:var(--light-blue-link);transition:0.3s;}
+    .social-icons a:hover{color:#fff;transform:scale(1.2);}
+    .footer-bottom{text-align:center;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.2);font-size:0.85rem;}
+
+    /* RESPONSIVE */
+    @media(max-width:992px){.nav-links{display:none;}.hamburger{display:block;}}
+    @media(max-width:600px){h1{font-size:1.6rem;}h2{font-size:1.3rem;}.mobile-menu a{font-size:1.2rem;}}
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo">Shatakshi NGO</div>
+    <nav class="nav-links">
+      <a href="#home">Home</a><a href="#about">About</a><a href="#team">Team</a>
+      <a href="#work">Our Work</a><a href="#impact">Impact</a><a href="#get-involved">Get Involved</a>
+      <a href="#donate" class="btn-primary">Donate</a><a href="#events">Events</a>
+      <a href="#resources">Resources</a><a href="#media">Media</a><a href="#shop">Shop</a>
+      <a href="#faq">FAQ</a><a href="#contact">Contact</a>
+    </nav>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#home" onclick="toggleMenu()">Home</a><a href="#about" onclick="toggleMenu()">About</a>
+      <a href="#team" onclick="toggleMenu()">Team</a><a href="#work" onclick="toggleMenu()">Our Work</a>
+      <a href="#impact" onclick="toggleMenu()">Impact</a><a href="#get-involved" onclick="toggleMenu()">Get Involved</a>
+      <a href="#donate" onclick="toggleMenu()" class="btn-primary">Donate</a><a href="#events" onclick="toggleMenu()">Events</a>
+      <a href="#resources" onclick="toggleMenu()">Resources</a><a href="#media" onclick="toggleMenu()">Media</a>
+      <a href="#shop" onclick="toggleMenu()">Shop</a><a href="#faq" onclick="toggleMenu()">FAQ</a>
+      <a href="#contact" onclick="toggleMenu()">Contact</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Empowering Lives Through Education, Health & Dignity</h1>
+      <a href="#donate" class="btn-primary">Donate Now</a>
+      <a href="#get-involved" class="btn-secondary">Join Us</a>
+    </div>
+  </section>
+
+  <!-- ABOUT US -->
+  <section id="about" class="section white">
+    <h2>About Us</h2>
+    <p>Founded in 2011 in Gopalganj, Bihar, Shatakshi Trust is committed to dignity and sustainable development.</p>
+    <div class="grid">
+      <div class="card"><h3>Mission & Vision</h3><p>To bring smiles to the last person in society through education, health, and service.</p></div>
+      <div class="card"><h3>Our Story</h3><p>Born out of pain, our journey began with a promise to serve humanity.</p></div>
+      <div class="card"><h3>Partners</h3><p>Supported by communities, volunteers, and institutions.</p></div>
+      <div class="card"><h3>Advisory Board</h3><p>Guided by trustees with deep social sector expertise.</p></div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team" class="section light-gray">
+    <h2>Our Team</h2>
+    <div class="grid">
+      <div class="card"><h3>Leadership</h3><p>Visionary leaders guiding the mission.</p></div>
+      <div class="card"><h3>Staff</h3><p>Dedicated professionals executing projects.</p></div>
+      <div class="card"><h3>Volunteers</h3><p>Passionate individuals serving selflessly.</p></div>
+      <div class="card"><h3>Advisors</h3><p>Mentors and experts shaping impact.</p></div>
+    </div>
+  </section>
+
+  <!-- OUR WORK -->
+  <section id="work" class="section white">
+    <h2>Our Work</h2>
+    <div class="grid">
+      <div class="card"><h3>Focus Areas</h3><p>Education, Health, Women Empowerment, Environment.</p></div>
+      <div class="card"><h3>Ongoing Projects</h3><p>From Weapons to Pens, Annapurna Kitchen.</p></div>
+      <div class="card"><h3>Completed Projects</h3><p>900+ dignified funerals via Antim Vidai.</p></div>
+      <div class="card"><h3>Future Initiatives</h3><p>Expanding digital literacy & rural health.</p></div>
+    </div>
+  </section>
+
+  <!-- IMPACT -->
+  <section id="impact" class="section light-blue">
+    <h2>Our Impact</h2>
+    <div class="stats">
+      <div><div class="stat-icon">⚰️</div><span class="counter" data-target="900">0</span><p>Dignified Funerals</p></div>
+      <div><div class="stat-icon">📚</div><span class="counter" data-target="800">0</span><p>Children Educated</p></div>
+      <div><div class="stat-icon">🍲</div><span class="counter" data-target="42">0</span><p>Daily Meals</p></div>
+    </div>
+  </section>
+
+  <!-- GET INVOLVED -->
+  <section id="get-involved" class="section white">
+    <h2>Get Involved</h2>
+    <div class="grid">
+      <div class="card"><h3>Volunteer</h3><p>Join hands to create change.</p></div>
+      <div class="card"><h3>Careers</h3><p>Work with us in professional roles.</p></div>
+      <div class="card"><h3>Membership</h3><p>Be part of our growing family.</p></div>
+      <div class="card"><h3>Fundraise</h3><p>Start a campaign in your community.</p></div>
+    </div>
+  </section>
+
+  <!-- DONATE -->
+  <section id="donate" class="section soft-yellow">
+    <h2>Donate</h2>
+    <p>Your contributions fuel education, health, and dignity.</p>
+    <div class="donate-options grid">
+      <div class="card">One-Time / Monthly Giving</div>
+      <div class="card">Gift a Cause</div>
+      <div class="card">Corporate & CSR Support</div>
+      <div class="card">Donor Dashboard</div>
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <section id="events" class="section light-gray">
+    <h2>Events & Campaigns</h2>
+    <div class="grid">
+      <div class="card">Upcoming Events</div>
+      <div class="card">Past Events</div>
+      <div class="card">Global Campaigns</div>
+      <div class="card">Advocacy & Petitions</div>
+    </div>
+  </section>
+
+  <!-- RESOURCES -->
+  <section id="resources" class="section white">
+    <h2>Resources</h2>
+    <div class="grid">
+      <div class="card">Research & Publications</div>
+      <div class="card">Toolkits / eBooks</div>
+      <div class="card">Blog & Articles</div>
+      <div class="card">Podcasts & Webinars</div>
+    </div>
+  </section>
+
+  <!-- MEDIA -->
+  <section id="media" class="section light-blue">
+    <h2>Media & Recognition</h2>
+    <div class="grid">
+      <div class="card">Press Releases</div>
+      <div class="card">Media Coverage</div>
+      <div class="card">Awards & Achievements</div>
+      <div class="card">Global Collaborations</div>
+    </div>
+  </section>
+
+  <!-- SHOP -->
+  <section id="shop" class="section white">
+    <h2>Shop</h2>
+    <div class="grid">
+      <div class="card">T-Shirts</div>
+      <div class="card">Eco Bags</div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section light-gray">
+    <h2>FAQ</h2>
+    <div class="faq-item"><div class="faq-question">General Questions</div><div class="faq-answer">We work in education, health, empowerment, and environment.</div></div>
+    <div class="faq-item"><div class="faq-question">Donation Queries</div><div class="faq-answer">Donations are tax exempt under 80G/12A.</div></div>
+    <div class="faq-item"><div class="faq-question">Volunteering</div><div class="faq-answer">Sign up online or visit our office.</div></div>
+    <div class="faq-item"><div class="faq-question">Legal & Tax</div><div class="faq-answer">We are registered under Trust Act XXI of 1872.</div></div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section white">
+    <h2>Contact Us</h2>
+    <p>📍 Gopalganj, Bihar-841428<br>📞 9911172230<br>📧 info@shatakshi.org</p>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Message" required></textarea>
+      <button type="submit" class="btn-primary">Send</button>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <h4>Trust & Legal</h4>
+        <a href="#">Annual Reports</a>
+        <a href="#">Financial Statements</a>
+        <a href="#">Certificates (80G/12A/FCRA)</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Accessibility Options</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>📍 Gopalganj, Bihar-841428<br>📞 9911172230<br>📧 info@shatakshi.org</p>
+        <div class="social-icons">
+          <a href="#">🌐</a>
+          <a href="#">📘</a>
+          <a href="#">🐦</a>
+          <a href="#">📸</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 Shatakshi NGO. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    function toggleMenu(){document.getElementById("mobileMenu").classList.toggle("active");}
+    document.addEventListener("DOMContentLoaded", () => {
+      const counters=document.querySelectorAll(".counter");const speed=200;
+      const startCount=(el)=>{const target=+el.getAttribute("data-target");const update=()=>{const current=+el.innerText;const increment=Math.ceil(target/speed);if(current<target){el.innerText=current+increment;setTimeout(update,20);}else{el.innerText=target;}};update();};
+      const observer=new IntersectionObserver((entries,obs)=>{entries.forEach(entry=>{if(entry.isIntersecting){startCount(entry.target);obs.unobserve(entry.target);}});},{threshold:0.5});
+      counters.forEach(c=>observer.observe(c));
+    });
+    document.querySelectorAll(".faq-question").forEach(q=>{q.addEventListener("click",()=>{q.parentElement.classList.toggle("active");});});
+  </script>
+</body>
+</html>
