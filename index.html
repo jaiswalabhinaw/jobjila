@@ -3,99 +3,162 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Jobjila — Collaborate • Train • Build</title>
+<title>Jobjila — Collaborate • Train • Build (V2 Mock)</title>
+
+<!-- Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
 <style>
   :root{
-    --bg: #f6f8fb;
-    --card: #ffffff;
-    --muted: #6b7280;
-    --brand: #0b5ed7;
-    --accent: #ff7a37;
-    --accent-2: #00a86b;
-    --shadow: 0 6px 20px rgba(15,23,42,0.06);
-    --radius: 12px;
-    --max-width: 1100px;
+    --bg:#f6f9fb; --card:#fff; --muted:#6b7280; --brand:#0b5ed7; --accent:#ff7a37; --accent-2:#00a86b;
+    --glass: rgba(255,255,255,0.85);
+    --shadow: 0 8px 30px rgba(15,23,42,0.06);
+    --radius:12px; --max:1200px;
   }
   *{box-sizing:border-box}
-  body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:#0f172a;}
-  .wrap{max-width:var(--max-width);margin:auto;padding:0 20px;}
-  h1,h2,h3{margin:0 0 12px}
-  .btn{padding:10px 16px;border-radius:10px;font-weight:600;border:0;cursor:pointer}
-  .btn-join{background:var(--brand);color:#fff}
-  .btn-post{background:var(--accent);color:#fff}
-  .btn-training{background:var(--accent-2);color:#fff}
-  .btn-login{background:#fff;border:1px solid #ddd}
+  body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:linear-gradient(180deg,#f6f9fb 0%, #eef4fb 100%);color:#0f172a}
+  .wrap{max-width:var(--max);margin:18px auto;padding:0 18px}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{margin:0 0 10px}
+  p{margin:0 0 12px;color:var(--muted)}
+
   /* Header */
-  header{position:sticky;top:0;background:#fff;z-index:100;box-shadow:0 2px 5px rgba(0,0,0,0.05)}
-  .header-top{display:flex;justify-content:space-between;align-items:center;padding:10px 20px}
-  .logo{font-weight:700;font-size:20px;color:var(--brand)}
-  .top-actions{display:flex;gap:10px;align-items:center}
-  .nav-line{border-top:1px solid #eee;padding:10px 20px}
-  nav{display:flex;gap:20px;justify-content:center}
-  nav a{text-decoration:none;color:#0f172a;font-weight:600}
-  .hamburger{display:none;background:none;border:0;font-size:22px}
-  /* Hero */
-  .hero{display:grid;grid-template-columns:1fr 400px;gap:20px;align-items:center;padding:30px 0}
-  .hero h1{font-size:38px}
-  .hero p{color:var(--muted)}
-  .hero-ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:15px}
-  .hero-img{background:#fff;border-radius:12px;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center}
-  /* Stats */
-  .stats{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0;background:#fff;padding:12px;border-radius:12px;box-shadow:var(--shadow)}
-  .stat{flex:1;min-width:120px;text-align:center}
-  .ticker{width:100%;text-align:center;color:var(--muted);margin-top:5px}
-  /* Snapshot + Community Wall */
-  .snapshot{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .card{background:#fff;padding:16px;border-radius:12px;box-shadow:var(--shadow)}
-  .community-wall{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-  .avatar{width:50px;height:50px;border-radius:50%;background:#eaf2ff;display:flex;align-items:center;justify-content:center;font-weight:700}
-  /* How it works */
-  .steps{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0}
-  .step{flex:1;min-width:180px;background:#fff;padding:16px;border-radius:12px;text-align:center;box-shadow:var(--shadow)}
-  .num{width:40px;height:40px;border-radius:50%;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;margin:auto;margin-bottom:8px;font-weight:700}
-  .extra-training{text-align:center;margin-top:10px}
-  /* Services */
-  .services{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0}
-  .service{flex:1;min-width:200px;background:#fff;padding:16px;border-radius:12px;box-shadow:var(--shadow);text-align:center}
-  /* Why Join */
-  .bullets{list-style:none;padding:0}
-  .bullets li{margin:8px 0;color:var(--muted)}
-  /* Testimonials */
-  .testimonials{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .testimonial{background:#fff;padding:16px;border-radius:12px;box-shadow:var(--shadow)}
+  header{position:sticky;top:0;background:rgba(255,255,255,0.98);backdrop-filter:blur(6px);z-index:60;border-bottom:1px solid #eef2f7}
+  .header-inner{max-width:var(--max);margin:auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .logo{font-weight:800;color:var(--brand);font-size:20px}
+  .nav{display:flex;gap:18px;align-items:center}
+  .nav a{font-weight:600;color:#0f172a;opacity:0.9;display:flex;gap:8px;align-items:center}
+  .top-actions{display:flex;gap:8px;align-items:center}
+  .btn{padding:8px 12px;border-radius:10px;border:0;cursor:pointer;display:inline-flex;gap:8px;align-items:center;font-weight:700}
+  .btn-join{background:var(--brand);color:#fff}
+  .btn-ghost{background:#fff;border:1px solid #e6eefc}
+  .hamburger{display:none}
+
+  /* hero */
+  .hero{display:grid;grid-template-columns:1fr;gap:18px;padding:28px 0;align-items:center}
+  .hero-card{background:linear-gradient(180deg,#fff 0%, #fbfdff 100%);box-shadow:var(--shadow);border-radius:16px;padding:22px;display:flex;gap:18px;align-items:center}
+  .hero-left{flex:1}
+  .roles{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+  .role-btn{padding:10px 14px;border-radius:10px;border:1px solid #eef2f7;background:#fff;font-weight:700;cursor:pointer;display:inline-flex;gap:8px;align-items:center}
+  .hero-visual{width:360px;min-height:200px;border-radius:12px;background:linear-gradient(135deg,#eaf4ff,#fff7f0);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(11,94,215,0.06)}
+  .hero-line{margin-top:8px;color:var(--muted);font-size:14px}
+
+  /* showcase grid */
+  .pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:18px 0}
+  .pillar{background:var(--card);padding:16px;border-radius:12px;box-shadow:var(--shadow);display:flex;gap:12px;align-items:center}
+
+  /* cards / secondary highlights */
+  .cards-row{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:12px}
+  .card{background:var(--card);padding:14px;border-radius:12px;box-shadow:var(--shadow)}
+
+  /* case studies */
+  .studies-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .study{background:#fff;padding:12px;border-radius:10px;border:1px solid #f2f6fb}
+  .study .meta{color:var(--muted);font-size:13px;margin-top:8px}
+
+  /* testimonials */
+  .testi{display:flex;gap:12px;align-items:center}
+  .company-logos{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .logo-box{background:#f8fafc;padding:8px;border-radius:8px;border:1px solid #f1f5f9}
+
+  /* freelancer portfolio challenge */
+  .portfolio-challenge{display:grid;grid-template-columns:2fr 1fr;gap:12px;align-items:start}
+  .portfolio-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .pf-card{background:#fff;padding:10px;border-radius:10px;border:1px solid #f3f7fb}
+  .pf-meta{color:var(--muted);font-size:13px;margin-top:8px}
+
+  /* engagement boost */
+  .engagement-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+
+  /* trainer fomo */
+  .fomo{background:linear-gradient(90deg,#fff0ed,#fff8f0);padding:16px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;border:1px solid #ffe6d9}
+  .fomo-left{max-width:65%}
+  .slot-bar{background:#fff;border-radius:999px;padding:6px;border:1px solid #ffe9dd;display:flex;gap:8px;align-items:center;width:260px}
+  .countdown{font-weight:800;color:#b33}
+
+  /* live feed ticker */
+  .ticker{background:#fff;padding:10px;border-radius:12px;border:1px solid #eef5ff;overflow:hidden;position:relative}
+  .ticker-track{display:inline-block;white-space:nowrap;animation:ticker 18s linear infinite}
+  @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+  /* client trust */
+  .trust{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:center}
+  .trust-grid{display:flex;gap:10px;flex-wrap:wrap}
+  .trust-icon{width:48px;height:48px;border-radius:10px;background:#fff;display:inline-flex;align-items:center;justify-content:center;box-shadow:var(--shadow)}
+
+  /* demand / client stats */
+  .stats{display:flex;gap:12px;flex-wrap:wrap}
+  .stat{background:#fff;padding:10px;border-radius:10px;min-width:120px;text-align:center;box-shadow:var(--shadow)}
+
+  /* career growth / knowledge hub */
+  .cols-3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .kb-card{background:#fff;padding:12px;border-radius:10px;box-shadow:var(--shadow)}
+
+  /* gamified engagement */
+  .xp-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  .xp-bar{background:#eef6ff;border-radius:12px;padding:8px;width:260px;position:relative}
+  .xp-fill{height:12px;border-radius:8px;background:linear-gradient(90deg,var(--brand),var(--accent));width:40%}
+  .leader{background:#fff;padding:8px;border-radius:8px;box-shadow:var(--shadow);min-width:160px}
+
+  /* retention & monetization etc */
+  .small-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+  .mini{background:#fff;padding:10px;border-radius:10px;box-shadow:var(--shadow)}
+
   /* CTA strip */
-  .cta-strip{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;background:var(--brand);color:#fff;padding:16px;border-radius:12px;margin:20px 0}
-  .cta-strip .actions{display:flex;gap:10px;flex-wrap:wrap}
-  /* Footer */
-  footer{background:#fff;padding:20px;border-radius:12px;box-shadow:var(--shadow);margin-bottom:40px}
-  .footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-  footer a{text-decoration:none;color:var(--brand)}
-  /* Responsive */
-  @media(max-width:900px){
+  .cta-strip{background:linear-gradient(90deg,var(--brand),#2b9df5);color:#fff;padding:14px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+
+  /* footer */
+  footer{margin-top:18px;padding:20px 0;color:var(--muted)}
+  .footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+
+  /* responsive */
+  @media(min-width:980px){
     .hero{grid-template-columns:1fr}
-    .footer-grid{grid-template-columns:1fr 1fr}
+    .hero-card{flex-direction:row}
   }
-  @media(max-width:700px){
-    .nav-line nav{display:none;flex-direction:column;align-items:center}
+  @media(max-width:980px){
+    .pillars{grid-template-columns:1fr}
+    .cards-row{grid-template-columns:1fr}
+    .studies-grid{grid-template-columns:repeat(2,1fr)}
+    .portfolio-challenge{grid-template-columns:1fr;gap:10px}
+    .engagement-grid{grid-template-columns:1fr}
+    .trust{grid-template-columns:1fr}
+    .cols-3{grid-template-columns:1fr}
+    .studies-grid .study{font-size:14px}
     .hamburger{display:block}
-    .hero h1{font-size:28px}
-    .testimonials{grid-template-columns:1fr}
+    .nav{display:none}
   }
+  @media(max-width:560px){
+    .studies-grid{grid-template-columns:1fr}
+    .pf-card{font-size:14px}
+    .hero-visual{width:220px;height:160px}
+    .hero-left h1{font-size:20px}
+  }
+
+  /* micro */
+  .muted{color:var(--muted)}
+  .badge{display:inline-block;background:#fff;padding:6px 8px;border-radius:999px;border:1px solid #eef3ff;font-weight:700}
+  .small{font-size:13px;color:var(--muted)}
+  .avatar{width:44px;height:44px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:#eaf4ff;font-weight:700;box-shadow:0 6px 18px rgba(11,94,215,0.06)}
+  .pill{padding:6px 8px;border-radius:8px;background:#fff;border:1px solid #eef4ff;font-weight:700}
+
+  /* tooltip */
+  .tooltip{position:relative}
+  .tooltip .tip{position:absolute;bottom:56px;left:50%;transform:translateX(-50%);background:#0f172a;color:#fff;padding:6px 8px;border-radius:8px;font-size:13px;white-space:nowrap;opacity:0;visibility:hidden;transition:0.18s}
+  .tooltip:hover .tip{opacity:1;visibility:visible}
 </style>
 </head>
 <body>
+<!-- HEADER -->
 <header>
-  <div class="header-top">
-    <div class="logo">Jobjila</div>
-    <div class="top-actions">
-      <button class="btn btn-join">Join Now</button>
-      <button class="btn btn-post">Post Project</button>
-      <button class="btn btn-login">Login</button>
-      <button class="hamburger" onclick="toggleNav()">☰</button>
+  <div class="header-inner">
+    <div style="display:flex;gap:12px;align-items:center">
+      <div class="logo">Jobjila</div>
+      <div class="small muted">Collaborate • Train • Build</div>
     </div>
-  </div>
-  <div class="nav-line">
-    <nav id="mainNav">
+
+    <nav class="nav" aria-label="main navigation">
       <a href="#">Home</a>
       <a href="#">Trainers</a>
       <a href="#">Freelancers</a>
@@ -103,155 +166,495 @@
       <a href="#">Projects</a>
       <a href="#">Contact</a>
     </nav>
+
+    <div class="top-actions">
+      <div class="pill small">XP ⭐ <b id="header-xp">2400</b> | Lv <b id="header-lv">5</b></div>
+      <button class="btn btn-ghost" onclick="alert('Post Project demo')"><i data-lucide="file-plus"></i> Post Project</button>
+      <button class="btn btn-join" onclick="alert('Join demo')"><i data-lucide="user-plus"></i> Join</button>
+      <button class="hamburger btn btn-ghost" onclick="document.querySelector('.nav').style.display = document.querySelector('.nav').style.display==='flex'?'none':'flex'">☰</button>
+    </div>
   </div>
 </header>
 
 <main class="wrap">
-  <!-- Hero -->
+
+  <!-- HERO -->
   <section class="hero">
-    <div>
-      <h1>Work Together. Learn Together. Grow Together.</h1>
-      <p>A hub for trainers, freelancers & clients to collaborate.</p>
-      <div class="hero-ctas">
-        <button class="btn btn-join">Join as Trainer</button>
-        <button class="btn btn-join">Join as Freelancer</button>
-        <button class="btn btn-post">Post a Project</button>
+    <div class="hero-card">
+      <div class="hero-left">
+        <h1 style="font-size:26px">Training. Freelancing. Collaboration — All in one place.</h1>
+        <p class="hero-line">Jobjila connects verified trainers, skilled freelancers and clients to deliver real projects and career growth.</p>
+
+        <div class="roles" aria-hidden>
+          <button class="role-btn" onclick="onRole('trainer')"><i data-lucide="graduation-cap"></i> I'm a Trainer</button>
+          <button class="role-btn" onclick="onRole('freelancer')"><i data-lucide="laptop"></i> I'm a Freelancer</button>
+          <button class="role-btn" onclick="onRole('client')"><i data-lucide="briefcase"></i> I'm a Client</button>
+          <button class="role-btn" onclick="trySmartMatch()"><i data-lucide="search"></i> Smart Match (2 min)</button>
+        </div>
+
+        <div style="margin-top:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+          <div class="badge">Verified Trainers</div>
+          <div class="badge">Priority Projects</div>
+          <div class="badge">Secure Payments</div>
+        </div>
+
+      </div>
+
+      <div class="hero-visual" aria-hidden>
+        <!-- Simple collaborative illustration -->
+        <svg width="260" height="160" viewBox="0 0 260 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="260" height="160" rx="12" fill="url(#g)"/>
+          <defs>
+            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#eaf4ff"/>
+              <stop offset="1" stop-color="#fff7f0"/>
+            </linearGradient>
+          </defs>
+          <g transform="translate(18,18)">
+            <circle cx="40" cy="48" r="20" fill="#0b5ed7" />
+            <circle cx="120" cy="28" r="26" fill="#ff7a37" />
+            <circle cx="200" cy="60" r="20" fill="#00a86b" />
+            <rect x="20" y="110" width="220" height="18" rx="8" fill="#fff"/>
+          </g>
+        </svg>
       </div>
     </div>
-    <div class="hero-img">[Illustration]</div>
   </section>
 
-  <!-- Stats -->
-  <section class="stats">
-    <div class="stat">👥 <b>5000+</b><br>Members</div>
-    <div class="stat">🎓 <b>1200</b><br>Trainers</div>
-    <div class="stat">💻 <b>2800</b><br>Freelancers</div>
-    <div class="stat">🤝 <b>450</b><br>Clients</div>
-    <div class="ticker" id="ticker">Live: 73 Members Online Now</div>
+  <!-- CORE BUSINESS SHOWCASE -->
+  <section style="margin-top:12px">
+    <div class="pillars">
+      <div class="pillar"><i data-lucide="book-open"></i><div style="margin-left:8px"><strong>Training Programs</strong><div class="small muted">IT, Cloud, Marketing</div></div></div>
+      <div class="pillar"><i data-lucide="users"></i><div style="margin-left:8px"><strong>Freelancers for Hire</strong><div class="small muted">Web Dev, SEO, Design</div></div></div>
+      <div class="pillar"><i data-lucide="megaphone"></i><div style="margin-left:8px"><strong>Digital Marketing</strong><div class="small muted">SEO, Ads, Growth</div></div></div>
+      <div class="pillar"><i data-lucide="globe"></i><div style="margin-left:8px"><strong>Web Development</strong><div class="small muted">Sites, Apps, E-commerce</div></div></div>
+    </div>
   </section>
 
-  <!-- Snapshot + Community -->
-  <section class="snapshot">
+  <!-- FEATURED CASE STUDIES (secondary highlight) -->
+  <section style="margin-top:12px" aria-labelledby="cs-title">
+    <div class="cards-row">
+      <div class="card">
+        <h3 id="cs-title">Featured Case Studies</h3>
+        <div class="studies-grid" id="studiesGrid">
+          <div class="study"><strong>SEO Masterclass — Startup X</strong><div class="muted study-meta">300% traffic increase in 6 months</div></div>
+          <div class="study"><strong>Cloud Training — FinTech Co.</strong><div class="muted study-meta">200+ learners certified</div></div>
+          <div class="study"><strong>Branding & Web — Boutique</strong><div class="muted study-meta">50+ sites delivered</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Testimonials & Trust</h3>
+        <div class="testi" style="margin-top:10px">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div><strong>"Collaboration doubled my income."</strong><div class="small muted">— Anita (Trainer)</div></div>
+            <div><strong>"We scaled faster with Jobjila."</strong><div class="small muted">— Startup X</div></div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px">
+          <div class="company-logos">
+            <div class="logo-box">Logo A</div><div class="logo-box">Logo B</div><div class="logo-box">Logo C</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FREELANCER CONTRIBUTION GAMIFICATION (secondary) -->
+  <section style="margin-top:12px">
     <div class="card">
-      <h3>Collaboration Snapshot</h3>
-      <p><b>Trainers Available:</b> IT, Marketing, Cloud</p>
-      <p><b>Freelancers:</b> Web Dev, SEO, Design</p>
-      <p><b>Clients:</b> Post projects, hire teams</p>
-    </div>
-    <div class="card">
-      <h3>Community Wall</h3>
-      <div class="community-wall" id="communityWall"></div>
-      <p>120 people collaborated this week</p>
-    </div>
-  </section>
-
-  <!-- How it works -->
-  <section>
-    <h2>How Collaboration Works</h2>
-    <div class="steps">
-      <div class="step"><div class="num">1</div>Post Training/Project</div>
-      <div class="step"><div class="num">2</div>Collaborate with Freelancers & Trainers</div>
-      <div class="step"><div class="num">3</div>Deliver & Grow Together</div>
-    </div>
-    <div class="extra-training">
-      👉 Have a Training Requirement?  
-      <button class="btn btn-training">Post Training Requirement</button>
+      <h3>Freelancer Contribution Challenge</h3>
+      <p class="muted">Post real projects & case studies to earn XP, badges and get featured.</p>
+      <div style="display:flex;gap:12px;align-items:center;margin-top:10px;flex-wrap:wrap">
+        <div class="pill">1st Case Study → +100 XP</div>
+        <div class="pill">3 Case Studies → 🥈 Silver</div>
+        <div class="pill">5 Case Studies → 🥇 Gold</div>
+        <button class="btn btn-join" onclick="postCaseStudyDemo()"><i data-lucide="plus-circle"></i> Post a Case Study</button>
+      </div>
     </div>
   </section>
 
-  <!-- Services -->
-  <section>
-    <h2>Our Services</h2>
-    <div class="services">
-      <div class="service">💻 Web Development<br><button class="btn btn-join">Apply Now</button></div>
-      <div class="service">📢 SEO & Marketing<br><button class="btn btn-join">Apply Now</button></div>
-      <div class="service">🎓 Training Programs<br><button class="btn btn-join">Apply Now</button></div>
+  <!-- FREELANCER PORTFOLIO CHALLENGE (main focus) -->
+  <section style="margin-top:14px">
+    <div class="portfolio-challenge">
+      <div style="background:linear-gradient(180deg,#fff,#fbfdff);padding:14px;border-radius:12px;box-shadow:var(--shadow)">
+        <h3>Portfolio Challenge — Build trust & get discovered</h3>
+        <p class="muted">Update your project pages. Each update = +100 XP. Top contributors are shown to clients.</p>
+
+        <div style="display:flex;gap:10px;align-items:center;margin-top:10px;flex-wrap:wrap">
+          <div class="pill">Each update → +100 XP</div>
+          <div class="pill">3 updates → 🥈 Silver</div>
+          <div class="pill">5 updates → 🥇 Gold</div>
+          <button class="btn btn-ghost" onclick="bulkAddPortfolio(1)">Quick Add Demo Update</button>
+        </div>
+
+        <div style="margin-top:12px">
+          <div class="muted small">Client view filters:</div>
+          <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+            <div class="pill">SEO</div><div class="pill">Web Dev</div><div class="pill">Training</div><div class="pill">UI/UX</div>
+          </div>
+        </div>
+      </div>
+
+      <aside style="display:flex;flex-direction:column;gap:8px">
+        <div style="background:#fff;padding:12px;border-radius:12px;box-shadow:var(--shadow)">
+          <strong>Top Contributors</strong>
+          <div style="display:flex;gap:8px;align-items:center;margin-top:8px;flex-wrap:wrap">
+            <div class="avatar tooltip">A <div class="tip">Anita — Gold Contributor</div></div>
+            <div class="avatar tooltip">R <div class="tip">Rahul — Silver Contributor</div></div>
+            <div class="avatar tooltip">P <div class="tip">Priya — Active</div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <strong>Monthly Challenge</strong>
+          <div class="muted small">Post 5 projects to earn Bonus XP & homepage feature</div>
+          <div style="margin-top:8px"><button class="btn btn-join" onclick="alert('Join challenge')">Join Challenge</button></div>
+        </div>
+      </aside>
     </div>
   </section>
 
-  <!-- Why Join -->
-  <section class="card">
-    <h2>Why Join Jobjila?</h2>
-    <ul class="bullets">
-      <li>✔ Verified Trainers & Freelancers</li>
-      <li>✔ Real-Time Community & Collaboration</li>
-      <li>✔ Affordable & Scalable Solutions</li>
-      <li>✔ Growth-Focused Network</li>
-    </ul>
-  </section>
-
-  <!-- Testimonials -->
-  <section>
-    <h2>Testimonials</h2>
-    <div class="testimonials">
-      <div class="testimonial">"I found my dream project through Jobjila’s network." — Ravi (Freelancer)</div>
-      <div class="testimonial">"Collaboration here helped me double my freelance income." — Anita (Trainer)</div>
+  <!-- FREELANCER ENGAGEMENT BOOST (strong secondary) -->
+  <section style="margin-top:14px">
+    <h3>Freelancer Engagement</h3>
+    <div class="engagement-grid">
+      <div class="card">
+        <strong>Recognition</strong>
+        <div class="small muted">Freelancer of the Month, Showcase Wall</div>
+      </div>
+      <div class="card">
+        <strong>Growth</strong>
+        <div class="small muted">Skill Challenges, Masterclasses</div>
+      </div>
+      <div class="card">
+        <strong>Earnings</strong>
+        <div class="small muted">Referral Bonus, Premium Projects & Store</div>
+      </div>
     </div>
   </section>
 
-  <!-- CTA Strip -->
-  <section class="cta-strip">
-    <div>
-      🚀 Join 5000+ Trainers & Freelancers Today  
-      <div id="countdown">Batch Closing Soon</div>
-    </div>
-    <div class="actions">
-      <button class="btn btn-join">Join Now</button>
-      <button class="btn btn-post">Post Project</button>
-      <button class="btn btn-training">Post Training Requirement</button>
+  <!-- TRAINER FOMO (main focus) -->
+  <section style="margin-top:14px">
+    <div class="fomo">
+      <div class="fomo-left">
+        <h3>🔥 October Trainer Challenge — Founding Trainers</h3>
+        <p class="muted">Register now to secure a Founding Trainer badge and priority invites to premium projects.</p>
+        <div style="margin-top:12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+          <div class="slot-bar"><div style="width:60%;height:14px;background:linear-gradient(90deg,#ffd2b0,#ff7a37);border-radius:999px"></div><div class="small muted" style="margin-left:8px">72/100 slots filled</div></div>
+          <div class="countdown" id="trainer-countdown">Loading...</div>
+        </div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-weight:800;color:#d14; font-size:18px">Founding Trainer</div>
+        <div style="margin-top:8px">
+          <button class="btn btn-join" onclick="registerTrainerDemo()">Register as Trainer</button>
+        </div>
+      </div>
     </div>
   </section>
+
+  <!-- Live Community Feed (secondary) -->
+  <section style="margin-top:12px">
+    <div class="ticker card">
+      <div class="ticker-track" id="tickerTrack">
+        🔴 Anita completed Cloud Training • Rahul posted a Web Dev Project • Priya joined SEO Masterclass • Rajesh completed 5 Mock Interviews • Nisha got featured •
+        🔴 Anita completed Cloud Training • Rahul posted a Web Dev Project • Priya joined SEO Masterclass • Rajesh completed 5 Mock Interviews • Nisha got featured •
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENT TRUST & SAFETY (main focus) -->
+  <section style="margin-top:12px">
+    <div class="trust card">
+      <div>
+        <h3>Client Trust & Safety</h3>
+        <p class="muted">Verified profiles, escrow payments, on-time delivery guarantee and transparent reviews — everything to hire with confidence.</p>
+
+        <div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap">
+          <div class="trust-icon"><i data-lucide="shield-check"></i></div>
+          <div class="trust-icon"><i data-lucide="credit-card"></i></div>
+          <div class="trust-icon"><i data-lucide="clock"></i></div>
+          <div class="trust-icon"><i data-lucide="star"></i></div>
+        </div>
+
+        <div style="margin-top:12px">
+          <button class="btn btn-join" onclick="postProjectDemo()">Post Your Project with Confidence</button>
+        </div>
+      </div>
+
+      <div style="padding-left:12px">
+        <div style="background:#fff;padding:12px;border-radius:12px;box-shadow:var(--shadow)">
+          <strong>Why clients choose Jobjila</strong>
+          <ul class="small muted" style="margin-top:8px">
+            <li>Pre-vetted talent pools</li>
+            <li>Escrow & milestone tracking</li>
+            <li>Dedicated client support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMAND-SIDE FOCUS -->
+  <section style="margin-top:12px">
+    <div class="cards-row">
+      <div class="card">
+        <h3>Open Demand</h3>
+        <div class="stats" style="margin-top:8px">
+          <div class="stat"><strong>32</strong><div class="small muted">SEO Trainer Requests</div></div>
+          <div class="stat"><strong>18</strong><div class="small muted">Active Web Dev Projects</div></div>
+          <div class="stat"><strong>10</strong><div class="small muted">Interview Sessions</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Client Hook</h3>
+        <p class="muted">Hire in 24 hours — our smart matching suggests top 3 experts for your brief.</p>
+        <button class="btn btn-ghost" onclick="trySmartMatch()">Try Smart Match</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAREER GROWTH -->
+  <section style="margin-top:12px">
+    <h3>Career Growth</h3>
+    <div class="cols-3" style="margin-top:8px">
+      <div class="kb-card"><strong>Certifications</strong><div class="small muted">Verified skill badges for trainers & freelancers</div></div>
+      <div class="kb-card"><strong>Rankings</strong><div class="small muted">Leaderboards & category rankings</div></div>
+      <div class="kb-card"><strong>Portfolio Pages</strong><div class="small muted">Public pages to showcase work</div></div>
+    </div>
+  </section>
+
+  <!-- KNOWLEDGE HUB -->
+  <section style="margin-top:12px">
+    <h3>Knowledge Hub</h3>
+    <div class="small muted">Blogs, webinars, podcasts & member spotlights</div>
+    <div class="small-grid">
+      <div class="mini">Blog: SEO Trends</div>
+      <div class="mini">Webinar: Cloud Hands-on</div>
+      <div class="mini">Podcast: Freelance Growth</div>
+    </div>
+  </section>
+
+  <!-- GAMIFIED ENGAGEMENT -->
+  <section style="margin-top:12px">
+    <h3>Gamified Engagement</h3>
+    <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+      <div class="xp-bar card" aria-hidden>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div><strong>Your XP</strong><div class="small muted">Level 5 — 2400 XP</div></div>
+          <div class="small muted">Next: 3000</div>
+        </div>
+        <div style="height:12px;margin-top:8px;background:#eef6ff;border-radius:10px;overflow:hidden">
+          <div class="xp-fill" id="xpFill"></div>
+        </div>
+      </div>
+
+      <div class="leader card">
+        <strong>Leaderboard (Weekly)</strong>
+        <ol style="margin:8px 0 0 18px;padding:0" id="leaderboard">
+          <li>Anita — 4200 XP</li><li>Rahul — 3780 XP</li><li>Priya — 3500 XP</li>
+        </ol>
+      </div>
+
+      <div class="leader card">
+        <strong>Reward Store</strong>
+        <div class="small muted">Redeem XP for profile boosts & promos</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RETENTION & REWARDS -->
+  <section style="margin-top:12px">
+    <h3>Retention & Rewards</h3>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <div class="mini">Daily Login Streaks</div>
+      <div class="mini">Spin-the-Wheel Bonus</div>
+      <div class="mini">Refer & Earn</div>
+    </div>
+  </section>
+
+  <!-- MONETIZATION & COMMUNITY BUILDING -->
+  <section style="margin-top:12px">
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <div class="mini">Featured Profiles (paid)</div>
+      <div class="mini">Premium Membership</div>
+      <div class="mini">Community: WhatsApp & Discord groups</div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <section style="margin-top:16px">
+    <div class="cta-strip">
+      <div>
+        <div style="font-weight:800">🚀 Join 5000+ Trainers & Freelancers</div>
+        <div class="small">Start earning XP, unlock badges & rewards</div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button class="btn btn-ghost" onclick="alert('See rewards')">See Rewards</button>
+        <button class="btn btn-join" onclick="alert('Join Now')">Join Now</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="wrap">
+    <div class="footer-grid">
+      <div>
+        <strong>About Jobjila</strong>
+        <div class="small muted" style="margin-top:8px">Community-driven collaboration hub for trainers, freelancers & clients.</div>
+      </div>
+      <div>
+        <strong>Links</strong>
+        <div class="small muted" style="margin-top:8px"><a href="#">How It Works</a><br><a href="#">FAQ</a><br><a href="#">Privacy</a></div>
+      </div>
+      <div>
+        <strong>Community</strong>
+        <div class="small muted" style="margin-top:8px"><a href="#">Join WhatsApp</a><br><a href="#">Discord</a><br><a href="mailto:support@jobjila.com">support@jobjila.com</a></div>
+      </div>
+      <div>
+        <strong>Newsletter</strong>
+        <input id="newsletter" placeholder="Your email" style="width:100%;padding:8px;border-radius:8px;border:1px solid #eef4ff;margin-top:8px" />
+        <button class="btn btn-join" style="width:100%;margin-top:8px" onclick="alert('Subscribed')">Subscribe</button>
+      </div>
+    </div>
+  </footer>
+
 </main>
 
-<!-- Footer -->
-<footer class="wrap">
-  <div class="footer-grid">
-    <div>
-      <h3>About</h3>
-      <p>Jobjila is India’s first community-driven collaboration hub for trainers, freelancers & clients.</p>
-    </div>
-    <div>
-      <h3>Quick Links</h3>
-      <a href="#">About</a><br><a href="#">How It Works</a><br><a href="#">FAQ</a><br><a href="#">Privacy Policy</a>
-    </div>
-    <div>
-      <h3>Community</h3>
-      <a href="#">Join WhatsApp</a><br><a href="mailto:support@jobjila.com">support@jobjila.com</a>
-    </div>
-    <div>
-      <h3>Newsletter</h3>
-      <input id="newsletter" placeholder="Your email" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:6px" />
-      <button class="btn btn-join" style="margin-top:6px;width:100%">Subscribe</button>
-    </div>
-  </div>
-</footer>
-
+<!-- JS: interactions -->
 <script>
-function toggleNav(){
-  const nav=document.getElementById('mainNav');
-  if(nav.style.display==="flex"){nav.style.display="none";}
-  else{nav.style.display="flex";nav.style.flexDirection="column";nav.style.alignItems="center";}
-}
-// Avatar demo
-const names=["Anita","Rahul","Priya","Sahil","Maya","Ravi"];
-const wall=document.getElementById('communityWall');
-names.forEach(n=>{
-  const d=document.createElement('div');
-  d.className='avatar';
-  d.textContent=n[0];
-  d.title=n;
-  wall.appendChild(d);
-});
-// Countdown
-const target=new Date();target.setDate(target.getDate()+2);
-function updateCountdown(){
-  const diff=target-new Date();
-  if(diff<=0){document.getElementById('countdown').textContent="Batch Closed";return;}
-  const d=Math.floor(diff/(1000*60*60*24));
-  const h=Math.floor((diff/(1000*60*60))%24);
-  document.getElementById('countdown').textContent=`Batch Closing in ${d}d ${h}h`;
-}
-setInterval(updateCountdown,1000);updateCountdown();
+  lucide.createIcons();
+
+  // --------- Demo Data & Helpers ----------
+  const xpTarget = 3000;
+  const headerXP = document.getElementById('header-xp');
+  const headerLV = document.getElementById('header-lv');
+  const xpFill = document.getElementById('xpFill');
+  const leaderboard = document.getElementById('leaderboard');
+
+  // Animate XP fill
+  function setXP(xp){
+    headerXP.textContent = xp;
+    const pct = Math.min(100, Math.round((xp / xpTarget) * 100));
+    xpFill.style.width = pct + '%';
+  }
+  setXP(2400);
+
+  // Animated counters for studies (if needed)
+  function addStudyCard(title,meta){
+    const parent = document.getElementById('studiesGrid');
+    const d = document.createElement('div');
+    d.className='study';
+    d.innerHTML = '<strong>'+title+'</strong><div class="muted study-meta">'+meta+'</div>';
+    parent.appendChild(d);
+  }
+
+  // Trainer countdown (2 days demo)
+  const countdownEl = document.getElementById('trainer-countdown');
+  let trainerDeadline = new Date();
+  trainerDeadline.setDate(trainerDeadline.getDate() + 2); // 2 days from now
+  function updateCountdown(){
+    const diff = trainerDeadline - new Date();
+    if(diff <= 0){countdownEl.textContent='Offer closed'; return;}
+    const d = Math.floor(diff/(1000*60*60*24));
+    const h = Math.floor((diff/(1000*60*60))%24);
+    const m = Math.floor((diff/(1000*60))%60);
+    countdownEl.textContent = `${d}d ${h}h ${m}m left`;
+  }
+  updateCountdown(); setInterval(updateCountdown,1000);
+
+  // Ticker small control (rotate)
+  // (ticker built with CSS animation repeating content)
+
+  // Portfolio quick add demo (simulate posting/updating)
+  function bulkAddPortfolio(n){
+    for(let i=0;i<n;i++){
+      addPfCard('Demo Project '+(Math.floor(Math.random()*1000)),'Result: conversion up');
+      incrementXP(100);
+    }
+  }
+  function addPfCard(title, meta){
+    const grid = document.querySelector('.portfolio-gallery') || (function(){
+      const el = document.createElement('div'); el.className='portfolio-gallery'; document.querySelector('.portfolio-challenge').appendChild(el); return el;
+    })();
+    const card = document.createElement('div'); card.className='pf-card';
+    card.innerHTML = '<strong>'+title+'</strong><div class="pf-meta muted">'+meta+'</div>';
+    grid.prepend(card);
+  }
+
+  // Demo post case study
+  function postCaseStudyDemo(){
+    addStudyCard('New Demo: SEO Sprint','Quick growth: +40% traffic');
+    incrementXP(100);
+    alert('Case study posted — +100 XP');
+  }
+
+  // increment xp
+  function incrementXP(amount){
+    const current = parseInt(headerXP.textContent);
+    const next = current + amount;
+    setXP(next);
+    // update leaderboard demo
+    const li = document.createElement('li'); li.textContent = 'You — ' + next + ' XP';
+    leaderboard.prepend(li);
+  }
+
+  // trainer register demo
+  function registerTrainerDemo(){
+    alert('Registered as founding trainer — +500 XP (demo)');
+    incrementXP(500);
+  }
+
+  // post project demo
+  function postProjectDemo(){
+    alert('Project posted (demo). Smart Match will find experts in ~2 minutes (demo)');
+  }
+
+  // Simple Smart Match demo (instant)
+  function trySmartMatch(){
+    const experts = [
+      {name:'Anita',skill:'Cloud Trainer',score:98},
+      {name:'Rahul',skill:'Web Dev',score:94},
+      {name:'Priya',skill:'SEO Specialist',score:91}
+    ];
+    const list = experts.map(e => `${e.name} — ${e.skill} (${e.score}%)`).join('\n');
+    alert('Smart Match = top 3 experts:\\n\\n' + list);
+  }
+
+  // demo register role
+  function onRole(r){
+    if(r==='trainer') alert('Start trainer onboarding (demo) — quick setup. +50 XP after complete');
+    else if(r==='freelancer') alert('Start freelancer onboarding (demo) — upload portfolio. +50 XP after complete');
+    else alert('Client onboarding — post first project (demo)');
+  }
+
+  // quick simulate posting portfolio updates
+  function postPortfolioUpdateDemo(){
+    bulkAddPortfolio(1);
+    incrementXP(100);
+  }
+
+  // small: add initial pf cards
+  addPfCard('SEO Audit — Startup X','Traffic +300%');
+  addPfCard('Cloud Workshop — FinTech','200 certified');
+  addPfCard('Website Rebuild — Retail','Conversion +35%');
+
+  // spin-the-wheel mock (simple)
+  function spinWheelDemo(){
+    const rewards = ['+50 XP','+100 XP','Free Featured Slot','No Prize — Try Again'];
+    const pick = rewards[Math.floor(Math.random()*rewards.length)];
+    alert('Spin result: ' + pick);
+    if(pick.includes('XP')) incrementXP(parseInt(pick));
+  }
+
+  // small accessibility: create icons
+  document.querySelectorAll('i[data-lucide]').forEach(()=>{ /* handled by lucide */ });
+
+  // Responsive nav - hide if screen > small etc (handled by CSS/hamburger)
 </script>
 </body>
 </html>
