@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Jobjila — Collaborate • Train • Build</title>
+<style>
+  :root{
+    --bg: #f6f8fb;
+    --card: #ffffff;
+    --muted: #6b7280;
+    --brand: #0b5ed7;
+    --accent: #ff7a37;
+    --accent-2: #00a86b;
+    --shadow: 0 6px 20px rgba(15,23,42,0.06);
+    --radius: 12px;
+    --max-width: 1100px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:#0f172a;}
+  .wrap{max-width:var(--max-width);margin:auto;padding:0 20px;}
+  h1,h2,h3{margin:0 0 12px}
+  .btn{padding:10px 16px;border-radius:10px;font-weight:600;border:0;cursor:pointer}
+  .btn-join{background:var(--brand);color:#fff}
+  .btn-post{background:var(--accent);color:#fff}
+  .btn-training{background:var(--accent-2);color:#fff}
+  .btn-login{background:#fff;border:1px solid #ddd}
+  /* Header */
+  header{position:sticky;top:0;background:#fff;z-index:100;box-shadow:0 2px 5px rgba(0,0,0,0.05)}
+  .header-top{display:flex;justify-content:space-between;align-items:center;padding:10px 20px}
+  .logo{font-weight:700;font-size:20px;color:var(--brand)}
+  .top-actions{display:flex;gap:10px;align-items:center}
+  .nav-line{border-top:1px solid #eee;padding:10px 20px}
+  nav{display:flex;gap:20px;justify-content:center}
+  nav a{text-decoration:none;color:#0f172a;font-weight:600}
+  .hamburger{display:none;background:none;border:0;font-size:22px}
+  /* Hero */
+  .hero{display:grid;grid-template-columns:1fr 400px;gap:20px;align-items:center;padding:30px 0}
+  .hero h1{font-size:38px}
+  .hero p{color:var(--muted)}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:15px}
+  .hero-img{background:#fff;border-radius:12px;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center}
+  /* Stats */
+  .stats{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0;background:#fff;padding:12px;border-radius:12px;box-shadow:var(--shadow)}
+  .stat{flex:1;min-width:120px;text-align:center}
+  .ticker{width:100%;text-align:center;color:var(--muted);margin-top:5px}
+  /* Snapshot + Community Wall */
+  .snapshot{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .card{background:#fff;padding:16px;border-radius:12px;box-shadow:var(--shadow)}
+  .community-wall{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .avatar{width:50px;height:50px;border-radius:50%;background:#eaf2ff;display:flex;align-items:center;justify-content:center;font-weight:700}
+  /* How it works */
+  .steps{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0}
+  .step{flex:1;min-width:180px;background:#fff;padding:16px;border-radius:12px;text-align:center;box-shadow:var(--shadow)}
+  .num{width:40px;height:40px;border-radius:50%;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;margin:auto;margin-bottom:8px;font-weight:700}
+  .extra-training{text-align:center;margin-top:10px}
+  /* Services */
+  .services{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0}
+  .service{flex:1;min-width:200px;background:#fff;padding:16px;border-radius:12px;box-shadow:var(--shadow);text-align:center}
+  /* Why Join */
+  .bullets{list-style:none;padding:0}
+  .bullets li{margin:8px 0;color:var(--muted)}
+  /* Testimonials */
+  .testimonials{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .testimonial{background:#fff;padding:16px;border-radius:12px;box-shadow:var(--shadow)}
+  /* CTA strip */
+  .cta-strip{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;background:var(--brand);color:#fff;padding:16px;border-radius:12px;margin:20px 0}
+  .cta-strip .actions{display:flex;gap:10px;flex-wrap:wrap}
+  /* Footer */
+  footer{background:#fff;padding:20px;border-radius:12px;box-shadow:var(--shadow);margin-bottom:40px}
+  .footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  footer a{text-decoration:none;color:var(--brand)}
+  /* Responsive */
+  @media(max-width:900px){
+    .hero{grid-template-columns:1fr}
+    .footer-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:700px){
+    .nav-line nav{display:none;flex-direction:column;align-items:center}
+    .hamburger{display:block}
+    .hero h1{font-size:28px}
+    .testimonials{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="header-top">
+    <div class="logo">Jobjila</div>
+    <div class="top-actions">
+      <button class="btn btn-join">Join Now</button>
+      <button class="btn btn-post">Post Project</button>
+      <button class="btn btn-login">Login</button>
+      <button class="hamburger" onclick="toggleNav()">☰</button>
+    </div>
+  </div>
+  <div class="nav-line">
+    <nav id="mainNav">
+      <a href="#">Home</a>
+      <a href="#">Trainers</a>
+      <a href="#">Freelancers</a>
+      <a href="#">Services</a>
+      <a href="#">Projects</a>
+      <a href="#">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- Hero -->
+  <section class="hero">
+    <div>
+      <h1>Work Together. Learn Together. Grow Together.</h1>
+      <p>A hub for trainers, freelancers & clients to collaborate.</p>
+      <div class="hero-ctas">
+        <button class="btn btn-join">Join as Trainer</button>
+        <button class="btn btn-join">Join as Freelancer</button>
+        <button class="btn btn-post">Post a Project</button>
+      </div>
+    </div>
+    <div class="hero-img">[Illustration]</div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats">
+    <div class="stat">👥 <b>5000+</b><br>Members</div>
+    <div class="stat">🎓 <b>1200</b><br>Trainers</div>
+    <div class="stat">💻 <b>2800</b><br>Freelancers</div>
+    <div class="stat">🤝 <b>450</b><br>Clients</div>
+    <div class="ticker" id="ticker">Live: 73 Members Online Now</div>
+  </section>
+
+  <!-- Snapshot + Community -->
+  <section class="snapshot">
+    <div class="card">
+      <h3>Collaboration Snapshot</h3>
+      <p><b>Trainers Available:</b> IT, Marketing, Cloud</p>
+      <p><b>Freelancers:</b> Web Dev, SEO, Design</p>
+      <p><b>Clients:</b> Post projects, hire teams</p>
+    </div>
+    <div class="card">
+      <h3>Community Wall</h3>
+      <div class="community-wall" id="communityWall"></div>
+      <p>120 people collaborated this week</p>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section>
+    <h2>How Collaboration Works</h2>
+    <div class="steps">
+      <div class="step"><div class="num">1</div>Post Training/Project</div>
+      <div class="step"><div class="num">2</div>Collaborate with Freelancers & Trainers</div>
+      <div class="step"><div class="num">3</div>Deliver & Grow Together</div>
+    </div>
+    <div class="extra-training">
+      👉 Have a Training Requirement?  
+      <button class="btn btn-training">Post Training Requirement</button>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section>
+    <h2>Our Services</h2>
+    <div class="services">
+      <div class="service">💻 Web Development<br><button class="btn btn-join">Apply Now</button></div>
+      <div class="service">📢 SEO & Marketing<br><button class="btn btn-join">Apply Now</button></div>
+      <div class="service">🎓 Training Programs<br><button class="btn btn-join">Apply Now</button></div>
+    </div>
+  </section>
+
+  <!-- Why Join -->
+  <section class="card">
+    <h2>Why Join Jobjila?</h2>
+    <ul class="bullets">
+      <li>✔ Verified Trainers & Freelancers</li>
+      <li>✔ Real-Time Community & Collaboration</li>
+      <li>✔ Affordable & Scalable Solutions</li>
+      <li>✔ Growth-Focused Network</li>
+    </ul>
+  </section>
+
+  <!-- Testimonials -->
+  <section>
+    <h2>Testimonials</h2>
+    <div class="testimonials">
+      <div class="testimonial">"I found my dream project through Jobjila’s network." — Ravi (Freelancer)</div>
+      <div class="testimonial">"Collaboration here helped me double my freelance income." — Anita (Trainer)</div>
+    </div>
+  </section>
+
+  <!-- CTA Strip -->
+  <section class="cta-strip">
+    <div>
+      🚀 Join 5000+ Trainers & Freelancers Today  
+      <div id="countdown">Batch Closing Soon</div>
+    </div>
+    <div class="actions">
+      <button class="btn btn-join">Join Now</button>
+      <button class="btn btn-post">Post Project</button>
+      <button class="btn btn-training">Post Training Requirement</button>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="wrap">
+  <div class="footer-grid">
+    <div>
+      <h3>About</h3>
+      <p>Jobjila is India’s first community-driven collaboration hub for trainers, freelancers & clients.</p>
+    </div>
+    <div>
+      <h3>Quick Links</h3>
+      <a href="#">About</a><br><a href="#">How It Works</a><br><a href="#">FAQ</a><br><a href="#">Privacy Policy</a>
+    </div>
+    <div>
+      <h3>Community</h3>
+      <a href="#">Join WhatsApp</a><br><a href="mailto:support@jobjila.com">support@jobjila.com</a>
+    </div>
+    <div>
+      <h3>Newsletter</h3>
+      <input id="newsletter" placeholder="Your email" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:6px" />
+      <button class="btn btn-join" style="margin-top:6px;width:100%">Subscribe</button>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleNav(){
+  const nav=document.getElementById('mainNav');
+  if(nav.style.display==="flex"){nav.style.display="none";}
+  else{nav.style.display="flex";nav.style.flexDirection="column";nav.style.alignItems="center";}
+}
+// Avatar demo
+const names=["Anita","Rahul","Priya","Sahil","Maya","Ravi"];
+const wall=document.getElementById('communityWall');
+names.forEach(n=>{
+  const d=document.createElement('div');
+  d.className='avatar';
+  d.textContent=n[0];
+  d.title=n;
+  wall.appendChild(d);
+});
+// Countdown
+const target=new Date();target.setDate(target.getDate()+2);
+function updateCountdown(){
+  const diff=target-new Date();
+  if(diff<=0){document.getElementById('countdown').textContent="Batch Closed";return;}
+  const d=Math.floor(diff/(1000*60*60*24));
+  const h=Math.floor((diff/(1000*60*60))%24);
+  document.getElementById('countdown').textContent=`Batch Closing in ${d}d ${h}h`;
+}
+setInterval(updateCountdown,1000);updateCountdown();
+</script>
+</body>
+</html>
