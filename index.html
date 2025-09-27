@@ -4,6 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Jobjila — Collaborate • Train • Build</title>
+<script src="https://unpkg.com/lucide@latest"></script>
 <style>
   :root{
     --bg: #f6f8fb;
@@ -20,11 +21,15 @@
   body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:#0f172a;}
   .wrap{max-width:var(--max-width);margin:auto;padding:0 20px;}
   h1,h2,h3{margin:0 0 12px}
-  .btn{padding:10px 16px;border-radius:10px;font-weight:600;border:0;cursor:pointer}
+
+  /* Buttons + hover */
+  .btn{padding:10px 16px;border-radius:10px;font-weight:600;border:0;cursor:pointer;transition:0.25s;display:inline-flex;align-items:center;gap:6px}
+  .btn:hover{transform:scale(1.05)}
   .btn-join{background:var(--brand);color:#fff}
   .btn-post{background:var(--accent);color:#fff}
   .btn-training{background:var(--accent-2);color:#fff}
   .btn-login{background:#fff;border:1px solid #ddd}
+  
   /* Header */
   header{position:sticky;top:0;background:#fff;z-index:100;box-shadow:0 2px 5px rgba(0,0,0,0.05)}
   .header-top{display:flex;justify-content:space-between;align-items:center;padding:10px 20px}
@@ -32,44 +37,66 @@
   .top-actions{display:flex;gap:10px;align-items:center}
   .nav-line{border-top:1px solid #eee;padding:10px 20px}
   nav{display:flex;gap:20px;justify-content:center}
-  nav a{text-decoration:none;color:#0f172a;font-weight:600}
+  nav a{text-decoration:none;color:#0f172a;font-weight:600;display:flex;align-items:center;gap:6px}
   .hamburger{display:none;background:none;border:0;font-size:22px}
+  
   /* Hero */
   .hero{display:grid;grid-template-columns:1fr 400px;gap:20px;align-items:center;padding:30px 0}
   .hero h1{font-size:38px}
   .hero p{color:var(--muted)}
   .hero-ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:15px}
-  .hero-img{background:#fff;border-radius:12px;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center}
+  .hero-img{background:#fff;border-radius:12px;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;padding:20px}
+  
   /* Stats */
   .stats{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0;background:#fff;padding:12px;border-radius:12px;box-shadow:var(--shadow)}
   .stat{flex:1;min-width:120px;text-align:center}
-  .ticker{width:100%;text-align:center;color:var(--muted);margin-top:5px}
-  /* Snapshot + Community Wall */
-  .snapshot{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .card{background:#fff;padding:16px;border-radius:12px;box-shadow:var(--shadow)}
+  .stat .num{font-size:20px;font-weight:700}
+  .ticker{width:100%;overflow:hidden;white-space:nowrap;color:var(--muted)}
+  .ticker span{display:inline-block;padding-left:100%;animation:ticker 15s linear infinite}
+  @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+  
+  /* Cards hover */
+  .card{background:#fff;padding:16px;border-radius:12px;box-shadow:var(--shadow);transition:0.3s}
+  .card:hover{box-shadow:0 8px 20px rgba(0,0,0,0.12)}
+  
+  /* Community wall */
   .community-wall{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-  .avatar{width:50px;height:50px;border-radius:50%;background:#eaf2ff;display:flex;align-items:center;justify-content:center;font-weight:700}
-  /* How it works */
+  .avatar{position:relative;width:50px;height:50px;border-radius:50%;background:#eaf2ff;display:flex;align-items:center;justify-content:center;font-weight:700;cursor:pointer}
+  .tooltip{
+    visibility:hidden;opacity:0;transition:0.2s;
+    position:absolute;bottom:60px;left:50%;transform:translateX(-50%);
+    background:#0f172a;color:#fff;padding:6px 10px;border-radius:6px;white-space:nowrap;font-size:13px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.15);z-index:20
+  }
+  .avatar:hover .tooltip{visibility:visible;opacity:1}
+  
+  /* Steps */
   .steps{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0}
   .step{flex:1;min-width:180px;background:#fff;padding:16px;border-radius:12px;text-align:center;box-shadow:var(--shadow)}
   .num{width:40px;height:40px;border-radius:50%;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;margin:auto;margin-bottom:8px;font-weight:700}
   .extra-training{text-align:center;margin-top:10px}
+  
   /* Services */
   .services{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0}
   .service{flex:1;min-width:200px;background:#fff;padding:16px;border-radius:12px;box-shadow:var(--shadow);text-align:center}
+  
   /* Why Join */
   .bullets{list-style:none;padding:0}
-  .bullets li{margin:8px 0;color:var(--muted)}
+  .bullets li{margin:8px 0;color:var(--muted);display:flex;align-items:center;gap:6px}
+  
   /* Testimonials */
   .testimonials{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   .testimonial{background:#fff;padding:16px;border-radius:12px;box-shadow:var(--shadow)}
+  
   /* CTA strip */
   .cta-strip{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;background:var(--brand);color:#fff;padding:16px;border-radius:12px;margin:20px 0}
   .cta-strip .actions{display:flex;gap:10px;flex-wrap:wrap}
+  
   /* Footer */
   footer{background:#fff;padding:20px;border-radius:12px;box-shadow:var(--shadow);margin-bottom:40px}
   .footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
   footer a{text-decoration:none;color:var(--brand)}
+  
   /* Responsive */
   @media(max-width:900px){
     .hero{grid-template-columns:1fr}
@@ -88,20 +115,20 @@
   <div class="header-top">
     <div class="logo">Jobjila</div>
     <div class="top-actions">
-      <button class="btn btn-join">Join Now</button>
-      <button class="btn btn-post">Post Project</button>
-      <button class="btn btn-login">Login</button>
+      <button class="btn btn-join"><i data-lucide="user-plus"></i> Join Now</button>
+      <button class="btn btn-post"><i data-lucide="file-plus"></i> Post Project</button>
+      <button class="btn btn-login"><i data-lucide="log-in"></i> Login</button>
       <button class="hamburger" onclick="toggleNav()">☰</button>
     </div>
   </div>
   <div class="nav-line">
     <nav id="mainNav">
-      <a href="#">Home</a>
-      <a href="#">Trainers</a>
-      <a href="#">Freelancers</a>
-      <a href="#">Services</a>
-      <a href="#">Projects</a>
-      <a href="#">Contact</a>
+      <a href="#"><i data-lucide="home"></i> Home</a>
+      <a href="#"><i data-lucide="graduation-cap"></i> Trainers</a>
+      <a href="#"><i data-lucide="laptop"></i> Freelancers</a>
+      <a href="#"><i data-lucide="layers"></i> Services</a>
+      <a href="#"><i data-lucide="folder"></i> Projects</a>
+      <a href="#"><i data-lucide="mail"></i> Contact</a>
     </nav>
   </div>
 </header>
@@ -113,28 +140,36 @@
       <h1>Work Together. Learn Together. Grow Together.</h1>
       <p>A hub for trainers, freelancers & clients to collaborate.</p>
       <div class="hero-ctas">
-        <button class="btn btn-join">Join as Trainer</button>
-        <button class="btn btn-join">Join as Freelancer</button>
-        <button class="btn btn-post">Post a Project</button>
+        <button class="btn btn-join"><i data-lucide="graduation-cap"></i> Join as Trainer</button>
+        <button class="btn btn-join"><i data-lucide="laptop"></i> Join as Freelancer</button>
+        <button class="btn btn-post"><i data-lucide="file-plus"></i> Post a Project</button>
       </div>
     </div>
-    <div class="hero-img">[Illustration]</div>
+    <div class="hero-img">
+      <!-- Illustration -->
+      <svg width="300" height="200" viewBox="0 0 300 200">
+        <circle cx="80" cy="100" r="40" fill="#0b5ed7"/>
+        <circle cx="160" cy="80" r="50" fill="#ff7a37"/>
+        <circle cx="240" cy="110" r="40" fill="#00a86b"/>
+        <rect x="60" y="150" width="180" height="20" fill="#eaf2ff" rx="6"/>
+      </svg>
+    </div>
   </section>
 
   <!-- Stats -->
   <section class="stats">
-    <div class="stat">👥 <b>5000+</b><br>Members</div>
-    <div class="stat">🎓 <b>1200</b><br>Trainers</div>
-    <div class="stat">💻 <b>2800</b><br>Freelancers</div>
-    <div class="stat">🤝 <b>450</b><br>Clients</div>
-    <div class="ticker" id="ticker">Live: 73 Members Online Now</div>
+    <div class="stat">👥 <div class="num" data-target="5000">0</div> Members</div>
+    <div class="stat">🎓 <div class="num" data-target="1200">0</div> Trainers</div>
+    <div class="stat">💻 <div class="num" data-target="2800">0</div> Freelancers</div>
+    <div class="stat">🤝 <div class="num" data-target="450">0</div> Clients</div>
+    <div class="ticker"><span>Anita joined • Rahul posted Web Dev Project • Priya collaborated on SEO • Nisha joined as Freelancer</span></div>
   </section>
 
-  <!-- Snapshot + Community -->
+  <!-- Collaboration Snapshot + Community Wall -->
   <section class="snapshot">
     <div class="card">
       <h3>Collaboration Snapshot</h3>
-      <p><b>Trainers Available:</b> IT, Marketing, Cloud</p>
+      <p><b>Trainers:</b> IT, Marketing, Cloud</p>
       <p><b>Freelancers:</b> Web Dev, SEO, Design</p>
       <p><b>Clients:</b> Post projects, hire teams</p>
     </div>
@@ -145,17 +180,17 @@
     </div>
   </section>
 
-  <!-- How it works -->
+  <!-- How it Works -->
   <section>
     <h2>How Collaboration Works</h2>
     <div class="steps">
-      <div class="step"><div class="num">1</div>Post Training/Project</div>
-      <div class="step"><div class="num">2</div>Collaborate with Freelancers & Trainers</div>
-      <div class="step"><div class="num">3</div>Deliver & Grow Together</div>
+      <div class="step"><div class="num">1</div><i data-lucide="file-plus"></i> Post Training/Project</div>
+      <div class="step"><div class="num">2</div><i data-lucide="users"></i> Collaborate</div>
+      <div class="step"><div class="num">3</div><i data-lucide="rocket"></i> Deliver & Grow</div>
     </div>
     <div class="extra-training">
       👉 Have a Training Requirement?  
-      <button class="btn btn-training">Post Training Requirement</button>
+      <button class="btn btn-training"><i data-lucide="file-text"></i> Post Training Requirement</button>
     </div>
   </section>
 
@@ -173,10 +208,10 @@
   <section class="card">
     <h2>Why Join Jobjila?</h2>
     <ul class="bullets">
-      <li>✔ Verified Trainers & Freelancers</li>
-      <li>✔ Real-Time Community & Collaboration</li>
-      <li>✔ Affordable & Scalable Solutions</li>
-      <li>✔ Growth-Focused Network</li>
+      <li><i data-lucide="check-circle"></i> Verified Trainers & Freelancers</li>
+      <li><i data-lucide="check-circle"></i> Real-Time Collaboration</li>
+      <li><i data-lucide="check-circle"></i> Affordable & Scalable Solutions</li>
+      <li><i data-lucide="check-circle"></i> Growth-Focused Network</li>
     </ul>
   </section>
 
@@ -196,9 +231,9 @@
       <div id="countdown">Batch Closing Soon</div>
     </div>
     <div class="actions">
-      <button class="btn btn-join">Join Now</button>
-      <button class="btn btn-post">Post Project</button>
-      <button class="btn btn-training">Post Training Requirement</button>
+      <button class="btn btn-join"><i data-lucide="user-plus"></i> Join Now</button>
+      <button class="btn btn-post"><i data-lucide="file-plus"></i> Post Project</button>
+      <button class="btn btn-training"><i data-lucide="file-text"></i> Post Training Requirement</button>
     </div>
   </section>
 </main>
@@ -227,31 +262,56 @@
 </footer>
 
 <script>
-function toggleNav(){
-  const nav=document.getElementById('mainNav');
-  if(nav.style.display==="flex"){nav.style.display="none";}
-  else{nav.style.display="flex";nav.style.flexDirection="column";nav.style.alignItems="center";}
-}
-// Avatar demo
-const names=["Anita","Rahul","Priya","Sahil","Maya","Ravi"];
-const wall=document.getElementById('communityWall');
-names.forEach(n=>{
-  const d=document.createElement('div');
-  d.className='avatar';
-  d.textContent=n[0];
-  d.title=n;
-  wall.appendChild(d);
-});
-// Countdown
-const target=new Date();target.setDate(target.getDate()+2);
-function updateCountdown(){
-  const diff=target-new Date();
-  if(diff<=0){document.getElementById('countdown').textContent="Batch Closed";return;}
-  const d=Math.floor(diff/(1000*60*60*24));
-  const h=Math.floor((diff/(1000*60*60))%24);
-  document.getElementById('countdown').textContent=`Batch Closing in ${d}d ${h}h`;
-}
-setInterval(updateCountdown,1000);updateCountdown();
+  lucide.createIcons();
+
+  // Mobile nav toggle
+  function toggleNav(){
+    const nav=document.getElementById('mainNav');
+    if(nav.style.display==="flex"){nav.style.display="none";}
+    else{nav.style.display="flex";nav.style.flexDirection="column";nav.style.alignItems="center";}
+  }
+
+  // Animated counters
+  const counters=document.querySelectorAll('.num');
+  counters.forEach(counter=>{
+    const update=()=>{
+      const target=+counter.getAttribute('data-target');
+      const c=+counter.innerText;
+      const inc=target/200;
+      if(c<target){counter.innerText=Math.ceil(c+inc);setTimeout(update,20);}
+      else{counter.innerText=target;}
+    };
+    update();
+  });
+
+  // Community avatars with tooltips
+  const members=[
+    {name:"Anita",role:"Trainer"},
+    {name:"Rahul",role:"Freelancer"},
+    {name:"Priya",role:"Trainer"},
+    {name:"Sahil",role:"Client"},
+    {name:"Maya",role:"Freelancer"},
+    {name:"Ravi",role:"Trainer"}
+  ];
+  const wall=document.getElementById('communityWall');
+  members.forEach(m=>{
+    const d=document.createElement('div');
+    d.className='avatar';
+    d.textContent=m.name[0];
+    d.innerHTML += `<div class="tooltip">${m.name} — ${m.role}</div>`;
+    wall.appendChild(d);
+  });
+
+  // Countdown
+  const target=new Date();target.setDate(target.getDate()+2);
+  function updateCountdown(){
+    const diff=target-new Date();
+    if(diff<=0){document.getElementById('countdown').textContent="Batch Closed";return;}
+    const d=Math.floor(diff/(1000*60*60*24));
+    const h=Math.floor((diff/(1000*60*60))%24);
+    document.getElementById('countdown').textContent=`Batch Closing in ${d}d ${h}h`;
+  }
+  setInterval(updateCountdown,1000);updateCountdown();
 </script>
 </body>
 </html>
