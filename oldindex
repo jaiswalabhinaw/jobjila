@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | Digital Identity & Growth</title>
+  <meta name="description" content="We build digital identities for businesses and freelancers through websites, IT solutions, and training.">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<header>
+  <h1>Digital Identity & Growth</h1>
+  <div class="hamburger"><span></span><span></span><span></span></div>
+  <nav>
+    <a href="./index.html">Home</a>
+    <a href="./services.html">Services</a>
+    <a href="./freelancing.html">Freelancing</a>
+    <a href="./portfolio.html">Portfolio</a>
+    <a href="./blog.html">Blog</a>
+    <a href="./resources.html">Resources</a>
+    <a href="./why.html">Why Us</a>
+    <a href="./training.html">Training</a>
+    <a href="./contact.html">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <h2>We Build Digital Identities for Businesses & Freelancers</h2>
+    <p class="lead">Websites, IT solutions, training, and career guidance — one vision: growth.</p>
+    <div class="cta">
+      <a href="./services.html" class="btn primary">Get Your Website</a>
+      <a href="./freelancing.html" class="btn alt">Start Freelance Training</a>
+    </div>
+  </section>
+
+  <!-- Why Us Section -->
+  <section id="why">
+    <h2>Why Digital Identity Matters</h2>
+    <p class="lead">Your digital identity is the key to business growth and career success.</p>
+  </section>
+
+  <!-- Choose Path Section -->
+  <section id="split">
+    <h2>Choose Your Path</h2>
+    <div class="two-col">
+      <div class="card">
+        <i class="fa-solid fa-briefcase fa-2x"></i>
+        <h3>For Businesses</h3>
+        <p>Websites, IT solutions, and digital growth strategies.</p>
+      </div>
+      <div class="card">
+        <i class="fa-solid fa-user-graduate fa-2x"></i>
+        <h3>For Freelancers</h3>
+        <p>Training, skills, and career guidance to succeed online.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Training Section -->
+  <section id="training">
+    <h2>Freelancing Training & IT Solutions</h2>
+    <div class="card-grid">
+      <div class="card">
+        <i class="fa-solid fa-laptop-code fa-2x"></i>
+        <h3>Technical Skills</h3>
+        <p>Web design, digital tools, and productivity training.</p>
+      </div>
+      <div class="card">
+        <i class="fa-solid fa-users fa-2x"></i>
+        <h3>Leadership & Career</h3>
+        <p>Freelancing platforms, client management, and job guidance.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services">
+    <h2>Our Services</h2>
+    <p class="lead">Digital identity creation, web design, IT consulting, and more.</p>
+    <img src="./images/services.jpg" alt="Our Services" class="sample-img">
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio">
+    <h2>Portfolio</h2>
+    <p class="lead">Showcase of our past projects and success stories.</p>
+    <img src="./images/portfolio.jpg" alt="Portfolio showcase" class="sample-img">
+  </section>
+
+  <!-- Blog Section -->
+  <section id="blog">
+    <h2>Blog</h2>
+    <p class="lead">Latest insights on freelancing, IT, and business growth.</p>
+    <i class="fa-solid fa-pen-nib fa-2x"></i>
+  </section>
+
+  <!-- Resources Section -->
+  <section id="resources">
+    <h2>Resources</h2>
+    <p class="lead">Free tools, guides, and productivity boosters.</p>
+    <i class="fa-solid fa-toolbox fa-2x"></i>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq">
+    <h2>FAQ</h2>
+    <p class="lead">Answers to the most common questions.</p>
+    <i class="fa-solid fa-circle-question fa-2x"></i>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials">
+    <h2>Testimonials</h2>
+    <p class="lead">What our clients and students say.</p>
+    <i class="fa-solid fa-comment-dots fa-2x"></i>
+  </section>
+
+  <!-- Free Guide Section -->
+  <section id="lead">
+    <h2>Free Guide & Newsletter</h2>
+    <a href="#" class="btn primary">Download Now</a>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p class="lead">Get in touch for collaboration or inquiries.</p>
+    <i class="fa-solid fa-envelope fa-2x"></i>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 Digital Identity & Growth. All rights reserved.</p>
+</footer>
+
+<!-- JS -->
+<script src="./js/script.js"></script>
+</body>
+</html>
