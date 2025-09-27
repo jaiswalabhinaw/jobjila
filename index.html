@@ -1,145 +1,437 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home | Digital Identity & Growth</title>
-  <meta name="description" content="We build digital identities for businesses and freelancers through websites, IT solutions, and training.">
-  
-  <!-- CSS -->
-  <link rel="stylesheet" href="./css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Jobjila — Collaborate • Train • Build</title>
+<style>
+  :root{
+    --bg: #f6f8fb;
+    --card: #ffffff;
+    --muted: #6b7280;
+    --brand: #0b5ed7;
+    --accent: #ff7a37;
+    --accent-2: #00a86b;
+    --shadow: 0 6px 20px rgba(15,23,42,0.06);
+    --radius: 12px;
+    --max-width: 1100px;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;}
+  body{
+    margin:0;
+    font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    color:#0f172a;
+    background:linear-gradient(180deg,var(--bg),#f8fafc);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.4;
+  }
+
+  .wrap{max-width:var(--max-width);margin:20px auto;padding:0 20px;}
+
+  /* Two-line header */
+  header.header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,0.9);backdrop-filter:blur(6px);box-shadow:0 1px 0 rgba(15,23,42,0.04)}
+  .header .top{
+    display:flex;align-items:center;justify-content:space-between;padding:12px 20px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px;color:var(--brand)}
+  .brand .logo{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--brand),#1558c7);display:inline-flex;align-items:center;justify-content:center;color:white;font-weight:700}
+  .top-actions{display:flex;gap:10px;align-items:center}
+  .btn{display:inline-block;padding:9px 14px;border-radius:10px;font-weight:600;border:0;cursor:pointer}
+  .btn-join{background:var(--brand);color:white;box-shadow:0 6px 18px rgba(11,94,215,0.12)}
+  .btn-post{background:var(--accent);color:white}
+  .btn-login{background:transparent;border:1px solid rgba(15,23,42,0.06);padding:8px 12px;border-radius:9px}
+
+  /* bottom nav */
+  .nav-line{display:flex;align-items:center;justify-content:center;padding:10px 20px;border-top:1px solid rgba(15,23,42,0.03)}
+  nav.main-nav{display:flex;gap:20px;font-weight:600;color:#0f172a}
+  nav.main-nav a{color:inherit;text-decoration:none}
+  .hamburger{display:none;border:0;background:transparent;font-size:20px;padding:6px}
+
+  /* hero */
+  .hero{display:grid;grid-template-columns:1fr 460px;gap:20px;align-items:center;padding:36px 0}
+  .hero h1{font-size:44px;margin:0 0 12px;line-height:1.02}
+  .hero p.lead{color:var(--muted);margin:0 0 18px}
+  .hero .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-illustration{background:linear-gradient(180deg,#ffffff,rgba(255,255,255,0.9));border-radius:14px;padding:20px;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;height:100%}
+  .hero .cta-secondary{background:#fff;border:1px solid rgba(15,23,42,0.06);padding:10px 14px;border-radius:10px;font-weight:600}
+
+  /* stats / ticker */
+  .stats{display:flex;gap:18px;align-items:center;padding:14px 0;border-radius:10px;background:linear-gradient(90deg,#ffffff,#fbfdff);box-shadow:var(--shadow);margin-bottom:14px;overflow:hidden}
+  .stat{padding:12px 18px;background:transparent;display:flex;gap:10px;align-items:center;border-right:1px dashed rgba(15,23,42,0.05)}
+  .stat:last-child{border-right:none}
+  .stat .num{font-weight:700}
+  .ticker{flex:1;padding:10px 16px;color:var(--muted);display:flex;align-items:center;gap:14px}
+
+  /* snapshot and community */
+  .grid-2{display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:start;margin:26px 0}
+  .snapshot{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .card{background:var(--card);border-radius:12px;padding:16px;box-shadow:var(--shadow)}
+  .card h3{margin:0 0 8px;font-size:16px}
+  .community-wall{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-start;align-items:center;padding-top:6px}
+
+  /* avatars */
+  .avatar{width:52px;height:52px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(120deg,#f0f4ff,#eaf7f1);font-weight:700;color:#062;box-shadow:0 2px 6px rgba(2,6,23,0.06);}
+
+  /* how it works */
+  .steps{display:flex;gap:12px;margin-top:6px;flex-wrap:wrap}
+  .step{flex:1;min-width:180px;background:linear-gradient(180deg,#ffffff,#fbfeff);border-radius:12px;padding:16px;text-align:center;box-shadow:var(--shadow)}
+  .step .num{display:inline-block;background:linear-gradient(90deg,var(--brand),#2b6fd6);color:white;width:44px;height:44px;border-radius:50%;line-height:44px;font-weight:700;margin-bottom:8px}
+
+  /* why join & featured */
+  .why-featured{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0}
+  .bullets li{margin:8px 0;color:var(--muted)}
+  .featured-tools{display:flex;gap:12px;flex-wrap:wrap}
+  .tag{background:linear-gradient(180deg,#f7fbff,#eef6ff);padding:12px 16px;border-radius:10px;font-weight:700;box-shadow:0 6px 18px rgba(15,23,42,0.04)}
+
+  /* testimonials */
+  .testimonials{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+  .testimonial{background:linear-gradient(180deg,#fff,#fbfbff);padding:18px;border-radius:12px;box-shadow:var(--shadow)}
+
+  /* CTA strip */
+  .cta-strip{display:flex;align-items:center;justify-content:space-between;padding:18px;border-radius:12px;background:linear-gradient(90deg,var(--brand),#2e6cf2);color:white;margin:22px 0;box-shadow:0 8px 28px rgba(11,82,215,0.16)}
+  .cta-strip .strip-actions{display:flex;gap:12px;align-items:center}
+
+  /* footer */
+  footer.site-footer{background:#fff;padding:24px;border-radius:10px;box-shadow:var(--shadow);margin-bottom:40px}
+  footer .footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  footer a{color:var(--brand);text-decoration:none;font-weight:600}
+
+  /* small helpers */
+  .muted{color:var(--muted)}
+  .pill{display:inline-block;padding:6px 10px;background:#f1f5f9;border-radius:999px;font-weight:700}
+  .inline-icon{opacity:0.9;margin-right:8px}
+
+  /* responsive */
+  @media (max-width: 960px){
+    .hero{grid-template-columns:1fr;gap:18px}
+    .grid-2{grid-template-columns:1fr;gap:12px}
+    .wrap{padding:0 16px}
+  }
+  @media (max-width: 720px){
+    .header .top{padding:10px 14px}
+    .nav-line{display:none}
+    .hamburger{display:inline-block}
+    nav.main-nav{display:none}
+    .hero h1{font-size:28px}
+    .stat{padding:10px 8px}
+    .avatar{width:44px;height:44px}
+    .featured-tools{justify-content:flex-start}
+    .testimonial{padding:14px}
+    footer .footer-grid{grid-template-columns:1fr 1fr}
+    .cta-strip{flex-direction:column;gap:12px;align-items:flex-start}
+  }
+
+  /* tiny mobile */
+  @media (max-width:420px){
+    .brand{font-size:18px}
+    .hero h1{font-size:22px}
+    .avatar{width:38px;height:38px;font-size:14px}
+  }
+</style>
 </head>
 <body>
+  <header class="header" role="banner" aria-label="Main header">
+    <div class="wrap">
+      <div class="top">
+        <div class="brand" aria-hidden="false">
+          <div class="logo" aria-hidden="true">J</div>
+          <div>Jobjila</div>
+        </div>
 
-<header>
-  <h1>Digital Identity & Growth</h1>
-  <div class="hamburger"><span></span><span></span><span></span></div>
-  <nav>
-    <a href="./index.html">Home</a>
-    <a href="./services.html">Services</a>
-    <a href="./freelancing.html">Freelancing</a>
-    <a href="./portfolio.html">Portfolio</a>
-    <a href="./blog.html">Blog</a>
-    <a href="./resources.html">Resources</a>
-    <a href="./why.html">Why Us</a>
-    <a href="./training.html">Training</a>
-    <a href="./contact.html">Contact</a>
-  </nav>
-</header>
-
-<main>
-  <!-- Hero Section -->
-  <section class="hero" id="hero">
-    <h2>We Build Digital Identities for Businesses & Freelancers</h2>
-    <p class="lead">Websites, IT solutions, training, and career guidance — one vision: growth.</p>
-    <div class="cta">
-      <a href="./services.html" class="btn primary">Get Your Website</a>
-      <a href="./freelancing.html" class="btn alt">Start Freelance Training</a>
-    </div>
-  </section>
-
-  <!-- Why Us Section -->
-  <section id="why">
-    <h2>Why Digital Identity Matters</h2>
-    <p class="lead">Your digital identity is the key to business growth and career success.</p>
-  </section>
-
-  <!-- Choose Path Section -->
-  <section id="split">
-    <h2>Choose Your Path</h2>
-    <div class="two-col">
-      <div class="card">
-        <i class="fa-solid fa-briefcase fa-2x"></i>
-        <h3>For Businesses</h3>
-        <p>Websites, IT solutions, and digital growth strategies.</p>
+        <div class="top-actions" role="navigation" aria-label="Top actions">
+          <button class="btn btn-join" onclick="scrollToJoin()">Join as Trainer</button>
+          <button class="btn btn-post" onclick="scrollToPost()">Post a Project</button>
+          <button class="btn btn-login" onclick="openLogin()">Login</button>
+          <button class="hamburger" id="hamburger" aria-label="Open menu" onclick="toggleMobileNav()">☰</button>
+        </div>
       </div>
-      <div class="card">
-        <i class="fa-solid fa-user-graduate fa-2x"></i>
-        <h3>For Freelancers</h3>
-        <p>Training, skills, and career guidance to succeed online.</p>
+
+      <div class="nav-line" id="navLine">
+        <nav class="main-nav" id="mainNav" role="navigation" aria-label="Main navigation">
+          <a href="#home">Home</a>
+          <a href="#trainers">Trainers</a>
+          <a href="#freelancers">Freelancers</a>
+          <a href="#services">Services</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
       </div>
     </div>
-  </section>
+  </header>
 
-  <!-- Training Section -->
-  <section id="training">
-    <h2>Freelancing Training & IT Solutions</h2>
-    <div class="card-grid">
-      <div class="card">
-        <i class="fa-solid fa-laptop-code fa-2x"></i>
-        <h3>Technical Skills</h3>
-        <p>Web design, digital tools, and productivity training.</p>
-      </div>
-      <div class="card">
-        <i class="fa-solid fa-users fa-2x"></i>
-        <h3>Leadership & Career</h3>
-        <p>Freelancing platforms, client management, and job guidance.</p>
-      </div>
+  <main>
+    <div class="wrap" id="home">
+      <!-- HERO -->
+      <section class="hero" aria-label="Hero section">
+        <div>
+          <h1>Work Together. Learn Together. Grow Together.</h1>
+          <p class="lead">A collaboration hub for trainers, freelancers &amp; clients to deliver projects together.</p>
+          <div class="hero-ctas">
+            <button class="btn btn-join" onclick="scrollToJoin()">Join as Freelancer/Trainer</button>
+            <button class="btn btn-post" onclick="scrollToPost()">Post a Project</button>
+            <button class="cta-secondary" onclick="openHow()">How it works</button>
+          </div>
+        </div>
+        <div class="hero-illustration" aria-hidden="true">
+          <!-- simple illustration placeholder -->
+          <svg width="380" height="220" viewBox="0 0 380 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="0" y="0" width="380" height="220" rx="12" fill="#fff"/>
+            <g transform="translate(28,20)">
+              <rect width="324" height="180" rx="10" fill="#f7fbff"/>
+              <!-- three people (simple shapes) -->
+              <circle cx="80" cy="70" r="26" fill="#2b6fd6"/>
+              <circle cx="160" cy="60" r="30" fill="#ff9d66"/>
+              <circle cx="240" cy="74" r="26" fill="#2ed1a1"/>
+              <rect x="40" y="110" width="240" height="28" rx="8" fill="#e6eefc"/>
+            </g>
+          </svg>
+        </div>
+      </section>
+
+      <!-- community live stats and ticker -->
+      <section class="stats" role="region" aria-label="Community stats">
+        <div class="stat"><span class="inline-icon">👥</span><span class="num">5,000+</span><span class="muted"> Members</span></div>
+        <div class="stat"><span class="inline-icon">🎓</span><span class="num">1,200</span><span class="muted"> Trainers</span></div>
+        <div class="stat"><span class="inline-icon">💻</span><span class="num">2,800</span><span class="muted"> Freelancers</span></div>
+        <div class="stat"><span class="inline-icon">🤝</span><span class="num">450</span><span class="muted"> Clients</span></div>
+        <div class="ticker" id="ticker">Live: <strong id="liveCount">73</strong> Members Online Now — <span id="tickerText">Anita joined as Trainer • Rahul posted a Web Dev Project • Priya collaborated on SEO</span></div>
+      </section>
+
+      <!-- snapshot + community wall -->
+      <section class="grid-2">
+        <div>
+          <div class="card snapshot" aria-label="Collaboration snapshot">
+            <div class="card-block">
+              <h3>Collaboration Snapshot</h3>
+              <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px">
+                <div><strong>Trainers Available</strong><div class="muted">IT, Digital Marketing, Cloud, Web</div></div>
+                <div><strong>Freelancers for Projects</strong><div class="muted">Web Dev, SEO, Design</div></div>
+                <div><strong>Clients &amp; Collaboration</strong><div class="muted">Post projects, hire teams</div></div>
+                <div><strong>Collaborate</strong><div class="muted">Find team members for projects</div></div>
+              </div>
+            </div>
+            <div style="margin-top:12px">
+              <h3 style="margin-bottom:8px">Community Wall</h3>
+              <div class="community-wall" id="communityWall" aria-live="polite">
+                <!-- avatars inserted by JS -->
+              </div>
+              <p class="muted" style="margin-top:10px">120 people collaborated this week</p>
+            </div>
+          </div>
+        </div>
+
+        <aside>
+          <div class="card" aria-label="Community wall summary">
+            <h3>Community Wall</h3>
+            <ul style="padding-left:18px;margin:8px 0;" class="muted">
+              <li>Verified Trainers & Freelancers</li>
+              <li>Real-time Community & Collaboration</li>
+              <li>Affordable & Scalable Solutions</li>
+              <li>Growth-Focused Network</li>
+            </ul>
+          </div>
+
+          <!-- small testimonial card -->
+          <div class="card" style="margin-top:14px">
+            <h3>Testimonials</h3>
+            <div class="muted">“Jobjila helped me connect with skilled freelancers and deliver my web project successfully.”</div>
+            <div style="margin-top:12px;font-weight:700">— Sarah L., Freelancer</div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- how it works -->
+      <section id="how" style="margin-top:18px">
+        <h2>How Collaboration Works</h2>
+        <div class="steps" aria-label="How it works steps">
+          <div class="step"><div class="num">1</div><div style="font-weight:700;margin-bottom:6px">Post Training/Project</div><div class="muted">Share requirements & timeline</div></div>
+          <div class="step"><div class="num">2</div><div style="font-weight:700;margin-bottom:6px">Collaborate</div><div class="muted">Work with freelancers & trainers</div></div>
+          <div class="step"><div class="num">3</div><div style="font-weight:700;margin-bottom:6px">Deliver</div><div class="muted">Ship & grow together</div></div>
+        </div>
+      </section>
+
+      <!-- why join + featured -->
+      <section class="why-featured" aria-label="Why join and featured projects">
+        <div class="card">
+          <h3>Why Join Jobjila?</h3>
+          <ul class="bullets">
+            <li>Verified Trainers & Freelancers</li>
+            <li>Real-Time Community & Collaboration</li>
+            <li>Affordable & Scalable Solutions</li>
+            <li>Growth-Focused Network</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Featured Projects & Trainings</h3>
+          <div class="featured-tools" aria-hidden="true">
+            <div class="tag">SEO Masterclass</div>
+            <div class="tag">Cloud Training</div>
+            <div class="tag">Website for Startup</div>
+            <div class="tag">Branding & Design</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- testimonials grid -->
+      <section style="margin-top:12px">
+        <h3>More Success Stories</h3>
+        <div class="testimonials">
+          <div class="testimonial">“I found my dream project through Jobjila’s network.” — <strong>Ravi S.</strong></div>
+          <div class="testimonial">“Collaboration here helped me double my freelance income.” — <strong>Anita K.</strong></div>
+        </div>
+      </section>
+
+      <!-- CTA strip with countdown -->
+      <section class="cta-strip" role="region" aria-label="Call to action">
+        <div>
+          <div style="font-weight:800;font-size:18px">Join 5,000+ Trainers & Freelancers Today</div>
+          <div id="countdown" style="margin-top:6px">Batch Closing in <span id="cd-days">0</span>d <span id="cd-hours">0</span>h <span id="cd-mins">0</span>m</div>
+        </div>
+        <div class="strip-actions">
+          <button class="btn btn-join" onclick="scrollToJoin()">Join Now</button>
+          <button class="btn btn-post" onclick="scrollToPost()">Post a Project</button>
+        </div>
+      </section>
+
+      <!-- footer -->
+      <footer class="site-footer" role="contentinfo">
+        <div class="footer-grid">
+          <div>
+            <strong>Quick Links</strong>
+            <ul style="padding-left:16px;margin-top:8px">
+              <li><a href="#about">About</a></li>
+              <li><a href="#how">How it Works</a></li>
+              <li><a href="#faq">FAQ</a></li>
+              <li><a href="#privacy">Privacy Policy</a></li>
+            </ul>
+          </div>
+          <div>
+            <strong>Community</strong>
+            <ul style="padding-left:16px;margin-top:8px">
+              <li><a href="#" onclick="openWhatsApp()">Join WhatsApp</a></li>
+              <li><a href="mailto:support@jobjila.com">support@jobjila.com</a></li>
+              <li>+91 8XX-XXX-XXXX</li>
+            </ul>
+          </div>
+          <div>
+            <strong>Follow</strong>
+            <div style="margin-top:8px;display:flex;gap:8px">
+              <a href="#" aria-label="LinkedIn">LinkedIn</a>
+              <a href="#" aria-label="Instagram">Instagram</a>
+              <a href="#" aria-label="Twitter">Twitter</a>
+            </div>
+          </div>
+          <div>
+            <strong>Newsletter</strong>
+            <div style="margin-top:8px">
+              <input id="newsletter" style="padding:8px;border-radius:8px;border:1px solid rgba(15,23,42,0.06);width:100%" placeholder="Your email" />
+              <button class="btn btn-join" style="margin-top:8px;width:100%" onclick="subscribeNews()">Subscribe</button>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
-  </section>
+  </main>
 
-  <!-- Services Section -->
-  <section id="services">
-    <h2>Our Services</h2>
-    <p class="lead">Digital identity creation, web design, IT consulting, and more.</p>
-    <img src="./images/services.jpg" alt="Our Services" class="sample-img">
-  </section>
+<script>
+  /* ===== Simple JS interactions for prototype ===== */
 
-  <!-- Portfolio Section -->
-  <section id="portfolio">
-    <h2>Portfolio</h2>
-    <p class="lead">Showcase of our past projects and success stories.</p>
-    <img src="./images/portfolio.jpg" alt="Portfolio showcase" class="sample-img">
-  </section>
+  // mobile nav toggle (treat nav-line element)
+  function toggleMobileNav(){
+    var nav = document.getElementById('mainNav');
+    if(!nav) return;
+    if(nav.style.display === 'flex' || nav.style.display === 'block'){
+      nav.style.display = 'none';
+    } else {
+      nav.style.display = 'flex';
+      nav.style.flexDirection = 'column';
+      nav.style.alignItems = 'center';
+      nav.style.gap = '12px';
+    }
+  }
 
-  <!-- Blog Section -->
-  <section id="blog">
-    <h2>Blog</h2>
-    <p class="lead">Latest insights on freelancing, IT, and business growth.</p>
-    <i class="fa-solid fa-pen-nib fa-2x"></i>
-  </section>
+  function openLogin(){ alert('Open login modal — integrate auth here'); }
+  function scrollToJoin(){ window.scrollTo({top: document.body.offsetTop, behavior:'smooth'}); }
+  function scrollToPost(){ document.getElementById('how')?.scrollIntoView({behavior:'smooth'}); }
 
-  <!-- Resources Section -->
-  <section id="resources">
-    <h2>Resources</h2>
-    <p class="lead">Free tools, guides, and productivity boosters.</p>
-    <i class="fa-solid fa-toolbox fa-2x"></i>
-  </section>
+  function openWhatsApp(){ window.open('https://wa.me/919999999999', '_blank'); }
+  function subscribeNews(){
+    var val = document.getElementById('newsletter').value;
+    if(!val || val.indexOf('@')<0){ alert('Please enter a valid email'); return; }
+    alert('Thanks — subscribed with ' + val);
+    document.getElementById('newsletter').value = '';
+  }
 
-  <!-- FAQ Section -->
-  <section id="faq">
-    <h2>FAQ</h2>
-    <p class="lead">Answers to the most common questions.</p>
-    <i class="fa-solid fa-circle-question fa-2x"></i>
-  </section>
+  /* ===== Populate community avatars dynamically (placeholder initials) ===== */
+  const communityNames = [
+    'Anita','Rahul','Priya','Sahil','Maya','Ravi','Nisha','Aman','Pooja','Vikram',
+    'Karan','Anjali','Simran','Rohan','Isha','Neha','Arjun','Sonia','Kabir','Tara'
+  ];
+  const wall = document.getElementById('communityWall');
+  function makeAvatar(name){
+    const el = document.createElement('div');
+    el.className = 'avatar';
+    const parts = name.trim().split(' ');
+    const initials = (parts.length>1? parts[0][0]+parts[1][0] : parts[0].slice(0,2)).toUpperCase();
+    el.textContent = initials;
+    el.title = name;
+    return el;
+  }
+  communityNames.forEach(n => wall.appendChild(makeAvatar(n)));
 
-  <!-- Testimonials Section -->
-  <section id="testimonials">
-    <h2>Testimonials</h2>
-    <p class="lead">What our clients and students say.</p>
-    <i class="fa-solid fa-comment-dots fa-2x"></i>
-  </section>
+  /* ===== Simple ticker rotation ===== */
+  const tickerMessages = [
+    "Anita joined as Trainer",
+    "Rahul posted a Web Dev Project",
+    "Priya collaborated on SEO",
+    "Ravi completed a Cloud Training",
+    "Nisha joined as Freelancer"
+  ];
+  let tickIdx = 0;
+  function rotateTicker(){
+    document.getElementById('tickerText').textContent = tickerMessages[tickIdx];
+    tickIdx = (tickIdx + 1) % tickerMessages.length;
+  }
+  setInterval(rotateTicker, 3500);
+  rotateTicker();
 
-  <!-- Free Guide Section -->
-  <section id="lead">
-    <h2>Free Guide & Newsletter</h2>
-    <a href="#" class="btn primary">Download Now</a>
-  </section>
+  /* ===== Countdown timer (edit target date/time here) ===== */
+  // set your real target or batch closing date here (YYYY, M-1, D, H, M, S)
+  const target = new Date();
+  target.setDate(target.getDate() + 2); // default: 2 days from now for demo
+  function updateCountdown(){
+    const now = new Date();
+    const diff = target - now;
+    if(diff <= 0){ document.getElementById('countdown').textContent = 'Batch closed'; return; }
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff / (1000*60*60)) % 24);
+    const mins = Math.floor((diff / (1000*60)) % 60);
+    const secs = Math.floor((diff / 1000) % 60);
+    document.getElementById('cd-days').textContent = days;
+    document.getElementById('cd-hours').textContent = hours;
+    document.getElementById('cd-mins').textContent = mins;
+  }
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
 
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <p class="lead">Get in touch for collaboration or inquiries.</p>
-    <i class="fa-solid fa-envelope fa-2x"></i>
-  </section>
-</main>
+  /* Accessibility: close mobile nav when clicking outside */
+  document.addEventListener('click', function(e){
+    const nav = document.getElementById('mainNav');
+    const hb = document.getElementById('hamburger');
+    if(!nav || !hb) return;
+    if(window.innerWidth <= 720){
+      if(e.target !== hb && !hb.contains(e.target) && !nav.contains(e.target)){
+        nav.style.display = 'none';
+      }
+    }
+  });
 
-<footer>
-  <p>&copy; 2025 Digital Identity & Growth. All rights reserved.</p>
-</footer>
-
-<!-- JS -->
-<script src="./js/script.js"></script>
+  // small responsive tweak: hide bottom nav for mobile
+  function onResize(){ if(window.innerWidth <= 720){ document.getElementById('navLine').style.display='none'; } else { document.getElementById('navLine').style.display='block'; } }
+  window.addEventListener('resize', onResize);
+  onResize();
+</script>
 </body>
 </html>
