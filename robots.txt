@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Working files and generator sources are not content
+Disallow: /scripts/
+Disallow: /data/
+Disallow: /bookflip/
+Disallow: /ecomm/
+Disallow: /doctor/
+Disallow: /ngo/
+Disallow: /realestate/
+
+Sitemap: https://jobjila.com/sitemap.xml

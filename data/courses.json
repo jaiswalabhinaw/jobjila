@@ -1,0 +1,467 @@
+{
+  "site": {
+    "name": "Jobjila",
+    "url": "https://jobjila.com",
+    "tagline": "Learn. Get Verified. Earn.",
+    "description": "Jobjila is India's skill-to-income platform. Learn a trending IT or professional skill, get your skills verified, and turn them into a job, freelance work, or your own business.",
+    "email": "hello@jobjila.com",
+
+    "//whatsapp": "Business WhatsApp number: country code + number, digits only. Every WhatsApp button on the site reads this one value.",
+    "whatsapp": "918756680477",
+
+    "locality": "Lucknow",
+    "region": "Uttar Pradesh",
+    "country": "IN",
+    "cityHub": "/locations/"
+  },
+  "courses": [
+    {
+      "slug": "cloud-computing",
+      "name": "Cloud Computing with AWS & Azure",
+      "seoTitle": "Cloud Computing Course with AWS & Azure — Fees, Syllabus & Placement",
+      "metaDescription": "Job-ready cloud computing course covering AWS and Azure fundamentals, Linux, networking and cost management. 10 weeks, live online, with placement support. See fees and syllabus.",
+      "tagline": "Deploy, secure and manage real workloads on the two clouds that hire the most.",
+      "category": "IT & Cloud",
+      "accent": "brand",
+      "status": "open",
+      "trending": true,
+      "duration": "10 weeks",
+      "effort": "6–8 hrs/week",
+      "level": "Beginner to Intermediate",
+      "mode": "Live online + recordings",
+      "priceINR": 18500,
+      "earning": "₹4.5–9 LPA as a Cloud Associate",
+      "keywords": ["cloud computing course", "aws course with placement", "azure training online", "cloud computing course fees"],
+      "intro": "Cloud is no longer a specialist niche — it is the default way companies run software. This course takes you from \"what is a virtual machine\" to confidently deploying a fault-tolerant application on both AWS and Azure, with the cost discipline that employers actually test for in interviews.",
+      "paths": {
+        "job": "Cloud Associate, Cloud Support Engineer, Junior DevOps Engineer",
+        "freelance": "Cloud migration audits and cost-optimisation reviews for small businesses",
+        "business": "Managed hosting and cloud-backup services for local companies"
+      },
+      "modules": [
+        { "title": "Cloud foundations & the shared responsibility model", "detail": "Regions, availability zones, IaaS vs PaaS vs SaaS, and how cloud billing genuinely works before you spend a rupee." },
+        { "title": "Linux and networking essentials", "detail": "The command line, SSH, DNS, subnets, firewalls and load balancers — the base layer every cloud interview probes." },
+        { "title": "AWS core services", "detail": "EC2, S3, VPC, IAM and RDS. You build a public web tier and a private database tier that talk to each other securely." },
+        { "title": "Azure core services", "detail": "Virtual Machines, Blob Storage, Virtual Networks and Entra ID, mapped side by side against their AWS equivalents." },
+        { "title": "Identity, security & compliance", "detail": "Least-privilege IAM policies, key management, encryption at rest and in transit, and reading a security audit report." },
+        { "title": "Automation with Infrastructure as Code", "detail": "Terraform basics — describe your infrastructure in code, version it, and rebuild an entire environment from scratch." },
+        { "title": "Monitoring & cost optimisation", "detail": "CloudWatch and Azure Monitor, budget alerts, right-sizing, and the reserved-instance maths that saves clients real money." },
+        { "title": "Capstone: migrate a live application", "detail": "Take a running on-premise app and move it to the cloud with zero data loss. This becomes the centrepiece of your portfolio." }
+      ],
+      "outcomes": [
+        "Deploy a highly available three-tier application on AWS",
+        "Write Terraform that provisions an entire environment reproducibly",
+        "Read and reduce a real cloud bill by at least 30%",
+        "Sit the AWS Cloud Practitioner and AZ-900 exams with confidence",
+        "Ship a documented migration case study to your Skill Passport"
+      ],
+      "tools": ["AWS", "Microsoft Azure", "Linux", "Terraform", "Docker", "CloudWatch"],
+      "faqs": [
+        { "q": "Do I need a programming background for this cloud computing course?", "a": "No. We start from Linux basics and networking. If you can use a computer confidently and are willing to practise on the command line, you can follow the whole course. Some scripting is introduced gradually in the Terraform module." },
+        { "q": "What are the cloud computing course fees at Jobjila?", "a": "The course is ₹18,500 including all live sessions, recordings, lab credits and one certification-exam guidance session. EMI options are available and there is a discount for students who enrol as a group." },
+        { "q": "Will I get placement support after this course?", "a": "Yes. Every learner who completes the capstone gets resume and LinkedIn review, two mock technical interviews, and their verified profile is shared with hiring partners looking for cloud associates. We do not guarantee a job — we guarantee the preparation and the introductions." },
+        { "q": "Are the AWS and Azure certification exam fees included?", "a": "No. The exam fees are paid directly to Amazon or Microsoft. We cover the syllabus, run practice tests and guide you through booking, but the certification fee itself is separate." },
+        { "q": "Is this course live or pre-recorded?", "a": "Live online, twice a week, with every session recorded so you can revisit it. Doubt threads under this course page stay open throughout, and your trainer replies within 48 hours." }
+      ]
+    },
+    {
+      "slug": "ai-prompt-engineering",
+      "name": "AI & Prompt Engineering for Professionals",
+      "seoTitle": "AI & Prompt Engineering Course — Fees, Syllabus & Career Outcomes",
+      "metaDescription": "Practical AI course for working professionals: prompt engineering, retrieval-augmented generation, AI automation and building assistants. 8 weeks live online. See fees, syllabus and outcomes.",
+      "tagline": "Stop watching AI demos. Build the automations your workplace will pay for.",
+      "category": "AI & Data",
+      "accent": "accent",
+      "status": "open",
+      "trending": true,
+      "duration": "8 weeks",
+      "effort": "5–6 hrs/week",
+      "level": "Beginner friendly",
+      "mode": "Live online + recordings",
+      "priceINR": 14500,
+      "earning": "₹25k–₹60k per automation project",
+      "keywords": ["ai course for beginners", "prompt engineering course", "generative ai training india", "ai automation course fees"],
+      "intro": "Most AI courses stop at clever prompts. This one goes further: you will connect an AI model to real documents, wire it into a workflow, measure whether the output is actually correct, and hand the result to someone who is not technical. That gap — between a demo and something a business can rely on — is where the money is.",
+      "paths": {
+        "job": "AI Associate, Automation Analyst, AI-enabled Marketing or Ops roles",
+        "freelance": "Building AI assistants and document workflows for agencies and SMEs",
+        "business": "Selling AI automation retainers to local businesses"
+      },
+      "modules": [
+        { "title": "How language models actually work", "detail": "Tokens, context windows, temperature and hallucination — enough mental model to debug bad output instead of guessing." },
+        { "title": "Prompt engineering that survives production", "detail": "Structured prompts, few-shot examples, output formats, and why a prompt that works once may fail on the hundredth run." },
+        { "title": "Working with your own documents (RAG)", "detail": "Chunking, embeddings and vector search — build an assistant that answers only from your company's PDFs and policies." },
+        { "title": "Automating real workflows", "detail": "Connect AI to spreadsheets, email and forms using no-code tools, then graduate to simple API scripts." },
+        { "title": "Evaluating AI output", "detail": "Build a test set, score responses, and prove to a client that your system is right often enough to trust." },
+        { "title": "Cost, privacy and safe deployment", "detail": "Token economics, what you must never send to a public model, and how to talk to a client about data handling." },
+        { "title": "Packaging and pricing AI work", "detail": "Scoping an automation project, writing the proposal, and setting a retainer that reflects saved hours." },
+        { "title": "Capstone: ship a working AI assistant", "detail": "Deliver an end-to-end assistant for a real use case, with documentation and an evaluation report." }
+      ],
+      "outcomes": [
+        "Build a document-grounded AI assistant from scratch",
+        "Automate a repetitive business workflow end to end",
+        "Measure and defend the accuracy of an AI system",
+        "Scope and price an AI automation project for a client",
+        "Publish a working AI project to your Skill Passport"
+      ],
+      "tools": ["Claude", "OpenAI API", "Python basics", "n8n / Make", "Vector databases", "Google Sheets"],
+      "faqs": [
+        { "q": "Do I need to know coding to join this AI course?", "a": "No. The first half is entirely no-code and works through visual automation tools. Light Python appears in the second half, and we teach it from zero — you will be reading and editing scripts, not writing them from a blank file." },
+        { "q": "What are the AI and prompt engineering course fees?", "a": "₹14,500 for the full 8-week programme, including live sessions, recordings and API credits for your capstone project. EMI options are available." },
+        { "q": "Is this course useful if I am not from an IT background?", "a": "Very. Marketers, HR professionals, teachers and operations staff often get the fastest return, because they already know which repetitive task is worth automating. Around half of each cohort comes from non-IT roles." },
+        { "q": "Which AI models will I learn to work with?", "a": "The course is deliberately model-agnostic. You will work hands-on with current commercial models through their APIs and learn the patterns that transfer when models change — which they do, frequently." },
+        { "q": "Can I really earn freelance income from this?", "a": "Small businesses are actively paying for AI automation but struggle to find people who can scope it properly. The final module is dedicated to packaging, pricing and pitching, and your capstone doubles as your first portfolio piece." }
+      ]
+    },
+    {
+      "slug": "it-infrastructure",
+      "name": "IT Infrastructure & Networking",
+      "seoTitle": "IT Infrastructure & Networking Course — Fees, Syllabus & Placement",
+      "metaDescription": "Hands-on IT infrastructure and networking course covering servers, routing, switching, Active Directory, virtualisation and IT support. 10 weeks with placement support. See fees and syllabus.",
+      "tagline": "The layer everything else runs on — and a reliable entry door into IT.",
+      "category": "IT & Cloud",
+      "accent": "brand",
+      "status": "open",
+      "trending": false,
+      "duration": "10 weeks",
+      "effort": "6 hrs/week",
+      "level": "Beginner",
+      "mode": "Live online + lab access",
+      "priceINR": 16000,
+      "earning": "₹3–6 LPA as an IT Support / Infra Engineer",
+      "keywords": ["it infrastructure course", "networking course with placement", "ccna basics training", "it support course fees"],
+      "intro": "Every company that owns a laptop needs someone who understands infrastructure. This course builds that foundation properly — networking, servers, identity and virtualisation — and it remains one of the most dependable ways into an IT career without a computer-science degree.",
+      "paths": {
+        "job": "IT Support Engineer, Network Administrator, Infrastructure Associate",
+        "freelance": "Network setup and IT audits for clinics, schools and small offices",
+        "business": "Annual maintenance contracts for local businesses"
+      },
+      "modules": [
+        { "title": "How networks actually move data", "detail": "The OSI model made practical: IP addressing, subnetting, DNS and DHCP, with packet captures you can read." },
+        { "title": "Routing and switching", "detail": "VLANs, static and dynamic routing, and building a small multi-site network in a simulator." },
+        { "title": "Server administration", "detail": "Windows Server and Linux side by side — users, permissions, file shares, scheduled jobs and patching." },
+        { "title": "Active Directory & identity", "detail": "Domains, group policy and single sign-on — the backbone of nearly every corporate IT estate." },
+        { "title": "Virtualisation", "detail": "Hypervisors, virtual machines, snapshots and resource planning using VMware and Hyper-V." },
+        { "title": "Backup, recovery & business continuity", "detail": "Backup strategies, RTO and RPO, and actually restoring from a backup under time pressure." },
+        { "title": "Security hardening & monitoring", "detail": "Firewalls, VPNs, endpoint protection and reading logs to spot a problem before users report it." },
+        { "title": "Capstone: design a small-office IT estate", "detail": "Deliver a full network diagram, server plan, backup policy and cost sheet for a 40-person company." }
+      ],
+      "outcomes": [
+        "Subnet a network correctly without a calculator",
+        "Build and manage a Windows domain with group policy",
+        "Design a backup and recovery plan you have personally tested",
+        "Diagnose connectivity faults methodically instead of by trial and error",
+        "Present a complete small-office infrastructure design"
+      ],
+      "tools": ["Cisco Packet Tracer", "Windows Server", "Linux", "VMware", "Wireshark", "Active Directory"],
+      "faqs": [
+        { "q": "Is this course enough to get an IT support job?", "a": "It covers what entry-level IT support and infrastructure roles test for: networking fundamentals, Windows and Linux administration, Active Directory and troubleshooting method. Combined with the capstone and mock interviews, learners typically target IT Support Engineer or Network Administrator roles." },
+        { "q": "What are the IT infrastructure course fees?", "a": "₹16,000 for 10 weeks, including live sessions, recorded lectures and remote lab access for the full duration of the course plus 30 days afterwards." },
+        { "q": "Does this prepare me for CCNA?", "a": "The routing, switching and networking modules cover a substantial part of the CCNA foundation. It is not a CCNA exam-cram course — the goal is working competence — but learners who go on to CCNA find the groundwork already done." },
+        { "q": "Do I need my own hardware or lab equipment?", "a": "No. All practical work is done in simulators and remote labs that we provide. A laptop with 8 GB of RAM and a stable internet connection is sufficient." },
+        { "q": "How is this different from the cloud computing course?", "a": "This course covers the traditional infrastructure most companies still run, and it is the better starting point if you are completely new to IT. Many learners take this first and follow it with the cloud course." }
+      ]
+    },
+    {
+      "slug": "presales-consulting",
+      "name": "Presales & Solution Consulting",
+      "seoTitle": "Presales & Solution Consulting Course — Fees, Syllabus & Career Path",
+      "metaDescription": "Presales training for IT professionals: discovery calls, solution design, RFP and proposal writing, demos, and pricing. 6 weeks live online. See fees, syllabus and salary outcomes.",
+      "tagline": "The highest-paying pivot for technical people who can also talk to customers.",
+      "category": "Business & Consulting",
+      "accent": "accent",
+      "status": "open",
+      "trending": true,
+      "duration": "6 weeks",
+      "effort": "5 hrs/week",
+      "level": "Intermediate — some IT exposure helps",
+      "mode": "Live online + live demo practice",
+      "priceINR": 21000,
+      "earning": "₹8–20 LPA as a Presales / Solution Consultant",
+      "keywords": ["presales training", "solution consulting course", "presales course india", "rfp proposal writing training"],
+      "intro": "Presales sits between engineering and sales, and it is chronically short of good people. If you understand technology but are tired of being invisible to the business, this is the most direct route to a senior, well-paid, client-facing role — and almost nobody in India teaches it formally.",
+      "paths": {
+        "job": "Presales Consultant, Solution Architect, Technical Account Manager",
+        "freelance": "Bid and RFP support for IT services firms on a per-proposal basis",
+        "business": "Independent solution consulting for SaaS vendors entering new markets"
+      },
+      "modules": [
+        { "title": "What presales really is", "detail": "The deal cycle end to end, who does what, and the specific moments where a presales consultant wins or loses the deal." },
+        { "title": "Discovery that uncovers the real problem", "detail": "Question frameworks, stakeholder mapping, and hearing the unstated constraint behind a customer's stated requirement." },
+        { "title": "Solution design & architecture storytelling", "detail": "Turning requirements into an architecture the customer's own team can defend internally after you leave the room." },
+        { "title": "The demo that closes", "detail": "Structuring a demo around the customer's workflow, handling hostile questions, and recovering when something breaks live." },
+        { "title": "RFPs, RFIs and proposal writing", "detail": "Reading an RFP for hidden disqualifiers, writing compliant responses, and building a reusable answer library." },
+        { "title": "Pricing, effort estimation & commercials", "detail": "Sizing a project, licence versus services margin, and defending your number when procurement pushes back." },
+        { "title": "Objection handling & competitive positioning", "detail": "Battlecards, landmines, and positioning against a competitor without ever naming them badly." },
+        { "title": "Capstone: run a full deal cycle", "detail": "Take a live scenario from discovery through solution, demo, proposal and pricing — assessed by a working presales leader." }
+      ],
+      "outcomes": [
+        "Run a structured discovery call that surfaces the real requirement",
+        "Design and present a solution architecture to a mixed audience",
+        "Write a compliant, persuasive RFP response",
+        "Estimate effort and defend a price under pressure",
+        "Deliver a recorded demo good enough to use as a portfolio piece"
+      ],
+      "tools": ["Solution design canvas", "RFP response library", "Demo scripting", "Pricing models", "Miro", "PowerPoint"],
+      "faqs": [
+        { "q": "Who should take a presales course?", "a": "Developers, testers, support engineers and infrastructure staff who enjoy explaining technology to customers, plus sales professionals who want to become technically credible. Some exposure to IT products or services is assumed." },
+        { "q": "What are the presales course fees?", "a": "₹21,000 for 6 weeks. It is our highest-priced course because every cohort is capped at 15 learners so that each person gets individually reviewed demo and proposal practice." },
+        { "q": "What salary can a presales consultant expect in India?", "a": "Entry into presales from a technical role commonly lands in the ₹8–12 LPA band, with experienced solution consultants and architects well above that. The role also carries incentive components tied to deal closure." },
+        { "q": "Is presales a sales job with a target?", "a": "Presales supports the sales team technically and usually carries a shared or team target rather than an individual quota. You are measured on solution quality, demo effectiveness and win rate, not on cold calling." },
+        { "q": "Will I get to practise demos with real feedback?", "a": "Yes — that is the core of the course. You deliver multiple recorded demos and receive line-by-line feedback from a practising presales leader, which most people have never had in their career." }
+      ]
+    },
+    {
+      "slug": "digital-marketing",
+      "name": "Digital Marketing & Growth",
+      "seoTitle": "Digital Marketing Course — Fees, Syllabus, Placement & Freelance Path",
+      "metaDescription": "Complete digital marketing course covering SEO, Google Ads, Meta Ads, analytics, content and email. 10 weeks live online with live client project. See fees, syllabus and earning paths.",
+      "tagline": "Run real campaigns with a real budget — not screenshots of someone else's dashboard.",
+      "category": "Marketing",
+      "accent": "success",
+      "status": "open",
+      "trending": true,
+      "duration": "10 weeks",
+      "effort": "6 hrs/week",
+      "level": "Beginner friendly",
+      "mode": "Live online + live client project",
+      "priceINR": 15500,
+      "earning": "₹18k–₹45k/month, job or freelance",
+      "keywords": ["digital marketing course", "digital marketing course fees", "seo course with placement", "google ads training india"],
+      "intro": "Digital marketing is the single most reliable skill on this platform for reaching all three earning paths — a job, freelance clients, or promoting your own business. This course is built around one rule: you never learn a channel without running something live in it.",
+      "paths": {
+        "job": "Performance Marketer, SEO Executive, Social Media Manager",
+        "freelance": "Monthly retainers managing ads and SEO for small businesses",
+        "business": "Marketing your own venture without hiring an agency"
+      },
+      "modules": [
+        { "title": "Marketing fundamentals & positioning", "detail": "Audience, offer and message — why most campaigns fail before a single rupee is spent on ads." },
+        { "title": "Search engine optimisation", "detail": "Keyword research, on-page structure, technical SEO, local SEO and link building. You optimise a real site and track its movement." },
+        { "title": "Google Ads", "detail": "Search, Performance Max and remarketing. Campaign structure, quality score, and reading the search-terms report like an operator." },
+        { "title": "Meta Ads (Facebook & Instagram)", "detail": "Audience building, creative testing, the pixel and conversions API, and diagnosing a campaign that stopped working." },
+        { "title": "Content & organic social", "detail": "Content calendars, short-form video, and building a channel that compounds instead of needing constant spend." },
+        { "title": "Analytics & attribution", "detail": "GA4, conversion tracking, UTM discipline, and building a dashboard a client can actually read." },
+        { "title": "Email, WhatsApp & retention", "detail": "List building, automated sequences, and the retention maths that makes acquisition affordable." },
+        { "title": "Capstone: a live client campaign", "detail": "Work on a real small business with a real budget, present results, and keep the case study for your portfolio." }
+      ],
+      "outcomes": [
+        "Rank a page for a genuine commercial keyword",
+        "Run profitable Google and Meta campaigns end to end",
+        "Build a GA4 dashboard that reports on business outcomes",
+        "Produce a client-ready monthly marketing report",
+        "Land your first freelance retainer with a live case study"
+      ],
+      "tools": ["Google Ads", "Meta Ads Manager", "GA4", "Search Console", "Ahrefs / Semrush", "Canva"],
+      "faqs": [
+        { "q": "What are the digital marketing course fees at Jobjila?", "a": "₹15,500 for the 10-week programme. This includes live sessions, recordings, tool access during the course, and a small managed ad budget for your live capstone campaign so you are not spending your own money to learn." },
+        { "q": "Can I get a job after a digital marketing course?", "a": "Yes, this is one of the most active hiring categories for entry-level roles. What separates candidates who get hired is a portfolio of real campaigns with real numbers — which is exactly what the capstone produces." },
+        { "q": "Is digital marketing good for freelancing?", "a": "It is arguably the best freelance skill on this platform, because small businesses need it continuously and pay monthly retainers rather than one-off fees. Many learners start with one local client while still employed." },
+        { "q": "Do I need a marketing degree or background?", "a": "No. The course starts from fundamentals. Curiosity about why people buy things matters far more than any prior qualification." },
+        { "q": "Will I get certified in Google Ads?", "a": "We prepare you for the free Google Ads and GA4 certifications and run practice sessions, but those certificates are issued by Google directly. Your Jobjila Skill Passport separately records your verified campaign results, which employers find more convincing." }
+      ]
+    },
+    {
+      "slug": "web-design",
+      "name": "Website Design & Development",
+      "seoTitle": "Website Designing Course — Fees, Syllabus & Freelance Earning Path",
+      "metaDescription": "Website designing course covering HTML, CSS, responsive design, WordPress, Figma and no-code tools. 8 weeks live online. Build client-ready sites. See fees, syllabus and freelance path.",
+      "tagline": "Ship real websites clients pay for — code and no-code, both.",
+      "category": "Design & Web",
+      "accent": "brand",
+      "status": "open",
+      "trending": true,
+      "duration": "8 weeks",
+      "effort": "6 hrs/week",
+      "level": "Absolute beginner",
+      "mode": "Live online + build-along projects",
+      "priceINR": 12500,
+      "earning": "₹15k–₹60k per website project",
+      "keywords": ["website designing course", "web design course fees", "wordpress course with placement", "html css course for beginners"],
+      "intro": "This course is built backwards from the freelance market. Clients do not ask for \"HTML skills\" — they ask for a site that loads fast, looks credible on a phone and brings in enquiries. You will learn to design it, build it, launch it and hand it over professionally.",
+      "paths": {
+        "job": "Web Designer, Front-end Developer, WordPress Developer",
+        "freelance": "Website projects for local businesses, typically ₹15k–₹60k each",
+        "business": "Running a small web studio with recurring maintenance income"
+      },
+      "modules": [
+        { "title": "Design foundations", "detail": "Layout, hierarchy, type and colour — the difference between a page that looks amateur and one that looks paid for." },
+        { "title": "Figma for practical design", "detail": "Wireframes, components and a design a client can approve before you write a line of code." },
+        { "title": "HTML & CSS properly", "detail": "Semantic structure, flexbox and grid, and modern responsive CSS without a framework crutch." },
+        { "title": "Responsive & mobile-first build", "detail": "Building for a ₹8,000 Android phone on a patchy connection, because that is what most Indian visitors are using." },
+        { "title": "WordPress & no-code delivery", "detail": "Themes, page builders and plugins — how to deliver a client site in days instead of weeks when the budget is small." },
+        { "title": "Performance, accessibility & on-page SEO", "detail": "Image optimisation, Core Web Vitals, alt text, heading structure and meta tags that help the site get found." },
+        { "title": "Domains, hosting & handover", "detail": "DNS, SSL, deployment, backups, and the handover document that stops clients calling you at midnight." },
+        { "title": "Capstone: a complete client website", "detail": "Design and ship a full multi-page business website, from brief to live domain, with a written proposal and invoice." }
+      ],
+      "outcomes": [
+        "Design a professional multi-page site in Figma",
+        "Build a fast, responsive site in clean HTML and CSS",
+        "Deliver a WordPress site a non-technical client can update",
+        "Score well on Core Web Vitals and on-page SEO",
+        "Quote, invoice and hand over a project like a professional"
+      ],
+      "tools": ["Figma", "HTML5", "CSS3", "WordPress", "Elementor", "GitHub Pages"],
+      "faqs": [
+        { "q": "What are the website designing course fees?", "a": "₹12,500 for 8 weeks, including live sessions, recordings, Figma practice files and hosting for your capstone project for the first year." },
+        { "q": "Do I need to know programming before joining?", "a": "No. This course assumes no prior coding at all. HTML and CSS are taught from the very first tag, and the no-code track means you can deliver paid client work even before you feel fluent in code." },
+        { "q": "Will I learn JavaScript in this course?", "a": "Only lightly — enough for interactive menus, sliders and form validation. The focus here is design and delivery. Learners who want to go deeper into JavaScript usually follow this with a front-end development track." },
+        { "q": "How soon can I take on freelance website projects?", "a": "The no-code and WordPress modules land in week five, and many learners take their first small paid project around then. Your capstone site doubles as the portfolio piece you show prospective clients." },
+        { "q": "Is WordPress still worth learning?", "a": "For the Indian small-business market, yes — it remains the fastest way to deliver a maintainable site at a price a local client will actually pay. We teach hand-coded and WordPress delivery together so you can choose per project." }
+      ]
+    },
+    {
+      "slug": "freelancing-bootcamp",
+      "name": "Freelancing Bootcamp",
+      "seoTitle": "Freelancing Course for Beginners — Fees, Syllabus & How to Get Clients",
+      "metaDescription": "Freelancing bootcamp teaching how to find clients, price your work, write proposals, handle contracts and get paid on time. 4 weeks live online. See fees and syllabus.",
+      "tagline": "You already have a skill. This is the business side nobody taught you.",
+      "category": "Career & Business",
+      "accent": "accent",
+      "status": "open",
+      "trending": true,
+      "duration": "4 weeks",
+      "effort": "4 hrs/week",
+      "level": "Any skill background",
+      "mode": "Live online + workshops",
+      "priceINR": 6500,
+      "earning": "First paid client within 60 days",
+      "keywords": ["freelancing course for beginners", "how to get freelance clients", "freelancing bootcamp india", "freelance pricing course"],
+      "intro": "Most people who fail at freelancing are not bad at their craft — they are bad at finding clients, quoting confidently and getting paid. This short, intense bootcamp fixes exactly that, and it pairs with any technical or creative course on this platform.",
+      "paths": {
+        "job": "Stronger negotiation and client skills in any role",
+        "freelance": "A working client pipeline and your first paid project",
+        "business": "The foundation for turning solo work into a small agency"
+      },
+      "modules": [
+        { "title": "Choosing a niche that pays", "detail": "Positioning yourself narrowly enough to be memorable, and validating that people actually pay for it before you commit." },
+        { "title": "Portfolio and proof", "detail": "Building credible proof with no prior clients, and turning your Jobjila Skill Passport into a page that converts." },
+        { "title": "Finding clients — four channels that work in India", "detail": "Local outreach, referral loops, marketplaces and inbound content. What to do daily, with a tracked pipeline." },
+        { "title": "Pricing and quoting without flinching", "detail": "Hourly versus fixed versus value pricing, how to raise your rate, and what to say when a client says it is too expensive." },
+        { "title": "Proposals, contracts and scope", "detail": "A proposal template that wins, a simple contract that protects you, and how to stop scope creep politely." },
+        { "title": "Getting paid, on time", "detail": "Advances, milestones, invoicing, GST basics for freelancers, and chasing a late payment without burning the relationship." },
+        { "title": "Client communication & retention", "detail": "Weekly updates, managing expectations, and converting a one-off project into a monthly retainer." },
+        { "title": "Capstone: land a real enquiry", "detail": "By the end you will have sent real outreach, run a real client call, and produced a real quote — reviewed line by line." }
+      ],
+      "outcomes": [
+        "Define a niche and a one-line positioning statement",
+        "Run outreach that produces genuine client conversations",
+        "Quote a project confidently and defend the number",
+        "Send a proposal and contract that protect your scope and payment",
+        "Have a tracked pipeline instead of hoping for referrals"
+      ],
+      "tools": ["Proposal templates", "Contract templates", "Invoice templates", "Notion CRM", "LinkedIn", "Jobjila marketplace"],
+      "faqs": [
+        { "q": "Do I need a skill already to join the freelancing bootcamp?", "a": "Yes — this course teaches the business of freelancing, not a delivery skill. It works best taken alongside or straight after a skill course such as digital marketing, web design or AI automation." },
+        { "q": "What are the freelancing bootcamp fees?", "a": "₹6,500 for 4 weeks. It is intentionally our most affordable course because it multiplies the value of every other course on the platform." },
+        { "q": "Will Jobjila give me clients directly?", "a": "Graduates with a verified Skill Passport are eligible to be matched with projects posted by clients on the platform. That is a genuine channel, but the bootcamp deliberately teaches you to build your own pipeline so you are never dependent on one source." },
+        { "q": "Can I freelance while working a full-time job?", "a": "Most learners in this bootcamp do exactly that. The workload is designed around evenings and weekends. Do check your employment contract for any moonlighting clause before you take paid work." },
+        { "q": "How much can a beginner freelancer realistically earn?", "a": "Early projects in the Indian market commonly range from ₹5,000 to ₹25,000 depending on the skill. What changes the picture is retainers — one ₹20,000 monthly retainer is worth more than chasing five one-off jobs." }
+      ]
+    },
+    {
+      "slug": "data-analytics",
+      "name": "Data Analytics with Excel & Power BI",
+      "seoTitle": "Data Analytics Course with Excel & Power BI — Fees, Syllabus & Placement",
+      "metaDescription": "Data analytics course covering advanced Excel, SQL basics, Power BI dashboards and business storytelling. 8 weeks live online with placement support. See fees and syllabus.",
+      "tagline": "Turn spreadsheets into decisions — the fastest analytics route for non-coders.",
+      "category": "AI & Data",
+      "accent": "success",
+      "status": "open",
+      "trending": false,
+      "duration": "8 weeks",
+      "effort": "5 hrs/week",
+      "level": "Beginner",
+      "mode": "Live online + datasets",
+      "priceINR": 13500,
+      "earning": "₹3.5–7 LPA as a Data Analyst",
+      "keywords": ["data analytics course", "power bi course fees", "excel advanced training", "data analyst course for beginners"],
+      "intro": "You do not need Python to start a career in data. Most analyst work in Indian companies still happens in Excel, SQL and Power BI — and being genuinely good at those three, plus being able to explain what the numbers mean, is a complete and hireable skill set.",
+      "paths": {
+        "job": "Data Analyst, MIS Executive, Business Analyst",
+        "freelance": "Dashboard and reporting projects for small businesses",
+        "business": "Reporting retainers for agencies and D2C brands"
+      },
+      "modules": [
+        { "title": "Advanced Excel for analysts", "detail": "Lookup functions, pivot tables, Power Query and dynamic arrays — cleaning messy real-world data without dread." },
+        { "title": "Data cleaning & preparation", "detail": "Handling duplicates, missing values and inconsistent formats, and documenting what you changed and why." },
+        { "title": "SQL fundamentals", "detail": "SELECT, JOIN, GROUP BY and subqueries — enough SQL to pull your own data instead of waiting for someone else." },
+        { "title": "Power BI data modelling", "detail": "Relationships, star schema and DAX measures that stay correct when filters change." },
+        { "title": "Dashboard design", "detail": "Choosing the right chart, removing decoration, and building a dashboard an executive can read in ten seconds." },
+        { "title": "Statistics for business decisions", "detail": "Averages that mislead, distributions, correlation versus causation, and sizing a difference that actually matters." },
+        { "title": "Storytelling with data", "detail": "Structuring an analysis as a narrative and presenting a finding people will act on." },
+        { "title": "Capstone: a full analytics project", "detail": "Take a raw messy dataset through cleaning, modelling and dashboarding to a presented recommendation." }
+      ],
+      "outcomes": [
+        "Clean and reshape messy data reliably in Power Query",
+        "Write SQL to answer your own business questions",
+        "Build an interactive Power BI dashboard with correct DAX",
+        "Present an analysis that leads to a decision",
+        "Publish a full analytics case study to your Skill Passport"
+      ],
+      "tools": ["Microsoft Excel", "Power Query", "SQL", "Power BI", "DAX", "Google Sheets"],
+      "faqs": [
+        { "q": "Do I need Python for a data analyst job?", "a": "Not for most entry-level analyst roles in India, which run on Excel, SQL and a BI tool. Python becomes valuable later, particularly if you move towards data science — but it is not the barrier people assume it is." },
+        { "q": "What are the data analytics course fees?", "a": "₹13,500 for 8 weeks, including live sessions, recordings and all practice datasets. Power BI Desktop itself is free." },
+        { "q": "Is this course suitable for a non-IT background?", "a": "Yes, and commerce, finance and operations backgrounds often do particularly well because they already understand the business context behind the numbers." },
+        { "q": "What kind of job can I get after this course?", "a": "The common entry titles are Data Analyst, MIS Executive and Business Analyst. Reporting-heavy roles in finance, operations and marketing also hire directly from this skill set." },
+        { "q": "Will I work with real datasets?", "a": "Yes. Every module uses realistic, deliberately messy datasets rather than pre-cleaned textbook files, because cleaning is most of the actual job." }
+      ]
+    },
+    {
+      "slug": "spoken-english-interview",
+      "name": "Spoken English & Interview Preparation",
+      "seoTitle": "Spoken English & Interview Preparation Course — Coming Soon",
+      "metaDescription": "Spoken English and interview preparation course for working professionals and job seekers. Fluency, business communication and mock interviews. Join the waitlist.",
+      "tagline": "The skill that unlocks every other skill on this platform.",
+      "category": "Career & Business",
+      "accent": "accent",
+      "status": "soon",
+      "trending": false,
+      "duration": "6 weeks",
+      "effort": "4 hrs/week",
+      "level": "Beginner to Intermediate",
+      "mode": "Live online, small groups",
+      "priceINR": 7500,
+      "earning": "Higher offers across every role",
+      "keywords": ["spoken english course", "interview preparation course", "english speaking classes online"],
+      "intro": "Communication is the most common reason capable candidates lose offers. This course is being built with small-group speaking practice and recorded mock interviews at its centre.",
+      "paths": {
+        "job": "Clear the interview round you keep falling at",
+        "freelance": "Handle client calls in English with confidence",
+        "business": "Pitch to larger customers without hesitation"
+      },
+      "modules": [],
+      "outcomes": [],
+      "tools": [],
+      "faqs": []
+    },
+    {
+      "slug": "hr-payroll",
+      "name": "HR Operations & Payroll",
+      "seoTitle": "HR Operations & Payroll Course — Coming Soon",
+      "metaDescription": "HR operations and payroll course covering recruitment, onboarding, statutory compliance, PF, ESI and payroll processing. Join the waitlist.",
+      "tagline": "The operational HR skills every growing company hires for.",
+      "category": "Career & Business",
+      "accent": "brand",
+      "status": "soon",
+      "trending": false,
+      "duration": "8 weeks",
+      "effort": "5 hrs/week",
+      "level": "Beginner",
+      "mode": "Live online",
+      "priceINR": 11000,
+      "earning": "₹3–6 LPA as an HR Executive",
+      "keywords": ["hr course with placement", "payroll course india", "hr generalist training"],
+      "intro": "Recruitment, onboarding, payroll processing and statutory compliance — the practical HR work that small and mid-size companies hire for continuously.",
+      "paths": {
+        "job": "HR Executive, HR Generalist, Payroll Associate",
+        "freelance": "Payroll processing for small companies on a monthly retainer",
+        "business": "Independent HR compliance consulting"
+      },
+      "modules": [],
+      "outcomes": [],
+      "tools": [],
+      "faqs": []
+    }
+  ]
+}

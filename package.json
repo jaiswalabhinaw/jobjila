@@ -1,11 +1,13 @@
-﻿{
-  "name": "single-file-web-app",
-  "version": "1.0.0",
-  "description": "VR Verified Realty prototype",
+{
+  "name": "jobjila",
+  "version": "2.0.0",
+  "description": "Jobjila — learn a skill, get verified, start earning. Static site generated from data/courses.json.",
   "main": "index.html",
   "scripts": {
-    "start": "live-server . --port=5500",
-    "test": "echo \"No tests\""
+    "build": "node scripts/build.js",
+    "start": "npm run build && live-server . --port=5500",
+    "serve": "live-server . --port=5500",
+    "test": "node scripts/build.js && echo \"Build OK\""
   },
   "author": "Abhinaw Jaiswal",
   "license": "MIT",

@@ -1,629 +1,482 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Jobjila — Collaborate • Train • Build (Full Responsive 4)</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jobjila — Learn a Skill, Get Verified, Start Earning | IT, AI &amp; Career Training</title>
+<meta name="description" content="Jobjila is India's skill-to-income platform. Learn cloud, AI, IT infrastructure, presales, digital marketing or web design from working professionals, get your skills verified, and turn them into a job, freelance work or your own business.">
+<meta name="keywords" content="online training india, it courses with placement, freelancing platform india, ai and cloud training, skill development courses">
+<link rel="canonical" href="https://jobjila.com/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 
-<!-- Icons & Fonts -->
-<script src="https://unpkg.com/lucide@latest"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Jobjila">
+<meta property="og:title" content="Jobjila — Learn a Skill, Get Verified, Start Earning | IT, AI &amp; Career Training">
+<meta property="og:description" content="Jobjila is India's skill-to-income platform. Learn cloud, AI, IT infrastructure, presales, digital marketing or web design from working professionals, get your skills verified, and turn them into a job, freelance work or your own business.">
+<meta property="og:url" content="https://jobjila.com/">
+<meta property="og:locale" content="en_IN">
 
-<style>
-  :root{
-    --bg:#f6f9fb; --card:#fff; --muted:#6b7280; --brand:#0b5ed7; --accent:#ff7a37; --accent-2:#00a86b;
-    --glass: rgba(255,255,255,0.85);
-    --shadow: 0 8px 30px rgba(15,23,42,0.06);
-    --radius:12px; --max:1200px;
-  }
-  *{box-sizing:border-box}
-  body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:linear-gradient(180deg,#f6f9fb 0%, #eef4fb 100%);color:#0f172a}
-  a{color:inherit;text-decoration:none}
-  h1,h2,h3{margin:0 0 10px}
-  h1{font-size:clamp(22px, 5vw, 32px)}
-  p{margin:0 0 12px;color:var(--muted)}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Jobjila — Learn a Skill, Get Verified, Start Earning | IT, AI &amp; Career Training">
+<meta name="twitter:description" content="Jobjila is India's skill-to-income platform. Learn cloud, AI, IT infrastructure, presales, digital marketing or web design from working professionals, get your skills verified, and turn them into a job, freelance work or your own business.">
 
-  .wrap{max-width:var(--max);margin:18px auto;padding:0 18px}
-
-  /* Header */
-  header{position:sticky;top:0;background:rgba(255,255,255,0.98);backdrop-filter:blur(6px);z-index:120;border-bottom:1px solid #eef2f7}
-  .header-inner{max-width:var(--max);margin:auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px}
-  .logo{font-weight:800;color:var(--brand);font-size:20px}
-  .nav{display:flex;gap:18px;align-items:center}
-  .nav a{font-weight:600;color:#0f172a;opacity:0.95}
-  .top-actions{display:flex;gap:8px;align-items:center}
-  .btn{padding:8px 12px;border-radius:10px;border:0;cursor:pointer;display:inline-flex;gap:8px;align-items:center;font-weight:700}
-  .btn-join{background:var(--brand);color:#fff}
-  .btn-ghost{background:#fff;border:1px solid #e6eefc}
-  .hamburger{display:none;font-size:20px;padding:8px;border-radius:8px;border:1px solid #eef2f7;background:#fff}
-
-  /* Mobile nav */
-  .mobile-nav{display:none;background:#fff;border-top:1px solid #eef2f7;padding:10px}
-  .mobile-nav a{display:block;padding:10px 0;border-bottom:1px solid #f1f5f9;color:#0f172a}
-
-  /* hero */
-  .hero{padding:28px 0}
-  .hero-card{background:linear-gradient(180deg,#fff 0%, #fbfdff 100%);box-shadow:var(--shadow);border-radius:16px;padding:22px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
-  .hero-left{flex:1;min-width:260px}
-  .roles{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
-  .role-btn{padding:10px 14px;border-radius:10px;border:1px solid #eef2f7;background:#fff;font-weight:700;cursor:pointer;display:inline-flex;gap:8px;align-items:center}
-  .hero-visual{flex:1;min-width:240px;max-width:420px;border-radius:12px;background:linear-gradient(135deg,#eaf4ff,#fff7f0);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(11,94,215,0.06);width:100%}
-  .hero-line{margin-top:8px;color:var(--muted);font-size:14px}
-
-  /* pillars & grids */
-  .pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0}
-  .pillar{background:var(--card);padding:16px;border-radius:12px;box-shadow:var(--shadow);display:flex;gap:12px;align-items:center}
-
-  .cards-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-bottom:12px}
-  .card{background:var(--card);padding:14px;border-radius:12px;box-shadow:var(--shadow)}
-
-  .studies-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-  .study{background:#fff;padding:12px;border-radius:10px;border:1px solid #f2f6fb}
-  .study .meta{color:var(--muted);font-size:13px;margin-top:8px}
-
-  .company-logos{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-  .logo-box{background:#f8fafc;padding:8px;border-radius:8px;border:1px solid #f1f5f9}
-
-  /* portfolio-challenge */
-  .portfolio-challenge{display:grid;grid-template-columns:2fr 1fr;gap:12px;align-items:start}
-  .portfolio-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:10px}
-  .pf-card{background:#fff;padding:10px;border-radius:10px;border:1px solid #f3f7fb}
-  .pf-meta{color:var(--muted);font-size:13px;margin-top:8px}
-  @media(max-width:768px){.portfolio-challenge{grid-template-columns:1fr}}
-
-  /* engagement boost */
-  .engagement-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
-
-  /* fomo */
-  .fomo{background:linear-gradient(90deg,#fff0ed,#fff8f0);padding:16px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;border:1px solid #ffe6d9;flex-wrap:wrap;gap:12px}
-  .fomo-left{max-width:65%}
-  .slot-bar{background:#fff;border-radius:999px;padding:6px;border:1px solid #ffe9dd;display:flex;gap:8px;align-items:center;width:240px}
-  .countdown{font-weight:800;color:#b33}
-
-  /* ticker */
-  .ticker{background:#fff;padding:10px;border-radius:12px;border:1px solid #eef5ff;overflow:hidden}
-  .ticker-track{display:inline-block;white-space:nowrap;animation:ticker 18s linear infinite}
-  @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-
-  /* trust */
-  .trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;align-items:center}
-  .trust-icon{width:48px;height:48px;border-radius:10px;background:#fff;display:inline-flex;align-items:center;justify-content:center;box-shadow:var(--shadow)}
-
-  .stats{display:flex;gap:12px;flex-wrap:wrap}
-  .stat{background:#fff;padding:10px;border-radius:10px;min-width:120px;text-align:center;box-shadow:var(--shadow)}
-
-  /* career / knowledge */
-  .cols-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
-
-  /* gamification */
-  .xp-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-  .xp-bar{background:#eef6ff;border-radius:12px;padding:8px;width:100%;max-width:300px;position:relative}
-  .xp-fill{height:12px;border-radius:8px;background:linear-gradient(90deg,var(--brand),var(--accent));width:40%}
-  .leader{background:#fff;padding:8px;border-radius:8px;box-shadow:var(--shadow);min-width:160px}
-
-  .small-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:12px}
-  .mini{background:#fff;padding:10px;border-radius:10px;box-shadow:var(--shadow)}
-
-  /* CTA strip */
-  .cta-strip{background:linear-gradient(90deg,var(--brand),#2b9df5);color:#fff;padding:14px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-
-  /* footer */
-  footer{margin-top:18px;padding:20px 18px;color:var(--muted)}
-  .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
-
-  /* micro */
-  .muted{color:var(--muted)}
-  .badge{display:inline-block;background:#fff;padding:6px 8px;border-radius:999px;border:1px solid #eef3ff;font-weight:700}
-  .small{font-size:13px;color:var(--muted)}
-  .avatar{width:44px;height:44px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:#eaf4ff;font-weight:700;box-shadow:0 6px 18px rgba(11,94,215,0.06)}
-  .pill{padding:6px 8px;border-radius:8px;background:#fff;border:1px solid #eef4ff;font-weight:700}
-
-  /* tooltip */
-  .tooltip{position:relative}
-  .tooltip .tip{position:absolute;bottom:56px;left:50%;transform:translateX(-50%);background:#0f172a;color:#fff;padding:6px 8px;border-radius:8px;font-size:13px;white-space:nowrap;opacity:0;visibility:hidden;transition:0.18s}
-  .tooltip:hover .tip{opacity:1;visibility:visible}
-
-  /* responsive tweaks */
-  @media(max-width:980px){
-    .hero-card{padding:18px}
-  }
-  @media(max-width:560px){
-    .hero-card{padding:14px}
-    .hero-visual{max-width:280px}
-    .btn{padding:8px 10px;font-size:13px}
-    .hamburger{display:block}
-    .nav{display:none}
-    .top-actions{gap:6px}
-    .mobile-nav{display:none}
-    .mobile-nav.active{display:block}
-  }
-</style>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"EducationalOrganization","@id":"https://jobjila.com/#organization","name":"Jobjila","alternateName":"Jobjila Skills","url":"https://jobjila.com","description":"Jobjila is India's skill-to-income platform. Learn a trending IT or professional skill, get your skills verified, and turn them into a job, freelance work, or your own business.","email":"hello@jobjila.com","slogan":"Learn. Get Verified. Earn.","address":{"@type":"PostalAddress","addressLocality":"Lucknow","addressRegion":"Uttar Pradesh","addressCountry":"IN"},"areaServed":[{"@type":"City","name":"Bangalore","containedInPlace":{"@type":"AdministrativeArea","name":"Karnataka"}},{"@type":"City","name":"Hyderabad","containedInPlace":{"@type":"AdministrativeArea","name":"Telangana"}},{"@type":"City","name":"Pune","containedInPlace":{"@type":"AdministrativeArea","name":"Maharashtra"}},{"@type":"City","name":"Chennai","containedInPlace":{"@type":"AdministrativeArea","name":"Tamil Nadu"}},{"@type":"City","name":"Mumbai","containedInPlace":{"@type":"AdministrativeArea","name":"Maharashtra"}},{"@type":"City","name":"Delhi","containedInPlace":{"@type":"AdministrativeArea","name":"Delhi"}},{"@type":"City","name":"Noida","containedInPlace":{"@type":"AdministrativeArea","name":"Uttar Pradesh"}},{"@type":"City","name":"Gurgaon","containedInPlace":{"@type":"AdministrativeArea","name":"Haryana"}},{"@type":"City","name":"Kolkata","containedInPlace":{"@type":"AdministrativeArea","name":"West Bengal"}},{"@type":"City","name":"Ahmedabad","containedInPlace":{"@type":"AdministrativeArea","name":"Gujarat"}},{"@type":"City","name":"Indore","containedInPlace":{"@type":"AdministrativeArea","name":"Madhya Pradesh"}},{"@type":"City","name":"Lucknow","containedInPlace":{"@type":"AdministrativeArea","name":"Uttar Pradesh"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://jobjila.com/#website","url":"https://jobjila.com","name":"Jobjila","description":"Jobjila is India's skill-to-income platform. Learn a trending IT or professional skill, get your skills verified, and turn them into a job, freelance work, or your own business.","publisher":{"@id":"https://jobjila.com/#organization"},"inLanguage":"en-IN"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What exactly is Jobjila?","acceptedAnswer":{"@type":"Answer","text":"Jobjila is a skill-to-income platform. You learn a trending IT or professional skill from a practising trainer, prove that you can actually do it through a verified capstone project, and then use that verified profile to get a job, win freelance clients, or start your own service business."}},{"@type":"Question","name":"How is this different from a normal online course platform?","acceptedAnswer":{"@type":"Answer","text":"Most platforms end at the certificate. Jobjila is built around what happens next — your verified Skill Passport feeds directly into freelance project matching and into our hiring partners. Training, freelancing and placement are one connected pipeline rather than three separate products."}},{"@type":"Question","name":"Do you only teach IT courses?","acceptedAnswer":{"@type":"Answer","text":"No. IT, cloud and AI are where we started because demand is highest, but the platform is built for any skill that leads to income — marketing, design, data, business consulting and career skills, with more categories opening as trainers join."}},{"@type":"Question","name":"What does a course cost?","acceptedAnswer":{"@type":"Answer","text":"Between ₹6,500 and ₹21,000 depending on length and cohort size. Every course page states its exact fee, duration and expected earning range up front. EMI options are available on courses above ₹10,000."}},{"@type":"Question","name":"Can I earn while I am still learning?","acceptedAnswer":{"@type":"Answer","text":"That is the intention. Freelance-friendly courses such as digital marketing and web design put deliverable skills in your hands by around week five, and the Freelancing Bootcamp teaches you how to find and price your first client while you are still in a cohort."}},{"@type":"Question","name":"Who teaches on Jobjila?","acceptedAnswer":{"@type":"Answer","text":"Practising professionals, not full-time lecturers — people currently working in the field they teach. Every trainer passes a recorded demo review before their first cohort, and their rating stays visible on their profile afterwards."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Trending courses at Jobjila","itemListElement":[{"@type":"ListItem","position":1,"name":"Cloud Computing with AWS & Azure","url":"https://jobjila.com/courses/cloud-computing/"},{"@type":"ListItem","position":2,"name":"AI & Prompt Engineering for Professionals","url":"https://jobjila.com/courses/ai-prompt-engineering/"},{"@type":"ListItem","position":3,"name":"Presales & Solution Consulting","url":"https://jobjila.com/courses/presales-consulting/"},{"@type":"ListItem","position":4,"name":"Digital Marketing & Growth","url":"https://jobjila.com/courses/digital-marketing/"},{"@type":"ListItem","position":5,"name":"Website Design & Development","url":"https://jobjila.com/courses/web-design/"},{"@type":"ListItem","position":6,"name":"Freelancing Bootcamp","url":"https://jobjila.com/courses/freelancing-bootcamp/"}]}</script>
 </head>
 <body>
-
-<!-- HEADER -->
-<header>
-  <div class="header-inner">
-    <div style="display:flex;gap:12px;align-items:center">
-      <div class="logo">Jobjila</div>
-      <div class="small muted">Collaborate • Train • Build</div>
-    </div>
-
-    <nav class="nav" aria-label="main navigation">
-      <a href="#">Home</a>
-      <a href="#">Trainers</a>
-      <a href="#">Freelancers</a>
-      <a href="#">Services</a>
-      <a href="#">Projects</a>
-      <a href="#">Contact</a>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">J</span>Jobjila</a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/courses/">Courses</a>
+      <a href="/for-freelancers/">For Freelancers</a>
+      <a href="/hire/">Hire Talent</a>
+      <a href="/become-a-trainer/">Become a Trainer</a>
+      <a href="/blog/">Blog</a>
     </nav>
-
-    <div class="top-actions">
-      <div class="pill small">XP ⭐ <b id="header-xp">2400</b> | Lv <b id="header-lv">5</b></div>
-      <button class="btn btn-ghost" onclick="alert('Post Project demo')"><i data-lucide="file-plus"></i></button>
-      <button class="btn btn-join" onclick="alert('Join demo')"><i data-lucide="user-plus"></i> Join</button>
-      <button class="hamburger" id="hambtn" aria-label="Open menu" onclick="toggleMobileNav()">☰</button>
+    <div class="header-actions">
+      <a class="btn btn--ghost" href="/courses/">Courses</a>
+      <a class="btn btn--whatsapp" href="https://wa.me/918756680477?text=Hi%20Jobjila%2C%20I%20would%20like%20to%20know%20more%20about%20your%20courses." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.48-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.53.07-.8.38-.28.3-1.05 1.02-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.12 3.24 5.14 4.54.72.31 1.28.5 1.71.63.72.23 1.37.2 1.89.12.58-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23a8.23 8.23 0 0 1 8.24 8.24c0 4.54-3.7 8.23-8.24 8.23z"/></svg><span>WhatsApp</span></a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu"><span></span></button>
     </div>
   </div>
-
-  <div class="mobile-nav" id="mobileNav" role="navigation" aria-hidden="true">
-    <a href="#">Home</a>
-    <a href="#">Trainers</a>
-    <a href="#">Freelancers</a>
-    <a href="#">Services</a>
-    <a href="#">Projects</a>
-    <a href="#">Contact</a>
-    <div style="padding-top:8px"><button class="btn btn-join" style="width:100%" onclick="alert('Join demo')">Join</button></div>
+  <div class="container">
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+      <a href="/courses/">Courses</a>
+      <a href="/for-freelancers/">For Freelancers</a>
+      <a href="/hire/">Hire Talent</a>
+      <a href="/become-a-trainer/">Become a Trainer</a>
+      <a href="/blog/">Blog</a>
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+    </nav>
   </div>
 </header>
-
-<main class="wrap">
-
-  <!-- HERO -->
-  <section class="hero" role="banner">
-    <div class="hero-card" aria-label="Hero">
-      <div class="hero-left">
-        <h1 style="font-weight:800">Training. Freelancing. Collaboration — All in one place.</h1>
-        <p class="hero-line">Jobjila connects verified trainers, skilled freelancers and clients to deliver real projects and career growth.</p>
-
-        <div class="roles" aria-hidden>
-          <button class="role-btn" onclick="onRole('trainer')"><i data-lucide="graduation-cap"></i> I'm a Trainer</button>
-          <button class="role-btn" onclick="onRole('freelancer')"><i data-lucide="laptop"></i> I'm a Freelancer</button>
-          <button class="role-btn" onclick="onRole('client')"><i data-lucide="briefcase"></i> I'm a Client</button>
-          <button class="role-btn" onclick="trySmartMatch()"><i data-lucide="search"></i> Smart Match</button>
-        </div>
-
-        <div style="margin-top:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-          <div class="badge">Verified Trainers</div>
-          <div class="badge">Priority Projects</div>
-          <div class="badge">Secure Payments</div>
-        </div>
-
+<main id="main">
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="hero-pill"><span class="dot" aria-hidden="true"></span> 8 courses open for enrolment</span>
+      <h1>Learn a skill.<br>Get verified.<br>Start earning.</h1>
+      <p class="hero-lead">Most courses hand you a certificate and wish you luck. Jobjila takes you all the way to income &mdash; through a job, freelance clients, or a business of your own.</p>
+      <div class="btn-row" style="margin-top:28px">
+        <a class="btn btn--accent btn--lg" href="/courses/">Explore courses</a>
+        <a class="btn btn--whatsapp btn--lg" href="https://wa.me/918756680477?text=Hi%20Jobjila%2C%20I%20would%20like%20to%20know%20which%20course%20suits%20me.%20My%20background%20is%3A" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.48-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.53.07-.8.38-.28.3-1.05 1.02-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.12 3.24 5.14 4.54.72.31 1.28.5 1.71.63.72.23 1.37.2 1.89.12.58-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23a8.23 8.23 0 0 1 8.24 8.24c0 4.54-3.7 8.23-8.24 8.23z"/></svg><span>Ask on WhatsApp</span></a>
       </div>
-
-      <div class="hero-visual" aria-hidden>
-        <!-- illustration -->
-        <svg width="300" height="180" viewBox="0 0 300 180" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius:12px">
-          <rect width="300" height="180" rx="12" fill="url(#g)"/>
-          <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eaf4ff"/><stop offset="1" stop-color="#fff7f0"/></linearGradient></defs>
-          <g transform="translate(16,18)">
-            <circle cx="40" cy="48" r="20" fill="#0b5ed7"/><circle cx="120" cy="28" r="26" fill="#ff7a37"/><circle cx="200" cy="60" r="20" fill="#00a86b"/>
-            <rect x="20" y="110" width="240" height="20" rx="8" fill="#fff" />
-          </g>
-        </svg>
+      <div class="hero-stats">
+        <div class="hero-stat"><strong>8</strong><span>Live courses</span></div>
+        <div class="hero-stat"><strong>3</strong><span>Ways to earn</span></div>
+        <div class="hero-stat"><strong>100%</strong><span>Live, not pre-recorded</span></div>
+        <div class="hero-stat"><strong>48 hrs</strong><span>Doubt reply promise</span></div>
       </div>
     </div>
-  </section>
 
-  <!-- CORE BUSINESS SHOWCASE -->
-  <section aria-labelledby="services" style="margin-top:14px">
-    <div class="pillars" id="services">
-      <div class="pillar"><i data-lucide="book-open"></i><div style="margin-left:8px"><strong>Training Programs</strong><div class="small muted">IT, Cloud, Marketing</div></div></div>
-      <div class="pillar"><i data-lucide="users"></i><div style="margin-left:8px"><strong>Freelancers for Hire</strong><div class="small muted">Web Dev, SEO, Design</div></div></div>
-      <div class="pillar"><i data-lucide="megaphone"></i><div style="margin-left:8px"><strong>Digital Marketing</strong><div class="small muted">SEO, Ads, Growth</div></div></div>
-      <div class="pillar"><i data-lucide="globe"></i><div style="margin-left:8px"><strong>Web Development</strong><div class="small muted">Sites, Apps, E-commerce</div></div></div>
-      <div class="pillar"><i data-lucide="users"></i><div style="margin-left:8px"><strong>Technical Interview Freelancers</strong><div class="small muted">Mock interviews & assessments</div></div></div>
+    <div class="path-card">
+      <h2>Where do you want to end up?</h2>
+      <p>Pick one and we will show you the shortest route.</p>
+      <a class="path-option" href="/courses/">
+        <span class="ico" aria-hidden="true">&#128188;</span>
+        <span><b>I want a job</b><em>Structured training plus interview prep</em></span>
+      </a>
+      <a class="path-option" href="/for-freelancers/">
+        <span class="ico" aria-hidden="true">&#128187;</span>
+        <span><b>I want to freelance</b><em>Skills, portfolio and your first client</em></span>
+      </a>
+      <a class="path-option" href="/courses/freelancing-bootcamp/">
+        <span class="ico" aria-hidden="true">&#128640;</span>
+        <span><b>I want my own business</b><em>Turn a skill into a service you sell</em></span>
+      </a>
+      <a class="path-option" href="/hire/">
+        <span class="ico" aria-hidden="true">&#129309;</span>
+        <span><b>I want to hire talent</b><em>Verified freelancers and staffing</em></span>
+      </a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FEATURED CASE STUDIES -->
-  <section style="margin-top:14px">
-    <div class="cards-row">
-      <div class="card" aria-labelledby="cs-title">
-        <h3 id="cs-title">Featured Case Studies</h3>
-        <div class="studies-grid" id="studiesGrid">
-          <div class="study"><strong>SEO Masterclass — Startup X</strong><div class="meta muted">300% traffic increase in 6 months</div></div>
-          <div class="study"><strong>Cloud Training — FinTech Co.</strong><div class="meta muted">200+ learners certified</div></div>
-          <div class="study"><strong>Branding & Web — Boutique</strong><div class="meta muted">50+ sites delivered</div></div>
-        </div>
-        <div style="margin-top:10px"><button class="btn btn-ghost" onclick="alert('View more case studies (demo)')">View More Success Stories</button></div>
+<div class="ticker" aria-label="What Jobjila offers">
+  <div class="ticker__track">
+    <span>8 courses open for enrolment</span>
+    <span>Every cohort live online, every session recorded</span>
+    <span>Trainer applications open &mdash; 60&ndash;70% revenue share</span>
+    <span>Same fees in every city, no metro surcharge</span>
+    <span>Doubts answered by your trainer within 48 hours</span>
+    <span>8 courses open for enrolment</span>
+    <span>Every cohort live online, every session recorded</span>
+    <span>Trainer applications open &mdash; 60&ndash;70% revenue share</span>
+    <span>Same fees in every city, no metro surcharge</span>
+    <span>Doubts answered by your trainer within 48 hours</span>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <span class="eyebrow">Trending right now</span>
+      <h2>The skills companies are hiring for this quarter</h2>
+      <p>Every card shows the real fee, the real duration, and what the skill actually pays. No "contact us for pricing".</p>
+    </div>
+    <div class="grid grid--3">
+      <article class="course-card">
+  <div class="course-card__banner"></div>
+  <div class="course-card__body">
+    <div class="course-meta">
+      <span class="tag tag--brand">IT &amp; Cloud</span>
+      <span class="tag tag--accent">Trending</span>
+      
+    </div>
+    <h3><a href="/courses/cloud-computing/">Cloud Computing with AWS &amp; Azure</a></h3>
+    <p class="course-card__desc">Deploy, secure and manage real workloads on the two clouds that hire the most.</p>
+    <div class="earn-strip">₹4.5–9 LPA as a Cloud Associate</div>
+    <ul class="fact-list" style="margin-bottom:18px">
+      <li><span>Duration</span><b>10 weeks</b></li>
+      <li><span>Fees</span><b>₹18,500</b></li>
+    </ul>
+    <a class="btn btn--primary btn--block" href="/courses/cloud-computing/">View syllabus &amp; fees</a>
+  </div>
+</article>
+      <article class="course-card">
+  <div class="course-card__banner course-card__banner--accent"></div>
+  <div class="course-card__body">
+    <div class="course-meta">
+      <span class="tag tag--brand">AI &amp; Data</span>
+      <span class="tag tag--accent">Trending</span>
+      
+    </div>
+    <h3><a href="/courses/ai-prompt-engineering/">AI &amp; Prompt Engineering for Professionals</a></h3>
+    <p class="course-card__desc">Stop watching AI demos. Build the automations your workplace will pay for.</p>
+    <div class="earn-strip">₹25k–₹60k per automation project</div>
+    <ul class="fact-list" style="margin-bottom:18px">
+      <li><span>Duration</span><b>8 weeks</b></li>
+      <li><span>Fees</span><b>₹14,500</b></li>
+    </ul>
+    <a class="btn btn--primary btn--block" href="/courses/ai-prompt-engineering/">View syllabus &amp; fees</a>
+  </div>
+</article>
+      <article class="course-card">
+  <div class="course-card__banner course-card__banner--accent"></div>
+  <div class="course-card__body">
+    <div class="course-meta">
+      <span class="tag tag--brand">Business &amp; Consulting</span>
+      <span class="tag tag--accent">Trending</span>
+      
+    </div>
+    <h3><a href="/courses/presales-consulting/">Presales &amp; Solution Consulting</a></h3>
+    <p class="course-card__desc">The highest-paying pivot for technical people who can also talk to customers.</p>
+    <div class="earn-strip">₹8–20 LPA as a Presales / Solution Consultant</div>
+    <ul class="fact-list" style="margin-bottom:18px">
+      <li><span>Duration</span><b>6 weeks</b></li>
+      <li><span>Fees</span><b>₹21,000</b></li>
+    </ul>
+    <a class="btn btn--primary btn--block" href="/courses/presales-consulting/">View syllabus &amp; fees</a>
+  </div>
+</article>
+      <article class="course-card">
+  <div class="course-card__banner course-card__banner--success"></div>
+  <div class="course-card__body">
+    <div class="course-meta">
+      <span class="tag tag--brand">Marketing</span>
+      <span class="tag tag--accent">Trending</span>
+      
+    </div>
+    <h3><a href="/courses/digital-marketing/">Digital Marketing &amp; Growth</a></h3>
+    <p class="course-card__desc">Run real campaigns with a real budget — not screenshots of someone else's dashboard.</p>
+    <div class="earn-strip">₹18k–₹45k/month, job or freelance</div>
+    <ul class="fact-list" style="margin-bottom:18px">
+      <li><span>Duration</span><b>10 weeks</b></li>
+      <li><span>Fees</span><b>₹15,500</b></li>
+    </ul>
+    <a class="btn btn--primary btn--block" href="/courses/digital-marketing/">View syllabus &amp; fees</a>
+  </div>
+</article>
+      <article class="course-card">
+  <div class="course-card__banner"></div>
+  <div class="course-card__body">
+    <div class="course-meta">
+      <span class="tag tag--brand">Design &amp; Web</span>
+      <span class="tag tag--accent">Trending</span>
+      
+    </div>
+    <h3><a href="/courses/web-design/">Website Design &amp; Development</a></h3>
+    <p class="course-card__desc">Ship real websites clients pay for — code and no-code, both.</p>
+    <div class="earn-strip">₹15k–₹60k per website project</div>
+    <ul class="fact-list" style="margin-bottom:18px">
+      <li><span>Duration</span><b>8 weeks</b></li>
+      <li><span>Fees</span><b>₹12,500</b></li>
+    </ul>
+    <a class="btn btn--primary btn--block" href="/courses/web-design/">View syllabus &amp; fees</a>
+  </div>
+</article>
+      <article class="course-card">
+  <div class="course-card__banner course-card__banner--accent"></div>
+  <div class="course-card__body">
+    <div class="course-meta">
+      <span class="tag tag--brand">Career &amp; Business</span>
+      <span class="tag tag--accent">Trending</span>
+      
+    </div>
+    <h3><a href="/courses/freelancing-bootcamp/">Freelancing Bootcamp</a></h3>
+    <p class="course-card__desc">You already have a skill. This is the business side nobody taught you.</p>
+    <div class="earn-strip">First paid client within 60 days</div>
+    <ul class="fact-list" style="margin-bottom:18px">
+      <li><span>Duration</span><b>4 weeks</b></li>
+      <li><span>Fees</span><b>₹6,500</b></li>
+    </ul>
+    <a class="btn btn--primary btn--block" href="/courses/freelancing-bootcamp/">View syllabus &amp; fees</a>
+  </div>
+</article>
+    </div>
+    <div class="text-center" style="margin-top:32px">
+      <a class="btn btn--ghost btn--lg" href="/courses/">See all 10 courses</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <span class="eyebrow">How it works</span>
+      <h2>Three steps from where you are to getting paid</h2>
+    </div>
+    <div class="grid grid--3 steps">
+      <div class="step">
+        <h3>Learn</h3>
+        <p>Live cohorts taught by people who do the work for a living. Small groups, recorded sessions, and a doubt thread where your trainer answers within 48 hours.</p>
       </div>
-
-      <div class="card">
-        <h3>Testimonials & Trust</h3>
-        <div style="margin-top:8px">
-          <div style="margin-bottom:10px"><strong>"Collaboration doubled my income."</strong><div class="small muted">— Anita (Trainer)</div></div>
-          <div style="margin-bottom:10px"><strong>"We scaled faster with Jobjila."</strong><div class="small muted">— Startup X</div></div>
-        </div>
-
-        <div style="margin-top:12px">
-          <div class="company-logos">
-            <div class="logo-box">Logo A</div><div class="logo-box">Logo B</div><div class="logo-box">Logo C</div>
-          </div>
-        </div>
+      <div class="step">
+        <h3>Get verified</h3>
+        <p>Finish a real capstone project and it is assessed, scored and recorded on your Skill Passport. Proof of work beats a printed certificate every time.</p>
+      </div>
+      <div class="step">
+        <h3>Earn</h3>
+        <p>Your verified profile feeds straight into freelance project matching and our hiring partners &mdash; or into your own client pipeline if you would rather work for yourself.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FREELANCER CONTRIBUTION GAMIFICATION (secondary) -->
-  <section style="margin-top:14px">
-    <div class="card">
-      <h3>Freelancer Contribution Gamification</h3>
-      <p class="muted">Post case studies and project updates to earn XP & badges — be discovered by clients.</p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
-        <div class="pill">1st Case Study → +100 XP</div>
-        <div class="pill">3 Case Studies → 🥈 Silver</div>
-        <div class="pill">5 Case Studies → 🥇 Gold</div>
-        <button class="btn btn-join" onclick="postCaseStudyDemo()">Post a Case Study</button>
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <span class="eyebrow">Three earning paths</span>
+      <h2>A skill is only worth what you can do with it</h2>
+      <p>Job boards only serve one of these. Freelance marketplaces only serve another. We think you should be able to choose.</p>
+    </div>
+    <div class="grid grid--3">
+      <div class="path-tile">
+        <h3>Get a job</h3>
+        <p class="small muted">For people who want stability, a team and a title.</p>
+        <ul>
+          <li>Interview-focused capstone projects</li>
+          <li>Resume and LinkedIn review</li>
+          <li>Mock technical interviews</li>
+          <li>Introductions to hiring partners</li>
+        </ul>
+      </div>
+      <div class="path-tile path-tile--freelance">
+        <h3>Freelance</h3>
+        <p class="small muted">For people who want flexibility and multiple clients.</p>
+        <ul>
+          <li>Portfolio built from real project work</li>
+          <li>Pricing, proposals and contracts</li>
+          <li>Matched to projects posted on Jobjila</li>
+          <li>Work alongside a full-time job</li>
+        </ul>
+      </div>
+      <div class="path-tile path-tile--business">
+        <h3>Build your own</h3>
+        <p class="small muted">For people who want to own the client relationship.</p>
+        <ul>
+          <li>Package a skill into a sellable service</li>
+          <li>Find and keep local clients</li>
+          <li>Retainers instead of one-off jobs</li>
+          <li>The path nobody else supports</li>
+        </ul>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FREELANCER PORTFOLIO CHALLENGE (MAIN) -->
-  <section style="margin-top:14px">
-    <div class="portfolio-challenge">
-      <div style="background:linear-gradient(180deg,#fff,#fbfdff);padding:14px;border-radius:12px;box-shadow:var(--shadow)">
-        <h3>Freelancer Portfolio Challenge</h3>
-        <p class="muted">Update your projects — each update = +100 XP. Top contributors are prioritized in client matches.</p>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
-          <div class="pill">Each update → +100 XP</div>
-          <div class="pill">3 updates → 🥈 Silver</div>
-          <div class="pill">5 updates → 🥇 Gold</div>
-          <button class="btn btn-ghost" onclick="bulkAddPortfolio(1)">Quick Add Demo Update</button>
-        </div>
-
-        <div style="margin-top:12px">
-          <div class="small muted">Client filters:</div>
-          <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
-            <div class="pill">SEO</div><div class="pill">Web Dev</div><div class="pill">Training</div><div class="pill">UI/UX</div>
-          </div>
-        </div>
-
-        <div class="portfolio-gallery" id="portfolioGallery" style="margin-top:12px">
-          <!-- pf cards injected -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="grid grid--2" style="align-items:center;gap:48px">
+      <div>
+        <span class="eyebrow">Skill Passport</span>
+        <h2>A certificate says you attended. This says you can do it.</h2>
+        <p>Anyone can buy a certificate. Your Jobjila Skill Passport records what you actually built: the capstone you shipped, how it was scored, your trainer's endorsement, and the ratings from real clients once you start working.</p>
+        <p>It is one profile that follows you across all three earning paths &mdash; the same proof convinces an employer, a freelance client and a customer of your own business.</p>
+        <div class="btn-row" style="margin-top:24px">
+          <a class="btn btn--primary" href="/courses/">Start earning one</a>
         </div>
       </div>
-
-      <aside>
+      <div class="grid" style="gap:16px">
         <div class="card">
-          <strong>Top Contributors</strong>
-          <div style="display:flex;gap:8px;align-items:center;margin-top:8px;flex-wrap:wrap">
-            <div class="avatar tooltip">A<div class="tip">Anita — Gold</div></div>
-            <div class="avatar tooltip">R<div class="tip">Rahul — Silver</div></div>
-            <div class="avatar tooltip">P<div class="tip">Priya — Active</div></div>
-          </div>
+          <div class="card-icon card-icon--success" aria-hidden="true">&#10003;</div>
+          <h3>Verified project work</h3>
+          <p class="small">Assessed capstones, not attendance records.</p>
         </div>
-
-        <div class="card" style="margin-top:10px">
-          <strong>Monthly Challenge</strong>
-          <div class="small muted">Post 5 projects → Bonus XP & homepage feature</div>
-          <div style="margin-top:8px"><button class="btn btn-join" onclick="alert('Joining challenge (demo)')">Join Challenge</button></div>
+        <div class="card">
+          <div class="card-icon" aria-hidden="true">&#9733;</div>
+          <h3>Trainer endorsement</h3>
+          <p class="small">A named professional putting their reputation behind you.</p>
         </div>
-      </aside>
-    </div>
-  </section>
-
-  <!-- FREELANCER ENGAGEMENT BOOST -->
-  <section style="margin-top:14px">
-    <h3>Freelancer Engagement Boost</h3>
-    <div class="engagement-grid" style="margin-top:8px">
-      <div class="card"><strong>Recognition</strong><div class="small muted">Freelancer of the Week, Showcase Wall</div></div>
-      <div class="card"><strong>Growth</strong><div class="small muted">Skill Challenges, Masterclasses</div></div>
-      <div class="card"><strong>Earnings</strong><div class="small muted">Referrals, Premium Projects, Store</div></div>
-    </div>
-  </section>
-
-  <!-- TRAINER FOMO -->
-  <section style="margin-top:14px">
-    <div class="fomo">
-      <div class="fomo-left">
-        <h3>🔥 October Trainer Challenge — Founding Trainers</h3>
-        <p class="muted">Register now to secure a Founding Trainer badge and priority invites to premium projects.</p>
-        <div style="display:flex;gap:10px;align-items:center;margin-top:12px;flex-wrap:wrap">
-          <div class="slot-bar" aria-hidden><div style="width:60%;height:14px;background:linear-gradient(90deg,#ffd2b0,#ff7a37);border-radius:999px"></div><div class="small muted" style="margin-left:8px">72/100 slots filled</div></div>
-          <div class="countdown" id="trainer-countdown">Loading...</div>
-        </div>
-      </div>
-      <div style="text-align:right">
-        <div style="font-weight:800;color:#d14; font-size:18px">Founding Trainer</div>
-        <div style="margin-top:8px"><button class="btn btn-join" onclick="registerTrainerDemo()">Register</button></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LIVE COMMUNITY FEED -->
-  <section style="margin-top:14px">
-    <div class="ticker card">
-      <div class="ticker-track" id="tickerTrack">
-        🔴 Anita completed Cloud Training • Rahul posted a Web Dev Project • Priya joined SEO Masterclass • Rajesh completed 5 Mock Interviews • Nisha got featured •
-        🔴 Anita completed Cloud Training • Rahul posted a Web Dev Project • Priya joined SEO Masterclass • Rajesh completed 5 Mock Interviews • Nisha got featured •
-      </div>
-    </div>
-  </section>
-
-  <!-- CLIENT TRUST & SAFETY -->
-  <section style="margin-top:14px">
-    <div class="trust card">
-      <div>
-        <h3>Client Trust & Safety</h3>
-        <p class="muted">Verified talent, escrow payments, delivery guarantee and transparent reviews — hire with confidence.</p>
-        <div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap">
-          <div class="trust-icon"><i data-lucide="shield-check"></i></div>
-          <div class="trust-icon"><i data-lucide="credit-card"></i></div>
-          <div class="trust-icon"><i data-lucide="clock"></i></div>
-          <div class="trust-icon"><i data-lucide="star"></i></div>
-        </div>
-        <div style="margin-top:12px"><button class="btn btn-join" onclick="postProjectDemo()">Post Your Project</button></div>
-      </div>
-
-      <div style="padding-left:12px">
-        <div style="background:#fff;padding:12px;border-radius:12px;box-shadow:var(--shadow)">
-          <strong>Why clients choose Jobjila</strong>
-          <ul class="small muted" style="margin-top:8px">
-            <li>Pre-vetted talent pools</li>
-            <li>Escrow & milestone tracking</li>
-            <li>Dedicated client support</li>
-          </ul>
+        <div class="card">
+          <div class="card-icon card-icon--accent" aria-hidden="true">&#128200;</div>
+          <h3>Live client ratings</h3>
+          <p class="small">Every project you deliver through Jobjila adds to your record.</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- DEMAND-SIDE FOCUS -->
-  <section style="margin-top:14px">
-    <div class="cards-row">
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <span class="eyebrow">What we commit to</span>
+      <h2>No invented testimonials on this page</h2>
+      <p>Jobjila is new. Plenty of training sites fill this section with quotes from people who do not exist &mdash; we would rather tell you what we are actually promising, and publish real learner outcomes here once there are some, with names and permission.</p>
+    </div>
+    <div class="grid grid--3">
       <div class="card">
-        <h3>Open Demand</h3>
-        <div class="stats" style="margin-top:8px">
-          <div class="stat"><strong>32</strong><div class="small muted">SEO Trainer Requests</div></div>
-          <div class="stat"><strong>18</strong><div class="small muted">Active Web Dev Projects</div></div>
-          <div class="stat"><strong>10</strong><div class="small muted">Interview Sessions</div></div>
-        </div>
+        <div class="card-icon" aria-hidden="true">&#9200;</div>
+        <h3>Your doubts answered in 48 hours</h3>
+        <p class="small">Not a forum where questions go unanswered. Your trainer replies on the course thread within two days, and the answer stays visible to the whole cohort.</p>
       </div>
-
       <div class="card">
-        <h3>Client Hook</h3>
-        <p class="muted">Hire in 24 hours — Smart Match suggests the top experts for your brief.</p>
-        <button class="btn btn-ghost" onclick="trySmartMatch()">Try Smart Match</button>
+        <div class="card-icon card-icon--success" aria-hidden="true">&#10003;</div>
+        <h3>A capstone that is actually assessed</h3>
+        <p class="small">You finish with a project that has been reviewed and scored by a practitioner &mdash; something to show an employer, not a certificate of attendance.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon card-icon--accent" aria-hidden="true">&#128172;</div>
+        <h3>Honest counselling before you pay</h3>
+        <p class="small">If a cheaper course, a shorter one, or no course at all would serve you better, we will say so. Message us on WhatsApp and test it.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CAREER GROWTH -->
-  <section style="margin-top:14px">
-    <h3>Career Growth</h3>
-    <div class="cols-3" style="margin-top:8px">
-      <div class="kb-card card"><strong>Certifications</strong><div class="small muted">Verified skill badges</div></div>
-      <div class="kb-card card"><strong>Rankings</strong><div class="small muted">Top Trainers & Freelancers</div></div>
-      <div class="kb-card card"><strong>Portfolio Pages</strong><div class="small muted">Public showcase</div></div>
-    </div>
-  </section>
-
-  <!-- KNOWLEDGE HUB -->
-  <section style="margin-top:14px">
-    <h3>Knowledge Hub</h3>
-    <div class="small muted">Blogs, webinars, podcasts & member spotlights</div>
-    <div class="small-grid" style="margin-top:8px">
-      <div class="mini">Blog: SEO Tips</div>
-      <div class="mini">Webinar: Cloud Hands-on</div>
-      <div class="mini">Podcast: Freelance Growth</div>
-    </div>
-  </section>
-
-  <!-- GAMIFIED ENGAGEMENT -->
-  <section style="margin-top:14px">
-    <h3>Gamified Engagement</h3>
-    <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
-      <div class="xp-bar card" aria-hidden>
-        <div style="display:flex;justify-content:space-between;align-items:center">
-          <div><strong>Your XP</strong><div class="small muted">Level 5 — <span id="xpValText">2400 XP</span></div></div>
-          <div class="small muted">Next: 3000</div>
-        </div>
-        <div style="height:12px;margin-top:8px;background:#eef6ff;border-radius:10px;overflow:hidden">
-          <div class="xp-fill" id="xpFill"></div>
-        </div>
+<section class="section section--alt">
+  <div class="container">
+    <div class="grid grid--2" style="gap:24px">
+      <div class="card">
+        <div class="card-icon" aria-hidden="true">&#127891;</div>
+        <h3>Teach what you already know</h3>
+        <p>Revenue share, no upfront cost, and we handle enrolment, payments and marketing. If you are already training offline or consulting, this is additional income from work you are doing anyway.</p>
+        <a class="btn btn--ghost" href="/become-a-trainer/">Become a trainer</a>
       </div>
-
-      <div class="leader card">
-        <strong>Leaderboard (Weekly)</strong>
-        <ol style="margin:8px 0 0 18px;padding:0" id="leaderboard">
-          <li>Anita — 4200 XP</li><li>Rahul — 3780 XP</li><li>Priya — 3500 XP</li>
-        </ol>
-      </div>
-
-      <div class="leader card">
-        <strong>Reward Store</strong>
-        <div class="small muted">Redeem XP for profile boosts & discounts</div>
+      <div class="card">
+        <div class="card-icon card-icon--accent" aria-hidden="true">&#128188;</div>
+        <h3>Hire verified talent</h3>
+        <p>Freelancers for a project, or permanent staff through our HR services. Everyone you see has assessed project work behind their profile, not just a claimed skill list.</p>
+        <a class="btn btn--ghost" href="/hire/">Hire from Jobjila</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- RETENTION & REWARDS -->
-  <section style="margin-top:14px">
-    <h3>Retention & Rewards</h3>
-    <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <div class="mini card">Daily Login Streaks</div>
-      <div class="mini card">Spin-the-Wheel Bonus</div>
-      <div class="mini card">Refer & Earn</div>
-    </div>
-  </section>
+<div class="container section">
+  <section class="section--tight" aria-labelledby="faq-heading">
+  <h2 id="faq-heading">Common questions</h2>
+  <details class="faq-item">
+    <summary>What exactly is Jobjila?</summary>
+    <div class="faq-body"><p>Jobjila is a skill-to-income platform. You learn a trending IT or professional skill from a practising trainer, prove that you can actually do it through a verified capstone project, and then use that verified profile to get a job, win freelance clients, or start your own service business.</p></div>
+  </details>
+  <details class="faq-item">
+    <summary>How is this different from a normal online course platform?</summary>
+    <div class="faq-body"><p>Most platforms end at the certificate. Jobjila is built around what happens next — your verified Skill Passport feeds directly into freelance project matching and into our hiring partners. Training, freelancing and placement are one connected pipeline rather than three separate products.</p></div>
+  </details>
+  <details class="faq-item">
+    <summary>Do you only teach IT courses?</summary>
+    <div class="faq-body"><p>No. IT, cloud and AI are where we started because demand is highest, but the platform is built for any skill that leads to income — marketing, design, data, business consulting and career skills, with more categories opening as trainers join.</p></div>
+  </details>
+  <details class="faq-item">
+    <summary>What does a course cost?</summary>
+    <div class="faq-body"><p>Between ₹6,500 and ₹21,000 depending on length and cohort size. Every course page states its exact fee, duration and expected earning range up front. EMI options are available on courses above ₹10,000.</p></div>
+  </details>
+  <details class="faq-item">
+    <summary>Can I earn while I am still learning?</summary>
+    <div class="faq-body"><p>That is the intention. Freelance-friendly courses such as digital marketing and web design put deliverable skills in your hands by around week five, and the Freelancing Bootcamp teaches you how to find and price your first client while you are still in a cohort.</p></div>
+  </details>
+  <details class="faq-item">
+    <summary>Who teaches on Jobjila?</summary>
+    <div class="faq-body"><p>Practising professionals, not full-time lecturers — people currently working in the field they teach. Every trainer passes a recorded demo review before their first cohort, and their rating stays visible on their profile afterwards.</p></div>
+  </details>
+</section>
+</div>
 
-  <!-- MONETIZATION LAYER -->
-  <section style="margin-top:14px">
-    <div style="display:flex;gap:12px;flex-wrap:wrap">
-      <div class="mini card">Featured Profiles (paid)</div>
-      <div class="mini card">Premium Membership</div>
-      <div class="mini card">Commission on Projects</div>
-    </div>
-  </section>
-
-  <!-- COMMUNITY BUILDING -->
-  <section style="margin-top:14px">
-    <h3>Community Building</h3>
-    <div style="display:flex;gap:12px;flex-wrap:wrap">
-      <div class="mini card">WhatsApp & Discord groups</div>
-      <div class="mini card">Trainer of the Month</div>
-      <div class="mini card">Contests & Spotlights</div>
-    </div>
-  </section>
-
-  <!-- CTA STRIP -->
-  <section style="margin-top:18px">
-    <div class="cta-strip">
-      <div>
-        <div style="font-weight:800">🚀 Join 5000+ Trainers & Freelancers</div>
-        <div class="small">Start earning XP, unlock badges & rewards</div>
-      </div>
-      <div style="display:flex;gap:8px;align-items:center">
-        <button class="btn btn-ghost" onclick="alert('See rewards')">See Rewards</button>
-        <button class="btn btn-join" onclick="alert('Join Now')">Join Now</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer style="margin-top:18px">
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="cta-band">
+  <div>
+    <h2>Not sure which skill fits you?</h2>
+    <p>Tell us your background and what you want to earn. We will recommend a track honestly — including telling you when now is not the right time to spend money on a course.</p>
+  </div>
+  <a class="btn btn--whatsapp btn--lg" href="https://wa.me/918756680477?text=Hi%20Jobjila%2C%20I%20am%20not%20sure%20which%20course%20fits%20me.%20My%20background%20is%3A" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.48-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.53.07-.8.38-.28.3-1.05 1.02-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.12 3.24 5.14 4.54.72.31 1.28.5 1.71.63.72.23 1.37.2 1.89.12.58-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23a8.23 8.23 0 0 1 8.24 8.24c0 4.54-3.7 8.23-8.24 8.23z"/></svg><span>Ask on WhatsApp</span></a>
+</div>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container">
     <div class="footer-grid">
       <div>
-        <strong>About Jobjila</strong>
-        <div class="small muted" style="margin-top:8px">Community-driven collaboration hub for trainers, freelancers & clients.</div>
+        <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">J</span>Jobjila</a>
+        <p style="margin-top:14px;max-width:34ch">Jobjila is India's skill-to-income platform. Learn a trending IT or professional skill, get your skills verified, and turn them into a job, freelance work, or your own business.</p>
       </div>
       <div>
-        <strong>Links</strong>
-        <div class="small muted" style="margin-top:8px"><a href="#">How It Works</a><br><a href="#">FAQ</a><br><a href="#">Privacy</a></div>
+        <h4>Courses</h4>
+        <ul class="footer-links">
+          <li><a href="/courses/cloud-computing/">Cloud Computing with AWS &amp; Azure</a></li>
+          <li><a href="/courses/ai-prompt-engineering/">AI &amp; Prompt Engineering for Professionals</a></li>
+          <li><a href="/courses/it-infrastructure/">IT Infrastructure &amp; Networking</a></li>
+          <li><a href="/courses/presales-consulting/">Presales &amp; Solution Consulting</a></li>
+          <li><a href="/courses/digital-marketing/">Digital Marketing &amp; Growth</a></li>
+          <li><a href="/courses/web-design/">Website Design &amp; Development</a></li>
+          <li><a href="/courses/freelancing-bootcamp/">Freelancing Bootcamp</a></li>
+          <li><a href="/courses/data-analytics/">Data Analytics with Excel &amp; Power BI</a></li>
+        </ul>
       </div>
       <div>
-        <strong>Community</strong>
-        <div class="small muted" style="margin-top:8px"><a href="#">Join WhatsApp</a><br><a href="#">Discord</a><br><a href="mailto:support@jobjila.com">support@jobjila.com</a></div>
+        <h4>Platform</h4>
+        <ul class="footer-links">
+          <li><a href="/courses/">All Courses</a></li>
+          <li><a href="/for-freelancers/">For Freelancers</a></li>
+          <li><a href="/hire/">Hire Talent</a></li>
+          <li><a href="/become-a-trainer/">Become a Trainer</a></li>
+        </ul>
       </div>
       <div>
-        <strong>Newsletter</strong>
-        <input id="newsletter" placeholder="Your email" style="width:100%;padding:8px;border-radius:8px;border:1px solid #eef4ff;margin-top:8px" />
-        <button class="btn btn-join" style="width:100%;margin-top:8px" onclick="alert('Subscribed')">Subscribe</button>
+        <h4>Company</h4>
+        <ul class="footer-links">
+          <li><a href="/locations/">Locations</a></li>
+          <li><a href="/about/">About Us</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
       </div>
     </div>
-  </footer>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Jobjila. All rights reserved.</span>
+      <span><a href="/locations/">Serving 12 cities across India</a></span>
+    </div>
+  </div>
+</footer>
 
-</main>
+<a class="wa-float" href="https://wa.me/918756680477?text=Hi%20Jobjila%2C%20I%20have%20a%20question." target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.48-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.53.07-.8.38-.28.3-1.05 1.02-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.12 3.24 5.14 4.54.72.31 1.28.5 1.71.63.72.23 1.37.2 1.89.12.58-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23a8.23 8.23 0 0 1 8.24 8.24c0 4.54-3.7 8.23-8.24 8.23z"/></svg>
+  <span class="wa-float__label">Chat with us</span>
+</a>
 
-<!-- JS: interactions -->
-<script>
-  lucide.createIcons();
-
-  // Elements
-  const headerXP = document.getElementById('header-xp');
-  const xpFill = document.getElementById('xpFill');
-  const xpValText = document.getElementById('xpValText');
-  const leaderboard = document.getElementById('leaderboard');
-  const trainerCountdownEl = document.getElementById('trainer-countdown');
-
-  // default XP
-  const xpTarget = 3000;
-  function setXP(xp){
-    headerXP.textContent = xp;
-    if(xpValText) xpValText.textContent = xp + ' XP';
-    if(xpFill) xpFill.style.width = Math.min(100, Math.round((xp/xpTarget)*100)) + '%';
-  }
-  setXP(2400);
-
-  // Trainer countdown (2 days demo)
-  let trainerDeadline = new Date();
-  trainerDeadline.setDate(trainerDeadline.getDate() + 2);
-  function updateCountdown(){
-    if(!trainerCountdownEl) return;
-    const diff = trainerDeadline - new Date();
-    if(diff <= 0){ trainerCountdownEl.textContent = 'Offer closed'; return; }
-    const d = Math.floor(diff/(1000*60*60*24));
-    const h = Math.floor((diff/(1000*60*60))%24);
-    const m = Math.floor((diff/(1000*60))%60);
-    trainerCountdownEl.textContent = `${d}d ${h}h ${m}m left`;
-  }
-  updateCountdown(); setInterval(updateCountdown, 1000);
-
-  // Portfolio & study helpers
-  function addStudyCard(title, meta){
-    const parent = document.getElementById('studiesGrid');
-    if(!parent) return;
-    const d = document.createElement('div');
-    d.className = 'study';
-    d.innerHTML = '<strong>'+title+'</strong><div class="meta muted">'+meta+'</div>';
-    parent.appendChild(d);
-  }
-
-  function addPfCard(title, meta){
-    const grid = document.getElementById('portfolioGallery');
-    if(!grid) return;
-    const c = document.createElement('div'); c.className='pf-card';
-    c.innerHTML = '<strong>'+title+'</strong><div class="pf-meta muted">'+meta+'</div>';
-    grid.prepend(c);
-  }
-
-  // Demo initial pf cards
-  addPfCard('SEO Audit — Startup X','Traffic +300%');
-  addPfCard('Cloud Workshop — FinTech','200 certified');
-  addPfCard('Website Rebuild — Retail','Conversion +35%');
-
-  // Demo functions
-  function bulkAddPortfolio(n){
-    for(let i=0;i<n;i++){
-      addPfCard('Demo Project '+Math.floor(Math.random()*1000),'Result: quick uplift');
-      incrementXP(100);
-    }
-  }
-  function postCaseStudyDemo(){
-    addStudyCard('New Demo: SEO Sprint','Quick growth: +40% traffic');
-    incrementXP(100);
-    alert('Case study posted — +100 XP');
-  }
-  function incrementXP(amount){
-    const current = parseInt(headerXP.textContent || '0',10);
-    setXP(current + amount);
-    if(leaderboard){
-      const li = document.createElement('li'); li.textContent = 'You — ' + (current+amount) + ' XP';
-      leaderboard.prepend(li);
-    }
-  }
-  function registerTrainerDemo(){ alert('Registered as founding trainer — +500 XP (demo)'); incrementXP(500); }
-  function postProjectDemo(){ alert('Project posted (demo). Smart Match will find experts (demo)'); }
-  function trySmartMatch(){
-    const experts = ['Anita — Cloud Trainer (98%)','Rahul — Web Dev (94%)','Priya — SEO (91%)'];
-    alert('Smart Match — top experts:\\n\\n' + experts.join('\\n'));
-  }
-  function onRole(r){
-    if(r==='trainer') alert('Start trainer onboarding (demo) — +50 XP on completion');
-    else if(r==='freelancer') alert('Start freelancer onboarding — upload portfolio (demo) +50 XP');
-    else alert('Client onboarding — post brief (demo)');
-  }
-
-  // Mobile nav
-  function toggleMobileNav(){
-    const mobile = document.getElementById('mobileNav');
-    if(!mobile) return;
-    const isActive = mobile.classList.contains('active');
-    if(isActive){ mobile.classList.remove('active'); mobile.setAttribute('aria-hidden','true'); }
-    else{ mobile.classList.add('active'); mobile.setAttribute('aria-hidden','false'); }
-  }
-
-  // extras
-  function spinWheelDemo(){
-    const rewards = ['+50 XP','+100 XP','Featured Slot','No Prize'];
-    const pick = rewards[Math.floor(Math.random()*rewards.length)];
-    alert('Spin result: ' + pick);
-    if(pick.includes('XP')) incrementXP(parseInt(pick));
-  }
-
-  // ensure lucide icons render
-  document.querySelectorAll('i[data-lucide]').forEach(()=>{});
-</script>
+<script src="/js/main.js" defer></script>
 </body>
 </html>
