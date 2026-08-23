@@ -5,6 +5,7 @@
   "main": "index.html",
   "scripts": {
     "build": "node scripts/build.js",
+    "og": "node scripts/og-images.js",
     "start": "npm run build && live-server . --port=5500",
     "serve": "live-server . --port=5500",
     "test": "node scripts/build.js && echo \"Build OK\""

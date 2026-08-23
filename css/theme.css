@@ -879,3 +879,36 @@ ul, ol { color: var(--ink-600); }
     scroll-behavior: auto !important;
   }
 }
+
+/* ---------- Share row ---------- */
+.share {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px 26px;
+  margin: 32px 0;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+.share h2 { font-size: 1.125rem; margin-bottom: 4px; }
+.share p { margin-bottom: 0; max-width: 46ch; }
+.share__actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.share__actions .btn { padding: 10px 16px; font-size: .875rem; }
+.share__actions .btn svg { flex: none; }
+
+.share__actions .is-copied {
+  background: var(--success-soft);
+  border-color: var(--success);
+  color: #065f46;
+}
+
+@media (max-width: 620px) {
+  .share { flex-direction: column; align-items: stretch; }
+  .share__actions .btn { flex: 1 1 auto; width: auto; }
+  /* Icon-only for the secondary networks so the row stays on one line */
+  .share__label-long { display: none; }
+}

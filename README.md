@@ -18,6 +18,7 @@ scripts/lib.js         <- shared chrome: <head>, header, footer, SEO tags, cards
 scripts/pages.js       <- the standalone pages (home, hire, trainer, blog, ...)
 scripts/cities.js      <- city landing pages + the /locations/ hub
 scripts/build.js       <- orchestrates everything, writes sitemap + robots
+scripts/og-images.js   <- share preview images (run separately, see below)
 css/theme.css          <- the design system (hand-written)
 js/main.js             <- mobile nav + floating button behaviour (hand-written)
 ```
@@ -149,6 +150,43 @@ the whole set is at risk — not just the new page.**
 
 Adding a city is one JSON entry and a rebuild. Do not add one you cannot write
 real local detail for.
+
+## Share preview images (og:image)
+
+`assets/og/*.jpg` are the pictures WhatsApp, LinkedIn and Telegram show when
+someone shares a link. Without them a shared link is a bare blue URL, which is
+the main reason shared links do not get tapped.
+
+They are **committed to the repo** and `npm run build` does not regenerate
+them — that would make Playwright a required dependency for every build.
+Regenerate only when a course name, fee or the branding changes:
+
+```bash
+npm install --no-save playwright-core
+npm run og
+```
+
+After changing an image, ask the platform to re-read it — they cache
+aggressively:
+
+- WhatsApp: append `?v=2` to the URL when testing
+- LinkedIn: <https://www.linkedin.com/post-inspector/>
+- Facebook: <https://developers.facebook.com/tools/debug/>
+
+## Sharing
+
+Every course page, city page, the course hub and the homepage carry a share
+row. Note the difference between the two kinds of WhatsApp link on the site:
+
+| Link | Goes to | Purpose |
+|---|---|---|
+| `wa.me/<site.whatsapp>?text=...` | Your inbox | Visitor enquires |
+| `wa.me/?text=<page url>` | Their contacts | Visitor shares the page |
+
+On phones the first share button uses the **native share sheet**
+(`navigator.share`), so one tap reaches WhatsApp, Instagram, Telegram and SMS.
+`js/main.js` swaps the label to "Share" when the browser supports it; without
+JavaScript it stays a plain working WhatsApp link.
 
 ## Other directories
 

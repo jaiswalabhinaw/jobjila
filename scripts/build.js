@@ -28,6 +28,7 @@ const {
   courseCard,
   faqSection,
   ctaBand,
+  shareRow,
   orgLd,
   websiteLd,
   breadcrumbLd,
@@ -120,6 +121,7 @@ function buildCoursePage(c) {
       description: c.metaDescription,
       canonical: `/courses/${c.slug}/`,
       keywords: c.keywords,
+      ogImage: `/assets/og/${c.slug}.jpg`,
       extraLd: ld,
     }) +
     `
@@ -169,6 +171,10 @@ function buildCoursePage(c) {
       ${outcomes}
       ${doubts}
       ${faqSection(c.faqs)}
+      ${shareRow({
+        url: `/courses/${c.slug}/`,
+        text: `${c.name} — ${c.duration}, ${inr(c.priceINR)}. Live online with Jobjila.`,
+      })}
     </div>
 
     <aside class="course-sidebar">
@@ -342,6 +348,11 @@ function buildCourseHub() {
 
 <div class="container section">
   ${faqSection(hubFaqs, "Questions about our courses")}
+  ${shareRow({
+    url: "/courses/",
+    text: `${open.length} courses from Jobjila — learn a skill, get verified, start earning.`,
+    heading: "Share the course list",
+  })}
 </div>
 
 <section class="section" style="padding-top:0">

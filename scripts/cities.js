@@ -27,6 +27,7 @@ const {
   breadcrumbNav,
   faqSection,
   ctaBand,
+  shareRow,
   orgLd,
   breadcrumbLd,
   faqLd,
@@ -111,6 +112,7 @@ function buildCityCoursePage(course, city) {
       title: `${course.name} Course in ${city.name} — Fees, Syllabus & Placement | Jobjila`,
       description: `${course.name} course for ${city.name} learners. ${course.duration}, live online, ${inr(course.priceINR)}. Syllabus, fees, placement support and ${city.name} job market context.`,
       canonical: url,
+      ogImage: `/assets/og/${course.slug}.jpg`,
       keywords: [
         `${course.name.toLowerCase()} course in ${city.name.toLowerCase()}`,
         `${course.name.toLowerCase()} course ${city.name.toLowerCase()} fees`,
@@ -198,6 +200,11 @@ function buildCityCoursePage(course, city) {
       </section>
 
       ${faqSection(cityFaqs, `${course.name} in ${city.name} — questions`)}
+      ${shareRow({
+        url,
+        text: `${course.name} course for ${city.name} — ${course.duration}, ${inr(course.priceINR)}. Live online with Jobjila.`,
+        heading: `Know someone in ${city.name} who needs this?`,
+      })}
     </div>
 
     <aside class="course-sidebar">
