@@ -7,6 +7,7 @@ const path = require("path");
 const {
   site,
   courses,
+  cities,
   esc,
   wa,
   WA_ICON,
@@ -944,7 +945,7 @@ function contact() {
     <aside class="course-sidebar">
       <div class="card">
         <h3 style="font-size:1rem">Where we operate</h3>
-        <p class="small">Cohorts run online, so you can join from anywhere in India. Our on-ground teams &mdash; local trainers, hiring partners and in-person meetups &mdash; are in ${site.cities.map((c) => "<strong>" + esc(c.name) + "</strong>").join(", ")}.</p>
+        <p class="small">Every cohort runs live online, so you can join from anywhere in India &mdash; the fee and the curriculum are the same wherever you are. We publish <a href="/locations/">local job-market guides for ${cities.length} cities</a>, covering what each skill pays and who is hiring there.</p>
       </div>
       <div class="card">
         <h3 style="font-size:1rem">Prefer to email?</h3>

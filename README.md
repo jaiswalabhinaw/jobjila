@@ -12,9 +12,11 @@ Everything under `/courses/` plus the marketing pages, `sitemap.xml` and
 changes will be overwritten on the next build.
 
 ```
-data/courses.json      <- the only file you edit to add or change a course
+data/courses.json      <- courses, site details, WhatsApp number
+data/cities.json       <- city landing pages (one per course, per city)
 scripts/lib.js         <- shared chrome: <head>, header, footer, SEO tags, cards
 scripts/pages.js       <- the standalone pages (home, hire, trainer, blog, ...)
+scripts/cities.js      <- city landing pages + the /locations/ hub
 scripts/build.js       <- orchestrates everything, writes sitemap + robots
 css/theme.css          <- the design system (hand-written)
 js/main.js             <- mobile nav + floating button behaviour (hand-written)
@@ -116,10 +118,37 @@ course or page the person came from:
 So you know the source of every enquiry without asking — something a plain
 contact form would not tell you.
 
-## Cities
+## City landing pages
 
-`site.cities` in `data/courses.json` drives the footer, the contact page and
-the `areaServed` schema. Currently Delhi, Noida and Lucknow.
+`data/cities.json` generates one page per open course per city, at
+`/courses/<course>/<city>/`, plus the `/locations/` hub. Twelve cities x eight
+open courses is currently 96 pages.
+
+These target the highest-volume commercial search pattern in India:
+`[course] course in [city]`, plus "fees", "placement" and "near me".
+
+**The rule that makes or breaks them:** Google drops near-identical pages as
+doorway pages. So every city entry must carry genuinely local content — that
+is what the required fields are for:
+
+| Field | Why it exists |
+|---|---|
+| `hubs` | The city's actual tech areas (Electronic City, HITEC City, Hinjewadi...) |
+| `intro` | 2–3 sentences on that city's real job market character |
+| `employerType` | Who actually hires there |
+| `salaryNote` | How local pay compares, and what it costs to live there |
+| `demandLead` | Which skills lead demand in that city |
+| `courseNotes` | Per-course local note. Written for the courses that matter most in that city; others fall back to a note built from `hubs` and `employerType` |
+| `faqs` | Two questions specific to that city |
+
+Current state, measured by `scripts/build.js` output: city pages for the same
+course share about 44% of their text, so roughly half of each page is unique.
+The shared half is the syllabus and outcomes, which legitimately are the same
+course. **If you add a city with thin or copied content, that ratio drops and
+the whole set is at risk — not just the new page.**
+
+Adding a city is one JSON entry and a rebuild. Do not add one you cannot write
+real local detail for.
 
 ## Other directories
 

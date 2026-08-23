@@ -800,7 +800,9 @@ ul, ol { color: var(--ink-600); }
 /* ---------- Floating WhatsApp button ---------- */
 .wa-float {
   position: fixed;
-  right: 18px;
+  /* Bottom-left on desktop: course and city pages have a sticky right sidebar
+     carrying the fee, and a bottom-right float sits directly on top of it. */
+  left: 18px;
   bottom: 18px;
   z-index: 150;
   display: inline-flex;
@@ -822,6 +824,11 @@ ul, ol { color: var(--ink-600); }
   box-shadow: 0 14px 38px rgba(37, 211, 102, .5);
 }
 .wa-float svg { flex: none; width: 24px; height: 24px; }
+
+@media (max-width: 1000px) {
+  /* No sidebar at this width, so return it to the thumb-friendly side */
+  .wa-float { left: auto; right: 18px; }
+}
 
 @media (max-width: 560px) {
   /* Icon only on small screens so it never covers content */

@@ -16,6 +16,7 @@ const path = require("path");
 const {
   site,
   courses,
+  cities,
   esc,
   inr,
   wa,
@@ -35,6 +36,7 @@ const {
 } = require("./lib");
 
 const buildStaticPages = require("./pages");
+const buildCityPages = require("./cities");
 
 /* ---------- individual course page ---------- */
 
@@ -192,6 +194,28 @@ function buildCoursePage(c) {
   </div>
 </div>
 
+${
+      soon
+        ? ""
+        : `<section class="section section--alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Local guides</span>
+      <h2>${esc(c.name)} by city</h2>
+      <p>The course is the same online cohort wherever you join from. These pages cover the job market, employers and pay for this skill in each city.</p>
+    </div>
+    <div class="course-meta">
+      ${cities
+        .map(
+          (city) =>
+            `<a class="tag tag--brand" href="/courses/${c.slug}/${city.slug}/">${esc(c.name)} in ${esc(city.name)}</a>`
+        )
+        .join("\n      ")}
+    </div>
+  </div>
+</section>`
+    }
+
 <section class="section section--alt">
   <div class="container">
     <div class="section-head section-head--center">
@@ -344,6 +368,7 @@ const STATIC_PAGES = [
   { url: "/hire/", priority: "0.8", freq: "monthly" },
   { url: "/become-a-trainer/", priority: "0.8", freq: "monthly" },
   { url: "/blog/", priority: "0.7", freq: "weekly" },
+  { url: "/locations/", priority: "0.8", freq: "monthly" },
   { url: "/about/", priority: "0.5", freq: "yearly" },
   { url: "/contact/", priority: "0.6", freq: "yearly" },
 ];
@@ -357,6 +382,8 @@ function buildSitemap() {
       priority: c.status === "open" ? "0.9" : "0.4",
       freq: "monthly",
     })),
+    // City pages already include /locations/, which STATIC_PAGES also lists.
+    ...buildCityPages.cityUrls().filter((u) => u.url !== "/locations/"),
   ];
 
   const body = urls
@@ -404,7 +431,8 @@ console.log("Building Jobjila...");
 buildCourseHub();
 courses.forEach(buildCoursePage);
 buildStaticPages();
+const cityPageCount = buildCityPages();
 buildSitemap();
 console.log(
-  `\nDone. ${courses.length} course pages + hub + ${STATIC_PAGES.length - 2} standalone pages + sitemap.`
+  `\nDone. ${courses.length} course pages + hub + ${STATIC_PAGES.length - 3} standalone pages + ${cityPageCount} city pages + sitemap.`
 );

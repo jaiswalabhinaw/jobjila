@@ -1,0 +1,269 @@
+{
+  "//": "City landing pages are generated for every open course x every city here. Each city MUST carry genuinely local content — hubs, market character, salary note and its own FAQs — otherwise the pages read as duplicates and Google ignores them. Adding a city here creates one new page per open course automatically.",
+  "cities": [
+    {
+      "slug": "bangalore",
+      "name": "Bangalore",
+      "altName": "Bengaluru",
+      "region": "Karnataka",
+      "tier": "India's largest technology hub",
+      "hubs": ["Electronic City", "Whitefield", "Outer Ring Road", "Koramangala", "Manyata Tech Park", "Indiranagar"],
+      "intro": "Bangalore has more open technology roles than any other Indian city, and also the most competition for them. The employer mix runs from the large service companies along Electronic City and the Outer Ring Road to the startup cluster around Koramangala and Indiranagar, which means both structured graduate hiring and fast, skills-first hiring exist side by side.",
+      "employerType": "global capability centres, product startups and the large IT services firms",
+      "salaryNote": "Bangalore salaries typically run 10–20% above the national band for the same role, though higher rent and commute costs absorb a good part of that difference.",
+      "demandLead": "Cloud, AI and data roles dominate hiring here, and startup employers in particular will interview on demonstrated project work rather than a degree.",
+      "courseNotes": {
+        "cloud-computing": "Bangalore has the deepest cloud hiring market in India — nearly every mid-size company along the Outer Ring Road runs on AWS or Azure, and cloud support roles are a common first job for career changers.",
+        "ai-prompt-engineering": "The startup belt around Koramangala and HSR Layout is hiring for applied AI faster than anywhere else in India, and small teams there care far more about a working demo than a credential.",
+        "digital-marketing": "Bangalore's D2C and SaaS startups run performance marketing in-house, which makes it one of the strongest cities for both marketing jobs and freelance retainers.",
+        "presales-consulting": "With so many global capability centres headquartered here, Bangalore has more presales and solution consulting openings than any other Indian city."
+      },
+      "faqs": [
+        { "q": "Do you have a classroom or centre in Bangalore?", "a": "No. All Jobjila cohorts run live online, so you join from wherever you are in Bangalore without adding an Outer Ring Road commute to your week. Sessions are in the evening and every one is recorded." },
+        { "q": "Which areas of Bangalore do your learners usually come from?", "a": "Learners join from across the city — Electronic City, Whitefield, Marathahalli, Koramangala, Hebbal and the surrounding areas. Because the cohort is online, your location within the city makes no difference to the batch you can join." }
+      ]
+    },
+    {
+      "slug": "hyderabad",
+      "name": "Hyderabad",
+      "altName": "Secunderabad",
+      "region": "Telangana",
+      "tier": "India's fastest-growing enterprise tech base",
+      "hubs": ["HITEC City", "Gachibowli", "Madhapur", "Kondapur", "Financial District"],
+      "intro": "Hyderabad's technology employment is concentrated in a compact corridor running through HITEC City, Madhapur and Gachibowli, where several of the largest global technology firms operate major India campuses. The city combines big-employer hiring with living costs noticeably below Bangalore, which is why it has been the fastest-growing tech job market in the country in recent years.",
+      "employerType": "large enterprise campuses, cloud and data centre operations",
+      "salaryNote": "Hyderabad pays close to Bangalore levels for equivalent enterprise roles while costing meaningfully less to live in, which makes the effective take-home comparison favourable.",
+      "demandLead": "Enterprise cloud, infrastructure and data roles lead demand, driven by the large campuses in the HITEC City corridor.",
+      "courseNotes": {
+        "cloud-computing": "Hyderabad hosts major cloud and data centre operations, so demand for Azure and AWS skills here is concentrated and consistent rather than seasonal.",
+        "it-infrastructure": "The scale of enterprise campuses around Gachibowli and the Financial District keeps infrastructure and IT support hiring steady, and these roles remain one of the most reliable entries into the city's tech workforce.",
+        "data-analytics": "Enterprise reporting and MIS roles are plentiful across the Financial District, and Power BI in particular appears in a large share of Hyderabad analyst job descriptions.",
+        "presales-consulting": "Many global firms run their India presales and solution teams out of Hyderabad, giving technical people a clear internal path into client-facing work."
+      },
+      "faqs": [
+        { "q": "Are your courses suitable for someone working in HITEC City?", "a": "Yes — sessions run in the evening specifically so people working full time in the HITEC City and Gachibowli corridor can attend without taking leave, and every session is recorded if you miss one." },
+        { "q": "Is Hyderabad a good city to start an IT career?", "a": "It is one of the best in India right now. Large campuses hire in volume for infrastructure, cloud and support roles, entry requirements are often skills-based rather than degree-based, and living costs are lower than Bangalore or Pune." }
+      ]
+    },
+    {
+      "slug": "pune",
+      "name": "Pune",
+      "altName": "Pimpri-Chinchwad",
+      "region": "Maharashtra",
+      "tier": "a major IT services and engineering hub",
+      "hubs": ["Hinjewadi", "Magarpatta City", "Kharadi", "Baner", "Viman Nagar"],
+      "intro": "Pune's technology employment centres on Hinjewadi's Rajiv Gandhi Infotech Park, along with Magarpatta City and the EON cluster at Kharadi. The city mixes IT services with a strong engineering and automotive technology base, and its very large student population means entry-level hiring is competitive but constant.",
+      "employerType": "IT services firms, engineering R&D centres and captive units",
+      "salaryNote": "Pune salaries sit slightly below Bangalore for the same role, but living costs are lower and the commute burden is usually smaller if you live near your work cluster.",
+      "demandLead": "IT services hiring drives volume here, which favours candidates with demonstrable project work over those with only a certificate.",
+      "courseNotes": {
+        "cloud-computing": "Pune's services firms are migrating client workloads to cloud continuously, so cloud associate and support roles come up regularly in Hinjewadi and Kharadi.",
+        "it-infrastructure": "The concentration of services companies and captive engineering units around Hinjewadi keeps infrastructure and support hiring reliable year-round.",
+        "web-design": "Pune has a dense small-business and startup base around Baner and Viman Nagar, which is fertile ground for freelance website projects alongside a job.",
+        "freelancing-bootcamp": "Pune's large student and young-professional population makes it one of the easiest cities to build a freelance side income while employed."
+      },
+      "faqs": [
+        { "q": "Will these courses help me get into a Hinjewadi IT company?", "a": "They are built around exactly what those employers screen for — working project evidence plus interview preparation. The capstone gives you something concrete to discuss, which matters more in services hiring than the certificate itself." },
+        { "q": "I am a student in Pune. Can I take a course alongside college?", "a": "Yes. Courses run at four to eight hours a week with evening sessions and full recordings, and many of our learners are final-year students building a portfolio before campus placements." }
+      ]
+    },
+    {
+      "slug": "chennai",
+      "name": "Chennai",
+      "altName": "Madras",
+      "region": "Tamil Nadu",
+      "tier": "a major IT and BFSI technology centre",
+      "hubs": ["OMR IT Corridor", "Tidel Park", "Siruseri SIPCOT", "Guindy", "Perungudi"],
+      "intro": "Chennai's technology employment runs almost entirely along the Old Mahabalipuram Road corridor, from Tidel Park through Perungudi and out to Siruseri. The city has an unusually strong banking, financial services and insurance technology base, alongside manufacturing IT, which shapes what employers here screen for.",
+      "employerType": "BFSI technology teams, IT services firms and manufacturing IT",
+      "salaryNote": "Chennai salaries are broadly in line with Pune for equivalent roles, and living costs outside the OMR corridor remain among the more affordable of the major tech cities.",
+      "demandLead": "BFSI and enterprise IT dominate, and these employers place real weight on process discipline and documented work.",
+      "courseNotes": {
+        "cloud-computing": "Chennai's BFSI technology teams are moving regulated workloads to cloud carefully, which creates demand for people who understand security and compliance alongside the core services.",
+        "it-infrastructure": "The OMR corridor's large delivery centres hire consistently for infrastructure and support roles, and this remains the most dependable entry route into Chennai's tech workforce.",
+        "data-analytics": "Banking and insurance operations along OMR run heavily on Excel and Power BI reporting, making analyst skills directly employable here.",
+        "presales-consulting": "Chennai's services and BFSI firms need presales people who can speak to both technology and regulatory constraints — a combination that is genuinely scarce."
+      },
+      "faqs": [
+        { "q": "Are sessions available in Tamil?", "a": "Courses are currently delivered in English, with trainers who are used to mixed-language cohorts and happy to clarify in simpler terms. Doubt threads are written, which many learners find easier than following a live explanation." },
+        { "q": "Do employers along OMR hire without a formal degree?", "a": "BFSI employers in Chennai tend to be more credential-conscious than startups elsewhere, so a degree still helps. What the capstone project does is get you past the initial screen and give you something substantive to discuss in interview." }
+      ]
+    },
+    {
+      "slug": "mumbai",
+      "name": "Mumbai",
+      "altName": "Navi Mumbai",
+      "region": "Maharashtra",
+      "tier": "India's financial and media capital",
+      "hubs": ["Bandra Kurla Complex", "Powai", "Andheri SEEPZ", "Vikhroli", "Airoli"],
+      "intro": "Mumbai's technology jobs sit alongside finance and media rather than in a standalone tech corridor. Banking technology clusters around BKC, product and startup work around Powai, and a very large advertising and media industry across Andheri and Lower Parel — which makes Mumbai the strongest city in India for marketing and content skills specifically.",
+      "employerType": "banks and financial firms, media and advertising agencies, and product startups",
+      "salaryNote": "Mumbai offers among the highest headline salaries in India, but housing costs are the country's steepest, so compare offers on what remains after rent rather than on CTC alone.",
+      "demandLead": "Marketing, finance technology and data roles lead demand, and agency hiring in particular moves quickly on demonstrated portfolio work.",
+      "courseNotes": {
+        "digital-marketing": "Mumbai is India's advertising capital, so this is the single strongest city in the country for digital marketing employment, agency work and freelance retainers alike.",
+        "data-analytics": "BKC's banking and financial services teams run enormous reporting operations, and Excel plus Power BI skills are directly hireable there.",
+        "ai-prompt-engineering": "Mumbai's agencies and media businesses are under real pressure to automate content and reporting workflows, which is creating steady freelance AI automation work.",
+        "freelancing-bootcamp": "The density of agencies and small businesses across Andheri and Lower Parel makes Mumbai one of the easiest cities in India to find your first paying freelance client."
+      },
+      "faqs": [
+        { "q": "Is Mumbai good for a digital marketing career?", "a": "It is the best city in India for it. The advertising and media industry is concentrated here, agencies hire continuously, and the same density means freelance clients are easier to find than almost anywhere else." },
+        { "q": "Can I attend sessions given Mumbai commute times?", "a": "That is precisely why the cohorts are online. Sessions run in the evening, and every one is recorded — so a delayed local train costs you nothing." }
+      ]
+    },
+    {
+      "slug": "delhi",
+      "name": "Delhi",
+      "altName": "New Delhi",
+      "region": "Delhi",
+      "tier": "the commercial centre of North India",
+      "hubs": ["Nehru Place", "Connaught Place", "Okhla", "Saket", "Netaji Subhash Place"],
+      "intro": "Delhi's technology economy is less about large campuses and more about business services — agencies, consultancies, government-adjacent IT and a very large SME base. Nehru Place remains one of the country's biggest IT trading and services markets, and the city's density of small and mid-size businesses makes it strong ground for freelance and independent work.",
+      "employerType": "agencies, consultancies, SMEs and government-adjacent IT",
+      "salaryNote": "Delhi salaries for equivalent roles sit close to the national band, with the strongest offers usually coming from Gurgaon and Noida rather than Delhi proper.",
+      "demandLead": "Marketing, web and business-services skills lead demand here, and the SME density makes independent client work particularly viable.",
+      "courseNotes": {
+        "digital-marketing": "Delhi's enormous SME and retail base means constant demand for marketing help, and most of those businesses would rather hire a freelancer on retainer than an agency.",
+        "web-design": "Nehru Place and the wider Delhi SME market generate steady website work, and small business owners here are used to buying services directly from independent providers.",
+        "freelancing-bootcamp": "Delhi's business density makes it one of the best cities in India to build an independent client base — the constraint is usually pricing and pitching, not finding prospects.",
+        "hr-payroll": "Delhi's very large SME base needs payroll and compliance support continuously, and much of it is outsourced to independent consultants."
+      },
+      "faqs": [
+        { "q": "Do you run any in-person sessions in Delhi?", "a": "All cohorts are online. We do hold occasional informal meetups for learners across the Delhi NCR region, but no part of the course requires you to travel." },
+        { "q": "Is Delhi or Gurgaon better for IT jobs?", "a": "Gurgaon and Noida have more corporate IT and consulting employers, while Delhi proper is stronger for agencies, SMEs and independent client work. Since the courses are online you can target all three from wherever you live in NCR." }
+      ]
+    },
+    {
+      "slug": "noida",
+      "name": "Noida",
+      "altName": "Greater Noida",
+      "region": "Uttar Pradesh",
+      "tier": "NCR's largest IT services base",
+      "hubs": ["Sector 62", "Sector 63", "Noida Expressway", "Sector 125–135", "Greater Noida"],
+      "intro": "Noida concentrates NCR's IT services and business process employment, particularly around Sectors 62 and 63 and along the Expressway corridor. It has a very high volume of entry-level technology and support hiring, and comparatively lower living costs than Gurgaon, which makes it a common first stop for people starting an IT career in North India.",
+      "employerType": "IT services firms, BPO and technology support operations",
+      "salaryNote": "Noida entry-level salaries are moderate but the volume of openings is high, and the low cost of living relative to Gurgaon or Delhi makes early-career maths work out reasonably.",
+      "demandLead": "High-volume entry-level hiring in IT support, infrastructure and services, which favours candidates who can show practical competence quickly.",
+      "courseNotes": {
+        "it-infrastructure": "Noida has some of the highest-volume entry-level IT support hiring in North India, and this course maps directly onto what those employers screen for.",
+        "cloud-computing": "Services firms along the Noida Expressway are running client cloud migrations continuously, which keeps demand for AWS and Azure skills steady.",
+        "digital-marketing": "Noida hosts a large cluster of digital marketing and BPO operations, giving both salaried and freelance routes into the field.",
+        "web-design": "The Sector 62 and 63 SME cluster generates regular website and maintenance work that suits a new freelancer well."
+      },
+      "faqs": [
+        { "q": "Is Noida good for freshers looking for an IT job?", "a": "It is one of the better options in North India. The volume of entry-level openings in IT support, infrastructure and services is high, and employers here are generally more willing to hire on demonstrated skill than on pedigree." },
+        { "q": "Do you have a centre in Sector 62?", "a": "No, all cohorts run live online. You join from home, which for Noida learners usually saves an hour or more each way compared with a physical institute." }
+      ]
+    },
+    {
+      "slug": "gurgaon",
+      "name": "Gurgaon",
+      "altName": "Gurugram",
+      "region": "Haryana",
+      "tier": "NCR's corporate and consulting hub",
+      "hubs": ["DLF Cyber City", "Udyog Vihar", "Golf Course Road", "Sohna Road", "Sector 44"],
+      "intro": "Gurgaon holds the highest concentration of multinational corporate offices, consulting firms and well-funded startups in North India, clustered around DLF Cyber City and the Golf Course Road corridor. Hiring here skews towards client-facing, commercial and consulting roles rather than pure engineering, which changes what is worth learning.",
+      "employerType": "multinational corporate offices, consulting firms and funded startups",
+      "salaryNote": "Gurgaon offers the strongest salaries in North India for corporate and client-facing roles, with a corresponding jump in rental costs around the Cyber City corridor.",
+      "demandLead": "Consulting, presales, marketing and analytics roles lead demand, and employers here weigh communication as heavily as technical depth.",
+      "courseNotes": {
+        "presales-consulting": "Gurgaon is the strongest presales market in North India — the density of multinational offices and consulting firms around Cyber City means these roles come up constantly.",
+        "digital-marketing": "The concentration of funded startups and consumer brands in Gurgaon drives continuous performance marketing hiring at good salaries.",
+        "data-analytics": "Consulting firms and corporate offices around Cyber City run heavily on Excel and Power BI, and analyst roles here are well paid relative to the rest of NCR.",
+        "ai-prompt-engineering": "Gurgaon's consulting and corporate base is actively piloting AI automation, and people who can scope and deliver it are genuinely scarce."
+      },
+      "faqs": [
+        { "q": "Which course is best for a Gurgaon corporate job?", "a": "Presales and solution consulting, data analytics, and digital marketing map most directly onto what Gurgaon employers hire for. If you are already technical and want a jump in both salary and visibility, presales is usually the strongest move." },
+        { "q": "Do Gurgaon employers care about certificates?", "a": "Less than you would expect. Consulting and corporate interviews here test communication and structured thinking heavily, which is why our courses put you through recorded demos and presentations rather than only assessments." }
+      ]
+    },
+    {
+      "slug": "kolkata",
+      "name": "Kolkata",
+      "altName": "Howrah",
+      "region": "West Bengal",
+      "tier": "East India's technology centre",
+      "hubs": ["Salt Lake Sector V", "New Town Rajarhat", "Park Street", "Bantala"],
+      "intro": "Kolkata's technology employment is concentrated in Salt Lake Sector V and the newer New Town development at Rajarhat. The city has a strong IT services and support base with notably lower operating and living costs than the southern and western hubs, which increasingly makes it attractive for remote work and independent client services.",
+      "employerType": "IT services firms, support operations and a growing remote workforce",
+      "salaryNote": "Kolkata salaries are lower than the western and southern hubs for the same role, but living costs are substantially lower too — and remote work for out-of-state clients closes most of that gap.",
+      "demandLead": "IT services and support hiring locally, with a rapidly growing share of people working remotely for employers and clients elsewhere.",
+      "courseNotes": {
+        "freelancing-bootcamp": "Kolkata's lower cost base is a genuine advantage in freelancing — earning at national rates while living here goes considerably further than it would in Bangalore or Mumbai.",
+        "web-design": "Website work for clients outside West Bengal is one of the most practical routes to a good income from Kolkata, since delivery is entirely remote.",
+        "digital-marketing": "Marketing retainers can be delivered from anywhere, which makes this one of the strongest skills for a Kolkata-based earner targeting clients in other cities.",
+        "it-infrastructure": "Salt Lake Sector V and New Town host steady IT support and infrastructure hiring, and these remain reliable local entry roles."
+      },
+      "faqs": [
+        { "q": "Are there enough IT jobs in Kolkata?", "a": "There is steady local hiring around Salt Lake Sector V and New Town, though at lower volume than Bangalore or Hyderabad. The bigger opportunity for most people here is remote work or freelancing for clients elsewhere, which is why we teach that path explicitly." },
+        { "q": "Can I earn well from Kolkata without relocating?", "a": "Yes, and it is one of the better arbitrages available. Freelance and remote work pays at national rates while Kolkata's living costs stay well below the major hubs. The Freelancing Bootcamp covers finding those clients specifically." }
+      ]
+    },
+    {
+      "slug": "ahmedabad",
+      "name": "Ahmedabad",
+      "altName": "Gandhinagar",
+      "region": "Gujarat",
+      "tier": "Gujarat's business and fintech centre",
+      "hubs": ["SG Highway", "Prahlad Nagar", "GIFT City", "Bodakdev", "Satellite"],
+      "intro": "Ahmedabad's economy is built on a dense base of trading, manufacturing and family-run businesses, with a newer financial technology cluster at GIFT City in neighbouring Gandhinagar. That business density matters more than the size of the local IT sector — there are a great many owners here who need digital work done and are used to buying it directly.",
+      "employerType": "SMEs, manufacturing and trading businesses, plus the GIFT City financial cluster",
+      "salaryNote": "Ahmedabad salaries sit below the major tech hubs, but living costs are among the lowest of any large Indian city and the independent client market is unusually accessible.",
+      "demandLead": "Strong demand for practical digital services from business owners, which favours freelancing and independent work over salaried tech roles.",
+      "courseNotes": {
+        "web-design": "Ahmedabad's enormous base of trading and manufacturing SMEs consistently needs websites, and owners here are comfortable buying directly from an independent provider.",
+        "digital-marketing": "Gujarat's business owners are pragmatic buyers of marketing that demonstrably produces enquiries, which makes retainer work here more attainable than in bigger tech cities.",
+        "freelancing-bootcamp": "The combination of high business density and low living costs makes Ahmedabad one of the most practical Indian cities in which to build a freelance income.",
+        "data-analytics": "GIFT City's growing financial services cluster is creating analyst and reporting roles that did not exist in Gujarat a few years ago."
+      },
+      "faqs": [
+        { "q": "Is Ahmedabad good for freelancing?", "a": "Unusually good. The density of small and mid-size businesses means a large pool of prospective clients, owners here tend to make buying decisions directly and quickly, and low living costs mean you need fewer clients to do well." },
+        { "q": "Are sessions available in Gujarati or Hindi?", "a": "Courses are delivered in English, though trainers are accustomed to mixed-language cohorts and will explain in Hindi where it helps. Written doubt threads also let you take your time over the language." }
+      ]
+    },
+    {
+      "slug": "indore",
+      "name": "Indore",
+      "altName": "Madhya Pradesh",
+      "region": "Madhya Pradesh",
+      "tier": "central India's emerging IT hub",
+      "hubs": ["Crystal IT Park", "Vijay Nagar", "Rau", "Super Corridor"],
+      "intro": "Indore has grown quickly into central India's main technology centre, anchored by Crystal IT Park and the Super Corridor development. It has a young, well-educated workforce and a rapidly expanding outsourcing and services base, and living costs remain far below the established hubs — a combination that makes remote and freelance work particularly effective from here.",
+      "employerType": "outsourcing and services firms, plus a fast-growing remote workforce",
+      "salaryNote": "Local Indore salaries are well below the major hubs, which is exactly why remote work and freelancing for clients in other cities is the higher-earning route for most people here.",
+      "demandLead": "Growing local services hiring, with remote and freelance work offering considerably better economics than local salaried roles.",
+      "courseNotes": {
+        "freelancing-bootcamp": "Indore's low living costs mean freelance income at national rates goes remarkably far — this is one of the highest-leverage cities in India for independent work.",
+        "web-design": "Website projects can be delivered entirely remotely, letting you charge Bangalore and Mumbai clients while living at Indore costs.",
+        "digital-marketing": "Marketing retainers are location-independent, making this one of the most practical skills for an Indore-based earner targeting bigger-city clients.",
+        "ai-prompt-engineering": "AI automation work is delivered remotely by definition, and demand currently far exceeds the number of people who can scope and build it properly."
+      },
+      "faqs": [
+        { "q": "Can I get a good IT job while staying in Indore?", "a": "Local hiring at Crystal IT Park and the Super Corridor is growing steadily. But for most people the stronger option is remote work or freelancing for clients in the larger hubs — same rates, far lower costs. We teach that route explicitly." },
+        { "q": "Is a tier-2 city a disadvantage for tech work?", "a": "Much less than it used to be. Remote hiring and freelance platforms have largely decoupled income from location, and the cost advantage of living in Indore is real. What matters is demonstrable skill, which is what the capstone provides." }
+      ]
+    },
+    {
+      "slug": "lucknow",
+      "name": "Lucknow",
+      "altName": "Uttar Pradesh",
+      "region": "Uttar Pradesh",
+      "tier": "Uttar Pradesh's growing technology base",
+      "hubs": ["Gomti Nagar", "Vibhuti Khand", "Amar Shaheed Path", "Hazratganj"],
+      "intro": "Lucknow's technology sector is younger than the established hubs, centred on Gomti Nagar and the Vibhuti Khand business district, with state IT-park development steadily adding capacity. For most people here the practical picture is a mix of a growing local market, a large SME base needing digital services, and remote work for employers and clients elsewhere.",
+      "employerType": "SMEs, government-adjacent IT, education businesses and a growing remote workforce",
+      "salaryNote": "Local salaries are below the major hubs, but Lucknow's living costs are low and the SME base makes independent client work realistic alongside or instead of a salaried role.",
+      "demandLead": "Growing local demand for digital services from businesses, with remote and freelance work offering the strongest earnings.",
+      "courseNotes": {
+        "web-design": "Lucknow's SMEs, clinics, schools and retailers increasingly need websites, and very few local providers deliver them well — the bar to becoming the better option is low.",
+        "digital-marketing": "Local businesses here are only beginning to invest seriously in digital marketing, which means less competition than in metro markets for the same work.",
+        "freelancing-bootcamp": "Combining local clients with remote work for bigger cities is the most realistic high-income path from Lucknow, and this course covers both.",
+        "it-infrastructure": "Growing local IT services and government-adjacent projects are creating steady support and infrastructure roles in and around Gomti Nagar."
+      },
+      "faqs": [
+        { "q": "Are there IT jobs in Lucknow?", "a": "The local market is smaller than the metros but genuinely growing, particularly around Gomti Nagar and Vibhuti Khand. Many of our Lucknow learners combine local work with remote clients, which produces better earnings than either alone." },
+        { "q": "Do you have an office in Lucknow?", "a": "Jobjila is based in Lucknow and all cohorts run online, so learners here join the same batches as everyone else across India. Reach us on WhatsApp for anything you would rather discuss directly." }
+      ]
+    }
+  ]
+}

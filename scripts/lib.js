@@ -10,6 +10,7 @@ const path = require("path");
 const ROOT = path.join(__dirname, "..");
 const data = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "courses.json"), "utf8"));
 const { site, courses } = data;
+const { cities } = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "cities.json"), "utf8"));
 
 /* ---------- small utilities ---------- */
 
@@ -62,7 +63,7 @@ const orgLd = {
     addressRegion: site.region,
     addressCountry: site.country,
   },
-  areaServed: site.cities.map((c) => ({
+  areaServed: cities.map((c) => ({
     "@type": "City",
     name: c.name,
     containedInPlace: { "@type": "AdministrativeArea", name: c.region },
@@ -224,6 +225,7 @@ function footer() {
       <div>
         <h4>Company</h4>
         <ul class="footer-links">
+          <li><a href="/locations/">Locations</a></li>
           <li><a href="/about/">About Us</a></li>
           <li><a href="/blog/">Blog</a></li>
           <li><a href="/contact/">Contact</a></li>
@@ -232,7 +234,7 @@ function footer() {
     </div>
     <div class="footer-bottom">
       <span>&copy; ${new Date().getFullYear()} ${esc(site.name)}. All rights reserved.</span>
-      <span>Serving ${site.cities.map((c) => esc(c.name)).join(" &middot; ")}</span>
+      <span><a href="/locations/">Serving ${cities.length} cities across India</a></span>
     </div>
   </div>
 </footer>
@@ -322,6 +324,7 @@ module.exports = {
   ROOT,
   site,
   courses,
+  cities,
   esc,
   inr,
   wa,
