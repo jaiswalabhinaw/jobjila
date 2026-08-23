@@ -18,6 +18,7 @@ const {
   courseCard,
   faqSection,
   ctaBand,
+  shareRow,
   orgLd,
   websiteLd,
   breadcrumbLd,
@@ -311,6 +312,11 @@ function home() {
 
 <div class="container section">
   ${faqSection(faqs, "Common questions")}
+  ${shareRow({
+    url: "/",
+    text: "Jobjila — learn a skill, get verified, and turn it into a job, freelance work or your own business.",
+    heading: "Know someone looking for a career change?",
+  })}
 </div>
 
 <section class="section" style="padding-top:0">

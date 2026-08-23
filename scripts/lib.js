@@ -139,8 +139,11 @@ const NAV = [
   { href: "/blog/", label: "Blog" },
 ];
 
-function head({ title, description, canonical, extraLd = [], keywords = [] }) {
+function head({ title, description, canonical, extraLd = [], keywords = [], ogImage }) {
   const url = site.url + canonical;
+  // Absolute URL required: WhatsApp, LinkedIn and Facebook will not resolve a
+  // relative og:image path.
+  const image = site.url + (ogImage || "/assets/og/default.jpg");
   const kw = keywords.length
     ? `<meta name="keywords" content="${esc(keywords.join(", "))}">\n`
     : "";
@@ -160,10 +163,15 @@ ${kw}<link rel="canonical" href="${esc(url)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${esc(url)}">
 <meta property="og:locale" content="en_IN">
+<meta property="og:image" content="${esc(image)}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="${esc(title)}">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(description)}">
+<meta name="twitter:image" content="${esc(image)}">
 
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -307,6 +315,45 @@ function faqSection(faqs, heading = "Frequently asked questions") {
  * @param {string} [opts.whatsappMessage] when given, the button opens a
  *        pre-filled WhatsApp chat instead of navigating to a page.
  */
+/**
+ * Share row. Distinct from the enquiry buttons: those message Jobjila, these
+ * let a visitor pass the page to their own contacts.
+ *
+ * On mobile the first control uses the native share sheet (navigator.share)
+ * when available, which reaches WhatsApp, Instagram, Telegram and everything
+ * else in one tap. js/main.js upgrades it; without JS it stays a working
+ * WhatsApp share link.
+ */
+function shareRow({ url, text, heading = "Know someone this would help?" }) {
+  const full = site.url + url;
+  return `<section class="share" aria-labelledby="share-heading">
+  <div>
+    <h2 id="share-heading">${esc(heading)}</h2>
+    <p class="small muted">Share this page &mdash; it opens with the course name, fee and duration already in the preview.</p>
+  </div>
+  <div class="share__actions"
+       data-share
+       data-share-url="${esc(full)}"
+       data-share-title="${esc(text)}">
+    <a class="btn btn--whatsapp" data-share-whatsapp
+       href="https://wa.me/?text=${encodeURIComponent(text + " " + full)}"
+       target="_blank" rel="noopener">${WA_ICON}<span data-share-label>Share on WhatsApp</span></a>
+    <button class="btn btn--ghost" type="button" data-share-copy data-copy="${esc(full)}">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      <span>Copy link</span>
+    </button>
+    <a class="btn btn--ghost" href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(full)}" target="_blank" rel="noopener" aria-label="Share on LinkedIn">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.06c.53-1 1.83-2.06 3.76-2.06 4.02 0 4.76 2.65 4.76 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21H9z"/></svg>
+      <span class="share__label-long">LinkedIn</span>
+    </a>
+    <a class="btn btn--ghost" href="https://t.me/share/url?url=${encodeURIComponent(full)}&text=${encodeURIComponent(text)}" target="_blank" rel="noopener" aria-label="Share on Telegram">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.9 19c-.2 1-.8 1.3-1.7.8l-4.6-3.4-2.2 2.1c-.25.25-.45.45-.92.45l.33-4.7 8.5-7.7c.37-.33-.08-.5-.57-.18L7.3 12.6l-4.5-1.4c-1-.3-1-1 .2-1.45l17.6-6.8c.8-.3 1.5.2 1.3 1.35z"/></svg>
+      <span class="share__label-long">Telegram</span>
+    </a>
+  </div>
+</section>`;
+}
+
 function ctaBand({ title, body, buttonLabel, buttonHref, whatsappMessage }) {
   const isWa = Boolean(whatsappMessage);
   const href = isWa ? wa(whatsappMessage) : buttonHref;
@@ -336,6 +383,7 @@ module.exports = {
   courseCard,
   faqSection,
   ctaBand,
+  shareRow,
   orgLd,
   websiteLd,
   breadcrumbLd,

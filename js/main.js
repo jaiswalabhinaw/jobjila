@@ -24,6 +24,70 @@
     });
   }
 
+  /* ---------- Sharing ----------
+     Two upgrades over the plain links, both progressive: without JS the
+     WhatsApp link and the other share links still work, and the copy button
+     falls back to selecting the URL. */
+  Array.prototype.forEach.call(document.querySelectorAll("[data-share]"), function (box) {
+    var url = box.getAttribute("data-share-url");
+    var title = box.getAttribute("data-share-title");
+
+    // 1. Native share sheet where the device has one (almost all phones).
+    //    One tap reaches WhatsApp, Instagram, Telegram, SMS - everything.
+    var primary = box.querySelector("[data-share-whatsapp]");
+    var label = box.querySelector("[data-share-label]");
+    if (primary && navigator.share) {
+      if (label) label.textContent = "Share";
+      primary.addEventListener("click", function (e) {
+        e.preventDefault();
+        navigator.share({ title: title, text: title, url: url }).catch(function () {
+          /* user dismissed the sheet - nothing to do */
+        });
+      });
+    }
+
+    // 2. Copy link, with the button itself as the confirmation.
+    var copyBtn = box.querySelector("[data-share-copy]");
+    if (!copyBtn) return;
+    copyBtn.addEventListener("click", function () {
+      var target = copyBtn.getAttribute("data-copy");
+      var span = copyBtn.querySelector("span");
+      var original = span ? span.textContent : "";
+
+      function done(ok) {
+        if (!span) return;
+        span.textContent = ok ? "Link copied" : "Press Ctrl+C";
+        copyBtn.classList.toggle("is-copied", ok);
+        setTimeout(function () {
+          span.textContent = original;
+          copyBtn.classList.remove("is-copied");
+        }, 2000);
+      }
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(target).then(function () { done(true); }, function () { fallback(); });
+      } else {
+        fallback();
+      }
+
+      function fallback() {
+        // http:// or an older browser - select the text so Ctrl+C works.
+        var input = document.createElement("input");
+        input.value = target;
+        input.setAttribute("readonly", "");
+        input.style.position = "fixed";
+        input.style.opacity = "0";
+        document.body.appendChild(input);
+        input.select();
+        input.setSelectionRange(0, 99999);
+        var ok = false;
+        try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+        document.body.removeChild(input);
+        done(ok);
+      }
+    });
+  });
+
   // Hide the floating WhatsApp button while the footer is on screen, so it
   // never sits on top of the footer links.
   var float = document.querySelector(".wa-float");
