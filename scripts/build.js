@@ -96,8 +96,9 @@ function buildCoursePage(c) {
         <div class="doubt-block">
           <p><strong>Every enrolled learner gets a doubt thread on this page.</strong> Your trainer replies within 48 hours, and answers stay visible to the whole cohort so nobody has to ask the same question twice.</p>
           <div class="doubt-thread">
-            <p><strong>Priya S.</strong> &mdash; I followed module 3 exactly but my setup fails at the last step. What am I missing?</p>
-            <div class="doubt-reply"><span class="badge-verified">&#10003; Verified by Trainer</span><br>Check your permissions first &mdash; that is the cause about nine times out of ten. I have posted the full walkthrough in the cohort thread.</div>
+            <p class="small muted" style="margin-bottom:10px"><em>Example of how a thread works &mdash; this course has not started yet</em></p>
+            <p>&ldquo;I followed module 3 exactly but my setup fails at the last step. What am I missing?&rdquo;</p>
+            <div class="doubt-reply"><span class="badge-verified">&#10003; Trainer reply</span><br>Check your permissions first &mdash; that is the cause about nine times out of ten. Full walkthrough posted in the cohort thread.</div>
           </div>
           <p class="small muted" style="margin-bottom:0">Doubt threads open the day your cohort starts.</p>
         </div>

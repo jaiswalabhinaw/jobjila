@@ -96,7 +96,7 @@ function home() {
 <section class="hero">
   <div class="container hero-grid">
     <div>
-      <span class="hero-pill"><span class="dot" aria-hidden="true"></span> Now enrolling &mdash; ${open.length} live cohorts</span>
+      <span class="hero-pill"><span class="dot" aria-hidden="true"></span> ${open.length} courses open for enrolment</span>
       <h1>Learn a skill.<br>Get verified.<br>Start earning.</h1>
       <p class="hero-lead">Most courses hand you a certificate and wish you luck. Jobjila takes you all the way to income &mdash; through a job, freelance clients, or a business of your own.</p>
       <div class="btn-row" style="margin-top:28px">
@@ -134,18 +134,18 @@ function home() {
   </div>
 </section>
 
-<div class="ticker" aria-label="Recent platform activity">
+<div class="ticker" aria-label="What Jobjila offers">
   <div class="ticker__track">
-    <span>Rahul finished the Cloud capstone and joined a fintech as Cloud Associate</span>
-    <span>Anita signed her first ₹22,000/month marketing retainer</span>
-    <span>New cohort opened for AI &amp; Prompt Engineering</span>
-    <span>Priya shipped 3 client websites in her first month</span>
-    <span>Vikram moved from support into presales</span>
-    <span>Rahul finished the Cloud capstone and joined a fintech as Cloud Associate</span>
-    <span>Anita signed her first ₹22,000/month marketing retainer</span>
-    <span>New cohort opened for AI &amp; Prompt Engineering</span>
-    <span>Priya shipped 3 client websites in her first month</span>
-    <span>Vikram moved from support into presales</span>
+    <span>${open.length} courses open for enrolment</span>
+    <span>Every cohort live online, every session recorded</span>
+    <span>Trainer applications open &mdash; 60&ndash;70% revenue share</span>
+    <span>Same fees in every city, no metro surcharge</span>
+    <span>Doubts answered by your trainer within 48 hours</span>
+    <span>${open.length} courses open for enrolment</span>
+    <span>Every cohort live online, every session recorded</span>
+    <span>Trainer applications open &mdash; 60&ndash;70% revenue share</span>
+    <span>Same fees in every city, no metro surcharge</span>
+    <span>Doubts answered by your trainer within 48 hours</span>
   </div>
 </div>
 
@@ -266,23 +266,27 @@ function home() {
 <section class="section">
   <div class="container">
     <div class="section-head section-head--center">
-      <h2>What learners say</h2>
+      <span class="eyebrow">What we commit to</span>
+      <h2>No invented testimonials on this page</h2>
+      <p>Jobjila is new. Plenty of training sites fill this section with quotes from people who do not exist &mdash; we would rather tell you what we are actually promising, and publish real learner outcomes here once there are some, with names and permission.</p>
     </div>
     <div class="grid grid--3">
-      <figure class="quote">
-        <blockquote>"I had done two online courses before and neither got me an interview. The difference here was the capstone &mdash; I finally had something to actually show."</blockquote>
-        <figcaption><span class="avatar" aria-hidden="true">R</span><span><strong>Rahul M.</strong><br><span class="small muted">Cloud Associate, fintech</span></span></figcaption>
-      </figure>
-      <figure class="quote">
-        <blockquote>"The freelancing module was worth the fee on its own. I stopped underquoting and my first retainer was more than I used to make in a month."</blockquote>
-        <figcaption><span class="avatar" aria-hidden="true">A</span><span><strong>Anita K.</strong><br><span class="small muted">Freelance marketer</span></span></figcaption>
-      </figure>
-      <figure class="quote">
-        <blockquote>"I came from a non-IT background and expected to be lost. The trainer answered every doubt within a day, which kept me from giving up in week three."</blockquote>
-        <figcaption><span class="avatar" aria-hidden="true">P</span><span><strong>Priya S.</strong><br><span class="small muted">Web designer</span></span></figcaption>
-      </figure>
+      <div class="card">
+        <div class="card-icon" aria-hidden="true">&#9200;</div>
+        <h3>Your doubts answered in 48 hours</h3>
+        <p class="small">Not a forum where questions go unanswered. Your trainer replies on the course thread within two days, and the answer stays visible to the whole cohort.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon card-icon--success" aria-hidden="true">&#10003;</div>
+        <h3>A capstone that is actually assessed</h3>
+        <p class="small">You finish with a project that has been reviewed and scored by a practitioner &mdash; something to show an employer, not a certificate of attendance.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon card-icon--accent" aria-hidden="true">&#128172;</div>
+        <h3>Honest counselling before you pay</h3>
+        <p class="small">If a cheaper course, a shorter one, or no course at all would serve you better, we will say so. Message us on WhatsApp and test it.</p>
+      </div>
     </div>
-    <p class="small muted text-center" style="margin-top:24px">Learner stories from our founding cohorts. We publish outcomes as they happen rather than inventing numbers.</p>
   </div>
 </section>
 
