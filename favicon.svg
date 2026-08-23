@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Jobjila">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6366f1"/>
+      <stop offset="1" stop-color="#4338ca"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#g)"/>
+  <path d="M38.5 16v22.8c0 6.2-4.1 10-10.4 10-4.3 0-7.8-1.8-9.8-5l5.2-4.4c1 1.7 2.5 2.6 4.3 2.6 2.6 0 4.1-1.6 4.1-4.5V16z" fill="#fff"/>
+</svg>
