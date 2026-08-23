@@ -5,9 +5,18 @@
     "tagline": "Learn. Get Verified. Earn.",
     "description": "Jobjila is India's skill-to-income platform. Learn a trending IT or professional skill, get your skills verified, and turn them into a job, freelance work, or your own business.",
     "email": "hello@jobjila.com",
+
+    "//whatsapp": "REPLACE THIS with your real WhatsApp business number: country code + number, digits only, no + or spaces. Example: 919876543210. Every WhatsApp button on the site reads this one value.",
+    "whatsapp": "919876543210",
+
     "locality": "Lucknow",
     "region": "Uttar Pradesh",
-    "country": "IN"
+    "country": "IN",
+    "cities": [
+      { "name": "Delhi", "region": "Delhi" },
+      { "name": "Noida", "region": "Uttar Pradesh" },
+      { "name": "Lucknow", "region": "Uttar Pradesh" }
+    ]
   },
   "courses": [
     {

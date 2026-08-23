@@ -17,7 +17,7 @@ scripts/lib.js         <- shared chrome: <head>, header, footer, SEO tags, cards
 scripts/pages.js       <- the standalone pages (home, hire, trainer, blog, ...)
 scripts/build.js       <- orchestrates everything, writes sitemap + robots
 css/theme.css          <- the design system (hand-written)
-js/main.js             <- nav, forms, query-string prefill (hand-written)
+js/main.js             <- mobile nav + floating button behaviour (hand-written)
 ```
 
 ## Commands
@@ -78,22 +78,48 @@ Still to do (in priority order):
 2. Create and populate a Google Business Profile — for training providers in
    India this often outperforms the website itself.
 3. Write the blog posts listed on `/blog/` and link each one to its course page.
-4. Add city landing pages (`/courses/<slug>/<city>/`) once there is genuinely
-   local content to put on them — local fees, local trainers, local hiring
-   companies. Duplicated city pages with swapped names get ignored by Google.
+4. Add city landing pages (`/courses/<slug>/<city>/`) for Delhi, Noida and
+   Lucknow — this is the biggest remaining SEO win, since `[course] + [city]`
+   is the highest-volume commercial search pattern in India. Only build them
+   once there is genuinely local content to put on each: local fee range,
+   local trainer names, local hiring companies. City pages that just swap the
+   city name are treated as duplicates and get ignored.
 
-## Connecting the forms
+## Setting your WhatsApp number (do this first)
 
-The site is static, so the contact and trainer-application forms have no
-backend. Open `js/main.js` and set:
+Every call to action on the site opens a pre-filled WhatsApp chat. There are
+no forms anywhere — a static site has no backend to receive one, and in India
+WhatsApp converts better regardless.
 
-```js
-var FORM_ENDPOINT = "https://formspree.io/f/xxxxxxx";
+Open `data/courses.json` and replace the placeholder:
+
+```json
+"whatsapp": "919876543210",
 ```
 
-Any handler that accepts a `POST` works — Formspree, Basin, Getform, or a
-Google Apps Script web app. Until it is set, the forms tell visitors to email
-`hello@jobjila.com` rather than silently failing.
+Use country code + number, digits only, no `+` or spaces (e.g. `919876543210`).
+Then run `npm run build`. That single value drives all 80 WhatsApp links on the
+site — the header button, the floating chat button, every course page, and the
+four routes on `/contact/`.
+
+**The site will not work correctly until this is changed.** The placeholder is
+not a real number.
+
+### Why pre-filled messages matter
+
+Each button opens WhatsApp with the message already written, including which
+course or page the person came from:
+
+> Hi Jobjila, I am interested in the Cloud Computing with AWS & Azure course
+> (10 weeks, ₹18,500). Please share the next batch dates.
+
+So you know the source of every enquiry without asking — something a plain
+contact form would not tell you.
+
+## Cities
+
+`site.cities` in `data/courses.json` drives the footer, the contact page and
+the `areaServed` schema. Currently Delhi, Noida and Lucknow.
 
 ## Other directories
 

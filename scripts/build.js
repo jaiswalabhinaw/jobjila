@@ -18,6 +18,8 @@ const {
   courses,
   esc,
   inr,
+  wa,
+  WA_ICON,
   write,
   head,
   footer,
@@ -48,6 +50,14 @@ function buildCoursePage(c) {
   if (c.faqs.length) ld.push(faqLd(c.faqs));
 
   const related = courses.filter((x) => x.slug !== c.slug && x.status === "open").slice(0, 3);
+
+  // Pre-filled WhatsApp text so we know which course the enquiry came from.
+  const waHref = wa(
+    soon
+      ? `Hi Jobjila, please add me to the waitlist for the ${c.name} course.`
+      : `Hi Jobjila, I am interested in the ${c.name} course (${c.duration}, ${inr(c.priceINR)}). Please share the next batch dates.`
+  );
+  const ctaLabel = soon ? "Join the waitlist" : "Enquire on WhatsApp";
 
   const syllabus = c.modules.length
     ? `<section class="section--tight" id="syllabus">
@@ -122,7 +132,7 @@ function buildCoursePage(c) {
       <h1>${esc(c.name)}</h1>
       <p style="font-size:1.125rem">${esc(c.tagline)}</p>
       <div class="btn-row" style="margin-top:26px">
-        <a class="btn btn--accent btn--lg" href="/contact/?course=${c.slug}">${soon ? "Join the waitlist" : "Enrol now"}</a>
+        <a class="btn btn--whatsapp btn--lg" href="${waHref}" target="_blank" rel="noopener">${WA_ICON}<span>${ctaLabel}</span></a>
         <a class="btn btn--on-dark btn--lg" href="#syllabus">See the syllabus</a>
       </div>
     </div>
@@ -168,8 +178,8 @@ function buildCoursePage(c) {
           <li><span>Level</span><b>${esc(c.level)}</b></li>
           <li><span>Format</span><b>${esc(c.mode)}</b></li>
         </ul>
-        <a class="btn btn--primary btn--block" style="margin-top:20px" href="/contact/?course=${c.slug}">${soon ? "Join the waitlist" : "Enrol now"}</a>
-        <p class="form-note text-center" style="margin:12px 0 0">Talk to a counsellor before you pay. No pressure.</p>
+        <a class="btn btn--whatsapp btn--block" style="margin-top:20px" href="${waHref}" target="_blank" rel="noopener">${WA_ICON}<span>${ctaLabel}</span></a>
+        <p class="form-note text-center" style="margin:12px 0 0">Message us on WhatsApp &mdash; we reply the same day. No pressure to enrol.</p>
       </div>
 
       ${tools}
@@ -198,9 +208,9 @@ function buildCoursePage(c) {
   <div class="container">
     ${ctaBand({
       title: "Not sure this is the right course?",
-      body: "Tell us where you are now and what you want to earn. We will point you at the right track — even if that turns out to be a different course.",
-      buttonLabel: "Talk to a counsellor",
-      buttonHref: "/contact/",
+      body: "Message us on WhatsApp with your background and what you want to earn. We will point you at the right track — even if that turns out to be a different course.",
+      buttonLabel: "Ask on WhatsApp",
+      whatsappMessage: `Hi Jobjila, I was looking at the ${c.name} course but I am not sure it is right for me. Can you help me choose?`,
     })}
   </div>
 </section>
@@ -314,8 +324,8 @@ function buildCourseHub() {
     ${ctaBand({
       title: "Can you teach one of these?",
       body: "We onboard trainers on a revenue-share model — no upfront cost, and you keep the majority of every enrolment. Bring your subject; we bring the students, the platform and the marketing.",
-      buttonLabel: "Become a trainer",
-      buttonHref: "/become-a-trainer/",
+      buttonLabel: "Apply on WhatsApp",
+      whatsappMessage: "Hi Jobjila, I would like to teach on your platform. My subject is:",
     })}
   </div>
 </section>

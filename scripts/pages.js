@@ -8,6 +8,8 @@ const {
   site,
   courses,
   esc,
+  wa,
+  WA_ICON,
   write,
   head,
   footer,
@@ -98,7 +100,7 @@ function home() {
       <p class="hero-lead">Most courses hand you a certificate and wish you luck. Jobjila takes you all the way to income &mdash; through a job, freelance clients, or a business of your own.</p>
       <div class="btn-row" style="margin-top:28px">
         <a class="btn btn--accent btn--lg" href="/courses/">Explore courses</a>
-        <a class="btn btn--on-dark btn--lg" href="/become-a-trainer/">Teach on Jobjila</a>
+        <a class="btn btn--whatsapp btn--lg" href="${wa('Hi Jobjila, I would like to know which course suits me. My background is:')}" target="_blank" rel="noopener">${WA_ICON}<span>Ask on WhatsApp</span></a>
       </div>
       <div class="hero-stats">
         <div class="hero-stat"><strong>${open.length}</strong><span>Live courses</span></div>
@@ -311,8 +313,8 @@ function home() {
     ${ctaBand({
       title: "Not sure which skill fits you?",
       body: "Tell us your background and what you want to earn. We will recommend a track honestly — including telling you when now is not the right time to spend money on a course.",
-      buttonLabel: "Talk to a counsellor",
-      buttonHref: "/contact/",
+      buttonLabel: "Ask on WhatsApp",
+      whatsappMessage: "Hi Jobjila, I am not sure which course fits me. My background is:",
     })}
   </div>
 </section>
@@ -361,7 +363,7 @@ function forFreelancers() {
       <h1>Freelance work that does not start with a race to the bottom</h1>
       <p style="font-size:1.125rem">On most marketplaces you compete on price against a thousand identical profiles. Here, clients see verified project work &mdash; so you compete on proof instead.</p>
       <div class="btn-row" style="margin-top:26px">
-        <a class="btn btn--accent btn--lg" href="/contact/?intent=freelancer">Create your profile</a>
+        <a class="btn btn--whatsapp btn--lg" href="${wa('Hi Jobjila, I want to join as a freelancer. My skill is:')}" target="_blank" rel="noopener">${WA_ICON}<span>Join on WhatsApp</span></a>
         <a class="btn btn--on-dark btn--lg" href="/courses/freelancing-bootcamp/">Freelancing Bootcamp</a>
       </div>
     </div>
@@ -417,8 +419,8 @@ function forFreelancers() {
     ${ctaBand({
       title: "Ready to take on your first client?",
       body: "Create a profile, complete a verification project, and start appearing in client shortlists. It costs nothing until you are earning.",
-      buttonLabel: "Get started",
-      buttonHref: "/contact/?intent=freelancer",
+      buttonLabel: "Join on WhatsApp",
+      whatsappMessage: "Hi Jobjila, I want to join as a freelancer. My skill is:",
     })}
   </div>
 </section>
@@ -483,7 +485,7 @@ function hire() {
       <h1>Hire people whose skills have actually been checked</h1>
       <p style="font-size:1.125rem">Freelancers for a project, or permanent staff through our HR services. Either way you see assessed project work before you commit &mdash; not a CV full of claims.</p>
       <div class="btn-row" style="margin-top:26px">
-        <a class="btn btn--accent btn--lg" href="/contact/?intent=hire">Post a brief</a>
+        <a class="btn btn--whatsapp btn--lg" href="${wa('Hi Jobjila, I want to hire. The role or project I need filled is:')}" target="_blank" rel="noopener">${WA_ICON}<span>Send brief on WhatsApp</span></a>
         <a class="btn btn--on-dark btn--lg" href="#services">See what we cover</a>
       </div>
     </div>
@@ -543,8 +545,8 @@ function hire() {
     ${ctaBand({
       title: "Tell us what you need built or filled",
       body: "Posting a brief is free and takes about two minutes. If we cannot fill it well, we will say so rather than sending you a weak shortlist.",
-      buttonLabel: "Post a brief",
-      buttonHref: "/contact/?intent=hire",
+      buttonLabel: "Send brief on WhatsApp",
+      whatsappMessage: "Hi Jobjila, I want to hire. The role or project I need filled is:",
     })}
   </div>
 </section>
@@ -601,7 +603,7 @@ function becomeATrainer() {
       <h1>You already know it. Get paid to teach it.</h1>
       <p style="font-size:1.125rem">No upfront cost, no platform fee. Keep 60&ndash;70% of every enrolment while we bring the students and run everything that is not teaching.</p>
       <div class="btn-row" style="margin-top:26px">
-        <a class="btn btn--accent btn--lg" href="#apply">Apply to teach</a>
+        <a class="btn btn--whatsapp btn--lg" href="${wa('Hi Jobjila, I want to teach on your platform. My subject and experience:')}" target="_blank" rel="noopener">${WA_ICON}<span>Apply on WhatsApp</span></a>
         <a class="btn btn--on-dark btn--lg" href="#how">How the revenue share works</a>
       </div>
     </div>
@@ -676,40 +678,19 @@ function becomeATrainer() {
       <h2>Tell us what you can teach</h2>
       <p>We read every application. If your subject does not have enough demand yet, we will tell you honestly rather than leaving you waiting.</p>
     </div>
-    <form class="card" data-form="trainer" novalidate>
-      <div class="field">
-        <label for="t-name">Your name</label>
-        <input id="t-name" name="name" type="text" autocomplete="name" required>
-      </div>
-      <div class="field">
-        <label for="t-email">Email</label>
-        <input id="t-email" name="email" type="email" autocomplete="email" required>
-      </div>
-      <div class="field">
-        <label for="t-phone">Phone (WhatsApp)</label>
-        <input id="t-phone" name="phone" type="tel" autocomplete="tel">
-      </div>
-      <div class="field">
-        <label for="t-subject">What would you teach?</label>
-        <input id="t-subject" name="subject" type="text" placeholder="e.g. Azure administration, GST filing, UI design" required>
-      </div>
-      <div class="field">
-        <label for="t-experience">Years of hands-on experience</label>
-        <select id="t-experience" name="experience">
-          <option>1–3 years</option>
-          <option>3–5 years</option>
-          <option>5–10 years</option>
-          <option>10+ years</option>
-        </select>
-      </div>
-      <div class="field">
-        <label for="t-about">Anything else we should know?</label>
-        <textarea id="t-about" name="about" placeholder="Current role, whether you already train, links to your work"></textarea>
-      </div>
-      <button class="btn btn--primary btn--block btn--lg" type="submit">Submit application</button>
-      <p class="form-note text-center" style="margin:14px 0 0">We reply to every application within three working days.</p>
-      <p class="form-note text-center" data-form-status role="status"></p>
-    </form>
+    <div class="card contact-card">
+      <h3>Send us one WhatsApp message</h3>
+      <p>No forms, no sign-up. Message us with these four things and we will take it from there:</p>
+      <ul class="outcome-list" style="margin:18px 0 24px">
+        <li>Your name and city</li>
+        <li>The subject you want to teach</li>
+        <li>Years of hands-on experience in it</li>
+        <li>Whether you already train, online or offline</li>
+      </ul>
+      <a class="btn btn--whatsapp btn--block btn--lg" href="${wa('Hi Jobjila, I want to teach on your platform.\n\nName:\nCity:\nSubject I can teach:\nYears of experience:\nDo I already train:')}" target="_blank" rel="noopener">${WA_ICON}<span>Apply on WhatsApp</span></a>
+      <p class="form-note text-center" style="margin:14px 0 0">The message opens already written &mdash; just fill in your details and send.</p>
+      <p class="form-note text-center" style="margin:6px 0 0">Prefer email? Write to <a href="mailto:${esc(site.email)}">${esc(site.email)}</a>. We reply to every application within three working days.</p>
+    </div>
   </div>
 </section>
 
@@ -824,8 +805,8 @@ function blog() {
     ${ctaBand({
       title: "Are you a trainer who writes?",
       body: "Trainers who publish here get their profile in front of every reader, and it is the fastest way to fill your own cohorts. Bring us a subject you can write about with authority.",
-      buttonLabel: "Become a trainer",
-      buttonHref: "/become-a-trainer/",
+      buttonLabel: "Apply on WhatsApp",
+      whatsappMessage: "Hi Jobjila, I would like to write and teach on your platform. My subject is:",
     })}
   </div>
 </section>
@@ -927,63 +908,51 @@ function contact() {
     ${breadcrumbNav(trail)}
     <div style="max-width:720px;margin-top:20px">
       <h1>Tell us where you are and where you want to get to</h1>
-      <p style="font-size:1.125rem">Course questions, freelance work, hiring or teaching &mdash; it all comes to the same inbox and we reply within one working day.</p>
+      <p style="font-size:1.125rem">Course questions, freelance work, hiring or teaching &mdash; one WhatsApp message is enough. We reply the same working day.</p>
     </div>
   </div>
 </section>
 
 <div class="container section">
   <div class="course-layout">
-    <form class="card" data-form="contact" novalidate>
-      <h2 style="font-size:1.25rem">Send us a message</h2>
-      <div class="field">
-        <label for="c-name">Your name</label>
-        <input id="c-name" name="name" type="text" autocomplete="name" required>
+    <div class="card contact-card">
+      <h2 style="font-size:1.25rem">Message us on WhatsApp</h2>
+      <p>We do not make you fill a form. Tap below and a message opens already written &mdash; add your details and send. We reply the same working day.</p>
+
+      <div class="wa-options">
+        <a class="wa-option" href="${wa('Hi Jobjila, I want to know about a course.\n\nName:\nCity:\nCourse I am interested in:\nMy background:')}" target="_blank" rel="noopener">
+          <span class="wa-option__ico" aria-hidden="true">&#127891;</span>
+          <span><b>I want to join a course</b><em>Fees, batch dates and which course suits you</em></span>
+        </a>
+        <a class="wa-option" href="${wa('Hi Jobjila, I want to join as a freelancer.\n\nName:\nCity:\nMy skill:\nExperience:')}" target="_blank" rel="noopener">
+          <span class="wa-option__ico" aria-hidden="true">&#128187;</span>
+          <span><b>I want freelance work</b><em>Join the talent pool and get matched to projects</em></span>
+        </a>
+        <a class="wa-option" href="${wa('Hi Jobjila, I want to hire.\n\nCompany:\nCity:\nRole or project:\nBudget range:\nTimeline:')}" target="_blank" rel="noopener">
+          <span class="wa-option__ico" aria-hidden="true">&#129309;</span>
+          <span><b>I want to hire talent</b><em>Freelancers for a project, or permanent staff</em></span>
+        </a>
+        <a class="wa-option" href="${wa('Hi Jobjila, I want to teach on your platform.\n\nName:\nCity:\nSubject I can teach:\nYears of experience:')}" target="_blank" rel="noopener">
+          <span class="wa-option__ico" aria-hidden="true">&#128218;</span>
+          <span><b>I want to teach</b><em>Revenue share, no upfront cost</em></span>
+        </a>
       </div>
-      <div class="field">
-        <label for="c-email">Email</label>
-        <input id="c-email" name="email" type="email" autocomplete="email" required>
-      </div>
-      <div class="field">
-        <label for="c-phone">Phone (WhatsApp)</label>
-        <input id="c-phone" name="phone" type="tel" autocomplete="tel">
-      </div>
-      <div class="field">
-        <label for="c-intent">What is this about?</label>
-        <select id="c-intent" name="intent">
-          <option value="course">A course enquiry</option>
-          <option value="freelancer">Joining as a freelancer</option>
-          <option value="hire">Hiring talent or HR services</option>
-          <option value="trainer">Teaching on Jobjila</option>
-          <option value="other">Something else</option>
-        </select>
-      </div>
-      <div class="field">
-        <label for="c-course">Which course? (optional)</label>
-        <select id="c-course" name="course">
-          <option value="">Not sure yet</option>
-          ${open.map((c) => `<option value="${c.slug}">${esc(c.name)}</option>`).join("\n          ")}
-          ${soon.map((c) => `<option value="${c.slug}">${esc(c.name)} (waitlist)</option>`).join("\n          ")}
-        </select>
-      </div>
-      <div class="field">
-        <label for="c-message">Your message</label>
-        <textarea id="c-message" name="message" placeholder="Your background, what you want to achieve, and any questions"></textarea>
-      </div>
-      <button class="btn btn--primary btn--block btn--lg" type="submit">Send message</button>
-      <p class="form-note text-center" style="margin:14px 0 0">We reply within one working day.</p>
-      <p class="form-note text-center" data-form-status role="status"></p>
-    </form>
+
+      <p class="form-note" style="margin:20px 0 0">Prefer email? Write to <a href="mailto:${esc(site.email)}">${esc(site.email)}</a> and we will reply the same way.</p>
+    </div>
 
     <aside class="course-sidebar">
       <div class="card">
+        <h3 style="font-size:1rem">Where we operate</h3>
+        <p class="small">Cohorts run online, so you can join from anywhere in India. Our on-ground teams &mdash; local trainers, hiring partners and in-person meetups &mdash; are in ${site.cities.map((c) => "<strong>" + esc(c.name) + "</strong>").join(", ")}.</p>
+      </div>
+      <div class="card">
         <h3 style="font-size:1rem">Prefer to email?</h3>
-        <p class="small">Write to us directly at <a href="mailto:${esc(site.email)}">${esc(site.email)}</a> and we will pick it up the same way.</p>
-        <p class="small muted" style="margin-bottom:0">${esc(site.locality)}, ${esc(site.region)}, India</p>
+        <p class="small" style="margin-bottom:0">Write to us directly at <a href="mailto:${esc(site.email)}">${esc(site.email)}</a> and we will pick it up the same way.</p>
       </div>
       <div class="card" style="background:var(--brand-soft);border-color:var(--indigo-200)">
         <h3 style="font-size:1rem">Not sure which course?</h3>
-        <p class="small" style="margin-bottom:0">Tell us your background and target income in the message box. We will suggest a track &mdash; including telling you if a cheaper or shorter course would get you there faster.</p>
+        <p class="small" style="margin-bottom:0">Tell us your background and target income on WhatsApp. We will suggest a track &mdash; including telling you if a cheaper or shorter course would get you there faster.</p>
       </div>
       <div class="card">
         <h3 style="font-size:1rem">Want to teach?</h3>

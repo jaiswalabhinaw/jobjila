@@ -22,6 +22,18 @@ const esc = (s) =>
 
 const inr = (n) => "\u20b9" + Number(n).toLocaleString("en-IN");
 
+/**
+ * WhatsApp click-to-chat link.
+ * A static site has no backend to receive a form, and in India WhatsApp
+ * converts far better than a form anyway \u2014 so every primary call to action
+ * opens a chat with the message already written. The pre-filled text tells
+ * us which page the enquiry came from, which a plain form would not.
+ */
+const wa = (message) =>
+  `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(message)}`;
+
+const WA_ICON = `<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.48-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.53.07-.8.38-.28.3-1.05 1.02-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.12 3.24 5.14 4.54.72.31 1.28.5 1.71.63.72.23 1.37.2 1.89.12.58-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23a8.23 8.23 0 0 1 8.24 8.24c0 4.54-3.7 8.23-8.24 8.23z"/></svg>`;
+
 const jsonLd = (obj) =>
   `<script type="application/ld+json">${JSON.stringify(obj).replace(/</g, "\\u003c")}</script>`;
 
@@ -50,7 +62,11 @@ const orgLd = {
     addressRegion: site.region,
     addressCountry: site.country,
   },
-  areaServed: { "@type": "Country", name: "India" },
+  areaServed: site.cities.map((c) => ({
+    "@type": "City",
+    name: c.name,
+    containedInPlace: { "@type": "AdministrativeArea", name: c.region },
+  })),
 };
 
 const websiteLd = {
@@ -164,8 +180,8 @@ ${extraLd.map(jsonLd).join("\n")}
       ${NAV.map((n) => `<a href="${n.href}"${canonical === n.href ? ' aria-current="page"' : ""}>${n.label}</a>`).join("\n      ")}
     </nav>
     <div class="header-actions">
-      <a class="btn btn--ghost" href="/hire/">Post a Project</a>
-      <a class="btn btn--primary" href="/courses/">Explore Courses</a>
+      <a class="btn btn--ghost" href="/courses/">Courses</a>
+      <a class="btn btn--whatsapp" href="${wa("Hi Jobjila, I would like to know more about your courses.")}" target="_blank" rel="noopener">${WA_ICON}<span>WhatsApp</span></a>
       <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu"><span></span></button>
     </div>
   </div>
@@ -216,10 +232,16 @@ function footer() {
     </div>
     <div class="footer-bottom">
       <span>&copy; ${new Date().getFullYear()} ${esc(site.name)}. All rights reserved.</span>
-      <span>${esc(site.locality)}, ${esc(site.region)}, India</span>
+      <span>Serving ${site.cities.map((c) => esc(c.name)).join(" &middot; ")}</span>
     </div>
   </div>
 </footer>
+
+<a class="wa-float" href="${wa("Hi Jobjila, I have a question.")}" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+  ${WA_ICON}
+  <span class="wa-float__label">Chat with us</span>
+</a>
+
 <script src="/js/main.js" defer></script>
 </body>
 </html>`;
@@ -279,13 +301,20 @@ function faqSection(faqs, heading = "Frequently asked questions") {
 </section>`;
 }
 
-function ctaBand({ title, body, buttonLabel, buttonHref }) {
+/**
+ * @param {string} [opts.whatsappMessage] when given, the button opens a
+ *        pre-filled WhatsApp chat instead of navigating to a page.
+ */
+function ctaBand({ title, body, buttonLabel, buttonHref, whatsappMessage }) {
+  const isWa = Boolean(whatsappMessage);
+  const href = isWa ? wa(whatsappMessage) : buttonHref;
+  const attrs = isWa ? ' target="_blank" rel="noopener"' : "";
   return `<div class="cta-band">
   <div>
     <h2>${esc(title)}</h2>
     <p>${esc(body)}</p>
   </div>
-  <a class="btn btn--accent btn--lg" href="${buttonHref}">${esc(buttonLabel)}</a>
+  <a class="btn ${isWa ? "btn--whatsapp" : "btn--accent"} btn--lg" href="${href}"${attrs}>${isWa ? WA_ICON : ""}<span>${esc(buttonLabel)}</span></a>
 </div>`;
 }
 
@@ -295,6 +324,8 @@ module.exports = {
   courses,
   esc,
   inr,
+  wa,
+  WA_ICON,
   write,
   head,
   footer,

@@ -1,8 +1,10 @@
-/* Jobjila — shared front-end behaviour. */
+/* Jobjila — shared front-end behaviour.
+   There are no forms on this site by design: every call to action opens a
+   pre-filled WhatsApp chat instead, which needs no backend and converts
+   better than a form. See scripts/lib.js -> wa(). */
 (function () {
   "use strict";
 
-  /* ---------- mobile navigation ---------- */
   var toggle = document.getElementById("navToggle");
   var mobileNav = document.getElementById("mobileNav");
 
@@ -22,81 +24,20 @@
     });
   }
 
-  /* ---------- pre-select course / intent from the query string ----------
-     Course pages link to /contact/?course=<slug> and section pages to
-     /contact/?intent=<value>, so the form arrives already filled in.      */
-  var params = new URLSearchParams(window.location.search);
-  ["course", "intent"].forEach(function (key) {
-    var value = params.get(key);
-    if (!value) return;
-    var field = document.querySelector('[name="' + key + '"]');
-    if (!field) return;
-    var match = Array.prototype.some.call(field.options || [], function (o) {
-      return o.value === value;
-    });
-    if (match) field.value = value;
-  });
+  // Hide the floating WhatsApp button while the footer is on screen, so it
+  // never sits on top of the footer links.
+  var float = document.querySelector(".wa-float");
+  var siteFooter = document.querySelector(".site-footer");
 
-  /* ---------- forms ----------
-     FORM_ENDPOINT is intentionally empty: this is a static site with no
-     backend. Paste a form-handler URL here (Formspree, Basin, Getform,
-     Google Apps Script — anything that accepts a POST) and every form on
-     the site starts submitting to it. Until then the forms tell the
-     visitor to email us instead of silently failing.                      */
-  var FORM_ENDPOINT = "";
-  var CONTACT_EMAIL = "hello@jobjila.com";
-
-  function setStatus(form, message, ok) {
-    var el = form.querySelector("[data-form-status]");
-    if (!el) return;
-    el.textContent = message;
-    el.style.color = ok ? "var(--success)" : "var(--ink-600)";
-  }
-
-  Array.prototype.forEach.call(document.querySelectorAll("[data-form]"), function (form) {
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
-      }
-
-      var button = form.querySelector('button[type="submit"]');
-
-      if (!FORM_ENDPOINT) {
-        setStatus(
-          form,
-          "This form is not connected yet — please email " + CONTACT_EMAIL + " and we will reply the same way.",
-          false
-        );
-        return;
-      }
-
-      if (button) {
-        button.disabled = true;
-        button.textContent = "Sending…";
-      }
-
-      fetch(FORM_ENDPOINT, {
-        method: "POST",
-        headers: { Accept: "application/json" },
-        body: new FormData(form),
-      })
-        .then(function (res) {
-          if (!res.ok) throw new Error("Request failed");
-          form.reset();
-          setStatus(form, "Thank you — we will get back to you within one working day.", true);
-        })
-        .catch(function () {
-          setStatus(form, "Something went wrong. Please email " + CONTACT_EMAIL + " instead.", false);
-        })
-        .finally(function () {
-          if (button) {
-            button.disabled = false;
-            button.textContent = "Send message";
-          }
+  if (float && siteFooter && "IntersectionObserver" in window) {
+    new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          float.style.opacity = entry.isIntersecting ? "0" : "1";
+          float.style.pointerEvents = entry.isIntersecting ? "none" : "auto";
         });
-    });
-  });
+      },
+      { rootMargin: "0px 0px -80px 0px" }
+    ).observe(siteFooter);
+  }
 })();
