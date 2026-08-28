@@ -56,6 +56,14 @@
 
   --shadow: 0 1px 2px rgba(18, 24, 31, .04), 0 8px 24px rgba(18, 24, 31, .05);
   --shadow-lift: 0 2px 4px rgba(18, 24, 31, .05), 0 16px 40px rgba(18, 24, 31, .09);
+
+  /* Fixed dark navy for panels that are always dark with white text
+     (.page-hero, .honest), regardless of light/dark theme. Deliberately
+     NOT redefined in the dark-mode blocks below — --ink flips to a light
+     color there (it means "the ink/text color", which is light on a dark
+     theme), so a panel using var(--ink) as a *background* would render as
+     a near-white box behind hardcoded white text. */
+  --navy: #10151c;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -304,7 +312,7 @@ section > .wrap { padding-block: clamp(3rem, 7vw, 5rem); }
 .pillars a:hover h3 { color: var(--teal); }
 
 /* ---------- page hero (inner pages) ---------- */
-.page-hero { background: var(--ink); border-top: 0; }
+.page-hero { background: var(--navy); border-top: 0; }
 .page-hero > .wrap { padding-block: clamp(2.5rem, 6vw, 4rem); }
 .page-hero h1 { color: #fff; max-width: 22ch; font-size: var(--s-4); }
 .page-hero p { color: rgba(255,255,255,.72); margin-top: 1rem; max-width: 56ch; }
@@ -450,7 +458,7 @@ td a:hover, th a:hover { text-decoration: underline; }
 .faq .ans p { font-size: var(--s--1); color: var(--slate); }
 
 /* ---------- the honest block ---------- */
-.honest { background: var(--ink); border-top: 1px solid var(--ink); }
+.honest { background: var(--navy); border-top: 1px solid var(--navy); }
 .honest > .wrap { padding-block: clamp(3rem, 7vw, 4.5rem); }
 .honest .eyebrow { color: var(--teal-2); }
 .honest h2 { color: #fff; max-width: 20ch; }
