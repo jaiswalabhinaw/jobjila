@@ -40,6 +40,13 @@ function home() {
       <a class="btn btn-line btn-lg" href="/training/">Browse courses</a>
     </div>
 
+    <div class="hero-stats">
+      <div><b>${openCourses.length}</b><span>Courses</span></div>
+      <div><b>&#8377;0</b><span>First class</span></div>
+      <div><b>${site.pricing.refundDays} days</b><span>Refund window</span></div>
+      <div><b>100%</b><span>Live, recorded</span></div>
+    </div>
+
     <div class="pillars">
       <div><a href="/it-advisory/"><h3>IT Advisory</h3><p>Cloud architecture, migration planning, cost review and technology selection.</p></a></div>
       <div><a href="/it-support/"><h3>IT Support</h3><p>Infrastructure setup, networks, servers, backup and ongoing maintenance.</p></a></div>

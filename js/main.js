@@ -10,7 +10,7 @@
 
   if (toggle && mobileNav) {
     toggle.addEventListener("click", function () {
-      var open = mobileNav.classList.toggle("is-open");
+      var open = mobileNav.classList.toggle("open");
       toggle.setAttribute("aria-expanded", String(open));
       toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
     });
@@ -18,7 +18,7 @@
     // Close the menu when a link inside it is followed.
     mobileNav.addEventListener("click", function (e) {
       if (e.target.tagName === "A") {
-        mobileNav.classList.remove("is-open");
+        mobileNav.classList.remove("open");
         toggle.setAttribute("aria-expanded", "false");
       }
     });
@@ -87,6 +87,26 @@
       }
     });
   });
+
+
+  /* ---------- Scroll reveal ----------
+     Progressive: elements are only hidden once JS marks them, so with JS off
+     or reduced-motion on, everything is simply visible from the start. */
+  var motionOK = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (motionOK && "IntersectionObserver" in window) {
+    var targets = document.querySelectorAll(".head, .cards, .ladder, .grid, .hero-stats, .faq, .band");
+    if (targets.length) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+        });
+      }, { rootMargin: "0px 0px -8% 0px", threshold: .05 });
+      Array.prototype.forEach.call(targets, function (el) {
+        el.classList.add("reveal");
+        io.observe(el);
+      });
+    }
+  }
 
   // Hide the floating WhatsApp button while the footer is on screen, so it
   // never sits on top of the footer links.

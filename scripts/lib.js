@@ -261,19 +261,29 @@ function crumb(trail) {
 </ol></nav>`;
 }
 
+/**
+ * Course card. The whole card links to the course page, and a separate
+ * WhatsApp button enquires about that specific course — so the message
+ * arrives already naming the course, duration and fee.
+ */
 function courseCard(c) {
-  return `<a class="course-card" href="/training/${c.slug}/" data-track="${c.track}">
+  const ask = wa(`Hi Jobjila, I want the free first class for ${c.name} (${c.duration}, ${inr(c.priceINR)}). Please share the next batch dates.`);
+  return `<article class="course-card" data-track="${c.track}">
   <span class="strip"></span>
-  <span class="body">
+  <div class="body">
     <span class="chips"><span class="chip">${esc(trackOf(c.track).name)}</span></span>
-    <h3>${esc(c.name)}</h3>
-    <span class="desc">${esc(c.tagline)}</span>
-    <span class="foot">
+    <h3><a href="/training/${c.slug}/">${esc(c.name)}</a></h3>
+    <p class="desc">${esc(c.tagline)}</p>
+    <div class="foot">
       <span class="fee">${inr(c.priceINR)}</span>
       <span class="dur">${esc(c.duration)}</span>
-    </span>
-  </span>
-</a>`;
+    </div>
+    <div class="card-cta">
+      <a class="btn btn-wa" href="${ask}" target="_blank" rel="noopener">${WA_ICON}<span>Free class</span></a>
+      <a class="btn btn-line" href="/training/${c.slug}/">Syllabus</a>
+    </div>
+  </div>
+</article>`;
 }
 
 function faqBlock(faqs, heading = "Questions") {
