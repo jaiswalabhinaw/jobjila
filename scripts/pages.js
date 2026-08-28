@@ -1,991 +1,728 @@
-/**
- * Standalone (non-course) pages for Jobjila.
- * Each returns a full HTML document built from the shared chrome in lib.js.
- */
+/** Standalone (non-training) pages. */
 
 const path = require("path");
 const {
-  site,
-  courses,
-  cities,
-  esc,
-  wa,
-  WA_ICON,
-  write,
-  head,
-  footer,
-  breadcrumbNav,
-  courseCard,
-  faqSection,
-  ctaBand,
-  shareRow,
-  orgLd,
-  websiteLd,
-  breadcrumbLd,
-  faqLd,
+  site, openCourses, cities, trackOf,
+  esc, inr, wa, WA_ICON, write,
+  head, footer, crumb, courseCard, faqBlock, band, shareRow, ladder, honestBlock,
+  orgLd, websiteLd, breadcrumbLd, faqLd, serviceLd,
 } = require("./lib");
 
-const crumb = (name, url) => [
-  { name: "Home", url: "/" },
-  { name, url },
-];
+const trail = (name, url) => [{ name: "Home", url: "/" }, { name, url }];
 
-/* ============================ HOME ============================ */
+/* ============================== HOME ============================== */
 
 function home() {
-  const open = courses.filter((c) => c.status === "open");
-  const trending = open.filter((c) => c.trending).slice(0, 6);
-
+  const featured = openCourses.filter((c) => c.featured);
   const faqs = [
-    {
-      q: "What exactly is Jobjila?",
-      a: "Jobjila is a skill-to-income platform. You learn a trending IT or professional skill from a practising trainer, prove that you can actually do it through a verified capstone project, and then use that verified profile to get a job, win freelance clients, or start your own service business.",
-    },
-    {
-      q: "How is this different from a normal online course platform?",
-      a: "Most platforms end at the certificate. Jobjila is built around what happens next — your verified Skill Passport feeds directly into freelance project matching and into our hiring partners. Training, freelancing and placement are one connected pipeline rather than three separate products.",
-    },
-    {
-      q: "Do you only teach IT courses?",
-      a: "No. IT, cloud and AI are where we started because demand is highest, but the platform is built for any skill that leads to income — marketing, design, data, business consulting and career skills, with more categories opening as trainers join.",
-    },
-    {
-      q: "What does a course cost?",
-      a: "Between ₹6,500 and ₹21,000 depending on length and cohort size. Every course page states its exact fee, duration and expected earning range up front. EMI options are available on courses above ₹10,000.",
-    },
-    {
-      q: "Can I earn while I am still learning?",
-      a: "That is the intention. Freelance-friendly courses such as digital marketing and web design put deliverable skills in your hands by around week five, and the Freelancing Bootcamp teaches you how to find and price your first client while you are still in a cohort.",
-    },
-    {
-      q: "Who teaches on Jobjila?",
-      a: "Practising professionals, not full-time lecturers — people currently working in the field they teach. Every trainer passes a recorded demo review before their first cohort, and their rating stays visible on their profile afterwards.",
-    },
+    { q: "What does Jobjila actually do?", a: "Three things. We advise companies on their IT — cloud architecture, migrations, cost and technology choices. We support IT infrastructure and keep it running. And we train people in the same technology, live online. The consulting keeps the training current, and the training feeds our consultant network." },
+    { q: "Is the first class really free?", a: "Yes. Any course, first live session, no payment and no card details. You message us on WhatsApp and we send the joining link. We are new and have no reviews yet, so asking you to pay on trust would be unreasonable." },
+    { q: "How much do the courses cost?", a: `Between ${inr(Math.min(...openCourses.map((c) => c.priceINR)))} and ${inr(Math.max(...openCourses.map((c) => c.priceINR)))} depending on length. Every fee is published on its course page. You pay the balance only before your third session, and it stays refundable for ${site.pricing.refundDays} days after that.` },
+    { q: "Are the classes live or recorded?", a: "Live online, in the evening, taught by a practising consultant — with every session recorded so you can revisit it or catch up if you miss one." },
+    { q: "Do you guarantee a job after training?", a: "No, and we will not pretend otherwise. We provide the training, an assessed project, resume review and interview practice. Anyone promising a guaranteed job in exchange for a fee is doing something else." },
+    { q: "Can companies book training for a team?", a: "Yes. Closed batches are run for company teams on any of our subjects, scheduled around your working hours and quoted per batch rather than per seat. Message us with the team size and subject." },
   ];
 
-  return (
-    head({
-      title: "Jobjila — Learn a Skill, Get Verified, Start Earning | IT, AI & Career Training",
-      description:
-        "Jobjila is India's skill-to-income platform. Learn cloud, AI, IT infrastructure, presales, digital marketing or web design from working professionals, get your skills verified, and turn them into a job, freelance work or your own business.",
-      canonical: "/",
-      keywords: [
-        "online training india",
-        "it courses with placement",
-        "freelancing platform india",
-        "ai and cloud training",
-        "skill development courses",
-      ],
-      extraLd: [
-        orgLd,
-        websiteLd,
-        faqLd(faqs),
-        {
-          "@context": "https://schema.org",
-          "@type": "ItemList",
-          name: "Trending courses at Jobjila",
-          itemListElement: trending.map((c, i) => ({
-            "@type": "ListItem",
-            position: i + 1,
-            name: c.name,
-            url: `${site.url}/courses/${c.slug}/`,
-          })),
-        },
-      ],
-    }) +
-    `
-<section class="hero">
-  <div class="container hero-grid">
-    <div>
-      <span class="hero-pill"><span class="dot" aria-hidden="true"></span> ${open.length} courses open for enrolment</span>
-      <h1>Learn a skill.<br>Get verified.<br>Start earning.</h1>
-      <p class="hero-lead">Most courses hand you a certificate and wish you luck. Jobjila takes you all the way to income &mdash; through a job, freelance clients, or a business of your own.</p>
-      <div class="btn-row" style="margin-top:28px">
-        <a class="btn btn--accent btn--lg" href="/courses/">Explore courses</a>
-        <a class="btn btn--whatsapp btn--lg" href="${wa('Hi Jobjila, I would like to know which course suits me. My background is:')}" target="_blank" rel="noopener">${WA_ICON}<span>Ask on WhatsApp</span></a>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat"><strong>${open.length}</strong><span>Live courses</span></div>
-        <div class="hero-stat"><strong>3</strong><span>Ways to earn</span></div>
-        <div class="hero-stat"><strong>100%</strong><span>Live, not pre-recorded</span></div>
-        <div class="hero-stat"><strong>48 hrs</strong><span>Doubt reply promise</span></div>
-      </div>
+  return head({
+    title: "Jobjila — IT Advisory, Support & Training",
+    description: site.description,
+    canonical: "/",
+    keywords: ["it consulting noida", "aws azure training", "itil itsm training", "it support services india", "cloud advisory"],
+    extraLd: [orgLd, websiteLd, faqLd(faqs)],
+  }) + `
+<div class="hero">
+  <div class="wrap">
+    <span class="eyebrow">${esc(site.locality)}, ${esc(site.region)} &middot; serving clients across India</span>
+    <h1 style="margin-top:.875rem">IT advisory, support and training — <em>without the guesswork.</em></h1>
+    <p class="lede">We help companies plan and run their IT, and we train the people who do that work. Every price is published on this site. Your first training class is free, and you pay only after you have seen us teach.</p>
+    <div class="btns">
+      <a class="btn btn-wa btn-lg" href="${wa("Hi Jobjila, I want to book a free first class.")}" target="_blank" rel="noopener">${WA_ICON}<span>Book a free first class</span></a>
+      <a class="btn btn-line btn-lg" href="/training/">Browse courses</a>
     </div>
 
-    <div class="path-card">
-      <h2>Where do you want to end up?</h2>
-      <p>Pick one and we will show you the shortest route.</p>
-      <a class="path-option" href="/courses/">
-        <span class="ico" aria-hidden="true">&#128188;</span>
-        <span><b>I want a job</b><em>Structured training plus interview prep</em></span>
-      </a>
-      <a class="path-option" href="/for-freelancers/">
-        <span class="ico" aria-hidden="true">&#128187;</span>
-        <span><b>I want to freelance</b><em>Skills, portfolio and your first client</em></span>
-      </a>
-      <a class="path-option" href="/courses/freelancing-bootcamp/">
-        <span class="ico" aria-hidden="true">&#128640;</span>
-        <span><b>I want my own business</b><em>Turn a skill into a service you sell</em></span>
-      </a>
-      <a class="path-option" href="/hire/">
-        <span class="ico" aria-hidden="true">&#129309;</span>
-        <span><b>I want to hire talent</b><em>Verified freelancers and staffing</em></span>
-      </a>
+    <div class="pillars">
+      <div><a href="/it-advisory/"><h3>IT Advisory</h3><p>Cloud architecture, migration planning, cost review and technology selection.</p></a></div>
+      <div><a href="/it-support/"><h3>IT Support</h3><p>Infrastructure setup, networks, servers, backup and ongoing maintenance.</p></a></div>
+      <div><a href="/training/"><h3>Training</h3><p>Live online cohorts in cloud, ITSM and infrastructure. Closed batches for teams.</p></a></div>
+      <div><a href="/network/"><h3>Freelancing</h3><p>A reviewed network of independent consultants who deliver client work with us.</p></a></div>
     </div>
-  </div>
-</section>
-
-<div class="ticker" aria-label="What Jobjila offers">
-  <div class="ticker__track">
-    <span>${open.length} courses open for enrolment</span>
-    <span>Every cohort live online, every session recorded</span>
-    <span>Trainer applications open &mdash; 60&ndash;70% revenue share</span>
-    <span>Same fees in every city, no metro surcharge</span>
-    <span>Doubts answered by your trainer within 48 hours</span>
-    <span>${open.length} courses open for enrolment</span>
-    <span>Every cohort live online, every session recorded</span>
-    <span>Trainer applications open &mdash; 60&ndash;70% revenue share</span>
-    <span>Same fees in every city, no metro surcharge</span>
-    <span>Doubts answered by your trainer within 48 hours</span>
   </div>
 </div>
 
-<section class="section">
-  <div class="container">
-    <div class="section-head section-head--center">
-      <span class="eyebrow">Trending right now</span>
-      <h2>The skills companies are hiring for this quarter</h2>
-      <p>Every card shows the real fee, the real duration, and what the skill actually pays. No "contact us for pricing".</p>
+<section>
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">How training starts</span>
+      <h2>You pay after you have seen us teach</h2>
+      <p class="muted">We are new, and we have no reviews yet. This is the entire payment sequence, in order.</p>
     </div>
-    <div class="grid grid--3">
-      ${trending.map(courseCard).join("\n      ")}
+    ${ladder()}
+    <p class="small muted" style="margin-top:1.25rem">If <em>we</em> cancel or postpone a batch, you get a 100% refund whenever that happens, or a free transfer to the next batch — your choice, not ours. Full terms in the <a href="/refund-policy/">Refund Policy</a>.</p>
+  </div>
+</section>
+
+<section class="sunk">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Training</span>
+      <h2>Courses running now</h2>
+      <p class="muted">Cloud platforms, IT service management, infrastructure and consulting skills. Every course lists its full syllabus and fee.</p>
     </div>
-    <div class="text-center" style="margin-top:32px">
-      <a class="btn btn--ghost btn--lg" href="/courses/">See all ${courses.length} courses</a>
+    <div class="cards">
+      ${featured.map(courseCard).join("\n      ")}
+    </div>
+    <div class="btns" style="margin-top:2rem">
+      <a class="btn btn-line btn-lg" href="/training/">See all ${openCourses.length} courses and fees</a>
     </div>
   </div>
 </section>
 
-<section class="section section--alt">
-  <div class="container">
-    <div class="section-head section-head--center">
-      <span class="eyebrow">How it works</span>
-      <h2>Three steps from where you are to getting paid</h2>
+<section>
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">For companies</span>
+      <h2>Advisory and support, from the people who teach it</h2>
+      <p class="muted">We consult on the same technology we train in. That is deliberate — the training stays current because we do the work, and the consulting has depth because we teach it.</p>
     </div>
-    <div class="grid grid--3 steps">
-      <div class="step">
-        <h3>Learn</h3>
-        <p>Live cohorts taught by people who do the work for a living. Small groups, recorded sessions, and a doubt thread where your trainer answers within 48 hours.</p>
-      </div>
-      <div class="step">
-        <h3>Get verified</h3>
-        <p>Finish a real capstone project and it is assessed, scored and recorded on your Skill Passport. Proof of work beats a printed certificate every time.</p>
-      </div>
-      <div class="step">
-        <h3>Earn</h3>
-        <p>Your verified profile feeds straight into freelance project matching and our hiring partners &mdash; or into your own client pipeline if you would rather work for yourself.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <div class="section-head section-head--center">
-      <span class="eyebrow">Three earning paths</span>
-      <h2>A skill is only worth what you can do with it</h2>
-      <p>Job boards only serve one of these. Freelance marketplaces only serve another. We think you should be able to choose.</p>
-    </div>
-    <div class="grid grid--3">
-      <div class="path-tile">
-        <h3>Get a job</h3>
-        <p class="small muted">For people who want stability, a team and a title.</p>
+    <div class="grid g2">
+      <div class="cell" data-track="cloud">
+        <span class="chips"><span class="chip">Advisory</span></span>
+        <h3>Decide what to build, buy or move</h3>
         <ul>
-          <li>Interview-focused capstone projects</li>
-          <li>Resume and LinkedIn review</li>
-          <li>Mock technical interviews</li>
-          <li>Introductions to hiring partners</li>
+          <li>Cloud architecture review — AWS, Azure, OCI</li>
+          <li>Migration planning and risk assessment</li>
+          <li>Cloud bill review and cost reduction</li>
+          <li>Technology and vendor selection</li>
+          <li>Presales and RFP response support</li>
+        </ul>
+        <a class="btn btn-line" href="/it-advisory/" style="justify-self:start">IT Advisory</a>
+      </div>
+      <div class="cell" data-track="infra">
+        <span class="chips"><span class="chip">Support</span></span>
+        <h3>Keep it running properly</h3>
+        <ul>
+          <li>Network and server setup</li>
+          <li>Windows and Linux administration</li>
+          <li>Backup and recovery, tested not assumed</li>
+          <li>Security hardening and monitoring</li>
+          <li>Annual maintenance contracts</li>
+        </ul>
+        <a class="btn btn-line" href="/it-support/" style="justify-self:start">IT Support</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+${honestBlock()}
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">For consultants and trainers</span>
+      <h2>We deliver through independent specialists</h2>
+      <p class="muted">Rather than a payroll bench, we route client work to reviewed independent consultants. If you consult or train in cloud, infrastructure, service management, data or presales, you can apply.</p>
+    </div>
+    <div class="grid g3">
+      <div class="cell"><h3>Free to join</h3><p>No fee to apply and no fee to stay listed. We take a share only on work actually delivered.</p></div>
+      <div class="cell"><h3>Reviewed, not open</h3><p>A short call, and a recorded demo if you want to train. That review is what makes the network worth being in.</p></div>
+      <div class="cell"><h3>Not exclusive</h3><p>You keep your own clients. We route what matches, and we tell you honestly how much that is.</p></div>
+    </div>
+    <div class="btns" style="margin-top:2rem">
+      <a class="btn btn-line btn-lg" href="/network/">How the network works</a>
+    </div>
+  </div>
+</section>
+
+<section class="sunk">
+  <div class="wrap">
+    ${faqBlock(faqs, "Common questions").replace('style="margin-top:3rem"', "")}
+    <div style="margin-top:3rem">
+      ${band({
+        title: "Start with a free class, or a conversation",
+        body: "Tell us what you want to learn, or what your company needs help with. We will tell you honestly whether we are the right fit.",
+        label: "Message us on WhatsApp",
+        message: "Hi Jobjila, I would like to know more. My requirement is:",
+      })}
+    </div>
+  </div>
+</section>
+` + footer();
+}
+
+/* ========================== IT ADVISORY ========================== */
+
+function itAdvisory() {
+  const t = trail("IT Advisory", "/it-advisory/");
+  const faqs = [
+    { q: "How do you charge for advisory work?", a: "Either a fixed fee for a defined piece of work — an architecture review, a migration plan, a cost assessment — or a day rate for ongoing advisory. We scope and quote before starting, and the quote does not move unless the scope does." },
+    { q: "Do you work with small companies?", a: "Yes. A great deal of useful advisory work is small: a second opinion on an architecture, a cloud bill that has crept up, a decision between two vendors. We would rather do a two-day piece of work well than sell you a retainer you do not need." },
+    { q: "Are you tied to AWS, Azure or Oracle?", a: "No. We hold no reseller agreements and take no vendor commission, so our recommendation is not influenced by who pays us — nobody does except you. We train on all three clouds, which is also why we can compare them honestly." },
+    { q: "What does a cloud cost review involve?", a: "We look at your actual bill and usage, identify what is over-provisioned, unused or on the wrong pricing model, and give you a prioritised list with the rupee saving against each item. You decide what to act on; we can implement it or hand it to your team." },
+  ];
+  return head({
+    title: "IT Advisory — Cloud Architecture, Migration & Cost Review | Jobjila",
+    description: "Independent IT advisory from Noida: cloud architecture review, migration planning, cloud cost reduction, technology selection and presales support. Fixed-fee or day rate, no vendor commissions.",
+    canonical: "/it-advisory/",
+    keywords: ["it consulting services india", "cloud advisory noida", "aws azure architecture review", "cloud cost optimisation", "it consultant for small business"],
+    extraLd: [orgLd, breadcrumbLd(t), faqLd(faqs), serviceLd("IT Advisory", "Cloud architecture review, migration planning, cost optimisation and technology selection.", "/it-advisory/")],
+    track: "cloud",
+  }) + `
+<section class="page-hero">
+  <div class="wrap">
+    ${crumb(t)}
+    <span class="eyebrow">IT Advisory</span>
+    <h1>Decide what to build, buy or move — and what it should cost</h1>
+    <p>Independent advice on cloud and infrastructure decisions. We hold no reseller agreements and take no vendor commission, so the recommendation you get is the one we would follow ourselves.</p>
+    <div class="btns">
+      <a class="btn btn-wa btn-lg" href="${wa("Hi Jobjila, I need IT advisory. Our situation is:")}" target="_blank" rel="noopener">${WA_ICON}<span>Describe your requirement</span></a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">What we advise on</span>
+      <h2>Five things companies most often ask us</h2>
+    </div>
+    <div class="grid g2">
+      <div class="cell"><h3>Cloud architecture review</h3><p>An independent read of an existing or proposed AWS, Azure or OCI design — resilience, security, and whether it will survive the growth you are planning for.</p></div>
+      <div class="cell"><h3>Migration planning</h3><p>What moves, in what order, with what downtime and what rollback. Delivered as a plan your own team can execute, not a dependency on us.</p></div>
+      <div class="cell"><h3>Cloud cost reduction</h3><p>A line-by-line read of your bill: over-provisioning, idle resources, wrong pricing models, and reserved or savings-plan opportunities, each with the rupee figure attached.</p></div>
+      <div class="cell"><h3>Technology and vendor selection</h3><p>A structured comparison against your actual requirements and constraints — including when the honest answer is that your current setup is fine.</p></div>
+      <div class="cell"><h3>Presales and RFP support</h3><p>For IT services firms bidding for work: solution design, RFP response writing, effort estimation and demo preparation.</p></div>
+      <div class="cell"><h3>A second opinion</h3><p>Sometimes you have a proposal in hand and need someone with no stake in it to tell you whether it is sound. That is a legitimate and often very cheap engagement.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sunk">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">How we work</span>
+      <h2>Scoped and quoted before anything starts</h2>
+    </div>
+    <div class="grid g4">
+      <div class="cell"><h3>1. Conversation</h3><p>A call to understand the actual problem. Free, and often enough to point you in the right direction.</p></div>
+      <div class="cell"><h3>2. Written scope</h3><p>What we will do, what you get, how long it takes, and the fixed fee or day rate.</p></div>
+      <div class="cell"><h3>3. The work</h3><p>Done by a practising consultant, with your team involved so knowledge stays with you.</p></div>
+      <div class="cell"><h3>4. Handover</h3><p>A document your team can act on without us. If you want us to implement, that is quoted separately.</p></div>
+    </div>
+    <div class="callout" style="margin-top:2rem">
+      <h3>We will tell you when you do not need us</h3>
+      <p>If your setup is adequate for where you are, or the problem is smaller than an engagement, we will say so on the first call. A consultancy that only ever finds expensive problems is not one worth calling twice.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    ${faqBlock(faqs, "Advisory questions").replace('style="margin-top:3rem"', "")}
+    <div style="margin-top:3rem">
+      ${band({ title: "Tell us the problem", body: "Describe what you are deciding or what has gone wrong. The first conversation costs nothing.", label: "Message us", message: "Hi Jobjila, I need IT advisory. Our situation is:" })}
+    </div>
+  </div>
+</section>
+` + footer();
+}
+
+/* =========================== IT SUPPORT =========================== */
+
+function itSupport() {
+  const t = trail("IT Support", "/it-support/");
+  const faqs = [
+    { q: "Do you offer annual maintenance contracts?", a: "Yes. An AMC covers agreed systems for a fixed monthly or annual fee, with a defined response time. We scope what is covered and what is not in writing before it starts, so there is no argument later about whether something is included." },
+    { q: "Can you support us remotely?", a: "Most infrastructure work is remote, which keeps the cost down for you. On-site visits are arranged where the work genuinely needs hands on hardware, and we are based in Noida so NCR visits are straightforward." },
+    { q: "We already have an IT person. Can you work alongside them?", a: "Frequently, yes. A single in-house IT person cannot be expert in everything — we commonly back them up on cloud, networking or backup design while they run day-to-day operations. We are not there to replace them." },
+    { q: "What size of company do you work with?", a: "Small and mid-size organisations, typically 10 to 200 people, where there is real infrastructure but not a large IT department. That is where good support makes the most visible difference." },
+  ];
+  return head({
+    title: "IT Support Services — Networks, Servers, Backup & AMC | Jobjila",
+    description: "IT support and infrastructure services from Noida: network and server setup, Windows and Linux administration, backup and recovery, security hardening and annual maintenance contracts.",
+    canonical: "/it-support/",
+    keywords: ["it support services noida", "amc for it infrastructure", "server network setup company", "it support for small business india"],
+    extraLd: [orgLd, breadcrumbLd(t), faqLd(faqs), serviceLd("IT Support", "Network and server setup, systems administration, backup and recovery, and annual maintenance.", "/it-support/")],
+    track: "infra",
+  }) + `
+<section class="page-hero">
+  <div class="wrap">
+    ${crumb(t)}
+    <span class="eyebrow">IT Support</span>
+    <h1>Infrastructure set up properly, and kept running</h1>
+    <p>Networks, servers, identity, backup and security for organisations that have real infrastructure but not a large IT department. Remote where it can be, on site in NCR where it needs to be.</p>
+    <div class="btns">
+      <a class="btn btn-wa btn-lg" href="${wa("Hi Jobjila, we need IT support. Our setup is:")}" target="_blank" rel="noopener">${WA_ICON}<span>Describe your setup</span></a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">What we cover</span>
+      <h2>The infrastructure layer, end to end</h2>
+    </div>
+    <div class="grid g2">
+      <div class="cell"><h3>Network setup and management</h3><p>Switching, VLANs, routing, firewalls, VPN and Wi-Fi designed for the way your office actually works — then documented so it can be maintained.</p></div>
+      <div class="cell"><h3>Server administration</h3><p>Windows Server and Linux: provisioning, patching, file services, scheduled jobs and performance. Cloud or on-premise.</p></div>
+      <div class="cell"><h3>Identity and access</h3><p>Active Directory or Entra ID, group policy, single sign-on, and joiner-mover-leaver processes that do not leave old accounts alive.</p></div>
+      <div class="cell"><h3>Backup and disaster recovery</h3><p>A backup design with stated RTO and RPO — and a restore we have actually performed, because an untested backup is not a backup.</p></div>
+      <div class="cell"><h3>Security hardening</h3><p>Endpoint protection, patch discipline, firewall rules, MFA rollout and a log review that catches problems before users report them.</p></div>
+      <div class="cell"><h3>Annual maintenance contracts</h3><p>Agreed systems, agreed response times, fixed monthly cost. Scope written down before it starts, so nothing is disputed later.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sunk">
+  <div class="wrap">
+    <div class="callout">
+      <h3>The first thing we usually check is the backup</h3>
+      <p>In most small-company IT estates the backup either has not run for months or has never been restored from. It is the cheapest problem to fix and by far the most expensive one to discover during an incident — so it is where we start, before anything more interesting.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    ${faqBlock(faqs, "Support questions").replace('style="margin-top:3rem"', "")}
+    <div style="margin-top:3rem">
+      ${band({ title: "Tell us what you are running", body: "How many users, what servers, what is currently breaking. We will tell you what it would take to fix.", label: "Message us", message: "Hi Jobjila, we need IT support. Our setup is:" })}
+    </div>
+  </div>
+</section>
+` + footer();
+}
+
+/* ============================ NETWORK ============================ */
+
+function network() {
+  const t = trail("Network", "/network/");
+  const faqs = [
+    { q: "Does it cost anything to join?", a: "No. There is no fee to apply, no fee to stay listed, and no subscription. We take an agreed share only on work actually delivered through us, so we earn when you earn and not before." },
+    { q: "How much work will I get?", a: "We will not promise you a volume. We are a new practice, and pretending otherwise would be exactly the kind of claim this site is built to avoid. Ask us when you apply and we will tell you honestly what is currently flowing." },
+    { q: "Is this exclusive?", a: "No. You keep your own clients and your own rates elsewhere. Most of our network consult independently and take Jobjila work when it matches what they want to do." },
+    { q: "What is the review process?", a: "A conversation about your actual experience, and — if you want to train rather than consult — a recorded 15-minute demo session that we review. The whole thing usually takes one to two weeks." },
+    { q: "How are trainers paid?", a: "Trainers take the majority share of every enrolment in their cohort, agreed in writing before the batch is announced. There is no upfront cost to you and no charge if a cohort does not fill." },
+    { q: "How are consultants paid?", a: "Project work runs on milestones agreed before it starts, with your share fixed in the engagement letter. You invoice on milestone completion." },
+  ];
+  return head({
+    title: "Join the Consultant & Trainer Network | Jobjila",
+    description: "Apply to join Jobjila's reviewed network of independent IT consultants and trainers. Free to join, non-exclusive, milestone-based payment. Cloud, infrastructure, ITSM, data and presales.",
+    canonical: "/network/",
+    keywords: ["freelance it consultant india", "become an online it trainer", "independent cloud consultant work", "freelance itsm consultant"],
+    extraLd: [orgLd, breadcrumbLd(t), faqLd(faqs)],
+    track: "consult",
+  }) + `
+<section class="page-hero">
+  <div class="wrap">
+    ${crumb(t)}
+    <span class="eyebrow">For consultants and trainers</span>
+    <h1>We deliver client work through independent specialists</h1>
+    <p>Not a payroll bench and not an open marketplace. A reviewed network of people who consult or train in cloud, infrastructure, service management, data and presales — and get routed work that matches.</p>
+    <div class="btns">
+      <a class="btn btn-wa btn-lg" href="${wa("Hi Jobjila, I want to join the network.\n\nName:\nCity:\nSkill or subject:\nYears of experience:\nConsult, train, or both:")}" target="_blank" rel="noopener">${WA_ICON}<span>Apply on WhatsApp</span></a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="grid g2">
+      <div class="cell">
+        <h3>What you get</h3>
+        <ul>
+          <li>Client projects routed to you when they match your skills</li>
+          <li>Milestone payments agreed before any work starts</li>
+          <li>Trainers take the majority share of every enrolment</li>
+          <li>No fee to apply, and no fee to stay listed</li>
+          <li>Your own clients stay entirely yours</li>
         </ul>
       </div>
-      <div class="path-tile path-tile--freelance">
-        <h3>Freelance</h3>
-        <p class="small muted">For people who want flexibility and multiple clients.</p>
+      <div class="cell">
+        <h3>What we ask</h3>
         <ul>
-          <li>Portfolio built from real project work</li>
-          <li>Pricing, proposals and contracts</li>
-          <li>Matched to projects posted on Jobjila</li>
-          <li>Work alongside a full-time job</li>
-        </ul>
-      </div>
-      <div class="path-tile path-tile--business">
-        <h3>Build your own</h3>
-        <p class="small muted">For people who want to own the client relationship.</p>
-        <ul>
-          <li>Package a skill into a sellable service</li>
-          <li>Find and keep local clients</li>
-          <li>Retainers instead of one-off jobs</li>
-          <li>The path nobody else supports</li>
+          <li>Real hands-on experience in what you claim</li>
+          <li>A short review call before joining</li>
+          <li>A recorded 15-minute demo, if you want to train</li>
+          <li>That you tell a client honestly when something is outside your depth</li>
         </ul>
       </div>
     </div>
-  </div>
-</section>
 
-<section class="section section--alt">
-  <div class="container">
-    <div class="grid grid--2" style="align-items:center;gap:48px">
-      <div>
-        <span class="eyebrow">Skill Passport</span>
-        <h2>A certificate says you attended. This says you can do it.</h2>
-        <p>Anyone can buy a certificate. Your Jobjila Skill Passport records what you actually built: the capstone you shipped, how it was scored, your trainer's endorsement, and the ratings from real clients once you start working.</p>
-        <p>It is one profile that follows you across all three earning paths &mdash; the same proof convinces an employer, a freelance client and a customer of your own business.</p>
-        <div class="btn-row" style="margin-top:24px">
-          <a class="btn btn--primary" href="/courses/">Start earning one</a>
-        </div>
-      </div>
-      <div class="grid" style="gap:16px">
-        <div class="card">
-          <div class="card-icon card-icon--success" aria-hidden="true">&#10003;</div>
-          <h3>Verified project work</h3>
-          <p class="small">Assessed capstones, not attendance records.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon" aria-hidden="true">&#9733;</div>
-          <h3>Trainer endorsement</h3>
-          <p class="small">A named professional putting their reputation behind you.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon card-icon--accent" aria-hidden="true">&#128200;</div>
-          <h3>Live client ratings</h3>
-          <p class="small">Every project you deliver through Jobjila adds to your record.</p>
-        </div>
-      </div>
+    <div class="callout" style="margin-top:1.5rem">
+      <h3>We will not promise you a volume of work</h3>
+      <p>We are new. We route what we have, and when you apply we will tell you plainly how much that currently is. A network that oversells its pipeline wastes the time of the people who join it — and you would find out within a month anyway.</p>
     </div>
   </div>
 </section>
 
-<section class="section">
-  <div class="container">
-    <div class="section-head section-head--center">
-      <span class="eyebrow">What we commit to</span>
-      <h2>No invented testimonials on this page</h2>
-      <p>Jobjila is new. Plenty of training sites fill this section with quotes from people who do not exist &mdash; we would rather tell you what we are actually promising, and publish real learner outcomes here once there are some, with names and permission.</p>
+<section class="sunk">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Skills we route work for</span>
+      <h2>Where we currently need people</h2>
     </div>
-    <div class="grid grid--3">
-      <div class="card">
-        <div class="card-icon" aria-hidden="true">&#9200;</div>
-        <h3>Your doubts answered in 48 hours</h3>
-        <p class="small">Not a forum where questions go unanswered. Your trainer replies on the course thread within two days, and the answer stays visible to the whole cohort.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon card-icon--success" aria-hidden="true">&#10003;</div>
-        <h3>A capstone that is actually assessed</h3>
-        <p class="small">You finish with a project that has been reviewed and scored by a practitioner &mdash; something to show an employer, not a certificate of attendance.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon card-icon--accent" aria-hidden="true">&#128172;</div>
-        <h3>Honest counselling before you pay</h3>
-        <p class="small">If a cheaper course, a shorter one, or no course at all would serve you better, we will say so. Message us on WhatsApp and test it.</p>
-      </div>
+    <div class="grid g3">
+      ${site.tracks.map((tr) => `<div class="cell" data-track="${tr.id}">
+        <span class="chips"><span class="chip">${esc(tr.name)}</span></span>
+        <p>${esc(openCourses.filter((c) => c.track === tr.id).map((c) => c.name).join(", "))}</p>
+      </div>`).join("\n      ")}
     </div>
   </div>
 </section>
 
-<section class="section section--alt">
-  <div class="container">
-    <div class="grid grid--2" style="gap:24px">
-      <div class="card">
-        <div class="card-icon" aria-hidden="true">&#127891;</div>
-        <h3>Teach what you already know</h3>
-        <p>Revenue share, no upfront cost, and we handle enrolment, payments and marketing. If you are already training offline or consulting, this is additional income from work you are doing anyway.</p>
-        <a class="btn btn--ghost" href="/become-a-trainer/">Become a trainer</a>
-      </div>
-      <div class="card">
-        <div class="card-icon card-icon--accent" aria-hidden="true">&#128188;</div>
-        <h3>Hire verified talent</h3>
-        <p>Freelancers for a project, or permanent staff through our HR services. Everyone you see has assessed project work behind their profile, not just a claimed skill list.</p>
-        <a class="btn btn--ghost" href="/hire/">Hire from Jobjila</a>
-      </div>
+<section>
+  <div class="wrap">
+    ${faqBlock(faqs, "Network questions").replace('style="margin-top:3rem"', "")}
+    <div style="margin-top:3rem">
+      ${band({ title: "Apply to join", body: "Send your name, city, subject and years of experience. We reply to every application within three working days.", label: "Apply on WhatsApp", message: "Hi Jobjila, I want to join the network.\n\nName:\nCity:\nSkill or subject:\nYears of experience:\nConsult, train, or both:" })}
     </div>
   </div>
 </section>
-
-<div class="container section">
-  ${faqSection(faqs, "Common questions")}
-  ${shareRow({
-    url: "/",
-    text: "Jobjila — learn a skill, get verified, and turn it into a job, freelance work or your own business.",
-    heading: "Know someone looking for a career change?",
-  })}
-</div>
-
-<section class="section" style="padding-top:0">
-  <div class="container">
-    ${ctaBand({
-      title: "Not sure which skill fits you?",
-      body: "Tell us your background and what you want to earn. We will recommend a track honestly — including telling you when now is not the right time to spend money on a course.",
-      buttonLabel: "Ask on WhatsApp",
-      whatsappMessage: "Hi Jobjila, I am not sure which course fits me. My background is:",
-    })}
-  </div>
-</section>
-` +
-    footer()
-  );
+` + footer();
 }
 
-/* ====================== FOR FREELANCERS ====================== */
-
-function forFreelancers() {
-  const trail = crumb("For Freelancers", "/for-freelancers/");
-  const faqs = [
-    {
-      q: "Does it cost anything to join as a freelancer?",
-      a: "Creating a profile and applying to projects is free. Jobjila takes a commission on projects delivered through the platform, so we only earn when you do. Training courses are paid separately and are entirely optional.",
-    },
-    {
-      q: "How do I get matched to projects?",
-      a: "Clients post a brief and we shortlist from freelancers whose Skill Passport shows verified work in that area. A completed capstone or a delivered project moves you up the list far more than a long list of claimed skills.",
-    },
-    {
-      q: "How do payments work?",
-      a: "Projects run on milestones with funds confirmed before work begins, released as each milestone is approved. This protects both sides — you are not chasing an invoice, and the client is not paying for work they have not seen.",
-    },
-    {
-      q: "I have never freelanced before. Where do I start?",
-      a: "Start with the Freelancing Bootcamp. It covers finding clients, pricing, proposals, contracts and getting paid — the business half that most skilled people never get taught, and the reason most freelance attempts stall.",
-    },
-  ];
-
-  return (
-    head({
-      title: "For Freelancers — Find Verified Work & Get Paid On Time | Jobjila",
-      description:
-        "Join Jobjila as a freelancer: build a verified Skill Passport, get matched to real client projects, and use milestone-based payments so you always get paid. Free to join.",
-      canonical: "/for-freelancers/",
-      keywords: ["freelance work india", "freelancing platform", "find freelance clients", "freelance projects online"],
-      extraLd: [orgLd, breadcrumbLd(trail), faqLd(faqs)],
-    }) +
-    `
-<section class="course-hero">
-  <div class="container">
-    ${breadcrumbNav(trail)}
-    <div style="max-width:720px;margin-top:20px">
-      <h1>Freelance work that does not start with a race to the bottom</h1>
-      <p style="font-size:1.125rem">On most marketplaces you compete on price against a thousand identical profiles. Here, clients see verified project work &mdash; so you compete on proof instead.</p>
-      <div class="btn-row" style="margin-top:26px">
-        <a class="btn btn--whatsapp btn--lg" href="${wa('Hi Jobjila, I want to join as a freelancer. My skill is:')}" target="_blank" rel="noopener">${WA_ICON}<span>Join on WhatsApp</span></a>
-        <a class="btn btn--on-dark btn--lg" href="/courses/freelancing-bootcamp/">Freelancing Bootcamp</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="container section">
-  <div class="section-head section-head--center">
-    <span class="eyebrow">Why freelancers stay</span>
-    <h2>The three things that actually decide whether freelancing works</h2>
-  </div>
-  <div class="grid grid--3">
-    <div class="card">
-      <div class="card-icon" aria-hidden="true">&#128269;</div>
-      <h3>Being found</h3>
-      <p>A verified Skill Passport puts assessed project work in front of clients instead of a self-declared skill list. New freelancers get a fair shot because the proof is standardised.</p>
-    </div>
-    <div class="card">
-      <div class="card-icon card-icon--accent" aria-hidden="true">&#128176;</div>
-      <h3>Pricing properly</h3>
-      <p>Underquoting is the single most common reason freelancers burn out and quit. The Freelancing Bootcamp teaches you to scope, quote and hold your number.</p>
-    </div>
-    <div class="card">
-      <div class="card-icon card-icon--success" aria-hidden="true">&#128179;</div>
-      <h3>Getting paid</h3>
-      <p>Milestone-based payments with funds confirmed before work starts. No three-month follow-up emails, no disappearing clients.</p>
-    </div>
-  </div>
-</div>
-
-<section class="section section--alt">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Build the skill first</span>
-      <h2>Courses with the strongest freelance demand</h2>
-      <p>These three produce deliverable client work fastest, and all of them pair well with the Freelancing Bootcamp.</p>
-    </div>
-    <div class="grid grid--3">
-      ${courses
-        .filter((c) => ["digital-marketing", "web-design", "ai-prompt-engineering"].includes(c.slug))
-        .map(courseCard)
-        .join("\n      ")}
-    </div>
-  </div>
-</section>
-
-<div class="container section">
-  ${faqSection(faqs, "Freelancer questions")}
-</div>
-
-<section class="section" style="padding-top:0">
-  <div class="container">
-    ${ctaBand({
-      title: "Ready to take on your first client?",
-      body: "Create a profile, complete a verification project, and start appearing in client shortlists. It costs nothing until you are earning.",
-      buttonLabel: "Join on WhatsApp",
-      whatsappMessage: "Hi Jobjila, I want to join as a freelancer. My skill is:",
-    })}
-  </div>
-</section>
-` +
-    footer()
-  );
-}
-
-/* =========================== HIRE =========================== */
-
-function hire() {
-  const trail = crumb("Hire Talent", "/hire/");
-  const faqs = [
-    {
-      q: "What does it cost to hire a freelancer through Jobjila?",
-      a: "Posting a project and receiving a shortlist is free. You agree a project value directly with the freelancer, and our commission is included in that figure — there is no separate platform fee added to your invoice.",
-    },
-    {
-      q: "How are freelancers verified?",
-      a: "Every profile carries a Skill Passport: assessed capstone projects, trainer endorsement, and ratings from previous work delivered through the platform. You are seeing evidence of completed work, not a self-reported skill list.",
-    },
-    {
-      q: "Do you also help with permanent hiring?",
-      a: "Yes. Our HR services cover permanent and contract recruitment, particularly for IT, infrastructure, marketing and support roles. Because many candidates are trained on our own platform, we can vouch for their skills first-hand.",
-    },
-    {
-      q: "What if the work delivered is not up to standard?",
-      a: "Milestone-based payment means you approve each stage before funds are released. If a milestone is not met, work continues until it is or the engagement ends without further payment. We step in directly if a dispute is not resolving.",
-    },
-    {
-      q: "How quickly can I get a shortlist?",
-      a: "For common skills — web development, digital marketing, cloud support, data reporting — expect a shortlist within two to three working days. Specialist requirements take longer, and we will tell you honestly if we cannot fill a brief.",
-    },
-  ];
-
-  return (
-    head({
-      title: "Hire Verified Freelancers & IT Talent in India | Jobjila HR Services",
-      description:
-        "Hire verified freelancers for projects or permanent IT, marketing and support staff through Jobjila HR services. Every candidate carries assessed project work. Free to post a brief.",
-      canonical: "/hire/",
-      keywords: ["hire freelancers india", "it staffing services", "hr services india", "hire web developer", "recruitment services"],
-      extraLd: [
-        orgLd,
-        breadcrumbLd(trail),
-        faqLd(faqs),
-        {
-          "@context": "https://schema.org",
-          "@type": "Service",
-          name: "Talent hiring and HR services",
-          provider: { "@id": site.url + "/#organization" },
-          areaServed: { "@type": "Country", name: "India" },
-          serviceType: "Freelance staffing and permanent recruitment",
-        },
-      ],
-    }) +
-    `
-<section class="course-hero">
-  <div class="container">
-    ${breadcrumbNav(trail)}
-    <div style="max-width:720px;margin-top:20px">
-      <h1>Hire people whose skills have actually been checked</h1>
-      <p style="font-size:1.125rem">Freelancers for a project, or permanent staff through our HR services. Either way you see assessed project work before you commit &mdash; not a CV full of claims.</p>
-      <div class="btn-row" style="margin-top:26px">
-        <a class="btn btn--whatsapp btn--lg" href="${wa('Hi Jobjila, I want to hire. The role or project I need filled is:')}" target="_blank" rel="noopener">${WA_ICON}<span>Send brief on WhatsApp</span></a>
-        <a class="btn btn--on-dark btn--lg" href="#services">See what we cover</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="container section" id="services">
-  <div class="section-head section-head--center">
-    <span class="eyebrow">Two ways to hire</span>
-    <h2>Project work or permanent staff</h2>
-  </div>
-  <div class="grid grid--2">
-    <div class="card">
-      <div class="card-icon" aria-hidden="true">&#128736;</div>
-      <h3>Freelance projects</h3>
-      <p>Website builds, digital marketing retainers, cloud migrations, data dashboards, AI automations and technical interview support.</p>
-      <ul class="outcome-list" style="margin-top:16px">
-        <li>Shortlist in 2&ndash;3 working days for common skills</li>
-        <li>Milestone payments, approved by you at each stage</li>
-        <li>No platform fee added on top of the agreed price</li>
-      </ul>
-    </div>
-    <div class="card">
-      <div class="card-icon card-icon--accent" aria-hidden="true">&#128203;</div>
-      <h3>HR &amp; permanent hiring</h3>
-      <p>Contract and permanent recruitment for IT support, infrastructure, cloud, marketing, data and presales roles.</p>
-      <ul class="outcome-list" style="margin-top:16px">
-        <li>Candidates often trained and assessed by us directly</li>
-        <li>Technical screening included before you interview</li>
-        <li>Replacement guarantee within the agreed period</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<section class="section section--alt">
-  <div class="container">
-    <div class="section-head section-head--center">
-      <span class="eyebrow">How it works</span>
-      <h2>From brief to hire in four steps</h2>
-    </div>
-    <div class="grid grid--4 steps">
-      <div class="step"><h3>Send the brief</h3><p>Tell us the outcome you need, your budget range and your timeline.</p></div>
-      <div class="step"><h3>Get a shortlist</h3><p>Three to five verified profiles with the relevant project work attached.</p></div>
-      <div class="step"><h3>Talk to them</h3><p>Interview or trial the shortlist directly. No pressure to pick from the first batch.</p></div>
-      <div class="step"><h3>Start safely</h3><p>Milestones for project work, or a standard offer process for permanent roles.</p></div>
-    </div>
-  </div>
-</section>
-
-<div class="container section">
-  ${faqSection(faqs, "Client questions")}
-</div>
-
-<section class="section" style="padding-top:0">
-  <div class="container">
-    ${ctaBand({
-      title: "Tell us what you need built or filled",
-      body: "Posting a brief is free and takes about two minutes. If we cannot fill it well, we will say so rather than sending you a weak shortlist.",
-      buttonLabel: "Send brief on WhatsApp",
-      whatsappMessage: "Hi Jobjila, I want to hire. The role or project I need filled is:",
-    })}
-  </div>
-</section>
-` +
-    footer()
-  );
-}
-
-/* ====================== BECOME A TRAINER ====================== */
-
-function becomeATrainer() {
-  const trail = crumb("Become a Trainer", "/become-a-trainer/");
-  const faqs = [
-    {
-      q: "How much do trainers earn on Jobjila?",
-      a: "Trainers keep 60–70% of every enrolment in their cohort. On a ₹15,000 course with 20 learners, that is ₹1.8–2.1 lakh for one cohort. There is no upfront cost and no fee to list a course.",
-    },
-    {
-      q: "Do I need to create the course content myself?",
-      a: "You own the curriculum, because you are the practitioner. We help you structure it into modules, review it against what the market is hiring for, and handle everything else — enrolment, payments, scheduling, learner support and marketing.",
-    },
-    {
-      q: "I already teach offline. Does that work here?",
-      a: "It works particularly well. Most of our trainers already run offline batches or consult. Listing online adds a second income stream from material you have already built, without giving up your existing work.",
-    },
-    {
-      q: "What is the approval process?",
-      a: "You apply, we discuss your subject and market demand, and you record a 15-minute demo session which we review. If it is approved you get a Verified Trainer badge and we schedule your first cohort. The whole process usually takes one to two weeks.",
-    },
-    {
-      q: "How much time does teaching a cohort take?",
-      a: "Typically four to six hours a week — two live sessions plus doubt replies. Cohorts run for four to ten weeks depending on the course. You set the days and times that suit you.",
-    },
-    {
-      q: "What happens if my cohort does not fill?",
-      a: "We tell you before it starts and either extend enrolment or reschedule. You are never asked to teach an uneconomic batch, and because there is no upfront cost to you, an unfilled cohort costs you nothing but time.",
-    },
-  ];
-
-  return (
-    head({
-      title: "Become a Trainer — Teach Online & Keep 60–70% Revenue | Jobjila",
-      description:
-        "Teach on Jobjila with no upfront cost. Keep 60–70% of every enrolment while we handle students, payments, scheduling and marketing. Apply to become a verified trainer.",
-      canonical: "/become-a-trainer/",
-      keywords: ["become an online trainer", "teach online india", "online trainer jobs", "revenue share teaching platform"],
-      extraLd: [orgLd, breadcrumbLd(trail), faqLd(faqs)],
-    }) +
-    `
-<section class="course-hero">
-  <div class="container">
-    ${breadcrumbNav(trail)}
-    <div style="max-width:720px;margin-top:20px">
-      <h1>You already know it. Get paid to teach it.</h1>
-      <p style="font-size:1.125rem">No upfront cost, no platform fee. Keep 60&ndash;70% of every enrolment while we bring the students and run everything that is not teaching.</p>
-      <div class="btn-row" style="margin-top:26px">
-        <a class="btn btn--whatsapp btn--lg" href="${wa('Hi Jobjila, I want to teach on your platform. My subject and experience:')}" target="_blank" rel="noopener">${WA_ICON}<span>Apply on WhatsApp</span></a>
-        <a class="btn btn--on-dark btn--lg" href="#how">How the revenue share works</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="container section" id="how">
-  <div class="section-head section-head--center">
-    <span class="eyebrow">The deal</span>
-    <h2>You bring the subject. We bring everything else.</h2>
-  </div>
-  <div class="grid grid--2" style="gap:24px">
-    <div class="card">
-      <h3>What you do</h3>
-      <ul class="outcome-list" style="margin-top:14px">
-        <li>Own the curriculum for your subject</li>
-        <li>Run two live sessions a week</li>
-        <li>Reply to cohort doubts within 48 hours</li>
-        <li>Assess the capstone projects</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>What we do</h3>
-      <ul class="outcome-list" style="margin-top:14px">
-        <li>Find and enrol the students</li>
-        <li>Handle payments, invoicing and refunds</li>
-        <li>Run the platform, scheduling and recordings</li>
-        <li>Market your cohort and your trainer profile</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="card" style="margin-top:24px;background:var(--brand-soft);border-color:var(--indigo-200)">
-    <h3>What a cohort is worth</h3>
-    <p>A ₹15,000 course with 20 learners generates ₹3,00,000. At a 65% share, that is <strong>₹1,95,000 to you for one cohort</strong> of roughly six weeks at four to six hours a week. Run three cohorts a year in a subject you already know and it becomes a serious second income.</p>
-    <p class="small muted" style="margin-bottom:0">Illustrative figures based on our standard revenue share. Actual earnings depend on your course fee and cohort size.</p>
-  </div>
-</div>
-
-<section class="section section--alt">
-  <div class="container">
-    <div class="section-head section-head--center">
-      <span class="eyebrow">Who teaches here</span>
-      <h2>We are looking for practitioners, not lecturers</h2>
-    </div>
-    <div class="grid grid--4">
-      <div class="card"><h3 style="font-size:1rem">Working professionals</h3><p class="small">Currently doing the job you would be teaching.</p></div>
-      <div class="card"><h3 style="font-size:1rem">Offline trainers</h3><p class="small">Already running batches locally and ready to add an online stream.</p></div>
-      <div class="card"><h3 style="font-size:1rem">Consultants</h3><p class="small">Independent experts who want a predictable second income.</p></div>
-      <div class="card"><h3 style="font-size:1rem">Creators</h3><p class="small">Already teaching on social platforms without a way to monetise it properly.</p></div>
-    </div>
-  </div>
-</section>
-
-<div class="container section">
-  <div class="section-head section-head--center">
-    <span class="eyebrow">Getting started</span>
-    <h2>Four steps to your first cohort</h2>
-  </div>
-  <div class="grid grid--4 steps">
-    <div class="step"><h3>Apply</h3><p>Tell us your subject and your experience. Two minutes.</p></div>
-    <div class="step"><h3>Plan the course</h3><p>We review demand together and shape your curriculum into modules.</p></div>
-    <div class="step"><h3>Record a demo</h3><p>A 15-minute session we review. Pass it and you get the Verified Trainer badge.</p></div>
-    <div class="step"><h3>Teach and earn</h3><p>We fill the cohort, you teach it, and payouts follow each milestone.</p></div>
-  </div>
-</div>
-
-<section class="section section--alt" id="apply">
-  <div class="container" style="max-width:720px">
-    <div class="section-head section-head--center">
-      <span class="eyebrow">Apply</span>
-      <h2>Tell us what you can teach</h2>
-      <p>We read every application. If your subject does not have enough demand yet, we will tell you honestly rather than leaving you waiting.</p>
-    </div>
-    <div class="card contact-card">
-      <h3>Send us one WhatsApp message</h3>
-      <p>No forms, no sign-up. Message us with these four things and we will take it from there:</p>
-      <ul class="outcome-list" style="margin:18px 0 24px">
-        <li>Your name and city</li>
-        <li>The subject you want to teach</li>
-        <li>Years of hands-on experience in it</li>
-        <li>Whether you already train, online or offline</li>
-      </ul>
-      <a class="btn btn--whatsapp btn--block btn--lg" href="${wa('Hi Jobjila, I want to teach on your platform.\n\nName:\nCity:\nSubject I can teach:\nYears of experience:\nDo I already train:')}" target="_blank" rel="noopener">${WA_ICON}<span>Apply on WhatsApp</span></a>
-      <p class="form-note text-center" style="margin:14px 0 0">The message opens already written &mdash; just fill in your details and send.</p>
-      <p class="form-note text-center" style="margin:6px 0 0">Prefer email? Write to <a href="mailto:${esc(site.email)}">${esc(site.email)}</a>. We reply to every application within three working days.</p>
-    </div>
-  </div>
-</section>
-
-<div class="container section">
-  ${faqSection(faqs, "Trainer questions")}
-</div>
-` +
-    footer()
-  );
-}
-
-/* =========================== BLOG =========================== */
-
-function blog() {
-  const trail = crumb("Blog", "/blog/");
-  const posts = [
-    {
-      title: "What salary can you expect after a cloud computing course in India?",
-      excerpt:
-        "Honest salary bands for cloud associate and support roles, what actually moves you up a band, and the certifications that are worth paying for.",
-      cat: "Careers",
-      read: "8 min read",
-    },
-    {
-      title: "Digital marketing course fees in India: what you should and should not pay",
-      excerpt:
-        "A breakdown of what goes into course pricing, which inclusions matter, and the warning signs of a course selling certificates rather than skills.",
-      cat: "Marketing",
-      read: "6 min read",
-    },
-    {
-      title: "How to get your first freelance client when you have no portfolio",
-      excerpt:
-        "Four channels that work in the Indian market, the outreach message that gets replies, and how to build credible proof before anyone has paid you.",
-      cat: "Freelancing",
-      read: "10 min read",
-    },
-    {
-      title: "Is presales a good career move for a developer?",
-      excerpt:
-        "What presales consultants actually do all day, the salary jump to expect, and the specific skills that decide whether you will enjoy the switch.",
-      cat: "Careers",
-      read: "7 min read",
-    },
-    {
-      title: "AI will not take your job, but someone using it might",
-      excerpt:
-        "A practical look at which tasks AI genuinely automates today, and how to position yourself on the right side of that line without becoming an engineer.",
-      cat: "AI",
-      read: "9 min read",
-    },
-    {
-      title: "Do you need a degree to work in IT? What hiring managers actually check",
-      excerpt:
-        "What replaces a degree in entry-level IT hiring, how far certifications get you, and why project evidence outperforms both.",
-      cat: "Careers",
-      read: "6 min read",
-    },
-  ];
-
-  return (
-    head({
-      title: "Blog — Careers, Skills, Freelancing & Salary Guides | Jobjila",
-      description:
-        "Practical guides on IT careers, course fees, salaries, freelancing and skill choices in India. Written by the practitioners who teach on Jobjila.",
-      canonical: "/blog/",
-      keywords: ["it career guide india", "course fees guide", "freelancing tips india", "salary after course"],
-      extraLd: [
-        orgLd,
-        breadcrumbLd(trail),
-        {
-          "@context": "https://schema.org",
-          "@type": "Blog",
-          name: "Jobjila Blog",
-          url: site.url + "/blog/",
-          publisher: { "@id": site.url + "/#organization" },
-        },
-      ],
-    }) +
-    `
-<section class="course-hero">
-  <div class="container">
-    ${breadcrumbNav(trail)}
-    <div style="max-width:720px;margin-top:20px">
-      <h1>Straight answers about skills, salaries and getting paid</h1>
-      <p style="font-size:1.125rem">Written by the people who teach here &mdash; practitioners describing the market as it actually is, including when the honest answer is "do not spend money on this yet".</p>
-    </div>
-  </div>
-</section>
-
-<div class="container section">
-  <div class="section-head">
-    <span class="eyebrow">Coming soon</span>
-    <h2>Our first articles are being written now</h2>
-    <p>These are the guides our trainers are drafting. Want to be told when they publish? <a href="/contact/">Leave us your email</a>.</p>
-  </div>
-  <div class="post-list">
-    ${posts
-      .map(
-        (p) => `<article class="post-item">
-      <div class="post-meta">${esc(p.cat)} &middot; ${esc(p.read)} &middot; Coming soon</div>
-      <h3>${esc(p.title)}</h3>
-      <p style="margin-bottom:0">${esc(p.excerpt)}</p>
-    </article>`
-      )
-      .join("\n    ")}
-  </div>
-</div>
-
-<section class="section" style="padding-top:0">
-  <div class="container">
-    ${ctaBand({
-      title: "Are you a trainer who writes?",
-      body: "Trainers who publish here get their profile in front of every reader, and it is the fastest way to fill your own cohorts. Bring us a subject you can write about with authority.",
-      buttonLabel: "Apply on WhatsApp",
-      whatsappMessage: "Hi Jobjila, I would like to write and teach on your platform. My subject is:",
-    })}
-  </div>
-</section>
-` +
-    footer()
-  );
-}
-
-/* =========================== ABOUT =========================== */
+/* ============================= ABOUT ============================= */
 
 function about() {
-  const trail = crumb("About", "/about/");
-  return (
-    head({
-      title: "About Jobjila — India's Skill-to-Income Platform",
-      description:
-        "Jobjila connects training, verification and earning into one pipeline. Learn why we built a platform where a course ends in a job, freelance work or your own business.",
-      canonical: "/about/",
-      keywords: ["about jobjila", "skill development platform india", "training and placement company"],
-      extraLd: [orgLd, breadcrumbLd(trail)],
-    }) +
-    `
-<section class="course-hero">
-  <div class="container">
-    ${breadcrumbNav(trail)}
-    <div style="max-width:720px;margin-top:20px">
-      <h1>Training should end in income, not a PDF</h1>
-      <p style="font-size:1.125rem">We built Jobjila because the gap between finishing a course and earning money from it is where almost everybody gets stuck.</p>
+  const t = trail("About", "/about/");
+  return head({
+    title: "About Jobjila — Who Runs This",
+    description: `Jobjila is an IT advisory, support and training practice based in ${site.locality}, founded by ${site.founder.name}. Published prices, refundable fees, and no employment guarantees.`,
+    canonical: "/about/",
+    keywords: ["about jobjila", "it consulting company noida", "jobjila founder"],
+    extraLd: [orgLd, breadcrumbLd(t)],
+  }) + `
+<section class="page-hero">
+  <div class="wrap">
+    ${crumb(t)}
+    <span class="eyebrow">About</span>
+    <h1>A small IT practice that publishes its prices</h1>
+    <p>Jobjila advises companies on their IT, supports the infrastructure they run, and trains the people who do that work — from ${esc(site.locality)}, for clients across India.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="layout">
+      <div class="prose">
+        <h2>Why this exists</h2>
+        <p>Two problems sit next to each other in Indian IT and rarely get solved together. Small and mid-size companies make expensive infrastructure decisions without anyone independent to ask. And capable people cannot get into IT work because training either costs too much to risk on an unknown provider, or promises a job it cannot deliver.</p>
+        <p>Jobjila does both sides. We consult on the same technology we teach — which keeps the training honest, because it is being delivered by people currently doing the work rather than by full-time lecturers reading from a deck.</p>
+
+        <h2>How we are set up to be trusted</h2>
+        <p>We are new, with no reviews and no track record you can look up. So instead of asking for trust, we removed the need for it:</p>
+        <ul>
+          <li><strong>The first class is free.</strong> You see the teaching before any money changes hands.</li>
+          <li><strong>Every price is published.</strong> Fees are on the course pages. You never have to ask what something costs.</li>
+          <li><strong>Fees stay refundable.</strong> ${inr(site.pricing.bookingAmount)} booking returned in full, and a ${site.pricing.refundDays}-day window after that.</li>
+          <li><strong>We take no vendor commission.</strong> Nobody pays us to recommend their product, so advice is not steered.</li>
+          <li><strong>We do not promise jobs.</strong> Ever, for any fee.</li>
+        </ul>
+
+        <h2>What we are not</h2>
+        <p>We are not a placement agency, a recruitment consultancy or a job portal. We do not collect candidate fees, and we have no relationship with anyone who does. If someone contacts you claiming to offer a job through Jobjila in exchange for money, it is not us — <a href="/contact/">tell us</a> and we will confirm it.</p>
+      </div>
+
+      <aside class="aside">
+        <div class="person">
+          <div class="who">
+            <h3>${esc(site.founder.name)}</h3>
+            <span class="role">${esc(site.founder.role)}</span>
+          </div>
+          <p class="small muted">${esc(site.founder.bio)}</p>
+          <div class="btns">
+            <a class="btn btn-wa" href="${wa("Hi Shrijan, I have a question about Jobjila.")}" target="_blank" rel="noopener">${WA_ICON}<span>Message directly</span></a>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>Practice details</h3>
+          <ul class="facts">
+            <li><span class="k">Based in</span><b>${esc(site.locality)}, ${esc(site.region)}</b></li>
+            <li><span class="k">Serving</span><b>India-wide, online</b></li>
+            <li><span class="k">Email</span><b><a href="mailto:${esc(site.email)}">${esc(site.email)}</a></b></li>
+            <li><span class="k">Phone</span><b><a href="tel:+${esc(site.whatsapp)}">${esc(site.phoneDisplay)}</a></b></li>
+          </ul>
+        </div>
+      </aside>
     </div>
   </div>
 </section>
 
-<div class="container section">
-  <div class="prose">
-    <h2>The problem we kept seeing</h2>
-    <p>India produces an enormous number of certified people and a much smaller number of employed ones. The reason is rarely ability. It is that the three things a person needs &mdash; a skill, credible proof of that skill, and access to someone willing to pay for it &mdash; are sold by three different industries that do not talk to each other.</p>
-    <p>Course platforms hand over a certificate and stop. Job boards assume you already have proof. Freelance marketplaces assume you already know how to find and price clients. Each one is complete on its own terms and useless on its own.</p>
-
-    <h2>What we do differently</h2>
-    <p>Jobjila runs all three as one pipeline. You learn from a practitioner in a live cohort. You prove the skill through an assessed capstone that becomes part of a verified Skill Passport. That passport then feeds directly into freelance project matching and into hiring partners through our HR services.</p>
-    <p>The part we care most about is the third earning path. Job boards serve employment. Marketplaces serve freelancing. Almost nobody helps a skilled person build their own client base &mdash; which, for a large number of Indian learners, is the most realistic route to a good income.</p>
-
-    <h2>How we choose what to teach</h2>
-    <p>A course goes live when two things are true: employers or clients are visibly paying for the skill, and we have found a practitioner who is genuinely good at it and willing to teach. We would rather run seven courses we can stand behind than list seventy we cannot.</p>
-
-    <h2>What we will not do</h2>
-    <ul>
-      <li>Promise a job. We promise preparation, verification and honest introductions.</li>
-      <li>Hide fees. Every course page states the price and duration up front.</li>
-      <li>Invent outcome statistics. We publish learner results as they actually happen.</li>
-      <li>Sell you a course you do not need. If now is the wrong time, we will say so.</li>
-    </ul>
-  </div>
-</div>
-
-<section class="section section--alt">
-  <div class="container">
-    ${ctaBand({
-      title: "Come and build this with us",
-      body: "Whether you want to learn, teach, freelance or hire — the platform only works if all four sides show up. Start wherever you fit.",
-      buttonLabel: "Explore courses",
-      buttonHref: "/courses/",
-    })}
-  </div>
-</section>
-` +
-    footer()
-  );
+${honestBlock()}
+` + footer();
 }
 
-/* ========================== CONTACT ========================== */
+/* ============================ CONTACT ============================ */
 
 function contact() {
-  const trail = crumb("Contact", "/contact/");
-  const open = courses.filter((c) => c.status === "open");
-  const soon = courses.filter((c) => c.status === "soon");
+  const t = trail("Contact", "/contact/");
+  const routes = [
+    ["I want to join a course", "Fees, batch dates, and which course fits you", "Hi Jobjila, I want to know about a course.\n\nName:\nCity:\nCourse:\nMy background:"],
+    ["My company needs IT help", "Advisory, support, or an AMC", "Hi Jobjila, I am enquiring for my company.\n\nCompany:\nCity:\nWhat we need:\nTeam size:"],
+    ["We want training for a team", "Closed batches, quoted per batch", "Hi Jobjila, we want team training.\n\nCompany:\nSubject:\nNumber of people:\nPreferred timing:"],
+    ["I want to join the network", "Consultants and trainers", "Hi Jobjila, I want to join the network.\n\nName:\nCity:\nSkill or subject:\nYears of experience:"],
+  ];
+  return head({
+    title: "Contact Jobjila",
+    description: `Contact Jobjila about IT advisory, support, training or joining our consultant network. WhatsApp ${site.phoneDisplay} or email ${site.email}. We reply the same working day.`,
+    canonical: "/contact/",
+    keywords: ["contact jobjila", "it consultant contact noida"],
+    extraLd: [orgLd, breadcrumbLd(t), { "@context": "https://schema.org", "@type": "ContactPage", url: site.url + "/contact/", about: { "@id": site.url + "/#organization" } }],
+  }) + `
+<section class="page-hero">
+  <div class="wrap">
+    ${crumb(t)}
+    <span class="eyebrow">Contact</span>
+    <h1>Ask us anything before you commit</h1>
+    <p>There is no contact form to fill. Pick what applies and a WhatsApp message opens already written — add your details and send. We reply the same working day.</p>
+  </div>
+</section>
 
-  return (
-    head({
-      title: "Contact Jobjila — Talk to a Course Counsellor",
-      description:
-        "Get in touch with Jobjila about courses, freelance work, hiring or teaching. Tell us your background and we will recommend the right track honestly.",
-      canonical: "/contact/",
-      keywords: ["contact jobjila", "course counselling", "course enquiry"],
-      extraLd: [
-        orgLd,
-        breadcrumbLd(trail),
-        {
-          "@context": "https://schema.org",
-          "@type": "ContactPage",
-          url: site.url + "/contact/",
-          about: { "@id": site.url + "/#organization" },
-        },
-      ],
-    }) +
-    `
-<section class="course-hero">
-  <div class="container">
-    ${breadcrumbNav(trail)}
-    <div style="max-width:720px;margin-top:20px">
-      <h1>Tell us where you are and where you want to get to</h1>
-      <p style="font-size:1.125rem">Course questions, freelance work, hiring or teaching &mdash; one WhatsApp message is enough. We reply the same working day.</p>
+<section>
+  <div class="wrap">
+    <div class="layout">
+      <div class="grid" style="grid-template-columns:1fr">
+        ${routes.map(([h, sub, msg]) => `<a class="cell" href="${wa(msg)}" target="_blank" rel="noopener" style="text-decoration:none">
+          <h3>${esc(h)}</h3>
+          <p>${esc(sub)}</p>
+        </a>`).join("\n        ")}
+      </div>
+      <aside class="aside">
+        <dl class="contact" style="grid-template-columns:1fr">
+          <div><dt>WhatsApp</dt><dd><a href="${wa("Hi Jobjila,")}" target="_blank" rel="noopener">${esc(site.phoneDisplay)}</a></dd></div>
+          <div><dt>Call</dt><dd><a href="tel:+${esc(site.whatsapp)}">${esc(site.phoneDisplay)}</a></dd></div>
+          <div><dt>Email</dt><dd><a href="mailto:${esc(site.email)}">${esc(site.email)}</a></dd></div>
+          <div><dt>Based in</dt><dd style="font-size:var(--s-0)">${esc(site.locality)}, ${esc(site.region)}</dd></div>
+        </dl>
+        <div class="callout">
+          <h3>Not sure which course?</h3>
+          <p>Send your background and what you want to be doing in a year. We will suggest a track, including telling you if a cheaper or shorter course gets you there faster.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+` + footer();
+}
+
+/* =========================== LOCATIONS =========================== */
+
+function locations() {
+  const t = trail("Locations", "/locations/");
+  const faqs = [
+    { q: "Do you have classrooms in these cities?", a: "No. Every cohort runs live online, which is deliberate — the same trainer and curriculum wherever you live, no commute, and evening sessions that work alongside a job. These pages exist because the local job market differs by city, not because the course does." },
+    { q: "Are fees different by city?", a: "No. Fees are identical everywhere in India. There is no metro surcharge and no tier-2 discount. What varies is the local hiring market, which is what each city page covers." },
+    { q: "My city is not listed. Can I still join?", a: "Yes. Cohorts are online and open to anyone in India. These pages cover the areas most of our learners come from and where we can visit on site for consulting work — nothing stops you joining from anywhere else." },
+  ];
+  return head({
+    title: "IT Training & Support Across Delhi NCR | Jobjila",
+    description: `Jobjila serves ${cities.map((c) => c.name).join(", ")} with live online IT training and on-site consulting across Delhi NCR. Same fees everywhere, with local job market context for each city.`,
+    canonical: "/locations/",
+    keywords: ["it training noida", "it training delhi ncr", "it course greater noida", "it support company ncr"],
+    extraLd: [orgLd, breadcrumbLd(t), faqLd(faqs)],
+  }) + `
+<section class="page-hero">
+  <div class="wrap">
+    ${crumb(t)}
+    <span class="eyebrow">Locations</span>
+    <h1>Based in ${esc(site.locality)}, training across India</h1>
+    <p>Training runs live online, so the course is identical wherever you join from. Consulting and support work is remote, with on-site visits across Delhi NCR where the work needs hands on hardware.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">${cities.length} cities &middot; ${openCourses.length} courses &middot; ${cities.length * openCourses.length} local guides</span>
+      <h2>Choose your city</h2>
+    </div>
+    <div class="cards">
+      ${cities.map((city) => `<div class="course-card" style="cursor:default">
+        <span class="strip"></span>
+        <span class="body">
+          <h3>${esc(city.name)}</h3>
+          <span class="desc">${esc(city.tier)}</span>
+          <span class="chips">${city.hubs.slice(0, 3).map((h) => `<span class="chip chip-line">${esc(h)}</span>`).join("")}</span>
+          <ul class="flist" style="margin-top:.75rem">
+            ${openCourses.slice(0, 5).map((c) => `<li><a href="/training/${c.slug}/${city.slug}/">${esc(c.short)} training in ${esc(city.name)}</a></li>`).join("\n            ")}
+          </ul>
+        </span>
+      </div>`).join("\n      ")}
     </div>
   </div>
 </section>
 
-<div class="container section">
-  <div class="course-layout">
-    <div class="card contact-card">
-      <h2 style="font-size:1.25rem">Message us on WhatsApp</h2>
-      <p>We do not make you fill a form. Tap below and a message opens already written &mdash; add your details and send. We reply the same working day.</p>
-
-      <div class="wa-options">
-        <a class="wa-option" href="${wa('Hi Jobjila, I want to know about a course.\n\nName:\nCity:\nCourse I am interested in:\nMy background:')}" target="_blank" rel="noopener">
-          <span class="wa-option__ico" aria-hidden="true">&#127891;</span>
-          <span><b>I want to join a course</b><em>Fees, batch dates and which course suits you</em></span>
-        </a>
-        <a class="wa-option" href="${wa('Hi Jobjila, I want to join as a freelancer.\n\nName:\nCity:\nMy skill:\nExperience:')}" target="_blank" rel="noopener">
-          <span class="wa-option__ico" aria-hidden="true">&#128187;</span>
-          <span><b>I want freelance work</b><em>Join the talent pool and get matched to projects</em></span>
-        </a>
-        <a class="wa-option" href="${wa('Hi Jobjila, I want to hire.\n\nCompany:\nCity:\nRole or project:\nBudget range:\nTimeline:')}" target="_blank" rel="noopener">
-          <span class="wa-option__ico" aria-hidden="true">&#129309;</span>
-          <span><b>I want to hire talent</b><em>Freelancers for a project, or permanent staff</em></span>
-        </a>
-        <a class="wa-option" href="${wa('Hi Jobjila, I want to teach on your platform.\n\nName:\nCity:\nSubject I can teach:\nYears of experience:')}" target="_blank" rel="noopener">
-          <span class="wa-option__ico" aria-hidden="true">&#128218;</span>
-          <span><b>I want to teach</b><em>Revenue share, no upfront cost</em></span>
-        </a>
-      </div>
-
-      <p class="form-note" style="margin:20px 0 0">Prefer email? Write to <a href="mailto:${esc(site.email)}">${esc(site.email)}</a> and we will reply the same way.</p>
-    </div>
-
-    <aside class="course-sidebar">
-      <div class="card">
-        <h3 style="font-size:1rem">Where we operate</h3>
-        <p class="small">Every cohort runs live online, so you can join from anywhere in India &mdash; the fee and the curriculum are the same wherever you are. We publish <a href="/locations/">local job-market guides for ${cities.length} cities</a>, covering what each skill pays and who is hiring there.</p>
-      </div>
-      <div class="card">
-        <h3 style="font-size:1rem">Prefer to email?</h3>
-        <p class="small" style="margin-bottom:0">Write to us directly at <a href="mailto:${esc(site.email)}">${esc(site.email)}</a> and we will pick it up the same way.</p>
-      </div>
-      <div class="card" style="background:var(--brand-soft);border-color:var(--indigo-200)">
-        <h3 style="font-size:1rem">Not sure which course?</h3>
-        <p class="small" style="margin-bottom:0">Tell us your background and target income on WhatsApp. We will suggest a track &mdash; including telling you if a cheaper or shorter course would get you there faster.</p>
-      </div>
-      <div class="card">
-        <h3 style="font-size:1rem">Want to teach?</h3>
-        <p class="small">Trainers keep 60&ndash;70% of every enrolment with no upfront cost.</p>
-        <a class="btn btn--ghost btn--block" href="/become-a-trainer/">Become a trainer</a>
-      </div>
-    </aside>
+<section class="sunk">
+  <div class="wrap">
+    ${faqBlock(faqs, "Questions about locations").replace('style="margin-top:3rem"', "")}
   </div>
-</div>
-` +
-    footer()
-  );
+</section>
+` + footer();
+}
+
+/* ============================= LEGAL ============================= */
+
+function legalPage({ slug, title, description, heading, blurb, body }) {
+  const t = trail(heading, `/${slug}/`);
+  return head({
+    title: `${title} | Jobjila`,
+    description,
+    canonical: `/${slug}/`,
+    extraLd: [orgLd, breadcrumbLd(t)],
+  }) + `
+<section class="page-hero">
+  <div class="wrap">
+    ${crumb(t)}
+    <span class="eyebrow">Legal</span>
+    <h1>${esc(heading)}</h1>
+    <p>${esc(blurb)}</p>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <div class="prose">
+      ${body}
+      <p class="small muted" style="margin-top:2rem">Last updated ${new Date().toISOString().slice(0, 10)}. Questions about this page: <a href="mailto:${esc(site.email)}">${esc(site.email)}</a>.</p>
+    </div>
+  </div>
+</section>
+` + footer();
+}
+
+const refundPolicy = () => legalPage({
+  slug: "refund-policy",
+  title: "Refund Policy",
+  description: `Jobjila refund policy: first class free, ${inr(site.pricing.bookingAmount)} booking fully refundable, and a ${site.pricing.refundDays}-day refund window after paying. Full refund if we cancel a batch.`,
+  heading: "Refund Policy",
+  blurb: "What you can get back, when, and how long it takes. Written plainly, because a refund policy nobody can understand is not a refund policy.",
+  body: `
+    <h2>1. The first class is free</h2>
+    <p>The first live session of any course is free to attend. No payment, no card details and no registration form are required. If you do not continue after it, you have paid nothing.</p>
+
+    <h2>2. Booking amount — fully refundable</h2>
+    <p>To hold a seat you pay ${inr(site.pricing.bookingAmount)}, which is held against your course fee. If you decide not to continue, the full ${inr(site.pricing.bookingAmount)} is returned. You do not have to give a reason.</p>
+
+    <h2>3. Balance fee</h2>
+    <p>The balance is payable before your ${ordinal(site.pricing.payBeforeSession)} session. By that point you will have attended two full sessions and met your trainer.</p>
+
+    <h2>4. ${site.pricing.refundDays}-day refund window</h2>
+    <p>After paying the balance you may still request a full refund if <strong>both</strong> apply:</p>
+    <ul>
+      <li>you have attended ${site.pricing.refundMaxSessions} sessions or fewer, and</li>
+      <li>it is within ${site.pricing.refundDays} days of your batch start date.</li>
+    </ul>
+    <p>Refunds are processed within ${site.pricing.refundDays} working days to the original payment method. Request one by WhatsApp or by emailing ${site.email}.</p>
+
+    <h2>5. After that</h2>
+    <p>Beyond ${site.pricing.refundMaxSessions} attended sessions or ${site.pricing.refundDays} days from the batch start, fees are non-refundable, because the trainer's time and your cohort seat have been committed.</p>
+
+    <h2>6. If we cancel or postpone</h2>
+    <p>If Jobjila cancels or postpones a batch, you receive a <strong>100% refund regardless of how much time has passed</strong>, or a free transfer to the next batch. The choice is yours, not ours.</p>
+
+    <h2>7. What is not included in a refund</h2>
+    <p>Certification exam fees are paid by you directly to the certifying body (AWS, Microsoft, Oracle, PeopleCert and others). We never hold that money, so we cannot refund it. Their own refund rules apply.</p>
+
+    <h2>8. Consulting engagements</h2>
+    <p>Advisory and support work is governed by the written scope and payment terms agreed before the engagement begins, not by this policy. Milestones not yet delivered are not payable.</p>
+  `,
+});
+
+const terms = () => legalPage({
+  slug: "terms",
+  title: "Terms of Service",
+  description: "Jobjila terms of service covering training enrolment, consulting engagements, payments, conduct and the limits of what we promise.",
+  heading: "Terms of Service",
+  blurb: "The terms you agree to when you enrol on a course or engage us for consulting work.",
+  body: `
+    <h2>1. Who we are</h2>
+    <p>${site.legalName}, based in ${site.locality}, ${site.region}, India. Contact: ${site.email}, ${site.phoneDisplay}.</p>
+
+    <h2>2. What we provide</h2>
+    <p>IT advisory, IT support services, and live online training. We are not a recruitment agency, placement service or job portal.</p>
+
+    <h2>3. No employment or income guarantee</h2>
+    <p><strong>We do not guarantee employment, placement, freelance work or any level of income.</strong> We provide training, assessment, resume review and interview preparation. Salary or earning figures shown anywhere on this site are market observations, not commitments to you.</p>
+
+    <h2>4. We never charge candidates for jobs</h2>
+    <p>We do not charge any fee for a job, an interview, a placement, a security deposit or equipment. If anyone asks you for such a payment in our name, it is not us — please report it to ${site.email}.</p>
+
+    <h2>5. Enrolment and payment</h2>
+    <p>Course fees are as published on each course page. The first session is free; a ${inr(site.pricing.bookingAmount)} refundable booking holds your seat; the balance is due before your ${ordinal(site.pricing.payBeforeSession)} session. Refunds are governed by our <a href="/refund-policy/">Refund Policy</a>.</p>
+
+    <h2>6. Certification exams</h2>
+    <p>Where a course prepares you for an external certification, the exam is booked and paid by you directly with the certifying body. Exam fees are never included in our course fee, and passing is not guaranteed.</p>
+
+    <h2>7. Course materials</h2>
+    <p>Recordings, slides and exercises are licensed to you for your own learning. Please do not redistribute or resell them.</p>
+
+    <h2>8. Conduct</h2>
+    <p>Cohorts are small and shared. We may remove a learner without refund for conduct that disrupts a session or harasses another participant. This has never been necessary and we do not expect it to be.</p>
+
+    <h2>9. Changes to a batch</h2>
+    <p>We may reschedule a session with notice. If we cancel a batch entirely, our <a href="/refund-policy/">Refund Policy</a> applies.</p>
+
+    <h2>10. Consulting engagements</h2>
+    <p>Advisory and support work is governed by the written scope, deliverables and payment terms agreed before work begins. Those terms take precedence over this page where they differ.</p>
+
+    <h2>11. Liability</h2>
+    <p>Our liability for any engagement is limited to the fees paid for that engagement. We give advice in good faith based on the information available to us; decisions taken on that advice remain yours.</p>
+
+    <h2>12. Governing law</h2>
+    <p>These terms are governed by the laws of India, with jurisdiction in Uttar Pradesh.</p>
+  `,
+});
+
+const privacy = () => legalPage({
+  slug: "privacy",
+  title: "Privacy Policy",
+  description: "Jobjila privacy policy: what personal data we collect, why, how long we keep it and how to have it deleted. We do not sell data and do not run advertising trackers.",
+  heading: "Privacy Policy",
+  blurb: "What we collect, why, and how to have it removed. We do not sell your data and we do not run advertising trackers on this site.",
+  body: `
+    <h2>1. What we collect</h2>
+    <p>Only what you send us. If you message us on WhatsApp, call, or email, we hold that conversation and whatever you chose to include in it — typically your name, city, and what you are interested in. This website has no contact form and no account system.</p>
+
+    <h2>2. Why we hold it</h2>
+    <p>To answer your enquiry, to run your enrolment if you join a course, and to meet accounting obligations on any payment you make.</p>
+
+    <h2>3. What we do not do</h2>
+    <ul>
+      <li>We do not sell or rent your data to anyone.</li>
+      <li>We do not run advertising or cross-site tracking pixels on this site.</li>
+      <li>We do not send marketing messages to people who have not asked for them.</li>
+    </ul>
+
+    <h2>4. Third parties</h2>
+    <p>Messages you send reach us through WhatsApp, which is operated by Meta under its own privacy policy. This site loads fonts from Google Fonts, which means Google's servers see the request. It is hosted on GitHub Pages, which keeps standard server logs. We use no other third-party services on this site.</p>
+
+    <h2>5. How long we keep it</h2>
+    <p>Enquiries that do not become enrolments are deleted within 12 months. Records relating to a payment are kept as long as Indian accounting and tax rules require.</p>
+
+    <h2>6. Your rights</h2>
+    <p>Email ${site.email} and ask to see what we hold about you, to correct it, or to have it deleted. We will action it within 30 days, other than records we are legally required to retain.</p>
+
+    <h2>7. Children</h2>
+    <p>Our services are intended for people aged 18 and over. We do not knowingly collect data about children.</p>
+  `,
+});
+
+function ordinal(n) {
+  return n + (["th", "st", "nd", "rd"][(n % 100 - 20) % 10] || ["th", "st", "nd", "rd"][n % 100] || "th");
 }
 
 /* ---------- writer ---------- */
 
-module.exports = function buildStaticPages() {
+module.exports = function buildPages() {
   write("index.html", home());
-  write(path.join("for-freelancers", "index.html"), forFreelancers());
-  write(path.join("hire", "index.html"), hire());
-  write(path.join("become-a-trainer", "index.html"), becomeATrainer());
-  write(path.join("blog", "index.html"), blog());
+  write(path.join("it-advisory", "index.html"), itAdvisory());
+  write(path.join("it-support", "index.html"), itSupport());
+  write(path.join("network", "index.html"), network());
   write(path.join("about", "index.html"), about());
   write(path.join("contact", "index.html"), contact());
+  write(path.join("locations", "index.html"), locations());
+  write(path.join("refund-policy", "index.html"), refundPolicy());
+  write(path.join("terms", "index.html"), terms());
+  write(path.join("privacy", "index.html"), privacy());
+  return 10;
 };

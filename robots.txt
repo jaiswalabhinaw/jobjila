@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-# Working files and generator sources are not content
+# Generator sources and unrelated older prototypes are not site content
 Disallow: /scripts/
 Disallow: /data/
 Disallow: /bookflip/

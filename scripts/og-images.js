@@ -26,9 +26,8 @@ const fs = require("fs");
 const path = require("path");
 
 const ROOT = path.join(__dirname, "..");
-const { site, courses } = JSON.parse(
-  fs.readFileSync(path.join(ROOT, "data", "courses.json"), "utf8")
-);
+const site = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "site.json"), "utf8"));
+const { courses } = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "courses.json"), "utf8"));
 
 const OUT_DIR = path.join(ROOT, "assets", "og");
 
@@ -55,11 +54,11 @@ function card({ eyebrow, title, meta, footnote }) {
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     width: 1200px; height: 630px;
-    font-family: "Liberation Sans", Inter, Arial, sans-serif;
+    font-family: "Liberation Sans", "IBM Plex Sans", Arial, sans-serif;
     color: #fff;
     background:
-      radial-gradient(900px 460px at 10% -8%, rgba(99,102,241,.55), transparent 60%),
-      radial-gradient(760px 400px at 95% 10%, rgba(245,158,11,.30), transparent 62%),
+      radial-gradient(900px 460px at 10% -8%, rgba(15,110,92,.62), transparent 60%),
+      radial-gradient(760px 400px at 95% 10%, rgba(59,78,155,.34), transparent 62%),
       linear-gradient(165deg, #0b1220 0%, #131c31 55%, #1a2547 100%);
     padding: 68px 72px;
     display: flex; flex-direction: column; justify-content: space-between;
@@ -68,7 +67,7 @@ function card({ eyebrow, title, meta, footnote }) {
   .top { display: flex; align-items: center; gap: 16px; }
   .mark {
     width: 56px; height: 56px; border-radius: 15px;
-    background: linear-gradient(135deg, #6366f1, #4338ca);
+    background: linear-gradient(135deg, #17a085, #0b5546);
     display: flex; align-items: center; justify-content: center;
     font-size: 30px; font-weight: 700;
   }
@@ -77,7 +76,7 @@ function card({ eyebrow, title, meta, footnote }) {
     display: inline-block;
     font-size: 20px; font-weight: 700;
     letter-spacing: 2.4px; text-transform: uppercase;
-    color: #a5b4fc;
+    color: #6ed3ba;
     margin-bottom: 20px;
   }
   h1 {
@@ -92,7 +91,7 @@ function card({ eyebrow, title, meta, footnote }) {
     background: rgba(255,255,255,.12);
     border: 1px solid rgba(255,255,255,.24);
   }
-  .chip--go { background: #25d366; border-color: #25d366; color: #06281a; }
+  .chip--go { background: #17a085; border-color: #17a085; color: #04201a; }
   .foot {
     display: flex; align-items: center; justify-content: space-between;
     font-size: 24px; color: rgba(255,255,255,.66);
@@ -140,22 +139,19 @@ async function main() {
     {
       file: "default.jpg",
       html: card({
-        eyebrow: "Learn. Get Verified. Earn.",
-        title: "Turn a skill into a job, freelance work, or your own business",
-        meta: ["Live online", "India-wide", "Explore courses"],
-        footnote: site.tagline,
+        eyebrow: "IT Advisory · Support · Training",
+        title: "IT advisory, support and training — without the guesswork",
+        meta: ["Noida", "India-wide", "First class free"],
+        footnote: site.url.replace("https://", ""),
       }),
     },
     ...courses.map((c) => ({
       file: `${c.slug}.jpg`,
       html: card({
-        eyebrow: c.category,
+        eyebrow: (site.tracks.find((t) => t.id === c.track) || {}).name || "Training",
         title: c.name,
-        meta:
-          c.status === "open"
-            ? [c.duration, inr(c.priceINR), c.earning]
-            : [c.duration, "Coming soon", "Join the waitlist"],
-        footnote: "Live online · Learn. Get Verified. Earn.",
+        meta: [c.duration, inr(c.priceINR), "First class free"],
+        footnote: "Live online · " + site.tagline,
       }),
     })),
   ];
