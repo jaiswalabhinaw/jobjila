@@ -67,7 +67,7 @@ function section(s, i) {
 function articlePage(a) {
   const t = [
     { name: "Home", url: "/" },
-    { name: "Guides", url: "/blog/" },
+    { name: "Career Guide", url: "/blog/" },
     { name: a.title, url: artUrl(a) },
   ];
   const related = (a.relatedCourses || []).map(bySlug).filter(Boolean);
@@ -179,7 +179,7 @@ function articlePage(a) {
 /* ------------------------------- index ------------------------------- */
 
 function indexPage() {
-  const t = [{ name: "Home", url: "/" }, { name: "Guides", url: "/blog/" }];
+  const t = [{ name: "Home", url: "/" }, { name: "Career Guide", url: "/blog/" }];
   const groups = site.tracks
     .map((tr) => ({ tr, list: articles.filter((a) => a.track === tr.id) }))
     .filter((g) => g.list.length);
@@ -222,7 +222,7 @@ function indexPage() {
 <section class="page-hero">
   <div class="wrap">
     ${crumb(t)}
-    <span class="eyebrow">Guides</span>
+    <span class="eyebrow">Career Guide</span>
     <h1>Straight answers about IT certification and careers</h1>
     <p>What we would tell you on a call, written down. No affiliate links, no course sold in the middle of a paragraph, and the parts that are inconvenient for us left in.</p>
   </div>
