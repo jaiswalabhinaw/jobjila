@@ -108,6 +108,44 @@
     }
   }
 
+  /* ---------- conversion tracking ----------
+     This site has no forms, so a WhatsApp click IS the conversion. Without
+     this, analytics would only show page views and never tell you which page
+     actually produced an enquiry — which is the one thing worth knowing.
+
+     Silently does nothing when analytics is off (gtag undefined), so the site
+     works identically with no Measurement ID configured. */
+  document.addEventListener("click", function (e) {
+    if (typeof window.gtag !== "function") return;
+    var el = e.target;
+    var link = el && el.closest ? el.closest("a[href]") : null;
+    if (!link) return;
+
+    var href = link.getAttribute("href") || "";
+    var label = (link.querySelector("span") || {}).textContent || link.textContent || "";
+    label = label.trim().slice(0, 60);
+
+    if (href.indexOf("wa.me/?text=") !== -1) {
+      // Visitor is sharing this page with their own contacts.
+      window.gtag("event", "share", { method: "whatsapp", content_type: "page", item_id: location.pathname });
+    } else if (href.indexOf("wa.me/") !== -1) {
+      // Visitor is messaging us. The real goal.
+      window.gtag("event", "contact_whatsapp", { page_path: location.pathname, button_label: label });
+    } else if (href.indexOf("linkedin.com/sharing") !== -1) {
+      window.gtag("event", "share", { method: "linkedin", content_type: "page", item_id: location.pathname });
+    } else if (href.indexOf("mailto:") === 0) {
+      window.gtag("event", "contact_email", { page_path: location.pathname });
+    }
+  });
+
+  // Copy-link is a share too, but it is a button rather than a link.
+  document.addEventListener("click", function (e) {
+    if (typeof window.gtag !== "function") return;
+    var el = e.target;
+    var btn = el && el.closest ? el.closest("[data-share-copy]") : null;
+    if (btn) window.gtag("event", "share", { method: "copy_link", content_type: "page", item_id: location.pathname });
+  });
+
   // Hide the floating WhatsApp button while the footer is on screen, so it
   // never sits on top of the footer links.
   var float = document.querySelector(".wa-float");

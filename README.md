@@ -124,6 +124,37 @@ therefore carry genuinely local content: `hubs` (real local tech areas),
 and two city-specific `faqs`. Do not add a city you cannot write real local
 detail for — thin city pages put the whole set at risk, not just the new page.
 
+## Analytics
+
+Off by default. Paste a GA4 Measurement ID into `data/site.json` and run
+`npm run build`:
+
+```json
+"analytics": { "ga4": "G-XXXXXXXXXX" }
+```
+
+That single field drives **both** the tag and the Privacy Policy's measurement
+section, so the policy can never claim "no analytics" while analytics is
+running. Empty means no script, no requests to Google, and a policy that says
+so. Do not add the tag by hand anywhere.
+
+**Keep Google Signals OFF** in the GA4 property. With it on, Google may use the
+data for advertising personalisation, which would make the policy's "no
+advertising or cross-site tracking pixels" claim untrue.
+
+### Conversion events
+
+There are no forms, so a WhatsApp click *is* the conversion. `js/main.js` sends:
+
+| Event | Fires on | Tells you |
+|---|---|---|
+| `contact_whatsapp` | any `wa.me/<number>` link | which page produced an enquiry |
+| `share` (`whatsapp` / `linkedin` / `copy_link`) | the share row | what people pass on |
+| `contact_email` | any `mailto:` link | — |
+
+`contact_whatsapp` is the one to mark as a **Key event** in GA4. Without it,
+analytics shows page views and never tells you which page actually works.
+
 ## Retired URLs
 
 `scripts/redirects.js` generates a stub at every URL the August 2026

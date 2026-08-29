@@ -49,5 +49,8 @@
       "accent": "plum"
     }
   ],
-  "social": []
+  "social": [],
+  "analytics": {
+    "ga4": ""
+  }
 }
