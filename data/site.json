@@ -7,30 +7,47 @@
   "email": "support@jobjila.com",
   "whatsapp": "918756680477",
   "phoneDisplay": "+91 87566 80477",
-
   "founder": {
     "name": "Shrijan",
     "role": "Founder",
-    "bio": "Shrijan runs Jobjila's advisory and training practice. Every engagement and every cohort is his responsibility — if something goes wrong, he is the person who answers for it.",
+    "bio": "Shrijan runs Jobjila's advisory and training practice. Every engagement and every cohort is their responsibility — if something goes wrong, they are the person who answers for it.",
     "linkedin": ""
   },
-
   "locality": "Noida",
   "region": "Uttar Pradesh",
   "country": "IN",
-
   "pricing": {
     "bookingAmount": 500,
     "refundDays": 7,
     "refundMaxSessions": 3,
     "payBeforeSession": 3
   },
-
   "tracks": [
-    { "id": "cloud",     "name": "Cloud Platforms",        "accent": "teal" },
-    { "id": "itsm",      "name": "IT Service Management",  "accent": "indigo" },
-    { "id": "infra",     "name": "Infrastructure",         "accent": "slate" },
-    { "id": "consult",   "name": "Consulting Skills",      "accent": "ochre" },
-    { "id": "data",      "name": "Data & AI",              "accent": "plum" }
-  ]
+    {
+      "id": "cloud",
+      "name": "Cloud Platforms",
+      "accent": "teal"
+    },
+    {
+      "id": "itsm",
+      "name": "IT Service Management",
+      "accent": "indigo"
+    },
+    {
+      "id": "infra",
+      "name": "Infrastructure",
+      "accent": "slate"
+    },
+    {
+      "id": "consult",
+      "name": "Consulting Skills",
+      "accent": "ochre"
+    },
+    {
+      "id": "data",
+      "name": "Data & AI",
+      "accent": "plum"
+    }
+  ],
+  "social": []
 }

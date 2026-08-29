@@ -8,24 +8,49 @@
       "track": "cloud",
       "status": "open",
       "featured": true,
-      "seoTitle": "AWS Training Course — Fees, Syllabus & Certification Path",
-      "metaDescription": "Live online AWS training covering EC2, S3, VPC, IAM, RDS and Well-Architected design. 10 weeks, ₹18,500, first class free. Prepares you for Cloud Practitioner and Solutions Architect Associate.",
+      "seoTitle": "AWS Training Course — Fees & Syllabus",
+      "metaDescription": "Live online AWS training: EC2, S3, VPC, IAM, RDS and Well-Architected design. 10 weeks, ₹18,500, first class free. Preps Cloud Practitioner and SAA.",
       "tagline": "Build, secure and cost-manage real workloads on the cloud that hires the most.",
       "duration": "10 weeks",
       "effort": "6–8 hrs/week",
       "level": "Beginner to Intermediate",
       "priceINR": 18500,
       "certification": "AWS Cloud Practitioner (CLF-C02) and Solutions Architect Associate (SAA-C03)",
-      "roles": ["Cloud Associate", "Cloud Support Engineer", "Junior Cloud Engineer"],
+      "roles": [
+        "Cloud Associate",
+        "Cloud Support Engineer",
+        "Junior Cloud Engineer"
+      ],
       "intro": "AWS is the default answer for most companies moving to cloud, which makes it the most portable cloud skill you can hold. This course takes you from your first virtual machine to a fault-tolerant, properly secured application — with the cost discipline that separates people who have used AWS from people who have run it.",
       "modules": [
-        { "title": "Cloud foundations and the AWS global infrastructure", "detail": "Regions, availability zones, the shared responsibility model, and how AWS billing actually works before you spend anything." },
-        { "title": "Compute and storage", "detail": "EC2 instance families and sizing, EBS volumes, S3 storage classes and lifecycle rules, and when each one is the wrong choice." },
-        { "title": "Networking with VPC", "detail": "Subnets, route tables, security groups, NAT and load balancers. You build a public web tier talking privately to a database tier." },
-        { "title": "Identity and security", "detail": "IAM users, roles and least-privilege policies, KMS key management, and encryption at rest and in transit." },
-        { "title": "Databases and application services", "detail": "RDS, DynamoDB basics, Lambda and API Gateway — enough to run a serverless component without over-engineering it." },
-        { "title": "Monitoring, cost and the Well-Architected Framework", "detail": "CloudWatch metrics and alarms, budget alerts, right-sizing, and the reserved-instance and savings-plan maths that saves clients real money." },
-        { "title": "Capstone: migrate and harden a live application", "detail": "Move a running application to AWS with no data loss, secure it, monitor it, and document the cost model. This becomes your portfolio piece." }
+        {
+          "title": "Cloud foundations and the AWS global infrastructure",
+          "detail": "Regions, availability zones, the shared responsibility model, and how AWS billing actually works before you spend anything."
+        },
+        {
+          "title": "Compute and storage",
+          "detail": "EC2 instance families and sizing, EBS volumes, S3 storage classes and lifecycle rules, and when each one is the wrong choice."
+        },
+        {
+          "title": "Networking with VPC",
+          "detail": "Subnets, route tables, security groups, NAT and load balancers. You build a public web tier talking privately to a database tier."
+        },
+        {
+          "title": "Identity and security",
+          "detail": "IAM users, roles and least-privilege policies, KMS key management, and encryption at rest and in transit."
+        },
+        {
+          "title": "Databases and application services",
+          "detail": "RDS, DynamoDB basics, Lambda and API Gateway — enough to run a serverless component without over-engineering it."
+        },
+        {
+          "title": "Monitoring, cost and the Well-Architected Framework",
+          "detail": "CloudWatch metrics and alarms, budget alerts, right-sizing, and the reserved-instance and savings-plan maths that saves clients real money."
+        },
+        {
+          "title": "Capstone: migrate and harden a live application",
+          "detail": "Move a running application to AWS with no data loss, secure it, monitor it, and document the cost model. This becomes your portfolio piece."
+        }
       ],
       "outcomes": [
         "Deploy a highly available multi-tier application on AWS",
@@ -34,12 +59,34 @@
         "Read a real AWS bill and reduce it by a defensible margin",
         "Sit the Cloud Practitioner exam with confidence, and start on Solutions Architect Associate"
       ],
-      "tools": ["AWS Console", "AWS CLI", "EC2", "S3", "VPC", "IAM", "RDS", "CloudWatch", "Terraform basics"],
+      "tools": [
+        "AWS Console",
+        "AWS CLI",
+        "EC2",
+        "S3",
+        "VPC",
+        "IAM",
+        "RDS",
+        "CloudWatch",
+        "Terraform basics"
+      ],
       "faqs": [
-        { "q": "Do I need programming experience for this AWS course?", "a": "No. We start from Linux and networking basics. You will use the command line and read some configuration, but you are not expected to write applications. Comfort with a computer and willingness to practise is enough." },
-        { "q": "Are the AWS certification exam fees included in the course fee?", "a": "No. Exam fees are paid directly to AWS. We cover the full syllabus, run practice questions and guide you through booking, but the certification fee itself is separate and goes to Amazon, not to us." },
-        { "q": "Will I get an AWS account to practise on?", "a": "You will use the AWS Free Tier, which we help you set up safely with budget alerts on day one so you never get a surprise bill. Some lab exercises use small paid resources — typically under ₹500 across the whole course if you follow the shutdown instructions." },
-        { "q": "Should I learn AWS or Azure first?", "a": "AWS has the largest share of the Indian job market, so it is the safer first choice if you have no preference. If you are already working somewhere Microsoft-heavy, start with Azure instead. The concepts transfer either way — the second cloud takes far less time than the first." }
+        {
+          "q": "Do I need programming experience for this AWS course?",
+          "a": "No. We start from Linux and networking basics. You will use the command line and read some configuration, but you are not expected to write applications. Comfort with a computer and willingness to practise is enough."
+        },
+        {
+          "q": "Are the AWS certification exam fees included in the course fee?",
+          "a": "No. Exam fees are paid directly to AWS. We cover the full syllabus, run practice questions and guide you through booking, but the certification fee itself is separate and goes to Amazon, not to us."
+        },
+        {
+          "q": "Will I get an AWS account to practise on?",
+          "a": "You will use the AWS Free Tier, which we help you set up safely with budget alerts on day one so you never get a surprise bill. Some lab exercises use small paid resources — typically under ₹500 across the whole course if you follow the shutdown instructions."
+        },
+        {
+          "q": "Should I learn AWS or Azure first?",
+          "a": "AWS has the largest share of the Indian job market, so it is the safer first choice if you have no preference. If you are already working somewhere Microsoft-heavy, start with Azure instead. The concepts transfer either way — the second cloud takes far less time than the first."
+        }
       ]
     },
     {
@@ -49,24 +96,49 @@
       "track": "cloud",
       "status": "open",
       "featured": true,
-      "seoTitle": "Microsoft Azure Training Course — Fees, Syllabus & AZ-900 / AZ-104",
-      "metaDescription": "Live online Azure training covering Virtual Machines, Storage, VNet, Entra ID and cost management. 10 weeks, ₹18,500, first class free. Prepares you for AZ-900 and AZ-104.",
+      "seoTitle": "Azure Training Course — Fees & AZ-104 Syllabus",
+      "metaDescription": "Live online Microsoft Azure training covering identity, networking, compute, storage and monitoring. 10 weeks, ₹18,500, first class free. AZ-900 and AZ-104.",
       "tagline": "The cloud most Indian enterprises already run — and the one their IT teams hire for.",
       "duration": "10 weeks",
       "effort": "6–8 hrs/week",
       "level": "Beginner to Intermediate",
       "priceINR": 18500,
       "certification": "Azure Fundamentals (AZ-900) and Azure Administrator Associate (AZ-104)",
-      "roles": ["Azure Administrator", "Cloud Support Engineer", "Infrastructure Engineer"],
+      "roles": [
+        "Azure Administrator",
+        "Cloud Support Engineer",
+        "Infrastructure Engineer"
+      ],
       "intro": "If a company already runs Microsoft 365, Windows Server and Active Directory, its cloud is almost always Azure. That describes a very large share of Indian enterprises and their captive centres — which is why Azure administration is one of the steadiest hiring lines in Indian IT.",
       "modules": [
-        { "title": "Azure architecture and governance", "detail": "Regions, resource groups, subscriptions and management groups, plus how Azure billing and cost allocation are structured." },
-        { "title": "Compute and storage", "detail": "Virtual Machines and scale sets, managed disks, Blob and File storage tiers, and choosing between them on cost and access pattern." },
-        { "title": "Virtual networking", "detail": "VNets, subnets, network security groups, peering, VPN gateway and Azure Load Balancer — built hands-on, not on slides." },
-        { "title": "Identity with Microsoft Entra ID", "detail": "Users, groups, roles, conditional access and hybrid identity with on-premise Active Directory. This is the module that most distinguishes Azure from AWS." },
-        { "title": "Governance, policy and backup", "detail": "Azure Policy, RBAC, resource locks, Recovery Services vaults, and a backup you have actually restored from." },
-        { "title": "Monitoring and cost management", "detail": "Azure Monitor, Log Analytics, alerts, budgets and reservations — including how to present a cost reduction to management." },
-        { "title": "Capstone: design and deploy a governed environment", "detail": "Build a complete subscription with correct identity, network segmentation, policy, backup and cost controls, then document it." }
+        {
+          "title": "Azure architecture and governance",
+          "detail": "Regions, resource groups, subscriptions and management groups, plus how Azure billing and cost allocation are structured."
+        },
+        {
+          "title": "Compute and storage",
+          "detail": "Virtual Machines and scale sets, managed disks, Blob and File storage tiers, and choosing between them on cost and access pattern."
+        },
+        {
+          "title": "Virtual networking",
+          "detail": "VNets, subnets, network security groups, peering, VPN gateway and Azure Load Balancer — built hands-on, not on slides."
+        },
+        {
+          "title": "Identity with Microsoft Entra ID",
+          "detail": "Users, groups, roles, conditional access and hybrid identity with on-premise Active Directory. This is the module that most distinguishes Azure from AWS."
+        },
+        {
+          "title": "Governance, policy and backup",
+          "detail": "Azure Policy, RBAC, resource locks, Recovery Services vaults, and a backup you have actually restored from."
+        },
+        {
+          "title": "Monitoring and cost management",
+          "detail": "Azure Monitor, Log Analytics, alerts, budgets and reservations — including how to present a cost reduction to management."
+        },
+        {
+          "title": "Capstone: design and deploy a governed environment",
+          "detail": "Build a complete subscription with correct identity, network segmentation, policy, backup and cost controls, then document it."
+        }
       ],
       "outcomes": [
         "Deploy and manage Azure VMs, storage and networking end to end",
@@ -75,12 +147,31 @@
         "Build and test a backup and recovery plan",
         "Sit AZ-900 with confidence, and prepare for AZ-104"
       ],
-      "tools": ["Azure Portal", "Azure CLI", "PowerShell basics", "Entra ID", "Azure Monitor", "Azure Policy"],
+      "tools": [
+        "Azure Portal",
+        "Azure CLI",
+        "PowerShell basics",
+        "Entra ID",
+        "Azure Monitor",
+        "Azure Policy"
+      ],
       "faqs": [
-        { "q": "Do I need Windows Server experience before this Azure course?", "a": "It helps but it is not required. The identity module covers Active Directory concepts from the beginning, since hybrid identity is where most Azure work actually happens." },
-        { "q": "Is AZ-900 or AZ-104 the right certification for me?", "a": "AZ-900 is a fundamentals exam and is achievable for everyone who completes this course. AZ-104 is the administrator associate exam and is the one employers actually value — the course covers its syllabus, and most learners sit it a few weeks after finishing." },
-        { "q": "Are the Microsoft exam fees included?", "a": "No. Exam fees are paid directly to Microsoft. We prepare you and guide the booking, but the fee itself is not ours." },
-        { "q": "Can I use a free Azure account for the labs?", "a": "Yes. Azure's free account plus its always-free services cover most of the course. We set up budget alerts in week one so nothing runs up a bill without you knowing." }
+        {
+          "q": "Do I need Windows Server experience before this Azure course?",
+          "a": "It helps but it is not required. The identity module covers Active Directory concepts from the beginning, since hybrid identity is where most Azure work actually happens."
+        },
+        {
+          "q": "Is AZ-900 or AZ-104 the right certification for me?",
+          "a": "AZ-900 is a fundamentals exam and is achievable for everyone who completes this course. AZ-104 is the administrator associate exam and is the one employers actually value — the course covers its syllabus, and most learners sit it a few weeks after finishing."
+        },
+        {
+          "q": "Are the Microsoft exam fees included?",
+          "a": "No. Exam fees are paid directly to Microsoft. We prepare you and guide the booking, but the fee itself is not ours."
+        },
+        {
+          "q": "Can I use a free Azure account for the labs?",
+          "a": "Yes. Azure's free account plus its always-free services cover most of the course. We set up budget alerts in week one so nothing runs up a bill without you knowing."
+        }
       ]
     },
     {
@@ -90,24 +181,49 @@
       "track": "cloud",
       "status": "open",
       "featured": true,
-      "seoTitle": "Oracle Cloud Infrastructure (OCI) Training — Fees, Syllabus & Certification",
-      "metaDescription": "Live online OCI training covering Compute, Block and Object Storage, VCN, IAM and Autonomous Database. 8 weeks, ₹16,500, first class free. Prepares you for OCI Foundations and Architect Associate.",
+      "seoTitle": "Oracle Cloud (OCI) Training — Fees & Syllabus",
+      "metaDescription": "Live online Oracle Cloud Infrastructure training: compartments, VCNs, compute, storage and databases. 8 weeks, ₹16,500, first class free. OCI exam prep.",
       "tagline": "The cloud with the least competition for jobs — and a growing enterprise install base.",
       "duration": "8 weeks",
       "effort": "6 hrs/week",
       "level": "Beginner to Intermediate",
       "priceINR": 16500,
       "certification": "OCI Foundations Associate and OCI Architect Associate",
-      "roles": ["OCI Administrator", "Cloud Engineer", "Database Cloud Engineer"],
+      "roles": [
+        "OCI Administrator",
+        "Cloud Engineer",
+        "Database Cloud Engineer"
+      ],
       "intro": "Oracle Cloud is smaller than AWS and Azure, and that is precisely the opportunity. Companies running Oracle databases and E-Business Suite are moving them to OCI, and there are far fewer trained people competing for that work. If you want a cloud skill where you are not the thousandth applicant, this is it.",
       "modules": [
-        { "title": "OCI architecture and tenancy model", "detail": "Regions, availability and fault domains, compartments, and the tenancy structure that makes OCI governance different from AWS and Azure." },
-        { "title": "Identity and access management", "detail": "Compartments as a security boundary, groups, dynamic groups and policy statements — OCI's policy language written from scratch." },
-        { "title": "Compute and storage", "detail": "Compute shapes including flexible shapes, block volumes, object storage tiers, and the file storage service." },
-        { "title": "Virtual Cloud Network", "detail": "VCNs, subnets, route tables, security lists and network security groups, internet and NAT gateways, and connectivity back to on-premise." },
-        { "title": "Databases on OCI", "detail": "Autonomous Database, Base Database Service and MySQL HeatWave — what each is for and how they are provisioned and backed up." },
-        { "title": "Observability, cost and migration", "detail": "Monitoring, logging, budgets and cost analysis, plus how a typical Oracle-to-OCI migration is actually planned." },
-        { "title": "Capstone: build a governed OCI tenancy", "detail": "Design compartments, policies, network and a database workload, then document the architecture as a migration proposal." }
+        {
+          "title": "OCI architecture and tenancy model",
+          "detail": "Regions, availability and fault domains, compartments, and the tenancy structure that makes OCI governance different from AWS and Azure."
+        },
+        {
+          "title": "Identity and access management",
+          "detail": "Compartments as a security boundary, groups, dynamic groups and policy statements — OCI's policy language written from scratch."
+        },
+        {
+          "title": "Compute and storage",
+          "detail": "Compute shapes including flexible shapes, block volumes, object storage tiers, and the file storage service."
+        },
+        {
+          "title": "Virtual Cloud Network",
+          "detail": "VCNs, subnets, route tables, security lists and network security groups, internet and NAT gateways, and connectivity back to on-premise."
+        },
+        {
+          "title": "Databases on OCI",
+          "detail": "Autonomous Database, Base Database Service and MySQL HeatWave — what each is for and how they are provisioned and backed up."
+        },
+        {
+          "title": "Observability, cost and migration",
+          "detail": "Monitoring, logging, budgets and cost analysis, plus how a typical Oracle-to-OCI migration is actually planned."
+        },
+        {
+          "title": "Capstone: build a governed OCI tenancy",
+          "detail": "Design compartments, policies, network and a database workload, then document the architecture as a migration proposal."
+        }
       ],
       "outcomes": [
         "Structure an OCI tenancy with compartments and policies that hold up",
@@ -116,12 +232,31 @@
         "Provision and back up an Autonomous Database",
         "Sit the OCI Foundations Associate exam, and prepare for Architect Associate"
       ],
-      "tools": ["OCI Console", "OCI CLI", "Compartments", "VCN", "Autonomous Database", "Resource Manager"],
+      "tools": [
+        "OCI Console",
+        "OCI CLI",
+        "Compartments",
+        "VCN",
+        "Autonomous Database",
+        "Resource Manager"
+      ],
       "faqs": [
-        { "q": "Is OCI worth learning when AWS and Azure are bigger?", "a": "For job-market maths, often yes. There are fewer OCI roles overall, but there are far fewer trained candidates — so the ratio can be better than AWS. It is particularly strong if you have any Oracle database background, or want to work with companies running Oracle applications." },
-        { "q": "Are Oracle certification exams free?", "a": "Oracle has periodically offered free certification windows for OCI exams, but this changes without notice, so we do not build a promise around it. Assume you will pay Oracle directly, and we will tell you if a free window is open when your cohort runs." },
-        { "q": "Do I need to know Oracle Database for this course?", "a": "No. The database module explains what Autonomous Database is and how to run it from a cloud infrastructure point of view. Deep SQL and DBA work is a separate skill and not required here." },
-        { "q": "Can I practise OCI for free?", "a": "Yes. Oracle's Always Free tier is unusually generous — it includes compute instances, block and object storage, and two Autonomous Databases that do not expire. Almost the entire course can be practised at no cost." }
+        {
+          "q": "Is OCI worth learning when AWS and Azure are bigger?",
+          "a": "For job-market maths, often yes. There are fewer OCI roles overall, but there are far fewer trained candidates — so the ratio can be better than AWS. It is particularly strong if you have any Oracle database background, or want to work with companies running Oracle applications."
+        },
+        {
+          "q": "Are Oracle certification exams free?",
+          "a": "Oracle has periodically offered free certification windows for OCI exams, but this changes without notice, so we do not build a promise around it. Assume you will pay Oracle directly, and we will tell you if a free window is open when your cohort runs."
+        },
+        {
+          "q": "Do I need to know Oracle Database for this course?",
+          "a": "No. The database module explains what Autonomous Database is and how to run it from a cloud infrastructure point of view. Deep SQL and DBA work is a separate skill and not required here."
+        },
+        {
+          "q": "Can I practise OCI for free?",
+          "a": "Yes. Oracle's Always Free tier is unusually generous — it includes compute instances, block and object storage, and two Autonomous Databases that do not expire. Almost the entire course can be practised at no cost."
+        }
       ]
     },
     {
@@ -131,22 +266,41 @@
       "track": "itsm",
       "status": "open",
       "featured": true,
-      "seoTitle": "ITIL 4 Foundation Training Course — Fees, Syllabus & Certification",
-      "metaDescription": "Live online ITIL 4 Foundation training covering the service value system, four dimensions, guiding principles and key practices. 4 weeks, ₹12,000, first class free.",
+      "seoTitle": "ITIL 4 Foundation Course — Fees & Syllabus",
+      "metaDescription": "Live online ITIL 4 Foundation training: the service value system, practices and exam technique. 4 weeks, ₹12,000, first class free. PeopleCert exam prep.",
       "tagline": "The vocabulary every IT service organisation runs on — and the fastest credential to hold.",
       "duration": "4 weeks",
       "effort": "4 hrs/week",
       "level": "Beginner — no IT background required",
       "priceINR": 12000,
       "certification": "ITIL 4 Foundation (PeopleCert)",
-      "roles": ["Service Desk Analyst", "IT Process Analyst", "Service Delivery Coordinator"],
+      "roles": [
+        "Service Desk Analyst",
+        "IT Process Analyst",
+        "Service Delivery Coordinator"
+      ],
       "intro": "ITIL is not a technology — it is the shared language IT service organisations use to describe how work flows. That is exactly why it appears in so many job descriptions: a person who understands incident, problem and change management can be useful in an IT team from their first week. It is also the shortest, cheapest credential on this page.",
       "modules": [
-        { "title": "Service management as a discipline", "detail": "What a service actually is, value co-creation, and the difference between outputs and outcomes — the framing the whole exam rests on." },
-        { "title": "The four dimensions and the service value system", "detail": "Organisations and people, information and technology, partners and suppliers, value streams and processes — and how the SVS ties them together." },
-        { "title": "The seven guiding principles", "detail": "Focus on value, start where you are, progress iteratively, collaborate, think holistically, keep it simple, optimise and automate — with real examples of each being violated." },
-        { "title": "The service value chain and key practices", "detail": "Plan, improve, engage, design and transition, obtain and build, deliver and support — plus incident, problem, change enablement, service request and service desk practices in detail." },
-        { "title": "Exam preparation", "detail": "Question patterns, common traps, and two full timed mock exams with review of every wrong answer." }
+        {
+          "title": "Service management as a discipline",
+          "detail": "What a service actually is, value co-creation, and the difference between outputs and outcomes — the framing the whole exam rests on."
+        },
+        {
+          "title": "The four dimensions and the service value system",
+          "detail": "Organisations and people, information and technology, partners and suppliers, value streams and processes — and how the SVS ties them together."
+        },
+        {
+          "title": "The seven guiding principles",
+          "detail": "Focus on value, start where you are, progress iteratively, collaborate, think holistically, keep it simple, optimise and automate — with real examples of each being violated."
+        },
+        {
+          "title": "The service value chain and key practices",
+          "detail": "Plan, improve, engage, design and transition, obtain and build, deliver and support — plus incident, problem, change enablement, service request and service desk practices in detail."
+        },
+        {
+          "title": "Exam preparation",
+          "detail": "Question patterns, common traps, and two full timed mock exams with review of every wrong answer."
+        }
       ],
       "outcomes": [
         "Use ITIL terminology correctly in an IT service environment",
@@ -155,12 +309,28 @@
         "Apply the guiding principles to a real service problem",
         "Sit the ITIL 4 Foundation exam prepared"
       ],
-      "tools": ["ITIL 4 framework", "Practice exams", "Case scenarios"],
+      "tools": [
+        "ITIL 4 framework",
+        "Practice exams",
+        "Case scenarios"
+      ],
       "faqs": [
-        { "q": "Do I need an IT background for ITIL 4 Foundation?", "a": "No, and that is unusual for an IT certification. ITIL Foundation is about how service work is organised, not about technology. People from operations, support and even non-IT backgrounds complete it successfully and use it to move into IT service roles." },
-        { "q": "Is the ITIL exam fee included in the course fee?", "a": "No. The ITIL 4 Foundation exam is administered by PeopleCert and paid directly to them. We prepare you thoroughly and run timed mocks, but the exam voucher is a separate cost." },
-        { "q": "How hard is the ITIL 4 Foundation exam?", "a": "It is a 40-question multiple choice exam with a 65% pass mark and no prerequisites. It is one of the more approachable IT certifications — the difficulty is in precise terminology rather than technical depth, which is exactly what the mock exams train." },
-        { "q": "Is ITIL still relevant?", "a": "Yes, and particularly in India, where a very large share of IT employment is in service delivery and managed services. ITIL 4 explicitly incorporates agile and DevOps ways of working, so it is no longer the rigid process framework its older reputation suggests." }
+        {
+          "q": "Do I need an IT background for ITIL 4 Foundation?",
+          "a": "No, and that is unusual for an IT certification. ITIL Foundation is about how service work is organised, not about technology. People from operations, support and even non-IT backgrounds complete it successfully and use it to move into IT service roles."
+        },
+        {
+          "q": "Is the ITIL exam fee included in the course fee?",
+          "a": "No. The ITIL 4 Foundation exam is administered by PeopleCert and paid directly to them. We prepare you thoroughly and run timed mocks, but the exam voucher is a separate cost."
+        },
+        {
+          "q": "How hard is the ITIL 4 Foundation exam?",
+          "a": "It is a 40-question multiple choice exam with a 65% pass mark and no prerequisites. It is one of the more approachable IT certifications — the difficulty is in precise terminology rather than technical depth, which is exactly what the mock exams train."
+        },
+        {
+          "q": "Is ITIL still relevant?",
+          "a": "Yes, and particularly in India, where a very large share of IT employment is in service delivery and managed services. ITIL 4 explicitly incorporates agile and DevOps ways of working, so it is no longer the rigid process framework its older reputation suggests."
+        }
       ]
     },
     {
@@ -170,25 +340,54 @@
       "track": "itsm",
       "status": "open",
       "featured": true,
-      "seoTitle": "ITSM Training Course — IT Service Management Fees, Syllabus & Tools",
-      "metaDescription": "Practical ITSM training covering incident, problem and change management, SLAs, CMDB and ServiceNow fundamentals. 6 weeks, ₹14,000, first class free.",
+      "seoTitle": "ITSM Training Course — Fees, Syllabus & Tools",
+      "metaDescription": "Live online IT service management training: incident, problem, change and request practices, SLAs and tooling. 6 weeks, ₹14,000, first class free.",
       "tagline": "ITIL tells you the theory. This is how the work actually runs, in the tool.",
       "duration": "6 weeks",
       "effort": "5 hrs/week",
       "level": "Beginner to Intermediate",
       "priceINR": 14000,
       "certification": "Prepares for ServiceNow CSA (exam taken separately)",
-      "roles": ["ITSM Analyst", "Service Delivery Analyst", "Change Coordinator", "Service Desk Lead"],
+      "roles": [
+        "ITSM Analyst",
+        "Service Delivery Analyst",
+        "Change Coordinator",
+        "Service Desk Lead"
+      ],
       "intro": "Knowing ITIL vocabulary and being able to run a change advisory board are different skills. This course is the second one. You work through incidents, problems, changes and requests as they actually arrive, inside a real ITSM tool, with the SLA clock running.",
       "modules": [
-        { "title": "The service desk and incident management", "detail": "Ticket intake, categorisation, prioritisation with impact and urgency, escalation paths, and what a good incident record contains." },
-        { "title": "Problem management", "detail": "Separating problems from incidents, root cause techniques, known error databases, and writing a problem record that prevents recurrence." },
-        { "title": "Change enablement", "detail": "Standard, normal and emergency changes, risk assessment, the CAB, rollback plans, and post-implementation review." },
-        { "title": "Service requests, catalogue and knowledge", "detail": "Request fulfilment, building a service catalogue people actually use, and knowledge articles that deflect tickets." },
-        { "title": "SLAs, OLAs and reporting", "detail": "Defining measurable targets, the difference between SLA and OLA, breach handling, and building a monthly service report management will read." },
-        { "title": "CMDB and asset management", "detail": "Configuration items, relationships, discovery, and why most CMDBs decay — plus how to keep one accurate." },
-        { "title": "ServiceNow fundamentals", "detail": "Navigating the platform, tables and forms, workflows, and where the ITIL practices live inside the tool." },
-        { "title": "Capstone: run a service week", "detail": "Handle a simulated week of incidents, a major incident, a change window and a monthly report — assessed on process discipline, not speed." }
+        {
+          "title": "The service desk and incident management",
+          "detail": "Ticket intake, categorisation, prioritisation with impact and urgency, escalation paths, and what a good incident record contains."
+        },
+        {
+          "title": "Problem management",
+          "detail": "Separating problems from incidents, root cause techniques, known error databases, and writing a problem record that prevents recurrence."
+        },
+        {
+          "title": "Change enablement",
+          "detail": "Standard, normal and emergency changes, risk assessment, the CAB, rollback plans, and post-implementation review."
+        },
+        {
+          "title": "Service requests, catalogue and knowledge",
+          "detail": "Request fulfilment, building a service catalogue people actually use, and knowledge articles that deflect tickets."
+        },
+        {
+          "title": "SLAs, OLAs and reporting",
+          "detail": "Defining measurable targets, the difference between SLA and OLA, breach handling, and building a monthly service report management will read."
+        },
+        {
+          "title": "CMDB and asset management",
+          "detail": "Configuration items, relationships, discovery, and why most CMDBs decay — plus how to keep one accurate."
+        },
+        {
+          "title": "ServiceNow fundamentals",
+          "detail": "Navigating the platform, tables and forms, workflows, and where the ITIL practices live inside the tool."
+        },
+        {
+          "title": "Capstone: run a service week",
+          "detail": "Handle a simulated week of incidents, a major incident, a change window and a monthly report — assessed on process discipline, not speed."
+        }
       ],
       "outcomes": [
         "Run incident, problem and change processes end to end",
@@ -197,12 +396,30 @@
         "Build and maintain a CMDB structure that stays accurate",
         "Work confidently inside a ServiceNow instance"
       ],
-      "tools": ["ServiceNow", "Incident and change workflows", "CMDB", "SLA reporting", "Knowledge base"],
+      "tools": [
+        "ServiceNow",
+        "Incident and change workflows",
+        "CMDB",
+        "SLA reporting",
+        "Knowledge base"
+      ],
       "faqs": [
-        { "q": "Should I do ITIL 4 Foundation before this ITSM course?", "a": "It helps but is not required. ITIL gives you the vocabulary and this course gives you the practice. Many learners take ITIL 4 Foundation first because it is short, then follow it with this one — we offer both and can sequence them for you." },
-        { "q": "Will I get access to a ServiceNow instance?", "a": "Yes. ServiceNow provides free personal developer instances, and we walk you through requesting and configuring yours in the first ServiceNow session. There is no licence cost to you." },
-        { "q": "Does this prepare me for the ServiceNow CSA certification?", "a": "It covers a substantial part of the Certified System Administrator syllabus, particularly platform navigation, tables, forms and workflows. It is not a dedicated CSA exam-prep course — the goal here is working ITSM competence, with CSA as a natural next step." },
-        { "q": "What kind of job does ITSM lead to?", "a": "Service desk and service delivery roles are the common entry, moving into change coordination, problem management or ITSM tool administration. It is one of the most reliable ways into IT for people without a development background." }
+        {
+          "q": "Should I do ITIL 4 Foundation before this ITSM course?",
+          "a": "It helps but is not required. ITIL gives you the vocabulary and this course gives you the practice. Many learners take ITIL 4 Foundation first because it is short, then follow it with this one — we offer both and can sequence them for you."
+        },
+        {
+          "q": "Will I get access to a ServiceNow instance?",
+          "a": "Yes. ServiceNow provides free personal developer instances, and we walk you through requesting and configuring yours in the first ServiceNow session. There is no licence cost to you."
+        },
+        {
+          "q": "Does this prepare me for the ServiceNow CSA certification?",
+          "a": "It covers a substantial part of the Certified System Administrator syllabus, particularly platform navigation, tables, forms and workflows. It is not a dedicated CSA exam-prep course — the goal here is working ITSM competence, with CSA as a natural next step."
+        },
+        {
+          "q": "What kind of job does ITSM lead to?",
+          "a": "Service desk and service delivery roles are the common entry, moving into change coordination, problem management or ITSM tool administration. It is one of the most reliable ways into IT for people without a development background."
+        }
       ]
     },
     {
@@ -212,25 +429,53 @@
       "track": "infra",
       "status": "open",
       "featured": false,
-      "seoTitle": "IT Infrastructure & Networking Course — Fees, Syllabus & Career Path",
-      "metaDescription": "Hands-on IT infrastructure training covering networking, Windows and Linux servers, Active Directory, virtualisation and backup. 10 weeks, ₹16,000, first class free.",
+      "seoTitle": "IT Infrastructure & Networking Course — Fees",
+      "metaDescription": "Live online IT infrastructure training: networking, Windows Server, Linux, Active Directory, backup and monitoring. 10 weeks, ₹16,000, first class free.",
       "tagline": "The layer everything else runs on, and the most dependable door into IT.",
       "duration": "10 weeks",
       "effort": "6 hrs/week",
       "level": "Beginner",
       "priceINR": 16000,
       "certification": "Covers CCNA networking foundations (exam taken separately)",
-      "roles": ["IT Support Engineer", "Network Administrator", "Infrastructure Associate"],
+      "roles": [
+        "IT Support Engineer",
+        "Network Administrator",
+        "Infrastructure Associate"
+      ],
       "intro": "Every company that owns a laptop needs someone who understands infrastructure. This course builds that foundation properly — networking, servers, identity and virtualisation — and remains one of the most dependable routes into an IT career without a computer science degree.",
       "modules": [
-        { "title": "How networks move data", "detail": "The OSI model made practical: IP addressing, subnetting, DNS and DHCP, with packet captures you can actually read." },
-        { "title": "Routing and switching", "detail": "VLANs, static and dynamic routing, and building a small multi-site network in a simulator." },
-        { "title": "Server administration", "detail": "Windows Server and Linux side by side — users, permissions, file shares, scheduled jobs and patching." },
-        { "title": "Active Directory and identity", "detail": "Domains, group policy and single sign-on, the backbone of nearly every corporate IT estate." },
-        { "title": "Virtualisation", "detail": "Hypervisors, virtual machines, snapshots and resource planning with VMware and Hyper-V." },
-        { "title": "Backup, recovery and continuity", "detail": "Backup strategies, RTO and RPO, and actually restoring from a backup under time pressure." },
-        { "title": "Security hardening and monitoring", "detail": "Firewalls, VPNs, endpoint protection, and reading logs to spot a problem before users report it." },
-        { "title": "Capstone: design a small-office IT estate", "detail": "Deliver a full network diagram, server plan, backup policy and cost sheet for a 40-person company." }
+        {
+          "title": "How networks move data",
+          "detail": "The OSI model made practical: IP addressing, subnetting, DNS and DHCP, with packet captures you can actually read."
+        },
+        {
+          "title": "Routing and switching",
+          "detail": "VLANs, static and dynamic routing, and building a small multi-site network in a simulator."
+        },
+        {
+          "title": "Server administration",
+          "detail": "Windows Server and Linux side by side — users, permissions, file shares, scheduled jobs and patching."
+        },
+        {
+          "title": "Active Directory and identity",
+          "detail": "Domains, group policy and single sign-on, the backbone of nearly every corporate IT estate."
+        },
+        {
+          "title": "Virtualisation",
+          "detail": "Hypervisors, virtual machines, snapshots and resource planning with VMware and Hyper-V."
+        },
+        {
+          "title": "Backup, recovery and continuity",
+          "detail": "Backup strategies, RTO and RPO, and actually restoring from a backup under time pressure."
+        },
+        {
+          "title": "Security hardening and monitoring",
+          "detail": "Firewalls, VPNs, endpoint protection, and reading logs to spot a problem before users report it."
+        },
+        {
+          "title": "Capstone: design a small-office IT estate",
+          "detail": "Deliver a full network diagram, server plan, backup policy and cost sheet for a 40-person company."
+        }
       ],
       "outcomes": [
         "Subnet a network correctly without a calculator",
@@ -239,12 +484,31 @@
         "Diagnose connectivity faults methodically instead of by trial and error",
         "Present a complete small-office infrastructure design"
       ],
-      "tools": ["Cisco Packet Tracer", "Windows Server", "Linux", "VMware", "Wireshark", "Active Directory"],
+      "tools": [
+        "Cisco Packet Tracer",
+        "Windows Server",
+        "Linux",
+        "VMware",
+        "Wireshark",
+        "Active Directory"
+      ],
       "faqs": [
-        { "q": "Is this enough to get an IT support job?", "a": "It covers what entry-level IT support and infrastructure roles screen for: networking fundamentals, Windows and Linux administration, Active Directory and structured troubleshooting. Combined with the capstone and mock interviews, learners typically target IT Support Engineer or Network Administrator roles." },
-        { "q": "Does this prepare me for CCNA?", "a": "The routing, switching and networking modules cover a substantial part of the CCNA foundation. It is not a CCNA exam-cram course — the goal is working competence — but learners who go on to CCNA find the groundwork already done." },
-        { "q": "Do I need my own hardware?", "a": "No. All practical work is done in simulators and remote labs we provide. A laptop with 8 GB of RAM and a stable connection is enough." },
-        { "q": "Should I do this or a cloud course first?", "a": "If you are completely new to IT, do this first. Cloud sits on top of networking and server concepts, and people who skip the foundation usually have to come back to it." }
+        {
+          "q": "Is this enough to get an IT support job?",
+          "a": "It covers what entry-level IT support and infrastructure roles screen for: networking fundamentals, Windows and Linux administration, Active Directory and structured troubleshooting. Combined with the capstone and mock interviews, learners typically target IT Support Engineer or Network Administrator roles."
+        },
+        {
+          "q": "Does this prepare me for CCNA?",
+          "a": "The routing, switching and networking modules cover a substantial part of the CCNA foundation. It is not a CCNA exam-cram course — the goal is working competence — but learners who go on to CCNA find the groundwork already done."
+        },
+        {
+          "q": "Do I need my own hardware?",
+          "a": "No. All practical work is done in simulators and remote labs we provide. A laptop with 8 GB of RAM and a stable connection is enough."
+        },
+        {
+          "q": "Should I do this or a cloud course first?",
+          "a": "If you are completely new to IT, do this first. Cloud sits on top of networking and server concepts, and people who skip the foundation usually have to come back to it."
+        }
       ]
     },
     {
@@ -254,24 +518,49 @@
       "track": "consult",
       "status": "open",
       "featured": false,
-      "seoTitle": "Presales & Solution Consulting Course — Fees, Syllabus & Career Path",
-      "metaDescription": "Presales training for IT professionals: discovery calls, solution design, RFP response, demos and pricing. 6 weeks, ₹21,000, first class free. Cohorts capped at 15.",
+      "seoTitle": "Presales & Solution Consulting Course — Fees",
+      "metaDescription": "Live online presales training: discovery, solution design, effort estimation, RFP response and demos. 6 weeks, ₹21,000, first class free.",
       "tagline": "The highest-paying pivot for technical people who can also talk to customers.",
       "duration": "6 weeks",
       "effort": "5 hrs/week",
       "level": "Intermediate — some IT exposure helps",
       "priceINR": 21000,
       "certification": "No external certification — assessed portfolio of demo and proposal work",
-      "roles": ["Presales Consultant", "Solution Architect", "Technical Account Manager"],
+      "roles": [
+        "Presales Consultant",
+        "Solution Architect",
+        "Technical Account Manager"
+      ],
       "intro": "Presales sits between engineering and sales, and it is chronically short of good people. If you understand technology but are tired of being invisible to the business, this is the most direct route to a senior, well-paid, client-facing role — and almost nobody in India teaches it formally.",
       "modules": [
-        { "title": "What presales really is", "detail": "The deal cycle end to end, who does what, and the specific moments where a presales consultant wins or loses the deal." },
-        { "title": "Discovery that finds the real problem", "detail": "Question frameworks, stakeholder mapping, and hearing the unstated constraint behind a stated requirement." },
-        { "title": "Solution design and architecture storytelling", "detail": "Turning requirements into an architecture the customer's own team can defend internally after you leave." },
-        { "title": "The demo that closes", "detail": "Structuring a demo around the customer's workflow, handling hostile questions, and recovering when something breaks live." },
-        { "title": "RFPs and proposal writing", "detail": "Reading an RFP for hidden disqualifiers, writing compliant responses, and building a reusable answer library." },
-        { "title": "Pricing and effort estimation", "detail": "Sizing a project, licence versus services margin, and defending your number when procurement pushes back." },
-        { "title": "Capstone: run a full deal cycle", "detail": "Take a live scenario from discovery through solution, demo, proposal and pricing, assessed line by line." }
+        {
+          "title": "What presales really is",
+          "detail": "The deal cycle end to end, who does what, and the specific moments where a presales consultant wins or loses the deal."
+        },
+        {
+          "title": "Discovery that finds the real problem",
+          "detail": "Question frameworks, stakeholder mapping, and hearing the unstated constraint behind a stated requirement."
+        },
+        {
+          "title": "Solution design and architecture storytelling",
+          "detail": "Turning requirements into an architecture the customer's own team can defend internally after you leave."
+        },
+        {
+          "title": "The demo that closes",
+          "detail": "Structuring a demo around the customer's workflow, handling hostile questions, and recovering when something breaks live."
+        },
+        {
+          "title": "RFPs and proposal writing",
+          "detail": "Reading an RFP for hidden disqualifiers, writing compliant responses, and building a reusable answer library."
+        },
+        {
+          "title": "Pricing and effort estimation",
+          "detail": "Sizing a project, licence versus services margin, and defending your number when procurement pushes back."
+        },
+        {
+          "title": "Capstone: run a full deal cycle",
+          "detail": "Take a live scenario from discovery through solution, demo, proposal and pricing, assessed line by line."
+        }
       ],
       "outcomes": [
         "Run a structured discovery call that surfaces the real requirement",
@@ -280,12 +569,30 @@
         "Estimate effort and defend a price under pressure",
         "Deliver a recorded demo good enough to use as a portfolio piece"
       ],
-      "tools": ["Solution design canvas", "RFP response library", "Demo scripting", "Pricing models", "Miro"],
+      "tools": [
+        "Solution design canvas",
+        "RFP response library",
+        "Demo scripting",
+        "Pricing models",
+        "Miro"
+      ],
       "faqs": [
-        { "q": "Who should take a presales course?", "a": "Developers, testers, support and infrastructure engineers who enjoy explaining technology to customers, plus salespeople who want to become technically credible. Some exposure to IT products or services is assumed." },
-        { "q": "Why is this the most expensive course on the site?", "a": "Cohorts are capped at 15 so that every learner gets individually reviewed demo and proposal practice with line-by-line feedback. That is the entire value of the course, and it does not scale to a large batch." },
-        { "q": "Is presales a sales job with a target?", "a": "Presales supports the sales team technically and usually carries a shared or team target rather than an individual quota. You are measured on solution quality, demo effectiveness and win rate, not on cold calling." },
-        { "q": "What salary can a presales consultant expect in India?", "a": "Moving into presales from a technical role commonly lands in the ₹8–12 LPA band, with experienced solution consultants well above that. These are market observations, not a promise from us." }
+        {
+          "q": "Who should take a presales course?",
+          "a": "Developers, testers, support and infrastructure engineers who enjoy explaining technology to customers, plus salespeople who want to become technically credible. Some exposure to IT products or services is assumed."
+        },
+        {
+          "q": "Why is this the most expensive course on the site?",
+          "a": "Cohorts are capped at 15 so that every learner gets individually reviewed demo and proposal practice with line-by-line feedback. That is the entire value of the course, and it does not scale to a large batch."
+        },
+        {
+          "q": "Is presales a sales job with a target?",
+          "a": "Presales supports the sales team technically and usually carries a shared or team target rather than an individual quota. You are measured on solution quality, demo effectiveness and win rate, not on cold calling."
+        },
+        {
+          "q": "What salary can a presales consultant expect in India?",
+          "a": "Moving into presales from a technical role commonly lands in the ₹8–12 LPA band, with experienced solution consultants well above that. These are market observations, not a promise from us."
+        }
       ]
     },
     {
@@ -295,24 +602,49 @@
       "track": "data",
       "status": "open",
       "featured": false,
-      "seoTitle": "Data Analytics & Power BI Course — Fees, Syllabus & Career Path",
-      "metaDescription": "Data analytics training covering advanced Excel, SQL, Power BI modelling and DAX. 8 weeks, ₹13,500, first class free. The fastest analytics route for non-programmers.",
+      "seoTitle": "Data Analytics & Power BI Course — Fees",
+      "metaDescription": "Live online Power BI training: Power Query, data modelling, DAX and report design, with SQL basics. 8 weeks, ₹13,500, first class free.",
       "tagline": "Turn spreadsheets into decisions — the fastest analytics route for non-coders.",
       "duration": "8 weeks",
       "effort": "5 hrs/week",
       "level": "Beginner",
       "priceINR": 13500,
       "certification": "Prepares for Microsoft PL-300 (exam taken separately)",
-      "roles": ["Data Analyst", "MIS Executive", "Business Analyst"],
+      "roles": [
+        "Data Analyst",
+        "MIS Executive",
+        "Business Analyst"
+      ],
       "intro": "You do not need Python to start a career in data. Most analyst work in Indian companies still happens in Excel, SQL and Power BI — and being genuinely good at those three, plus being able to explain what the numbers mean, is a complete and hireable skill set.",
       "modules": [
-        { "title": "Advanced Excel for analysts", "detail": "Lookup functions, pivot tables, Power Query and dynamic arrays — cleaning messy real-world data without dread." },
-        { "title": "Data cleaning and preparation", "detail": "Duplicates, missing values and inconsistent formats, and documenting what you changed and why." },
-        { "title": "SQL fundamentals", "detail": "SELECT, JOIN, GROUP BY and subqueries — enough SQL to pull your own data instead of waiting for someone else." },
-        { "title": "Power BI data modelling", "detail": "Relationships, star schema and DAX measures that stay correct when filters change." },
-        { "title": "Dashboard design", "detail": "Choosing the right chart, removing decoration, and building a dashboard an executive can read in ten seconds." },
-        { "title": "Storytelling with data", "detail": "Structuring an analysis as a narrative and presenting a finding people will act on." },
-        { "title": "Capstone: a full analytics project", "detail": "Take a raw messy dataset through cleaning, modelling and dashboarding to a presented recommendation." }
+        {
+          "title": "Advanced Excel for analysts",
+          "detail": "Lookup functions, pivot tables, Power Query and dynamic arrays — cleaning messy real-world data without dread."
+        },
+        {
+          "title": "Data cleaning and preparation",
+          "detail": "Duplicates, missing values and inconsistent formats, and documenting what you changed and why."
+        },
+        {
+          "title": "SQL fundamentals",
+          "detail": "SELECT, JOIN, GROUP BY and subqueries — enough SQL to pull your own data instead of waiting for someone else."
+        },
+        {
+          "title": "Power BI data modelling",
+          "detail": "Relationships, star schema and DAX measures that stay correct when filters change."
+        },
+        {
+          "title": "Dashboard design",
+          "detail": "Choosing the right chart, removing decoration, and building a dashboard an executive can read in ten seconds."
+        },
+        {
+          "title": "Storytelling with data",
+          "detail": "Structuring an analysis as a narrative and presenting a finding people will act on."
+        },
+        {
+          "title": "Capstone: a full analytics project",
+          "detail": "Take a raw messy dataset through cleaning, modelling and dashboarding to a presented recommendation."
+        }
       ],
       "outcomes": [
         "Clean and reshape messy data reliably in Power Query",
@@ -321,12 +653,30 @@
         "Present an analysis that leads to a decision",
         "Prepare for the Microsoft PL-300 certification"
       ],
-      "tools": ["Microsoft Excel", "Power Query", "SQL", "Power BI", "DAX"],
+      "tools": [
+        "Microsoft Excel",
+        "Power Query",
+        "SQL",
+        "Power BI",
+        "DAX"
+      ],
       "faqs": [
-        { "q": "Do I need Python for a data analyst job?", "a": "Not for most entry-level analyst roles in India, which run on Excel, SQL and a BI tool. Python becomes valuable later, particularly moving towards data science, but it is not the barrier people assume." },
-        { "q": "Is Power BI free to practise on?", "a": "Power BI Desktop is free to download and covers everything in this course. A Power BI Pro licence is only needed to publish and share workspaces, which we cover conceptually." },
-        { "q": "Is this suitable for a non-IT background?", "a": "Yes. Commerce, finance and operations backgrounds often do particularly well because they already understand the business context behind the numbers." },
-        { "q": "Will I work with real datasets?", "a": "Yes. Every module uses realistic, deliberately messy datasets rather than pre-cleaned textbook files, because cleaning is most of the actual job." }
+        {
+          "q": "Do I need Python for a data analyst job?",
+          "a": "Not for most entry-level analyst roles in India, which run on Excel, SQL and a BI tool. Python becomes valuable later, particularly moving towards data science, but it is not the barrier people assume."
+        },
+        {
+          "q": "Is Power BI free to practise on?",
+          "a": "Power BI Desktop is free to download and covers everything in this course. A Power BI Pro licence is only needed to publish and share workspaces, which we cover conceptually."
+        },
+        {
+          "q": "Is this suitable for a non-IT background?",
+          "a": "Yes. Commerce, finance and operations backgrounds often do particularly well because they already understand the business context behind the numbers."
+        },
+        {
+          "q": "Will I work with real datasets?",
+          "a": "Yes. Every module uses realistic, deliberately messy datasets rather than pre-cleaned textbook files, because cleaning is most of the actual job."
+        }
       ]
     },
     {
@@ -336,24 +686,49 @@
       "track": "data",
       "status": "open",
       "featured": false,
-      "seoTitle": "AI & Automation Course for IT Teams — Fees, Syllabus & Outcomes",
-      "metaDescription": "Practical AI course for IT professionals: prompt engineering, document-grounded assistants, workflow automation and evaluating AI output. 8 weeks, ₹14,500, first class free.",
+      "seoTitle": "AI & Automation Course for IT Teams — Fees",
+      "metaDescription": "Live online AI and automation training for IT teams: ticket deflection, request fulfilment, scripting and safe adoption. 8 weeks, ₹14,500, first class free.",
       "tagline": "Stop watching AI demos. Build the automations an IT team will actually rely on.",
       "duration": "8 weeks",
       "effort": "5–6 hrs/week",
       "level": "Beginner friendly",
       "priceINR": 14500,
       "certification": "No external certification — assessed working project",
-      "roles": ["Automation Analyst", "AI Associate", "IT Operations Engineer"],
+      "roles": [
+        "Automation Analyst",
+        "AI Associate",
+        "IT Operations Engineer"
+      ],
       "intro": "Most AI courses stop at clever prompts. This one goes further: you connect a model to real documents, wire it into a workflow, measure whether the output is actually correct, and hand it to someone non-technical. That gap — between a demo and something an IT team can depend on — is where the value is.",
       "modules": [
-        { "title": "How language models actually work", "detail": "Tokens, context windows, temperature and hallucination — enough mental model to debug bad output instead of guessing." },
-        { "title": "Prompt engineering that survives production", "detail": "Structured prompts, few-shot examples, output formats, and why a prompt that works once fails on the hundredth run." },
-        { "title": "Working with your own documents", "detail": "Chunking, embeddings and retrieval — build an assistant that answers only from your organisation's runbooks and policies." },
-        { "title": "Automating IT workflows", "detail": "Ticket triage and summarisation, report generation, and connecting AI to the tools your team already uses." },
-        { "title": "Evaluating AI output", "detail": "Build a test set, score responses, and prove the system is right often enough to trust in an operational process." },
-        { "title": "Cost, privacy and safe deployment", "detail": "Token economics, what must never be sent to a public model, and how to discuss data handling with a client or security team." },
-        { "title": "Capstone: ship a working assistant", "detail": "Deliver an end-to-end assistant for a real IT use case, with documentation and an evaluation report." }
+        {
+          "title": "How language models actually work",
+          "detail": "Tokens, context windows, temperature and hallucination — enough mental model to debug bad output instead of guessing."
+        },
+        {
+          "title": "Prompt engineering that survives production",
+          "detail": "Structured prompts, few-shot examples, output formats, and why a prompt that works once fails on the hundredth run."
+        },
+        {
+          "title": "Working with your own documents",
+          "detail": "Chunking, embeddings and retrieval — build an assistant that answers only from your organisation's runbooks and policies."
+        },
+        {
+          "title": "Automating IT workflows",
+          "detail": "Ticket triage and summarisation, report generation, and connecting AI to the tools your team already uses."
+        },
+        {
+          "title": "Evaluating AI output",
+          "detail": "Build a test set, score responses, and prove the system is right often enough to trust in an operational process."
+        },
+        {
+          "title": "Cost, privacy and safe deployment",
+          "detail": "Token economics, what must never be sent to a public model, and how to discuss data handling with a client or security team."
+        },
+        {
+          "title": "Capstone: ship a working assistant",
+          "detail": "Deliver an end-to-end assistant for a real IT use case, with documentation and an evaluation report."
+        }
       ],
       "outcomes": [
         "Build a document-grounded assistant from scratch",
@@ -362,12 +737,30 @@
         "Judge what should and should not be sent to an external model",
         "Ship a working project with an evaluation report"
       ],
-      "tools": ["Claude API", "Python basics", "Vector search", "n8n / Make", "Evaluation harness"],
+      "tools": [
+        "Claude API",
+        "Python basics",
+        "Vector search",
+        "n8n / Make",
+        "Evaluation harness"
+      ],
       "faqs": [
-        { "q": "Do I need to know coding for this AI course?", "a": "No. The first half is entirely no-code using visual automation tools. Light Python appears in the second half and is taught from zero — you will be reading and editing scripts, not writing from a blank file." },
-        { "q": "Is this useful for someone in IT support or infrastructure?", "a": "Particularly so. Ticket triage, summarising incident histories and generating reports are exactly the repetitive tasks worth automating, and you already know which ones hurt most." },
-        { "q": "Which AI models will I learn?", "a": "The course is deliberately model-agnostic. You work hands-on with current commercial models through their APIs and learn the patterns that transfer when models change — which they do, frequently." },
-        { "q": "Are API costs included?", "a": "We provide API credits for the coursework and capstone. If you continue building after the course you will pay your provider directly, and the cost module teaches you how to estimate that properly." }
+        {
+          "q": "Do I need to know coding for this AI course?",
+          "a": "No. The first half is entirely no-code using visual automation tools. Light Python appears in the second half and is taught from zero — you will be reading and editing scripts, not writing from a blank file."
+        },
+        {
+          "q": "Is this useful for someone in IT support or infrastructure?",
+          "a": "Particularly so. Ticket triage, summarising incident histories and generating reports are exactly the repetitive tasks worth automating, and you already know which ones hurt most."
+        },
+        {
+          "q": "Which AI models will I learn?",
+          "a": "The course is deliberately model-agnostic. You work hands-on with current commercial models through their APIs and learn the patterns that transfer when models change — which they do, frequently."
+        },
+        {
+          "q": "Are API costs included?",
+          "a": "We provide API credits for the coursework and capstone. If you continue building after the course you will pay your provider directly, and the cost module teaches you how to estimate that properly."
+        }
       ]
     }
   ]

@@ -13,10 +13,24 @@
 const path = require("path");
 const {
   site, openCourses, cities, trackOf,
-  esc, inr, wa, WA_ICON, write,
+  esc, inr, wa, WA_ICON, write, vh, fit,
   head, footer, crumb, courseCard, faqBlock, band, shareRow, ladder,
-  orgLd, breadcrumbLd, faqLd, courseLd,
+  orgLd, personLd, breadcrumbLd, faqLd, courseLd,
 } = require("./lib");
+const { articlesForCourse, artUrl } = require("./blog");
+
+/** Guides panel — links each course to the informational pages that feed it. */
+function guidesPanel(c) {
+  const list = articlesForCourse(c.slug);
+  if (!list.length) return "";
+  return `<div class="panel">
+          <h3>Read first</h3>
+          <p class="small muted">Free guides on this subject. Read them before deciding whether the course is for you.</p>
+          <ul class="flist">
+            ${list.map((a) => `<li><a href="${artUrl(a)}">${esc(a.seoTitle)}</a></li>`).join("\n            ")}
+          </ul>
+        </div>`;
+}
 
 /* ------------------------- course hub ------------------------- */
 
@@ -42,9 +56,8 @@ function hub() {
     title: "IT Training Courses — Cloud, ITSM & Infrastructure | Jobjila",
     description: `Live online IT training in AWS, Azure, OCI, ITIL 4, ITSM, infrastructure, presales and Power BI. Fees from ${inr(lo)}, first class free, refundable booking.`,
     canonical: "/training/",
-    keywords: ["it training courses india", "aws azure oci training", "itil 4 foundation course", "itsm training online", "it course fees"],
     extraLd: [
-      orgLd, breadcrumbLd(t), faqLd(faqs),
+      orgLd, personLd, breadcrumbLd(t), faqLd(faqs),
       {
         "@context": "https://schema.org", "@type": "ItemList", name: "Jobjila training courses",
         itemListElement: openCourses.map((c, i) => ({ "@type": "ListItem", position: i + 1, name: c.name, url: `${site.url}/training/${c.slug}/` })),
@@ -146,17 +159,11 @@ function coursePage(c) {
     .slice(0, 3);
 
   return head({
-    title: `${c.seoTitle} | Jobjila`,
+    title: fit(`${c.seoTitle} | Jobjila`, c.seoTitle),
     description: c.metaDescription,
     canonical: `/training/${c.slug}/`,
-    keywords: [
-      `${c.name.toLowerCase()} training`,
-      `${c.name.toLowerCase()} course fees`,
-      `${c.short.toLowerCase()} certification course`,
-      `${c.name.toLowerCase()} course online india`,
-    ],
     ogImage: `/assets/og/${c.slug}.jpg`,
-    extraLd: [orgLd, courseLd(c), breadcrumbLd(t), faqLd(c.faqs)],
+    extraLd: [orgLd, personLd, courseLd(c), breadcrumbLd(t), faqLd(c.faqs)],
     track: c.track,
   }) + `
 <section class="page-hero">
@@ -238,6 +245,8 @@ function coursePage(c) {
           <div class="chips">${c.tools.map((x) => `<span class="chip chip-line">${esc(x)}</span>`).join("")}</div>
         </div>
 
+        ${guidesPanel(c)}
+
         <div class="panel">
           <h3>${esc(c.short)} in your city</h3>
           <ul class="flist">
@@ -272,8 +281,15 @@ function cityPage(c, city) {
   const note = (city.courseNotes && city.courseNotes[c.slug])
     || `${city.name} employers around ${city.hubs.slice(0, 3).join(", ")} hire across ${city.employerType}, and ${c.name} skills apply directly to that work.`;
 
+  /* Two FAQs from the city's pool, rotated by the course's position. Using
+     the whole pool on every page made all nine city pages for a city share
+     ~49% of their text, which is doorway-page territory. */
+  const ci = openCourses.findIndex((x) => x.slug === c.slug);
+  const pool = city.faqs;
+  const picked = [pool[(ci * 2) % pool.length], pool[(ci * 2 + 1) % pool.length]];
+
   const faqs = [
-    ...city.faqs,
+    ...picked,
     { q: `What are the ${c.name} course fees in ${city.name}?`, a: `${inr(c.priceINR)} for the full ${c.duration} programme — the same fee wherever in India you join from, with no ${city.name} pricing. The first class is free and ${inr(site.pricing.bookingAmount)} of the booking is refundable.` },
     { q: `Is this ${c.name} training online or classroom-based in ${city.name}?`, a: `Fully live online, so there is no ${city.name} classroom to travel to. Sessions run in the evening and every one is recorded, which is what makes it workable alongside a job.` },
   ];
@@ -281,15 +297,9 @@ function cityPage(c, city) {
   const waHref = wa(`Hi Jobjila, I am in ${city.name} and want the free first class for ${c.name} (${c.duration}, ${inr(c.priceINR)}).`);
 
   return head({
-    title: `${c.name} Training in ${city.name} — Fees & Syllabus | Jobjila`,
-    description: `${c.name} training for ${city.name} learners. ${c.duration}, live online, ${inr(c.priceINR)}, first class free. Syllabus, fees and the ${city.name} hiring picture.`,
+    title: fit(`${c.short} Training in ${city.name} — Fees & Syllabus`, `${c.short} Training in ${city.name}`),
+    description: `${c.short} training for ${city.name}. ${c.duration}, live online, ${inr(c.priceINR)}, first class free. Syllabus, fees and the ${city.name} hiring picture.`,
     canonical: url,
-    keywords: [
-      `${c.short.toLowerCase()} training in ${city.name.toLowerCase()}`,
-      `${c.name.toLowerCase()} course ${city.name.toLowerCase()} fees`,
-      `${c.short.toLowerCase()} course near me ${city.name.toLowerCase()}`,
-      `it training ${city.name.toLowerCase()}`,
-    ],
     ogImage: `/assets/og/${c.slug}.jpg`,
     extraLd: [orgLd, courseLd(c, city), breadcrumbLd(t), faqLd(faqs)],
     track: c.track,

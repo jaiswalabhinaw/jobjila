@@ -705,3 +705,109 @@ td a:hover, th a:hover { text-decoration: underline; }
 .nav-toggle[aria-expanded="true"] i::after  { top: 0; transform: rotate(-45deg); background: var(--paper); }
 .nav-toggle i, .nav-toggle i::before, .nav-toggle i::after { transition: transform .18s ease, top .18s ease, background .18s ease; }
 .mobile-nav a:last-child { border-bottom: 0; }
+
+/* ==========================================================================
+   Blog / guides
+   Added with the SEO pass. The site had no informational pages and no <img>
+   anywhere, so these are the first two things fixed: article layout, and a
+   real image on every guide.
+   ========================================================================== */
+
+/* Visually hidden, but present in the document outline and for screen
+   readers. Used where a heading is needed for structure but a visible one
+   would change the design (e.g. the home page's h1 -> h3 jump). */
+.vh {
+  position: absolute; width: 1px; height: 1px;
+  margin: -1px; padding: 0; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}
+
+.wrap-narrow { max-width: 52rem; }
+
+/* ---------- article header ---------- */
+.article-head { background: var(--sunk); border-bottom: 1px solid var(--rule); }
+.article-head > .wrap { padding-block: clamp(2.5rem, 6vw, 4rem); }
+.article-head h1 { max-width: 22ch; margin-top: .5rem; }
+.article-head .lede { margin-top: 1rem; max-width: 54ch; }
+
+.byline {
+  margin-top: 1.5rem; padding-top: 1.125rem;
+  border-top: 1px solid var(--rule);
+  font-family: var(--f-mono); font-size: var(--s--1);
+  color: var(--slate); display: flex; flex-wrap: wrap; gap: .5rem; align-items: baseline;
+}
+.byline a { color: var(--ink-2); }
+
+/* ---------- article body ---------- */
+.article-figure { margin: 0 0 .5rem; }
+.article-figure img {
+  display: block; width: 100%; height: auto;
+  border: 1px solid var(--rule); border-radius: 3px; background: var(--sunk);
+}
+
+.article-section { scroll-margin-top: 5rem; }
+.prose .article-section { display: grid; gap: 1.125rem; }
+.prose .article-section h2 { margin-top: 2rem; }
+.prose .article-section table { margin: 0; }
+
+.toc {
+  border: 1px solid var(--rule); border-left: 3px solid var(--signal);
+  background: var(--card); border-radius: 3px;
+  padding: 1.25rem 1.5rem; margin-top: .5rem;
+}
+.toc h2 {
+  margin: 0 0 .75rem; font-family: var(--f-mono); font-weight: 500;
+  font-size: .6875rem; letter-spacing: .12em; text-transform: uppercase; color: var(--slate);
+}
+.toc ol { margin: 0; padding-left: 1.25rem; display: grid; gap: .375rem; }
+.toc li { margin: 0; font-size: var(--s--1); }
+.toc li::marker { color: var(--slate-2); font-family: var(--f-mono); }
+
+.callout-sm { border-left-color: var(--slate-2); padding: 1rem 1.25rem; }
+.callout-sm p { font-size: var(--s--1); color: var(--slate); }
+
+/* ---------- post cards ---------- */
+.posts {
+  display: grid; gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+}
+.post-card {
+  border: 1px solid var(--rule); background: var(--card); border-radius: 3px;
+  overflow: hidden; display: flex; flex-direction: column;
+  transition: box-shadow .18s ease, transform .18s ease, border-color .18s ease;
+}
+.post-card:hover { box-shadow: var(--shadow-lift); transform: translateY(-2px); border-color: var(--slate-2); }
+.post-card .thumb { display: block; aspect-ratio: 1200 / 630; background: var(--sunk); border-bottom: 1px solid var(--rule); }
+.post-card .thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.post-card .body { padding: 1.25rem 1.375rem 1.5rem; display: grid; gap: .625rem; align-content: start; flex: 1; }
+.post-card h3 { font-size: var(--s-1); line-height: 1.25; }
+.post-card h3 a { text-decoration: none; color: inherit; }
+.post-card h3 a:hover { color: var(--signal); }
+.post-card .desc { font-size: var(--s--1); color: var(--slate); }
+.post-card .fine { margin-top: auto; padding-top: .25rem; }
+
+/* ---------- link list ---------- */
+.linklist { list-style: none; margin: 0; padding: 0; display: grid; border-top: 1px solid var(--rule); }
+.linklist li { border-bottom: 1px solid var(--rule); }
+.linklist a {
+  display: grid; gap: .3rem; padding: 1.125rem .25rem;
+  text-decoration: none; color: inherit;
+}
+.linklist a:hover b { color: var(--signal); }
+.linklist b { font-family: var(--f-sans); font-weight: 600; font-size: var(--s-0); }
+.linklist span { font-size: var(--s--1); color: var(--slate); }
+
+/* ---------- footer logo mark ---------- */
+.logo-mark { display: inline-flex; align-items: center; gap: .625rem; }
+.logo-mark img { display: block; width: 32px; height: 32px; border-radius: 8px; }
+
+.panel .who { display: flex; align-items: baseline; gap: .625rem; flex-wrap: wrap; }
+.panel .who h4 { font-family: var(--f-sans); font-weight: 600; font-size: var(--s-0); }
+.panel .who .role { font-family: var(--f-mono); font-size: .6875rem; letter-spacing: .1em; text-transform: uppercase; color: var(--slate); }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .article-figure img,
+  :root:not([data-theme="light"]) .post-card .thumb img { opacity: .92; }
+}
+:root[data-theme="dark"] .article-figure img,
+:root[data-theme="dark"] .post-card .thumb img { opacity: .92; }
