@@ -226,7 +226,7 @@ const NAV = [
   { href: "/it-support/", label: "IT Support" },
   { href: "/training/", label: "Training" },
   { href: "/network/", label: "Network" },
-  { href: "/blog/", label: "Guides" },
+  { href: "/blog/", label: "Career Guide" },
   { href: "/about/", label: "About" },
 ];
 
@@ -314,7 +314,7 @@ function footer() {
           <li><a href="/it-support/">IT Support</a></li>
           <li><a href="/training/">Training</a></li>
           <li><a href="/network/">Consultant Network</a></li>
-          <li><a href="/blog/">Guides</a></li>
+          <li><a href="/blog/">Career Guide</a></li>
         </ul>
       </div>
       <div>
