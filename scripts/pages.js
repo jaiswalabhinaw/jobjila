@@ -3,7 +3,7 @@
 const path = require("path");
 const {
   site, openCourses, cities, trackOf,
-  esc, inr, wa, WA_ICON, write, vh, fmtDate,
+  esc, inr, wa, WA_ICON, write, vh, fmtDate, GA_ID,
   head, footer, crumb, courseCard, faqBlock, band, shareRow, ladder, honestBlock,
   orgLd, personLd, websiteLd, breadcrumbLd, faqLd, serviceLd,
 } = require("./lib");
@@ -742,23 +742,27 @@ const privacy = () => legalPage({
     <h2>2. Why we hold it</h2>
     <p>To answer your enquiry, to run your enrolment if you join a course, and to meet accounting obligations on any payment you make.</p>
 
-    <h2>3. What we do not do</h2>
+    <h2>3. Website measurement</h2>
+    ${GA_ID ? `<p>We use Google Analytics to count visits and see which pages get read. It records the page you viewed, roughly where in the world you are, whether you are on a phone or a computer, and whether you arrived from a search or a link. It also records when someone taps a WhatsApp or share button, so we know which pages are useful.</p>
+    <p>We do not use it to build advertising profiles &mdash; advertising personalisation is switched off on our account. We cannot see who you are from it, and we never combine it with the messages you send us. Google sets cookies to do this; blocking cookies for this site, or using your browser's Do Not Track or an ad blocker, stops it and costs you nothing on this site.</p>` : `<p>We run no analytics, no advertising pixels and no cross-site tracking on this website. We do not know who visits it.</p>`}
+
+    <h2>4. What we do not do</h2>
     <ul>
       <li>We do not sell or rent your data to anyone.</li>
       <li>We do not run advertising or cross-site tracking pixels on this site.</li>
       <li>We do not send marketing messages to people who have not asked for them.</li>
     </ul>
 
-    <h2>4. Third parties</h2>
-    <p>Messages you send reach us through WhatsApp, which is operated by Meta under its own privacy policy. This site loads fonts from Google Fonts, which means Google's servers see the request. It is hosted on GitHub Pages, which keeps standard server logs. We use no other third-party services on this site.</p>
+    <h2>5. Third parties</h2>
+    <p>Messages you send reach us through WhatsApp, which is operated by Meta under its own privacy policy. This site loads fonts from Google Fonts, which means Google's servers see the request.${GA_ID ? " Page views are measured with Google Analytics, as described above." : ""} It is hosted on GitHub Pages, which keeps standard server logs. We use no other third-party services on this site.</p>
 
-    <h2>5. How long we keep it</h2>
+    <h2>6. How long we keep it</h2>
     <p>Enquiries that do not become enrolments are deleted within 12 months. Records relating to a payment are kept as long as Indian accounting and tax rules require.</p>
 
-    <h2>6. Your rights</h2>
+    <h2>7. Your rights</h2>
     <p>Email ${site.email} and ask to see what we hold about you, to correct it, or to have it deleted. We will action it within 30 days, other than records we are legally required to retain.</p>
 
-    <h2>7. Children</h2>
+    <h2>8. Children</h2>
     <p>Our services are intended for people aged 18 and over. We do not knowingly collect data about children.</p>
   `,
 });

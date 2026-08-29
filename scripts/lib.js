@@ -215,6 +215,27 @@ const serviceLd = (name, description, url) => ({
   areaServed: { "@type": "Country", name: "India" },
 });
 
+/* ---------- analytics ---------- */
+
+const GA_ID = ((site.analytics || {}).ga4 || "").trim();
+
+/**
+ * Google Analytics 4. Loaded async so it never blocks rendering.
+ *
+ * Keep "Google Signals" OFF in the GA4 property. With it on, Google may use
+ * the data for advertising personalisation, which would make the Privacy
+ * Policy's "no advertising or cross-site tracking pixels" claim untrue.
+ */
+function analyticsTag() {
+  if (!GA_ID) return "";
+  return `<script async src="https://www.googletagmanager.com/gtag/js?id=${esc(GA_ID)}"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config',${JSON.stringify(GA_ID)});
+</script>
+`;
+}
+
 /* ---------- chrome ---------- */
 
 /* Loaded with media="print" and swapped to "all" on load, so the webfonts
@@ -271,7 +292,7 @@ ${artMeta}
 <link rel="stylesheet" href="${FONTS}" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="${FONTS}"></noscript>
 ${extraLd.map(jsonLd).join("\n")}
-</head>
+${analyticsTag()}</head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
@@ -486,7 +507,7 @@ function honestBlock() {
 
 module.exports = {
   ROOT, site, courses, openCourses, cities, articles, trackOf,
-  esc, inr, wa, WA_ICON, write, fmtDate, vh, fit, TITLE_MAX,
+  esc, inr, wa, WA_ICON, write, fmtDate, vh, fit, TITLE_MAX, GA_ID,
   head, footer, crumb, courseCard, faqBlock, band, shareRow, ladder, honestBlock,
   orgLd, personLd, websiteLd, breadcrumbLd, faqLd, courseLd, articleLd, serviceLd,
 };
