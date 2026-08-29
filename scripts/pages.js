@@ -3,10 +3,15 @@
 const path = require("path");
 const {
   site, openCourses, cities, trackOf,
-  esc, inr, wa, WA_ICON, write,
+  esc, inr, wa, WA_ICON, write, vh, fmtDate,
   head, footer, crumb, courseCard, faqBlock, band, shareRow, ladder, honestBlock,
-  orgLd, websiteLd, breadcrumbLd, faqLd, serviceLd,
+  orgLd, personLd, websiteLd, breadcrumbLd, faqLd, serviceLd,
 } = require("./lib");
+const { articles, artUrl } = (() => {
+  const lib = require("./lib");
+  const blog = require("./blog");
+  return { articles: lib.articles, artUrl: blog.artUrl };
+})();
 
 const trail = (name, url) => [{ name: "Home", url: "/" }, { name, url }];
 
@@ -25,10 +30,9 @@ function home() {
 
   return head({
     title: "Jobjila — IT Advisory, Support & Training",
-    description: site.description,
+    description: "IT advisory, IT support and live online training in AWS, Azure, OCI, ITIL and ITSM — from practising consultants in Noida. First class free.",
     canonical: "/",
-    keywords: ["it consulting noida", "aws azure training", "itil itsm training", "it support services india", "cloud advisory"],
-    extraLd: [orgLd, websiteLd, faqLd(faqs)],
+    extraLd: [orgLd, personLd, websiteLd, faqLd(faqs)],
   }) + `
 <div class="hero">
   <div class="wrap">
@@ -47,6 +51,7 @@ function home() {
       <div><b>100%</b><span>Live, recorded</span></div>
     </div>
 
+    ${vh("h2", "What Jobjila does")}
     <div class="pillars">
       <div><a href="/it-advisory/"><h3>IT Advisory</h3><p>Cloud architecture, migration planning, cost review and technology selection.</p></a></div>
       <div><a href="/it-support/"><h3>IT Support</h3><p>Infrastructure setup, networks, servers, backup and ongoing maintenance.</p></a></div>
@@ -140,6 +145,33 @@ ${honestBlock()}
   </div>
 </section>
 
+<section>
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Free to read</span>
+      <h2>Guides, with the inconvenient parts left in</h2>
+      <p class="muted">We write up what we would tell you on a call — certification paths, what the exams actually test, and how to check a training provider before paying anyone, including us.</p>
+    </div>
+    <div class="posts">
+      ${articles.slice(0, 3).map((a) => `<article class="post-card" data-track="${a.track}">
+        <a class="thumb" href="${artUrl(a)}" tabindex="-1" aria-hidden="true">
+          <img src="/assets/blog/${esc(a.slug)}-card.jpg" width="1200" height="630" alt="" loading="lazy" decoding="async">
+        </a>
+        <div class="body">
+          <h3><a href="${artUrl(a)}">${esc(a.title)}</a></h3>
+          <p class="desc">${esc(a.excerpt)}</p>
+          <p class="fine">${a.readMins} min read</p>
+        </div>
+      </article>`).join("\n      ")}
+    </div>
+    <div class="btns" style="margin-top:2rem">
+      <a class="btn btn-line btn-lg" href="/blog/">All ${articles.length} guides</a>
+      <a class="btn btn-line btn-lg" href="/about/">Who runs Jobjila</a>
+      <a class="btn btn-line btn-lg" href="/locations/">Where we work</a>
+    </div>
+  </div>
+</section>
+
 <section class="sunk">
   <div class="wrap">
     ${faqBlock(faqs, "Common questions").replace('style="margin-top:3rem"', "")}
@@ -167,10 +199,9 @@ function itAdvisory() {
     { q: "What does a cloud cost review involve?", a: "We look at your actual bill and usage, identify what is over-provisioned, unused or on the wrong pricing model, and give you a prioritised list with the rupee saving against each item. You decide what to act on; we can implement it or hand it to your team." },
   ];
   return head({
-    title: "IT Advisory — Cloud Architecture, Migration & Cost Review | Jobjila",
-    description: "Independent IT advisory from Noida: cloud architecture review, migration planning, cloud cost reduction, technology selection and presales support. Fixed-fee or day rate, no vendor commissions.",
+    title: "IT Advisory — Cloud Architecture & Cost Review | Jobjila",
+    description: "Independent IT advisory from Noida: cloud architecture review, migration planning, cost reduction and technology selection. Fixed fee or day rate.",
     canonical: "/it-advisory/",
-    keywords: ["it consulting services india", "cloud advisory noida", "aws azure architecture review", "cloud cost optimisation", "it consultant for small business"],
     extraLd: [orgLd, breadcrumbLd(t), faqLd(faqs), serviceLd("IT Advisory", "Cloud architecture review, migration planning, cost optimisation and technology selection.", "/it-advisory/")],
     track: "cloud",
   }) + `
@@ -244,10 +275,9 @@ function itSupport() {
     { q: "What size of company do you work with?", a: "Small and mid-size organisations, typically 10 to 200 people, where there is real infrastructure but not a large IT department. That is where good support makes the most visible difference." },
   ];
   return head({
-    title: "IT Support Services — Networks, Servers, Backup & AMC | Jobjila",
-    description: "IT support and infrastructure services from Noida: network and server setup, Windows and Linux administration, backup and recovery, security hardening and annual maintenance contracts.",
+    title: "IT Support Services — Networks, Servers & AMC | Jobjila",
+    description: "IT support from Noida: network and server setup, Windows and Linux administration, tested backup and recovery, security hardening and annual maintenance.",
     canonical: "/it-support/",
-    keywords: ["it support services noida", "amc for it infrastructure", "server network setup company", "it support for small business india"],
     extraLd: [orgLd, breadcrumbLd(t), faqLd(faqs), serviceLd("IT Support", "Network and server setup, systems administration, backup and recovery, and annual maintenance.", "/it-support/")],
     track: "infra",
   }) + `
@@ -314,9 +344,8 @@ function network() {
   ];
   return head({
     title: "Join the Consultant & Trainer Network | Jobjila",
-    description: "Apply to join Jobjila's reviewed network of independent IT consultants and trainers. Free to join, non-exclusive, milestone-based payment. Cloud, infrastructure, ITSM, data and presales.",
+    description: "Join Jobjila's reviewed network of independent IT consultants and trainers. Free to join, non-exclusive, paid on delivery. Cloud, infrastructure, ITSM and data.",
     canonical: "/network/",
-    keywords: ["freelance it consultant india", "become an online it trainer", "independent cloud consultant work", "freelance itsm consultant"],
     extraLd: [orgLd, breadcrumbLd(t), faqLd(faqs)],
     track: "consult",
   }) + `
@@ -394,11 +423,23 @@ function network() {
 function about() {
   const t = trail("About", "/about/");
   return head({
-    title: "About Jobjila — Who Runs This",
+    title: "About Jobjila — Who Runs This IT Practice",
     description: `Jobjila is an IT advisory, support and training practice based in ${site.locality}, founded by ${site.founder.name}. Published prices, refundable fees, and no employment guarantees.`,
     canonical: "/about/",
-    keywords: ["about jobjila", "it consulting company noida", "jobjila founder"],
-    extraLd: [orgLd, breadcrumbLd(t)],
+    extraLd: [
+      orgLd, personLd, breadcrumbLd(t),
+      {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "@id": site.url + "/about/#page",
+        url: site.url + "/about/",
+        name: `About ${site.name}`,
+        description: `Who runs ${site.name}, how the practice is set up, and what it refuses to promise.`,
+        mainEntity: { "@id": site.url + "/#organization" },
+        about: [{ "@id": site.url + "/#organization" }, { "@id": site.url + "/#founder" }],
+        isPartOf: { "@id": site.url + "/#website" },
+      },
+    ],
   }) + `
 <section class="page-hero">
   <div class="wrap">
@@ -439,8 +480,18 @@ function about() {
           </div>
           <p class="small muted">${esc(site.founder.bio)}</p>
           <div class="btns">
-            <a class="btn btn-wa" href="${wa("Hi Shrijan, I have a question about Jobjila.")}" target="_blank" rel="noopener">${WA_ICON}<span>Message directly</span></a>
+            <a class="btn btn-wa" href="${wa(`Hi ${site.founder.name}, I have a question about Jobjila.`)}" target="_blank" rel="noopener">${WA_ICON}<span>Message directly</span></a>
           </div>
+          ${site.founder.linkedin ? `<p class="small muted"><a href="${esc(site.founder.linkedin)}" rel="noopener" target="_blank">LinkedIn profile</a></p>` : ""}
+        </div>
+
+        <div class="panel">
+          <h3>Written by ${esc(site.founder.name)}</h3>
+          <p class="small muted">${articles.length} guides on certification, careers and how to check a training provider.</p>
+          <ul class="flist">
+            ${articles.slice(0, 5).map((a) => `<li><a href="${artUrl(a)}">${esc(a.seoTitle)}</a></li>`).join("\n            ")}
+          </ul>
+          <p class="small muted"><a href="/blog/">All guides</a></p>
         </div>
         <div class="panel">
           <h3>Practice details</h3>
@@ -471,10 +522,9 @@ function contact() {
     ["I want to join the network", "Consultants and trainers", "Hi Jobjila, I want to join the network.\n\nName:\nCity:\nSkill or subject:\nYears of experience:"],
   ];
   return head({
-    title: "Contact Jobjila",
-    description: `Contact Jobjila about IT advisory, support, training or joining our consultant network. WhatsApp ${site.phoneDisplay} or email ${site.email}. We reply the same working day.`,
+    title: "Contact Jobjila — WhatsApp, Email & Enquiries",
+    description: `Contact Jobjila about IT advisory, support, training or the consultant network. WhatsApp ${site.phoneDisplay} or email ${site.email}. Same working day reply.`,
     canonical: "/contact/",
-    keywords: ["contact jobjila", "it consultant contact noida"],
     extraLd: [orgLd, breadcrumbLd(t), { "@context": "https://schema.org", "@type": "ContactPage", url: site.url + "/contact/", about: { "@id": site.url + "/#organization" } }],
   }) + `
 <section class="page-hero">
@@ -524,9 +574,8 @@ function locations() {
   ];
   return head({
     title: "IT Training & Support Across Delhi NCR | Jobjila",
-    description: `Jobjila serves ${cities.map((c) => c.name).join(", ")} with live online IT training and on-site consulting across Delhi NCR. Same fees everywhere, with local job market context for each city.`,
+    description: `Live online IT training and on-site consulting across ${cities.map((c) => c.name).join(", ")}. Same fees everywhere, with local hiring context for each city.`,
     canonical: "/locations/",
-    keywords: ["it training noida", "it training delhi ncr", "it course greater noida", "it support company ncr"],
     extraLd: [orgLd, breadcrumbLd(t), faqLd(faqs)],
   }) + `
 <section class="page-hero">
@@ -600,7 +649,7 @@ function legalPage({ slug, title, description, heading, blurb, body }) {
 const refundPolicy = () => legalPage({
   slug: "refund-policy",
   title: "Refund Policy",
-  description: `Jobjila refund policy: first class free, ${inr(site.pricing.bookingAmount)} booking fully refundable, and a ${site.pricing.refundDays}-day refund window after paying. Full refund if we cancel a batch.`,
+  description: `First class free, ${inr(site.pricing.bookingAmount)} booking fully refundable, and a ${site.pricing.refundDays}-day refund window after you pay. Full refund if we cancel a batch.`,
   heading: "Refund Policy",
   blurb: "What you can get back, when, and how long it takes. Written plainly, because a refund policy nobody can understand is not a refund policy.",
   body: `
@@ -683,7 +732,7 @@ const terms = () => legalPage({
 const privacy = () => legalPage({
   slug: "privacy",
   title: "Privacy Policy",
-  description: "Jobjila privacy policy: what personal data we collect, why, how long we keep it and how to have it deleted. We do not sell data and do not run advertising trackers.",
+  description: "What personal data Jobjila collects, why, how long we keep it and how to have it deleted. We do not sell data and run no advertising trackers.",
   heading: "Privacy Policy",
   blurb: "What we collect, why, and how to have it removed. We do not sell your data and we do not run advertising trackers on this site.",
   body: `
@@ -714,6 +763,50 @@ const privacy = () => legalPage({
   `,
 });
 
+function notFound() {
+  return head({
+    title: "Page not found — Jobjila",
+    description: "That page does not exist. Links to training courses, IT advisory, IT support and guides.",
+    canonical: "/404.html",
+  }).replace(
+    '<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">',
+    '<meta name="robots" content="noindex, follow">',
+  ) + `
+<section class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">404</span>
+    <h1>That page is not here</h1>
+    <p>It may have moved when we reorganised the site in 2026, or the address may be mistyped. Everything below still works.</p>
+    <div class="btns">
+      <a class="btn btn-ondark btn-lg" href="/training/">Browse courses</a>
+      <a class="btn btn-wa btn-lg" href="${wa("Hi Jobjila, I hit a broken link on your site looking for:")}" target="_blank" rel="noopener">${WA_ICON}<span>Tell us what you wanted</span></a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head"><h2>Where you probably meant to go</h2></div>
+    <div class="grid g3">
+      <div class="cell"><h3>Training</h3><ul>
+        ${openCourses.map((c) => `<li><a href="/training/${c.slug}/">${esc(c.name)}</a></li>`).join("\n        ")}
+      </ul></div>
+      <div class="cell"><h3>Services</h3><ul>
+        <li><a href="/it-advisory/">IT Advisory</a></li>
+        <li><a href="/it-support/">IT Support</a></li>
+        <li><a href="/network/">Consultant network</a></li>
+        <li><a href="/locations/">Locations</a></li>
+      </ul></div>
+      <div class="cell"><h3>Guides</h3><ul>
+        ${articles.slice(0, 5).map((a) => `<li><a href="${artUrl(a)}">${esc(a.seoTitle)}</a></li>`).join("\n        ")}
+        <li><a href="/blog/">All guides</a></li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+` + footer();
+}
+
 function ordinal(n) {
   return n + (["th", "st", "nd", "rd"][(n % 100 - 20) % 10] || ["th", "st", "nd", "rd"][n % 100] || "th");
 }
@@ -731,5 +824,6 @@ module.exports = function buildPages() {
   write(path.join("refund-policy", "index.html"), refundPolicy());
   write(path.join("terms", "index.html"), terms());
   write(path.join("privacy", "index.html"), privacy());
+  write("404.html", notFound());
   return 10;
 };

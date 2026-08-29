@@ -1,12 +1,17 @@
 {
-  "//": "One page per course per city is generated. Only add a city you can write genuinely local content for — near-identical city pages get treated as doorway pages and dropped by Google.",
+  "//": "One page per course per city is generated. Only add a city you can write genuinely local content for — near-identical city pages get treated as doorway pages and dropped by Google. faqs is a POOL: two are selected per course page by rotation (see scripts/training.js) so the same pair does not repeat across every course in a city. courseNotes must cover every open course, or pages fall back to an identical generic sentence.",
   "cities": [
     {
       "slug": "noida",
       "name": "Noida",
       "region": "Uttar Pradesh",
       "tier": "NCR's largest IT services base",
-      "hubs": ["Sector 62", "Sector 63", "Noida Expressway", "Sector 125–135"],
+      "hubs": [
+        "Sector 62",
+        "Sector 63",
+        "Noida Expressway",
+        "Sector 125–135"
+      ],
       "intro": "Noida concentrates NCR's IT services and business process employment, particularly around Sectors 62 and 63 and along the Expressway corridor. It has a high volume of entry-level technology and support hiring and lower living costs than Gurgaon, which makes it a common first stop for people starting an IT career in North India.",
       "employerType": "IT services firms, managed service providers and technology support operations",
       "salaryNote": "Noida entry-level salaries are moderate, but the volume of openings is high and living costs are lower than Gurgaon or Delhi, which makes the early-career maths work.",
@@ -15,11 +20,38 @@
         "itsm-service-management": "Noida has one of the highest concentrations of managed service and service desk operations in North India, which makes ITSM skills directly and immediately employable here.",
         "itil-4-foundation": "ITIL appears in a large share of Noida service desk and delivery job descriptions — for many roles here it is treated as a baseline expectation rather than a bonus.",
         "it-infrastructure": "Noida's services firms and captive units hire continuously for infrastructure and support roles, and this remains the most reliable entry route into the local IT workforce.",
-        "aws-cloud": "Services firms along the Noida Expressway run client cloud migrations continuously, which keeps demand for AWS skills steady rather than seasonal."
+        "aws-cloud": "Services firms along the Noida Expressway run client cloud migrations continuously, which keeps demand for AWS skills steady rather than seasonal.",
+        "azure-cloud": "A large share of Noida's captive units and services firms run Microsoft estates, so Azure administration work here tends to arrive attached to existing Windows and Microsoft 365 responsibilities rather than as a separate cloud role.",
+        "oci-oracle-cloud": "Noida's larger services firms carry Oracle application and database practices for banking and telecom clients, which is where OCI demand concentrates locally — a small number of employers, but very little competition for those seats.",
+        "presales-consulting": "Noida's IT services firms bid continuously for outsourced support and infrastructure contracts, and presales headcount sits with those bid teams rather than with sales, which makes the route in a delivery-side move.",
+        "data-analytics-power-bi": "Reporting demand in Noida comes disproportionately from delivery operations — SLA dashboards, ticket volumes, resource utilisation — so Power BI here is often a second skill layered onto a service management role.",
+        "ai-automation-for-it": "With so many managed service and service desk operations in Sectors 62 and 63, the automation work available in Noida is overwhelmingly ticket deflection and request fulfilment rather than data science."
       },
       "faqs": [
-        { "q": "Do you have a classroom in Noida?", "a": "Jobjila is based in Noida, but all training runs live online. That is deliberate — it means no commute through Sector 62 traffic, evening sessions that work alongside a job, and every session recorded." },
-        { "q": "Is Noida good for freshers looking for an IT job?", "a": "It is one of the better options in North India. The volume of entry-level openings in IT support, service desk and infrastructure is high, and employers here are generally more willing to hire on demonstrated skill than on pedigree." }
+        {
+          "q": "Do you have a classroom in Noida?",
+          "a": "Jobjila is based in Noida, but all training runs live online. That is deliberate — it means no commute through Sector 62 traffic, evening sessions that work alongside a job, and every session recorded."
+        },
+        {
+          "q": "Is Noida good for freshers looking for an IT job?",
+          "a": "It is one of the better options in North India. The volume of entry-level openings in IT support, service desk and infrastructure is high, and employers here are generally more willing to hire on demonstrated skill than on pedigree."
+        },
+        {
+          "q": "Which Noida sectors have the most IT jobs?",
+          "a": "Sectors 62 and 63 hold the densest concentration of IT services and support employers, with a second cluster along the Noida Expressway through Sectors 125 to 135. Most entry-level technology hiring in Noida happens in one of those two corridors."
+        },
+        {
+          "q": "Is it worth moving to Noida for an IT career?",
+          "a": "If you are already in NCR, no — the training is online and you can target Noida employers from anywhere in the region. If you are outside NCR, Noida is a reasonable choice on cost of living relative to the volume of entry-level openings, but do not move before you have an offer."
+        },
+        {
+          "q": "Do Noida employers ask for certifications?",
+          "a": "Frequently, particularly the services firms and managed service providers. ITIL and a cloud or infrastructure certification appear in a large share of local job descriptions, more so than in product companies, because client contracts often specify certified staff."
+        },
+        {
+          "q": "Can I attend classes from Noida while working full time?",
+          "a": "That is who most of our Noida learners are. Sessions run in the evening and are recorded, which matters here specifically because Sector 62 traffic makes any commute-based evening course unrealistic after a full working day."
+        }
       ]
     },
     {
@@ -27,7 +59,12 @@
       "name": "Greater Noida",
       "region": "Uttar Pradesh",
       "tier": "NCR's growing institutional and industrial belt",
-      "hubs": ["Knowledge Park", "Techzone IV", "Surajpur", "Pari Chowk"],
+      "hubs": [
+        "Knowledge Park",
+        "Techzone IV",
+        "Surajpur",
+        "Pari Chowk"
+      ],
       "intro": "Greater Noida's character is different from Noida proper: a large student population around Knowledge Park's engineering and management institutes, plus a manufacturing and logistics base that increasingly needs its own IT capability. Commuting into Noida or Delhi for a course costs a great deal of time from here, which is precisely why online cohorts suit the area.",
       "employerType": "manufacturing and logistics IT teams, education institutions, and NCR employers reached by commute",
       "salaryNote": "Many Greater Noida residents work for Noida, Gurgaon or Delhi employers, so salaries follow the wider NCR market while living costs stay noticeably lower.",
@@ -36,11 +73,38 @@
         "itil-4-foundation": "For Greater Noida students approaching campus placements, ITIL 4 Foundation is one of the few credentials achievable in four weeks that appears directly in service delivery job descriptions.",
         "it-infrastructure": "Manufacturing and logistics operations around Surajpur run their own infrastructure, and locally based support engineers are genuinely useful to them.",
         "aws-cloud": "Students and early-career professionals in Knowledge Park use cloud certification to compete with candidates from larger-brand colleges — the certificate is checked, the college is not.",
-        "azure-cloud": "Greater Noida's institutional and enterprise employers are heavily Microsoft-based, which makes Azure the more directly applicable cloud for local roles."
+        "azure-cloud": "Greater Noida's institutional and enterprise employers are heavily Microsoft-based, which makes Azure the more directly applicable cloud for local roles.",
+        "oci-oracle-cloud": "Greater Noida's manufacturing and institutional employers include Oracle application users, and for students here OCI has a practical appeal: far fewer certified candidates in NCR than for AWS, so the credential stands out more.",
+        "itsm-service-management": "Institutions and manufacturing sites around Knowledge Park and Surajpur run small internal IT functions where one person covers the whole service lifecycle, so process knowledge is applied broadly rather than in a single specialised queue.",
+        "presales-consulting": "Presales roles are scarce inside Greater Noida itself, but the area's graduates compete for them across NCR — and arriving with structured estimation and RFP skills is unusual for a campus-stage candidate.",
+        "data-analytics-power-bi": "Manufacturing and logistics operations around Surajpur generate production, inventory and dispatch data that is still largely reported in spreadsheets, which makes this one of the more immediately applicable local skills.",
+        "ai-automation-for-it": "For final-year students in Knowledge Park, automation projects are among the easier ways to build a portfolio piece that is demonstrably yours rather than a tutorial reproduced."
       },
       "faqs": [
-        { "q": "I am a student in Greater Noida. Can I take a course alongside college?", "a": "Yes, and many of our learners do exactly that. Courses run four to eight hours a week with evening sessions and full recordings, which fits around lectures and around a commute you no longer have to make." },
-        { "q": "Will I have to travel to Noida for classes?", "a": "No. Everything is live online. Given what the Pari Chowk to Sector 62 commute costs in time, that is the single biggest practical advantage for learners here." }
+        {
+          "q": "I am a student in Greater Noida. Can I take a course alongside college?",
+          "a": "Yes, and many of our learners do exactly that. Courses run four to eight hours a week with evening sessions and full recordings, which fits around lectures and around a commute you no longer have to make."
+        },
+        {
+          "q": "Will I have to travel to Noida for classes?",
+          "a": "No. Everything is live online. Given what the Pari Chowk to Sector 62 commute costs in time, that is the single biggest practical advantage for learners here."
+        },
+        {
+          "q": "Are there IT jobs in Greater Noida itself?",
+          "a": "Fewer than in Noida, and concentrated in manufacturing and logistics IT teams, educational institutions and a small number of technology firms around Techzone IV. Most Greater Noida residents working in IT are employed by Noida, Gurgaon or Delhi organisations."
+        },
+        {
+          "q": "I am in my final year at Knowledge Park. When should I start?",
+          "a": "Six to nine months before placements, so the certification is complete and you have a project to talk about by the time interviews begin. Starting in your final semester is usually too late to finish anything substantial."
+        },
+        {
+          "q": "Does my college matter for IT hiring in NCR?",
+          "a": "Less than it used to for technical roles, and less than students fear. Employers hiring for infrastructure, support and cloud roles screen on certification and demonstrated skill. It matters more for campus placement rounds at large firms, which is exactly why an external credential is useful here."
+        },
+        {
+          "q": "Can I pay the fee in parts as a student?",
+          "a": "The structure already works that way. The first class is free, ₹500 holds your seat and is refundable, and the balance is not due until before your third session — so you have seen two full sessions before most of the money moves."
+        }
       ]
     },
     {
@@ -48,7 +112,12 @@
       "name": "Delhi",
       "region": "Delhi",
       "tier": "the commercial centre of North India",
-      "hubs": ["Nehru Place", "Connaught Place", "Okhla", "Netaji Subhash Place"],
+      "hubs": [
+        "Nehru Place",
+        "Connaught Place",
+        "Okhla",
+        "Netaji Subhash Place"
+      ],
       "intro": "Delhi's technology economy is less about large campuses and more about business services — consultancies, agencies, government-adjacent IT and a very large base of small and mid-size businesses. Nehru Place remains one of the country's biggest IT trading and services markets, and that density of businesses shapes what skills actually get paid for here.",
       "employerType": "consultancies, SMEs, government-adjacent IT and managed service providers",
       "salaryNote": "Delhi salaries for equivalent roles sit close to the NCR average, with the strongest offers usually coming from Gurgaon and Noida employers that Delhi residents commute to.",
@@ -57,11 +126,38 @@
         "itsm-service-management": "Delhi's managed service providers and consultancies run service desks for clients across North India, and ITSM process skills are what those operations screen for.",
         "it-infrastructure": "Delhi's enormous SME base needs infrastructure set up and maintained, and much of that work goes to small providers and independent engineers rather than large firms.",
         "presales-consulting": "Delhi's consultancies and IT services firms bid constantly for government and enterprise work, which makes RFP and proposal skills unusually valuable here.",
-        "azure-cloud": "Government-adjacent and enterprise IT in Delhi is heavily Microsoft-based, making Azure administration the more directly applicable cloud skill locally."
+        "azure-cloud": "Government-adjacent and enterprise IT in Delhi is heavily Microsoft-based, making Azure administration the more directly applicable cloud skill locally.",
+        "aws-cloud": "Delhi's agencies, consultancies and digital businesses default to AWS more often than the enterprise employers in Noida do, and much of the local work is small-scale — a handful of workloads, which suits an independent engineer.",
+        "oci-oracle-cloud": "Oracle skills in Delhi cluster around government-adjacent IT and the systems integrators serving public-sector clients, where Oracle databases and applications remain deeply embedded.",
+        "itil-4-foundation": "Delhi's managed service providers run client service desks under contractual SLAs, so ITIL vocabulary here is not a formality — it is the language the contract itself is written in.",
+        "data-analytics-power-bi": "Delhi's density of small and mid-size businesses creates steady independent reporting work: an owner who wants their sales and stock numbers in one dashboard is a common and well-paid small engagement.",
+        "ai-automation-for-it": "Delhi's consultancies and agencies are adopting automation to serve more clients without adding headcount, which makes practical automation skills easy to bill for independently."
       },
       "faqs": [
-        { "q": "Do you run in-person classes in Delhi?", "a": "No, all cohorts are live online. For a Delhi learner that removes the single biggest obstacle to finishing a course — the evening commute — and every session is recorded if you miss one." },
-        { "q": "Is Delhi or Noida better for an IT career?", "a": "Noida and Gurgaon have more corporate IT and services employers; Delhi proper is stronger for consultancies, SMEs and independent work. Since the training is online, you can target all of NCR from wherever you live." }
+        {
+          "q": "Do you run in-person classes in Delhi?",
+          "a": "No, all cohorts are live online. For a Delhi learner that removes the single biggest obstacle to finishing a course — the evening commute — and every session is recorded if you miss one."
+        },
+        {
+          "q": "Is Delhi or Noida better for an IT career?",
+          "a": "Noida and Gurgaon have more corporate IT and services employers; Delhi proper is stronger for consultancies, SMEs and independent work. Since the training is online, you can target all of NCR from wherever you live."
+        },
+        {
+          "q": "Where is IT work concentrated in Delhi?",
+          "a": "Nehru Place remains the largest IT trading and services market, with business services clustered around Connaught Place, Okhla's industrial and back-office estate, and Netaji Subhash Place in the north-west. The pattern is many small employers rather than a few large campuses."
+        },
+        {
+          "q": "Is freelance IT work viable in Delhi?",
+          "a": "More so than in most Indian cities, because the density of small and mid-size businesses creates steady demand for infrastructure setup, support and reporting work that is too small for a large firm to want. Several of our Delhi learners bill this alongside a job."
+        },
+        {
+          "q": "Do Delhi employers pay less than Gurgaon or Noida?",
+          "a": "For equivalent roles, Delhi sits close to the NCR average, and the strongest offers usually come from Gurgaon and Noida employers that Delhi residents commute to. Delhi's advantage is variety and proximity, not headline salary."
+        },
+        {
+          "q": "How do I target NCR employers from Delhi?",
+          "a": "Since the training is online, geography stops being the constraint — you can apply across Noida, Gurgaon and Delhi from wherever you live. What matters is whether your CV carries a certification and a project, not which side of the border you are on."
+        }
       ]
     }
   ]

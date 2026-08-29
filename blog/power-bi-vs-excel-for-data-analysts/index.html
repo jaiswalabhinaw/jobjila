@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en" data-track="data">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Power BI vs Excel — When to Switch | Jobjila</title>
+<meta name="description" content="Where Excel stops being the right tool, what Power BI adds, the concepts that take real effort to learn, and how to move from spreadsheets to reporting.">
+<link rel="canonical" href="https://jobjila.com/blog/power-bi-vs-excel-for-data-analysts/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Jobjila">
+<meta property="og:title" content="Power BI vs Excel — When to Switch | Jobjila">
+<meta property="og:description" content="Where Excel stops being the right tool, what Power BI adds, the concepts that take real effort to learn, and how to move from spreadsheets to reporting.">
+<meta property="og:url" content="https://jobjila.com/blog/power-bi-vs-excel-for-data-analysts/">
+<meta property="og:locale" content="en_IN">
+<meta property="og:image" content="https://jobjila.com/assets/blog/power-bi-vs-excel-for-data-analysts.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Power BI vs Excel — When to Switch | Jobjila">
+<meta name="twitter:description" content="Where Excel stops being the right tool, what Power BI adds, the concepts that take real effort to learn, and how to move from spreadsheets to reporting.">
+<meta name="twitter:image" content="https://jobjila.com/assets/blog/power-bi-vs-excel-for-data-analysts.jpg">
+<meta name="twitter:image:alt" content="Power BI vs Excel — When to Switch | Jobjila">
+<meta property="article:published_time" content="2026-08-29">
+<meta property="article:modified_time" content="2026-08-29">
+<meta property="article:author" content="Shrijan">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/css/theme.css">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap"></noscript>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":["Organization","EducationalOrganization"],"@id":"https://jobjila.com/#organization","name":"Jobjila","legalName":"Jobjila IT Services","url":"https://jobjila.com","description":"Jobjila provides IT advisory, IT support and live online training in cloud and IT service management, delivered by practising consultants. Based in Noida, serving clients across India.","email":"support@jobjila.com","telephone":"+918756680477","slogan":"IT advisory, support and training.","logo":{"@type":"ImageObject","url":"https://jobjila.com/assets/logo.png","width":512,"height":512},"image":"https://jobjila.com/assets/og/default.jpg","founder":{"@id":"https://jobjila.com/#founder"},"contactPoint":{"@type":"ContactPoint","contactType":"customer service","telephone":"+918756680477","email":"support@jobjila.com","areaServed":"IN","availableLanguage":["en","hi"]},"knowsAbout":["Amazon Web Services","Microsoft Azure","Oracle Cloud Infrastructure","ITIL 4","IT service management","IT infrastructure","Presales consulting","Power BI","Cloud cost optimisation"],"address":{"@type":"PostalAddress","addressLocality":"Noida","addressRegion":"Uttar Pradesh","addressCountry":"IN"},"areaServed":[{"@type":"City","name":"Noida"},{"@type":"City","name":"Greater Noida"},{"@type":"City","name":"Delhi"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://jobjila.com/#founder","name":"Shrijan","jobTitle":"Founder","description":"Shrijan runs Jobjila's advisory and training practice. Every engagement and every cohort is their responsibility — if something goes wrong, they are the person who answers for it.","email":"support@jobjila.com","worksFor":{"@id":"https://jobjila.com/#organization"},"url":"https://jobjila.com/about/","knowsAbout":["Cloud architecture","AWS","Microsoft Azure","Oracle Cloud Infrastructure","ITIL 4","IT service management","IT infrastructure","Presales consulting"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://jobjila.com/blog/power-bi-vs-excel-for-data-analysts/#article","headline":"Power BI vs Excel: when to stop using a spreadsheet","description":"Where Excel stops being the right tool, what Power BI adds, the concepts that take real effort to learn, and how to move from spreadsheets to reporting.","url":"https://jobjila.com/blog/power-bi-vs-excel-for-data-analysts/","mainEntityOfPage":{"@type":"WebPage","@id":"https://jobjila.com/blog/power-bi-vs-excel-for-data-analysts/"},"image":"https://jobjila.com/assets/blog/power-bi-vs-excel-for-data-analysts.jpg","datePublished":"2026-08-29","dateModified":"2026-08-29","author":{"@id":"https://jobjila.com/#founder"},"publisher":{"@id":"https://jobjila.com/#organization"},"inLanguage":"en-IN","keywords":"power bi vs excel, should i learn power bi, power bi for beginners, data analyst tools india, dax vs excel formulas","articleSection":"Data & AI","wordCount":1136,"isAccessibleForFree":true}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://jobjila.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://jobjila.com/blog/"},{"@type":"ListItem","position":3,"name":"Power BI vs Excel: when to stop using a spreadsheet","item":"https://jobjila.com/blog/power-bi-vs-excel-for-data-analysts/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Should I learn Power BI or Excel first?","acceptedAnswer":{"@type":"Answer","text":"Excel, properly — pivot tables, lookups, and a real understanding of how your data is structured. Power BI assumes those instincts. People who skip Excel tend to struggle with data modelling because they never internalised how tables relate."}},{"@type":"Question","name":"Is DAX difficult?","acceptedAnswer":{"@type":"Answer","text":"The syntax is easy and the semantics are not. Filter context — how a measure behaves depending on where it is evaluated — is the concept that takes time. Most people find it opaque for a few weeks and then obvious."}},{"@type":"Question","name":"Is Power BI free?","acceptedAnswer":{"@type":"Answer","text":"Power BI Desktop is free to download and use for building reports. Publishing and sharing through the service requires licensing, and Microsoft revises those tiers periodically — check current pricing on Microsoft's site. For learning, Desktop alone is sufficient."}},{"@type":"Question","name":"Do I need SQL for Power BI work?","acceptedAnswer":{"@type":"Answer","text":"Not to start, but it becomes limiting quickly. Most real data lives in databases, and being able to write a sensible query — and understand what should be done in SQL rather than in Power Query — makes you considerably more effective."}},{"@type":"Question","name":"Is Power BI or Tableau better for jobs in India?","acceptedAnswer":{"@type":"Answer","text":"Power BI has the larger share of Indian enterprise listings, largely because organisations already licensed for Microsoft adopt it by default. Tableau remains strong in specific sectors. The concepts transfer between them; the syntax does not."}}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="logo" href="/"><em>Job<b>jila</b></em> <span>IT Services</span></a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="/it-advisory/">IT Advisory</a>
+      <a href="/it-support/">IT Support</a>
+      <a href="/training/">Training</a>
+      <a href="/network/">Network</a>
+      <a href="/blog/">Guides</a>
+      <a href="/about/">About</a>
+    </nav>
+    <div class="bar-actions">
+      <a class="btn btn-wa" href="https://wa.me/918756680477?text=Hi%20Jobjila%2C%20I%20would%20like%20to%20know%20more." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.48-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.53.07-.8.38-.28.3-1.05 1.02-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.12 3.24 5.14 4.54.72.31 1.28.5 1.71.63.72.23 1.37.2 1.89.12.58-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23a8.23 8.23 0 0 1 8.24 8.24c0 4.54-3.7 8.23-8.24 8.23z"/></svg><span>WhatsApp</span></a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu"><i></i></button>
+    </div>
+  </div>
+  <div class="wrap">
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+      <a href="/it-advisory/">IT Advisory</a>
+      <a href="/it-support/">IT Support</a>
+      <a href="/training/">Training</a>
+      <a href="/network/">Network</a>
+      <a href="/blog/">Guides</a>
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<article>
+<section class="article-head">
+  <div class="wrap wrap-narrow">
+    <nav class="crumb" aria-label="Breadcrumb"><ol>
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/">Guides</a></li>
+  <li><span aria-current="page">Power BI vs Excel: when to stop using a spreadsheet</span></li>
+</ol></nav>
+    <span class="eyebrow">Data &amp; AI</span>
+    <h1>Power BI vs Excel: when to stop using a spreadsheet</h1>
+    <p class="lede">Excel is not a lesser Power BI. They solve different problems, and knowing which problem you have is most of the decision.</p>
+    <p class="byline">
+      By <a href="/about/">Shrijan</a>, Founder
+      <span aria-hidden="true">&middot;</span>
+      <time datetime="2026-08-29">29 August 2026</time>
+      <span aria-hidden="true">&middot;</span>
+      7 min read
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="layout">
+      <div class="prose">
+        <figure class="article-figure">
+          <img src="/assets/blog/power-bi-vs-excel-for-data-analysts-card.jpg" width="1200" height="630"
+               alt="Jobjila guide on data &amp; ai: Excel is not a lesser Power BI. They solve different problems, and knowing which problem you have is most of the decision."
+               fetchpriority="high" decoding="async">
+        </figure>
+
+        <p class="lede">Every analyst reaches a week where the spreadsheet stops holding. This is how to tell whether you have reached it, what Power BI actually gives you in exchange for the learning curve, and what the hard parts really are.</p>
+
+        <nav class="toc" aria-label="On this page">
+          <h2>On this page</h2>
+          <ol>
+            <li><a href="#s1">Excel is not the weaker tool</a></li>
+            <li><a href="#s2">Five signals it is time to move</a></li>
+            <li><a href="#s3">What Power BI actually adds</a></li>
+            <li><a href="#s4">The three things that are genuinely hard to learn</a></li>
+            <li><a href="#s5">How to move across without wasting months</a></li>
+            <li><a href="#s6">Do not throw the spreadsheet away</a></li>
+          </ol>
+        </nav>
+
+        <section class="stack article-section" id="s1">
+      <h2>Excel is not the weaker tool</h2>
+      <p>It is worth saying this plainly, because a lot of Power BI material is written as though the spreadsheet were an embarrassment.</p>
+      <p>Excel is superb at exploration, at ad-hoc calculation, at anything where you need to see and touch individual cells, and at modelling scenarios where the structure changes as you think. For a one-off analysis, opening Excel and having an answer in twenty minutes beats building a semantic model every time.</p>
+      <p>The problem is not that Excel is weak. It is that spreadsheets built for a one-off get reused monthly, then shared, then depended on — and the properties that made them fast to build make them slow and fragile to maintain.</p>
+      
+      
+      
+      
+    </section>
+    <section class="stack article-section" id="s2">
+      <h2>Five signals it is time to move</h2>
+      
+      <ul class="checks">
+        <li>You are repeating the same manual steps every month. Download, paste, refresh the pivot, fix the formatting, email it. That is a scheduled refresh waiting to happen.</li>
+        <li>The file has become slow or unstable. Hundreds of thousands of rows, volatile formulas recalculating, a file that takes a minute to open.</li>
+        <li>More than one person needs the same numbers. The moment a spreadsheet is emailed around, there are several versions of the truth and no way to know which is current.</li>
+        <li>You need the same measure across several views. In Excel, a changed definition means finding every place it was written. In a model, you change it once.</li>
+        <li>Someone has asked to filter it themselves. That request is the clearest possible signal — they want a report, not a file.</li>
+      </ul>
+      
+      
+      <div class="callout callout-sm"><p>None of these signals is about data volume alone. Repetition and sharing drive the decision far more often than row count does.</p></div>
+    </section>
+    <section class="stack article-section" id="s3">
+      <h2>What Power BI actually adds</h2>
+      
+      
+      <div class="scroll">
+        <table>
+          <caption>The practical differences that matter day to day</caption>
+          <thead><tr><th scope="col"></th><th scope="col">Excel</th><th scope="col">Power BI</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Refreshing data</th><td>Manual, or a macro someone wrote and left</td><td>Scheduled refresh against the source</td></tr>
+            <tr><th scope="row">Combining sources</th><td>Lookups across sheets, fragile by nature</td><td>Relationships in a model, defined once</td></tr>
+            <tr><th scope="row">Reusing a calculation</th><td>Copied into every place it is needed</td><td>One measure, used everywhere</td></tr>
+            <tr><th scope="row">Sharing</th><td>A file that immediately forks</td><td>A published report everyone reads from</td></tr>
+            <tr><th scope="row">Letting users filter</th><td>They edit your file, or ask you</td><td>They slice it themselves without touching the model</td></tr>
+            <tr><th scope="row">Row capacity</th><td>Struggles well before a million</td><td>Handles millions comfortably</td></tr>
+            <tr><th scope="row">Quick one-off analysis</th><td>Faster, and usually the right choice</td><td>Slower — the model has to exist first</td></tr>
+          </tbody>
+        </table>
+      </div>
+      
+      
+    </section>
+    <section class="stack article-section" id="s4">
+      <h2>The three things that are genuinely hard to learn</h2>
+      <p>Building a chart in Power BI takes an afternoon. These three take real effort, and they are what separates someone who can produce a dashboard from someone who can be trusted with reporting:</p>
+      <p>Data modelling. Power BI works properly when your data is shaped into fact and dimension tables with clean relationships — a star schema. Analysts arriving from Excel usually try to build one wide flat table, because that is what a spreadsheet wants, and then find that half their calculations return numbers they cannot explain. Learning to model correctly is the single highest-return investment in the tool.</p>
+      <p>DAX filter context. DAX looks like Excel formulas and behaves nothing like them. A measure calculates against whatever filter context it finds itself in, which is why the same measure returns different values in different visuals — correctly. Until this clicks, DAX feels arbitrary. After it clicks, it is straightforward.</p>
+      <p>Power Query. The transformation layer where data gets cleaned before it reaches the model. It is unglamorous and it is where most of the actual work lives. Learning to do transformations here rather than patching them later in DAX will save you more time than anything else.</p>
+      
+      
+      
+      
+    </section>
+    <section class="stack article-section" id="s5">
+      <h2>How to move across without wasting months</h2>
+      <p>The most effective route is to rebuild something you already produce. Take the monthly report you currently assemble by hand — you know what the numbers should be, which means you can immediately tell when the model is wrong.</p>
+      <p>Do it in this order: connect to the real source rather than a saved extract; clean it in Power Query; shape it into fact and dimension tables; write measures for the numbers you already report; then build the visuals last.</p>
+      <p>Building visuals last feels backwards and is the whole point. Analysts who start with the dashboard end up with a model bent around the pictures, and every subsequent request breaks it.</p>
+      
+      
+      
+      
+    </section>
+    <section class="stack article-section" id="s6">
+      <h2>Do not throw the spreadsheet away</h2>
+      <p>In practice, working analysts use both, and job descriptions ask for both. Excel for exploration, quick calculations, and anything a finance team needs to open and check. Power BI for anything recurring, shared or interactive.</p>
+      <p>The skill worth building is knowing which situation you are in before you start — which, unhelpfully but genuinely, comes mostly from having got it wrong a few times.</p>
+      
+      
+      
+      
+    </section>
+
+        <section class="stack article-section">
+          <h2>In short</h2>
+          <ul class="checks">
+            <li>Repetition and sharing, not row count, are what signal it is time to leave the spreadsheet.</li>
+            <li>Data modelling, DAX filter context and Power Query are the parts that take real effort. Charts do not.</li>
+            <li>Rebuild a report you already produce — you will spot wrong numbers immediately.</li>
+            <li>Build the visuals last. Starting with the dashboard produces a model that breaks on the next request.</li>
+          </ul>
+        </section>
+
+        <section class="stack" style="margin-top:3rem">
+  <h2>Questions people ask about this</h2>
+  <div class="faq">
+    <details>
+      <summary>Should I learn Power BI or Excel first?</summary>
+      <div class="ans"><p>Excel, properly — pivot tables, lookups, and a real understanding of how your data is structured. Power BI assumes those instincts. People who skip Excel tend to struggle with data modelling because they never internalised how tables relate.</p></div>
+    </details>
+    <details>
+      <summary>Is DAX difficult?</summary>
+      <div class="ans"><p>The syntax is easy and the semantics are not. Filter context — how a measure behaves depending on where it is evaluated — is the concept that takes time. Most people find it opaque for a few weeks and then obvious.</p></div>
+    </details>
+    <details>
+      <summary>Is Power BI free?</summary>
+      <div class="ans"><p>Power BI Desktop is free to download and use for building reports. Publishing and sharing through the service requires licensing, and Microsoft revises those tiers periodically — check current pricing on Microsoft's site. For learning, Desktop alone is sufficient.</p></div>
+    </details>
+    <details>
+      <summary>Do I need SQL for Power BI work?</summary>
+      <div class="ans"><p>Not to start, but it becomes limiting quickly. Most real data lives in databases, and being able to write a sensible query — and understand what should be done in SQL rather than in Power Query — makes you considerably more effective.</p></div>
+    </details>
+    <details>
+      <summary>Is Power BI or Tableau better for jobs in India?</summary>
+      <div class="ans"><p>Power BI has the larger share of Indian enterprise listings, largely because organisations already licensed for Microsoft adopt it by default. Tableau remains strong in specific sectors. The concepts transfer between them; the syntax does not.</p></div>
+    </details>
+  </div>
+</section>
+        <section class="share" data-share data-share-url="https://jobjila.com/blog/power-bi-vs-excel-for-data-analysts/" data-share-title="Power BI vs Excel: when to stop using a spreadsheet — Jobjila">
+  <div>
+    <h2>Useful? Send it on.</h2>
+    <p>The link opens with the course name, fee and duration in the preview.</p>
+  </div>
+  <div class="btns">
+    <a class="btn btn-wa" data-share-wa href="https://wa.me/?text=Power%20BI%20vs%20Excel%3A%20when%20to%20stop%20using%20a%20spreadsheet%20%E2%80%94%20Jobjila%20https%3A%2F%2Fjobjila.com%2Fblog%2Fpower-bi-vs-excel-for-data-analysts%2F" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.48-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.53.07-.8.38-.28.3-1.05 1.02-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.12 3.24 5.14 4.54.72.31 1.28.5 1.71.63.72.23 1.37.2 1.89.12.58-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23a8.23 8.23 0 0 1 8.24 8.24c0 4.54-3.7 8.23-8.24 8.23z"/></svg><span data-share-label>Share</span></a>
+    <button class="btn btn-line" type="button" data-share-copy data-copy="https://jobjila.com/blog/power-bi-vs-excel-for-data-analysts/"><span>Copy link</span></button>
+    <a class="btn btn-line" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fjobjila.com%2Fblog%2Fpower-bi-vs-excel-for-data-analysts%2F" target="_blank" rel="noopener"><span>LinkedIn</span></a>
+  </div>
+</section>
+      </div>
+
+      <aside class="aside">
+        <div class="panel">
+          <h3>Courses on this</h3>
+          <p class="small muted">We teach this subject. First class is free, so you can judge before paying.</p>
+          <ul class="flist">
+            <li><a href="/training/data-analytics-power-bi/">Data Analytics with Power BI &mdash; 8 weeks</a></li>
+            <li><a href="/training/ai-automation-for-it/">AI &amp; Automation for IT Teams &mdash; 8 weeks</a></li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h3>Written by</h3>
+          <div class="who"><h4>Shrijan</h4><span class="role">Founder, Jobjila</span></div>
+          <p class="small muted">Shrijan runs Jobjila's advisory and training practice. Every engagement and every cohort is their responsibility — if something goes wrong, they are the person who answers for it.</p>
+          <p class="small muted"><a href="/about/">About Jobjila</a></p>
+        </div>
+
+        <div class="panel">
+          <h3>More guides</h3>
+          <ul class="flist">
+            <li><a href="/blog/ai-tools-for-it-operations/">AI for IT Operations — What Actually Works</a></li>
+            <li><a href="/blog/aws-vs-azure-vs-oci-which-cloud-to-learn/">AWS vs Azure vs OCI — Which Cloud to Learn First</a></li>
+            <li><a href="/blog/aws-certification-path-for-beginners-india/">AWS Certification Path for Beginners in India</a></li>
+          </ul>
+          <p class="small muted"><a href="/blog/">All guides</a></p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+</article>
+
+<section class="sunk">
+  <div class="wrap">
+    <div class="band">
+  <div>
+    <h2>Questions this did not answer?</h2>
+    <p>Send it over. We answer training and IT questions whether or not you become a customer — it costs us nothing and it is how most people first talk to us.</p>
+  </div>
+  <a class="btn btn-wa btn-lg" href="https://wa.me/918756680477?text=Hi%20Jobjila%2C%20I%20read%20your%20guide%20%22Power%20BI%20vs%20Excel%3A%20when%20to%20stop%20using%20a%20spreadsheet%22%20and%20have%20a%20question%3A" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.48-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.53.07-.8.38-.28.3-1.05 1.02-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.12 3.24 5.14 4.54.72.31 1.28.5 1.71.63.72.23 1.37.2 1.89.12.58-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23a8.23 8.23 0 0 1 8.24 8.24c0 4.54-3.7 8.23-8.24 8.23z"/></svg><span>Ask on WhatsApp</span></a>
+</div>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <a class="logo logo-mark" href="/">
+          <img src="/assets/logo.png" width="40" height="40" alt="" loading="lazy" decoding="async">
+          <em>Job<b>jila</b></em>
+        </a>
+        <p class="fine" style="margin-top:.875rem">Jobjila provides IT advisory, IT support and live online training in cloud and IT service management, delivered by practising consultants. Based in Noida, serving clients across India.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul class="flist">
+          <li><a href="/it-advisory/">IT Advisory</a></li>
+          <li><a href="/it-support/">IT Support</a></li>
+          <li><a href="/training/">Training</a></li>
+          <li><a href="/network/">Consultant Network</a></li>
+          <li><a href="/blog/">Guides</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Training</h4>
+        <ul class="flist">
+          <li><a href="/training/aws-cloud/">AWS</a></li>
+          <li><a href="/training/azure-cloud/">Azure</a></li>
+          <li><a href="/training/oci-oracle-cloud/">OCI</a></li>
+          <li><a href="/training/itil-4-foundation/">ITIL 4</a></li>
+          <li><a href="/training/itsm-service-management/">ITSM</a></li>
+          <li><a href="/training/it-infrastructure/">Infrastructure</a></li>
+          <li><a href="/training/">All courses</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul class="flist">
+          <li><a href="/about/">About</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/locations/">Locations</a></li>
+          <li><a href="/refund-policy/">Refund Policy</a></li>
+          <li><a href="/terms/">Terms</a></li>
+          <li><a href="/privacy/">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbot">
+      <p class="fine"><strong>Jobjila does not offer employment, recruitment or placement guarantees, and never charges any candidate a fee for a job.</strong> We are paid for training and for consulting work only. Salary figures anywhere on this site are market observations, not commitments. Training fees are refundable as set out in our <a href="/refund-policy/">Refund Policy</a>.</p>
+      <p class="fine">&copy; 2026 Jobjila IT Services &middot; Noida, Uttar Pradesh, India &middot; <a href="mailto:support@jobjila.com">support@jobjila.com</a></p>
+    </div>
+  </div>
+</footer>
+<a class="wa-float" href="https://wa.me/918756680477?text=Hi%20Jobjila%2C%20I%20have%20a%20question." target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.48-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.53.07-.8.38-.28.3-1.05 1.02-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.12 3.24 5.14 4.54.72.31 1.28.5 1.71.63.72.23 1.37.2 1.89.12.58-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23a8.23 8.23 0 0 1 8.24 8.24c0 4.54-3.7 8.23-8.24 8.23z"/></svg><span>Chat with us</span></a>
+<script src="/js/main.js" defer></script>
+</body>
+</html>

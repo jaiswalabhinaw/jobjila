@@ -13,6 +13,7 @@ const read = (f) => JSON.parse(fs.readFileSync(path.join(ROOT, "data", f), "utf8
 const site = read("site.json");
 const { courses } = read("courses.json");
 const { cities } = read("cities.json");
+const { articles } = read("articles.json");
 
 const openCourses = courses.filter((c) => c.status === "open");
 const trackOf = (id) => site.tracks.find((t) => t.id === id) || { name: id };
@@ -28,6 +29,19 @@ const esc = (s) =>
 
 const inr = (n) => "\u20b9" + Number(n).toLocaleString("en-IN");
 
+const fmtDate = (iso) =>
+  new Date(iso + "T00:00:00Z").toLocaleDateString("en-GB", {
+    day: "numeric", month: "long", year: "numeric", timeZone: "UTC",
+  });
+
+/**
+ * Google truncates titles at roughly 60 characters, so anything past that is
+ * never seen. Returns `full` when it fits, otherwise the shorter `fallback` —
+ * which lets each page ask for the brand suffix without risking the keyword.
+ */
+const TITLE_MAX = 60;
+const fit = (full, fallback) => (full.length <= TITLE_MAX ? full : fallback);
+
 const wa = (message) => `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(message)}`;
 
 const WA_ICON = `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.48-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.53.07-.8.38-.28.3-1.05 1.02-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.12 3.24 5.14 4.54.72.31 1.28.5 1.71.63.72.23 1.37.2 1.89.12.58-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23a8.23 8.23 0 0 1 8.24 8.24c0 4.54-3.7 8.23-8.24 8.23z"/></svg>`;
@@ -39,6 +53,17 @@ function write(rel, contents) {
   fs.mkdirSync(path.dirname(full), { recursive: true });
   fs.writeFileSync(full, contents, "utf8");
   console.log("  " + rel);
+}
+
+/** Words in an article's own body — used for BlogPosting.wordCount. */
+function countWords(a) {
+  const parts = [a.intro, a.excerpt, ...(a.takeaways || [])];
+  (a.sections || []).forEach((sec) => {
+    parts.push(sec.h, ...(sec.p || []), ...(sec.p2 || []), ...(sec.list || []), sec.note || "");
+    if (sec.table) parts.push(sec.table.caption, ...sec.table.rows.flat());
+  });
+  (a.faqs || []).forEach((f) => parts.push(f.q, f.a));
+  return parts.join(" ").trim().split(/\s+/).length;
 }
 
 /* ---------- structured data ---------- */
@@ -54,7 +79,22 @@ const orgLd = {
   email: site.email,
   telephone: "+" + site.whatsapp,
   slogan: site.tagline,
-  founder: { "@type": "Person", name: site.founder.name },
+  logo: { "@type": "ImageObject", url: site.url + "/assets/logo.png", width: 512, height: 512 },
+  image: site.url + "/assets/og/default.jpg",
+  founder: { "@id": site.url + "/#founder" },
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer service",
+    telephone: "+" + site.whatsapp,
+    email: site.email,
+    areaServed: "IN",
+    availableLanguage: ["en", "hi"],
+  },
+  knowsAbout: [
+    "Amazon Web Services", "Microsoft Azure", "Oracle Cloud Infrastructure",
+    "ITIL 4", "IT service management", "IT infrastructure", "Presales consulting",
+    "Power BI", "Cloud cost optimisation",
+  ],
   address: {
     "@type": "PostalAddress",
     addressLocality: site.locality,
@@ -62,6 +102,27 @@ const orgLd = {
     addressCountry: site.country,
   },
   areaServed: cities.map((c) => ({ "@type": "City", name: c.name })),
+  ...((site.social || []).filter(Boolean).length ? { sameAs: site.social.filter(Boolean) } : {}),
+};
+
+/* The founder as a first-class entity. Every article is authored by this
+   Person, which is the site's only real E-E-A-T signal until there are
+   reviews or an independent track record to point at. */
+const personLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": site.url + "/#founder",
+  name: site.founder.name,
+  jobTitle: site.founder.role,
+  description: site.founder.bio,
+  email: site.email,
+  worksFor: { "@id": site.url + "/#organization" },
+  url: site.url + "/about/",
+  knowsAbout: [
+    "Cloud architecture", "AWS", "Microsoft Azure", "Oracle Cloud Infrastructure",
+    "ITIL 4", "IT service management", "IT infrastructure", "Presales consulting",
+  ],
+  ...(site.founder.linkedin ? { sameAs: [site.founder.linkedin] } : {}),
 };
 
 const websiteLd = {
@@ -124,6 +185,26 @@ const courseLd = (c, city) => {
   };
 };
 
+const articleLd = (a) => ({
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": `${site.url}/blog/${a.slug}/#article`,
+  headline: a.title,
+  description: a.metaDescription,
+  url: `${site.url}/blog/${a.slug}/`,
+  mainEntityOfPage: { "@type": "WebPage", "@id": `${site.url}/blog/${a.slug}/` },
+  image: `${site.url}/assets/blog/${a.slug}.jpg`,
+  datePublished: a.published,
+  dateModified: a.updated || a.published,
+  author: { "@id": site.url + "/#founder" },
+  publisher: { "@id": site.url + "/#organization" },
+  inLanguage: "en-IN",
+  keywords: (a.keywords || []).join(", "),
+  articleSection: trackOf(a.track).name,
+  wordCount: countWords(a),
+  isAccessibleForFree: true,
+});
+
 const serviceLd = (name, description, url) => ({
   "@context": "https://schema.org",
   "@type": "Service",
@@ -136,18 +217,27 @@ const serviceLd = (name, description, url) => ({
 
 /* ---------- chrome ---------- */
 
+/* Loaded with media="print" and swapped to "all" on load, so the webfonts
+   never block first paint. theme.css has a real fallback stack for each. */
+const FONTS = "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap";
+
 const NAV = [
   { href: "/it-advisory/", label: "IT Advisory" },
   { href: "/it-support/", label: "IT Support" },
   { href: "/training/", label: "Training" },
   { href: "/network/", label: "Network" },
+  { href: "/blog/", label: "Guides" },
   { href: "/about/", label: "About" },
 ];
 
-function head({ title, description, canonical, keywords = [], extraLd = [], ogImage, track }) {
+function head({ title, description, canonical, extraLd = [], ogImage, track, ogType = "website", published, modified }) {
   const url = site.url + canonical;
   const image = site.url + (ogImage || "/assets/og/default.jpg");
-  const kw = keywords.length ? `<meta name="keywords" content="${esc(keywords.join(", "))}">\n` : "";
+  const artMeta = ogType === "article"
+    ? `<meta property="article:published_time" content="${esc(published || "")}">
+<meta property="article:modified_time" content="${esc(modified || published || "")}">
+<meta property="article:author" content="${esc(site.founder.name)}">\n`
+    : "";
   return `<!doctype html>
 <html lang="en"${track ? ` data-track="${track}"` : ""}>
 <head>
@@ -155,10 +245,10 @@ function head({ title, description, canonical, keywords = [], extraLd = [], ogIm
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
-${kw}<link rel="canonical" href="${esc(url)}">
+<link rel="canonical" href="${esc(url)}">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 
-<meta property="og:type" content="website">
+<meta property="og:type" content="${esc(ogType)}">
 <meta property="og:site_name" content="${esc(site.name)}">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
@@ -171,12 +261,15 @@ ${kw}<link rel="canonical" href="${esc(url)}">
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(description)}">
 <meta name="twitter:image" content="${esc(image)}">
-
+<meta name="twitter:image:alt" content="${esc(title)}">
+${artMeta}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap">
 <link rel="stylesheet" href="/css/theme.css">
+<link rel="preload" as="style" href="${FONTS}">
+<link rel="stylesheet" href="${FONTS}" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="${FONTS}"></noscript>
 ${extraLd.map(jsonLd).join("\n")}
 </head>
 <body>
@@ -208,7 +301,10 @@ function footer() {
   <div class="wrap">
     <div class="fgrid">
       <div>
-        <a class="logo" href="/"><em>Job<b>jila</b></em></a>
+        <a class="logo logo-mark" href="/">
+          <img src="/assets/logo.png" width="40" height="40" alt="" loading="lazy" decoding="async">
+          <em>Job<b>jila</b></em>
+        </a>
         <p class="fine" style="margin-top:.875rem">${esc(site.description)}</p>
       </div>
       <div>
@@ -218,6 +314,7 @@ function footer() {
           <li><a href="/it-support/">IT Support</a></li>
           <li><a href="/training/">Training</a></li>
           <li><a href="/network/">Consultant Network</a></li>
+          <li><a href="/blog/">Guides</a></li>
         </ul>
       </div>
       <div>
@@ -252,6 +349,10 @@ function footer() {
 }
 
 /* ---------- blocks ---------- */
+
+/** A heading that exists for the document outline and for screen readers,
+    but is not shown. Used where a visible heading would change the design. */
+const vh = (tag, text) => `<${tag} class="vh">${esc(text)}</${tag}>`;
 
 function crumb(trail) {
   return `<nav class="crumb" aria-label="Breadcrumb"><ol>
@@ -384,8 +485,8 @@ function honestBlock() {
 }
 
 module.exports = {
-  ROOT, site, courses, openCourses, cities, trackOf,
-  esc, inr, wa, WA_ICON, write,
+  ROOT, site, courses, openCourses, cities, articles, trackOf,
+  esc, inr, wa, WA_ICON, write, fmtDate, vh, fit, TITLE_MAX,
   head, footer, crumb, courseCard, faqBlock, band, shareRow, ladder, honestBlock,
-  orgLd, websiteLd, breadcrumbLd, faqLd, courseLd, serviceLd,
+  orgLd, personLd, websiteLd, breadcrumbLd, faqLd, courseLd, articleLd, serviceLd,
 };
