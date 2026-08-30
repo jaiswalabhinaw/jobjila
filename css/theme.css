@@ -829,32 +829,6 @@ td a:hover, th a:hover { text-decoration: underline; }
 }
 .review-author .muted { display: block; color: var(--slate); font-style: normal; margin-top: .25rem; }
 
-/* ---------- Elfsight Google Reviews widget ---------- */
-.elfsight-app-branding,
-.elfsight-widget-branding,
-.elfsight-footer,
-.elfsight-app-footer,
-.e-branding,
-.e-footer,
-[class*="branding"],
-[class*="powered-by"],
-[class*="footer"],
-[class*="attribution"],
-a[href*="elfsight"],
-a[href*="elfsight.com"] {
-  display: none !important;
-  visibility: hidden !important;
-  height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-.elfsight-app-9b9165b2-ba2e-4c04-ade9-ea51065218a4 footer,
-.elfsight-app-9b9165b2-ba2e-4c04-ade9-ea51065218a4 [class*="brand"],
-.elfsight-app-9b9165b2-ba2e-4c04-ade9-ea51065218a4 [class*="footer"] {
-  display: none !important;
-  visibility: hidden !important;
-}
-
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .article-figure img,
   :root:not([data-theme="light"]) .post-card .thumb img { opacity: .92; }

@@ -50,6 +50,21 @@
     }
   ],
   "social": [],
+  "googleReviewUrl": "https://www.google.com/maps?cid=10654670338415788662",
+  "reviews": [
+    {
+      "author": "abhinaw jaiswal",
+      "stars": 5,
+      "text": "Really enjoyed the Cloud Presales Training by Jobjila Academy! The training was practical, interactive and industry-focused. The real-world discussions around customer requirements, solution architecture, RFP/RFI, sizing, BoQ and presales scenarios made the sessions very valuable.",
+      "course": "Cloud Presales Training"
+    },
+    {
+      "author": "casestudy",
+      "stars": 5,
+      "text": "Great experience with Jobjila Academy's Cloud Presales Training! The sessions were very practical and focused on real-world enterprise scenarios, including customer discovery, solution design, cloud architecture, RFP/RFI, BoQ and presales approach. I especially liked the practical, industry-oriented approach rather than just theory.",
+      "course": "Cloud Presales Training"
+    }
+  ],
   "analytics": {
     "ga4": "G-C0B48YZGKT"
   }

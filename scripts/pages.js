@@ -175,12 +175,20 @@ ${honestBlock()}
 <section>
   <div class="wrap">
     <div class="head">
-      <span class="eyebrow">Trusted by learners</span>
+      <span class="eyebrow">Reviews on Google</span>
       <h2>What students and clients say</h2>
+      <p class="muted">${site.reviews.length} verified ${site.reviews.length === 1 ? "review" : "reviews"} on our Google Business Profile, reproduced in full. Every one is public — follow the link to read them at source.</p>
     </div>
-    <!-- Elfsight Google Reviews Widget - Live from Google Business Profile -->
-    <script src="https://elfsightcdn.com/platform.js" async></script>
-    <div class="elfsight-app-9b9165b2-ba2e-4c04-ade9-ea51065218a4" data-elfsight-app-lazy style="margin: 2rem 0;"></div>
+    <div class="reviews-grid">
+      ${site.reviews.map((r) => `<figure class="review-card">
+        <div class="review-stars" role="img" aria-label="${r.stars} out of 5 stars">${"&#9733;".repeat(r.stars)}</div>
+        <blockquote class="review-text">${esc(r.text)}</blockquote>
+        <figcaption class="review-author"><b>${esc(r.author)}</b><span class="muted">${esc(r.course)}</span></figcaption>
+      </figure>`).join("\n      ")}
+    </div>
+    <div class="btns" style="margin-top:2rem">
+      <a class="btn btn-line btn-lg" href="${esc(site.googleReviewUrl)}" target="_blank" rel="noopener">Read and write reviews on Google</a>
+    </div>
   </div>
 </section>
 
