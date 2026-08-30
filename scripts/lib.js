@@ -239,8 +239,9 @@ gtag('js',new Date());gtag('config',${JSON.stringify(GA_ID)});
 /* ---------- chrome ---------- */
 
 /* Loaded with media="print" and swapped to "all" on load, so the webfonts
-   never block first paint. theme.css has a real fallback stack for each. */
-const FONTS = "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap";
+   never block first paint. theme.css has a real fallback stack for each.
+   Reduced weights: Sans (400,600,700) + Serif (400,ital 400) only. Mono uses system. */
+const FONTS = "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=IBM+Plex+Serif:ital,wght@0,400;1,400&display=swap";
 
 const NAV = [
   { href: "/it-advisory/", label: "IT Advisory" },
