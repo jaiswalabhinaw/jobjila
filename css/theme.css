@@ -829,6 +829,12 @@ td a:hover, th a:hover { text-decoration: underline; }
 }
 .review-author .muted { display: block; color: var(--slate); font-style: normal; margin-top: .25rem; }
 
+/* ---------- Elfsight Google Reviews widget ---------- */
+.elfsight-app-branding,
+.elfsight-widget-branding,
+[class*="branding"],
+[class*="powered-by"] { display: none !important; }
+
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .article-figure img,
   :root:not([data-theme="light"]) .post-card .thumb img { opacity: .92; }
