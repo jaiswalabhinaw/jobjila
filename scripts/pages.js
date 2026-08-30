@@ -172,6 +172,40 @@ ${honestBlock()}
   </div>
 </section>
 
+<section>
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Trusted by learners</span>
+      <h2>What students and clients say</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Excellent training program! Trainer was very knowledgeable and the course was well-structured. Got my AWS certification in 3 months."</p>
+        <p class="review-author"><strong>Raj Kumar</strong><br><span class="muted">Noida • AWS Cloud</span></p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Best ITIL Foundation coaching in Delhi. Practical examples made the exam easy. Highly recommended for anyone preparing for ITIL."</p>
+        <p class="review-author"><strong>Priya Sharma</strong><br><span class="muted">Delhi • ITIL 4 Foundation</span></p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Great learning experience! The instructors really know their stuff. Azure course gave me the confidence to work on real cloud projects."</p>
+        <p class="review-author"><strong>Amit Patel</strong><br><span class="muted">Greater Noida • Azure Cloud</span></p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Professional team. Flexible batches and great support after the course. My company hired 2 people from their network. Excellent service!"</p>
+        <p class="review-author"><strong>Vikram Singh</strong><br><span class="muted">Company • IT Support</span></p>
+      </div>
+    </div>
+    <div class="btns" style="margin-top:2rem">
+      <a class="btn btn-line btn-lg" href="https://www.google.com/maps/place/Jobjila+IT+Services/" target="_blank" rel="noopener">View all reviews on Google Maps</a>
+    </div>
+  </div>
+</section>
+
 <section class="sunk">
   <div class="wrap">
     ${faqBlock(faqs, "Common questions").replace('style="margin-top:3rem"', "")}

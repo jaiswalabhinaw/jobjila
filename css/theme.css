@@ -805,6 +805,30 @@ td a:hover, th a:hover { text-decoration: underline; }
 .panel .who h4 { font-family: var(--f-sans); font-weight: 600; font-size: var(--s-0); }
 .panel .who .role { font-family: var(--f-mono); font-size: .6875rem; letter-spacing: .1em; text-transform: uppercase; color: var(--slate); }
 
+/* ---------- review cards ---------- */
+.reviews-grid {
+  display: grid; gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+}
+.review-card {
+  border: 1px solid var(--rule); background: var(--card); border-radius: 3px;
+  padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem;
+  transition: box-shadow .18s ease, transform .18s ease, border-color .18s ease;
+}
+.review-card:hover { box-shadow: var(--shadow-lift); transform: translateY(-2px); border-color: var(--slate-2); }
+.review-stars {
+  font-size: 1.25rem; color: #ffa500; font-weight: 600; letter-spacing: .15em;
+}
+.review-text {
+  font-size: var(--s--1); color: var(--ink); line-height: 1.5; margin: 0;
+  font-style: italic;
+}
+.review-author {
+  font-size: var(--s--1); margin: 0; margin-top: auto;
+  color: var(--ink-2); font-weight: 500;
+}
+.review-author .muted { display: block; color: var(--slate); font-style: normal; margin-top: .25rem; }
+
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .article-figure img,
   :root:not([data-theme="light"]) .post-card .thumb img { opacity: .92; }
