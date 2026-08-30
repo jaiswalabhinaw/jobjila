@@ -162,4 +162,25 @@
       { rootMargin: "0px 0px -80px 0px" }
     ).observe(siteFooter);
   }
+
+  // Hide Elfsight widget branding/footer by observing iframe loads
+  setTimeout(function hideElfsightBranding() {
+    var iframes = document.querySelectorAll("iframe");
+    iframes.forEach(function (frame) {
+      try {
+        var doc = frame.contentDocument || frame.contentWindow.document;
+        if (doc) {
+          var style = doc.createElement("style");
+          style.textContent = `
+            [class*="branding"],
+            [class*="footer"],
+            [class*="attribution"],
+            a[href*="elfsight"],
+            .elfsight-branding { display: none !important; }
+          `;
+          doc.head.appendChild(style);
+        }
+      } catch (e) {}
+    });
+  }, 500);
 })();
