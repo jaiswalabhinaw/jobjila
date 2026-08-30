@@ -832,8 +832,13 @@ td a:hover, th a:hover { text-decoration: underline; }
 /* ---------- Elfsight Google Reviews widget ---------- */
 .elfsight-app-branding,
 .elfsight-widget-branding,
+.elfsight-footer,
 [class*="branding"],
-[class*="powered-by"] { display: none !important; }
+[class*="powered-by"],
+[class*="footer"],
+a[href*="elfsight"] { display: none !important; }
+.elfsight-app-9b9165b2-ba2e-4c04-ade9-ea51065218a4 footer,
+.elfsight-app-9b9165b2-ba2e-4c04-ade9-ea51065218a4 [class*="brand"] { display: none !important; }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .article-figure img,
