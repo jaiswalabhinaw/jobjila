@@ -837,10 +837,215 @@ function ordinal(n) {
 
 /* ---------- writer ---------- */
 
+/* =========================== RECRUITMENT =========================== */
+
+function recruitment() {
+  const t = trail("Hiring", "/recruitment/");
+  const pct = site.recruitment.permanentPct;
+  const days = site.recruitment.replacementDays;
+  const faqs = [
+    { q: "Who pays you?", a: "The employer, always. We are engaged and paid by the company that is hiring. We have never charged a candidate a fee for anything, and we never will — not for a job, an interview, a placement or a CV review." },
+    { q: "What do you charge?", a: `${pct}% of the hire's first-year CTC for a permanent placement — roughly one month's salary. It is invoiced only after the person joins. Contract and freelance engagements are quoted per role, with our margin disclosed in writing before you agree to anything.` },
+    { q: "What if the person leaves quickly?", a: `If a permanent hire leaves or is let go within ${days} days of joining, we find you a replacement at no further fee. If we cannot, we refund what you paid us. This is a replacement guarantee, not a placement guarantee — we do not promise that any given role will be filled.` },
+    { q: "Do you only put forward your own students?", a: "No. We recruit from the open market, and most candidates we submit have no connection to our training. When we do put forward someone we trained, we say so in the first line of the submission, because we have an obvious interest in placing them." },
+    { q: "How many people are on your bench?", a: "For contract and freelance work we draw on our consultant network, which is small and reviewed rather than large and unvetted. We will tell you honestly how many people we have for your specific skill before you brief us, rather than after." },
+    { q: "Have you done this before?", a: "We are new to recruitment. We have been advising and training in these technologies for years, but our placement track record is short and we are not going to pretend otherwise. Weigh that when you decide how much of your hiring to give us." },
+  ];
+  return head({
+    title: "Hire IT Talent — Recruitment for Employers | Jobjila",
+    description: "Employer-paid IT recruitment in Noida: permanent, contract and freelance hiring for cloud, infrastructure and presales roles. Candidates never pay.",
+    canonical: "/recruitment/",
+    extraLd: [orgLd, breadcrumbLd(t), faqLd(faqs), serviceLd("IT Recruitment", "Permanent, contract, freelance and project-based hiring for IT, cloud, infrastructure, sales and presales roles.", "/recruitment/")],
+    track: "consult",
+  }) + `
+<section class="page-hero">
+  <div class="wrap">
+    ${crumb(t)}
+    <span class="eyebrow">Hiring</span>
+    <h1>Hire IT people who have actually been assessed</h1>
+    <p>Permanent, contract and freelance hiring for cloud, infrastructure, sales and presales roles. Our rate is published below, the employer pays it, and the candidate never pays us anything.</p>
+    <div class="btns">
+      <a class="btn btn-wa btn-lg" href="${wa("Hi Jobjila, we are hiring. The role is:\n\nRole:\nLocation:\nPermanent or contract:\nBudget range:")}" target="_blank" rel="noopener">${WA_ICON}<span>Send us a role</span></a>
+      <a class="btn btn-line btn-lg" href="/for-candidates/">Looking for a job instead?</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="callout">
+      <h3>The employer pays. The candidate never does.</h3>
+      <p>This is the line between recruitment and the fee-harvesting that has given hiring agencies in India such a poor name. We are on the employer's side of the invoice, and we say so on every page of this site. If anyone asks a candidate for money in our name — a registration fee, a security deposit, a laptop charge — it is not us, and we would like to know about it.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sunk">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">What we recruit for</span>
+      <h2>Four ways to engage, in the areas we actually know</h2>
+      <p class="muted">We recruit in the technologies we advise on and teach. Outside those, we will tell you we are not the right agency rather than take the brief anyway.</p>
+    </div>
+    <div class="grid g2">
+      <div class="cell"><h3>Permanent recruitment</h3><p>Full-time hires on your payroll. Invoiced after joining, at the published rate, with a ${days}-day replacement guarantee.</p></div>
+      <div class="cell"><h3>Contract hiring</h3><p>Fixed-term people for a defined period — cover, a migration, a support ramp. Quoted per role with our margin disclosed.</p></div>
+      <div class="cell"><h3>Freelance and project-based hiring</h3><p>Independent specialists for a scoped piece of work, drawn from our reviewed <a href="/network/">consultant network</a>.</p></div>
+      <div class="cell"><h3>Specialist and niche roles</h3><p>The hard-to-fill ones: OCI, ITSM tooling, cloud presales. Fewer candidates exist, so we tell you the realistic size of the pool up front.</p></div>
+      <div class="cell"><h3>Cloud and infrastructure roles</h3><p>AWS, Azure and OCI engineers and architects, infrastructure and support staff. We teach these subjects, so we can screen on more than keywords.</p></div>
+      <div class="cell"><h3>Sales and presales roles</h3><p>Solution consultants, presales and cloud sales. We run a presales course, which means we know what competence in this role looks like.</p></div>
+    </div>
+    <p class="small muted" style="margin-top:1.5rem">Startups and SMEs are welcome and are much of who we expect to work with. A single role is a perfectly normal engagement — there is no minimum.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">How we work</span>
+      <h2>Sourcing and screening, then a short shortlist</h2>
+    </div>
+    <div class="grid g4">
+      <div class="cell"><h3>1. The brief</h3><p>What the role actually needs, what it pays, and what you will compromise on. Free, and often the most useful hour.</p></div>
+      <div class="cell"><h3>2. Sourcing</h3><p>Open market first, our network second. We tell you where a candidate came from every time.</p></div>
+      <div class="cell"><h3>3. Screening</h3><p>A technical conversation with someone who does the work, not a keyword match. You get our written read, including the doubts.</p></div>
+      <div class="cell"><h3>4. Shortlist</h3><p>Three or four people we would stand behind, not forty CVs. If we only have one, we send one.</p></div>
+    </div>
+    <div class="callout" style="margin-top:2rem">
+      <h3>When we put forward someone we trained, we tell you</h3>
+      <p>We run training courses, and some of the people we place have taken them. That gives us an obvious interest in placing them — so we declare it in the first line of the submission, every time. Weigh our opinion accordingly and interview them as hard as you would anyone else. What we will not do is quietly present a former student as though we found them on the open market.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sunk">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">What it costs</span>
+      <h2>The rate is published, like every other price on this site</h2>
+      <p class="muted">Nobody in Indian recruitment publishes their rate. We publish every course fee, so it would be strange to start hiding things here.</p>
+    </div>
+    <div class="grid g2">
+      <div class="cell"><h3>${pct}% of first-year CTC</h3><p>For a permanent placement — about one month's salary. Invoiced after the person joins, never before. No retainer, no exclusivity, no charge for a role we fail to fill.</p></div>
+      <div class="cell"><h3>${days}-day replacement</h3><p>If a permanent hire leaves or is let go within ${days} days, we replace them at no further fee. If we cannot replace them, we refund what you paid.</p></div>
+      <div class="cell"><h3>Contract and freelance</h3><p>Quoted per role, with our margin on the rate stated in writing before you agree. You always know what the person is being paid and what we are taking.</p></div>
+      <div class="cell"><h3>What we do not charge for</h3><p>Briefing calls, sourcing, screening, rejected shortlists, and anything at all charged to a candidate.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="honest">
+  <div class="wrap">
+    <span class="eyebrow">Before you brief us</span>
+    <h2>We are new at this</h2>
+    <p>We have advised on and taught these technologies for years. We have been recruiting for a much shorter time, and we do not have a long list of placements or client logos to show you — so we are not going to invent one.</p>
+    <div class="list">
+      <div><span class="mark">01</span><div><b>We do not promise to fill your role.</b><p>Some roles cannot be filled at the budget or in the location. We would rather tell you that in week one than bill you for six weeks of searching.</p></div></div>
+      <div><span class="mark">02</span><div><b>We do not send volume.</b><p>A shortlist of forty is not a shortlist. If we have three people worth your time, you get three.</p></div></div>
+      <div><span class="mark">03</span><div><b>We do not post jobs that do not exist.</b><p>Fake listings to collect CVs are standard practice in this industry. Every role we advertise is a real, currently open brief from a real client.</p></div></div>
+      <div><span class="mark">04</span><div><b>We do not take a role we cannot serve.</b><p>Outside cloud, infrastructure, ITSM and presales, we will say so and point you elsewhere.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    ${faqBlock(faqs, "Hiring questions").replace('style="margin-top:3rem"', "")}
+    <div style="margin-top:3rem">
+      ${band({ title: "Tell us about the role", body: "Send the role, the location, the budget range and whether it is permanent or contract. We will tell you honestly whether we can fill it.", label: "Send us a role", message: "Hi Jobjila, we are hiring. The role is:\n\nRole:\nLocation:\nPermanent or contract:\nBudget range:" })}
+    </div>
+  </div>
+</section>
+` + footer();
+}
+
+/* =========================== FOR CANDIDATES =========================== */
+
+function forCandidates() {
+  const t = trail("For Candidates", "/for-candidates/");
+  const faqs = [
+    { q: "Do I have to pay you anything?", a: "No. Not a registration fee, not a security deposit, not a laptop charge, not a CV rewriting fee, not a percentage of your salary. Nothing, ever, at any stage. Employers pay us. If anyone asks you for money in our name, it is not us." },
+    { q: "Does taking a Jobjila course get me a job?", a: "No, and we will not imply otherwise. A course fee buys teaching. It does not buy a job, an interview, or a place on any shortlist. Training and recruitment are run as separate services here, and paying for one gives you no claim on the other." },
+    { q: "So is there any advantage to having trained with you?", a: "Only this: if you trained with us, we have seen you work for several weeks, so we can describe you to an employer with more confidence than we could from a CV. That may help if a brief happens to fit you. It is not a queue, a guarantee, or something you can buy." },
+    { q: "What do you do with my CV?", a: "We read it, and we keep it. We do not send it to any employer without asking you first, for that specific role, by name. We do not sell it, publish it, or add it to a database anyone else can buy access to." },
+    { q: "How do I get it removed?", a: `Message or email us and say so. We delete it and confirm within three working days. You do not have to give a reason. See our <a href="/privacy/">Privacy Policy</a> for the detail.` },
+    { q: "Will you help me even if there is no matching role?", a: "We will be honest rather than encouraging. If we have nothing that fits, we will say so instead of keeping you on a list and going quiet. If your CV is the problem, we will tell you what specifically is wrong with it — at no charge." },
+  ];
+  return head({
+    title: "For Candidates — We Never Charge You a Fee | Jobjila",
+    description: "How Jobjila works with candidates: employers pay us, you never do. What happens to your CV, and why a training course does not buy a job or an interview.",
+    canonical: "/for-candidates/",
+    extraLd: [orgLd, breadcrumbLd(t), faqLd(faqs)],
+    track: "consult",
+  }) + `
+<section class="page-hero">
+  <div class="wrap">
+    ${crumb(t)}
+    <span class="eyebrow">For candidates</span>
+    <h1>You will never pay us a rupee</h1>
+    <p>Not for a job, an interview, a placement, a CV review or a "registration". Employers pay us to fill their roles. That is the whole business model, and this page exists so you can hold us to it.</p>
+    <div class="btns">
+      <a class="btn btn-wa btn-lg" href="${wa("Hi Jobjila, I am looking for a role.\n\nName:\nCurrent role:\nSkills:\nNotice period:\nLocation:")}" target="_blank" rel="noopener">${WA_ICON}<span>Send us your CV</span></a>
+      <a class="btn btn-line btn-lg" href="/recruitment/">Hiring instead?</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="callout">
+      <h3>A training course does not buy you a job</h3>
+      <p>We run courses and we recruit, and we keep the two completely separate. Your course fee buys teaching and nothing else — not a job, not an interview, not a place on a shortlist, not priority over anyone else. If we ever put a former student forward for a role, it is because an employer's brief fits them, and we tell that employer we trained them. Any training provider that sells you a course on the promise of a job at the end is selling you something other than education.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sunk">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">What happens to your CV</span>
+      <h2>Four things we commit to</h2>
+    </div>
+    <div class="grid g2">
+      <div class="cell"><h3>We ask before we send it</h3><p>Your CV does not go to any employer without your say-so for that specific role, named. No blanket permission, no "we will keep you posted".</p></div>
+      <div class="cell"><h3>We do not sell or publish it</h3><p>It is not added to any database anyone can buy, and it is not posted anywhere. It sits with us and nowhere else.</p></div>
+      <div class="cell"><h3>We tell you where it went</h3><p>You will always know which company has seen your profile, because we asked you first and told you the outcome.</p></div>
+      <div class="cell"><h3>We delete it when you ask</h3><p>Message us and it is gone within three working days, with confirmation. No reason required, no retention argument.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="honest">
+  <div class="wrap">
+    <span class="eyebrow">Read this before you pay anyone, anywhere</span>
+    <h2>How to tell it is not us</h2>
+    <p>Recruitment fraud in India usually looks the same. If any of the following happens in Jobjila's name, it is not us — <a href="/contact/">tell us</a> and we will confirm it in writing.</p>
+    <div class="list">
+      <div><span class="mark">01</span><div><b>Anyone asks you for money.</b><p>Registration, processing, security deposit, training bundle, laptop, background check. All of it. We charge candidates nothing at any stage.</p></div></div>
+      <div><span class="mark">02</span><div><b>Someone guarantees you a job.</b><p>Nobody can. We do not, and any agency or institute that does is selling a promise it has no ability to keep.</p></div></div>
+      <div><span class="mark">03</span><div><b>An offer arrives without an interview.</b><p>Real employers interview. An offer letter that turns up after a WhatsApp chat and asks for a deposit is a fraud, whoever it claims to be from.</p></div></div>
+      <div><span class="mark">04</span><div><b>The contact details do not match this site.</b><p>Our number and email are on the <a href="/contact/">contact page</a>. If a message comes from anywhere else, check with us before replying.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    ${faqBlock(faqs, "Candidate questions").replace('style="margin-top:3rem"', "")}
+    <div style="margin-top:3rem">
+      ${band({ title: "Send us your CV", body: "Tell us what you do, what you want next and your notice period. If we have nothing that fits, we will say so rather than go quiet.", label: "Message us", message: "Hi Jobjila, I am looking for a role.\n\nName:\nCurrent role:\nSkills:\nNotice period:\nLocation:" })}
+    </div>
+  </div>
+</section>
+` + footer();
+}
+
 module.exports = function buildPages() {
   write("index.html", home());
   write(path.join("it-advisory", "index.html"), itAdvisory());
   write(path.join("it-support", "index.html"), itSupport());
+  write(path.join("recruitment", "index.html"), recruitment());
+  write(path.join("for-candidates", "index.html"), forCandidates());
   write(path.join("network", "index.html"), network());
   write(path.join("about", "index.html"), about());
   write(path.join("contact", "index.html"), contact());
@@ -849,5 +1054,5 @@ module.exports = function buildPages() {
   write(path.join("terms", "index.html"), terms());
   write(path.join("privacy", "index.html"), privacy());
   write("404.html", notFound());
-  return 10;
+  return 12;
 };

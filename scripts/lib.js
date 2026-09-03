@@ -70,7 +70,7 @@ function countWords(a) {
 
 const orgLd = {
   "@context": "https://schema.org",
-  "@type": ["Organization", "EducationalOrganization"],
+  "@type": ["Organization", "EducationalOrganization", "EmploymentAgency"],
   "@id": site.url + "/#organization",
   name: site.name,
   legalName: site.legalName,
@@ -247,6 +247,7 @@ const NAV = [
   { href: "/it-advisory/", label: "IT Advisory" },
   { href: "/it-support/", label: "IT Support" },
   { href: "/training/", label: "Training" },
+  { href: "/recruitment/", label: "Hiring" },
   { href: "/network/", label: "Network" },
   { href: "/blog/", label: "Career Guide" },
   { href: "/about/", label: "About" },

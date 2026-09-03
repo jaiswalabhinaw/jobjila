@@ -19,6 +19,8 @@ const STATIC_URLS = [
   { url: "/",               priority: "1.0", freq: "weekly" },
   { url: "/it-advisory/",   priority: "0.9", freq: "monthly" },
   { url: "/it-support/",    priority: "0.9", freq: "monthly" },
+  { url: "/recruitment/",   priority: "0.9", freq: "monthly" },
+  { url: "/for-candidates/", priority: "0.7", freq: "monthly" },
   { url: "/network/",       priority: "0.8", freq: "monthly" },
   { url: "/about/",         priority: "0.7", freq: "monthly" },
   { url: "/contact/",       priority: "0.7", freq: "yearly" },
