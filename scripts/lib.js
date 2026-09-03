@@ -360,7 +360,7 @@ function footer() {
       </div>
     </div>
     <div class="fbot">
-      <p class="fine"><strong>Jobjila does not offer employment, recruitment or placement guarantees, and never charges any candidate a fee for a job.</strong> We are paid for training and for consulting work only. Salary figures anywhere on this site are market observations, not commitments. Training fees are refundable as set out in our <a href="/refund-policy/">Refund Policy</a>.</p>
+      <p class="fine"><strong>Jobjila never charges a candidate a fee — not for a job, an interview, a placement or a CV review.</strong> Our recruitment work is paid for by the employer who is hiring. Training and recruitment are separate services: a course fee buys teaching, not a job, an interview or a place on any shortlist. We do not guarantee employment to anyone. Salary figures anywhere on this site are market observations, not commitments. Training fees are refundable as set out in our <a href="/refund-policy/">Refund Policy</a>.</p>
       <p class="fine">&copy; ${new Date().getFullYear()} ${esc(site.legalName)} &middot; ${esc(site.locality)}, ${esc(site.region)}, India &middot; <a href="mailto:${esc(site.email)}">${esc(site.email)}</a></p>
     </div>
   </div>
@@ -483,12 +483,13 @@ function ladder() {
 </div>`;
 }
 
-/** The five things we refuse to promise. This is the page's credibility thesis. */
+/** The six things we refuse to promise. This is the page's credibility thesis. */
 function honestBlock() {
   const items = [
     ["We do not guarantee a job.", "We provide training, an assessed project, resume review and interview practice. Nobody can guarantee employment, and any institute that does is selling you something else."],
     ["We do not guarantee income.", "Salary and freelance figures anywhere on this site are market observations, not commitments to you."],
-    ["We do not charge for a job, an interview or a placement.", "You pay for training or for consulting work. Nothing else. Anyone asking you for a registration, security deposit or laptop fee is not us."],
+    ["We do not charge candidates for a job, an interview or a placement.", "Employers pay us to recruit. Candidates pay us nothing, ever. As a learner you pay for training and nothing else. Anyone asking you for a registration, security deposit or laptop fee is not us."],
+    ["We do not mix training with hiring.", "Paying for a course does not buy a job, an interview, or a place on a shortlist. If we put a former student forward for a role, it is because an employer’s brief fits them — never because they bought a course from us."],
     ["We do not hide the price.", "Every fee is published on this site. You will never have to message us to find out what something costs."],
     ["We do not pressure you with deadlines.", "No countdown timers, no \u201ctwo seats left\u201d. If a batch is full, we tell you the next date."],
   ];

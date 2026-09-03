@@ -489,7 +489,7 @@ function about() {
         </ul>
 
         <h2>What we are not</h2>
-        <p>We are not a placement agency, a recruitment consultancy or a job portal. We do not collect candidate fees, and we have no relationship with anyone who does. If someone contacts you claiming to offer a job through Jobjila in exchange for money, it is not us — <a href="/contact/">tell us</a> and we will confirm it.</p>
+        <p>We do recruit — but only for companies that pay us to, and only ever on the employer’s side of the invoice. We are not a job portal, and we are not the kind of “placement agency” that sells hope to candidates. Training and recruitment are run as separate services: your course fee buys teaching, not a shortlist place. If someone contacts you claiming to offer a job through Jobjila in exchange for money, it is not us — <a href="/contact/">tell us</a> and we will confirm it.</p>
       </div>
 
       <aside class="aside">
@@ -715,10 +715,10 @@ const terms = () => legalPage({
     <p>${site.legalName}, based in ${site.locality}, ${site.region}, India. Contact: ${site.email}, ${site.phoneDisplay}.</p>
 
     <h2>2. What we provide</h2>
-    <p>IT advisory, IT support services, and live online training. We are not a recruitment agency, placement service or job portal.</p>
+    <p>IT advisory, IT support services, live online training, and recruitment services for employers. We are not a job portal. Our recruitment work is engaged and paid for by the hiring company; we never charge a candidate.</p>
 
     <h2>3. No employment or income guarantee</h2>
-    <p><strong>We do not guarantee employment, placement, freelance work or any level of income.</strong> We provide training, assessment, resume review and interview preparation. Salary or earning figures shown anywhere on this site are market observations, not commitments to you.</p>
+    <p><strong>We do not guarantee employment, placement, freelance work or any level of income.</strong> We provide training, assessment, resume review and interview preparation. Enrolling on a course does not entitle you to a job, an interview, or consideration for any role we are recruiting for — training and recruitment are separate services. Salary or earning figures shown anywhere on this site are market observations, not commitments to you.</p>
 
     <h2>4. We never charge candidates for jobs</h2>
     <p>We do not charge any fee for a job, an interview, a placement, a security deposit or equipment. If anyone asks you for such a payment in our name, it is not us — please report it to ${site.email}.</p>
