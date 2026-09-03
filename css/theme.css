@@ -334,6 +334,11 @@ section > .wrap { padding-block: clamp(3rem, 7vw, 5rem); }
 .g2 { grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); }
 .g3 { grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
 .g4 { grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); }
+/* Fixed 5-up: for a set of exactly ten, so no row is ever left part-empty
+   (the 1px grid gap shows the rule colour through, so gaps read as blocks). */
+.g5 { grid-template-columns: repeat(5, 1fr); }
+@media (max-width: 62rem) { .g5 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 34rem) { .g5 { grid-template-columns: 1fr; } }
 .cell { background: var(--card); padding: 1.75rem; display: grid; gap: .75rem; align-content: start; }
 .cell p { font-size: var(--s--1); color: var(--slate); }
 .cell ul { margin: 0; padding-left: 1.05rem; font-size: var(--s--1); color: var(--slate); }
