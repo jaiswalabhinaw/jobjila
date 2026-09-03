@@ -94,6 +94,7 @@ const orgLd = {
     "Amazon Web Services", "Microsoft Azure", "Oracle Cloud Infrastructure",
     "ITIL 4", "IT service management", "IT infrastructure", "Presales consulting",
     "Power BI", "Cloud cost optimisation",
+    "IT recruitment", "Technical hiring", "Contract staffing",
   ],
   address: {
     "@type": "PostalAddress",

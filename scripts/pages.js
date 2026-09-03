@@ -20,7 +20,8 @@ const trail = (name, url) => [{ name: "Home", url: "/" }, { name, url }];
 function home() {
   const featured = openCourses.filter((c) => c.featured);
   const faqs = [
-    { q: "What does Jobjila actually do?", a: "Three things. We advise companies on their IT — cloud architecture, migrations, cost and technology choices. We support IT infrastructure and keep it running. And we train people in the same technology, live online. The consulting keeps the training current, and the training feeds our consultant network." },
+    { q: "What does Jobjila actually do?", a: "Four things. We advise companies on their IT — cloud architecture, migrations, cost and technology choices. We support IT infrastructure and keep it running. We train people in the same technology, live online. And we recruit for companies hiring into those roles, paid by the employer. The consulting keeps the training current, and the training keeps our screening honest." },
+    { q: "Is your recruitment separate from your training?", a: "Completely. A course fee buys teaching and nothing else — not a job, not an interview, not a place on any shortlist. Employers pay us to recruit; candidates never pay us anything. If we do put a former student forward for a role, we tell the employer we trained them." },
     { q: "Is the first class really free?", a: "Yes. Any course, first live session, no payment and no card details. You message us on WhatsApp and we send the joining link. We are new and have no reviews yet, so asking you to pay on trust would be unreasonable." },
     { q: "How much do the courses cost?", a: `Between ${inr(Math.min(...openCourses.map((c) => c.priceINR)))} and ${inr(Math.max(...openCourses.map((c) => c.priceINR)))} depending on length. Every fee is published on its course page. You pay the balance only before your third session, and it stays refundable for ${site.pricing.refundDays} days after that.` },
     { q: "Are the classes live or recorded?", a: "Live online, in the evening, taught by a practising consultant — with every session recorded so you can revisit it or catch up if you miss one." },
@@ -29,16 +30,16 @@ function home() {
   ];
 
   return head({
-    title: "Jobjila — IT Advisory, Support & Training",
-    description: "IT advisory, IT support and live online training in AWS, Azure, OCI, ITIL and ITSM — from practising consultants in Noida. First class free.",
+    title: "Jobjila — IT Advisory, Support, Training & Hiring",
+    description: "IT advisory, IT support, live online training and employer-paid IT recruitment — from practising consultants in Noida. First training class free.",
     canonical: "/",
     extraLd: [orgLd, personLd, websiteLd, faqLd(faqs)],
   }) + `
 <div class="hero">
   <div class="wrap">
     <span class="eyebrow">${esc(site.locality)}, ${esc(site.region)} &middot; serving clients across India</span>
-    <h1 style="margin-top:.875rem">IT advisory, support and training — <em>without the guesswork.</em></h1>
-    <p class="lede">We help companies plan and run their IT, and we train the people who do that work. Every price is published on this site. Your first training class is free, and you pay only after you have seen us teach.</p>
+    <h1 style="margin-top:.875rem">IT advisory, support, training and hiring — <em>without the guesswork.</em></h1>
+    <p class="lede">We help companies plan and run their IT, we train the people who do that work, and we find them the people they need to hire. Every price is published on this site — including our recruitment rate. Your first training class is free.</p>
     <div class="btns">
       <a class="btn btn-wa btn-lg" href="${wa("Hi Jobjila, I want to book a free first class.")}" target="_blank" rel="noopener">${WA_ICON}<span>Book a free first class</span></a>
       <a class="btn btn-line btn-lg" href="/training/">Browse courses</a>
@@ -56,6 +57,7 @@ function home() {
       <div><a href="/it-advisory/"><h3>IT Advisory</h3><p>Cloud architecture, migration planning, cost review and technology selection.</p></a></div>
       <div><a href="/it-support/"><h3>IT Support</h3><p>Infrastructure setup, networks, servers, backup and ongoing maintenance.</p></a></div>
       <div><a href="/training/"><h3>Training</h3><p>Live online cohorts in cloud, ITSM and infrastructure. Closed batches for teams.</p></a></div>
+      <div><a href="/recruitment/"><h3>Recruitment</h3><p>Permanent, contract and freelance hiring for IT roles. Employers pay us; candidates never do.</p></a></div>
       <div><a href="/network/"><h3>Freelancing</h3><p>A reviewed network of independent consultants who deliver client work with us.</p></a></div>
     </div>
   </div>
@@ -126,6 +128,36 @@ function home() {
 </section>
 
 ${honestBlock()}
+
+<section class="sunk">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Recruitment &amp; Talent &middot; new</span>
+      <h2>We now hire for companies too</h2>
+      <p class="muted">Ten hiring services across the same technologies we advise on and teach. The employer pays our fee — a candidate has never paid us anything and never will.</p>
+    </div>
+    <div class="grid g3">
+      <div class="cell"><h3>Permanent Recruitment</h3><p>Full-time hires, invoiced after joining, with a ${site.recruitment.replacementDays}-day replacement guarantee.</p></div>
+      <div class="cell"><h3>Contract Hiring</h3><p>Fixed-term cover for a migration, a ramp or a notice period.</p></div>
+      <div class="cell"><h3>Freelance &amp; Project-Based Hiring</h3><p>Independent specialists for a scoped piece of work with a defined end.</p></div>
+      <div class="cell"><h3>IT &amp; Technology Recruitment</h3><p>Engineers, administrators and support staff across the infrastructure stack.</p></div>
+      <div class="cell"><h3>Cloud &amp; Infrastructure Recruitment</h3><p>AWS, Azure and OCI engineers and architects — subjects we teach.</p></div>
+      <div class="cell"><h3>Sales &amp; Presales Recruitment</h3><p>Solution consultants and presales engineers, screened by people who do it.</p></div>
+      <div class="cell"><h3>Talent Sourcing</h3><p>Open market first, our own network second, and we tell you which.</p></div>
+      <div class="cell"><h3>Candidate Screening</h3><p>A technical conversation, not a keyword match. You get our doubts too.</p></div>
+      <div class="cell"><h3>Specialist / Niche Hiring</h3><p>OCI, ITSM tooling, cloud cost. We size the pool honestly up front.</p></div>
+      <div class="cell"><h3>Startup &amp; SME Recruitment Support</h3><p>One role is a normal engagement. No minimum, no retainer.</p></div>
+    </div>
+    <div class="callout" style="margin-top:2rem">
+      <h3>Training and hiring are separate services</h3>
+      <p>Paying for a course does not buy a job, an interview, or a place on a shortlist — and we would rather say that on the homepage than bury it. Our recruitment fee is published in full on the <a href="/recruitment/">hiring page</a>, and candidates can read exactly what we do with a CV on the <a href="/for-candidates/">candidates page</a>.</p>
+    </div>
+    <div class="btns" style="margin-top:2rem">
+      <a class="btn btn-line btn-lg" href="/recruitment/">Hiring? See the rate</a>
+      <a class="btn btn-line btn-lg" href="/for-candidates/">Looking for a role?</a>
+    </div>
+  </div>
+</section>
 
 <section>
   <div class="wrap">
@@ -883,19 +915,32 @@ function recruitment() {
 <section class="sunk">
   <div class="wrap">
     <div class="head">
-      <span class="eyebrow">What we recruit for</span>
-      <h2>Four ways to engage, in the areas we actually know</h2>
-      <p class="muted">We recruit in the technologies we advise on and teach. Outside those, we will tell you we are not the right agency rather than take the brief anyway.</p>
+      <span class="eyebrow">Recruitment &amp; Talent</span>
+      <h2>What we recruit for</h2>
+      <p class="muted">Ten services, all in the technologies we advise on and teach. Outside those we will tell you we are not the right agency, rather than take the brief anyway.</p>
     </div>
-    <div class="grid g2">
-      <div class="cell"><h3>Permanent recruitment</h3><p>Full-time hires on your payroll. Invoiced after joining, at the published rate, with a ${days}-day replacement guarantee.</p></div>
-      <div class="cell"><h3>Contract hiring</h3><p>Fixed-term people for a defined period — cover, a migration, a support ramp. Quoted per role with our margin disclosed.</p></div>
-      <div class="cell"><h3>Freelance and project-based hiring</h3><p>Independent specialists for a scoped piece of work, drawn from our reviewed <a href="/network/">consultant network</a>.</p></div>
-      <div class="cell"><h3>Specialist and niche roles</h3><p>The hard-to-fill ones: OCI, ITSM tooling, cloud presales. Fewer candidates exist, so we tell you the realistic size of the pool up front.</p></div>
-      <div class="cell"><h3>Cloud and infrastructure roles</h3><p>AWS, Azure and OCI engineers and architects, infrastructure and support staff. We teach these subjects, so we can screen on more than keywords.</p></div>
-      <div class="cell"><h3>Sales and presales roles</h3><p>Solution consultants, presales and cloud sales. We run a presales course, which means we know what competence in this role looks like.</p></div>
+
+    <span class="eyebrow">How you hire</span>
+    <div class="grid g2" style="margin-top:1rem">
+      <div class="cell"><h3>Permanent Recruitment</h3><p>Full-time hires onto your payroll. Invoiced only after the person joins, at the published rate, with a ${days}-day replacement guarantee behind it.</p></div>
+      <div class="cell"><h3>Contract Hiring</h3><p>Fixed-term people for a defined window — maternity or notice-period cover, a migration, a support ramp. Quoted per role with our margin stated in writing.</p></div>
+      <div class="cell"><h3>Freelance &amp; Project-Based Hiring</h3><p>Independent specialists for a scoped piece of work with a defined end, drawn from our reviewed <a href="/network/">consultant network</a> rather than an open database.</p></div>
+      <div class="cell"><h3>Startup &amp; SME Recruitment Support</h3><p>A single role is a normal engagement here and there is no minimum. If you have no HR function, we will also tell you what the role should pay before you commit to hiring.</p></div>
     </div>
-    <p class="small muted" style="margin-top:1.5rem">Startups and SMEs are welcome and are much of who we expect to work with. A single role is a perfectly normal engagement — there is no minimum.</p>
+
+    <span class="eyebrow" style="display:block;margin-top:2.5rem">What we hire for</span>
+    <div class="grid g2" style="margin-top:1rem">
+      <div class="cell"><h3>IT &amp; Technology Recruitment</h3><p>Engineers, administrators and support staff across the infrastructure and service-management stack — the roles we have spent years advising on and teaching.</p></div>
+      <div class="cell"><h3>Cloud &amp; Infrastructure Recruitment</h3><p>AWS, Azure and OCI engineers and architects, plus networks, servers and backup. We teach these subjects, so we can screen on substance rather than keywords.</p></div>
+      <div class="cell"><h3>Sales &amp; Presales Recruitment</h3><p>Solution consultants, presales engineers and cloud sales. We run a presales course, which means we know what competence in the role actually looks like.</p></div>
+      <div class="cell"><h3>Specialist / Niche Hiring</h3><p>The genuinely hard ones — OCI, ITSM tooling, cloud cost engineering. Fewer people exist, so we tell you the realistic size of the pool before you brief us, not after.</p></div>
+    </div>
+
+    <span class="eyebrow" style="display:block;margin-top:2.5rem">How the work gets done</span>
+    <div class="grid g2" style="margin-top:1rem">
+      <div class="cell"><h3>Talent Sourcing</h3><p>Open market first, our own network second, and we tell you which of the two a candidate came from every single time. No charge if you hire nobody.</p></div>
+      <div class="cell"><h3>Candidate Screening</h3><p>A technical conversation with someone who does the work, not a keyword match. You get our written read on each person, including what we are unsure about.</p></div>
+    </div>
   </div>
 </section>
 
