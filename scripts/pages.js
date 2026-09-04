@@ -1151,26 +1151,81 @@ function submitResume() {
         <p>You submit your details and resume. We review them and reach out when there's a match. No pressure, no follow-ups unless there's an opportunity.</p>
       </div>
 
-      <div id="formWrapper" style="margin-top: 2rem;">
-        <iframe id="googleForm" src="https://docs.google.com/forms/d/e/1FAIpQLSc40eS3C9MPcJUMwW202LO6xjYr3_CGse_ySfCDqBtAnTOskQ/viewform?embedded=true" width="100%" height="1200" frameborder="0" marginheight="0" marginwidth="0" style="border: none;">Loading…</iframe>
+      <div id="formWrapper">
+      <form id="resumeForm" method="POST" enctype="multipart/form-data" style="margin-top: 2rem; display: grid; gap: 1.5rem;">
+        <div>
+          <label for="name" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #08131a;">Full Name *</label>
+          <input type="text" id="name" name="name" required style="width: 100%; padding: 0.75rem; border: 1px solid #e3e9ea; border-radius: 6px; font-size: 1rem; font-family: var(--f-sans);">
+        </div>
+
+        <div>
+          <label for="email" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #08131a;">Email *</label>
+          <input type="email" id="email" name="email" required style="width: 100%; padding: 0.75rem; border: 1px solid #e3e9ea; border-radius: 6px; font-size: 1rem; font-family: var(--f-sans);">
+        </div>
+
+        <div>
+          <label for="phone" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #08131a;">Phone (WhatsApp) *</label>
+          <input type="tel" id="phone" name="phone" placeholder="+91 9876543210" required style="width: 100%; padding: 0.75rem; border: 1px solid #e3e9ea; border-radius: 6px; font-size: 1rem; font-family: var(--f-sans);">
+        </div>
+
+        <div>
+          <label for="location" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #08131a;">Location / City *</label>
+          <input type="text" id="location" name="location" placeholder="E.g., Noida, Bangalore, Remote" required style="width: 100%; padding: 0.75rem; border: 1px solid #e3e9ea; border-radius: 6px; font-size: 1rem; font-family: var(--f-sans);">
+        </div>
+
+        <div>
+          <label for="skills" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #08131a;">Key Skills *</label>
+          <textarea id="skills" name="skills" required placeholder="E.g., AWS, Azure, Linux, Python, ITSM" rows="3" style="width: 100%; padding: 0.75rem; border: 1px solid #e3e9ea; border-radius: 6px; font-size: 1rem; font-family: var(--f-sans); resize: vertical;"></textarea>
+        </div>
+
+        <div>
+          <label for="experience" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #08131a;">Experience (Years) *</label>
+          <input type="number" id="experience" name="experience" min="0" max="50" required placeholder="E.g., 5" style="width: 100%; padding: 0.75rem; border: 1px solid #e3e9ea; border-radius: 6px; font-size: 1rem; font-family: var(--f-sans);">
+        </div>
+
+        <div>
+          <label for="resume" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #08131a;">Resume (PDF, DOC, DOCX) *</label>
+          <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required style="width: 100%; padding: 0.75rem; border: 1px solid #e3e9ea; border-radius: 6px; font-size: 1rem;">
+        </div>
+
+        <div>
+          <label for="message" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #08131a;">Anything else you'd like us to know?</label>
+          <textarea id="message" name="message" placeholder="Optional — any additional information" rows="3" style="width: 100%; padding: 0.75rem; border: 1px solid #e3e9ea; border-radius: 6px; font-size: 1rem; font-family: var(--f-sans); resize: vertical;"></textarea>
+        </div>
+
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_subject" value="New resume submission — Jobjila">
+
+        <button type="submit" id="resumeSubmitBtn" class="btn btn-lg" style="justify-self: start; background: #0e9384; color: white; border: none; cursor: pointer; padding: 0.875rem 1.75rem; font-weight: 600;">Submit Resume</button>
+      </form>
       </div>
 
       <script>
         (function() {
-          var iframe = document.getElementById('googleForm');
-          var lastHeight = iframe.offsetHeight;
-          var poll = setInterval(function() {
-            try {
-              var currentHeight = iframe.offsetHeight;
-              if (Math.abs(currentHeight - lastHeight) > 100) {
-                clearInterval(poll);
-                var wrapper = document.getElementById('formWrapper');
-                wrapper.innerHTML = '<div style="padding: 3rem; text-align: center;"><h3 style="color: var(--signal); margin-bottom: 1rem;">Thank you!</h3><p class="muted">Your resume has been submitted successfully. Redirecting you home…</p></div>';
-                setTimeout(function() { window.location.href = '/'; }, 1200);
-              }
-              lastHeight = currentHeight;
-            } catch (e) {}
-          }, 500);
+          var form = document.getElementById('resumeForm');
+          form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var btn = document.getElementById('resumeSubmitBtn');
+            btn.disabled = true;
+            btn.textContent = 'Submitting…';
+
+            var formData = new FormData(form);
+
+            fetch('https://formsubmit.co/support@jobjila.com', {
+              method: 'POST',
+              body: formData,
+              headers: { 'Accept': 'application/json' }
+            }).then(function() {
+              var wrapper = document.getElementById('formWrapper');
+              wrapper.innerHTML = '<div style="padding: 3rem; text-align: center;"><h3 style="color: var(--signal); margin-bottom: 1rem;">Thank you!</h3><p class="muted">Your resume has been submitted successfully. Redirecting you home…</p></div>';
+              setTimeout(function() { window.location.href = '/'; }, 1200);
+            }).catch(function() {
+              btn.disabled = false;
+              btn.textContent = 'Submit Resume';
+              alert('Something went wrong sending your resume. Please try again or WhatsApp us directly.');
+            });
+          });
         })();
       </script>
 
