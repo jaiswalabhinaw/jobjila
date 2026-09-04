@@ -1106,10 +1106,7 @@ function submitResume() {
 <section>
   <div class="wrap">
     <div class="form-container">
-      <form action="https://formsubmit.co/support@jobjila.com" method="POST" enctype="multipart/form-data" class="submission-form">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://jobjila.com/submit-resume/thank-you/">
-
+      <form id="resumeForm" class="submission-form">
         <fieldset>
           <legend>Your Details</legend>
 
@@ -1184,6 +1181,46 @@ function submitResume() {
         </div>
       </form>
     </div>
+
+    <script>
+      document.getElementById('resumeForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const formData = new FormData(form);
+
+        // Add hidden fields for FormSubmit
+        formData.append('_captcha', 'false');
+        formData.append('_next', window.location.origin + '/submit-resume/thank-you/');
+
+        try {
+          // Show loading state
+          const btn = form.querySelector('button[type="submit"]');
+          const originalText = btn.textContent;
+          btn.disabled = true;
+          btn.textContent = 'Submitting...';
+
+          const response = await fetch('https://formsubmit.co/support@jobjila.com', {
+            method: 'POST',
+            body: formData
+          });
+
+          if (response.ok) {
+            // Redirect immediately without showing FormSubmit page
+            window.location.href = '/submit-resume/thank-you/';
+          } else {
+            btn.disabled = false;
+            btn.textContent = originalText;
+            alert('There was an error submitting your resume. Please try again.');
+          }
+        } catch (error) {
+          console.error('Form submission error:', error);
+          const btn = form.querySelector('button[type="submit"]');
+          btn.disabled = false;
+          btn.textContent = originalText;
+          alert('There was an error submitting your resume. Please try again.');
+        }
+      });
+    </script>
   </div>
 </section>
 
@@ -1214,6 +1251,57 @@ function submitResume() {
 ` + footer();
 }
 
+function submitResumeThankYou() {
+  const t = trail("Resume Submitted", "/submit-resume/thank-you/");
+  return head({
+    title: "Resume Submitted — Jobjila",
+    description: "Thank you for submitting your resume to Jobjila. Our team will review it and get in touch soon.",
+    canonical: "/submit-resume/thank-you/",
+    extraLd: [orgLd, breadcrumbLd(t)],
+    track: "submit",
+  }) + `
+<section class="page-hero">
+  <div class="wrap">
+    ${crumb(t)}
+    <span class="eyebrow">Thank you</span>
+    <h1>Your resume has been received</h1>
+    <p>We appreciate you sharing your profile with us. Our recruitment team will review your submission and reach out within 2-3 business days if there is a match.</p>
+    <div class="btns" style="margin-top: 1.875rem">
+      <a class="btn btn-line btn-lg" href="/">Back to home</a>
+      <a class="btn btn-wa btn-lg" href="${wa("Hi Jobjila, I just submitted my resume and wanted to follow up.")}" target="_blank" rel="noopener">${WA_ICON}<span>Message us</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="sunk">
+  <div class="wrap">
+    <div class="head">
+      <h2>What happens next</h2>
+    </div>
+    <div class="grid g2">
+      <div class="cell"><h3>We review your profile</h3><p>Our team reads every submission and checks for matches with active requirements from our clients.</p></div>
+      <div class="cell"><h3>We reach out to you</h3><p>If your skills match a role, we will contact you by email or phone with details about the opportunity.</p></div>
+      <div class="cell"><h3>You stay in control</h3><p>We never share your resume with anyone without your explicit permission for that specific role.</p></div>
+      <div class="cell"><h3>No pressure</h3><p>You can always decline opportunities or ask us to remove your resume. See our <a href="/privacy/">Privacy Policy</a> for details.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <h2>In the meantime</h2>
+      <p>Interested in upskilling or exploring training opportunities?</p>
+    </div>
+    <div class="btns">
+      <a class="btn btn-line btn-lg" href="/training/">Browse courses</a>
+      <a class="btn btn-line btn-lg" href="/for-candidates/">Learn more about our process</a>
+    </div>
+  </div>
+</section>
+` + footer();
+}
+
 module.exports = function buildPages() {
   write("index.html", home());
   write(path.join("it-advisory", "index.html"), itAdvisory());
@@ -1228,6 +1316,7 @@ module.exports = function buildPages() {
   write(path.join("terms", "index.html"), terms());
   write(path.join("privacy", "index.html"), privacy());
   write(path.join("submit-resume", "index.html"), submitResume());
+  write(path.join("submit-resume", "thank-you", "index.html"), submitResumeThankYou());
   write("404.html", notFound());
-  return 13;
+  return 14;
 };
