@@ -1105,7 +1105,12 @@ function submitResume() {
 
 <section>
   <div class="wrap">
-    <div class="form-container">
+    <div class="form-container" style="max-width: 100%;">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc40eS3C9MPcJUMwW202LO6xjYr3_CGse_ySfCDqBtAnTOskQ/viewform?embedded=true" width="100%" height="1200" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    </div>
+
+    <!-- Fallback form if iframe doesn't work -->
+    <div class="form-container" style="display:none;">
       <form id="resumeForm" class="submission-form">
         <fieldset>
           <legend>Your Details</legend>
@@ -1181,50 +1186,6 @@ function submitResume() {
         </div>
       </form>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/build/index.min.js"></script>
-    <script>
-      (function() {
-        emailjs.init("UOCKg-Cr8Zk-KHVHQ");
-      })();
-
-      document.getElementById('resumeForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const form = e.target;
-        const btn = form.querySelector('button[type="submit"]');
-        const originalText = btn.textContent;
-        btn.disabled = true;
-        btn.textContent = 'Submitting...';
-
-        try {
-          const resumeFile = document.getElementById('resume').files[0];
-          const formData = {
-            to_email: 'support@jobjila.com',
-            from_name: document.getElementById('name').value,
-            from_email: document.getElementById('email').value,
-            phone: document.getElementById('phone').value,
-            location: document.getElementById('location').value,
-            experience: document.getElementById('experience').value,
-            skills: document.getElementById('skills').value,
-            current_role: document.getElementById('current-role').value || 'Not provided',
-            message: document.getElementById('message').value || 'No additional information',
-            resume_name: resumeFile ? resumeFile.name : 'No file uploaded'
-          };
-
-          await emailjs.send('service_jobjila', 'template_resume', formData);
-
-          // Redirect home immediately after successful submission
-          setTimeout(() => {
-            window.location.href = '/';
-          }, 300);
-        } catch (error) {
-          console.error('Email send error:', error);
-          btn.disabled = false;
-          btn.textContent = originalText;
-          alert('There was an error submitting your resume. Please try again or contact us directly.');
-        }
-      });
-    </script>
   </div>
 </section>
 
