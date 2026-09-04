@@ -124,7 +124,7 @@ function home() {
       <p class="muted">Cloud platforms, IT service management, infrastructure and consulting skills. Every course lists its full syllabus and fee.</p>
     </div>
     <div class="cards">
-      ${featured.map(courseCard).join("\n      ")}
+      ${featured.map((c, i) => courseCard(c, i)).join("\n      ")}
     </div>
     <div class="btns" style="margin-top:2rem">
       <a class="btn btn-line btn-lg" href="/training/">See all ${openCourses.length} courses and fees</a>

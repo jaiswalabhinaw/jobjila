@@ -392,10 +392,12 @@ function crumb(trail) {
  * WhatsApp button enquires about that specific course — so the message
  * arrives already naming the course, duration and fee.
  */
-function courseCard(c) {
+function courseCard(c, index = 0) {
   const ask = wa(`Hi Jobjila, I want the free first class for ${c.name} (${c.duration}, ${inr(c.priceINR)}). Please share the next batch dates.`);
-  return `<article class="course-card" data-track="${c.track}">
-  <span class="strip"></span>
+  const animClass = index % 2 === 0 ? "card-rotate" : "card-flip-outer";
+  const hasFlip = animClass === "card-flip-outer";
+
+  const cardContent = `<span class="strip"></span>
   <div class="body">
     <span class="chips"><span class="chip">${esc(trackOf(c.track).name)}</span></span>
     <h3><a href="/training/${c.slug}/">${esc(c.name)}</a></h3>
@@ -408,8 +410,25 @@ function courseCard(c) {
       <a class="btn btn-wa" href="${ask}" target="_blank" rel="noopener">${WA_ICON}<span>Free class</span></a>
       <a class="btn btn-line" href="/training/${c.slug}/">Syllabus</a>
     </div>
+  </div>`;
+
+  if (hasFlip) {
+    return `<article class="course-card ${animClass}" data-track="${c.track}">
+  <div class="card-flip">
+    <div class="card-flip-front">
+      ${cardContent}
+    </div>
+    <div class="card-flip-back">
+      <div><strong>${esc(c.name)}</strong></div>
+      <div style="font-size:0.8125rem;margin-top:0.5rem;">${esc(c.tagline)}</div>
+    </div>
   </div>
 </article>`;
+  } else {
+    return `<article class="course-card ${animClass}" data-track="${c.track}">
+  ${cardContent}
+</article>`;
+  }
 }
 
 function faqBlock(faqs, heading = "Questions") {
