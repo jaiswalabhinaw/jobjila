@@ -147,15 +147,22 @@ gtag('js',new Date());gtag('config',"G-C0B48YZGKT");
 
             var formData = new FormData(form);
 
-            fetch('https://formsubmit.co/support@jobjila.com', {
+            fetch('https://formsubmit.co/ajax/support@jobjila.com', {
               method: 'POST',
               body: formData,
               headers: { 'Accept': 'application/json' }
-            }).then(function() {
+            }).then(function(response) {
+              if (!response.ok) { throw new Error('Bad response: ' + response.status); }
+              return response.json();
+            }).then(function(data) {
+              if (!data || (data.success !== 'true' && data.success !== true)) {
+                throw new Error('FormSubmit reported failure: ' + JSON.stringify(data));
+              }
               var wrapper = document.getElementById('formWrapper');
               wrapper.innerHTML = '<div style="padding: 3rem; text-align: center;"><h3 style="color: var(--signal); margin-bottom: 1rem;">Thank you!</h3><p class="muted">Your resume has been submitted successfully. Redirecting you home…</p></div>';
               setTimeout(function() { window.location.href = '/'; }, 1200);
-            }).catch(function() {
+            }).catch(function(err) {
+              console.error('Resume submission failed:', err);
               btn.disabled = false;
               btn.textContent = 'Submit Resume';
               alert('Something went wrong sending your resume. Please try again or WhatsApp us directly.');
