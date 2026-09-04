@@ -1106,7 +1106,7 @@ function submitResume() {
 <section>
   <div class="wrap">
     <div class="form-container">
-      <form id="resumeForm" class="submission-form">
+      <form id="resumeForm" method="POST" enctype="multipart/form-data" class="submission-form">
         <fieldset>
           <legend>Your Details</legend>
 
@@ -1175,6 +1175,9 @@ function submitResume() {
           </div>
         </fieldset>
 
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="/">
+
         <div class="form-actions">
           <button type="submit" class="btn btn-primary btn-lg">Submit Resume</button>
           <p class="form-note">We will review your application within 2-3 business days and contact you if there is a match.</p>
@@ -1182,43 +1185,30 @@ function submitResume() {
       </form>
     </div>
 
+    <iframe name="hidden_frame" style="display:none"></iframe>
+
     <script>
-      document.getElementById('resumeForm').addEventListener('submit', async (e) => {
+      document.getElementById('resumeForm').addEventListener('submit', (e) => {
         e.preventDefault();
         const form = e.target;
-        const formData = new FormData(form);
+        const btn = form.querySelector('button[type="submit"]');
+        const originalText = btn.textContent;
 
-        // Add hidden fields for FormSubmit
-        formData.append('_captcha', 'false');
-        formData.append('_next', window.location.origin + '/submit-resume/thank-you/');
+        // Show loading state
+        btn.disabled = true;
+        btn.textContent = 'Submitting...';
 
-        try {
-          // Show loading state
-          const btn = form.querySelector('button[type="submit"]');
-          const originalText = btn.textContent;
-          btn.disabled = true;
-          btn.textContent = 'Submitting...';
+        // Set form to submit to hidden iframe
+        form.target = 'hidden_frame';
+        form.action = 'https://formsubmit.co/support@jobjila.com';
 
-          const response = await fetch('https://formsubmit.co/support@jobjila.com', {
-            method: 'POST',
-            body: formData
-          });
+        // Submit form to hidden iframe
+        form.submit();
 
-          if (response.ok) {
-            // Redirect immediately without showing FormSubmit page
-            window.location.href = '/submit-resume/thank-you/';
-          } else {
-            btn.disabled = false;
-            btn.textContent = originalText;
-            alert('There was an error submitting your resume. Please try again.');
-          }
-        } catch (error) {
-          console.error('Form submission error:', error);
-          const btn = form.querySelector('button[type="submit"]');
-          btn.disabled = false;
-          btn.textContent = originalText;
-          alert('There was an error submitting your resume. Please try again.');
-        }
+        // Redirect home after a brief delay
+        setTimeout(() => {
+          window.location.href = '/';
+        }, 500);
       });
     </script>
   </div>
