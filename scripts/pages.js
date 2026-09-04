@@ -83,6 +83,7 @@ function home() {
         <div><dt>Candidate pays</dt><dd>&#8377;0</dd></div>
       </dl>
       <a class="btn btn-line btn-block" href="/recruitment/">See how hiring works</a>
+      <a class="btn btn-line btn-block" href="/submit-resume/" style="margin-top:.625rem">Looking for a role? Submit your resume</a>
     </aside>
    </div>
 
@@ -1071,6 +1072,7 @@ function forCandidates() {
     <h1>You will never pay us a rupee</h1>
     <p>Not for a job, an interview, a placement, a CV review or a "registration". Employers pay us to fill their roles. That is the whole business model, and this page exists so you can hold us to it.</p>
     <div class="btns">
+      <a class="btn btn-lg" href="/submit-resume/" style="background:#0e9384;color:#fff;border:none;">Submit Your Resume</a>
       <a class="btn btn-wa btn-lg" href="${wa("Hi Jobjila, I am looking for a role.\n\nName:\nCurrent role:\nSkills:\nNotice period:\nLocation:")}" target="_blank" rel="noopener">${WA_ICON}<span>Send us your CV</span></a>
       <a class="btn btn-line btn-lg" href="/recruitment/">Hiring instead?</a>
     </div>

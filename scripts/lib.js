@@ -338,6 +338,7 @@ function footer() {
           <li><a href="/it-support/">IT Support</a></li>
           <li><a href="/training/">Training</a></li>
           <li><a href="/network/">Consultant Network</a></li>
+          <li><a href="/submit-resume/">Submit Resume</a></li>
           <li><a href="/blog/">Career Guide</a></li>
         </ul>
       </div>
