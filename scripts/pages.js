@@ -1193,6 +1193,7 @@ function submitResume() {
         </div>
 
         <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://jobjila.com/submit-resume/thanks/">
 
         <button type="submit" class="btn btn-lg" style="justify-self: start; background: #0e9384; color: white; border: none; cursor: pointer; padding: 0.875rem 1.75rem; font-weight: 600;">Submit Resume</button>
       </form>
@@ -1239,6 +1240,24 @@ ${band({
 ` + footer();
 }
 
+function submitResumeThanks() {
+  return head({
+    title: "Thanks for Sharing Your Resume — Jobjila",
+    description: "Thank you for submitting your resume to Jobjila.",
+    canonical: "/submit-resume/thanks/",
+    extraLd: [],
+  }) + `
+<div class="page-hero">
+  <div class="wrap" style="text-align: center;">
+    <span class="eyebrow">Thank you</span>
+    <h1>Thanks for sharing your resume!</h1>
+    <p style="margin: 0 auto;">We'll review your details and reach out if there's a match. Taking you home in a moment…</p>
+  </div>
+</div>
+<script>setTimeout(function () { window.location.href = '/'; }, 2000);</script>
+` + footer();
+}
+
 module.exports = function buildPages() {
   write("index.html", home());
   write(path.join("it-advisory", "index.html"), itAdvisory());
@@ -1250,9 +1269,10 @@ module.exports = function buildPages() {
   write(path.join("contact", "index.html"), contact());
   write(path.join("locations", "index.html"), locations());
   write(path.join("submit-resume", "index.html"), submitResume());
+  write(path.join("submit-resume", "thanks", "index.html"), submitResumeThanks());
   write(path.join("refund-policy", "index.html"), refundPolicy());
   write(path.join("terms", "index.html"), terms());
   write(path.join("privacy", "index.html"), privacy());
   write("404.html", notFound());
-  return 13;
+  return 14;
 };
