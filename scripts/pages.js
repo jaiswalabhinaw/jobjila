@@ -1151,7 +1151,7 @@ function submitResume() {
         <p>You submit your details and resume. We review them and reach out when there's a match. No pressure, no follow-ups unless there's an opportunity.</p>
       </div>
 
-      <form method="POST" action="https://formspree.io/f/xkgjoqpj" enctype="multipart/form-data" style="margin-top: 2rem; display: grid; gap: 1.5rem;">
+      <form method="POST" action="https://formsubmit.co/support@jobjila.com" enctype="multipart/form-data" style="margin-top: 2rem; display: grid; gap: 1.5rem;">
         <div>
           <label for="name" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #08131a;">Full Name *</label>
           <input type="text" id="name" name="name" required style="width: 100%; padding: 0.75rem; border: 1px solid #e3e9ea; border-radius: 6px; font-size: 1rem; font-family: var(--f-sans);">
