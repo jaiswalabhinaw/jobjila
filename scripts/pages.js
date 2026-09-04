@@ -1152,7 +1152,7 @@ function submitResume() {
       </div>
 
       <div id="formWrapper">
-      <form id="resumeForm" method="POST" enctype="multipart/form-data" style="margin-top: 2rem; display: grid; gap: 1.5rem;">
+      <form id="resumeForm" method="POST" action="https://formsubmit.co/support@jobjila.com" enctype="multipart/form-data" style="margin-top: 2rem; display: grid; gap: 1.5rem;">
         <div>
           <label for="name" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #08131a;">Full Name *</label>
           <input type="text" id="name" name="name" required style="width: 100%; padding: 0.75rem; border: 1px solid #e3e9ea; border-radius: 6px; font-size: 1rem; font-family: var(--f-sans);">
@@ -1196,6 +1196,7 @@ function submitResume() {
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_subject" value="New resume submission — Jobjila">
+        <input type="hidden" name="_next" value="https://jobjila.com/submit-resume/thanks/">
 
         <button type="submit" id="resumeSubmitBtn" class="btn btn-lg" style="justify-self: start; background: #0e9384; color: white; border: none; cursor: pointer; padding: 0.875rem 1.75rem; font-weight: 600;">Submit Resume</button>
       </form>
@@ -1204,34 +1205,10 @@ function submitResume() {
       <script>
         (function() {
           var form = document.getElementById('resumeForm');
-          form.addEventListener('submit', function(e) {
-            e.preventDefault();
+          form.addEventListener('submit', function() {
             var btn = document.getElementById('resumeSubmitBtn');
             btn.disabled = true;
             btn.textContent = 'Submitting…';
-
-            var formData = new FormData(form);
-
-            fetch('https://formsubmit.co/ajax/support@jobjila.com', {
-              method: 'POST',
-              body: formData,
-              headers: { 'Accept': 'application/json' }
-            }).then(function(response) {
-              if (!response.ok) { throw new Error('Bad response: ' + response.status); }
-              return response.json();
-            }).then(function(data) {
-              if (!data || (data.success !== 'true' && data.success !== true)) {
-                throw new Error('FormSubmit reported failure: ' + JSON.stringify(data));
-              }
-              var wrapper = document.getElementById('formWrapper');
-              wrapper.innerHTML = '<div style="padding: 3rem; text-align: center;"><h3 style="color: var(--signal); margin-bottom: 1rem;">Thank you!</h3><p class="muted">Your resume has been submitted successfully. Redirecting you home…</p></div>';
-              setTimeout(function() { window.location.href = '/'; }, 1200);
-            }).catch(function(err) {
-              console.error('Resume submission failed:', err);
-              btn.disabled = false;
-              btn.textContent = 'Submit Resume';
-              alert('Something went wrong sending your resume. Please try again or WhatsApp us directly.');
-            });
           });
         })();
       </script>
@@ -1278,6 +1255,24 @@ ${band({
 ` + footer();
 }
 
+function submitResumeThanks() {
+  return head({
+    title: "Resume Received — Jobjila",
+    description: "Thank you for submitting your resume to Jobjila.",
+    canonical: "/submit-resume/thanks/",
+    extraLd: [],
+  }) + `
+<div class="page-hero">
+  <div class="wrap" style="text-align: center;">
+    <span class="eyebrow">Thank you</span>
+    <h1>Your resume has been received</h1>
+    <p style="margin: 0 auto;">We'll review your details and reach out if there's a match. Redirecting you home…</p>
+  </div>
+</div>
+<script>setTimeout(function() { window.location.href = '/'; }, 2500);</script>
+` + footer();
+}
+
 module.exports = function buildPages() {
   write("index.html", home());
   write(path.join("it-advisory", "index.html"), itAdvisory());
@@ -1289,9 +1284,10 @@ module.exports = function buildPages() {
   write(path.join("contact", "index.html"), contact());
   write(path.join("locations", "index.html"), locations());
   write(path.join("submit-resume", "index.html"), submitResume());
+  write(path.join("submit-resume", "thanks", "index.html"), submitResumeThanks());
   write(path.join("refund-policy", "index.html"), refundPolicy());
   write(path.join("terms", "index.html"), terms());
   write(path.join("privacy", "index.html"), privacy());
   write("404.html", notFound());
-  return 13;
+  return 14;
 };

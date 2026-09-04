@@ -87,7 +87,7 @@ gtag('js',new Date());gtag('config',"G-C0B48YZGKT");
       </div>
 
       <div id="formWrapper">
-      <form id="resumeForm" method="POST" enctype="multipart/form-data" style="margin-top: 2rem; display: grid; gap: 1.5rem;">
+      <form id="resumeForm" method="POST" action="https://formsubmit.co/support@jobjila.com" enctype="multipart/form-data" style="margin-top: 2rem; display: grid; gap: 1.5rem;">
         <div>
           <label for="name" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #08131a;">Full Name *</label>
           <input type="text" id="name" name="name" required style="width: 100%; padding: 0.75rem; border: 1px solid #e3e9ea; border-radius: 6px; font-size: 1rem; font-family: var(--f-sans);">
@@ -131,6 +131,7 @@ gtag('js',new Date());gtag('config',"G-C0B48YZGKT");
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_subject" value="New resume submission — Jobjila">
+        <input type="hidden" name="_next" value="https://jobjila.com/submit-resume/thanks/">
 
         <button type="submit" id="resumeSubmitBtn" class="btn btn-lg" style="justify-self: start; background: #0e9384; color: white; border: none; cursor: pointer; padding: 0.875rem 1.75rem; font-weight: 600;">Submit Resume</button>
       </form>
@@ -139,34 +140,10 @@ gtag('js',new Date());gtag('config',"G-C0B48YZGKT");
       <script>
         (function() {
           var form = document.getElementById('resumeForm');
-          form.addEventListener('submit', function(e) {
-            e.preventDefault();
+          form.addEventListener('submit', function() {
             var btn = document.getElementById('resumeSubmitBtn');
             btn.disabled = true;
             btn.textContent = 'Submitting…';
-
-            var formData = new FormData(form);
-
-            fetch('https://formsubmit.co/ajax/support@jobjila.com', {
-              method: 'POST',
-              body: formData,
-              headers: { 'Accept': 'application/json' }
-            }).then(function(response) {
-              if (!response.ok) { throw new Error('Bad response: ' + response.status); }
-              return response.json();
-            }).then(function(data) {
-              if (!data || (data.success !== 'true' && data.success !== true)) {
-                throw new Error('FormSubmit reported failure: ' + JSON.stringify(data));
-              }
-              var wrapper = document.getElementById('formWrapper');
-              wrapper.innerHTML = '<div style="padding: 3rem; text-align: center;"><h3 style="color: var(--signal); margin-bottom: 1rem;">Thank you!</h3><p class="muted">Your resume has been submitted successfully. Redirecting you home…</p></div>';
-              setTimeout(function() { window.location.href = '/'; }, 1200);
-            }).catch(function(err) {
-              console.error('Resume submission failed:', err);
-              btn.disabled = false;
-              btn.textContent = 'Submit Resume';
-              alert('Something went wrong sending your resume. Please try again or WhatsApp us directly.');
-            });
           });
         })();
       </script>
