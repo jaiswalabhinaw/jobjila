@@ -1106,7 +1106,7 @@ function submitResume() {
 <section>
   <div class="wrap">
     <div class="form-container">
-      <form id="resumeForm" method="POST" enctype="multipart/form-data" class="submission-form">
+      <form id="resumeForm" class="submission-form">
         <fieldset>
           <legend>Your Details</legend>
 
@@ -1175,9 +1175,6 @@ function submitResume() {
           </div>
         </fieldset>
 
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="/">
-
         <div class="form-actions">
           <button type="submit" class="btn btn-primary btn-lg">Submit Resume</button>
           <p class="form-note">We will review your application within 2-3 business days and contact you if there is a match.</p>
@@ -1185,30 +1182,47 @@ function submitResume() {
       </form>
     </div>
 
-    <iframe name="hidden_frame" style="display:none"></iframe>
-
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/build/index.min.js"></script>
     <script>
-      document.getElementById('resumeForm').addEventListener('submit', (e) => {
+      (function() {
+        emailjs.init("UOCKg-Cr8Zk-KHVHQ");
+      })();
+
+      document.getElementById('resumeForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         const form = e.target;
         const btn = form.querySelector('button[type="submit"]');
         const originalText = btn.textContent;
-
-        // Show loading state
         btn.disabled = true;
         btn.textContent = 'Submitting...';
 
-        // Set form to submit to hidden iframe
-        form.target = 'hidden_frame';
-        form.action = 'https://formsubmit.co/support@jobjila.com';
+        try {
+          const resumeFile = document.getElementById('resume').files[0];
+          const formData = {
+            to_email: 'support@jobjila.com',
+            from_name: document.getElementById('name').value,
+            from_email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            location: document.getElementById('location').value,
+            experience: document.getElementById('experience').value,
+            skills: document.getElementById('skills').value,
+            current_role: document.getElementById('current-role').value || 'Not provided',
+            message: document.getElementById('message').value || 'No additional information',
+            resume_name: resumeFile ? resumeFile.name : 'No file uploaded'
+          };
 
-        // Submit form to hidden iframe
-        form.submit();
+          await emailjs.send('service_jobjila', 'template_resume', formData);
 
-        // Redirect home after a brief delay
-        setTimeout(() => {
-          window.location.href = '/';
-        }, 500);
+          // Redirect home immediately after successful submission
+          setTimeout(() => {
+            window.location.href = '/';
+          }, 300);
+        } catch (error) {
+          console.error('Email send error:', error);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          alert('There was an error submitting your resume. Please try again or contact us directly.');
+        }
       });
     </script>
   </div>
