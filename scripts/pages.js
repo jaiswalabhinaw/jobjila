@@ -37,6 +37,8 @@ function home() {
   }) + `
 <div class="hero">
   <div class="wrap">
+   <div class="hero-split">
+    <div class="hero-copy">
     <span class="eyebrow">${esc(site.locality)}, ${esc(site.region)} &middot; serving clients across India</span>
     <h1 style="margin-top:.875rem">IT advisory, support, training and hiring — <em>without the guesswork.</em></h1>
     <p class="lede">We help companies plan and run their IT, we train the people who do that work, and we find them the people they need to hire. Every price is published on this site — including our recruitment rate. Your first training class is free.</p>
@@ -44,6 +46,45 @@ function home() {
       <a class="btn btn-wa btn-lg" href="${wa("Hi Jobjila, I want to book a free first class.")}" target="_blank" rel="noopener">${WA_ICON}<span>Book a free first class</span></a>
       <a class="btn btn-line btn-lg" href="/training/">Browse courses</a>
     </div>
+    </div>
+
+    <aside class="hero-panel" aria-label="Recruitment and talent">
+      <span class="panel-tag">New &middot; Recruitment &amp; Talent</span>
+      <p class="panel-lead">We hire for companies now — and the employer pays, never the candidate.</p>
+      <div class="ticker">
+        <ul class="ticker-track">
+          <li>Permanent Recruitment</li>
+          <li>Contract Hiring</li>
+          <li>Freelance &amp; Project-Based Hiring</li>
+          <li>IT &amp; Technology Recruitment</li>
+          <li>Cloud &amp; Infrastructure Recruitment</li>
+          <li>Sales &amp; Presales Recruitment</li>
+          <li>Talent Sourcing</li>
+          <li>Candidate Screening</li>
+          <li>Specialist / Niche Hiring</li>
+          <li>Startup &amp; SME Recruitment Support</li>
+        </ul>
+        <ul class="ticker-track" aria-hidden="true">
+          <li>Permanent Recruitment</li>
+          <li>Contract Hiring</li>
+          <li>Freelance &amp; Project-Based Hiring</li>
+          <li>IT &amp; Technology Recruitment</li>
+          <li>Cloud &amp; Infrastructure Recruitment</li>
+          <li>Sales &amp; Presales Recruitment</li>
+          <li>Talent Sourcing</li>
+          <li>Candidate Screening</li>
+          <li>Specialist / Niche Hiring</li>
+          <li>Startup &amp; SME Recruitment Support</li>
+        </ul>
+      </div>
+      <dl class="panel-facts">
+        <div><dt>Our fee</dt><dd>${site.recruitment.permanentPct}% of CTC</dd></div>
+        <div><dt>Replacement</dt><dd>${site.recruitment.replacementDays} days</dd></div>
+        <div><dt>Candidate pays</dt><dd>&#8377;0</dd></div>
+      </dl>
+      <a class="btn btn-line btn-block" href="/recruitment/">See how hiring works</a>
+    </aside>
+   </div>
 
     <div class="hero-stats">
       <div><b>${openCourses.length}</b><span>Courses</span></div>

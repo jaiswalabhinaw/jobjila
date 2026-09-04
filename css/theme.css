@@ -48,7 +48,7 @@
   --s-2:  1.4375rem;
   --s-3:  1.8125rem;
   --s-4:  2.375rem;
-  --s-5:  clamp(2.75rem, 8vw, 5rem);
+  --s-5:  clamp(2.25rem, 7.5vw, 5rem);
 
   --measure: 66ch;
   --pad: clamp(1.25rem, 5vw, 3rem);
@@ -1015,4 +1015,103 @@ h2 { letter-spacing: -.035em; font-weight: 700; }
   .hero-stats > div, .pillars > div, .cell, .course-card, .btn-line { transition: none; }
   .hero-stats > div:hover, .pillars > div:hover, .cell:hover,
   .course-card:hover, .btn-line:hover { transform: none; }
+}
+
+/* ==========================================================================
+   NOVA — HERO SPLIT & HEAD BALANCE
+   Two fixes to horizontal balance on wide screens: the hero was a single
+   left column against an empty right half, and section heads stacked an
+   eyebrow, a heading and a description all against the left edge.
+   ========================================================================== */
+
+/* ---------- two-column hero ---------- */
+.hero-split { display: grid; gap: 2.5rem; align-items: center; }
+@media (min-width: 64rem) {
+  .hero-split { grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); gap: 3.5rem; }
+}
+/* the headline shares the row now, so it wants a shorter measure */
+.hero-copy h1 { max-width: 15ch; }
+.hero-copy .lede { max-width: 46ch; }
+
+/* ---------- hiring panel ---------- */
+.hero-panel {
+  background: var(--card);
+  border: 1px solid var(--rule-soft);
+  border-radius: calc(var(--r) + 4px);
+  box-shadow: var(--sh-3);
+  padding: 1.75rem;
+  display: grid; gap: 1.125rem;
+  position: relative; overflow: hidden;
+}
+.hero-panel::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 3px;
+  background: linear-gradient(90deg, var(--teal), var(--indigo));
+}
+.panel-tag {
+  font-family: var(--f-mono); font-size: .6875rem; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--teal);
+}
+.panel-lead {
+  font-size: var(--s-1); font-weight: 600; letter-spacing: -.02em;
+  line-height: 1.3; margin: 0; max-width: none; color: var(--ink);
+}
+
+/* ---------- vertical ticker ---------- */
+.ticker {
+  height: 10.5rem; overflow: hidden; position: relative;
+  border-block: 1px solid var(--rule-soft); padding-block: .25rem;
+  /* fade the top and bottom edges so items enter and leave, not pop */
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent);
+          mask-image: linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent);
+}
+.ticker-track {
+  list-style: none; margin: 0; padding: 0;
+  animation: ticker-scroll 26s linear infinite;
+}
+.ticker:hover .ticker-track { animation-play-state: paused; }
+.ticker-track li {
+  font-family: var(--f-mono); font-size: .8125rem; color: var(--slate);
+  padding: .4rem 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.ticker-track li::before { content: "→ "; color: var(--teal); }
+@keyframes ticker-scroll { to { transform: translateY(-100%); } }
+
+/* ---------- panel facts ---------- */
+.panel-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin: 0; }
+.panel-facts > div { display: grid; gap: .25rem; }
+.panel-facts dt {
+  font-family: var(--f-mono); font-size: .625rem; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--slate-2);
+}
+.panel-facts dd {
+  margin: 0; font-weight: 700; font-size: var(--s-0);
+  letter-spacing: -.02em; color: var(--ink);
+}
+
+/* ---------- section heads: use the full width ---------- */
+@media (min-width: 62rem) {
+  .head {
+    /* The reading measure belongs on a paragraph, not on a two-column
+       head — capped at 66ch it left every section heading stranded in the
+       left third of a 74rem container. */
+    max-width: none;
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+    column-gap: 3rem; align-items: end;
+    /* the accent dash above the head was the marker when the eyebrow was
+       plain text; the eyebrow is a pill now, so the dash reads as a stray
+       mark. Neutralised here rather than deleted so lifting this layer
+       restores the original head intact. */
+    padding-top: 0;
+  }
+  .head::before { content: none; }
+  .head > .eyebrow { grid-column: 1; grid-row: 1; justify-self: start; }
+  .head > h2       { grid-column: 1; grid-row: 2; }
+  .head > .muted   { grid-column: 2; grid-row: 2; margin: 0; max-width: 44ch; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker { height: auto; -webkit-mask-image: none; mask-image: none; }
+  .ticker-track { animation: none; }
+  .ticker-track[aria-hidden="true"] { display: none; }
 }
