@@ -1126,6 +1126,117 @@ function forCandidates() {
 ` + footer();
 }
 
+/* ============================== RESUME SUBMIT PAGE ============================== */
+
+function submitResume() {
+  return head({
+    title: "Share Your Resume — Jobjila",
+    description: "Submit your resume and details for IT recruitment opportunities at Jobjila. Completely free.",
+    canonical: "/submit-resume/",
+    extraLd: [],
+  }) + `
+<div class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">Opportunities</span>
+    <h1>Share your resume</h1>
+    <p>Tell us about yourself, upload your resume, and we'll keep you in mind for matching IT roles. Completely free — no fees, no payment.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div style="max-width: 52rem; margin: 0 auto;">
+      <div class="callout">
+        <h3>How it works</h3>
+        <p>You submit your details and resume. We review them and reach out when there's a match. No pressure, no follow-ups unless there's an opportunity.</p>
+      </div>
+
+      <form method="POST" action="https://formspree.io/f/xkgjoqpj" enctype="multipart/form-data" style="margin-top: 2rem; display: grid; gap: 1.5rem;">
+        <div>
+          <label for="name" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #08131a;">Full Name *</label>
+          <input type="text" id="name" name="name" required style="width: 100%; padding: 0.75rem; border: 1px solid #e3e9ea; border-radius: 6px; font-size: 1rem; font-family: var(--f-sans);">
+        </div>
+
+        <div>
+          <label for="email" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #08131a;">Email *</label>
+          <input type="email" id="email" name="email" required style="width: 100%; padding: 0.75rem; border: 1px solid #e3e9ea; border-radius: 6px; font-size: 1rem; font-family: var(--f-sans);">
+        </div>
+
+        <div>
+          <label for="phone" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #08131a;">Phone (WhatsApp) *</label>
+          <input type="tel" id="phone" name="phone" placeholder="+91 9876543210" required style="width: 100%; padding: 0.75rem; border: 1px solid #e3e9ea; border-radius: 6px; font-size: 1rem; font-family: var(--f-sans);">
+        </div>
+
+        <div>
+          <label for="location" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #08131a;">Location / City *</label>
+          <input type="text" id="location" name="location" placeholder="E.g., Noida, Bangalore, Remote" required style="width: 100%; padding: 0.75rem; border: 1px solid #e3e9ea; border-radius: 6px; font-size: 1rem; font-family: var(--f-sans);">
+        </div>
+
+        <div>
+          <label for="skills" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #08131a;">Key Skills *</label>
+          <textarea id="skills" name="skills" required placeholder="E.g., AWS, Azure, Linux, Python, ITSM" rows="3" style="width: 100%; padding: 0.75rem; border: 1px solid #e3e9ea; border-radius: 6px; font-size: 1rem; font-family: var(--f-sans); resize: vertical;"></textarea>
+        </div>
+
+        <div>
+          <label for="experience" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #08131a;">Experience (Years) *</label>
+          <input type="number" id="experience" name="experience" min="0" max="50" required placeholder="E.g., 5" style="width: 100%; padding: 0.75rem; border: 1px solid #e3e9ea; border-radius: 6px; font-size: 1rem; font-family: var(--f-sans);">
+        </div>
+
+        <div>
+          <label for="resume" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #08131a;">Resume (PDF, DOC, DOCX) *</label>
+          <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required style="width: 100%; padding: 0.75rem; border: 1px solid #e3e9ea; border-radius: 6px; font-size: 1rem;">
+        </div>
+
+        <div>
+          <label for="message" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #08131a;">Anything else you'd like us to know?</label>
+          <textarea id="message" name="message" placeholder="Optional — any additional information" rows="3" style="width: 100%; padding: 0.75rem; border: 1px solid #e3e9ea; border-radius: 6px; font-size: 1rem; font-family: var(--f-sans); resize: vertical;"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-lg" style="justify-self: start; background: #0e9384; color: white; border: none; cursor: pointer; padding: 0.875rem 1.75rem; font-weight: 600;">Submit Resume</button>
+      </form>
+
+      <p class="small muted" style="margin-top: 2rem;">We'll review your submission and reach out if there's a match. Your details are kept confidential.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sunk">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Before you apply</span>
+      <h2>What we look for</h2>
+      <p class="muted">We specialize in IT roles across cloud platforms, infrastructure, service management, and presales.</p>
+    </div>
+    <div class="grid g2">
+      <div class="cell">
+        <h3>Technical skills</h3>
+        <p>Experience with AWS, Azure, OCI, Linux, Windows, ITSM, or presales consulting. Any hands-on IT background helps.</p>
+      </div>
+      <div class="cell">
+        <h3>No fees for candidates</h3>
+        <p>We never charge candidates. If an employer hires you through us, they pay us — not you.</p>
+      </div>
+      <div class="cell">
+        <h3>We're selective</h3>
+        <p>We only put forward candidates we think are genuinely fit. That's why our replacement guarantee works.</p>
+      </div>
+      <div class="cell">
+        <h3>Role types</h3>
+        <p>Permanent roles, contract hiring, freelance projects. Full-time, part-time, and project-based work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+${band({
+  title: "Questions?",
+  body: "If you have questions about the recruitment process or the roles we have, reach out on WhatsApp.",
+  label: "WhatsApp",
+  message: "Hi Jobjila, I want to know more about your recruitment process."
+})}
+` + footer();
+}
+
 module.exports = function buildPages() {
   write("index.html", home());
   write(path.join("it-advisory", "index.html"), itAdvisory());
@@ -1136,9 +1247,10 @@ module.exports = function buildPages() {
   write(path.join("about", "index.html"), about());
   write(path.join("contact", "index.html"), contact());
   write(path.join("locations", "index.html"), locations());
+  write(path.join("submit-resume", "index.html"), submitResume());
   write(path.join("refund-policy", "index.html"), refundPolicy());
   write(path.join("terms", "index.html"), terms());
   write(path.join("privacy", "index.html"), privacy());
   write("404.html", notFound());
-  return 12;
+  return 13;
 };
