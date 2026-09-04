@@ -1035,7 +1035,7 @@ h2 { letter-spacing: -.035em; font-weight: 700; }
 
 /* ---------- hiring panel ---------- */
 .hero-panel {
-  background: var(--card);
+  background: linear-gradient(135deg, var(--card) 0%, color-mix(in srgb, var(--indigo-bg) 28%, var(--card)) 100%);
   border: 1px solid var(--rule-soft);
   border-radius: calc(var(--r) + 4px);
   box-shadow: var(--sh-3);
@@ -1044,22 +1044,29 @@ h2 { letter-spacing: -.035em; font-weight: 700; }
   position: relative; overflow: hidden;
 }
 .hero-panel::before {
-  content: ""; position: absolute; inset: 0 0 auto 0; height: 3px;
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 4px;
   background: linear-gradient(90deg, var(--teal), var(--indigo));
+  box-shadow: 0 2px 8px rgba(14, 147, 132, .18);
 }
 .panel-tag {
-  font-family: var(--f-mono); font-size: .6875rem; font-weight: 500;
+  font-family: var(--f-mono); font-size: .6rem; font-weight: 600;
   letter-spacing: .14em; text-transform: uppercase; color: var(--teal);
+  background: color-mix(in srgb, var(--teal-bg) 40%, transparent);
+  padding: .25rem .625rem; border-radius: 4px; display: inline-block;
+  margin-bottom: .25rem;
 }
 .panel-lead {
-  font-size: var(--s-1); font-weight: 600; letter-spacing: -.02em;
-  line-height: 1.3; margin: 0; max-width: none; color: var(--ink);
+  font-size: var(--s-0); font-weight: 600; letter-spacing: -.015em;
+  line-height: 1.45; margin: 0; max-width: none; color: var(--ink);
+  margin-bottom: .375rem;
 }
 
 /* ---------- vertical ticker ---------- */
 .ticker {
   height: 10.5rem; overflow: hidden; position: relative;
-  border-block: 1px solid var(--rule-soft); padding-block: .25rem;
+  background: color-mix(in srgb, var(--teal-bg) 14%, transparent);
+  border-block: 1px solid var(--rule-soft); padding-block: .375rem;
+  border-radius: 6px; margin: .5rem 0;
   /* fade the top and bottom edges so items enter and leave, not pop */
   -webkit-mask-image: linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent);
           mask-image: linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent);
@@ -1070,22 +1077,26 @@ h2 { letter-spacing: -.035em; font-weight: 700; }
 }
 .ticker:hover .ticker-track { animation-play-state: paused; }
 .ticker-track li {
-  font-family: var(--f-mono); font-size: .8125rem; color: var(--slate);
-  padding: .4rem 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  font-family: var(--f-sans); font-size: var(--s--1); color: var(--ink-2);
+  padding: .55rem 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  font-weight: 500;
 }
-.ticker-track li::before { content: "→ "; color: var(--teal); }
+.ticker-track li::before { content: "◆ "; color: var(--teal); font-size: .5625rem; margin-right: .25rem; }
 @keyframes ticker-scroll { to { transform: translateY(-100%); } }
 
 /* ---------- panel facts ---------- */
-.panel-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin: 0; }
-.panel-facts > div { display: grid; gap: .25rem; }
+.panel-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: .875rem; margin: 0; padding: .875rem 0; border-top: 1px solid color-mix(in srgb, var(--rule-soft) 50%, transparent); }
+.panel-facts > div {
+  display: grid; gap: .375rem; align-content: start;
+  padding: 0 .75rem; text-align: center;
+}
 .panel-facts dt {
-  font-family: var(--f-mono); font-size: .625rem; letter-spacing: .1em;
-  text-transform: uppercase; color: var(--slate-2);
+  font-family: var(--f-mono); font-size: .6rem; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--slate-2); font-weight: 600;
 }
 .panel-facts dd {
-  margin: 0; font-weight: 700; font-size: var(--s-0);
-  letter-spacing: -.02em; color: var(--ink);
+  margin: 0; font-weight: 700; font-size: var(--s-1);
+  letter-spacing: -.02em; color: var(--teal);
 }
 
 /* ---------- section heads: use the full width ---------- */
