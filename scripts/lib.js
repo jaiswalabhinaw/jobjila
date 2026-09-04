@@ -44,6 +44,9 @@ const fit = (full, fallback) => (full.length <= TITLE_MAX ? full : fallback);
 
 const wa = (message) => `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(message)}`;
 
+/** WhatsApp link that asks for a course's fee by name, rather than publishing a number. */
+const waPriceAsk = (courseName) => wa(`Hi Jobjila, what is the price for ${courseName}?`);
+
 const WA_ICON = `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.48-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.53.07-.8.38-.28.3-1.05 1.02-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.12 3.24 5.14 4.54.72.31 1.28.5 1.71.63.72.23 1.37.2 1.89.12.58-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23a8.23 8.23 0 0 1 8.24 8.24c0 4.54-3.7 8.23-8.24 8.23z"/></svg>`;
 
 const jsonLd = (o) => `<script type="application/ld+json">${JSON.stringify(o).replace(/</g, "\\u003c")}</script>`;
@@ -172,8 +175,6 @@ const courseLd = (c, city) => {
     offers: {
       "@type": "Offer",
       category: "Paid",
-      price: c.priceINR,
-      priceCurrency: "INR",
       availability: "https://schema.org/InStock",
       url,
     },
@@ -394,7 +395,8 @@ function crumb(trail) {
  * arrives already naming the course, duration and fee.
  */
 function courseCard(c, index = 0) {
-  const ask = wa(`Hi Jobjila, I want the free first class for ${c.name} (${c.duration}, ${inr(c.priceINR)}). Please share the next batch dates.`);
+  const ask = wa(`Hi Jobjila, I want the free first class for ${c.name} (${c.duration}). Please share the next batch dates.`);
+  const priceAsk = waPriceAsk(c.name);
   const animClass = index % 2 === 0 ? "card-rotate" : "card-flip-outer";
   const hasFlip = animClass === "card-flip-outer";
 
@@ -404,7 +406,7 @@ function courseCard(c, index = 0) {
     <h3><a href="/training/${c.slug}/">${esc(c.name)}</a></h3>
     <p class="desc">${esc(c.tagline)}</p>
     <div class="foot">
-      <span class="fee">${inr(c.priceINR)}</span>
+      <a class="fee" href="${priceAsk}" target="_blank" rel="noopener">Ask fee on WhatsApp</a>
       <span class="dur">${esc(c.duration)}</span>
     </div>
     <div class="card-cta">
@@ -460,7 +462,7 @@ function shareRow({ url, text, heading = "Know someone this would help?" }) {
   return `<section class="share" data-share data-share-url="${esc(full)}" data-share-title="${esc(text)}">
   <div>
     <h2>${esc(heading)}</h2>
-    <p>The link opens with the course name, fee and duration in the preview.</p>
+    <p>The link opens with the course name and duration in the preview.</p>
   </div>
   <div class="btns">
     <a class="btn btn-wa" data-share-wa href="https://wa.me/?text=${encodeURIComponent(text + " " + full)}" target="_blank" rel="noopener">${WA_ICON}<span data-share-label>Share</span></a>
@@ -492,7 +494,7 @@ function ladder() {
     <div class="amt">Bal.<small>Before class ${p.payBeforeSession}</small></div>
     <div>
       <h3>Pay the balance once you are sure</h3>
-      <p>By then you have attended two full sessions and met your trainer. Every fee is published &mdash; no negotiation, no hidden charges.</p>
+      <p>By then you have attended two full sessions and met your trainer, and we have already quoted you the fee in writing on WhatsApp &mdash; no hidden charges.</p>
     </div>
   </div>
   <div class="rung">
@@ -512,7 +514,7 @@ function honestBlock() {
     ["We do not guarantee income.", "Salary and freelance figures anywhere on this site are market observations, not commitments to you."],
     ["We do not charge candidates for a job, an interview or a placement.", "Employers pay us to recruit. Candidates pay us nothing, ever. As a learner you pay for training and nothing else. Anyone asking you for a registration, security deposit or laptop fee is not us."],
     ["We do not mix training with hiring.", "Paying for a course does not buy a job, an interview, or a place on a shortlist. If we put a former student forward for a role, it is because an employer’s brief fits them — never because they bought a course from us."],
-    ["We do not hide the price.", "Every fee is published on this site. You will never have to message us to find out what something costs."],
+    ["We do not surprise you with the price.", "Message us the course name on WhatsApp and we quote the fee in writing before you pay anything &mdash; and it does not change once quoted."],
     ["We do not pressure you with deadlines.", "No countdown timers, no \u201ctwo seats left\u201d. If a batch is full, we tell you the next date."],
   ];
   return `<section class="honest">
@@ -532,7 +534,7 @@ function honestBlock() {
 
 module.exports = {
   ROOT, site, courses, openCourses, cities, articles, trackOf,
-  esc, inr, wa, WA_ICON, write, fmtDate, vh, fit, TITLE_MAX, GA_ID,
+  esc, inr, wa, waPriceAsk, WA_ICON, write, fmtDate, vh, fit, TITLE_MAX, GA_ID,
   head, footer, crumb, courseCard, faqBlock, band, shareRow, ladder, honestBlock,
   orgLd, personLd, websiteLd, breadcrumbLd, faqLd, courseLd, articleLd, serviceLd,
 };

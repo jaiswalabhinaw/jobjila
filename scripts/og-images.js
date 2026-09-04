@@ -307,7 +307,7 @@ async function main() {
       html: card({
         eyebrow: (site.tracks.find((t) => t.id === c.track) || {}).name || "Training",
         title: c.name,
-        meta: [c.duration, inr(c.priceINR), "First class free"],
+        meta: [c.duration, "First class free"],
         footnote: "Live online · " + site.tagline,
       }),
     })),

@@ -23,7 +23,7 @@ function home() {
     { q: "What does Jobjila actually do?", a: "Four things. We advise companies on their IT — cloud architecture, migrations, cost and technology choices. We support IT infrastructure and keep it running. We train people in the same technology, live online. And we recruit for companies hiring into those roles, paid by the employer. The consulting keeps the training current, and the training keeps our screening honest." },
     { q: "Is your recruitment separate from your training?", a: "Completely. A course fee buys teaching and nothing else — not a job, not an interview, not a place on any shortlist. Employers pay us to recruit; candidates never pay us anything. If we do put a former student forward for a role, we tell the employer we trained them." },
     { q: "Is the first class really free?", a: "Yes. Any course, first live session, no payment and no card details. You message us on WhatsApp and we send the joining link. We are new and have no reviews yet, so asking you to pay on trust would be unreasonable." },
-    { q: "How much do the courses cost?", a: `Between ${inr(Math.min(...openCourses.map((c) => c.priceINR)))} and ${inr(Math.max(...openCourses.map((c) => c.priceINR)))} depending on length. Every fee is published on its course page. You pay the balance only before your third session, and it stays refundable for ${site.pricing.refundDays} days after that.` },
+    { q: "How much do the courses cost?", a: `It depends on the course and its length — message us on WhatsApp with the course name and we quote the fee directly. You pay the balance only before your third session, and it stays refundable for ${site.pricing.refundDays} days after that.` },
     { q: "Are the classes live or recorded?", a: "Live online, in the evening, taught by a practising consultant — with every session recorded so you can revisit it or catch up if you miss one." },
     { q: "Do you guarantee a job after training?", a: "No, and we will not pretend otherwise. We provide the training, an assessed project, resume review and interview practice. Anyone promising a guaranteed job in exchange for a fee is doing something else." },
     { q: "Can companies book training for a team?", a: "Yes. Closed batches are run for company teams on any of our subjects, scheduled around your working hours and quoted per batch rather than per seat. Message us with the team size and subject." },
@@ -41,7 +41,7 @@ function home() {
     <div class="hero-copy">
     <span class="eyebrow">${esc(site.locality)}, ${esc(site.region)} &middot; serving clients across India</span>
     <h1 style="margin-top:.875rem">IT advisory, support, training and hiring — <em>without the guesswork.</em></h1>
-    <p class="lede">We help companies plan and run their IT, we train the people who do that work, and we find them the people they need to hire. Every price is published on this site — including our recruitment rate. Your first training class is free.</p>
+    <p class="lede">We help companies plan and run their IT, we train the people who do that work, and we find them the people they need to hire. Our recruitment rate is published up front, and every training fee is quoted directly on WhatsApp. Your first training class is free.</p>
     <div class="btns">
       <a class="btn btn-wa btn-lg" href="${wa("Hi Jobjila, I want to book a free first class.")}" target="_blank" rel="noopener">${WA_ICON}<span>Book a free first class</span></a>
       <a class="btn btn-line btn-lg" href="/training/">Browse courses</a>
@@ -556,7 +556,7 @@ function about() {
         <p>We are new, with no reviews and no track record you can look up. So instead of asking for trust, we removed the need for it:</p>
         <ul>
           <li><strong>The first class is free.</strong> You see the teaching before any money changes hands.</li>
-          <li><strong>Every price is published.</strong> Fees are on the course pages. You never have to ask what something costs.</li>
+          <li><strong>The fee is quoted before you pay.</strong> Message us the course name on WhatsApp and we tell you the exact fee in writing, before any money changes hands.</li>
           <li><strong>Fees stay refundable.</strong> ${inr(site.pricing.bookingAmount)} booking returned in full, and a ${site.pricing.refundDays}-day window after that.</li>
           <li><strong>We take no vendor commission.</strong> Nobody pays us to recommend their product, so advice is not steered.</li>
           <li><strong>We do not promise jobs.</strong> Ever, for any fee.</li>
@@ -798,7 +798,7 @@ const terms = () => legalPage({
     <p>We do not charge any fee for a job, an interview, a placement, a security deposit or equipment. If anyone asks you for such a payment in our name, it is not us — please report it to ${site.email}.</p>
 
     <h2>5. Enrolment and payment</h2>
-    <p>Course fees are as published on each course page. The first session is free; a ${inr(site.pricing.bookingAmount)} refundable booking holds your seat; the balance is due before your ${ordinal(site.pricing.payBeforeSession)} session. Refunds are governed by our <a href="/refund-policy/">Refund Policy</a>.</p>
+    <p>Course fees are quoted directly on WhatsApp before you pay anything. The first session is free; a ${inr(site.pricing.bookingAmount)} refundable booking holds your seat; the balance is due before your ${ordinal(site.pricing.payBeforeSession)} session. Refunds are governed by our <a href="/refund-policy/">Refund Policy</a>.</p>
 
     <h2>6. Certification exams</h2>
     <p>Where a course prepares you for an external certification, the exam is booked and paid by you directly with the certifying body. Exam fees are never included in our course fee, and passing is not guaranteed.</p>
@@ -1009,8 +1009,8 @@ function recruitment() {
   <div class="wrap">
     <div class="head">
       <span class="eyebrow">What it costs</span>
-      <h2>The rate is published, like every other price on this site</h2>
-      <p class="muted">Nobody in Indian recruitment publishes their rate. We publish every course fee, so it would be strange to start hiding things here.</p>
+      <h2>The rate is published — most recruiters will not tell you this upfront</h2>
+      <p class="muted">Nobody in Indian recruitment publishes their rate. We do, because you should be able to budget before you brief us, not after.</p>
     </div>
     <div class="grid g2">
       <div class="cell"><h3>${pct}% of first-year CTC</h3><p>For a permanent placement — about one month's salary. Invoiced after the person joins, never before. No retainer, no exclusivity, no charge for a role we fail to fill.</p></div>

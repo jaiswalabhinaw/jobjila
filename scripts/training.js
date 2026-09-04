@@ -13,7 +13,7 @@
 const path = require("path");
 const {
   site, openCourses, cities, trackOf,
-  esc, inr, wa, WA_ICON, write, vh, fit,
+  esc, inr, wa, waPriceAsk, WA_ICON, write, vh, fit,
   head, footer, crumb, courseCard, faqBlock, band, shareRow, ladder,
   orgLd, personLd, breadcrumbLd, faqLd, courseLd,
 } = require("./lib");
@@ -36,11 +36,8 @@ function guidesPanel(c) {
 
 function hub() {
   const t = [{ name: "Home", url: "/" }, { name: "Training", url: "/training/" }];
-  const lo = Math.min(...openCourses.map((c) => c.priceINR));
-  const hi = Math.max(...openCourses.map((c) => c.priceINR));
-
   const faqs = [
-    { q: "How much do the courses cost?", a: `Between ${inr(lo)} and ${inr(hi)} depending on length and cohort size. Every course page states its exact fee. The first class is free, ${inr(site.pricing.bookingAmount)} holds your seat and is refundable, and the balance is due only before your third session.` },
+    { q: "How much do the courses cost?", a: `It depends on the course and cohort size, so message us on WhatsApp with the course name and we will quote you the fee directly. The first class is free, ${inr(site.pricing.bookingAmount)} holds your seat and is refundable, and the balance is due only before your third session.` },
     { q: "Are classes live or pre-recorded?", a: "Live online in the evening, taught by a practising consultant, with every session recorded so you can revisit it or catch up." },
     { q: "Are certification exam fees included?", a: "No. Where a course prepares you for an external certification — AWS, Microsoft, Oracle, PeopleCert — you book and pay that exam directly with them. We cover the syllabus and run practice tests, but we never hold your exam money." },
     { q: "Can I take a course while working full time?", a: "Most learners do. Courses run four to eight hours a week, sessions are in the evening, and everything is recorded. Tell us your schedule and we will suggest a batch." },
@@ -54,7 +51,7 @@ function hub() {
 
   return head({
     title: "IT Training Courses — Cloud, ITSM & Infrastructure | Jobjila",
-    description: `Live online IT training in AWS, Azure, OCI, ITIL 4, ITSM, infrastructure, presales and Power BI. Fees from ${inr(lo)}, first class free, refundable booking.`,
+    description: "Live online IT training in AWS, Azure, OCI, ITIL 4, ITSM, infrastructure, presales and Power BI. First class free, refundable booking, fee quoted on WhatsApp.",
     canonical: "/training/",
     extraLd: [
       orgLd, personLd, breadcrumbLd(t), faqLd(faqs),
@@ -69,7 +66,7 @@ function hub() {
     ${crumb(t)}
     <span class="eyebrow">Training</span>
     <h1>Courses taught by people who do the work</h1>
-    <p>Cloud platforms, IT service management, infrastructure and consulting skills. Live online, every session recorded, and every fee published on this page.</p>
+    <p>Cloud platforms, IT service management, infrastructure and consulting skills. Live online, every session recorded, and every fee quoted directly on WhatsApp.</p>
     <div class="btns">
       <a class="btn btn-wa btn-lg" href="${wa("Hi Jobjila, I want to book a free first class.")}" target="_blank" rel="noopener">${WA_ICON}<span>Book a free first class</span></a>
     </div>
@@ -79,9 +76,9 @@ function hub() {
 <section>
   <div class="wrap">
     <div class="head">
-      <span class="eyebrow">All courses and fees</span>
-      <h2>Everything, with the price</h2>
-      <p class="muted">Fees are the same wherever in India you join from. No metro surcharge, no negotiation, no "contact us for pricing".</p>
+      <span class="eyebrow">All courses</span>
+      <h2>Everything we teach</h2>
+      <p class="muted">Fees are the same wherever in India you join from — message us the course name and we quote it directly, no "contact us for pricing" runaround once you ask.</p>
     </div>
 
     <div class="scroll">
@@ -102,7 +99,7 @@ function hub() {
             <td>${esc(trackOf(c.track).name)}</td>
             <td class="num">${esc(c.duration)}</td>
             <td class="num">${esc(c.effort.replace("/week", ""))}</td>
-            <td class="num">${inr(c.priceINR)}</td>
+            <td class="num"><a href="${waPriceAsk(c.name)}" target="_blank" rel="noopener">Ask on WhatsApp</a></td>
           </tr>`).join("\n          ")}
         </tbody>
       </table>
@@ -153,7 +150,8 @@ function coursePage(c) {
     { name: "Training", url: "/training/" },
     { name: c.name, url: `/training/${c.slug}/` },
   ];
-  const waHref = wa(`Hi Jobjila, I want to book the free first class for ${c.name} (${c.duration}, ${inr(c.priceINR)}).`);
+  const waHref = wa(`Hi Jobjila, I want to book the free first class for ${c.name} (${c.duration}).`);
+  const priceAskHref = waPriceAsk(c.name);
   const related = openCourses.filter((x) => x.slug !== c.slug && x.track === c.track)
     .concat(openCourses.filter((x) => x.slug !== c.slug && x.track !== c.track))
     .slice(0, 3);
@@ -217,13 +215,13 @@ function coursePage(c) {
         </div>
 
         ${faqBlock(c.faqs, `${c.name} — questions`)}
-        ${shareRow({ url: `/training/${c.slug}/`, text: `${c.name} training — ${c.duration}, ${inr(c.priceINR)}, first class free. Jobjila.` })}
+        ${shareRow({ url: `/training/${c.slug}/`, text: `${c.name} training — ${c.duration}, first class free. Jobjila.` })}
       </div>
 
       <aside class="aside">
         <div class="panel">
           <ul class="facts">
-            <li><span class="k">Fee</span><b>${inr(c.priceINR)}</b></li>
+            <li><span class="k">Fee</span><a href="${priceAskHref}" target="_blank" rel="noopener">Ask on WhatsApp</a></li>
             <li><span class="k">Duration</span><b>${esc(c.duration)}</b></li>
             <li><span class="k">Commitment</span><b>${esc(c.effort)}</b></li>
             <li><span class="k">Level</span><b>${esc(c.level)}</b></li>
@@ -290,15 +288,16 @@ function cityPage(c, city) {
 
   const faqs = [
     ...picked,
-    { q: `What are the ${c.name} course fees in ${city.name}?`, a: `${inr(c.priceINR)} for the full ${c.duration} programme — the same fee wherever in India you join from, with no ${city.name} pricing. The first class is free and ${inr(site.pricing.bookingAmount)} of the booking is refundable.` },
+    { q: `What are the ${c.name} course fees in ${city.name}?`, a: `The fee is the same wherever in India you join from, with no ${city.name} surcharge — message us on WhatsApp with the course name and we quote it directly. The first class is free and ${inr(site.pricing.bookingAmount)} of the booking is refundable.` },
     { q: `Is this ${c.name} training online or classroom-based in ${city.name}?`, a: `Fully live online, so there is no ${city.name} classroom to travel to. Sessions run in the evening and every one is recorded, which is what makes it workable alongside a job.` },
   ];
 
-  const waHref = wa(`Hi Jobjila, I am in ${city.name} and want the free first class for ${c.name} (${c.duration}, ${inr(c.priceINR)}).`);
+  const waHref = wa(`Hi Jobjila, I am in ${city.name} and want the free first class for ${c.name} (${c.duration}).`);
+  const priceAskHref = waPriceAsk(c.name);
 
   return head({
     title: fit(`${c.short} Training in ${city.name} — Fees & Syllabus`, `${c.short} Training in ${city.name}`),
-    description: `${c.short} training for ${city.name}. ${c.duration}, live online, ${inr(c.priceINR)}, first class free. Syllabus, fees and the ${city.name} hiring picture.`,
+    description: `${c.short} training for ${city.name}. ${c.duration}, live online, first class free. Syllabus and the ${city.name} hiring picture.`,
     canonical: url,
     ogImage: `/assets/og/${c.slug}.jpg`,
     extraLd: [orgLd, courseLd(c, city), breadcrumbLd(t), faqLd(faqs)],
@@ -349,13 +348,13 @@ function cityPage(c, city) {
         </section>
 
         ${faqBlock(faqs, `${c.short} in ${city.name} — questions`)}
-        ${shareRow({ url, text: `${c.name} training for ${city.name} — ${c.duration}, ${inr(c.priceINR)}, first class free. Jobjila.`, heading: `Know someone in ${city.name} who needs this?` })}
+        ${shareRow({ url, text: `${c.name} training for ${city.name} — ${c.duration}, first class free. Jobjila.`, heading: `Know someone in ${city.name} who needs this?` })}
       </div>
 
       <aside class="aside">
         <div class="panel">
           <ul class="facts">
-            <li><span class="k">Fee</span><b>${inr(c.priceINR)}</b></li>
+            <li><span class="k">Fee</span><a href="${priceAskHref}" target="_blank" rel="noopener">Ask on WhatsApp</a></li>
             <li><span class="k">Duration</span><b>${esc(c.duration)}</b></li>
             <li><span class="k">Level</span><b>${esc(c.level)}</b></li>
             <li><span class="k">Format</span><b>Live online</b></li>

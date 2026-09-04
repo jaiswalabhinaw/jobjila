@@ -257,7 +257,7 @@ ${groups.map((g, i) => `<section class="${i % 2 === 0 ? "sunk" : ""}">
   <div class="wrap">
     ${band({
       title: "We teach the subjects we write about",
-      body: "Nine live online courses in cloud, service management, infrastructure, presales and data. First class free, every fee published.",
+      body: "Nine live online courses in cloud, service management, infrastructure, presales and data. First class free, fee quoted directly on WhatsApp.",
       label: "Ask about a course",
       message: "Hi Jobjila, I read one of your guides and want to know about a course.",
     })}
