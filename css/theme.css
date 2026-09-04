@@ -1189,7 +1189,20 @@ h2 { letter-spacing: -.035em; font-weight: 700; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ticker { height: auto; -webkit-mask-image: none; mask-image: none; }
-  .ticker-track { animation: none; }
+  .ticker {
+    height: auto; overflow: visible; -webkit-mask-image: none; mask-image: none;
+    background: none; border: none; padding-block: 0;
+  }
+  .ticker-track {
+    animation: none; display: flex; flex-wrap: wrap; gap: .5rem;
+  }
   .ticker-track[aria-hidden="true"] { display: none; }
+  .ticker-track li {
+    font-size: .8125rem; font-weight: 500; color: var(--ink-2);
+    background: color-mix(in srgb, var(--teal-bg) 45%, var(--card));
+    border: 1px solid color-mix(in srgb, var(--teal) 18%, var(--rule-soft));
+    padding: .5rem .875rem; border-radius: 999px;
+    max-width: 100%; overflow: visible;
+  }
+  .ticker-track li::before { content: none; }
 }

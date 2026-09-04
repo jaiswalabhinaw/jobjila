@@ -83,7 +83,7 @@ function home() {
         <div><dt>Candidate pays</dt><dd>&#8377;0</dd></div>
       </dl>
       <a class="btn btn-line btn-block" href="/recruitment/">See how hiring works</a>
-      <a class="btn btn-line btn-block" href="/submit-resume/" style="margin-top:.625rem">Looking for a role? Submit your resume</a>
+      <a class="btn btn-line btn-block" href="/submit-resume/" style="margin-top:.625rem; white-space:normal; text-align:center; line-height:1.3;">Looking for a role? Submit your resume</a>
     </aside>
    </div>
 
