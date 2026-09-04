@@ -1085,6 +1085,135 @@ function forCandidates() {
 ` + footer();
 }
 
+function submitResume() {
+  const t = trail("Submit Your Resume", "/submit-resume/");
+  return head({
+    title: "Submit Your Resume — Jobjila",
+    description: "Share your resume with Jobjila's recruitment team. We review applications and match candidates with opportunities that fit their skills.",
+    canonical: "/submit-resume/",
+    extraLd: [orgLd, breadcrumbLd(t)],
+    track: "submit",
+  }) + `
+<section class="page-hero">
+  <div class="wrap">
+    ${crumb(t)}
+    <span class="eyebrow">Submit your resume</span>
+    <h1>Let us know about you</h1>
+    <p>Tell us about your background, skills, and what you are looking for. We will review your application and reach out if there is a good fit.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="form-container">
+      <form action="https://formsubmit.co/support@jobjila.com" method="POST" enctype="multipart/form-data" class="submission-form">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://jobjila.com/submit-resume/thank-you/">
+
+        <fieldset>
+          <legend>Your Details</legend>
+
+          <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone *</label>
+              <input type="tel" id="phone" name="phone" placeholder="+91 XXXXX XXXXX" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="location">Location *</label>
+            <input type="text" id="location" name="location" placeholder="City, State" required>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Your Experience</legend>
+
+          <div class="form-group">
+            <label for="experience">Years of Experience *</label>
+            <input type="number" id="experience" name="experience" min="0" max="70" required>
+          </div>
+
+          <div class="form-group">
+            <label for="skills">Key Skills *</label>
+            <textarea id="skills" name="skills" placeholder="e.g., AWS, Kubernetes, Python, DevOps, Linux" rows="3" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="current-role">Current Role</label>
+            <input type="text" id="current-role" name="current-role" placeholder="e.g., Senior DevOps Engineer">
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Your Resume</legend>
+
+          <div class="form-group">
+            <label for="resume">Resume/CV (PDF, DOC, DOCX) *</label>
+            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+            <small>Maximum file size: 5 MB</small>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Additional Information</legend>
+
+          <div class="form-group">
+            <label for="message">Tell us about yourself</label>
+            <textarea id="message" name="message" placeholder="What are you looking for? Any specific technologies or roles?" rows="4"></textarea>
+          </div>
+
+          <div class="form-group checkbox">
+            <input type="checkbox" id="terms" name="terms" required>
+            <label for="terms">I agree to the <a href="/privacy/">Privacy Policy</a> and understand my resume will be reviewed and stored securely.</label>
+          </div>
+        </fieldset>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary btn-lg">Submit Resume</button>
+          <p class="form-note">We will review your application within 2-3 business days and contact you if there is a match.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="sunk">
+  <div class="wrap">
+    <div class="head">
+      <h2>How this works</h2>
+      <p>After you submit your resume, here is what happens next.</p>
+    </div>
+    <div class="grid g2">
+      <div class="cell"><h3>We review it</h3><p>Our team reads every submission and checks if your profile matches any active requirements from our clients.</p></div>
+      <div class="cell"><h3>We get in touch</h3><p>If there is a role that fits, we will contact you by email or phone with details and next steps. No surprise calls.</p></div>
+      <div class="cell"><h3>You stay in control</h3><p>Your resume is shared with an employer only after you agree, for that specific role. You are never added to any database or sold to anyone.</p></div>
+      <div class="cell"><h3>It stays secure</h3><p>Your information is stored securely and deleted when you ask. See our <a href="/privacy/">Privacy Policy</a> for details on how we handle your data.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <h2>Questions?</h2>
+    </div>
+    <p style="margin-bottom: 1.5rem">Get in touch with our recruitment team directly:</p>
+    ${band({ title: "Talk to us", body: "Message us on WhatsApp or email with any questions about roles, the application process, or your career.", label: "Message us", message: "Hi Jobjila, I have submitted my resume and have some questions.\n\n" })}
+  </div>
+</section>
+` + footer();
+}
+
 module.exports = function buildPages() {
   write("index.html", home());
   write(path.join("it-advisory", "index.html"), itAdvisory());
@@ -1098,6 +1227,7 @@ module.exports = function buildPages() {
   write(path.join("refund-policy", "index.html"), refundPolicy());
   write(path.join("terms", "index.html"), terms());
   write(path.join("privacy", "index.html"), privacy());
+  write(path.join("submit-resume", "index.html"), submitResume());
   write("404.html", notFound());
-  return 12;
+  return 13;
 };

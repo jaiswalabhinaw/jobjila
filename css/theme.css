@@ -834,9 +834,117 @@ td a:hover, th a:hover { text-decoration: underline; }
 }
 .review-author .muted { display: block; color: var(--slate); font-style: normal; margin-top: .25rem; }
 
+/* ---------- forms ---------- */
+.form-container { max-width: 38rem; margin: 2rem auto; }
+.submission-form { display: grid; gap: 1.875rem; }
+
+fieldset {
+  border: none; padding: 0; margin: 0;
+  display: grid; gap: 1.125rem;
+}
+
+legend {
+  font-family: var(--f-sans); font-weight: 600; font-size: var(--s-1);
+  color: var(--ink); margin-bottom: .5rem;
+  padding-bottom: .875rem; border-bottom: 2px solid var(--rule-soft);
+  text-transform: none; letter-spacing: normal;
+}
+
+.form-group {
+  display: grid; gap: .375rem;
+}
+
+.form-group label {
+  font-size: var(--s--1); font-weight: 500; color: var(--ink-2);
+  font-family: var(--f-sans);
+  letter-spacing: .06em; text-transform: capitalize;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  font-family: var(--f-sans); font-size: var(--s-0); padding: .75rem .875rem;
+  border: 1px solid var(--rule); border-radius: 3px; background: var(--card);
+  color: var(--ink); width: 100%;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none; border-color: var(--signal); box-shadow: 0 0 0 3px var(--signal-bg);
+}
+
+.form-group small {
+  font-size: .75rem; color: var(--slate); margin-top: .25rem;
+}
+
+.form-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+}
+
+.form-group.checkbox {
+  display: grid; grid-template-columns: auto 1fr; gap: .75rem; align-items: flex-start;
+  margin-top: .5rem;
+}
+
+.form-group.checkbox input {
+  width: auto; margin-top: .25rem; cursor: pointer;
+}
+
+.form-group.checkbox label {
+  font-weight: 400; font-size: var(--s--1); text-transform: none; letter-spacing: normal;
+  cursor: pointer;
+}
+
+.form-group.checkbox label a {
+  color: var(--signal); text-decoration: none;
+}
+
+.form-group.checkbox label a:hover {
+  text-decoration: underline;
+}
+
+.form-actions {
+  display: grid; gap: 1rem; margin-top: 1.5rem;
+  border-top: 1px solid var(--rule-soft); padding-top: 1.5rem;
+}
+
+.form-actions .btn {
+  justify-self: start;
+}
+
+.form-note {
+  font-size: var(--s--1); color: var(--slate); margin: 0;
+}
+
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .article-figure img,
   :root:not([data-theme="light"]) .post-card .thumb img { opacity: .92; }
+
+  :root:not([data-theme="light"]) .form-group input,
+  :root:not([data-theme="light"]) .form-group textarea,
+  :root:not([data-theme="light"]) .form-group select {
+    background: var(--ink); color: var(--paper); border-color: var(--ink-2);
+  }
+
+  :root:not([data-theme="light"]) .form-group input:focus,
+  :root:not([data-theme="light"]) .form-group textarea:focus,
+  :root:not([data-theme="light"]) .form-group select:focus {
+    border-color: var(--signal); box-shadow: 0 0 0 3px rgba(15, 110, 92, 0.2);
+  }
 }
 :root[data-theme="dark"] .article-figure img,
 :root[data-theme="dark"] .post-card .thumb img { opacity: .92; }
+
+:root[data-theme="dark"] .form-group input,
+:root[data-theme="dark"] .form-group textarea,
+:root[data-theme="dark"] .form-group select {
+  background: var(--ink); color: var(--paper); border-color: var(--ink-2);
+}
+
+:root[data-theme="dark"] .form-group input:focus,
+:root[data-theme="dark"] .form-group textarea:focus,
+:root[data-theme="dark"] .form-group select:focus {
+  border-color: var(--signal); box-shadow: 0 0 0 3px rgba(15, 110, 92, 0.2);
+}
