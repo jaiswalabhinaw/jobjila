@@ -1628,3 +1628,34 @@ form input::placeholder, form textarea::placeholder { color: var(--slate-2); }
    beside it as a second, differently-styled cross. */
 .search-field input::-webkit-search-cancel-button,
 .search-field input::-webkit-search-decoration { -webkit-appearance: none; appearance: none; }
+
+/* ---------- success stories ---------- */
+.head-row {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 1.5rem; flex-wrap: wrap;
+}
+.head-row h2 { margin-top: .5rem; }
+.stories {
+  margin-top: 2rem; display: grid; gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(17rem, 100%), 1fr));
+}
+.story {
+  margin: 0; padding: 1.5rem 1.375rem; display: grid; gap: .625rem; align-content: start;
+  background: var(--card); border: 1px solid var(--rule-soft);
+  border-radius: var(--r); box-shadow: var(--sh-1);
+  position: relative; overflow: hidden;
+}
+.story::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 3px; background: var(--pil, var(--blue)); }
+.story-tag {
+  justify-self: start; font-family: var(--f-mono); font-size: .625rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: .3rem .6rem; border-radius: 999px;
+  background: var(--pil-bg, var(--blue-bg)); color: var(--pil, var(--blue));
+}
+.story-stars { color: var(--orange); font-size: .875rem; letter-spacing: .1em; }
+.story blockquote {
+  margin: 0; font-size: var(--s--1); color: var(--ink-2); line-height: 1.6;
+}
+.story-who { font-size: var(--s--1); }
+.story-who b { color: var(--ink); font-family: var(--f-sans); font-weight: 650; }
+.story-cta { background: var(--sunk); }

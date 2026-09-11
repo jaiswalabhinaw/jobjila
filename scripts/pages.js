@@ -79,22 +79,12 @@ const pillarCards = () => `<div class="pillar-cards">
     </div>`;
 
 function home() {
-  const featured = openCourses.filter((c) => c.featured);
-  const faqs = [
-    { q: "What does Jobjila actually do?", a: "Five things, all around the same technology. We deliver IT solutions — cloud, hosting, security and infrastructure — scoped by our team and built by specialist partners. We consult on architecture, migrations, cost and technology choices. We recruit for companies hiring into those roles, paid by the employer. We train people in the same technology, live online. And we run a partner network of providers and independent consultants who deliver that work with us. The consulting keeps the training current, and the training keeps our screening honest." },
-    { q: "Is your recruitment separate from your training?", a: "Completely. A course fee buys teaching and nothing else — not a job, not an interview, not a place on any shortlist. Employers pay us to recruit; candidates never pay us anything. If we do put a former student forward for a role, we tell the employer we trained them." },
-    { q: "Is the first class really free?", a: "Yes. Any course, first live session, no payment and no card details. You message us on WhatsApp and we send the joining link. We are new and have no reviews yet, so asking you to pay on trust would be unreasonable." },
-    { q: "How much do the courses cost?", a: `It depends on the course and its length — message us on WhatsApp with the course name and we quote the fee directly. You pay the balance only before your third session, and it stays refundable for ${site.pricing.refundDays} days after that.` },
-    { q: "Are the classes live or recorded?", a: "Live online, in the evening, taught by a practising consultant — with every session recorded so you can revisit it or catch up if you miss one." },
-    { q: "Do you guarantee a job after training?", a: "No, and we will not pretend otherwise. We provide the training, an assessed project, resume review and interview practice. Anyone promising a guaranteed job in exchange for a fee is doing something else." },
-    { q: "Can companies book training for a team?", a: "Yes. Closed batches are run for company teams on any of our subjects, scheduled around your working hours and quoted per batch rather than per seat. Message us with the team size and subject." },
-  ];
 
   return head({
     title: "Jobjila — IT Solutions, Consulting, Hiring & Training",
     description: "IT solutions, consulting, live online training and employer-paid IT recruitment — from practising consultants in Noida. First training class free.",
     canonical: "/",
-    extraLd: [orgLd, personLd, websiteLd, faqLd(faqs)],
+    extraLd: [orgLd, personLd, websiteLd],
   }) + `
 <div class="hero">
   <div class="wrap">
@@ -191,185 +181,31 @@ function home() {
 
 <section>
   <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">How training starts</span>
-      <h2>You pay after you have seen us teach</h2>
-      <p class="muted">We are new, and we have no reviews yet. This is the entire payment sequence, in order.</p>
-    </div>
-    ${ladder()}
-    <p class="small muted" style="margin-top:1.25rem">If <em>we</em> cancel or postpone a batch, you get a 100% refund whenever that happens, or a free transfer to the next batch — your choice, not ours. Full terms in the <a href="/refund-policy/">Refund Policy</a>.</p>
-  </div>
-</section>
-
-<section class="sunk">
-  <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">Training</span>
-      <h2>Courses running now</h2>
-      <p class="muted">Cloud platforms, IT service management, infrastructure and consulting skills. Every course lists its full syllabus and fee.</p>
-    </div>
-    <div class="cards">
-      ${featured.map((c, i) => courseCard(c, i)).join("\n      ")}
-    </div>
-    <div class="btns" style="margin-top:2rem">
-      <a class="btn btn-line btn-lg" href="/training/">See all ${openCourses.length} courses and fees</a>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">For companies</span>
-      <h2>Advisory and support, from the people who teach it</h2>
-      <p class="muted">We consult on the same technology we train in. That is deliberate — the training stays current because we do the work, and the consulting has depth because we teach it.</p>
-    </div>
-    <div class="grid g2">
-      <div class="cell" data-track="cloud">
-        <span class="chips"><span class="chip">Advisory</span></span>
-        <h3>Decide what to build, buy or move</h3>
-        <ul>
-          <li>Cloud architecture review — AWS, Azure, OCI</li>
-          <li>Migration planning and risk assessment</li>
-          <li>Cloud bill review and cost reduction</li>
-          <li>Technology and vendor selection</li>
-          <li>Presales and RFP response support</li>
-        </ul>
-        <a class="btn btn-line" href="/it-advisory/" style="justify-self:start">IT Advisory</a>
+    <div class="head head-row">
+      <div>
+        <span class="eyebrow">Success stories</span>
+        <h2>Real People. Real Growth.</h2>
       </div>
-      <div class="cell" data-track="infra">
-        <span class="chips"><span class="chip">Support</span></span>
-        <h3>Keep it running properly</h3>
-        <ul>
-          <li>Network and server setup</li>
-          <li>Windows and Linux administration</li>
-          <li>Backup and recovery, tested not assumed</li>
-          <li>Security hardening and monitoring</li>
-          <li>Annual maintenance contracts</li>
-        </ul>
-        <a class="btn btn-line" href="/it-support/" style="justify-self:start">IT Support</a>
-      </div>
+      <a class="btn btn-line" href="${esc(site.googleReviewUrl)}" target="_blank" rel="noopener">Read all on Google <span aria-hidden="true">&rarr;</span></a>
     </div>
-  </div>
-</section>
-
-<section class="sunk">
-  <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">Technology Solutions &middot; new</span>
-      <h2>We now deliver the technology too, with partners</h2>
-      <p class="muted">Our own technical team scopes the requirement and helps shape the proposal. A specialist partner delivers it. You get one point of contact and an honest opinion about what you actually need.</p>
-    </div>
-    <div class="grid g3">
-      ${SOLUTION_CATEGORIES.map(([name, desc]) => `<div class="cell"><h3>${name}</h3><p>${desc}</p></div>`).join("\n      ")}
-    </div>
-    <div class="btns" style="margin-top:2rem">
-      <a class="btn btn-line btn-lg" href="/solutions/">How a requirement is delivered</a>
-      <a class="btn btn-line btn-lg" href="/partners/">Deliver as a partner</a>
-    </div>
-  </div>
-</section>
-
-${honestBlock()}
-
-<section class="sunk">
-  <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">Recruitment &amp; Talent &middot; new</span>
-      <h2>We now hire for companies too</h2>
-      <p class="muted">Ten hiring services across the same technologies we advise on and teach. The employer pays our fee — a candidate has never paid us anything and never will.</p>
-    </div>
-    <div class="grid g5">
-      <div class="cell"><h3>Permanent Recruitment</h3><p>Invoiced after joining, with a ${site.recruitment.replacementDays}-day replacement guarantee.</p></div>
-      <div class="cell"><h3>Contract Hiring</h3><p>Fixed-term cover for a migration or a notice period.</p></div>
-      <div class="cell"><h3>Freelance &amp; Project-Based Hiring</h3><p>Independent specialists for scoped work with a defined end.</p></div>
-      <div class="cell"><h3>IT &amp; Technology Recruitment</h3><p>Engineers, admins and support across the infrastructure stack.</p></div>
-      <div class="cell"><h3>Cloud &amp; Infrastructure Recruitment</h3><p>AWS, Azure and OCI — the subjects we teach.</p></div>
-      <div class="cell"><h3>Sales &amp; Presales Recruitment</h3><p>Solution consultants and presales, screened by people who do it.</p></div>
-      <div class="cell"><h3>Talent Sourcing</h3><p>Open market first, our network second. We tell you which.</p></div>
-      <div class="cell"><h3>Candidate Screening</h3><p>A technical conversation, not a keyword match.</p></div>
-      <div class="cell"><h3>Specialist / Niche Hiring</h3><p>OCI, ITSM tooling, cloud cost. We size the pool honestly.</p></div>
-      <div class="cell"><h3>Startup &amp; SME Recruitment Support</h3><p>One role is normal. No minimum, no retainer.</p></div>
-    </div>
-    <div class="callout" style="margin-top:2rem">
-      <h3>Training and hiring are separate services</h3>
-      <p>Paying for a course does not buy a job, an interview, or a place on a shortlist — and we would rather say that on the homepage than bury it. Our recruitment fee is published in full on the <a href="/recruitment/">hiring page</a>, and candidates can read exactly what we do with a CV on the <a href="/for-candidates/">candidates page</a>.</p>
-    </div>
-    <div class="btns" style="margin-top:2rem">
-      <a class="btn btn-line btn-lg" href="/recruitment/">Hiring? See the rate</a>
-      <a class="btn btn-line btn-lg" href="/for-candidates/">Looking for a role?</a>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">For consultants and trainers</span>
-      <h2>We deliver through independent specialists</h2>
-      <p class="muted">Rather than a payroll bench, we route client work to reviewed independent consultants. If you consult or train in cloud, infrastructure, service management, data or presales, you can apply.</p>
-    </div>
-    <div class="grid g3">
-      <div class="cell"><h3>Free to join</h3><p>No fee to apply and no fee to stay listed. We take a share only on work actually delivered.</p></div>
-      <div class="cell"><h3>Reviewed, not open</h3><p>A short call, and a recorded demo if you want to train. That review is what makes the network worth being in.</p></div>
-      <div class="cell"><h3>Not exclusive</h3><p>You keep your own clients. We route what matches, and we tell you honestly how much that is.</p></div>
-    </div>
-    <div class="btns" style="margin-top:2rem">
-      <a class="btn btn-line btn-lg" href="/network/">How the network works</a>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">Free to read</span>
-      <h2>Guides, with the inconvenient parts left in</h2>
-      <p class="muted">We write up what we would tell you on a call — certification paths, what the exams actually test, and how to check a training provider before paying anyone, including us.</p>
-    </div>
-    <div class="posts">
-      ${articles.slice(0, 3).map((a) => `<article class="post-card" data-track="${a.track}">
-        <a class="thumb" href="${artUrl(a)}" tabindex="-1" aria-hidden="true">
-          <img src="/assets/blog/${esc(a.slug)}-card.jpg" width="1200" height="630" alt="" loading="lazy" decoding="async">
-        </a>
-        <div class="body">
-          <h3><a href="${artUrl(a)}">${esc(a.title)}</a></h3>
-          <p class="desc">${esc(a.excerpt)}</p>
-          <p class="fine">${a.readMins} min read</p>
-        </div>
-      </article>`).join("\n      ")}
-    </div>
-    <div class="btns" style="margin-top:2rem">
-      <a class="btn btn-line btn-lg" href="/blog/">All ${articles.length} guides</a>
-      <a class="btn btn-line btn-lg" href="/about/">Who runs Jobjila</a>
-      <a class="btn btn-line btn-lg" href="/locations/">Where we work</a>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">Success stories</span>
-      <h2>Real People. Real Growth.</h2>
-      <p class="muted">${site.reviews.length} verified ${site.reviews.length === 1 ? "review" : "reviews"} on our Google Business Profile, reproduced in full. Every one is public — follow the link to read them at source.</p>
-    </div>
-    <div class="reviews-grid">
-      ${site.reviews.map((r) => `<figure class="review-card">
-        <div class="review-stars" role="img" aria-label="${r.stars} out of 5 stars">${"&#9733;".repeat(r.stars)}</div>
-        <blockquote class="review-text">${esc(r.text)}</blockquote>
-        <figcaption class="review-author"><b>${esc(r.author)}</b><span class="muted">${esc(r.course)}</span></figcaption>
+    <div class="stories">
+      ${site.reviews.map((r, i) => `<figure class="story" data-pillar="${["training", "solutions", "talent"][i % 3]}">
+        <figcaption class="story-tag">${esc(r.course)}</figcaption>
+        <div class="story-stars" role="img" aria-label="${r.stars} out of 5 stars">${"&#9733;".repeat(r.stars)}</div>
+        <blockquote>${esc(r.text)}</blockquote>
+        <p class="story-who"><b>${esc(r.author)}</b></p>
       </figure>`).join("\n      ")}
-    </div>
-    <div class="btns" style="margin-top:2rem">
-      <a class="btn btn-line btn-lg" href="${esc(site.googleReviewUrl)}" target="_blank" rel="noopener">Read and write reviews on Google</a>
+      <figure class="story story-cta" data-pillar="partners">
+        <figcaption class="story-tag">Your story next</figcaption>
+        <blockquote>We are new, and these are every review we have. Sit in a class free, or send us a requirement, and judge us yourself.</blockquote>
+        <p class="story-who"><a href="/portfolio/">See the work we do &rarr;</a></p>
+      </figure>
     </div>
   </div>
 </section>
 
 <section class="sunk">
   <div class="wrap">
-    ${faqBlock(faqs, "Common questions").replace('style="margin-top:3rem"', "")}
     <div class="cta-wide" style="margin-top:3rem">
       <div class="cta-wide-copy">
         <span class="eyebrow">Let&rsquo;s build a better tomorrow</span>
@@ -705,13 +541,25 @@ function network() {
 /* ============================= ABOUT ============================= */
 
 function about() {
+  /* The general questions the homepage used to carry. They belong with the
+     rest of "who we are", and the FAQ schema has to sit where the answers
+     are visible. */
+  const faqs = [
+    { q: "What does Jobjila actually do?", a: "Five things, all around the same technology. We deliver IT solutions — cloud, hosting, security and infrastructure — scoped by our team and built by specialist partners. We consult on architecture, migrations, cost and technology choices. We recruit for companies hiring into those roles, paid by the employer. We train people in the same technology, live online. And we run a partner network of providers and independent consultants who deliver that work with us. The consulting keeps the training current, and the training keeps our screening honest." },
+    { q: "Is your recruitment separate from your training?", a: "Completely. A course fee buys teaching and nothing else — not a job, not an interview, not a place on any shortlist. Employers pay us to recruit; candidates never pay us anything. If we do put a former student forward for a role, we tell the employer we trained them." },
+    { q: "Is the first class really free?", a: "Yes. Any course, first live session, no payment and no card details. You message us on WhatsApp and we send the joining link. We are new and have no reviews yet, so asking you to pay on trust would be unreasonable." },
+    { q: "How much do the courses cost?", a: `It depends on the course and its length — message us on WhatsApp with the course name and we quote the fee directly. You pay the balance only before your third session, and it stays refundable for ${site.pricing.refundDays} days after that.` },
+    { q: "Are the classes live or recorded?", a: "Live online, in the evening, taught by a practising consultant — with every session recorded so you can revisit it or catch up if you miss one." },
+    { q: "Do you guarantee a job after training?", a: "No, and we will not pretend otherwise. We provide the training, an assessed project, resume review and interview practice. Anyone promising a guaranteed job in exchange for a fee is doing something else." },
+    { q: "Can companies book training for a team?", a: "Yes. Closed batches are run for company teams on any of our subjects, scheduled around your working hours and quoted per batch rather than per seat. Message us with the team size and subject." },
+  ];
   const t = trail("About", "/about/");
   return head({
     title: "About Jobjila — Who Runs This IT Practice",
     description: `Jobjila is an IT advisory, support and training practice based in ${site.locality}, founded by ${site.founder.name}. Published prices, refundable fees, and no employment guarantees.`,
     canonical: "/about/",
     extraLd: [
-      orgLd, personLd, breadcrumbLd(t),
+      orgLd, personLd, breadcrumbLd(t), faqLd(faqs),
       {
         "@context": "https://schema.org",
         "@type": "AboutPage",
@@ -788,6 +636,12 @@ function about() {
         </div>
       </aside>
     </div>
+  </div>
+</section>
+
+<section class="sunk">
+  <div class="wrap">
+    ${faqBlock(faqs, "Common questions").replace('style="margin-top:3rem"', "")}
   </div>
 </section>
 
