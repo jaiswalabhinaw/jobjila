@@ -20,6 +20,22 @@ const trail = (name, url) => [{ name: "Home", url: "/" }, { name, url }];
 /* The five pillars of the business, in the order we want them read.
    `pillar` is the accent key; the icons are inline so they take currentColor
    from the chip and need no extra request. */
+const SV = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+
+const STAT_ICONS = {
+  courses: SV('<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/>'),
+  free:    SV('<circle cx="12" cy="12" r="9"/><path d="M12 7v10"/><path d="M15 9.5a2.5 2.5 0 0 0-2.5-1.5h-1a2 2 0 0 0 0 4h1a2 2 0 0 1 0 4h-1A2.5 2.5 0 0 1 9 14.5"/>'),
+  fee:     SV('<path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/>'),
+  shield:  SV('<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/>'),
+};
+
+const STEP_ICONS = {
+  brief:   SV('<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M9 13h6"/><path d="M9 17h4"/>'),
+  analyse: SV('<circle cx="11" cy="11" r="7"/><path d="m20 20-4.3-4.3"/>'),
+  deliver: SV('<circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.9 4.9 1.5 1.5"/><path d="m17.6 17.6 1.5 1.5"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m4.9 19.1 1.5-1.5"/><path d="m17.6 6.4 1.5-1.5"/>'),
+  grow:    SV('<path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M22 20H2"/>'),
+};
+
 const PILLAR_ICONS = {
   solutions: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 7.5l9 4.5 9-4.5L12 3Z"/><path d="m3 12 9 4.5 9-4.5"/><path d="m3 16.5 9 4.5 9-4.5"/></svg>',
   consulting: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2.1 4.9-4.9 2.1 2.1-4.9 4.9-2.1Z"/></svg>',
@@ -30,28 +46,35 @@ const PILLAR_ICONS = {
 
 const PILLARS = [
   { key: "solutions", href: "/solutions/", title: "Technology Solutions",
-    body: "Cloud, hosting, security and infrastructure \u2014 scoped by our own technical team, delivered by partners who specialise in it.",
-    more: "What we deliver" },
+    tag: "Modern IT for a smarter business.", more: "Explore Solutions",
+    list: ["Cloud &amp; Hosting", "IT Infrastructure", "Cybersecurity", "Backup &amp; DR", "Managed Services", "Migration Services"] },
   { key: "consulting", href: "/it-advisory/", title: "Consulting",
-    body: "Architecture reviews, migration plans, cost assessments and vendor selection. We take no commission from any vendor.",
-    more: "How it works" },
+    tag: "Expertise for better decisions.", more: "Consulting Support",
+    list: ["Pre-sales Support", "Bid Management", "Solutioning", "IT Advisory", "RFP/RFQ Support", "IT Strategy"] },
   { key: "talent", href: "/recruitment/", title: "Talent &amp; Hiring",
-    body: `Permanent, contract and freelance IT hiring at ${site.recruitment.permanentPct}% of CTC. The employer pays our fee \u2014 never the candidate.`,
-    more: "See the rate" },
+    tag: "The right people for your success.", more: "Hire Talent",
+    list: ["Permanent Hiring", "Contract Staffing", "Freelancers", "IT Professionals", "Executive Search", "Career Guidance"] },
   { key: "training", href: "/training/", title: "Training &amp; Academy",
-    body: "Live online cohorts in cloud, ITSM and infrastructure, taught by consultants who do the work. Your first class is free.",
-    more: "Browse courses" },
+    tag: "Learn. Upgrade. Grow.", more: "Explore Training",
+    list: ["Corporate Training", "Professional Courses", "Fresher Training", "Certification Programs", "Online &amp; Classroom", "Skill Development"] },
   { key: "partners", href: "/partners/", title: "Partner Network",
-    body: "Providers and independent consultants we bring real, scoped customer requirements to. Free to join, reviewed before listing.",
-    more: "Partner with us" },
+    tag: "Stronger together.", more: "Become a Partner",
+    list: ["Technology Partners", "Service Partners", "Co-sell Opportunities", "Day 1 &amp; Day 2 Support", "Partner Enablement", "Grow with Jobjila"] },
 ];
 
 const pillarCards = () => `<div class="pillar-cards">
-      ${PILLARS.map((p) => `<a class="pillar-card" data-pillar="${p.key}" href="${p.href}">
-        <span class="pillar-ico" aria-hidden="true">${PILLAR_ICONS[p.key]}</span>
-        <h3>${p.title}</h3>
-        <p>${p.body}</p>
-        <span class="pillar-more">${p.more} &rarr;</span>
+      ${PILLARS.map((p, i) => `<a class="pillar-card" data-pillar="${p.key}" href="${p.href}">
+        <span class="pillar-shot"><img src="/assets/home/pillar-${i + 1}.jpg" width="640" height="192" alt="" loading="lazy" decoding="async"></span>
+        <span class="pillar-body">
+          <span class="pillar-ico" aria-hidden="true">${PILLAR_ICONS[p.key]}</span>
+          <h3>${p.title}</h3>
+          <span class="pillar-tag">${p.tag}</span>
+          <ul class="pillar-list">${p.list.map((x) => `<li>${x}</li>`).join("")}</ul>
+          <span class="pillar-foot">
+            <span class="pillar-more">${p.more}</span>
+            <span class="pillar-dot" aria-hidden="true">&rarr;</span>
+          </span>
+        </span>
       </a>`).join("\n      ")}
     </div>`;
 
@@ -77,68 +100,94 @@ function home() {
   <div class="wrap">
    <div class="hero-split">
     <div class="hero-copy">
-    <span class="eyebrow">${esc(site.locality)}, ${esc(site.region)} &middot; serving clients across India</span>
-    <h1 style="margin-top:.875rem">Technology, people and skills&nbsp;&mdash; <em>without the guesswork.</em></h1>
-    <p class="lede">We plan and deliver technology for companies, train the people who run it, and hire the people they need. Our technical team scopes every requirement itself, our recruitment rate is published up front, and your first training class is free.</p>
-    <div class="btns">
-      <a class="btn btn-wa btn-lg" href="${wa("Hi Jobjila, I want to book a free first class.")}" target="_blank" rel="noopener">${WA_ICON}<span>Book a free first class</span></a>
-      <a class="btn btn-line btn-lg" href="/training/">Browse courses</a>
-    </div>
-    </div>
-
-    <aside class="hero-panel" aria-label="Recruitment and talent">
-      <span class="panel-tag">New &middot; Recruitment &amp; Talent</span>
-      <p class="panel-lead">We hire for companies now — and the employer pays, never the candidate.</p>
-      <div class="ticker">
-        <ul class="ticker-track">
-          <li>Permanent Recruitment</li>
-          <li>Contract Hiring</li>
-          <li>Freelance &amp; Project-Based Hiring</li>
-          <li>IT &amp; Technology Recruitment</li>
-          <li>Cloud &amp; Infrastructure Recruitment</li>
-          <li>Sales &amp; Presales Recruitment</li>
-          <li>Talent Sourcing</li>
-          <li>Candidate Screening</li>
-          <li>Specialist / Niche Hiring</li>
-          <li>Startup &amp; SME Recruitment Support</li>
-        </ul>
-        <ul class="ticker-track" aria-hidden="true">
-          <li>Permanent Recruitment</li>
-          <li>Contract Hiring</li>
-          <li>Freelance &amp; Project-Based Hiring</li>
-          <li>IT &amp; Technology Recruitment</li>
-          <li>Cloud &amp; Infrastructure Recruitment</li>
-          <li>Sales &amp; Presales Recruitment</li>
-          <li>Talent Sourcing</li>
-          <li>Candidate Screening</li>
-          <li>Specialist / Niche Hiring</li>
-          <li>Startup &amp; SME Recruitment Support</li>
-        </ul>
+      <span class="eyebrow">Connecting people. Technology. Opportunities.</span>
+      <h1 class="h1-solid" style="margin-top:.875rem">Build Today. Grow <em>Tomorrow.</em></h1>
+      <p class="hero-tagline">
+        <b>IT Solutions</b><span class="sep">|</span><b>Expert Consulting</b><span class="sep">|</span><b>Talent &amp; Hiring</b><br>
+        <b>Professional Training</b><span class="sep">|</span><b>Trusted Partner Network</b>
+      </p>
+      <div class="btns">
+        <a class="btn btn-blue btn-lg" href="/solutions/">Get an IT Solution <span aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn-line btn-lg" href="/recruitment/">Hire Talent <span aria-hidden="true">&rarr;</span></a>
       </div>
-      <dl class="panel-facts">
-        <div><dt>Our fee</dt><dd>${site.recruitment.permanentPct}% of CTC</dd></div>
-        <div><dt>Replacement</dt><dd>${site.recruitment.replacementDays} days</dd></div>
-        <div><dt>Candidate pays</dt><dd>&#8377;0</dd></div>
-      </dl>
-      <a class="btn btn-line btn-block" href="/recruitment/">See how hiring works</a>
-      <a class="btn btn-line btn-block" href="/submit-resume/" style="margin-top:.625rem; white-space:normal; text-align:center; line-height:1.3;">Looking for a role? Submit your resume</a>
-    </aside>
-   </div>
 
-    <div class="hero-stats">
-      <div><b>${openCourses.length}</b><span>Courses</span></div>
-      <div><b>&#8377;0</b><span>First class</span></div>
-      <div><b>${site.pricing.refundDays} days</b><span>Refund window</span></div>
-      <div><b>100%</b><span>Live, recorded</span></div>
+      <div class="stat-row">
+        <div><span class="stat-ico" aria-hidden="true">${STAT_ICONS.courses}</span><b>${openCourses.length} courses</b><span>Cloud, ITSM and infrastructure</span></div>
+        <div><span class="stat-ico" aria-hidden="true">${STAT_ICONS.free}</span><b>&#8377;0</b><span>Your first class, every course</span></div>
+        <div><span class="stat-ico" aria-hidden="true">${STAT_ICONS.fee}</span><b>${site.recruitment.permanentPct}% of CTC</b><span>Published hiring fee, employer pays</span></div>
+        <div><span class="stat-ico" aria-hidden="true">${STAT_ICONS.shield}</span><b>${site.recruitment.replacementDays} days</b><span>Replacement cover on every hire</span></div>
+      </div>
     </div>
 
-    <div class="pillar-head">
-      <span class="eyebrow">The Jobjila ecosystem</span>
-      <h2>Five ways we work with you</h2>
+    <figure class="hero-art">
+      <img src="/assets/home/ecosystem-wheel.jpg" width="1080" height="756" fetchpriority="high" decoding="async"
+           alt="The Jobjila ecosystem: Technology Solutions, Consulting, Talent &amp; Hiring, Training &amp; Academy and Partner Network arranged around the Jobjila mark.">
+    </figure>
+   </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="eco-bar">
+      <a class="btn btn-line" href="/solutions/">Explore All Services <span aria-hidden="true">&rarr;</span></a>
+    </div>
+    <div class="eco-head">
+      <span class="eyebrow">Our ecosystem</span>
+      <h2>Five Pillars. One Powerful Ecosystem.</h2>
+      <span class="rule"></span>
+      <p>Everything you need to build, scale and grow &ndash; connected for greater impact.</p>
     </div>
     ${pillarCards()}
   </div>
-</div>
+</section>
+
+<section class="sunk">
+  <div class="wrap">
+    <div class="howit">
+      <div class="howit-top">
+        <div>
+          <span class="eyebrow">How it works</span>
+          <h2>From Need to Success</h2>
+          <p>A simple, transparent and collaborative approach.</p>
+        </div>
+        <p class="howit-note">Your Goals.<br>Our Support. Always.</p>
+      </div>
+      <div class="howit-steps">
+        <div class="howit-step">
+          <span class="howit-mark"><span class="howit-num">1</span>${STEP_ICONS.brief}</span>
+          <h3>Share Your Requirement</h3>
+          <p>Tell us your business, hiring or training need.</p>
+        </div>
+        <div class="howit-step">
+          <span class="howit-mark"><span class="howit-num">2</span>${STEP_ICONS.analyse}</span>
+          <h3>We Analyze &amp; Design</h3>
+          <p>We assess and create the right solution with our experts and partners.</p>
+        </div>
+        <div class="howit-step">
+          <span class="howit-mark"><span class="howit-num">3</span>${STEP_ICONS.deliver}</span>
+          <h3>We Connect &amp; Deliver</h3>
+          <p>We bring the best technology, talent, training or partner.</p>
+        </div>
+        <div class="howit-step">
+          <span class="howit-mark"><span class="howit-num">4</span>${STEP_ICONS.grow}</span>
+          <h3>You Grow</h3>
+          <p>Achieve your goals with continuous support.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:3.5rem">
+      <span class="eyebrow">Technologies we work in</span>
+      <div class="techstrip">
+        <span>AWS</span><span>Microsoft Azure</span><span>Oracle Cloud</span><span>VMware</span>
+        <span>Cisco</span><span>Dell</span><span>HPE</span><span>Fortinet</span>
+        <span>and more&hellip;</span>
+      </div>
+      <p class="small muted" style="margin-top:1rem">These are the platforms we advise on, train in and hire for. Delivery partners hold the vendor certifications for the work they carry out.</p>
+    </div>
+  </div>
+</section>
 
 <section>
   <div class="wrap">
@@ -301,8 +350,8 @@ ${honestBlock()}
 <section>
   <div class="wrap">
     <div class="head">
-      <span class="eyebrow">Reviews on Google</span>
-      <h2>What students and clients say</h2>
+      <span class="eyebrow">Success stories</span>
+      <h2>Real People. Real Growth.</h2>
       <p class="muted">${site.reviews.length} verified ${site.reviews.length === 1 ? "review" : "reviews"} on our Google Business Profile, reproduced in full. Every one is public — follow the link to read them at source.</p>
     </div>
     <div class="reviews-grid">
@@ -321,13 +370,19 @@ ${honestBlock()}
 <section class="sunk">
   <div class="wrap">
     ${faqBlock(faqs, "Common questions").replace('style="margin-top:3rem"', "")}
-    <div style="margin-top:3rem">
-      ${band({
-        title: "Start with a free class, or a conversation",
-        body: "Tell us what you want to learn, or what your company needs help with. We will tell you honestly whether we are the right fit.",
-        label: "Message us on WhatsApp",
-        message: "Hi Jobjila, I would like to know more. My requirement is:",
-      })}
+    <div class="cta-wide" style="margin-top:3rem">
+      <div class="cta-wide-copy">
+        <span class="eyebrow">Let&rsquo;s build a better tomorrow</span>
+        <h2>Ready to Transform Your Business?</h2>
+        <p>Get the right technology, talent, training and partners &mdash; all in one place.</p>
+        <div class="btns">
+          <a class="btn btn-blue btn-lg" href="/solutions/">Get Started <span aria-hidden="true">&rarr;</span></a>
+          <a class="btn btn-wa btn-lg" href="${wa("Hi Jobjila, I would like to know more. My requirement is:")}" target="_blank" rel="noopener">${WA_ICON}<span>Talk to Our Experts</span></a>
+        </div>
+      </div>
+      <div class="cta-wide-art" aria-hidden="true">
+        <img src="/assets/home/together-we-grow.jpg" width="978" height="360" alt="" loading="lazy" decoding="async">
+      </div>
     </div>
   </div>
 </section>
