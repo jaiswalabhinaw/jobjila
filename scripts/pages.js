@@ -22,13 +22,6 @@ const trail = (name, url) => [{ name: "Home", url: "/" }, { name, url }];
    from the chip and need no extra request. */
 const SV = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
 
-const STAT_ICONS = {
-  courses: SV('<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/>'),
-  free:    SV('<circle cx="12" cy="12" r="9"/><path d="M12 7v10"/><path d="M15 9.5a2.5 2.5 0 0 0-2.5-1.5h-1a2 2 0 0 0 0 4h1a2 2 0 0 1 0 4h-1A2.5 2.5 0 0 1 9 14.5"/>'),
-  fee:     SV('<path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/>'),
-  shield:  SV('<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/>'),
-};
-
 const STEP_ICONS = {
   brief:   SV('<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M9 13h6"/><path d="M9 17h4"/>'),
   analyse: SV('<circle cx="11" cy="11" r="7"/><path d="m20 20-4.3-4.3"/>'),
@@ -101,12 +94,6 @@ function home() {
         <a class="btn btn-line btn-lg" href="/recruitment/">Hire Talent <span aria-hidden="true">&rarr;</span></a>
       </div>
 
-      <div class="stat-row">
-        <div><span class="stat-ico" aria-hidden="true">${STAT_ICONS.courses}</span><b>${openCourses.length} courses</b><span>Cloud, ITSM and infrastructure</span></div>
-        <div><span class="stat-ico" aria-hidden="true">${STAT_ICONS.free}</span><b>&#8377;0</b><span>Your first class, every course</span></div>
-        <div><span class="stat-ico" aria-hidden="true">${STAT_ICONS.fee}</span><b>${site.recruitment.permanentPct}% of CTC</b><span>Published hiring fee, employer pays</span></div>
-        <div><span class="stat-ico" aria-hidden="true">${STAT_ICONS.shield}</span><b>${site.recruitment.replacementDays} days</b><span>Replacement cover on every hire</span></div>
-      </div>
     </div>
 
     <figure class="hero-art">
@@ -175,31 +162,6 @@ function home() {
         <span class="more">And many more&hellip;</span>
       </div>
       <p class="small muted" style="margin-top:1rem">These are the platforms we advise on, train in and hire for. Delivery partners hold the vendor certifications for the work they carry out.</p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="head head-row">
-      <div>
-        <span class="eyebrow">Success stories</span>
-        <h2>Real People. Real Growth.</h2>
-      </div>
-      <a class="btn btn-line" href="${esc(site.googleReviewUrl)}" target="_blank" rel="noopener">Read all on Google <span aria-hidden="true">&rarr;</span></a>
-    </div>
-    <div class="stories">
-      ${site.reviews.map((r, i) => `<figure class="story" data-pillar="${["training", "solutions", "talent"][i % 3]}">
-        <figcaption class="story-tag">${esc(r.course)}</figcaption>
-        <div class="story-stars" role="img" aria-label="${r.stars} out of 5 stars">${"&#9733;".repeat(r.stars)}</div>
-        <blockquote>${esc(r.text)}</blockquote>
-        <p class="story-who"><b>${esc(r.author)}</b></p>
-      </figure>`).join("\n      ")}
-      <figure class="story story-cta" data-pillar="partners">
-        <figcaption class="story-tag">Your story next</figcaption>
-        <blockquote>We are new, and these are every review we have. Sit in a class free, or send us a requirement, and judge us yourself.</blockquote>
-        <p class="story-who"><a href="/portfolio/">See the work we do &rarr;</a></p>
-      </figure>
     </div>
   </div>
 </section>
@@ -299,6 +261,32 @@ function portfolio() {
     </div>
   </div>
 </section>
+
+<section>
+  <div class="wrap">
+    <div class="head head-row">
+      <div>
+        <span class="eyebrow">Success stories</span>
+        <h2>Real People. Real Growth.</h2>
+      </div>
+      <a class="btn btn-line" href="${esc(site.googleReviewUrl)}" target="_blank" rel="noopener">Read all on Google <span aria-hidden="true">&rarr;</span></a>
+    </div>
+    <div class="stories">
+      ${site.reviews.map((r, i) => `<figure class="story" data-pillar="${["training", "solutions", "talent"][i % 3]}">
+        <figcaption class="story-tag">${esc(r.course)}</figcaption>
+        <div class="story-stars" role="img" aria-label="${r.stars} out of 5 stars">${"&#9733;".repeat(r.stars)}</div>
+        <blockquote>${esc(r.text)}</blockquote>
+        <p class="story-who"><b>${esc(r.author)}</b></p>
+      </figure>`).join("\n      ")}
+      <figure class="story story-cta" data-pillar="partners">
+        <figcaption class="story-tag">Your story next</figcaption>
+        <blockquote>We are new, and these are every review we have. Sit in a class free, or send us a requirement, and judge us yourself.</blockquote>
+        <p class="story-who"><a href="/portfolio/">See the work we do &rarr;</a></p>
+      </figure>
+    </div>
+  </div>
+</section>
+
 
 <section>
   <div class="wrap">
