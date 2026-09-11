@@ -162,4 +162,80 @@
       { rootMargin: "0px 0px -80px 0px" }
     ).observe(siteFooter);
   }
+
+  // ---- Site search ----------------------------------------------------
+  // The index is a small JSON file written at build time. It is fetched once,
+  // on first open, so no page pays for search it never uses.
+  var panel = document.getElementById("searchPanel");
+  var openBtn = document.getElementById("searchOpen");
+  var closeBtn = document.getElementById("searchClose");
+  var input = document.getElementById("searchInput");
+  var results = document.getElementById("searchResults");
+  var index = null;
+  var loading = false;
+
+  function render(list, q) {
+    if (!q) { results.innerHTML = '<p class="search-hint">Type to search courses, services and guides.</p>'; return; }
+    if (!list.length) { results.innerHTML = '<p class="search-hint">Nothing matched &ldquo;' + q.replace(/[<>&]/g, "") + '&rdquo;.</p>'; return; }
+    results.innerHTML = list.slice(0, 12).map(function (r) {
+      return '<a class="search-hit" href="' + r.u + '"><b>' + r.t + '</b><span>' + r.d + '</span></a>';
+    }).join("");
+  }
+
+  function run() {
+    var q = input.value.trim().toLowerCase();
+    if (!index) { render([], q); return; }
+    if (!q) { render([], ""); return; }
+    var terms = q.split(/\s+/);
+    var scored = [];
+    for (var i = 0; i < index.length; i++) {
+      var it = index[i];
+      var hay = (it.t + " " + it.d).toLowerCase();
+      var score = 0, ok = true;
+      for (var j = 0; j < terms.length; j++) {
+        if (hay.indexOf(terms[j]) === -1) { ok = false; break; }
+        if (it.t.toLowerCase().indexOf(terms[j]) !== -1) score += 2; else score += 1;
+      }
+      if (ok) scored.push([score, it]);
+    }
+    scored.sort(function (a, b) { return b[0] - a[0]; });
+    render(scored.map(function (x) { return x[1]; }), q);
+  }
+
+  function load() {
+    if (index || loading) return;
+    loading = true;
+    fetch("/search-index.json")
+      .then(function (r) { return r.json(); })
+      .then(function (d) { index = d; loading = false; run(); })
+      .catch(function () { loading = false; results.innerHTML = '<p class="search-hint">Search is unavailable right now.</p>'; });
+  }
+
+  function openSearch() {
+    if (!panel) return;
+    panel.hidden = false;
+    document.body.style.overflow = "hidden";
+    load();
+    render([], "");
+    input.focus();
+  }
+  function closeSearch() {
+    if (!panel) return;
+    panel.hidden = true;
+    document.body.style.overflow = "";
+    input.value = "";
+  }
+
+  if (openBtn) openBtn.addEventListener("click", openSearch);
+  if (closeBtn) closeBtn.addEventListener("click", closeSearch);
+  if (input) input.addEventListener("input", run);
+  if (panel) panel.addEventListener("click", function (e) { if (e.target === panel) closeSearch(); });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && panel && !panel.hidden) closeSearch();
+    if ((e.key === "/" || (e.key === "k" && (e.metaKey || e.ctrlKey))) && panel && panel.hidden) {
+      var tag = (document.activeElement && document.activeElement.tagName) || "";
+      if (tag === "INPUT" || tag === "TEXTAREA") return;
+      e.preventDefault(); openSearch();
+    }
+  });
 })();

@@ -17,6 +17,9 @@ const buildRedirects = require("./redirects");
 /* Pages that are not generated from the course data. */
 const STATIC_URLS = [
   { url: "/",               priority: "1.0", freq: "weekly" },
+  { url: "/solutions/",     priority: "0.9", freq: "monthly" },
+  { url: "/partners/",      priority: "0.8", freq: "monthly" },
+  { url: "/portfolio/",     priority: "0.7", freq: "monthly" },
   { url: "/it-advisory/",   priority: "0.9", freq: "monthly" },
   { url: "/it-support/",    priority: "0.9", freq: "monthly" },
   { url: "/recruitment/",   priority: "0.9", freq: "monthly" },
@@ -29,6 +32,42 @@ const STATIC_URLS = [
   { url: "/terms/",         priority: "0.4", freq: "yearly" },
   { url: "/privacy/",       priority: "0.4", freq: "yearly" },
 ];
+
+
+/**
+ * Search index: title, description and URL for every real page, written after
+ * the HTML so it can be read straight off disk. Redirect stubs are skipped —
+ * they exist only to forward, and a searcher landing on one learns nothing.
+ */
+function buildSearchIndex() {
+  const fs = require("fs");
+  const path = require("path");
+  const ROOT = path.join(__dirname, "..");
+  const SKIP = new Set(["node_modules", ".git", "ngo", "doctor", "ecomm", "realestate", "bookflip", "docs", "assets", "courses", "become-a-trainer", "for-freelancers", "hire", "js", "css"]);
+  const unesc = (x) => x
+    .replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"')
+    .replace(/&#8377;/g, "\u20b9").replace(/&middot;/g, "\u00b7")
+    .replace(/&mdash;/g, "\u2014").replace(/&ndash;/g, "\u2013").replace(/&amp;/g, "&");
+
+  const out = [];
+  (function walk(dir) {
+    for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+      if (e.isDirectory()) { if (!SKIP.has(e.name)) walk(path.join(dir, e.name)); continue; }
+      if (e.name !== "index.html") continue;
+      const full = path.join(dir, e.name);
+      const html = fs.readFileSync(full, "utf8");
+      if (/<meta http-equiv="refresh"/i.test(html)) continue;
+      const title = unesc((html.match(/<title>([\s\S]*?)<\/title>/) || [])[1] || "").replace(/\s*[|\u2014-]\s*Jobjila.*$/, "");
+      const desc = unesc((html.match(/<meta name="description" content="([^"]*)"/) || [])[1] || "");
+      const rel = path.relative(ROOT, dir).split(path.sep).join("/");
+      if (!title) continue;
+      out.push({ t: title, d: desc, u: "/" + (rel ? rel + "/" : "") });
+    }
+  })(ROOT);
+
+  write("search-index.json", JSON.stringify(out));
+  return out.length;
+}
 
 function buildSitemap() {
   const today = new Date().toISOString().slice(0, 10);
@@ -124,7 +163,9 @@ const training = buildTraining();
 const blog = buildBlog();
 const redirects = buildRedirects();
 const urls = buildSitemap();
+const indexed = buildSearchIndex();
 audit();
 console.log(`\n${pages} standalone + ${training} training + ${blog} blog = ${pages + training + blog} pages`);
 console.log(`${redirects} redirect stubs for retired URLs (not in the sitemap).`);
 console.log(`${urls} sitemap URLs.`);
+console.log(`${indexed} pages in the search index.`);

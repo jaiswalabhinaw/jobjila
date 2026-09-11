@@ -299,7 +299,7 @@ section > .wrap { padding-block: clamp(3rem, 7vw, 5rem); }
   font-family: var(--f-sans); font-size: .53rem; font-weight: 600;
   letter-spacing: .03em; color: var(--slate);
 }
-.site-nav { display: flex; gap: .3rem; flex-wrap: nowrap; }
+.site-nav { display: flex; gap: .1rem; flex-wrap: nowrap; }
 .site-nav a {
   font-family: var(--f-sans); font-size: var(--s--1); font-weight: 500;
   color: var(--slate); text-decoration: none; white-space: nowrap;
@@ -327,7 +327,9 @@ section > .wrap { padding-block: clamp(3rem, 7vw, 5rem); }
   text-decoration: none; border-bottom: 1px solid var(--rule-soft);
 }
 
-@media (max-width: 62rem) {
+/* Nine items need roughly 1200px before the logo and buttons; below that the
+   menu button carries the whole nav instead of a cramped row. */
+@media (max-width: 75rem) {
   .site-nav { display: none; }
   .nav-toggle { display: grid; }
 }
@@ -362,11 +364,10 @@ section > .wrap { padding-block: clamp(3rem, 7vw, 5rem); }
 /* Below ~1250px the logo lockup, seven nav items and two buttons no longer
    fit one row; the nav tightens first, then Get Started steps aside (the
    same destination sits in the nav as "Solutions"). */
-@media (max-width: 88rem) {
-  .site-nav { gap: .1rem; }
-  .site-nav a { padding-inline: .5rem; }
-}
-@media (max-width: 78rem) { .btn-get { display: none; } }
+/* Nine nav items, a search button and two buttons is a lot of row: the nav
+   tightens first, then Get Started steps aside (the nav still reaches it). */
+@media (max-width: 100rem) { .site-nav a { padding-inline: .45rem; } }
+@media (max-width: 90rem) { .btn-get { display: none; } }
 .btn-line { border-color: var(--rule); color: var(--ink); background: var(--card); }
 .btn-line:hover { border-color: var(--signal); color: var(--signal); }
 .btn-ondark { background: rgba(255,255,255,.1); color: #fff; border-color: rgba(255,255,255,.28); }
@@ -422,8 +423,10 @@ section > .wrap { padding-block: clamp(3rem, 7vw, 5rem); }
 
 /* ---------- grids and cells ---------- */
 .grid { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
-.g2 { grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); }
-.g3 { grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+/* min() keeps the track from demanding more than the row has: a bare
+   minmax(19rem,…) overflows any viewport narrower than 19rem plus gutters. */
+.g2 { grid-template-columns: repeat(auto-fit, minmax(min(19rem, 100%), 1fr)); }
+.g3 { grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr)); }
 .g4 { grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); }
 /* Fixed 5-up: for a set of exactly ten, so no row is ever left part-empty
    (the 1px grid gap shows the rule colour through, so gaps read as blocks). */
@@ -1501,3 +1504,125 @@ form input::placeholder, form textarea::placeholder { color: var(--slate-2); }
 .hero h1.h1-solid em {
   font-family: inherit; font-style: normal; font-weight: inherit; color: var(--blue);
 }
+
+/* ---------- header search ---------- */
+.icon-btn {
+  width: 2.25rem; height: 2.25rem; padding: 0; flex: none;
+  display: grid; place-items: center; cursor: pointer;
+  background: transparent; border: 0; border-radius: 999px;
+  color: var(--slate); font-size: 1.25rem; line-height: 1;
+  transition: background .18s ease, color .18s ease;
+}
+.icon-btn:hover { background: var(--sunk); color: var(--ink); }
+@media (max-width: 62rem) { #searchOpen { display: none; } }
+
+.search-panel {
+  position: fixed; inset: 0; z-index: 60; padding: 10vh 1rem 1rem;
+  background: color-mix(in srgb, var(--ink) 42%, transparent);
+  backdrop-filter: blur(3px);
+}
+.search-box {
+  max-width: 40rem; margin-inline: auto; background: var(--card);
+  border: 1px solid var(--rule); border-radius: calc(var(--r) + 4px);
+  box-shadow: var(--sh-3); overflow: hidden;
+}
+.search-field {
+  display: flex; align-items: center; gap: .625rem;
+  padding: .875rem 1rem; border-bottom: 1px solid var(--rule-soft); color: var(--slate);
+}
+.search-field input {
+  flex: 1; border: 0; background: transparent; padding: 0; min-width: 0;
+  font-family: var(--f-sans); font-size: var(--s-1); color: var(--ink);
+}
+.search-field input:focus { outline: none; box-shadow: none; }
+.search-results { max-height: min(28rem, 60vh); overflow-y: auto; }
+.search-hint { padding: 1.25rem 1rem; color: var(--slate); font-size: var(--s--1); }
+.search-hit {
+  display: grid; gap: .2rem; padding: .8rem 1rem; text-decoration: none;
+  border-bottom: 1px solid var(--rule-soft); color: inherit;
+}
+.search-hit:last-child { border-bottom: 0; }
+.search-hit:hover { background: var(--sunk); }
+.search-hit b { font-family: var(--f-sans); font-size: var(--s-0); font-weight: 650; color: var(--ink); }
+.search-hit span {
+  font-size: var(--s--1); color: var(--slate); line-height: 1.45;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+
+/* ---------- vendor strip ---------- */
+/* Nine cells, laid out so the row always divides evenly — auto-fit would
+   orphan "And many more" onto a line of its own. */
+.logostrip {
+  margin-top: 1.25rem; background: var(--card); border: 1px solid var(--rule-soft);
+  border-radius: var(--r); box-shadow: var(--sh-1);
+  display: grid; grid-template-columns: repeat(3, 1fr); overflow: hidden;
+}
+@media (min-width: 40rem) { .logostrip { grid-template-columns: repeat(5, 1fr); } }
+@media (min-width: 62rem) { .logostrip { grid-template-columns: repeat(9, 1fr); } }
+.logostrip > span {
+  display: grid; place-items: center; padding: 1.125rem .75rem; min-height: 4.25rem;
+  border-right: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft);
+}
+.logostrip img { max-height: 1.75rem; width: auto; object-fit: contain; }
+.logostrip .more {
+  font-family: var(--f-sans); font-size: .75rem; font-weight: 500;
+  color: var(--slate); text-align: center; line-height: 1.35;
+}
+/* The marks are dark artwork on white; in dark mode they need their ground back. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .logostrip img { background: #fff; border-radius: 4px; padding: .25rem .375rem; }
+}
+:root[data-theme="dark"] .logostrip img { background: #fff; border-radius: 4px; padding: .25rem .375rem; }
+
+/* ---------- how it works: connectors between the steps ---------- */
+@media (min-width: 62rem) {
+  .howit-steps { position: relative; }
+  .howit-step + .howit-step::before {
+    content: "\2192"; position: absolute; left: -1.15rem; top: .1rem;
+    color: var(--blue); font-size: 1rem; opacity: .65;
+  }
+}
+
+/* ---------- footer ---------- */
+.fbrand { display: grid; gap: .875rem; align-content: start; }
+.fquick-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+.fsocial { display: flex; gap: .5rem; }
+.fsocial a {
+  width: 2rem; height: 2rem; border-radius: 999px; display: grid; place-items: center;
+  background: var(--blue); color: #fff; text-decoration: none;
+  transition: background .18s ease;
+}
+.fsocial a:hover { background: var(--blue-2); color: #fff; }
+.fcontact li { color: var(--slate); }
+.fsub { display: flex; gap: .5rem; margin-top: .875rem; }
+.fsub input {
+  flex: 1; min-width: 0; padding: .625rem .75rem;
+  border: 1px solid var(--rule); border-radius: var(--r);
+  background: var(--card); color: var(--ink); font-size: var(--s--1);
+}
+.fsub button {
+  flex: none; width: 2.5rem; border: 0; border-radius: var(--r); cursor: pointer;
+  background: var(--blue); color: #fff; font-size: 1rem;
+  transition: background .18s ease;
+}
+.fsub button:hover { background: var(--blue-2); }
+.fbot-row {
+  margin-top: 1rem; display: flex; justify-content: space-between;
+  align-items: center; gap: 1rem; flex-wrap: wrap;
+}
+.flegal { display: flex; gap: 1.25rem; }
+
+/* Buttons hold their label on one line by default; below ~416px a long label
+   would push the page wider than the screen, so let those wrap instead. */
+@media (max-width: 26rem) {
+  .btns .btn { white-space: normal; text-align: center; line-height: 1.3; }
+}
+
+/* Grid children default to min-width:auto, so one long unbreakable word can
+   push a cell past the track it sits in. */
+.grid > .cell { min-width: 0; overflow-wrap: break-word; }
+
+/* The panel supplies its own close button; the native search clear would sit
+   beside it as a second, differently-styled cross. */
+.search-field input::-webkit-search-cancel-button,
+.search-field input::-webkit-search-decoration { -webkit-appearance: none; appearance: none; }

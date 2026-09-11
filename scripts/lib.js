@@ -249,14 +249,18 @@ const FONTS = "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;6
    Labels changed with the 2026 rebrand; the URLs deliberately did NOT, so
    everything Google has already indexed keeps resolving. */
 const NAV = [
+  { href: "/", label: "Home" },
   { href: "/solutions/", label: "Solutions" },
   { href: "/it-advisory/", label: "Consulting" },
   { href: "/recruitment/", label: "Talent &amp; Hiring" },
   { href: "/training/", label: "Training" },
   { href: "/partners/", label: "Partner Network" },
+  { href: "/portfolio/", label: "Portfolio" },
   { href: "/blog/", label: "Resources" },
   { href: "/about/", label: "About" },
 ];
+
+const SEARCH_ICON = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4.3-4.3"/></svg>`;
 
 /* The wordmark: a "J" glyph plus the descriptor line, used in header and footer. */
 const LOGO_MARK = `<svg viewBox="0 0 30 34" width="27" height="31" fill="none" aria-hidden="true"><path d="M20 2h7v20a10 10 0 0 1-10 10 10 10 0 0 1-9.4-6.6l6-2.2A3.6 3.6 0 0 0 17 25.6c2 0 3-1.3 3-3.6V2Z" fill="currentColor"/><circle cx="6.5" cy="6.5" r="4.5" fill="currentColor"/></svg>`;
@@ -315,7 +319,8 @@ ${analyticsTag()}</head>
       ${NAV.map((n) => `<a href="${n.href}"${canonical === n.href ? ' aria-current="page"' : ""}>${n.label}</a>`).join("\n      ")}
     </nav>
     <div class="bar-actions">
-      <a class="btn btn-solid btn-get" href="/solutions/">Get Started <span aria-hidden="true">&rarr;</span></a>
+      <button class="icon-btn" id="searchOpen" aria-label="Search this site">${SEARCH_ICON}</button>
+      <a class="btn btn-blue btn-get" href="/solutions/">Get Started <span aria-hidden="true">&rarr;</span></a>
       <a class="btn btn-wa btn-wa-compact" href="${wa("Hi Jobjila, I would like to know more.")}" target="_blank" rel="noopener">${WA_ICON}<span>WhatsApp</span></a>
       <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu"><i></i></button>
     </div>
@@ -331,56 +336,84 @@ ${analyticsTag()}</head>
 }
 
 function footer() {
+  /* +91 87566 80477 — same number as the WhatsApp line. */
+  const phone = "+91 " + site.whatsapp.slice(2, 7) + " " + site.whatsapp.slice(7);
+  const links = [
+    ["/", "Home"], ["/solutions/", "Solutions"], ["/it-advisory/", "Consulting"],
+    ["/recruitment/", "Talent &amp; Hiring"], ["/training/", "Training"],
+    ["/partners/", "Partner Network"], ["/portfolio/", "Portfolio"],
+    ["/blog/", "Resources"], ["/about/", "About"], ["/contact/", "Contact"],
+  ];
+  const half = Math.ceil(links.length / 2);
+  const col = (set) => `<ul class="flist">${set.map(([h, l]) => `<li><a href="${h}">${l}</a></li>`).join("")}</ul>`;
+
   return `</main>
 <footer class="site-footer">
   <div class="wrap">
     <div class="fgrid">
-      <div>
+      <div class="fbrand">
         <a class="logo logo-mark" href="/">
           <span class="logo-j">${LOGO_MARK}</span>
           <span class="logo-text"><b>JOBJILA</b><span>People | Skills | Technology | Growth</span></span>
         </a>
-        <p class="fine" style="margin-top:.875rem">${esc(site.description)}</p>
-        <p class="fine" style="margin-top:.75rem"><a href="https://www.linkedin.com/company/jobjila/" target="_blank" rel="noopener">LinkedIn</a></p>
+        <p class="fine">${esc(site.description)}</p>
+        <p class="fsocial"><a href="https://www.linkedin.com/company/jobjila/" target="_blank" rel="noopener" aria-label="Jobjila on LinkedIn"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05A4.2 4.2 0 0 1 17.6 8.7c4 0 4.4 2.4 4.4 5.6V21h-4v-5.7c0-1.4 0-3.1-1.9-3.1s-2.2 1.5-2.2 3V21h-4V9Z"/></svg></a></p>
       </div>
+
+      <div class="fquick">
+        <h4>Quick Links</h4>
+        <div class="fquick-cols">
+          ${col(links.slice(0, half))}
+          ${col(links.slice(half))}
+        </div>
+      </div>
+
       <div>
-        <h4>Ecosystem</h4>
-        <ul class="flist">
-          <li><a href="/solutions/">Technology Solutions</a></li>
-          <li><a href="/it-advisory/">Consulting</a></li>
-          <li><a href="/recruitment/">Talent &amp; Hiring</a></li>
-          <li><a href="/training/">Training &amp; Academy</a></li>
-          <li><a href="/partners/">Partner Network</a></li>
-          <li><a href="/network/">Consultant Network</a></li>
+        <h4>Contact Us</h4>
+        <ul class="flist fcontact">
+          <li><a href="mailto:${esc(site.email)}">${esc(site.email)}</a></li>
+          <li><a href="tel:+${esc(site.whatsapp)}">${phone}</a></li>
+          <li>${esc(site.locality)}, ${esc(site.region)}, India</li>
         </ul>
       </div>
+
       <div>
-        <h4>Training</h4>
-        <ul class="flist">
-          ${openCourses.slice(0, 5).map((c) => `<li><a href="/training/${c.slug}/">${esc(c.short)}</a></li>`).join("\n          ")}
-          <li><a href="/training/">All courses</a></li>
-          <li><a href="/submit-resume/">Submit Resume</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Company</h4>
-        <ul class="flist">
-          <li><a href="/about/">About</a></li>
-          <li><a href="/contact/">Contact</a></li>
-          <li><a href="/locations/">Locations</a></li>
-          <li><a href="/blog/">Resources</a></li>
-          <li><a href="/refund-policy/">Refund Policy</a></li>
-          <li><a href="/terms/">Terms</a></li>
-          <li><a href="/privacy/">Privacy</a></li>
-        </ul>
+        <h4>Subscribe to Our Updates</h4>
+        <p class="fine">Get the latest insights, opportunities and events.</p>
+        <form class="fsub" method="POST" action="https://formsubmit.co/${esc(site.email)}">
+          <input type="hidden" name="_subject" value="Newsletter signup from jobjila.com">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="${esc(site.url)}/thanks/">
+          <label class="vh" for="subEmail">Your email address</label>
+          <input type="email" id="subEmail" name="email" placeholder="Your email address" required>
+          <button type="submit" aria-label="Subscribe"><span aria-hidden="true">&rarr;</span></button>
+        </form>
       </div>
     </div>
+
     <div class="fbot">
-      <p class="fine"><strong>Jobjila never charges a candidate a fee — not for a job, an interview, a placement or a CV review.</strong> Our recruitment work is paid for by the employer who is hiring. Training and recruitment are separate services: a course fee buys teaching, not a job, an interview or a place on any shortlist. We do not guarantee employment to anyone. Salary figures anywhere on this site are market observations, not commitments. Training fees are refundable as set out in our <a href="/refund-policy/">Refund Policy</a>.</p>
-      <p class="fine">&copy; ${new Date().getFullYear()} ${esc(site.legalName)} &middot; ${esc(site.locality)}, ${esc(site.region)}, India &middot; <a href="mailto:${esc(site.email)}">${esc(site.email)}</a></p>
+      <p class="fine"><strong>Jobjila never charges a candidate a fee &mdash; not for a job, an interview, a placement or a CV review.</strong> Our recruitment work is paid for by the employer who is hiring. Training and recruitment are separate services: a course fee buys teaching, not a job, an interview or a place on any shortlist. We do not guarantee employment to anyone. Salary figures anywhere on this site are market observations, not commitments. Training fees are refundable as set out in our <a href="/refund-policy/">Refund Policy</a>.</p>
+      <div class="fbot-row">
+        <p class="fine">&copy; ${new Date().getFullYear()} ${esc(site.legalName)}. All rights reserved.</p>
+        <p class="fine flegal"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/sitemap.xml">Sitemap</a></p>
+      </div>
     </div>
   </div>
 </footer>
+
+<div class="search-panel" id="searchPanel" hidden>
+  <div class="search-box" role="dialog" aria-modal="true" aria-label="Search this site">
+    <div class="search-field">
+      ${SEARCH_ICON}
+      <label class="vh" for="searchInput">Search</label>
+      <input type="search" id="searchInput" placeholder="Search courses, services, guides\u2026" autocomplete="off">
+      <button class="icon-btn" id="searchClose" aria-label="Close search">&times;</button>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
 <a class="wa-float" href="${wa("Hi Jobjila, I have a question.")}" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">${WA_ICON}<span>Chat with us</span></a>
 <script src="/js/main.js" defer></script>
 </body>

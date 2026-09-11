@@ -179,10 +179,10 @@ function home() {
 
     <div style="margin-top:3.5rem">
       <span class="eyebrow">Technologies we work in</span>
-      <div class="techstrip">
-        <span>AWS</span><span>Microsoft Azure</span><span>Oracle Cloud</span><span>VMware</span>
-        <span>Cisco</span><span>Dell</span><span>HPE</span><span>Fortinet</span>
-        <span>and more&hellip;</span>
+      <div class="logostrip">
+        ${[["aws","Amazon Web Services"],["microsoft","Microsoft"],["vmware","VMware"],["cisco","Cisco"],["dell","Dell Technologies"],["hpe","HPE"],["netapp","NetApp"],["fortinet","Fortinet"]]
+          .map(([f, n]) => `<span><img src="/assets/home/logo-${f}.png" alt="${n}" loading="lazy" decoding="async"></span>`).join("\n        ")}
+        <span class="more">And many more&hellip;</span>
       </div>
       <p class="small muted" style="margin-top:1rem">These are the platforms we advise on, train in and hire for. Delivery partners hold the vendor certifications for the work they carry out.</p>
     </div>
@@ -384,6 +384,89 @@ ${honestBlock()}
         <img src="/assets/home/together-we-grow.jpg" width="978" height="360" alt="" loading="lazy" decoding="async">
       </div>
     </div>
+  </div>
+</section>
+` + footer();
+}
+
+
+/* ========================== PORTFOLIO ========================== */
+
+function portfolio() {
+  const t = trail("Portfolio", "/portfolio/");
+  const faqs = [
+    { q: "Why are there no named client case studies?", a: "Because we do not have signed permission to name anyone yet, and publishing a client's name or their infrastructure details without it is not something we will do. As approvals come in, named stories go on this page." },
+    { q: "Can I speak to a reference?", a: "Ask us. Where a client has agreed to take reference calls we will arrange one; where they have not, we will say so rather than invent a quote." },
+    { q: "How do I judge you without case studies?", a: "Three ways that cost you nothing. Sit in a full training session free. Send a real requirement and see what the scoping call is like. Read the guides on this site and judge the technical depth yourself." },
+  ];
+
+  const work = [
+    ["solutions", "Cloud and hosting moves", "Sizing what you actually run, choosing between public, private and hybrid, and moving without a weekend outage."],
+    ["solutions", "Infrastructure and data centre", "Racks, colocation, servers, storage and virtualisation, sourced through partners who do that as their main business."],
+    ["solutions", "Security and recovery", "Assessment, hardening, monitoring, and a recovery plan someone has actually tested."],
+    ["consulting", "Architecture and cost reviews", "What you are running, what it costs, and what to change first. We take no commission from any vendor."],
+    ["consulting", "Presales, RFP and bid support", "Solution design, sizing, BoQ and written responses for teams bidding on technical work."],
+    ["talent", "IT and cloud hiring", "Permanent, contract and freelance roles across the infrastructure stack. The employer pays; the candidate never does."],
+    ["talent", "Specialist and niche search", "OCI, ITSM tooling, cloud cost, presales. We size the real pool honestly before taking the brief."],
+    ["training", "Live cohorts and closed batches", "Cloud, ITSM and infrastructure, taught by practising consultants. Company teams get a batch of their own."],
+    ["partners", "Partner-delivered projects", "Requirements we scope and hand to a provider whose core business is that area, staying in the loop through delivery."],
+  ];
+
+  return head({
+    title: "Portfolio — The Work Jobjila Does | Jobjila",
+    description: "The kinds of technology, consulting, hiring and training work Jobjila delivers across its five pillars, and how to judge us before any money changes hands.",
+    canonical: "/portfolio/",
+    extraLd: [orgLd, breadcrumbLd(t), faqLd(faqs)],
+  }) + `
+<section class="page-hero">
+  <div class="wrap">
+    ${crumb(t)}
+    <span class="eyebrow">Portfolio</span>
+    <h1>The work we do</h1>
+    <p>We are a new company and we will not dress that up. Below is the work we take on across all five pillars. Named client stories appear here as clients approve them &mdash; not before.</p>
+    <div class="btns">
+      <a class="btn btn-wa btn-lg" href="${wa("Hi Jobjila, I would like to discuss a project.")}" target="_blank" rel="noopener">${WA_ICON}<span>Discuss a project</span></a>
+      <a class="btn btn-ondark btn-lg" href="/solutions/">See our solutions</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Across the ecosystem</span>
+      <h2>Nine kinds of work we take on</h2>
+      <p class="muted">Each one is a real service with a real page behind it. Follow the pillar if you want the detail.</p>
+    </div>
+    <div class="grid g3">
+      ${work.map(([k, name, desc]) => `<div class="cell" data-pillar="${k}" style="--signal: var(--pil); --signal-bg: var(--pil-bg);"><h3>${name}</h3><p>${desc}</p></div>`).join("\n      ")}
+    </div>
+  </div>
+</section>
+
+<section class="sunk">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Instead of case studies</span>
+      <h2>Three ways to judge us that cost nothing</h2>
+      <p class="muted">Every one of these happens before you pay us anything.</p>
+    </div>
+    <div class="grid g3">
+      <div class="cell"><h3>Sit in a full class</h3><p>Any course, the first live session, no payment and no card details. Judge the teaching yourself rather than reading a testimonial about it.</p></div>
+      <div class="cell"><h3>Send a real requirement</h3><p>The scoping call is free and there is no obligation. If we are not the right people for it, we will say so on that call.</p></div>
+      <div class="cell"><h3>Read what we publish</h3><p>${articles.length} guides on certification paths, what exams actually test, and how to check a training provider &mdash; including how to check us.</p></div>
+    </div>
+    <div class="btns" style="margin-top:2rem">
+      <a class="btn btn-line btn-lg" href="/training/">Browse courses</a>
+      <a class="btn btn-line btn-lg" href="/blog/">Read the guides</a>
+      <a class="btn btn-line btn-lg" href="${esc(site.googleReviewUrl)}" target="_blank" rel="noopener">Reviews on Google</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    ${faqBlock(faqs, "Common questions").replace('style="margin-top:3rem"', "")}
   </div>
 </section>
 ` + footer();
@@ -1638,6 +1721,7 @@ module.exports = function buildPages() {
   write(path.join("solutions", "index.html"), solutions());
   write(path.join("partners", "index.html"), partners());
   write(path.join("thanks", "index.html"), thanks());
+  write(path.join("portfolio", "index.html"), portfolio());
   write(path.join("it-advisory", "index.html"), itAdvisory());
   write(path.join("it-support", "index.html"), itSupport());
   write(path.join("recruitment", "index.html"), recruitment());
@@ -1652,5 +1736,5 @@ module.exports = function buildPages() {
   write(path.join("terms", "index.html"), terms());
   write(path.join("privacy", "index.html"), privacy());
   write("404.html", notFound());
-  return 17;
+  return 18;
 };
