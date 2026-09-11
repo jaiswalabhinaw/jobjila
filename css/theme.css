@@ -1078,6 +1078,67 @@ td a:hover, th a:hover { text-decoration: underline; }
 .pillars > div:hover { transform: translateY(-4px); box-shadow: var(--sh-3); border-color: color-mix(in srgb, var(--teal) 30%, transparent); }
 .pillars h3 { font-family: var(--f-sans); font-size: .9375rem; letter-spacing: -.005em; text-transform: none; font-weight: 650; }
 
+/* ---------- five-pillar ecosystem cards ----------
+   Each pillar owns an accent. --pil drives the top rule, the icon chip and
+   the hover border, so one attribute recolours the whole card. */
+[data-pillar="solutions"]  { --pil: var(--blue);   --pil-bg: var(--blue-bg); }
+[data-pillar="consulting"] { --pil: var(--green);  --pil-bg: var(--green-bg); }
+[data-pillar="talent"]     { --pil: var(--orange); --pil-bg: var(--orange-bg); }
+[data-pillar="training"]   { --pil: var(--purple); --pil-bg: var(--purple-bg); }
+[data-pillar="partners"]   { --pil: var(--pink);   --pil-bg: var(--pink-bg); }
+
+.pillar-head { margin-top: 3.25rem; }
+.pillar-head h2 { margin-top: .5rem; font-size: var(--s-3); }
+/* Five cards never divide evenly, so each step below the full row widens the
+   trailing cards to fill it rather than leaving an orphan gap. */
+.pillar-cards { display: grid; gap: 1rem; margin-top: 1.5rem; grid-template-columns: 1fr; }
+@media (min-width: 34rem) {
+  .pillar-cards { grid-template-columns: repeat(2, 1fr); }
+  .pillar-card:nth-child(5) { grid-column: span 2; }
+}
+@media (min-width: 62rem) {
+  .pillar-cards { grid-template-columns: repeat(6, 1fr); }
+  .pillar-card { grid-column: span 2; }
+  .pillar-card:nth-child(4), .pillar-card:nth-child(5) { grid-column: span 3; }
+}
+@media (min-width: 78rem) {
+  .pillar-cards { grid-template-columns: repeat(5, 1fr); gap: .875rem; }
+  .pillar-card { grid-column: auto; padding: 1.375rem 1.125rem 1.25rem; }
+  .pillar-card:nth-child(4), .pillar-card:nth-child(5) { grid-column: auto; }
+}
+.pillar-card {
+  background: var(--card); border: 1px solid var(--rule-soft);
+  border-radius: var(--r); box-shadow: var(--sh-1);
+  padding: 1.5rem 1.375rem 1.375rem;
+  display: grid; gap: .5rem; align-content: start;
+  text-decoration: none; color: inherit;
+  position: relative; overflow: hidden;
+  transition: transform .24s cubic-bezier(.2,.7,.3,1), box-shadow .24s ease, border-color .24s ease;
+}
+.pillar-card::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 3px; background: var(--pil);
+}
+.pillar-card:hover {
+  transform: translateY(-4px); box-shadow: var(--sh-3);
+  border-color: color-mix(in srgb, var(--pil) 34%, transparent);
+}
+.pillar-ico {
+  width: 2.5rem; height: 2.5rem; border-radius: 11px;
+  background: var(--pil-bg); color: var(--pil);
+  display: grid; place-items: center; margin-bottom: .375rem;
+}
+.pillar-ico svg { width: 1.3125rem; height: 1.3125rem; }
+.pillar-card h3 {
+  font-family: var(--f-sans); font-size: 1.0625rem; font-weight: 700;
+  letter-spacing: -.015em; text-transform: none; color: var(--ink);
+}
+.pillar-card p { font-size: var(--s--1); color: var(--slate); line-height: 1.55; }
+.pillar-more {
+  margin-top: .25rem; font-family: var(--f-sans); font-size: .8125rem;
+  font-weight: 600; color: var(--pil);
+}
+.pillar-card:hover .pillar-more { text-decoration: underline; }
+
 /* ---------- cards ---------- */
 h2 { letter-spacing: -.035em; font-weight: 700; }
 .grid { border: 0; background: transparent; gap: .875rem; }

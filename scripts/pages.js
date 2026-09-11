@@ -17,10 +17,48 @@ const trail = (name, url) => [{ name: "Home", url: "/" }, { name, url }];
 
 /* ============================== HOME ============================== */
 
+/* The five pillars of the business, in the order we want them read.
+   `pillar` is the accent key; the icons are inline so they take currentColor
+   from the chip and need no extra request. */
+const PILLAR_ICONS = {
+  solutions: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 7.5l9 4.5 9-4.5L12 3Z"/><path d="m3 12 9 4.5 9-4.5"/><path d="m3 16.5 9 4.5 9-4.5"/></svg>',
+  consulting: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2.1 4.9-4.9 2.1 2.1-4.9 4.9-2.1Z"/></svg>',
+  talent: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13A4 4 0 0 1 16 11"/></svg>',
+  training: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 9 12 4 2 9l10 5 10-5Z"/><path d="M6 11.5V17c0 1.2 2.7 2.5 6 2.5s6-1.3 6-2.5v-5.5"/></svg>',
+  partners: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><path d="M9 6h6"/><path d="M18 9v6"/><path d="M8.5 8.5 15.5 15.5"/></svg>',
+};
+
+const PILLARS = [
+  { key: "solutions", href: "/solutions/", title: "Technology Solutions",
+    body: "Cloud, hosting, security and infrastructure \u2014 scoped by our own technical team, delivered by partners who specialise in it.",
+    more: "What we deliver" },
+  { key: "consulting", href: "/it-advisory/", title: "Consulting",
+    body: "Architecture reviews, migration plans, cost assessments and vendor selection. We take no commission from any vendor.",
+    more: "How it works" },
+  { key: "talent", href: "/recruitment/", title: "Talent &amp; Hiring",
+    body: `Permanent, contract and freelance IT hiring at ${site.recruitment.permanentPct}% of CTC. The employer pays our fee \u2014 never the candidate.`,
+    more: "See the rate" },
+  { key: "training", href: "/training/", title: "Training &amp; Academy",
+    body: "Live online cohorts in cloud, ITSM and infrastructure, taught by consultants who do the work. Your first class is free.",
+    more: "Browse courses" },
+  { key: "partners", href: "/partners/", title: "Partner Network",
+    body: "Providers and independent consultants we bring real, scoped customer requirements to. Free to join, reviewed before listing.",
+    more: "Partner with us" },
+];
+
+const pillarCards = () => `<div class="pillar-cards">
+      ${PILLARS.map((p) => `<a class="pillar-card" data-pillar="${p.key}" href="${p.href}">
+        <span class="pillar-ico" aria-hidden="true">${PILLAR_ICONS[p.key]}</span>
+        <h3>${p.title}</h3>
+        <p>${p.body}</p>
+        <span class="pillar-more">${p.more} &rarr;</span>
+      </a>`).join("\n      ")}
+    </div>`;
+
 function home() {
   const featured = openCourses.filter((c) => c.featured);
   const faqs = [
-    { q: "What does Jobjila actually do?", a: "Four things. We advise companies on their IT — cloud architecture, migrations, cost and technology choices. We support IT infrastructure and keep it running. We train people in the same technology, live online. And we recruit for companies hiring into those roles, paid by the employer. The consulting keeps the training current, and the training keeps our screening honest." },
+    { q: "What does Jobjila actually do?", a: "Five things, all around the same technology. We deliver IT solutions — cloud, hosting, security and infrastructure — scoped by our team and built by specialist partners. We consult on architecture, migrations, cost and technology choices. We recruit for companies hiring into those roles, paid by the employer. We train people in the same technology, live online. And we run a partner network of providers and independent consultants who deliver that work with us. The consulting keeps the training current, and the training keeps our screening honest." },
     { q: "Is your recruitment separate from your training?", a: "Completely. A course fee buys teaching and nothing else — not a job, not an interview, not a place on any shortlist. Employers pay us to recruit; candidates never pay us anything. If we do put a former student forward for a role, we tell the employer we trained them." },
     { q: "Is the first class really free?", a: "Yes. Any course, first live session, no payment and no card details. You message us on WhatsApp and we send the joining link. We are new and have no reviews yet, so asking you to pay on trust would be unreasonable." },
     { q: "How much do the courses cost?", a: `It depends on the course and its length — message us on WhatsApp with the course name and we quote the fee directly. You pay the balance only before your third session, and it stays refundable for ${site.pricing.refundDays} days after that.` },
@@ -30,8 +68,8 @@ function home() {
   ];
 
   return head({
-    title: "Jobjila — IT Advisory, Support, Training & Hiring",
-    description: "IT advisory, IT support, live online training and employer-paid IT recruitment — from practising consultants in Noida. First training class free.",
+    title: "Jobjila — IT Solutions, Consulting, Hiring & Training",
+    description: "IT solutions, consulting, live online training and employer-paid IT recruitment — from practising consultants in Noida. First training class free.",
     canonical: "/",
     extraLd: [orgLd, personLd, websiteLd, faqLd(faqs)],
   }) + `
@@ -40,8 +78,8 @@ function home() {
    <div class="hero-split">
     <div class="hero-copy">
     <span class="eyebrow">${esc(site.locality)}, ${esc(site.region)} &middot; serving clients across India</span>
-    <h1 style="margin-top:.875rem">IT advisory, support, training and hiring — <em>without the guesswork.</em></h1>
-    <p class="lede">We help companies plan and run their IT, we train the people who do that work, and we find them the people they need to hire. Our recruitment rate is published up front, and every training fee is quoted directly on WhatsApp. Your first training class is free.</p>
+    <h1 style="margin-top:.875rem">Technology, people and skills&nbsp;&mdash; <em>without the guesswork.</em></h1>
+    <p class="lede">We plan and deliver technology for companies, train the people who run it, and hire the people they need. Our technical team scopes every requirement itself, our recruitment rate is published up front, and your first training class is free.</p>
     <div class="btns">
       <a class="btn btn-wa btn-lg" href="${wa("Hi Jobjila, I want to book a free first class.")}" target="_blank" rel="noopener">${WA_ICON}<span>Book a free first class</span></a>
       <a class="btn btn-line btn-lg" href="/training/">Browse courses</a>
@@ -94,14 +132,11 @@ function home() {
       <div><b>100%</b><span>Live, recorded</span></div>
     </div>
 
-    ${vh("h2", "What Jobjila does")}
-    <div class="pillars">
-      <div><a href="/it-advisory/"><h3>IT Advisory</h3><p>Cloud architecture, migration planning, cost review and technology selection.</p></a></div>
-      <div><a href="/it-support/"><h3>IT Support</h3><p>Infrastructure setup, networks, servers, backup and ongoing maintenance.</p></a></div>
-      <div><a href="/training/"><h3>Training</h3><p>Live online cohorts in cloud, ITSM and infrastructure. Closed batches for teams.</p></a></div>
-      <div><a href="/recruitment/"><h3>Recruitment</h3><p>Permanent, contract and freelance hiring for IT roles. Employers pay us; candidates never do.</p></a></div>
-      <div><a href="/network/"><h3>Freelancing</h3><p>A reviewed network of independent consultants who deliver client work with us.</p></a></div>
+    <div class="pillar-head">
+      <span class="eyebrow">The Jobjila ecosystem</span>
+      <h2>Five ways we work with you</h2>
     </div>
+    ${pillarCards()}
   </div>
 </div>
 
@@ -165,6 +200,23 @@ function home() {
         </ul>
         <a class="btn btn-line" href="/it-support/" style="justify-self:start">IT Support</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="sunk">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Technology Solutions &middot; new</span>
+      <h2>We now deliver the technology too, with partners</h2>
+      <p class="muted">Our own technical team scopes the requirement and helps shape the proposal. A specialist partner delivers it. You get one point of contact and an honest opinion about what you actually need.</p>
+    </div>
+    <div class="grid g3">
+      ${SOLUTION_CATEGORIES.map(([name, desc]) => `<div class="cell"><h3>${name}</h3><p>${desc}</p></div>`).join("\n      ")}
+    </div>
+    <div class="btns" style="margin-top:2rem">
+      <a class="btn btn-line btn-lg" href="/solutions/">How a requirement is delivered</a>
+      <a class="btn btn-line btn-lg" href="/partners/">Deliver as a partner</a>
     </div>
   </div>
 </section>
