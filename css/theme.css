@@ -7,33 +7,46 @@
    ========================================================================== */
 
 :root {
-  /* ---- neutrals: cool, biased slightly toward the teal accent ---- */
-  --ink:        #08131a;
-  --ink-2:      #1d2f38;
-  --slate:      #5a6b74;
-  --slate-2:    #87959d;
-  --rule:       #e3e9ea;
-  --rule-soft:  #eef2f3;
-  --paper:      #f7f9f9;
+  /* ---- neutrals: cool, biased slightly toward the blue accent ---- */
+  --ink:        #0d1b33;
+  --ink-2:      #2b3d5c;
+  --slate:      #5f7189;
+  --slate-2:    #93a1b5;
+  --rule:       #e3e9f2;
+  --rule-soft:  #eff3f9;
+  --paper:      #f7f9fc;
   --card:       #ffffff;
-  --sunk:       #eef2f2;
+  --sunk:       #f0f4fa;
 
-  /* ---- accents, one per training track ---- */
-  --teal:       #0e9384;
-  --teal-2:     #0b7568;
-  --teal-bg:    #e3f5f1;
-  --indigo:     #4f46e5;
-  --indigo-bg:  #ecebfd;
+  /* ---- the five ecosystem pillars, one colour each ---- */
+  --blue:       #1f6feb;   /* Technology Solutions */
+  --blue-2:     #1557c0;
+  --blue-bg:    #e8f0fe;
+  --green:      #12a17a;   /* Consulting */
+  --green-bg:   #e2f6f0;
+  --orange:     #f08322;   /* Talent & Hiring */
+  --orange-bg:  #fdeedd;
+  --purple:     #8250df;   /* Training & Academy */
+  --purple-bg:  #f0e9fd;
+  --pink:       #e8497f;   /* Partner Network */
+  --pink-bg:    #fdeaf1;
+
+  /* ---- track accents kept as aliases so existing pages keep working ---- */
+  --teal:       var(--blue);
+  --teal-2:     var(--blue-2);
+  --teal-bg:    var(--blue-bg);
+  --indigo:     var(--purple);
+  --indigo-bg:  var(--purple-bg);
   --steel:      #46596a;
   --steel-bg:   #eceff2;
-  --ochre:      #b45309;
-  --ochre-bg:   #fdf0e3;
-  --plum:       #9333ea;
-  --plum-bg:    #f5ecf3;
+  --ochre:      var(--orange);
+  --ochre-bg:   var(--orange-bg);
+  --plum:       var(--purple);
+  --plum-bg:    var(--purple-bg);
 
-  --signal:     var(--teal);
-  --signal-2:   var(--teal-2);
-  --signal-bg:  var(--teal-bg);
+  --signal:     var(--blue);
+  --signal-2:   var(--blue-2);
+  --signal-bg:  var(--blue-bg);
   --wa:         #128c4a;
   --wa-2:       #0f7a40;
 
@@ -64,7 +77,7 @@
   --r-sm:  10px;
   --sh-1: 0 1px 2px rgba(8,19,26,.04), 0 4px 12px -2px rgba(8,19,26,.06);
   --sh-2: 0 2px 4px rgba(8,19,26,.05), 0 14px 32px -8px rgba(8,19,26,.12);
-  --sh-3: 0 4px 8px rgba(14,147,132,.08), 0 30px 60px -14px rgba(8,19,26,.20);
+  --sh-3: 0 4px 8px rgba(31,111,235,.10), 0 30px 60px -14px rgba(8,19,26,.20);
   --glass: rgba(255,255,255,.82);
   --glass-edge: rgba(8,19,26,.07);
   --grad-2: #1d6fa5;
@@ -75,32 +88,44 @@
      color there (it means "the ink/text color", which is light on a dark
      theme), so a panel using var(--ink) as a *background* would render as
      a near-white box behind hardcoded white text. */
-  --navy: #08131a;
+  --navy: #0b2347;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --ink:        #eef1f2;
-    --ink-2:      #c4ccd2;
-    --slate:      #99a4ad;
-    --slate-2:    #6e7a84;
-    --rule:       #29333c;
-    --rule-soft:  #1d252c;
-    --paper:      #0c1115;
-    --card:       #131a20;
-    --sunk:       #10171c;
+    --ink:        #eef1f6;
+    --ink-2:      #c4ccd8;
+    --slate:      #99a4b5;
+    --slate-2:    #6e7a8c;
+    --rule:       #29333f;
+    --rule-soft:  #1d252f;
+    --paper:      #0c1118;
+    --card:       #131a24;
+    --sunk:       #101720;
 
-    --teal:       #2dd4bf;
-    --teal-2:     #5eead4;
-    --teal-bg:    #0d2b28;
-    --indigo:     #a5b4fc;
-    --indigo-bg:  #171c33;
+    --blue:       #6ea3f2;
+    --blue-2:     #9dc0f8;
+    --blue-bg:    #13243f;
+    --green:      #3fd0ac;
+    --green-bg:   #0d2b25;
+    --orange:     #f0a563;
+    --orange-bg:  #2b1c0c;
+    --purple:     #b18cf0;
+    --purple-bg:  #221a38;
+    --pink:       #f280a9;
+    --pink-bg:    #2f1622;
+
+    --teal:       var(--blue);
+    --teal-2:     var(--blue-2);
+    --teal-bg:    var(--blue-bg);
+    --indigo:     var(--purple);
+    --indigo-bg:  var(--purple-bg);
     --steel:      #9db0c1;
     --steel-bg:   #18202a;
-    --ochre:      #dda155;
-    --ochre-bg:   #251a0c;
-    --plum:       #d18cbe;
-    --plum-bg:    #2a1826;
+    --ochre:      var(--orange);
+    --ochre-bg:   var(--orange-bg);
+    --plum:       var(--purple);
+    --plum-bg:    var(--purple-bg);
 
     --wa:         #2fbc6d;
     --wa-2:       #46d183;
@@ -110,7 +135,7 @@
 
     --sh-1: 0 1px 2px rgba(0,0,0,.45), 0 4px 12px -2px rgba(0,0,0,.4);
     --sh-2: 0 2px 4px rgba(0,0,0,.5), 0 14px 32px -8px rgba(0,0,0,.55);
-    --sh-3: 0 4px 8px rgba(0,0,0,.5), 0 30px 60px -14px rgba(45,212,191,.14);
+    --sh-3: 0 4px 8px rgba(0,0,0,.5), 0 30px 60px -14px rgba(110,163,242,.16);
     --glass: rgba(12,17,21,.82);
     --glass-edge: rgba(255,255,255,.09);
     --grad-2: #7cc4f0;
@@ -118,27 +143,39 @@
 }
 
 :root[data-theme="dark"] {
-  --ink:        #eef1f2;
-  --ink-2:      #c4ccd2;
-  --slate:      #99a4ad;
-  --slate-2:    #6e7a84;
-  --rule:       #29333c;
-  --rule-soft:  #1d252c;
-  --paper:      #0c1115;
-  --card:       #131a20;
-  --sunk:       #10171c;
+  --ink:        #eef1f6;
+  --ink-2:      #c4ccd8;
+  --slate:      #99a4b5;
+  --slate-2:    #6e7a8c;
+  --rule:       #29333f;
+  --rule-soft:  #1d252f;
+  --paper:      #0c1118;
+  --card:       #131a24;
+  --sunk:       #101720;
 
-  --teal:       #2dd4bf;
-  --teal-2:     #5eead4;
-  --teal-bg:    #0d2b28;
-  --indigo:     #a5b4fc;
-  --indigo-bg:  #171c33;
+  --blue:       #6ea3f2;
+  --blue-2:     #9dc0f8;
+  --blue-bg:    #13243f;
+  --green:      #3fd0ac;
+  --green-bg:   #0d2b25;
+  --orange:     #f0a563;
+  --orange-bg:  #2b1c0c;
+  --purple:     #b18cf0;
+  --purple-bg:  #221a38;
+  --pink:       #f280a9;
+  --pink-bg:    #2f1622;
+
+  --teal:       var(--blue);
+  --teal-2:     var(--blue-2);
+  --teal-bg:    var(--blue-bg);
+  --indigo:     var(--purple);
+  --indigo-bg:  var(--purple-bg);
   --steel:      #9db0c1;
   --steel-bg:   #18202a;
-  --ochre:      #dda155;
-  --ochre-bg:   #251a0c;
-  --plum:       #d18cbe;
-  --plum-bg:    #2a1826;
+  --ochre:      var(--orange);
+  --ochre-bg:   var(--orange-bg);
+  --plum:       var(--purple);
+  --plum-bg:    var(--purple-bg);
 
   --wa:         #2fbc6d;
   --wa-2:       #46d183;
@@ -148,7 +185,7 @@
 
   --sh-1: 0 1px 2px rgba(0,0,0,.45), 0 4px 12px -2px rgba(0,0,0,.4);
   --sh-2: 0 2px 4px rgba(0,0,0,.5), 0 14px 32px -8px rgba(0,0,0,.55);
-  --sh-3: 0 4px 8px rgba(0,0,0,.5), 0 30px 60px -14px rgba(45,212,191,.14);
+  --sh-3: 0 4px 8px rgba(0,0,0,.5), 0 30px 60px -14px rgba(110,163,242,.16);
   --glass: rgba(12,17,21,.82);
   --glass-edge: rgba(255,255,255,.09);
   --grad-2: #7cc4f0;
@@ -159,7 +196,7 @@
 [data-track="itsm"]    { --signal: var(--indigo); --signal-bg: var(--indigo-bg); }
 [data-track="infra"]   { --signal: var(--steel);  --signal-bg: var(--steel-bg); }
 [data-track="consult"] { --signal: var(--ochre);  --signal-bg: var(--ochre-bg); }
-[data-track="data"]    { --signal: var(--plum);   --signal-bg: var(--plum-bg); }
+[data-track="data"]    { --signal: var(--pink);   --signal-bg: var(--pink-bg); }
 
 /* ---------- base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
@@ -242,22 +279,30 @@ section > .wrap { padding-block: clamp(3rem, 7vw, 5rem); }
   display: flex; align-items: center; justify-content: space-between;
   gap: 1rem; min-height: 4rem;
 }
+/* Wordmark: the "J" glyph beside a two-line lockup (name + descriptor).
+   align-items:center rather than baseline — the glyph is an icon, not text,
+   so a shared baseline leaves it sitting low against the two-line block. */
 .logo {
-  font-family: var(--f-sans); font-weight: 700; font-size: 1.1875rem;
-  letter-spacing: -.03em; color: var(--ink); text-decoration: none;
-  display: inline-flex; align-items: baseline; gap: .5rem; white-space: nowrap;
+  color: var(--ink); text-decoration: none;
+  display: inline-flex; align-items: center; gap: .55rem; white-space: nowrap; flex: none;
 }
-/* the wordmark is one flex item so the gap never splits "Job" from "jila" */
-.logo em { font-style: normal; white-space: nowrap; }
-.logo b { color: var(--teal); font-weight: 700; }
-.logo span {
-  font-family: var(--f-mono); font-size: .625rem; font-weight: 500;
-  letter-spacing: .14em; text-transform: uppercase; color: var(--slate);
+.logo-j { color: var(--blue); display: flex; align-items: center; flex: none; }
+/* flex:none + max-width:none — the global img,svg rule lets the mark be
+   squashed to a sliver when the header bar runs short of room. */
+.logo-j svg { width: 27px; height: 31px; flex: none; max-width: none; }
+.logo-text { display: grid; line-height: 1.05; }
+.logo-text b {
+  font-family: var(--f-sans); font-weight: 800; font-size: 1.3rem;
+  letter-spacing: -.02em; color: var(--ink);
 }
-.site-nav { display: flex; gap: 1.375rem; flex-wrap: wrap; }
+.logo-text > span {
+  font-family: var(--f-sans); font-size: .53rem; font-weight: 600;
+  letter-spacing: .03em; color: var(--slate);
+}
+.site-nav { display: flex; gap: .3rem; flex-wrap: nowrap; }
 .site-nav a {
   font-family: var(--f-sans); font-size: var(--s--1); font-weight: 500;
-  color: var(--slate); text-decoration: none;
+  color: var(--slate); text-decoration: none; white-space: nowrap;
 }
 .site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--teal); }
 .bar-actions { display: flex; align-items: center; gap: .625rem; }
@@ -286,7 +331,7 @@ section > .wrap { padding-block: clamp(3rem, 7vw, 5rem); }
   .site-nav { display: none; }
   .nav-toggle { display: grid; }
 }
-@media (max-width: 30rem) { .logo span { display: none; } }
+@media (max-width: 30rem) { .logo-text > span { display: none; } }
 
 /* ---------- buttons ---------- */
 .btn {
@@ -302,6 +347,24 @@ section > .wrap { padding-block: clamp(3rem, 7vw, 5rem); }
 .btn-wa:hover { background: var(--wa-2); color: #fff; }
 .btn-solid { background: var(--ink); color: var(--paper); }
 .btn-solid:hover { background: var(--signal); color: #fff; }
+
+/* Header's primary call to action — solid blue, ahead of the WhatsApp button. */
+.btn-get { background: var(--blue); color: #fff; }
+.btn-get:hover { background: var(--blue-2); color: #fff; }
+/* Below the desktop breakpoint the header cannot hold both CTAs plus the nav
+   toggle, so the secondary one drops to its icon and Get Started steps aside. */
+@media (max-width: 90rem) {
+  .btn-wa-compact span:not(.wa-icon) { display: none; }
+  .btn-wa-compact { padding-inline: .85rem; }
+}
+/* Below ~1250px the logo lockup, seven nav items and two buttons no longer
+   fit one row; the nav tightens first, then Get Started steps aside (the
+   same destination sits in the nav as "Solutions"). */
+@media (max-width: 88rem) {
+  .site-nav { gap: .1rem; }
+  .site-nav a { padding-inline: .5rem; }
+}
+@media (max-width: 78rem) { .btn-get { display: none; } }
 .btn-line { border-color: var(--rule); color: var(--ink); background: var(--card); }
 .btn-line:hover { border-color: var(--signal); color: var(--signal); }
 .btn-ondark { background: rgba(255,255,255,.1); color: #fff; border-color: rgba(255,255,255,.28); }
@@ -963,7 +1026,7 @@ td a:hover, th a:hover { text-decoration: underline; }
     .site-header .bar { background: var(--glass); backdrop-filter: blur(16px) saturate(1.4); }
   }
 }
-.site-nav a { border-radius: 999px; padding: .45rem .8rem; transition: background .18s ease, color .18s ease; }
+.site-nav a { border-radius: 999px; padding: .45rem .6rem; transition: background .18s ease, color .18s ease; }
 .site-nav a:hover { background: var(--teal-bg); color: var(--teal); }
 .site-nav a[aria-current] { background: var(--ink); color: var(--paper); }
 
@@ -1058,24 +1121,24 @@ h2 { letter-spacing: -.035em; font-weight: 700; }
 /* --navy is deliberately fixed dark in both themes, so these stay legible
    with white text whichever theme is active. */
 .band {
-  background: linear-gradient(120deg, var(--navy), #12333a 60%, var(--teal-2));
+  background: linear-gradient(120deg, var(--navy), #123a77 60%, #1a4c93);
   border: 0; border-radius: calc(var(--r) + 6px); padding: 2.5rem; box-shadow: var(--sh-3);
 }
 .page-hero {
-  background: linear-gradient(135deg, var(--navy) 0%, #0f2a30 55%, #0b3c37 100%);
+  background: linear-gradient(135deg, var(--navy) 0%, #123a77 55%, #0e2f61 100%);
   border-radius: 0 0 calc(var(--r) + 10px) calc(var(--r) + 10px);
   position: relative; overflow: hidden;
 }
 .page-hero::after {
   content: ""; position: absolute; inset: 0; pointer-events: none;
   background:
-    radial-gradient(30rem 18rem at 85% -20%, rgba(14,147,132,.34), transparent 62%),
-    radial-gradient(24rem 16rem at 10% 110%, rgba(79,70,229,.22), transparent 65%);
+    radial-gradient(30rem 18rem at 85% -20%, rgba(31,111,235,.38), transparent 62%),
+    radial-gradient(24rem 16rem at 10% 110%, rgba(130,80,223,.22), transparent 65%);
 }
 .page-hero > .wrap { position: relative; z-index: 1; }
 .page-hero h1 { font-weight: 700; letter-spacing: -.04em; }
 .page-hero .eyebrow { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.2); color: #7fe3d4; box-shadow: none; }
-.honest { background: linear-gradient(135deg, var(--navy), #132a30); border-radius: calc(var(--r) + 10px); }
+.honest { background: linear-gradient(135deg, var(--navy), #132f5e); border-radius: calc(var(--r) + 10px); }
 .mark { border-radius: 999px; }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1206,3 +1269,24 @@ h2 { letter-spacing: -.035em; font-weight: 700; }
   }
   .ticker-track li::before { content: none; }
 }
+
+/* ---------- forms (solutions + partner application) ---------- */
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+@media (max-width: 40rem) { .form-row { grid-template-columns: 1fr; } }
+
+form label {
+  display: block; font-family: var(--f-sans); font-size: var(--s--1);
+  font-weight: 600; color: var(--ink-2); margin-bottom: .5rem;
+}
+form input, form select, form textarea {
+  width: 100%; padding: .75rem .875rem;
+  font-family: var(--f-sans); font-size: var(--s-0); color: var(--ink);
+  background: var(--card); border: 1px solid var(--rule); border-radius: var(--r-sm);
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+form textarea { resize: vertical; }
+form input:focus, form select:focus, form textarea:focus {
+  outline: none; border-color: var(--signal);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--signal) 18%, transparent);
+}
+form input::placeholder, form textarea::placeholder { color: var(--slate-2); }

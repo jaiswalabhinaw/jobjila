@@ -1260,8 +1260,277 @@ function submitResumeThanks() {
 ` + footer();
 }
 
+/* ===================== SOLUTIONS (partner-delivered IT) ===================== */
+
+/** The nine categories we qualify a requirement into before matching a partner. */
+const SOLUTION_CATEGORIES = [
+  ["Cloud &amp; Cloud Hosting", "Public, private and hybrid environments, sized and sourced for what you actually run."],
+  ["Data Center &amp; Infrastructure", "Racks, colocation and the physical layer, through providers we have vetted."],
+  ["Managed IT Services", "Day-to-day operations and monitoring handled by a dedicated partner team."],
+  ["Cybersecurity", "Assessment, hardening and monitoring from partners who do this as their main work."],
+  ["Backup &amp; Disaster Recovery", "A recovery plan someone has actually tested, not a policy document."],
+  ["Networking &amp; Connectivity", "Site links, SD-WAN and secure connectivity across your locations."],
+  ["Server, Storage &amp; Virtualization", "Right-sized compute and storage, virtualised where it genuinely helps."],
+  ["Migration &amp; Modernization", "Moving off legacy systems without breaking what already works."],
+  ["Monitoring &amp; Support", "Visibility and response cover, so problems surface before they cost you."],
+];
+
+function solutions() {
+  const t = trail("Solutions", "/solutions/");
+  const faqs = [
+    { q: "Do you deliver this yourselves?", a: "The assessment and solution design is ours. The delivery is done by a technology partner whose main business is that specific area — a cloud provider, a security firm, a networking specialist. We stay involved through proposal and delivery rather than handing you over and disappearing." },
+    { q: "Why not go to the partner directly?", a: "You can, and sometimes that is the right answer. What we add is the part before the sales conversation: working out what you actually need, what it should cost, and which provider suits your scale — from people who advise on this technology for a living rather than sell one product." },
+    { q: "What does it cost me to ask?", a: "Nothing. Sending us a requirement, the qualification call and the shortlist cost you nothing. You pay the partner for what they deliver, on terms you agree with them." },
+    { q: "How long does it take?", a: "A first response within two working days. How long the rest takes depends entirely on the scope — a hosting move is not a data-centre migration. We will tell you a realistic timeline rather than an encouraging one." },
+  ];
+
+  return head({
+    title: "IT Solutions — Cloud, Security, Infrastructure | Jobjila",
+    description: "Tell us the IT problem you are solving. We scope it and connect you with the right delivery partner for cloud, security, infrastructure and managed services.",
+    canonical: "/solutions/",
+    extraLd: [orgLd, breadcrumbLd(t), faqLd(faqs), serviceLd("IT Solutions", "Cloud, hosting, cybersecurity, infrastructure, backup and managed services, scoped by Jobjila and delivered with qualified technology partners.", "/solutions/")],
+  }) + `
+<section class="page-hero">
+  <div class="wrap">
+    ${crumb(t)}
+    <span class="eyebrow">Technology Solutions</span>
+    <h1>IT solutions for growing and enterprise businesses</h1>
+    <p>Tell us what business or technology problem you are solving. Our technical team scopes it properly, then connects you with the delivery partner that actually fits — and stays involved through proposal and delivery.</p>
+    <div class="btns">
+      <a class="btn btn-wa btn-lg" href="${wa("Hi Jobjila, I have an IT requirement.\n\nCompany:\nRequirement:\nRough scale:\nTimeline:")}" target="_blank" rel="noopener">${WA_ICON}<span>Get an IT solution</span></a>
+      <a class="btn btn-ondark btn-lg" href="#requirement">Send a requirement</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">What we help you solve</span>
+      <h2>Nine areas we scope and source</h2>
+      <p class="muted">If your problem does not sit neatly in one of these, say so anyway — most real requirements cut across two or three.</p>
+    </div>
+    <div class="grid g3">
+      ${SOLUTION_CATEGORIES.map(([name, desc]) => `<div class="cell"><h3>${name}</h3><p>${desc}</p></div>`).join("\n      ")}
+    </div>
+  </div>
+</section>
+
+<section class="sunk">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">How it works</span>
+      <h2>From requirement to delivery</h2>
+      <p class="muted">Four steps. You are told who is doing what at each one.</p>
+    </div>
+    <div class="ladder">
+      <div class="rung"><div class="amt">Brief<small>Your side</small></div><div><h3>You share the requirement</h3><p>What you are trying to solve, roughly what scale, and when you need it working.</p></div></div>
+      <div class="rung"><div class="amt">Scope<small>Our side</small></div><div><h3>We scope it</h3><p>The same technical people who run our advisory work review it — what you actually need, what it should cost, where the risk sits.</p></div></div>
+      <div class="rung"><div class="amt">Match<small>Our network</small></div><div><h3>We bring in the right partner</h3><p>A provider whose core business is that area and whose size suits yours. We say plainly why that one.</p></div></div>
+      <div class="rung"><div class="amt">Deliver<small>Together</small></div><div><h3>Proposal, then delivery</h3><p>We help shape the technical and commercial proposal, and stay in the loop while the partner delivers.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="requirement">
+  <div class="wrap">
+    <div style="max-width: 52rem; margin: 0 auto;">
+      <div class="head">
+        <span class="eyebrow">Get an IT solution</span>
+        <h2>Tell us what you need</h2>
+        <p class="muted">A specialist reads every requirement personally. No automated quote, no obligation.</p>
+      </div>
+
+      <form method="POST" action="https://formsubmit.co/${esc(site.email)}" style="margin-top: 2rem; display: grid; gap: 1.5rem;">
+        <div class="form-row">
+          <div><label for="s-name">Your name *</label><input type="text" id="s-name" name="name" required></div>
+          <div><label for="s-company">Company *</label><input type="text" id="s-company" name="company" required></div>
+        </div>
+        <div class="form-row">
+          <div><label for="s-email">Business email *</label><input type="email" id="s-email" name="email" required></div>
+          <div><label for="s-phone">Phone *</label><input type="tel" id="s-phone" name="phone" placeholder="+91 9876543210" required></div>
+        </div>
+        <div class="form-row">
+          <div><label for="s-size">Company size</label><input type="text" id="s-size" name="company_size" placeholder="E.g., 40 staff"></div>
+          <div><label for="s-when">Timeline</label><input type="text" id="s-when" name="timeline" placeholder="E.g., within 3 months"></div>
+        </div>
+        <div>
+          <label for="s-need">What do you need? *</label>
+          <select id="s-need" name="solution_required" required>
+            <option value="">Select a category</option>
+            ${SOLUTION_CATEGORIES.map(([name]) => `<option>${name.replace(/&amp;/g, "&")}</option>`).join("\n            ")}
+            <option>Something else / not sure</option>
+          </select>
+        </div>
+        <div>
+          <label for="s-detail">Describe the requirement *</label>
+          <textarea id="s-detail" name="requirement" rows="4" required placeholder="What you run today, what is not working, and what you want it to look like."></textarea>
+        </div>
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="New IT solution requirement — Jobjila">
+        <input type="hidden" name="_next" value="${site.url}/thanks/">
+        <button type="submit" class="btn btn-solid btn-lg" style="justify-self: start;">Send requirement</button>
+      </form>
+
+      <p class="small muted" style="margin-top: 1.5rem;">We reply within two working days. If we are not the right people for it, we will say so rather than string you along.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sunk">
+  <div class="wrap">
+    ${faqBlock(faqs, "Questions about solutions").replace('style="margin-top:3rem"', "")}
+    <div style="margin-top:3rem">
+      ${band({ title: "Deliver these services yourself?", body: "If you are a cloud, hosting, security or managed-services provider, we bring qualified customer requirements to partners who can deliver them.", label: "Become a partner", message: "Hi Jobjila, we are a technology provider interested in your partner network." })}
+    </div>
+  </div>
+</section>
+` + footer();
+}
+
+/* ===================== PARTNER NETWORK ===================== */
+
+function partners() {
+  const t = trail("Partner Network", "/partners/");
+  const faqs = [
+    { q: "What kind of opportunities do you bring?", a: "Requirements from businesses that have come to us with a problem and been through our qualification call — so you receive a scoped need with a named contact, not a cold list." },
+    { q: "What do you expect from a partner?", a: "That you actually deliver in the area you claim, that you respond to a qualified requirement within a couple of days, and that you are straight with the customer about what you can and cannot do." },
+    { q: "What are the commercial terms?", a: "Agreed in writing with each partner before any customer information is shared, and they depend on the engagement — referral, co-sell or delivery-led. We do not publish a single rate because the models genuinely differ." },
+    { q: "Do you work with small providers?", a: "Yes. Fit matters more than size — a five-person specialist is often the right answer for a mid-size customer where a large integrator is not." },
+  ];
+
+  return head({
+    title: "Become a Technology Partner | Jobjila",
+    description: "Jobjila brings qualified customer requirements to cloud, hosting, security, networking and managed-service providers. Apply to join the partner network.",
+    canonical: "/partners/",
+    extraLd: [orgLd, breadcrumbLd(t), faqLd(faqs)],
+  }) + `
+<section class="page-hero">
+  <div class="wrap">
+    ${crumb(t)}
+    <span class="eyebrow">Partner Network</span>
+    <h1>Partner with Jobjila to reach new business</h1>
+    <p>We work with technology and service providers who can solve real customer requirements. You get scoped opportunities with a named contact; the customer gets a provider who actually fits.</p>
+    <div class="btns">
+      <a class="btn btn-wa btn-lg" href="${wa("Hi Jobjila, we are a technology provider and want to join the partner network.\n\nCompany:\nWebsite:\nWhat we deliver:\nGeography:")}" target="_blank" rel="noopener">${WA_ICON}<span>Talk to us</span></a>
+      <a class="btn btn-ondark btn-lg" href="#apply">Apply as a partner</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Who we work with</span>
+      <h2>Providers we bring requirements to</h2>
+    </div>
+    <div class="grid g3">
+      <div class="cell"><h3>Cloud &amp; hosting providers</h3><p>Public, private and hybrid platforms, plus managed hosting.</p></div>
+      <div class="cell"><h3>Data centre &amp; infrastructure</h3><p>Colocation, racks and the physical layer underneath.</p></div>
+      <div class="cell"><h3>Cybersecurity firms</h3><p>Assessment, hardening, monitoring and incident response.</p></div>
+      <div class="cell"><h3>Backup &amp; DR providers</h3><p>Recovery you can demonstrate, not just contract.</p></div>
+      <div class="cell"><h3>Networking &amp; connectivity</h3><p>Links, SD-WAN and secure multi-site connectivity.</p></div>
+      <div class="cell"><h3>Managed service providers</h3><p>Ongoing operations cover for customers without an internal team.</p></div>
+      <div class="cell"><h3>System integrators</h3><p>Multi-vendor delivery where several pieces have to work together.</p></div>
+      <div class="cell"><h3>Software &amp; SaaS providers</h3><p>Products that solve a specific business problem end to end.</p></div>
+      <div class="cell"><h3>Professional services</h3><p>Specialist skills brought in for a defined piece of work.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sunk">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">How we work together</span>
+      <h2>What a partner can expect</h2>
+    </div>
+    <div class="grid g2">
+      <div class="cell"><h3>Qualified, not cold</h3><p>Every requirement has been through a scoping conversation before it reaches you — scale, timeline and decision process included.</p></div>
+      <div class="cell"><h3>Terms agreed in writing first</h3><p>Lead registration, ownership and commercials are settled before any customer detail is shared. No verbal understandings.</p></div>
+      <div class="cell"><h3>We stay in the room</h3><p>We help shape the proposal and stay involved through delivery rather than handing over and vanishing.</p></div>
+      <div class="cell"><h3>Honest about fit</h3><p>If your capability does not suit a requirement, we will not send it to you to pad a shortlist.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="apply">
+  <div class="wrap">
+    <div style="max-width: 52rem; margin: 0 auto;">
+      <div class="head">
+        <span class="eyebrow">Partner application</span>
+        <h2>Apply to join the network</h2>
+        <p class="muted">Tell us what you deliver and where. We reply to every application, including the ones we cannot take forward.</p>
+      </div>
+
+      <form method="POST" action="https://formsubmit.co/${esc(site.email)}" style="margin-top: 2rem; display: grid; gap: 1.5rem;">
+        <div class="form-row">
+          <div><label for="p-company">Company name *</label><input type="text" id="p-company" name="company" required></div>
+          <div><label for="p-site">Website *</label><input type="url" id="p-site" name="website" placeholder="https://" required></div>
+        </div>
+        <div class="form-row">
+          <div><label for="p-name">Primary contact *</label><input type="text" id="p-name" name="contact_name" required></div>
+          <div><label for="p-role">Designation</label><input type="text" id="p-role" name="designation"></div>
+        </div>
+        <div class="form-row">
+          <div><label for="p-email">Business email *</label><input type="email" id="p-email" name="email" required></div>
+          <div><label for="p-phone">Phone *</label><input type="tel" id="p-phone" name="phone" required></div>
+        </div>
+        <div>
+          <label for="p-geo">Geography covered *</label>
+          <input type="text" id="p-geo" name="geography" placeholder="E.g., Delhi NCR, pan-India, APAC" required>
+        </div>
+        <div>
+          <label for="p-caps">Core capabilities *</label>
+          <textarea id="p-caps" name="capabilities" rows="3" required placeholder="What you deliver, and what you are genuinely strongest at."></textarea>
+        </div>
+        <div>
+          <label for="p-certs">Certifications or authorisations</label>
+          <textarea id="p-certs" name="certifications" rows="2" placeholder="Vendor authorisations, ISO, CERT-In empanelment and so on. Leave blank if none."></textarea>
+        </div>
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="New partner application — Jobjila">
+        <input type="hidden" name="_next" value="${site.url}/thanks/">
+        <button type="submit" class="btn btn-solid btn-lg" style="justify-self: start;">Submit application</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="sunk">
+  <div class="wrap">
+    ${faqBlock(faqs, "Partner questions").replace('style="margin-top:3rem"', "")}
+  </div>
+</section>
+` + footer();
+}
+
+/* A neutral acknowledgement the solution and partner forms both return to. */
+function thanks() {
+  return head({
+    title: "Thank You — Jobjila",
+    description: "We have received your message and will be in touch.",
+    canonical: "/thanks/",
+    extraLd: [],
+  }) + `
+<section class="page-hero">
+  <div class="wrap" style="text-align:center;">
+    <span class="eyebrow">Received</span>
+    <h1>Thank you — we have it</h1>
+    <p style="margin-inline:auto;">A specialist will read it and get back to you within two working days. If it is urgent, message us on WhatsApp and we will pick it up sooner.</p>
+    <div class="btns" style="justify-content:center;">
+      <a class="btn btn-wa btn-lg" href="${wa("Hi Jobjila, I just sent a requirement through the website.")}" target="_blank" rel="noopener">${WA_ICON}<span>Message us</span></a>
+      <a class="btn btn-ondark btn-lg" href="/">Back to home</a>
+    </div>
+  </div>
+</section>
+` + footer();
+}
+
 module.exports = function buildPages() {
   write("index.html", home());
+  write(path.join("solutions", "index.html"), solutions());
+  write(path.join("partners", "index.html"), partners());
+  write(path.join("thanks", "index.html"), thanks());
   write(path.join("it-advisory", "index.html"), itAdvisory());
   write(path.join("it-support", "index.html"), itSupport());
   write(path.join("recruitment", "index.html"), recruitment());
@@ -1276,5 +1545,5 @@ module.exports = function buildPages() {
   write(path.join("terms", "index.html"), terms());
   write(path.join("privacy", "index.html"), privacy());
   write("404.html", notFound());
-  return 14;
+  return 17;
 };

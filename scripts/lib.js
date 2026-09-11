@@ -245,15 +245,21 @@ gtag('js',new Date());gtag('config',${JSON.stringify(GA_ID)});
    Reduced weights: Sans (400,600,700) + Serif (400,ital 400) only. Mono uses system. */
 const FONTS = "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=IBM+Plex+Serif:ital,wght@0,400;1,400&display=swap";
 
+/* The five ecosystem pillars, in the order they are presented everywhere.
+   Labels changed with the 2026 rebrand; the URLs deliberately did NOT, so
+   everything Google has already indexed keeps resolving. */
 const NAV = [
-  { href: "/it-advisory/", label: "IT Advisory" },
-  { href: "/it-support/", label: "IT Support" },
+  { href: "/solutions/", label: "Solutions" },
+  { href: "/it-advisory/", label: "Consulting" },
+  { href: "/recruitment/", label: "Talent &amp; Hiring" },
   { href: "/training/", label: "Training" },
-  { href: "/recruitment/", label: "Hiring" },
-  { href: "/network/", label: "Network" },
-  { href: "/blog/", label: "Career Guide" },
+  { href: "/partners/", label: "Partner Network" },
+  { href: "/blog/", label: "Resources" },
   { href: "/about/", label: "About" },
 ];
+
+/* The wordmark: a "J" glyph plus the descriptor line, used in header and footer. */
+const LOGO_MARK = `<svg viewBox="0 0 30 34" width="27" height="31" fill="none" aria-hidden="true"><path d="M20 2h7v20a10 10 0 0 1-10 10 10 10 0 0 1-9.4-6.6l6-2.2A3.6 3.6 0 0 0 17 25.6c2 0 3-1.3 3-3.6V2Z" fill="currentColor"/><circle cx="6.5" cy="6.5" r="4.5" fill="currentColor"/></svg>`;
 
 function head({ title, description, canonical, extraLd = [], ogImage, track, ogType = "website", published, modified }) {
   const url = site.url + canonical;
@@ -301,12 +307,16 @@ ${analyticsTag()}</head>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="wrap bar">
-    <a class="logo" href="/"><em>Job<b>jila</b></em> <span>IT Services</span></a>
+    <a class="logo" href="/">
+      <span class="logo-j">${LOGO_MARK}</span>
+      <span class="logo-text"><b>JOBJILA</b><span>People | Skills | Technology | Growth</span></span>
+    </a>
     <nav class="site-nav" aria-label="Main">
       ${NAV.map((n) => `<a href="${n.href}"${canonical === n.href ? ' aria-current="page"' : ""}>${n.label}</a>`).join("\n      ")}
     </nav>
     <div class="bar-actions">
-      <a class="btn btn-wa" href="${wa("Hi Jobjila, I would like to know more.")}" target="_blank" rel="noopener">${WA_ICON}<span>WhatsApp</span></a>
+      <a class="btn btn-solid btn-get" href="/solutions/">Get Started <span aria-hidden="true">&rarr;</span></a>
+      <a class="btn btn-wa btn-wa-compact" href="${wa("Hi Jobjila, I would like to know more.")}" target="_blank" rel="noopener">${WA_ICON}<span>WhatsApp</span></a>
       <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu"><i></i></button>
     </div>
   </div>
@@ -327,27 +337,29 @@ function footer() {
     <div class="fgrid">
       <div>
         <a class="logo logo-mark" href="/">
-          <img src="/assets/logo.png" width="40" height="40" alt="" loading="lazy" decoding="async">
-          <em>Job<b>jila</b></em>
+          <span class="logo-j">${LOGO_MARK}</span>
+          <span class="logo-text"><b>JOBJILA</b><span>People | Skills | Technology | Growth</span></span>
         </a>
         <p class="fine" style="margin-top:.875rem">${esc(site.description)}</p>
+        <p class="fine" style="margin-top:.75rem"><a href="https://www.linkedin.com/company/jobjila/" target="_blank" rel="noopener">LinkedIn</a></p>
       </div>
       <div>
-        <h4>Services</h4>
+        <h4>Ecosystem</h4>
         <ul class="flist">
-          <li><a href="/it-advisory/">IT Advisory</a></li>
-          <li><a href="/it-support/">IT Support</a></li>
-          <li><a href="/training/">Training</a></li>
+          <li><a href="/solutions/">Technology Solutions</a></li>
+          <li><a href="/it-advisory/">Consulting</a></li>
+          <li><a href="/recruitment/">Talent &amp; Hiring</a></li>
+          <li><a href="/training/">Training &amp; Academy</a></li>
+          <li><a href="/partners/">Partner Network</a></li>
           <li><a href="/network/">Consultant Network</a></li>
-          <li><a href="/submit-resume/">Submit Resume</a></li>
-          <li><a href="/blog/">Career Guide</a></li>
         </ul>
       </div>
       <div>
         <h4>Training</h4>
         <ul class="flist">
-          ${openCourses.slice(0, 6).map((c) => `<li><a href="/training/${c.slug}/">${esc(c.short)}</a></li>`).join("\n          ")}
+          ${openCourses.slice(0, 5).map((c) => `<li><a href="/training/${c.slug}/">${esc(c.short)}</a></li>`).join("\n          ")}
           <li><a href="/training/">All courses</a></li>
+          <li><a href="/submit-resume/">Submit Resume</a></li>
         </ul>
       </div>
       <div>
@@ -356,7 +368,7 @@ function footer() {
           <li><a href="/about/">About</a></li>
           <li><a href="/contact/">Contact</a></li>
           <li><a href="/locations/">Locations</a></li>
-          <li><a href="https://www.linkedin.com/company/jobjila/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="/blog/">Resources</a></li>
           <li><a href="/refund-policy/">Refund Policy</a></li>
           <li><a href="/terms/">Terms</a></li>
           <li><a href="/privacy/">Privacy</a></li>
