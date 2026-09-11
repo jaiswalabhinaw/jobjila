@@ -61,7 +61,7 @@ function hub() {
       },
     ],
   }) + `
-<section class="page-hero">
+<section class="page-hero" data-pillar="training">
   <div class="wrap">
     ${crumb(t)}
     <span class="eyebrow">Training</span>
@@ -164,7 +164,7 @@ function coursePage(c) {
     extraLd: [orgLd, personLd, courseLd(c), breadcrumbLd(t), faqLd(c.faqs)],
     track: c.track,
   }) + `
-<section class="page-hero">
+<section class="page-hero" data-pillar="training">
   <div class="wrap">
     ${crumb(t)}
     <span class="eyebrow">${esc(trackOf(c.track).name)}</span>
@@ -303,7 +303,7 @@ function cityPage(c, city) {
     extraLd: [orgLd, courseLd(c, city), breadcrumbLd(t), faqLd(faqs)],
     track: c.track,
   }) + `
-<section class="page-hero">
+<section class="page-hero" data-pillar="training">
   <div class="wrap">
     ${crumb(t)}
     <span class="eyebrow">${esc(city.name)} &middot; ${esc(trackOf(c.track).name)}</span>

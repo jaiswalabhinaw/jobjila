@@ -1195,15 +1195,17 @@ h2 { letter-spacing: -.035em; font-weight: 700; }
   border-radius: 0 0 calc(var(--r) + 10px) calc(var(--r) + 10px);
   position: relative; overflow: hidden;
 }
+/* The glow takes its hue from --pil, so a page carrying data-pillar reads as
+   that pillar. Pages without one fall back to blue. */
 .page-hero::after {
   content: ""; position: absolute; inset: 0; pointer-events: none;
   background:
-    radial-gradient(30rem 18rem at 85% -20%, rgba(31,111,235,.38), transparent 62%),
-    radial-gradient(24rem 16rem at 10% 110%, rgba(130,80,223,.22), transparent 65%);
+    radial-gradient(34rem 20rem at 82% -18%, color-mix(in srgb, var(--pil, var(--blue)) 72%, transparent), transparent 64%),
+    radial-gradient(26rem 17rem at 8% 112%, color-mix(in srgb, var(--pil, var(--purple)) 40%, transparent), transparent 66%);
 }
 .page-hero > .wrap { position: relative; z-index: 1; }
 .page-hero h1 { font-weight: 700; letter-spacing: -.04em; }
-.page-hero .eyebrow { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.2); color: #7fe3d4; box-shadow: none; }
+.page-hero .eyebrow { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.2); color: color-mix(in srgb, var(--pil, var(--blue)) 62%, #fff); box-shadow: none; }
 .honest { background: linear-gradient(135deg, var(--navy), #132f5e); border-radius: calc(var(--r) + 10px); }
 .mark { border-radius: 999px; }
 

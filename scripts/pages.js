@@ -489,7 +489,7 @@ function itAdvisory() {
     extraLd: [orgLd, breadcrumbLd(t), faqLd(faqs), serviceLd("IT Advisory", "Cloud architecture review, migration planning, cost optimisation and technology selection.", "/it-advisory/")],
     track: "cloud",
   }) + `
-<section class="page-hero">
+<section class="page-hero" data-pillar="consulting">
   <div class="wrap">
     ${crumb(t)}
     <span class="eyebrow">IT Advisory</span>
@@ -565,7 +565,7 @@ function itSupport() {
     extraLd: [orgLd, breadcrumbLd(t), faqLd(faqs), serviceLd("IT Support", "Network and server setup, systems administration, backup and recovery, and annual maintenance.", "/it-support/")],
     track: "infra",
   }) + `
-<section class="page-hero">
+<section class="page-hero" data-pillar="solutions">
   <div class="wrap">
     ${crumb(t)}
     <span class="eyebrow">IT Support</span>
@@ -633,7 +633,7 @@ function network() {
     extraLd: [orgLd, breadcrumbLd(t), faqLd(faqs)],
     track: "consult",
   }) + `
-<section class="page-hero">
+<section class="page-hero" data-pillar="partners">
   <div class="wrap">
     ${crumb(t)}
     <span class="eyebrow">For consultants and trainers</span>
@@ -1122,7 +1122,7 @@ function recruitment() {
     extraLd: [orgLd, breadcrumbLd(t), faqLd(faqs), serviceLd("IT Recruitment", "Permanent, contract, freelance and project-based hiring for IT, cloud, infrastructure, sales and presales roles.", "/recruitment/")],
     track: "consult",
   }) + `
-<section class="page-hero">
+<section class="page-hero" data-pillar="talent">
   <div class="wrap">
     ${crumb(t)}
     <span class="eyebrow">Hiring</span>
@@ -1255,7 +1255,7 @@ function forCandidates() {
     extraLd: [orgLd, breadcrumbLd(t), faqLd(faqs)],
     track: "consult",
   }) + `
-<section class="page-hero">
+<section class="page-hero" data-pillar="talent">
   <div class="wrap">
     ${crumb(t)}
     <span class="eyebrow">For candidates</span>
@@ -1480,7 +1480,7 @@ function solutions() {
     canonical: "/solutions/",
     extraLd: [orgLd, breadcrumbLd(t), faqLd(faqs), serviceLd("IT Solutions", "Cloud, hosting, cybersecurity, infrastructure, backup and managed services, scoped by Jobjila and delivered with qualified technology partners.", "/solutions/")],
   }) + `
-<section class="page-hero">
+<section class="page-hero" data-pillar="solutions">
   <div class="wrap">
     ${crumb(t)}
     <span class="eyebrow">Technology Solutions</span>
@@ -1595,7 +1595,7 @@ function partners() {
     canonical: "/partners/",
     extraLd: [orgLd, breadcrumbLd(t), faqLd(faqs)],
   }) + `
-<section class="page-hero">
+<section class="page-hero" data-pillar="partners">
   <div class="wrap">
     ${crumb(t)}
     <span class="eyebrow">Partner Network</span>
