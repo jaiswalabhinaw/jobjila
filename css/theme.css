@@ -89,107 +89,13 @@
      theme), so a panel using var(--ink) as a *background* would render as
      a near-white box behind hardcoded white text. */
   --navy: #0b2347;
+
+  /* Light only, by design. Without this the browser still paints form
+     controls, scrollbars and autofill dark for a visitor whose OS is. */
+  color-scheme: light;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --ink:        #eef1f6;
-    --ink-2:      #c4ccd8;
-    --slate:      #99a4b5;
-    --slate-2:    #6e7a8c;
-    --rule:       #29333f;
-    --rule-soft:  #1d252f;
-    --paper:      #0c1118;
-    --card:       #131a24;
-    --sunk:       #101720;
 
-    --blue:       #6ea3f2;
-    --blue-2:     #9dc0f8;
-    --blue-bg:    #13243f;
-    --green:      #3fd0ac;
-    --green-bg:   #0d2b25;
-    --orange:     #f0a563;
-    --orange-bg:  #2b1c0c;
-    --purple:     #b18cf0;
-    --purple-bg:  #221a38;
-    --pink:       #f280a9;
-    --pink-bg:    #2f1622;
-
-    --teal:       var(--blue);
-    --teal-2:     var(--blue-2);
-    --teal-bg:    var(--blue-bg);
-    --indigo:     var(--purple);
-    --indigo-bg:  var(--purple-bg);
-    --steel:      #9db0c1;
-    --steel-bg:   #18202a;
-    --ochre:      var(--orange);
-    --ochre-bg:   var(--orange-bg);
-    --plum:       var(--purple);
-    --plum-bg:    var(--purple-bg);
-
-    --wa:         #2fbc6d;
-    --wa-2:       #46d183;
-
-    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
-    --shadow-lift: 0 2px 4px rgba(0,0,0,.45), 0 16px 40px rgba(0,0,0,.42);
-
-    --sh-1: 0 1px 2px rgba(0,0,0,.45), 0 4px 12px -2px rgba(0,0,0,.4);
-    --sh-2: 0 2px 4px rgba(0,0,0,.5), 0 14px 32px -8px rgba(0,0,0,.55);
-    --sh-3: 0 4px 8px rgba(0,0,0,.5), 0 30px 60px -14px rgba(110,163,242,.16);
-    --glass: rgba(12,17,21,.82);
-    --glass-edge: rgba(255,255,255,.09);
-    --grad-2: #7cc4f0;
-  }
-}
-
-:root[data-theme="dark"] {
-  --ink:        #eef1f6;
-  --ink-2:      #c4ccd8;
-  --slate:      #99a4b5;
-  --slate-2:    #6e7a8c;
-  --rule:       #29333f;
-  --rule-soft:  #1d252f;
-  --paper:      #0c1118;
-  --card:       #131a24;
-  --sunk:       #101720;
-
-  --blue:       #6ea3f2;
-  --blue-2:     #9dc0f8;
-  --blue-bg:    #13243f;
-  --green:      #3fd0ac;
-  --green-bg:   #0d2b25;
-  --orange:     #f0a563;
-  --orange-bg:  #2b1c0c;
-  --purple:     #b18cf0;
-  --purple-bg:  #221a38;
-  --pink:       #f280a9;
-  --pink-bg:    #2f1622;
-
-  --teal:       var(--blue);
-  --teal-2:     var(--blue-2);
-  --teal-bg:    var(--blue-bg);
-  --indigo:     var(--purple);
-  --indigo-bg:  var(--purple-bg);
-  --steel:      #9db0c1;
-  --steel-bg:   #18202a;
-  --ochre:      var(--orange);
-  --ochre-bg:   var(--orange-bg);
-  --plum:       var(--purple);
-  --plum-bg:    var(--purple-bg);
-
-  --wa:         #2fbc6d;
-  --wa-2:       #46d183;
-
-  --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
-  --shadow-lift: 0 2px 4px rgba(0,0,0,.45), 0 16px 40px rgba(0,0,0,.42);
-
-  --sh-1: 0 1px 2px rgba(0,0,0,.45), 0 4px 12px -2px rgba(0,0,0,.4);
-  --sh-2: 0 2px 4px rgba(0,0,0,.5), 0 14px 32px -8px rgba(0,0,0,.55);
-  --sh-3: 0 4px 8px rgba(0,0,0,.5), 0 30px 60px -14px rgba(110,163,242,.16);
-  --glass: rgba(12,17,21,.82);
-  --glass-edge: rgba(255,255,255,.09);
-  --grad-2: #7cc4f0;
-}
 
 /* track accent mapping — set on any container */
 [data-track="cloud"]   { --signal: var(--teal);   --signal-bg: var(--teal-bg); }
@@ -994,14 +900,6 @@ td a:hover, th a:hover { text-decoration: underline; }
   color: var(--ink-2); font-weight: 500;
 }
 .review-author .muted { display: block; color: var(--slate); font-style: normal; margin-top: .25rem; }
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .article-figure img,
-  :root:not([data-theme="light"]) .post-card .thumb img { opacity: .92; }
-}
-:root[data-theme="dark"] .article-figure img,
-:root[data-theme="dark"] .post-card .thumb img { opacity: .92; }
-
 /* ==========================================================================
    NOVA SURFACE LAYER
    A themed surface pass over the components defined above: floating pill
@@ -1570,12 +1468,6 @@ form input::placeholder, form textarea::placeholder { color: var(--slate-2); }
   font-family: var(--f-sans); font-size: .75rem; font-weight: 500;
   color: var(--slate); text-align: center; line-height: 1.35;
 }
-/* The marks are dark artwork on white; in dark mode they need their ground back. */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .logostrip img { background: #fff; border-radius: 4px; padding: .25rem .375rem; }
-}
-:root[data-theme="dark"] .logostrip img { background: #fff; border-radius: 4px; padding: .25rem .375rem; }
-
 /* ---------- how it works: connectors between the steps ---------- */
 @media (min-width: 62rem) {
   .howit-steps { position: relative; }
