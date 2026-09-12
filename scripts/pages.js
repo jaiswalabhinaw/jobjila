@@ -1227,7 +1227,7 @@ function submitResume() {
         </div>
 
         <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_subject" value="New resume submitted — Jobjila">
+        <input type="hidden" name="_subject" value="New resume submitted - Jobjila">
         <input type="hidden" name="_next" value="https://jobjila.com/submit-resume/thanks/">
 
         <button type="submit" class="btn btn-lg" style="justify-self: start; background: #0e9384; color: white; border: none; cursor: pointer; padding: 0.875rem 1.75rem; font-weight: 600;">Submit Resume</button>
@@ -1400,12 +1400,12 @@ function solutions() {
           <textarea id="s-detail" name="requirement" rows="4" required placeholder="What you run today, what is not working, and what you want it to look like."></textarea>
         </div>
         <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_subject" value="New IT solution requirement — Jobjila">
+        <input type="hidden" name="_subject" value="New IT solution requirement - Jobjila">
         <input type="hidden" name="_next" value="${site.url}/thanks/">
         <button type="submit" class="btn btn-solid btn-lg" style="justify-self: start;">Send requirement</button>
       </form>
 
-      <p class="small muted" style="margin-top: 1.5rem;">We reply within two working days. If we are not the right people for it, we will say so rather than string you along.</p>
+      <p class="small muted" style="margin-top: 1.5rem;">We reply within two working days. If we are not the right people for it, we will say so rather than string you along. You can also <a href="${wa("Hi Jobjila, I have an IT requirement.\n\nCompany:\nRequirement:\nRough scale:\nTimeline:")}" target="_blank" rel="noopener">send it on WhatsApp</a> instead.</p>
     </div>
   </div>
 </section>
@@ -1521,10 +1521,11 @@ function partners() {
           <textarea id="p-certs" name="certifications" rows="2" placeholder="Vendor authorisations, ISO, CERT-In empanelment and so on. Leave blank if none."></textarea>
         </div>
         <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_subject" value="New partner application — Jobjila">
+        <input type="hidden" name="_subject" value="New partner application - Jobjila">
         <input type="hidden" name="_next" value="${site.url}/thanks/">
         <button type="submit" class="btn btn-solid btn-lg" style="justify-self: start;">Submit application</button>
       </form>
+      <p class="small muted" style="margin-top: 1.5rem;">We read every application ourselves. You can also <a href="${wa("Hi Jobjila, we would like to join your partner network.\n\nCompany:\nWhat we deliver:\nWhere we operate:")}" target="_blank" rel="noopener">reach us on WhatsApp</a> instead.</p>
     </div>
   </div>
 </section>
