@@ -235,7 +235,7 @@ section > .wrap { padding-block: clamp(3rem, 7vw, 5rem); }
 
 /* Nine items need roughly 1200px before the logo and buttons; below that the
    menu button carries the whole nav instead of a cramped row. */
-@media (max-width: 75rem) {
+@media (max-width: 77rem) {
   .site-nav { display: none; }
   .nav-toggle { display: grid; }
 }
@@ -263,7 +263,7 @@ section > .wrap { padding-block: clamp(3rem, 7vw, 5rem); }
 .btn-get:hover { background: var(--blue-2); color: #fff; }
 /* Below the desktop breakpoint the header cannot hold both CTAs plus the nav
    toggle, so the secondary one drops to its icon and Get Started steps aside. */
-@media (max-width: 90rem) {
+@media (max-width: 100rem) {
   .btn-wa-compact span:not(.wa-icon) { display: none; }
   .btn-wa-compact { padding-inline: .85rem; }
 }
@@ -272,7 +272,7 @@ section > .wrap { padding-block: clamp(3rem, 7vw, 5rem); }
    same destination sits in the nav as "Solutions"). */
 /* Nine nav items, a search button and two buttons is a lot of row: the nav
    tightens first, then Get Started steps aside (the nav still reaches it). */
-@media (max-width: 100rem) { .site-nav a { padding-inline: .45rem; } }
+@media (max-width: 100rem) { .site-nav a { padding-inline: .38rem; } }
 @media (max-width: 90rem) { .btn-get { display: none; } }
 .btn-line { border-color: var(--rule); color: var(--ink); background: var(--card); }
 .btn-line:hover { border-color: var(--signal); color: var(--signal); }
@@ -916,7 +916,11 @@ td a:hover, th a:hover { text-decoration: underline; }
   background: transparent; border: 0; padding-inline: var(--pad);
 }
 .site-header .bar {
-  max-width: var(--max); margin-inline: auto;
+  /* Wider than --max on purpose: the reading column is 74rem, but the nav row
+     carries nine items, the logo lockup and three actions. Capped at 84rem so
+     the contents sit inside the pill instead of spilling past its edge — that
+     spill is what pushed the page sideways on a ~1500px laptop. */
+  max-width: 86rem; margin-inline: auto;
   background: var(--card);
   border: 1px solid var(--glass-edge); border-radius: 999px;
   box-shadow: var(--sh-2);
@@ -929,7 +933,7 @@ td a:hover, th a:hover { text-decoration: underline; }
     .site-header .bar { background: var(--glass); backdrop-filter: blur(16px) saturate(1.4); }
   }
 }
-.site-nav a { border-radius: 999px; padding: .45rem .6rem; transition: background .18s ease, color .18s ease; }
+.site-nav a { border-radius: 999px; padding: .45rem .45rem; transition: background .18s ease, color .18s ease; }
 .site-nav a:hover { background: var(--teal-bg); color: var(--teal); }
 .site-nav a[aria-current] { background: var(--ink); color: var(--paper); }
 
